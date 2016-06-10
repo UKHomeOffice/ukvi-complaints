@@ -1,0 +1,5 @@
+node_modules
+acceptance_tests
+public/js/bundle.js
+apps/**/translations/**/default.json
+coverage

@@ -2,10 +2,18 @@
 
 const bootstrap = require('hof-bootstrap');
 
-bootstrap({
+const complaints = require('./apps/complaints/');
+const mockSessionStore = require('./acceptance_tests/session');
+const config = require('./config');
+
+const CI = config.env === 'ci';
+
+module.exports = bootstrap({
+	sessionStore: CI ? mockSessionStore : null,
 	views: false,
 	fields: false,
+	translations: './apps/complaints/translations',
 	routes: [
-		require('./apps/complaints/')
+		complaints
 	]
 });

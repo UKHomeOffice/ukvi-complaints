@@ -1,5 +1,5 @@
 extends:
-- "homeoffice/config/default"
+  - "homeoffice/config/default"
 
 env:
   es6: true
@@ -8,3 +8,10 @@ globals:
   'Feature': true
   'Scenario': true
   'actor': true
+  'Before': true
+  'Helper': true
+
+rules:
+  func-names:
+    - error
+    - never

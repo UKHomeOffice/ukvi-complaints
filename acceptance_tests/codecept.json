@@ -5,13 +5,14 @@
   "helpers": {
     "WebDriverIO": {
       "url": "http://localhost:8080",
-      "browser": "chrome"
+      "browser": "phantomjs"
+    },
+    "Session": {
+      "require": "./session-helper"
     }
   },
-  "include": {
-    "I": "./steps.js"
-  },
-  "bootstrap": false,
+  "bootstrap": "./setup.js",
+  "teardown": "./teardown.js",
   "mocha": {},
   "name": "ukvi-complaints"
 }

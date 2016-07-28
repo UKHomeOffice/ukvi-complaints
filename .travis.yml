@@ -15,7 +15,7 @@ before_install:
   - docker run -d --net=host -e NODE_ENV=docker travis
 
 before_script:
-  - phantomjs --webdriver=4444&
+  - npm run phantom
 
 script:
   - npm run test:ci && npm run test:acceptance

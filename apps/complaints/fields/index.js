@@ -1,8 +1,7 @@
 'use strict';
 
 module.exports = {
-	'name-text': {
-		mixin: 'input-text'
-	}
+  'name-text': {
+    mixin: 'input-text'
+  }
 };
-

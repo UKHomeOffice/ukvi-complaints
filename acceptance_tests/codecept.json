@@ -1,0 +1,17 @@
+{
+  "tests": "./features/*.js",
+  "timeout": 10000,
+  "output": "./output",
+  "helpers": {
+    "WebDriverIO": {
+      "url": "http://localhost:8080",
+      "browser": "chrome"
+    }
+  },
+  "include": {
+    "I": "./steps.js"
+  },
+  "bootstrap": false,
+  "mocha": {},
+  "name": "ukvi-complaints"
+}

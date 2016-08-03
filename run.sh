@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ "$NODE_ENV" = "ci" ]
+if [ "$NODE_ENV" = "docker" ]
 then echo "starting service"
   SITEROOT=/UKVI-Complaints
 fi

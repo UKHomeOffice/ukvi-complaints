@@ -1,7 +1,6 @@
 .DS_Store
 .dockerignore
 .editorconfig
-.eslintignore
 .jscsrc
 .npmignore
 apps/*/translations/en

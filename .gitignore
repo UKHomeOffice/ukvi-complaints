@@ -3,7 +3,6 @@
 .editorconfig
 .eslintignore
 .jscsrc
-/.eslintrc
 .npmignore
 apps/*/translations/en
 node_modules

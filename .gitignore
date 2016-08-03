@@ -1,0 +1,9 @@
+.DS_Store
+.dockerignore
+.editorconfig
+.npmignore
+apps/*/translations/en
+node_modules
+public
+acceptance_tests/output/
+.idea

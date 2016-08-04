@@ -1,16 +1,27 @@
 'use strict';
 
+const controllers = require('hof').controllers;
+
 module.exports = {
 	name: 'complaints',
 	steps: {
-		'/': {
-			template: 'step',
-			fields: ['name-text'],
-			next: '/step1'
-		},
-		'/step1': {
-			template: 'step',
-			fields: ['name-text']
+    '/': {
+      controller: controllers.start,
+      next: '/who'
+    },
+		'/who': {
+			fields: ['who-radio'],
+			next: '/fullname',
+      forks: [{
+        target: '/declaration',
+        condition: {
+          field: 'who-radio',
+          value: 'representative'
+        }
+      }],
+      locals: {
+        section: 'personal-contact-details'
+      }
 		}
 	}
 };

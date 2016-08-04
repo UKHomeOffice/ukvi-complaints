@@ -1,8 +1,11 @@
 'use strict';
 
-Feature('The app opens');
+const translation = require('./../../apps/complaints/translations/en/default');
 
-Scenario('The page loads and has pages..header as header', (I) => {
+Feature('Navigating the applicant path');
+
+Scenario('The page loads and I am on the Personal and contact details page', (I) => {
   I.amOnPage('/');
-  I.see('pages..header');
+  I.seeInCurrentUrl('/who');
+  I.see(translation.pages['personal-contact-details'].header);
 });

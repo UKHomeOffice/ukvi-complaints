@@ -1,5 +1,13 @@
 {
-  "who-radio": {
-    "legend": "Who are you?"
+  "who": {
+    "legend": "Who are you?",
+    "options": {
+      "representative": {
+        "label": "I represent the applicant"
+      },
+      "applicant": {
+        "label": "I am the applicant"
+      }
+    }
   }
 }

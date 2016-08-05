@@ -10,8 +10,8 @@ module.exports = {
       next: '/who'
     },
 		'/who': {
-			fields: ['who-radio'],
-			next: '/fullname',
+			fields: ['who'],
+			next: '/applicant-name',
       forks: [{
         target: '/declaration',
         condition: {

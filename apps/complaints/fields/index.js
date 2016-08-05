@@ -1,16 +1,16 @@
 'use strict';
 
 module.exports = {
-	'who-radio': {
+	'who': {
     mixin: 'radio-group',
     validate: ['required'],
     className: ['form-group'],
     options: [{
       value: 'applicant',
-      label: 'I am the applicant'
+      label: 'fields.who.options.applicant.label'
     }, {
       value: 'representative',
-      label: 'I represent the applicant'
+      label: 'fields.who.options.representative.label'
     }]
   }
 };

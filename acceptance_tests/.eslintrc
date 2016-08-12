@@ -7,4 +7,4 @@ env:
 globals:
   'Feature': true
   'Scenario': true
-  'actor': true
+  'Before': true

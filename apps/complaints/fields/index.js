@@ -1,8 +1,17 @@
 'use strict';
 
 module.exports = {
-	'name-text': {
-		mixin: 'input-text'
-	}
+	'who': {
+    mixin: 'radio-group',
+    validate: ['required'],
+    className: ['form-group'],
+    options: [{
+      value: 'applicant',
+      label: 'fields.who.options.applicant.label'
+    }, {
+      value: 'representative',
+      label: 'fields.who.options.representative.label'
+    }]
+  }
 };
 

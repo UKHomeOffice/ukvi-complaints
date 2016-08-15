@@ -10,13 +10,13 @@ module.exports = {
       next: '/who'
     },
     '/who': {
-      fields: ['who'],
+      fields: ['applicant'],
       next: '/applicant-name',
       forks: [{
         target: '/declaration',
         condition: {
-          field: 'who',
-          value: 'representative'
+          field: 'applicant',
+          value: 'false'
         }
       }],
       locals: {

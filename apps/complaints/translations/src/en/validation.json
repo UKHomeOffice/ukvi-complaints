@@ -1,5 +1,21 @@
 {
   "who": {
     "required": "Tell us who you are"
+  },
+  "applicant-given-name": {
+    "required": {
+      "applicant": {
+        "true": "Tell us your given name(s)"
+      },
+      "default": "Tell us the applicant's given name(s)"
+    }
+  },
+  "applicant-family-name": {
+    "required": {
+      "applicant": {
+        "true": "Tell us your family name"
+      },
+      "default": "Tell us the applicant's family name"
+    }
   }
 }

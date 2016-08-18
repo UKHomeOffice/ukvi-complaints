@@ -9,6 +9,6 @@ module.exports = {
   include: {
     whoPage: relative('./pages/who.js'),
     applicantNamePage: relative('./pages/applicant-name.js'),
-    declarationPage: relative('./pages/declaration.js'),
+    applicantDOBPage: relative('./pages/applicant-dob.js'),
   }
 };

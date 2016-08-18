@@ -8,3 +8,9 @@ globals:
   'Feature': true
   'Scenario': true
   'Before': true
+
+rules:
+  func-names:
+    - error
+    - never
+  max-len: off

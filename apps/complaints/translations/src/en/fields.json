@@ -9,5 +9,21 @@
         "label": "I represent the applicant"
       }
     }
+  },
+  "applicant-given-name": {
+    "label": {
+      "applicant": {
+        "true": "What's your given name(s)?"
+      },
+      "default": "What's the applicant's given name(s)?"
+    }
+  },
+  "applicant-family-name": {
+    "label": {
+      "applicant": {
+        "true": "What's your family name?"
+      },
+      "default": "What's the applicant's family name?"
+    }
   }
 }

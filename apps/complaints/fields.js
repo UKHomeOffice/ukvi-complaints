@@ -12,5 +12,13 @@ module.exports = {
       value: 'false',
       label: 'fields.applicant.options.false.label'
     }]
+  },
+  'applicant-given-name': {
+    mixin: 'input-text',
+    validate: ['required']
+  },
+  'applicant-family-name': {
+    mixin: 'input-text',
+    validate: ['required']
   }
 };

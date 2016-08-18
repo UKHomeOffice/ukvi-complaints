@@ -33,11 +33,11 @@ Scenario('When I select applicant option I go to the Applicant Name step', (
 Scenario('When I select applicant option I go to the Applicant Name step', (
   I,
   whoPage,
-  declarationPage
+  applicantNamePage
 ) => {
   I.click(whoPage.false);
   I.submitForm();
-  I.seeInCurrentUrl(declarationPage.url);
+  I.seeInCurrentUrl(applicantNamePage.url);
 });
 
 Scenario('Error message appears when Continue is clicked without an option selected', (

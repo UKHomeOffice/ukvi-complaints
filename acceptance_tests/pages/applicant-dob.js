@@ -1,5 +1,5 @@
 'use strict';
 
 module.exports = {
-  url: 'declaration'
+  url: 'applicant-dob'
 };

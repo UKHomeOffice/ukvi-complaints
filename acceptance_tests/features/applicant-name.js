@@ -60,9 +60,7 @@ Scenario('On submitting the completed step I am taken to applicants DOB step', (
   applicantNamePage,
   applicantDOBPage
 ) => {
-  I.seeElement(applicantNamePage.id['applicant-given-name']);
   I.fillField(applicantNamePage.id['applicant-given-name'], applicantNamePage.content['applicant-given-name']);
-  I.seeElement(applicantNamePage.id['applicant-family-name']);
   I.fillField(applicantNamePage.id['applicant-family-name'], applicantNamePage.content['applicant-family-name']);
   I.submitForm();
   I.seeInCurrentUrl(applicantDOBPage.url);

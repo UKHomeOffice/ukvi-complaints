@@ -41,6 +41,8 @@ pipeline:
       event: pull_request
 
 services:
+  redis:
+    image: redis
   dind:
     image: docker:1.11-dind
     privileged: true

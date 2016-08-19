@@ -29,7 +29,7 @@ Scenario('I see the complainant label if I am the complainant', function *(
   yield I.setSessionData('complaints', {
     applicant: 'true'
   });
-  I.refreshPage();
+  yield I.refreshPage();
   I.see(applicantNamePage.complainant);
 });
 
@@ -40,7 +40,7 @@ Scenario('I see the representative label if I am the representative', function *
   yield I.setSessionData('complaints', {
     applicant: 'false'
   });
-  I.refreshPage();
+  yield I.refreshPage();
   I.see(applicantNamePage.representative);
 });
 

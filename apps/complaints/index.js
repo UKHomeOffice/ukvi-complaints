@@ -22,32 +22,39 @@ module.exports = {
       locals: {
         section: 'personal-contact-details'
       }
+    },
+    '/applicant-dob': {
+      controller: require('./controllers/applicant-dob'),
+      fields: [
+        'dob',
+        'dob-day',
+        'dob-month',
+        'dob-year'
+      ],
+      next: '/contact-details',
+      locals: {
+        section: 'personal-contact-details'
+      }
+    },
+    '/contact-details': {
+      next: '/complaint-type',
+      locals: {
+        section: 'personal-contact-details'
+      }
+    },
+    '/representative-name': {
+      next: '/representative-contact',
+      locals: {
+        section: 'personal-contact-details'
+      }
+    },
+    '/representative-contact': {
+      next: '/complaint-type',
+      locals: {
+        section: 'personal-contact-details'
+      }
+    },
+    '/complaint-type': {
     }
-  },
-  '/applicant-dob': {
-    next: '/applicant-contact',
-    locals: {
-      section: 'personal-contact-details'
-    }
-  },
-  '/applicant-contact': {
-    next: '/complaint-type',
-    locals: {
-      section: 'personal-contact-details'
-    }
-  },
-  '/representative-name': {
-    next: '/representative-contact',
-    locals: {
-      section: 'personal-contact-details'
-    }
-  },
-  '/representative-contact': {
-    next: '/complaint-type',
-    locals: {
-      section: 'personal-contact-details'
-    }
-  },
-  '/complaint-type': {
   }
 };

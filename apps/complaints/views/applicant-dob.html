@@ -1,0 +1,21 @@
+{{<partials-page}}
+{{$page-content}}
+<fieldset id="dob-group" class="{{#errors.dob}}validation-error{{/errors.dob}}">
+  <legend>
+    <span class="form-label-bold">{{#t}}fields.dob.legend{{/t}}</span>
+  </legend>
+
+  {{#errors.dob}}
+        <span id="dob-error" class="error-message">
+          {{errors.dob.message}}
+        </span>
+  {{/errors.dob}}
+
+  <p class="form-hint">{{#t}}fields.dob.hint{{/t}}</p>
+  <div class="form-group form-date">
+    {{#input-date}}dob{{/input-date}}
+  </div>
+</fieldset>
+{{#input-submit}}continue{{/input-submit}}
+{{/page-content}}
+{{/partials-page}}

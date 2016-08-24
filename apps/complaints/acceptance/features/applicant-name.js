@@ -1,15 +1,14 @@
 'use strict';
 
+const steps = require('../../');
+
 Feature('Applicants name step');
 
 Before((
   I,
-  whoPage,
   applicantNamePage
 ) => {
-  I.visitPage('/');
-  I.setSessionSteps('complaints', [`/${whoPage.url}`]);
-  I.amOnPage(`/${applicantNamePage.url}`);
+  I.visitPage(applicantNamePage, steps);
 });
 
 Scenario('The correct fields elements are on the page', (
@@ -26,7 +25,7 @@ Scenario('I see the complainant label if I am the complainant', function *(
   I,
   applicantNamePage
 ) {
-  yield I.setSessionData('complaints', {
+  yield I.setSessionData(steps.name, {
     applicant: 'true'
   });
   yield I.refreshPage();
@@ -37,7 +36,7 @@ Scenario('I see the representative label if I am the representative', function *
   I,
   applicantNamePage
 ) {
-  yield I.setSessionData('complaints', {
+  yield I.setSessionData(steps.name, {
     applicant: 'false'
   });
   yield I.refreshPage();

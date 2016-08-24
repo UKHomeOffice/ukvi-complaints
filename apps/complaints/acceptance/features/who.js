@@ -1,12 +1,14 @@
 'use strict';
 
+const steps = require('../../');
+
 Feature('Who Step');
 
 Before((
   I,
   whoPage
 ) => {
-  I.visitPage(whoPage);
+  I.visitPage(whoPage, steps);
 });
 
 Scenario('I see the correct fields on the page', (

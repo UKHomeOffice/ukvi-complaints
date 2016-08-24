@@ -22,14 +22,20 @@ Scenario('I see the correct fields on the page', (
   ]);
 });
 
-Scenario('When I select applicant option I go to the Applicant Name step', (
+Scenario('I dont see the accept-declaration field on landing on the page', (
   I,
-  whoPage,
-  applicantNamePage
+  whoPage
 ) => {
-  I.click(whoPage.true);
-  I.submitForm();
-  I.seeInCurrentUrl(applicantNamePage.url);
+  I.waitToHide(whoPage['accept-declaration'], 5);
+  I.dontSeeElement(whoPage['accept-declaration']);
+});
+
+Scenario('I see the accept-declaration field if I am not the applicant', (
+  I,
+  whoPage
+) => {
+  I.checkOption(whoPage.false);
+  I.seeElement(whoPage['accept-declaration']);
 });
 
 Scenario('When I select applicant option I go to the Applicant Name step', (
@@ -37,7 +43,27 @@ Scenario('When I select applicant option I go to the Applicant Name step', (
   whoPage,
   applicantNamePage
 ) => {
-  I.click(whoPage.false);
+  I.checkOption(whoPage.true);
+  I.submitForm();
+  I.seeInCurrentUrl(applicantNamePage.url);
+});
+
+Scenario('When I select representative option and continue without accepting declaration I see an error message', (
+  I,
+  whoPage
+) => {
+  I.checkOption(whoPage.false);
+  I.submitForm();
+  I.seeErrors(whoPage['accept-declaration']);
+});
+
+Scenario('When I select representative option, accept declaration and continue, I am taken to the applicant name page', (
+  I,
+  whoPage,
+  applicantNamePage
+) => {
+  I.checkOption(whoPage.false);
+  I.checkOption(whoPage['accept-declaration']);
   I.submitForm();
   I.seeInCurrentUrl(applicantNamePage.url);
 });

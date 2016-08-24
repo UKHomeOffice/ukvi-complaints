@@ -2,6 +2,9 @@
   "who": {
     "required": "Tell us who you are"
   },
+  "accept-declaration": {
+    "required": "Please accept the declaration to continue"
+  },
   "applicant-given-name": {
     "required": {
       "applicant": {

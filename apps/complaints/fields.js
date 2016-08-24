@@ -23,11 +23,10 @@ module.exports = {
   },
 	'accept-declaration': {
 		validate: ['required'],
-		display: false
-		// dependent: {
-		// 	field: 'applicant',
-		// 	value: 'false'
-		// }
+		dependent: {
+			field: 'applicant',
+			value: 'false'
+		}
 	},
   'applicant-given-name': {
     mixin: 'input-text',

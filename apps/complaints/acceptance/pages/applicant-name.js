@@ -1,6 +1,6 @@
 'use strict';
 
-const translations = require('../../apps/complaints/translations/en/default');
+const translations = require('../../translations/en/default');
 const givenName = translations.fields['applicant-given-name'].label;
 
 module.exports = {

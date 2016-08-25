@@ -12,5 +12,6 @@ module.exports = {
     whoPage: pagesPath('who.js'),
     applicantNamePage: pagesPath('applicant-name.js'),
     applicantDOBPage: pagesPath('applicant-dob.js'),
+    contactDetailsPage: pagesPath('contact-details.js')
   }
 };

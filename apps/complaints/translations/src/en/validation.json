@@ -17,5 +17,28 @@
       },
       "default": "Tell us the applicant's family name"
     }
+  },
+  "dob": {
+    "required": {
+      "applicant": {
+        "true": "Tell us your date of birth"
+      },
+      "default": "Tell us the applicant's date of birth"
+    },
+    "future": {
+      "applicant": {
+        "true": "Your date of birth cannot be in the future"
+      },
+      "default": "The applicant's date of birth cannot be in the future"
+    }
+  },
+  "dob-day": {
+    "numeric": "Day must be numeric"
+  },
+  "dob-month": {
+    "numeric": "Month must be numeric"
+  },
+  "dob-year": {
+    "numeric": "Year must be numeric"
   }
 }

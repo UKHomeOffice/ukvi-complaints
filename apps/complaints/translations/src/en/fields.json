@@ -25,5 +25,23 @@
       },
       "default": "What's the applicant's family name?"
     }
+  },
+  "dob": {
+    "legend": {
+      "applicant": {
+        "true": "What's your date of birth?"
+      },
+      "default": "What's the applicant's date of birth?"
+    },
+    "hint": "For example, 31 3 1980"
+  },
+  "dob-day": {
+    "label": "Day"
+  },
+  "dob-month": {
+    "label": "Month"
+  },
+  "dob-year": {
+    "label": "Year"
   }
 }

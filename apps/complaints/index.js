@@ -17,11 +17,25 @@ module.exports = {
       next: '/applicant-name',
       locals: {
         section: 'personal-contact-details'
-      }
+      },
+      forks: [{
+        target: '/representative-name',
+        condition: {
+          field: 'applicant',
+          value: 'false'
+        }
+      }]
     },
     '/applicant-name': {
       fields: ['applicant-name'],
       next: '/applicant-dob',
+      locals: {
+        section: 'personal-contact-details'
+      }
+    },
+    '/representative-name': {
+      next: '/contact-details',
+      fields: ['representative-name'],
       locals: {
         section: 'personal-contact-details'
       }
@@ -45,18 +59,6 @@ module.exports = {
         section: 'personal-contact-details'
       }
     },
-    '/representative-name': {
-      next: '/representative-contact',
-      locals: {
-        section: 'personal-contact-details'
-      }
-    },
-    '/representative-contact': {
-      next: '/complaint-type',
-      locals: {
-        section: 'personal-contact-details'
-      }
-    },
     '/complaint-type': {
       next: '/has-reference',
       forks: [{
@@ -65,13 +67,14 @@ module.exports = {
           field: 'complaint-type',
           value: 'previous'
         }
-      }, {
-          target: '/where',
-          condition(req) {
-            const type = req.form.values['complaint-type'];
-            return type === 'staff' || type === 'appointment';
-          }
-        }],
+      },
+      {
+        target: '/where',
+        condition(req) {
+          const type = req.form.values['complaint-type'];
+          return type === 'staff' || type === 'appointment';
+        }
+      }],
       fields: ['complaint-type'],
       locals: {
         section: 'complaint-details'

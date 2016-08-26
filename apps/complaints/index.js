@@ -10,7 +10,10 @@ module.exports = {
       next: '/who'
     },
     '/who': {
-      fields: ['applicant'],
+      fields: [
+        'applicant',
+        'accept-declaration'
+      ],
       next: '/applicant-name',
       locals: {
         section: 'personal-contact-details'

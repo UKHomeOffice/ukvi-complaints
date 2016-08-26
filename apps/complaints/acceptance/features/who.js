@@ -26,7 +26,6 @@ Scenario('I dont see the accept-declaration field on landing on the page', (
   I,
   whoPage
 ) => {
-  I.waitToHide(whoPage['accept-declaration'], 5);
   I.dontSeeElement(whoPage['accept-declaration']);
 });
 

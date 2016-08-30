@@ -1,5 +1,8 @@
 {
   "personal-contact-details": {
     "header": "Personal and contact details"
+  },
+  "complaint-details": {
+    "header": "Complaint details"
   }
 }

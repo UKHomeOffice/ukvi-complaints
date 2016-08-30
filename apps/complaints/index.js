@@ -7,7 +7,7 @@ module.exports = {
   steps: {
     '/': {
       controller: controllers.start,
-      next: '/who'
+      next: '/complaint-type'
     },
     '/who': {
       fields: ['applicant'],
@@ -55,6 +55,38 @@ module.exports = {
       }
     },
     '/complaint-type': {
+      next: '/has-reference',
+      forks: [{
+        target: '/has-complaint-reference',
+        condition: {
+          field: 'complaint-type',
+          value: 'previous'
+        }
+      }, {
+          target: '/incident-where',
+          condition(req) {
+            return (req.form.values['complaint-type'] === "staff" || req.form.values['complaint-type'] === "appointment");
+          }
+        }],
+      fields: ['complaint-type'],
+      locals: {
+        section: 'complaint-details'
+      }
+    },
+    '/incident-where':{
+      locals: {
+        section: 'complaint-details'
+      }
+    },
+    '/has-complaint-reference':{
+      locals: {
+        section: 'complaint-details'
+      }
+    },
+    '/has-reference':{
+      locals: {
+        section: 'complaint-details'
+      }
     }
   }
 };

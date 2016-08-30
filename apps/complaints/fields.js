@@ -31,5 +31,29 @@ module.exports = {
   },
   'dob-year': {
     validate: ['required', 'numeric']
+  },
+  'complaint-type': {
+    mixin: 'radio-group',
+    validate: ['required'],
+    className: ['form-group'],
+    options: [{
+      value: 'previous',
+      label: 'fields.complaint-type.options.previous'
+    }, {
+      value: 'staff',
+      label: 'fields.complaint-type.options.staff'
+    }, {
+      value: 'appointment',
+      label: 'fields.complaint-type.options.appointment'
+    }, {
+      value: 'refund',
+      label: 'fields.complaint-type.options.refund'
+    }, {
+      value: 'quality',
+      label: 'fields.complaint-type.options.quality'
+    }, {
+      value: 'something',
+      label: 'fields.complaint-type.options.something'
+    }]
   }
 };

@@ -40,5 +40,8 @@
   },
   "dob-year": {
     "numeric": "Year must be numeric"
+  },
+  "complaint-type": {
+    "required": "Tell us the main reason for your complaint"
   }
 }

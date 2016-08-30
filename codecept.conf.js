@@ -12,6 +12,10 @@ module.exports = {
     whoPage: pagesPath('who.js'),
     applicantNamePage: pagesPath('applicant-name.js'),
     applicantDOBPage: pagesPath('applicant-dob.js'),
-    contactDetailsPage: pagesPath('contact-details.js')
+    contactDetailsPage: pagesPath('contact-details.js'),
+    complaintTypePage: pagesPath('complaint-type.js'),
+    hasComplaintReferencePage: pagesPath('has-complaint-reference.js'),
+    incidentWherePage: pagesPath('where.js'),
+    hasReferencePage: pagesPath('has-reference.js')
   }
 };

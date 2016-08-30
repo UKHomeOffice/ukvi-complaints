@@ -43,5 +43,28 @@
   },
   "dob-year": {
     "label": "Year"
+  },
+  "complaint-type": {
+    "legend": "What's the main reason for your complaint? If this is an existing complaint, select the first option",
+    "options": {
+      "previous": {
+        "label": "This is a previous complaint"
+      },
+      "staff": {
+        "label": "Staff behaviour"
+      },
+      "appointment": {
+        "label": "An appointment"
+      },
+      "refund": {
+        "label": "Refund"
+      },
+      "quality": {
+        "label": "Quality of service"
+      },
+      "something": {
+        "label": "Something else"
+      }
+    }
   }
 }

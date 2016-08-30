@@ -8,10 +8,8 @@ RUN yum clean all && \
   rpm --rebuilddb && \
   npm --loglevel warn install -g npm@3
 
-COPY package.json /app/package.json
-RUN npm --loglevel warn install --production --no-optional
 COPY . /app
+RUN npm --loglevel warn install --production --no-optional --unsafe-perm
 CMD rm -rf /app/**/acceptance
-RUN npm --loglevel warn run postinstall
 
 CMD /app/run.sh

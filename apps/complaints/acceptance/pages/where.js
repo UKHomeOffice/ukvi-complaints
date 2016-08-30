@@ -1,5 +1,5 @@
 'use strict';
 
 module.exports = {
-  url: 'incident-where'
+  url: 'where'
 };

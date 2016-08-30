@@ -15,7 +15,7 @@ module.exports = {
     contactDetailsPage: pagesPath('contact-details.js'),
     complaintTypePage: pagesPath('complaint-type.js'),
     hasComplaintReferencePage: pagesPath('has-complaint-reference.js'),
-    incidentWherePage: pagesPath('incident-where.js'),
+    incidentWherePage: pagesPath('where.js'),
     hasReferencePage: pagesPath('has-reference.js')
   }
 };

@@ -65,7 +65,8 @@ module.exports = {
       }, {
           target: '/incident-where',
           condition(req) {
-            return (req.form.values['complaint-type'] === "staff" || req.form.values['complaint-type'] === "appointment");
+            return (req.form.values['complaint-type'] === 'staff' ||
+                    req.form.values['complaint-type'] === 'appointment');
           }
         }],
       fields: ['complaint-type'],
@@ -73,17 +74,17 @@ module.exports = {
         section: 'complaint-details'
       }
     },
-    '/incident-where':{
+    '/incident-where': {
       locals: {
         section: 'complaint-details'
       }
     },
-    '/has-complaint-reference':{
+    '/has-complaint-reference': {
       locals: {
         section: 'complaint-details'
       }
     },
-    '/has-reference':{
+    '/has-reference': {
       locals: {
         section: 'complaint-details'
       }

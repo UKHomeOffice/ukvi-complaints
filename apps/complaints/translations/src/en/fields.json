@@ -15,20 +15,12 @@
     "p2": "If you make a complaint on behalf of someone else without their prior consent, or without approval from the Home Office, you will be committing an unlawful act, as described in section 55 of the Data Protection Act 1998.",
     "label": "I have permission from the complainant or the Home Office to make this complaint"
   },
-  "applicant-given-name": {
+  "applicant-name": {
     "label": {
       "applicant": {
-        "true": "What's your given name(s)?"
+        "true": "What is your full name?"
       },
-      "default": "What's the applicant's given name(s)?"
-    }
-  },
-  "applicant-family-name": {
-    "label": {
-      "applicant": {
-        "true": "What's your family name?"
-      },
-      "default": "What's the applicant's family name?"
+      "default": "What is the applicant's full name?"
     }
   },
   "dob": {

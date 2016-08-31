@@ -15,13 +15,10 @@ Scenario('The correct fields elements are on the page', (
   I,
   applicantNamePage
 ) => {
-  I.seeElements([
-    applicantNamePage.id['applicant-given-name'],
-    applicantNamePage.id['applicant-family-name']
-  ]);
+  I.seeElements(applicantNamePage['applicant-name']);
 });
 
-Scenario('I see the complainant label if I am the complainant', function *(
+Scenario('I see the applicant label if I am the applicant', function *(
   I,
   applicantNamePage
 ) {
@@ -29,7 +26,7 @@ Scenario('I see the complainant label if I am the complainant', function *(
     applicant: 'true'
   });
   yield I.refreshPage();
-  I.see(applicantNamePage.complainant);
+  I.see(applicantNamePage.applicant);
 });
 
 Scenario('I see the representative label if I am the representative', function *(
@@ -43,15 +40,12 @@ Scenario('I see the representative label if I am the representative', function *
   I.see(applicantNamePage.representative);
 });
 
-Scenario('An error is shown if applicant-given-name or applicant-family-name is not completed', (
+Scenario('An error is shown if field is not completed', (
   I,
   applicantNamePage
 ) => {
   I.submitForm();
-  I.seeErrors([
-    applicantNamePage.id['applicant-given-name'],
-    applicantNamePage.id['applicant-family-name']
-  ]);
+  I.seeErrors(applicantNamePage['applicant-name']);
 });
 
 Scenario('On submitting the completed step I am taken to applicants DOB step', (
@@ -59,8 +53,7 @@ Scenario('On submitting the completed step I am taken to applicants DOB step', (
   applicantNamePage,
   applicantDOBPage
 ) => {
-  I.fillField(applicantNamePage.id['applicant-given-name'], applicantNamePage.content['applicant-given-name']);
-  I.fillField(applicantNamePage.id['applicant-family-name'], applicantNamePage.content['applicant-family-name']);
+  I.fillField(applicantNamePage['applicant-name'], applicantNamePage.value);
   I.submitForm();
   I.seeInCurrentUrl(applicantDOBPage.url);
 });

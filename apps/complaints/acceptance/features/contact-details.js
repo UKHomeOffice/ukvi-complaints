@@ -57,7 +57,7 @@ Scenario('I see an error relating to the email field if I enter an invalid email
   I.seeErrors(contactDetailsPage['email-address']);
 });
 
-Scenario('I am taken to the XXXX page if I submit the form', (
+Scenario('I am taken to the complaint type page if I submit the form', (
   I,
   contactDetailsPage,
   complaintTypePage
@@ -68,4 +68,21 @@ Scenario('I am taken to the XXXX page if I submit the form', (
   );
   I.submitForm();
   I.seeInCurrentUrl(complaintTypePage.url);
+});
+
+Scenario('I am taken to the complaint type page if I submit the form', function *(
+  I,
+  contactDetailsPage,
+  applicantNamePage
+) {
+  yield I.setSessionData({
+    applicant: 'false'
+  });
+  yield I.refreshPage();
+  I.fillField(
+    contactDetailsPage['email-address'],
+    contactDetailsPage.validEmailAddress
+  );
+  I.submitForm();
+  I.seeInCurrentUrl(applicantNamePage.url);
 });

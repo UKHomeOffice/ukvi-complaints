@@ -43,5 +43,8 @@
   },
   "complaint-type": {
     "required": "Tell us the main reason for your complaint"
+  },
+  "where": {
+    "required": "Tell us where the incident took place"
   }
 }

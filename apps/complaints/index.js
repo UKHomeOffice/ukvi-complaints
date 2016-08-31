@@ -7,7 +7,7 @@ module.exports = {
   steps: {
     '/': {
       controller: controllers.start,
-      next: '/complaint-type'
+      next: '/where'
     },
     '/who': {
       fields: ['applicant'],
@@ -75,6 +75,27 @@ module.exports = {
       }
     },
     '/where': {
+      next: '/phone',
+      forks: [{
+        target: '/vac',
+        condition: {
+          field: 'where',
+          value: 'vac'
+        }
+      }, {
+        target: '/psc',
+        condition: {
+          field: 'where',
+          value: 'psc'
+        }
+      }, {
+        target: '/has-reference',
+        condition: {
+          field: 'where',
+          value: 'letter'
+        }
+      }],
+      fields: ['where'],
       locals: {
         section: 'complaint-details'
       }
@@ -85,6 +106,21 @@ module.exports = {
       }
     },
     '/has-reference': {
+      locals: {
+        section: 'complaint-details'
+      }
+    },
+    '/phone': {
+      locals: {
+        section: 'complaint-details'
+      }
+    },
+    '/vac': {
+      locals: {
+        section: 'complaint-details'
+      }
+    },
+    '/psc': {
       locals: {
         section: 'complaint-details'
       }

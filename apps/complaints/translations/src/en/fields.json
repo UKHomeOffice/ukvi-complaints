@@ -66,5 +66,23 @@
         "label": "Something else"
       }
     }
+  },
+  "where": {
+    "legend": "Where did the incident take place?",
+    "options": {
+      "phone": {
+        "label": "On the phone"
+      },
+      "vac": {
+        "label": "At the visa application centre (VAC)"
+      },
+      "psc": {
+        "label": "At the premium service centre"
+      },
+      "letter": {
+        "label": "In a letter or email"
+      }
+    }
+
   }
 }

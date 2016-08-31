@@ -55,5 +55,23 @@ module.exports = {
       value: 'something',
       label: 'fields.complaint-type.options.something'
     }]
+  },
+  'where': {
+    mixin: 'radio-group',
+    validate: ['required'],
+    className: ['form-group'],
+    options: [{
+      value: 'phone',
+      label: 'fields.where.options.phone'
+    }, {
+      value: 'vac',
+      label: 'fields.where.options.vac'
+    }, {
+      value: 'psc',
+      label: 'fields.where.options.psc'
+    }, {
+      value: 'letter',
+      label: 'fields.where.options.letter'
+    }]
   }
 };

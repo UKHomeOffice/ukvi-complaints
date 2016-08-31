@@ -15,7 +15,10 @@ module.exports = {
     contactDetailsPage: pagesPath('contact-details.js'),
     complaintTypePage: pagesPath('complaint-type.js'),
     hasComplaintReferencePage: pagesPath('has-complaint-reference.js'),
-    incidentWherePage: pagesPath('where.js'),
-    hasReferencePage: pagesPath('has-reference.js')
+    wherePage: pagesPath('where.js'),
+    hasReferencePage: pagesPath('has-reference.js'),
+    phonePage: pagesPath('phone.js'),
+    vacPage: pagesPath('vac.js'),
+    pscPage: pagesPath('psc.js')
   }
 };

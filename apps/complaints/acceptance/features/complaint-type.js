@@ -39,21 +39,21 @@ Scenario('When I select previous complaint option I go to the has complaint refe
 Scenario('When I select staff behaviour option I go to the incident where step', (
   I,
   complaintTypePage,
-  incidentWherePage
+  wherePage
 ) => {
   I.click(complaintTypePage.id.staff);
   I.submitForm();
-  I.seeInCurrentUrl(incidentWherePage.url);
+  I.seeInCurrentUrl(wherePage.url);
 });
 
 Scenario('When I select appointment option I go to the incident where step', (
   I,
   complaintTypePage,
-  incidentWherePage
+  wherePage
 ) => {
   I.click(complaintTypePage.id.appointment);
   I.submitForm();
-  I.seeInCurrentUrl(incidentWherePage.url);
+  I.seeInCurrentUrl(wherePage.url);
 });
 
 Scenario('When I select refund option I go to the has reference step', (

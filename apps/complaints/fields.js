@@ -47,6 +47,14 @@ module.exports = {
 	'dob-year': {
 		validate: ['required', 'numeric']
 	},
+	'email-address': {
+		mixin: 'input-text',
+		validate: ['required', 'email']
+	},
+	'phone-number': {
+		mixin: 'input-number',
+		validate: 'numeric'
+	},
 	'complaint-type': {
 		mixin: 'radio-group',
 		validate: ['required'],

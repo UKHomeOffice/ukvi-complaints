@@ -64,11 +64,11 @@ module.exports = {
       value: 'phone',
       label: 'fields.where.options.phone'
     }, {
-      value: 'vac',
-      label: 'fields.where.options.vac'
+      value: 'visa-application-centre',
+      label: 'fields.where.options.visa-application-centre'
     }, {
-      value: 'psc',
-      label: 'fields.where.options.psc'
+      value: 'premium-service-centre',
+      label: 'fields.where.options.premium-service-centre'
     }, {
       value: 'letter',
       label: 'fields.where.options.letter'

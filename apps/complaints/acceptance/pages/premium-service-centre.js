@@ -1,5 +1,5 @@
 'use strict';
 
 module.exports = {
-  url: 'psc'
+  url: 'premium-service-centre'
 };

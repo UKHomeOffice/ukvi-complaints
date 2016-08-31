@@ -77,16 +77,16 @@ module.exports = {
     '/where': {
       next: '/phone',
       forks: [{
-        target: '/vac',
+        target: '/visa-application-centre',
         condition: {
           field: 'where',
-          value: 'vac'
+          value: 'visa-application-centre'
         }
       }, {
-        target: '/psc',
+        target: '/premium-service-centre',
         condition: {
           field: 'where',
-          value: 'psc'
+          value: 'premium-service-centre'
         }
       }, {
         target: '/has-reference',
@@ -115,12 +115,12 @@ module.exports = {
         section: 'complaint-details'
       }
     },
-    '/vac': {
+    '/visa-application-centre': {
       locals: {
         section: 'complaint-details'
       }
     },
-    '/psc': {
+    '/premium-service-centre': {
       locals: {
         section: 'complaint-details'
       }

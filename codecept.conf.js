@@ -18,7 +18,7 @@ module.exports = {
     wherePage: pagesPath('where.js'),
     hasReferencePage: pagesPath('has-reference.js'),
     phonePage: pagesPath('phone.js'),
-    vacPage: pagesPath('vac.js'),
-    pscPage: pagesPath('psc.js')
+    visaApplicationCentrePage: pagesPath('visa-application-centre.js'),
+    premiumServiceCentrePage: pagesPath('premium-service-centre.js')
   }
 };

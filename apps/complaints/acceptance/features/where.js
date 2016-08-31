@@ -37,21 +37,21 @@ Scenario('When I select the phone option I go to the has phone step', (
 Scenario('When I select the visa application centre (vac) option I go to the incident vac step', (
   I,
   wherePage,
-  vacPage
+  visaApplicationCentrePage
 ) => {
   I.click(wherePage.id.vac);
   I.submitForm();
-  I.seeInCurrentUrl(vacPage.url);
+  I.seeInCurrentUrl(visaApplicationCentrePage.url);
 });
 
 Scenario('When I select the premium service centre (psc) option I go to the psc step', (
   I,
   wherePage,
-  pscPage
+  premiumServiceCentrePage
 ) => {
   I.click(wherePage.id.psc);
   I.submitForm();
-  I.seeInCurrentUrl(pscPage.url);
+  I.seeInCurrentUrl(premiumServiceCentrePage.url);
 });
 
 Scenario('When I select the letter or email option I go to the has reference step', (

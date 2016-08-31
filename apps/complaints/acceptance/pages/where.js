@@ -5,8 +5,8 @@ module.exports = {
   id: {
     'where': '#where-group',
     'phone': '#where-phone',
-    'vac': '#where-vac',
-    'psc': '#where-psc',
+    'vac': '#where-visa-application-centre',
+    'psc': '#where-premium-service-centre',
     'letter': '#where-letter'
   }
 };

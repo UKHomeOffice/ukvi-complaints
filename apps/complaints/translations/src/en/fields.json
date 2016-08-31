@@ -73,10 +73,10 @@
       "phone": {
         "label": "On the phone"
       },
-      "vac": {
+      "visa-application-centre": {
         "label": "At the visa application centre (VAC)"
       },
-      "psc": {
+      "premium-service-centre": {
         "label": "At the premium service centre"
       },
       "letter": {

@@ -1,5 +1,5 @@
 'use strict';
 
 module.exports = {
-  url: 'vac'
+  url: 'visa-application-centre'
 };

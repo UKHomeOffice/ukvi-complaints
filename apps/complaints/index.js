@@ -7,7 +7,7 @@ module.exports = {
   steps: {
     '/': {
       controller: controllers.start,
-      next: '/where'
+      next: '/who'
     },
     '/who': {
       fields: [

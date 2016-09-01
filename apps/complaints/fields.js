@@ -21,6 +21,13 @@ module.exports = {
 							</div>`
     }]
   },
+	'accept-declaration': {
+		validate: 'required',
+		dependent: {
+			field: 'applicant',
+			value: 'false'
+		}
+	},
   'applicant-name': {
     mixin: 'input-text',
     validate: 'required'

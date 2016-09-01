@@ -11,7 +11,6 @@ RUN yum clean all && \
 COPY package.json /app/package.json
 RUN npm --loglevel warn install --production --no-optional
 COPY . /app
-CMD rm -rf /app/**/acceptance
 RUN npm --loglevel warn run postinstall
 
 CMD /app/run.sh

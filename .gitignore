@@ -1,5 +1,4 @@
 .DS_Store
-.dockerignore
 .editorconfig
 .npmignore
 apps/*/translations/en

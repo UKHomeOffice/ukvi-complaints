@@ -41,3 +41,9 @@ h1 {
 .form-label-bold {
   @include core-19;
 }
+
+// This is required due to an issue with passports-template-mixins:
+// https://github.com/UKHomeOffice/passports-template-mixins/issues/69
+input[type='checkbox'] ~ span.visuallyhidden {
+  display: none !important;
+}

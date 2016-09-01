@@ -17,7 +17,7 @@ pipeline:
     environment:
       - DOCKER_HOST=tcp://127.0.0.1:2375
     commands:
-      - docker build --no-cache -t ukvi-complaints .
+      - docker build -t ukvi-complaints .
     when:
       event: pull_request
 
@@ -26,7 +26,7 @@ pipeline:
     environment:
       - DOCKER_HOST=tcp://127.0.0.1:2375
     commands:
-      - docker build --no-cache -f Dockerfile-acceptance -t acceptance .
+      - docker build -f Dockerfile-acceptance -t acceptance .
     when:
       event: pull_request
 

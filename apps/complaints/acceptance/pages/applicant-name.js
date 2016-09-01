@@ -1,18 +1,12 @@
 'use strict';
 
 const translations = require('../../translations/en/default');
-const givenName = translations.fields['applicant-given-name'].label;
+const applicantName = translations.fields['applicant-name'].label;
 
 module.exports = {
   url: 'applicant-name',
-  id: {
-    'applicant-given-name': '#applicant-given-name',
-    'applicant-family-name': '#applicant-family-name'
-  },
-  representative: givenName.default,
-  complainant: givenName.applicant.true,
-  content: {
-    'applicant-given-name': 'Sterling',
-    'applicant-family-name': 'Archer'
-  }
+  'applicant-name': '#applicant-name',
+  representative: applicantName.default,
+  applicant: applicantName.applicant.true,
+  value: 'Sterling Archer'
 };

@@ -5,20 +5,12 @@
   "accept-declaration": {
     "required": "Please accept the declaration to continue"
   },
-  "applicant-given-name": {
+  "applicant-name": {
     "required": {
       "applicant": {
-        "true": "Tell us your given name(s)"
+        "true": "Tell us your full name"
       },
-      "default": "Tell us the applicant's given name(s)"
-    }
-  },
-  "applicant-family-name": {
-    "required": {
-      "applicant": {
-        "true": "Tell us your family name"
-      },
-      "default": "Tell us the applicant's family name"
+      "default": "Tell us the applicant's full name"
     }
   },
   "dob": {

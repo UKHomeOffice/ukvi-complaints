@@ -22,19 +22,15 @@ module.exports = {
     }]
   },
 	'accept-declaration': {
-		validate: ['required'],
+		validate: 'required',
 		dependent: {
 			field: 'applicant',
 			value: 'false'
 		}
 	},
-  'applicant-given-name': {
+  'applicant-name': {
     mixin: 'input-text',
-    validate: ['required']
-  },
-  'applicant-family-name': {
-    mixin: 'input-text',
-    validate: ['required']
+    validate: 'required'
   },
   'dob': {
   },

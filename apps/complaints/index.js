@@ -7,7 +7,7 @@ module.exports = {
   steps: {
     '/': {
       controller: controllers.start,
-      next: '/where'
+      next: '/who'
     },
     '/who': {
       fields: [
@@ -20,7 +20,7 @@ module.exports = {
       }
     },
     '/applicant-name': {
-      fields: ['applicant-given-name', 'applicant-family-name'],
+      fields: ['applicant-name'],
       next: '/applicant-dob',
       locals: {
         section: 'personal-contact-details'

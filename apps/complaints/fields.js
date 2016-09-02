@@ -32,7 +32,10 @@ module.exports = {
     mixin: 'input-text',
     validate: 'required'
   },
-<<<<<<< d0973066b726597253a26251f6dbc8fbf05a8ef8
+	'representative-name': {
+		mixin: 'input-text',
+		validate: 'required'
+	},
   'dob': {
   },
   'dob-day': {
@@ -86,14 +89,4 @@ module.exports = {
       label: 'fields.where.options.letter'
     }]
   }
-=======
-  'applicant-family-name': {
-    mixin: 'input-text',
-    validate: ['required']
-  },
-	'representative-name': {
-		mixin: 'input-text',
-		validate: 'required'
-	}
->>>>>>> UCHV-25 - representative's full name page
 };

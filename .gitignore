@@ -1,5 +1,4 @@
 .DS_Store
-.editorconfig
 .npmignore
 apps/*/translations/en
 node_modules

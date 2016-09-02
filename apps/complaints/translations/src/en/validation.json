@@ -13,6 +13,9 @@
       "default": "Tell us the applicant's full name"
     }
   },
+  "representative-name": {
+    "required": "Tell us your name"
+  },
   "dob": {
     "required": {
       "applicant": {

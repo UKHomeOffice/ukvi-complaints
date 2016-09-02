@@ -37,6 +37,14 @@ Scenario('I see the accept-declaration field if I am not the applicant', (
   I.seeElement(whoPage['accept-declaration']);
 });
 
+Scenario('Error message appears when Continue is clicked without an option selected', (
+  I,
+  whoPage
+) => {
+  I.submitForm();
+  I.seeErrors(whoPage.applicant);
+});
+
 Scenario('When I select applicant option I go to the Applicant Name step', (
   I,
   whoPage,
@@ -56,21 +64,13 @@ Scenario('When I select representative option and continue without accepting dec
   I.seeErrors(whoPage['accept-declaration']);
 });
 
-Scenario('When I select representative option, accept declaration and continue, I am taken to the applicant name page', (
+Scenario('When I select representative option, accept declaration and continue, I am taken to the representative name page', (
   I,
   whoPage,
-  applicantNamePage
+  representativeNamePage
 ) => {
   I.checkOption(whoPage.false);
   I.checkOption(whoPage['accept-declaration']);
   I.submitForm();
-  I.seeInCurrentUrl(applicantNamePage.url);
-});
-
-Scenario('Error message appears when Continue is clicked without an option selected', (
-  I,
-  whoPage
-) => {
-  I.submitForm();
-  I.seeErrors(whoPage.applicant);
+  I.seeInCurrentUrl(representativeNamePage.url);
 });

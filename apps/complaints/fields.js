@@ -96,5 +96,26 @@ module.exports = {
 			value: 'letter',
 			label: 'fields.where.options.letter'
 		}]
-	}
+	},
+  'has-complaint-reference': {
+    mixin: 'radio-group',
+    validate: ['required'],
+    className: ['form-group'],
+    options: [{
+      value: 'yes',
+      label: 'fields.has-complaint-reference.options.yes',
+      toggle: 'complaint-reference',
+      child: 'input-text'
+    }, {
+      value: 'no',
+      label: 'fields.has-complaint-reference.options.no'
+    }]
+  },
+  'complaint-reference': {
+    validate: ['required'],
+    dependent: {
+      field: 'has-complaint-reference',
+      value: 'yes'
+    }
+  }
 };

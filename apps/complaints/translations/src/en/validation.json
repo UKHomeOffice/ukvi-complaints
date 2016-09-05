@@ -35,7 +35,7 @@
     "email": "Enter a valid email address"
   },
   "phone-number": {
-    "number": "Enter a valid phone number"
+    "numeric": "Enter a valid phone number"
   },
   "dob-day": {
     "numeric": "Day must be numeric"
@@ -51,5 +51,11 @@
   },
   "where": {
     "required": "Tell us where the incident took place"
+  },
+  "has-complaint-reference": {
+    "required": "Select an option"
+  },
+  "complaint-reference": {
+    "required": "Tell us the reference number"
   }
 }

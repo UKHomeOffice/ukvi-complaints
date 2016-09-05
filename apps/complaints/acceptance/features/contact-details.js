@@ -70,12 +70,12 @@ Scenario('I am taken to the complaint type page if I submit the form', (
   I.seeInCurrentUrl(complaintTypePage.url);
 });
 
-Scenario('I am taken to the complaint type page if I submit the form', function *(
+Scenario('I am taken to the applicant name type page if I am the representative', function *(
   I,
   contactDetailsPage,
   applicantNamePage
 ) {
-  yield I.setSessionData({
+  yield I.setSessionData(steps.name, {
     applicant: 'false'
   });
   yield I.refreshPage();

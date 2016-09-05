@@ -89,5 +89,20 @@
         "label": "In a letter or email"
       }
     }
+  },
+  "has-complaint-reference": {
+    "legend": "Do you have the complaint reference number?",
+    "options": {
+      "yes": {
+        "label": "Yes"
+      },
+      "no": {
+        "label": "No"
+      }
+    }
+  },
+  "complaint-reference": {
+    "hint": "For example, 123456",
+    "label": "Enter the reference number"
   }
 }

@@ -20,6 +20,7 @@ module.exports = {
     hasReferencePage: pagesPath('has-reference.js'),
     phonePage: pagesPath('phone.js'),
     visaApplicationCentrePage: pagesPath('visa-application-centre.js'),
-    premiumServiceCentrePage: pagesPath('premium-service-centre.js')
+    premiumServiceCentrePage: pagesPath('premium-service-centre.js'),
+    complaintDetailsPage: pagesPath('complaint-details.js')
   }
 };

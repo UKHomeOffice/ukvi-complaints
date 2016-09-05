@@ -50,7 +50,11 @@ module.exports = {
       next: '/contact-details',
       locals: {
         section: 'personal-contact-details'
-      }
+      },
+      forks: [{
+        target: '/complaint-type',
+        condition: isRep
+      }]
     },
     '/contact-details': {
       fields: [
@@ -114,6 +118,8 @@ module.exports = {
       }
     },
     '/has-complaint-reference': {
+      next: '/complaint-details',
+      fields: ['has-complaint-reference', 'complaint-reference'],
       locals: {
         section: 'complaint-details'
       }
@@ -134,6 +140,11 @@ module.exports = {
       }
     },
     '/premium-service-centre': {
+      locals: {
+        section: 'complaint-details'
+      }
+    },
+    '/complaint-details': {
       locals: {
         section: 'complaint-details'
       }

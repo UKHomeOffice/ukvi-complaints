@@ -57,11 +57,23 @@ Scenario('An error is shown if applicant dob date is an invalid date', (
 });
 
 
-Scenario('On submitting the completed step I am taken to applicants contact step', (
+Scenario('On submitting the completed step I am taken to applicants contact step if I am the applicant', (
   I,
   applicantDOBPage,
   contactDetailsPage
 ) => {
   applicantDOBPage.fillFormAndSubmit();
   I.seeInCurrentUrl(contactDetailsPage.url);
+});
+
+Scenario('On submitting the completed step I am taken to complaint type step if I am the representative', function *(
+  I,
+  applicantDOBPage,
+  complaintTypePage
+) {
+  yield I.setSessionData(steps.name, {
+    applicant: 'false'
+  });
+  applicantDOBPage.fillFormAndSubmit();
+  I.seeInCurrentUrl(complaintTypePage.url);
 });

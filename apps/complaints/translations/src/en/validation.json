@@ -30,6 +30,13 @@
       "default": "The applicant's date of birth cannot be in the future"
     }
   },
+  "email-address": {
+    "required": "Tell us your email address",
+    "email": "Enter a valid email address"
+  },
+  "phone-number": {
+    "number": "Enter a valid phone number"
+  },
   "dob-day": {
     "numeric": "Day must be numeric"
   },

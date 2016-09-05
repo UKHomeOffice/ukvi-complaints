@@ -44,6 +44,12 @@
   "dob-year": {
     "label": "Year"
   },
+  "email-address": {
+    "label": "What's your email address?"
+  },
+  "phone-number": {
+    "label": "What's your telephone number? (optional)"
+  },
   "complaint-type": {
     "legend": "What's the main reason for your complaint? If this is an existing complaint, select the first option",
     "options": {

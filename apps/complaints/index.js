@@ -2,6 +2,8 @@
 
 const controllers = require('hof').controllers;
 
+const isRep = req => req.sessionModel.get('applicant') === 'false';
+
 module.exports = {
   name: 'complaints',
   steps: {
@@ -20,10 +22,7 @@ module.exports = {
       },
       forks: [{
         target: '/representative-name',
-        condition: {
-          field: 'applicant',
-          value: 'false'
-        }
+        condition: isRep
       }]
     },
     '/applicant-name': {
@@ -54,10 +53,18 @@ module.exports = {
       }
     },
     '/contact-details': {
+      fields: [
+        'email-address',
+        'phone-number'
+      ],
       next: '/complaint-type',
       locals: {
         section: 'personal-contact-details'
-      }
+      },
+      forks: [{
+        target: '/applicant-name',
+        condition: isRep
+      }]
     },
     '/complaint-type': {
       next: '/has-reference',

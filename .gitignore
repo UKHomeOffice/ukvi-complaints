@@ -1,7 +1,5 @@
 .DS_Store
-.npmignore
 apps/*/translations/en
 node_modules
 public
-acceptance_tests/output/
 .idea

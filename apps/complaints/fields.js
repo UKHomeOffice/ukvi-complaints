@@ -117,5 +117,11 @@ module.exports = {
       field: 'has-complaint-reference',
       value: 'yes'
     }
+  },
+  'complaint-details': {
+    mixin: 'textarea',
+    validate: ['required'],
+    'ignore-defaults': true,
+    formatter: ['trim', 'hyphens']
   }
 };

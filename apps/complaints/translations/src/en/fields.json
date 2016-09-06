@@ -104,5 +104,9 @@
   "complaint-reference": {
     "hint": "For example, 123456",
     "label": "Enter the reference number"
+  },
+  "complaint-details":{
+    "hint": "Be brief but include all important details",
+    "label": "Provide details of the complaint"
   }
 }

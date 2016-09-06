@@ -120,6 +120,10 @@ module.exports = {
   },
   'complaint-details': {
     mixin: 'textarea',
+    attributes: [{
+      attribute: 'rows',
+      value: 5
+    }],
     validate: ['required'],
     'ignore-defaults': true,
     formatter: ['trim', 'hyphens']

@@ -108,5 +108,8 @@
   "complaint-details":{
     "hint": "Be brief but include all important details",
     "label": "Provide details of the complaint"
+  },
+  "complaint-phone-number": {
+    "label": "What telephone number was called?"
   }
 }

@@ -79,13 +79,13 @@ module.exports = {
           value: 'previous'
         }
       },
-      {
-        target: '/where',
-        condition(req) {
-          const type = req.form.values['complaint-type'];
-          return type === 'staff' || type === 'appointment';
-        }
-      }],
+        {
+          target: '/where',
+          condition(req) {
+            const type = req.form.values['complaint-type'];
+            return type === 'staff' || type === 'appointment';
+          }
+        }],
       fields: ['complaint-type'],
       locals: {
         section: 'complaint-details'
@@ -130,6 +130,8 @@ module.exports = {
       }
     },
     '/phone': {
+      next: '/complaint-date',
+      fields: ['complaint-phone-number'],
       locals: {
         section: 'complaint-details'
       }
@@ -154,6 +156,11 @@ module.exports = {
     '/summary': {
       locals: {
         section: 'summary'
+      }
+    },
+    '/complaint-date': {
+      locals: {
+        section: 'complaint-details'
       }
     }
   }

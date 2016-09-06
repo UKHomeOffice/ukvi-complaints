@@ -123,5 +123,9 @@ module.exports = {
     validate: ['required'],
     'ignore-defaults': true,
     formatter: ['trim', 'hyphens']
+  },
+  'complaint-phone-number': {
+    mixin: 'input-number',
+    validate: ['required', 'numeric']
   }
 };

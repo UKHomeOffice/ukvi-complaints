@@ -60,5 +60,9 @@
   },
   "complaint-details": {
     "required": "Tell us the details of the complaint"
+  },
+  "complaint-phone-number": {
+    "required": "Tell us the telephone number that was called",
+    "numeric": "Enter a valid telephone number"
   }
 }

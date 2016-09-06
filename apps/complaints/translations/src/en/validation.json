@@ -57,5 +57,8 @@
   },
   "complaint-reference": {
     "required": "Tell us the reference number"
+  },
+  "complaint-details": {
+    "required": "Tell us the details of the complaint"
   }
 }

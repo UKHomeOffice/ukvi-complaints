@@ -3,6 +3,11 @@
     "header": "Personal and contact details"
   },
   "complaint-details": {
-    "header": "Complaint details"
+    "header": "Complaint details",
+    "quality-of-information": "If you're complaining about the quality of information provided, tell us where the information is - and include a link if it's on a website.",
+    "staff-behaviour": "If you're complaining about staff behaviour, tell us the names if known."
+  },
+  "summary": {
+    "header": "Is the information you have given us correct?"
   }
 }

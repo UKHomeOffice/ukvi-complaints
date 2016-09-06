@@ -145,8 +145,15 @@ module.exports = {
       }
     },
     '/complaint-details': {
+      next: '/summary',
+      fields: ['complaint-details'],
       locals: {
         section: 'complaint-details'
+      }
+    },
+    '/summary': {
+      locals: {
+        section: 'summary'
       }
     }
   }

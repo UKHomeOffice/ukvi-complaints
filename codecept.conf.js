@@ -22,6 +22,7 @@ module.exports = {
     visaApplicationCentrePage: pagesPath('visa-application-centre.js'),
     premiumServiceCentrePage: pagesPath('premium-service-centre.js'),
     complaintDetailsPage: pagesPath('complaint-details.js'),
-    summaryPage: pagesPath('summary.js')
+    summaryPage: pagesPath('summary.js'),
+    complaintDatePage: pagesPath('complaint-date.js')
   }
 };

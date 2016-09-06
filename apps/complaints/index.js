@@ -78,8 +78,7 @@ module.exports = {
           field: 'complaint-type',
           value: 'previous'
         }
-      },
-      {
+      }, {
         target: '/where',
         condition(req) {
           const type = req.form.values['complaint-type'];
@@ -130,6 +129,8 @@ module.exports = {
       }
     },
     '/phone': {
+      next: '/complaint-date',
+      fields: ['complaint-phone-number'],
       locals: {
         section: 'complaint-details'
       }
@@ -154,6 +155,11 @@ module.exports = {
     '/summary': {
       locals: {
         section: 'summary'
+      }
+    },
+    '/complaint-date': {
+      locals: {
+        section: 'complaint-details'
       }
     }
   }

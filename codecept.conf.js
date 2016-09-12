@@ -24,6 +24,7 @@ module.exports = {
     complaintDetailsPage: pagesPath('complaint-details.js'),
     summaryPage: pagesPath('summary.js'),
     complaintDatePage: pagesPath('complaint-date.js'),
-    complaintTimePage: pagesPath('complaint-time.js')
+    complaintTimePage: pagesPath('complaint-time.js'),
+    phonedFromPage: pagesPath('phoned-from.js')
   }
 };

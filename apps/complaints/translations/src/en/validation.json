@@ -77,5 +77,8 @@
   },
   "complaint-date-year": {
     "numeric": "Year must be numeric"
+  },
+  "complaint-time": {
+    "required": "Tell us the time of call"
   }
 }

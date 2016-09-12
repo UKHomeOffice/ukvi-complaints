@@ -142,5 +142,9 @@ module.exports = {
   },
   'complaint-date-year': {
     validate: ['required', 'numeric']
+  },
+  'complaint-time': {
+    mixin: 'input-text',
+    validate: ['required']
   }
 };

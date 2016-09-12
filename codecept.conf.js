@@ -23,6 +23,7 @@ module.exports = {
     premiumServiceCentrePage: pagesPath('premium-service-centre.js'),
     complaintDetailsPage: pagesPath('complaint-details.js'),
     summaryPage: pagesPath('summary.js'),
-    complaintDatePage: pagesPath('complaint-date.js')
+    complaintDatePage: pagesPath('complaint-date.js'),
+    complaintTimePage: pagesPath('complaint-time.js')
   }
 };

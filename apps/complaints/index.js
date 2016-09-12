@@ -158,6 +158,19 @@ module.exports = {
       }
     },
     '/complaint-date': {
+      controller: require('./controllers/complaint-date'),
+      fields: [
+        'complaint-date',
+        'complaint-date-day',
+        'complaint-date-month',
+        'complaint-date-year'
+      ],
+      next: '/complaint-time',
+      locals: {
+        section: 'complaint-details'
+      }
+    },
+    '/complaint-time': {
       locals: {
         section: 'complaint-details'
       }

@@ -131,5 +131,16 @@ module.exports = {
   'complaint-phone-number': {
     mixin: 'input-number',
     validate: ['required', 'numeric']
+  },
+  'complaint-date': {
+  },
+  'complaint-date-day': {
+    validate: ['numeric']
+  },
+  'complaint-date-month': {
+    validate: ['required', 'numeric']
+  },
+  'complaint-date-year': {
+    validate: ['required', 'numeric']
   }
 };

@@ -111,5 +111,18 @@
   },
   "complaint-phone-number": {
     "label": "What telephone number was called?"
+  },
+  "complaint-date": {
+    "legend": "What was the date of the call?",
+    "hint": "For example, 31 3 2016"
+  },
+  "complaint-date-day": {
+    "label": "Day"
+  },
+  "complaint-date-month": {
+    "label": "Month"
+  },
+  "complaint-date-year": {
+    "label": "Year"
   }
 }

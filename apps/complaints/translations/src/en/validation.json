@@ -64,5 +64,18 @@
   "complaint-phone-number": {
     "required": "Tell us the telephone number that was called",
     "numeric": "Enter a valid telephone number"
+  },
+  "complaint-date": {
+    "required": "Tell us your date of the call",
+    "future": "The date of the call cannot be in the future"
+  },
+  "complaint-date-day": {
+    "numeric": "Day must be numeric"
+  },
+  "complaint-date-month": {
+    "numeric": "Month must be numeric"
+  },
+  "complaint-date-year": {
+    "numeric": "Year must be numeric"
   }
 }

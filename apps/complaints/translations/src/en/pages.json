@@ -9,5 +9,8 @@
   },
   "summary": {
     "header": "Is the information you have given us correct?"
+  },
+  "complaint-date": {
+    "monthyear": "You only need to enter the month and year, however, if you enter the day it will make it easier to resolve this complaint."
   }
 }

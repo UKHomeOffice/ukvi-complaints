@@ -146,5 +146,9 @@ module.exports = {
   'complaint-time': {
     mixin: 'input-text',
     validate: ['required']
+  },
+  'phoned-from': {
+    mixin: 'input-number',
+    validate: ['required', 'numeric']
   }
 };

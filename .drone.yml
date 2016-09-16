@@ -87,6 +87,27 @@ pipeline:
       branch: master
       event: push
 
+  trigger_deploy_to_dev:
+    image: quay.io/ukhomeofficedigital/drone-trigger:latest
+    drone_server: https://drone.digital.homeoffice.gov.uk
+    repo: UKHomeOffice/kube-ukvi-complaints
+    branch: master
+    deploy_to: ukvi-complaints-dev
+    params: APP_IMAGE_TAG=${DRONE_COMMIT_SHA},KUBE_NAMESPACE=ukvi-complaints-dev
+    when:
+      branch: master
+      event: push
+
+  trigger_deploy_to_preprod:
+    image: quay.io/ukhomeofficedigital/drone-trigger:latest
+    drone_server: https://drone.digital.homeoffice.gov.uk
+    repo: UKHomeOffice/kube-ukvi-complaints
+    branch: master
+    deploy_to: ukvi-complaints-preprod
+    params: APP_IMAGE_TAG=${DRONE_COMMIT_SHA},KUBE_NAMESPACE=ukvi-complaints-preprod
+    when:
+      event: tag
+
 services:
   redis:
     image: redis

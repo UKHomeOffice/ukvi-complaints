@@ -32,7 +32,7 @@ Scenario('When I select Yes I go to the has which reference numbers step', (
   I.seeInCurrentUrl(whichReferencePage.url);
 });
 
-Scenario('When I select No I go to the incident vac step', (
+Scenario('When I select No I go to the complaint details step', (
   I,
   hasReferencePage,
   complaintDetailsPage

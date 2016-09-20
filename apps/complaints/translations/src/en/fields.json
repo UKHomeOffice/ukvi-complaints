@@ -131,5 +131,12 @@
   },
   "phoned-from": {
     "label": "What number was the call made from?"
+  },
+  "has-reference": {
+    "legend": "Do you have the GWF, HO or IHS reference number(s)?",
+    "options": {
+      "yes": "Yes",
+      "no": "No"
+    }
   }
 }

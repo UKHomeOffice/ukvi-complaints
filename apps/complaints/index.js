@@ -2,6 +2,8 @@
 
 const controllers = require('hof').controllers;
 
+const pagesTranslations = require('./translations/src/en/pages.json');
+
 const isRep = req => req.sessionModel.get('applicant') === 'false';
 
 module.exports = {
@@ -124,8 +126,19 @@ module.exports = {
       }
     },
     '/has-reference': {
+      next: '/which-reference',
+      fields: ['has-reference'],
+      forks: [{
+        target: '/complaint-details',
+        condition: {
+          field: 'has-reference',
+          value: 'no'
+        }
+      }],
       locals: {
-        section: 'complaint-details'
+        section: 'complaint-details',
+        'details-summary-id': 'reference-numbers',
+        'details-summary': pagesTranslations['reference-numbers']
       }
     },
     '/phone': {
@@ -180,6 +193,11 @@ module.exports = {
     '/phoned-from': {
       next: '/has-reference',
       fields: ['phoned-from'],
+      locals: {
+        section: 'complaint-details'
+      }
+    },
+    '/which-reference': {
       locals: {
         section: 'complaint-details'
       }

@@ -80,5 +80,9 @@
   },
   "complaint-time": {
     "required": "Tell us the time of call"
+  },
+  "phoned-from": {
+    "required": "Tell us the telephone number that the call was made from",
+    "numeric": "Enter a valid telephone number"
   }
 }

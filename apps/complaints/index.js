@@ -178,6 +178,8 @@ module.exports = {
       }
     },
     '/phoned-from': {
+      next: '/has-reference',
+      fields: ['phoned-from'],
       locals: {
         section: 'complaint-details'
       }

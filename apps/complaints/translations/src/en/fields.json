@@ -124,5 +124,9 @@
   },
   "complaint-date-year": {
     "label": "Year"
+  },
+  "complaint-time": {
+    "hint": "For example, 10:30am or morning",
+    "label": "What was the time of call?"
   }
 }

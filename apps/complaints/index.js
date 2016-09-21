@@ -171,6 +171,13 @@ module.exports = {
       }
     },
     '/complaint-time': {
+      next: '/phoned-from',
+      fields: ['complaint-time'],
+      locals: {
+        section: 'complaint-details'
+      }
+    },
+    '/phoned-from': {
       locals: {
         section: 'complaint-details'
       }

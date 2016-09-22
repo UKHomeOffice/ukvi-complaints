@@ -12,5 +12,13 @@
   },
   "complaint-date": {
     "monthyear": "You only need to enter the month and year, however, if you enter the day it will make it easier to resolve this complaint."
+  },
+  "reference-numbers": {
+    "header": "Help with reference numbers",
+    "items": [
+      "A GWF number is given after you apply for a visa outside the UK.",
+      "An HO number is given after you apply within the UK.",
+      "An IHS number is given when you pay your immigration health surcharge."
+    ]
   }
 }

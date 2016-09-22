@@ -150,5 +150,17 @@ module.exports = {
   'phoned-from': {
     mixin: 'input-number',
     validate: ['required', 'numeric']
+  },
+  'has-reference': {
+    mixin: 'radio-group',
+    validate: ['required'],
+    className: ['form-group'],
+    options: [{
+      value: 'yes',
+      label: 'fields.has-reference.options.yes'
+    }, {
+      value: 'no',
+      label: 'fields.has-reference.options.no'
+    }]
   }
 };

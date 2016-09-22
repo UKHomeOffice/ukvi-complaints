@@ -20,5 +20,8 @@
       "An HO number is given after you apply within the UK.",
       "An IHS number is given when you pay your immigration health surcharge."
     ]
+  },
+  "visa-application-centre": {
+    "header": "Where is the visa application centre (VAC)?"
   }
 }

@@ -138,5 +138,11 @@
       "yes": "Yes",
       "no": "No"
     }
+  },
+  "country": {
+    "label": "Country"
+  },
+  "city": {
+    "label": "City"
   }
 }

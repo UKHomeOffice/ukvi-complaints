@@ -162,5 +162,18 @@ module.exports = {
       value: 'no',
       label: 'fields.has-reference.options.no'
     }]
+  },
+  'country': {
+    mixin: 'select',
+    className: ['typeahead', 'js-hidden'],
+    options: [''].concat(require('../../assets/countries').allCountries),
+    legend: {
+      className: 'visuallyhidden'
+    },
+    validate: ['required']
+  },
+  'city': {
+    mixin: 'input-text',
+    validate: ['required']
   }
 };

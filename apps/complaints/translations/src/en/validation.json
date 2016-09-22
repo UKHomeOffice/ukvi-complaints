@@ -87,5 +87,11 @@
   },
   "has-complaint": {
     "required": "Select an option"
+  },
+  "country": {
+    "required": "Tell us where the visa application centre country is"
+  },
+  "city": {
+    "required": "Tell us where the visa application centre city is"
   }
 }

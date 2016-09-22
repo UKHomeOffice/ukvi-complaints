@@ -149,8 +149,11 @@ module.exports = {
       }
     },
     '/visa-application-centre': {
+      next: '/has-reference',
+      fields: ['country', 'city'],
       locals: {
-        section: 'complaint-details'
+        section: 'complaint-details',
+        subsection: 'visa-application-centre'
       }
     },
     '/premium-service-centre': {

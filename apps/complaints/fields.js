@@ -210,5 +210,9 @@ module.exports = {
       value: 'ihs'
     },
     validate: 'required'
+  },
+  'service-centre-city': {
+    mixin: 'input-text',
+    validate: 'required'
   }
 };

@@ -167,5 +167,8 @@
   },
   "ihs-reference": {
     "label": "Enter reference number"
+  },
+  "service-centre-city": {
+    "label": "In which UK city is the premium service centre?"
   }
 }

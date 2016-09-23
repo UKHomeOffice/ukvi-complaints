@@ -157,6 +157,8 @@ module.exports = {
       }
     },
     '/premium-service-centre': {
+      next: '/complaint-details',
+      fields: ['service-centre-city'],
       locals: {
         section: 'complaint-details'
       }

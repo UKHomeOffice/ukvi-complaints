@@ -3,7 +3,7 @@
 module.exports = {
 	applicant: {
 		mixin: 'radio-group',
-		validate: ['required'],
+		validate: 'required',
 		className: ['form-group'],
 		options: [{
 			value: 'true',
@@ -57,7 +57,7 @@ module.exports = {
 	},
 	'complaint-type': {
 		mixin: 'radio-group',
-		validate: ['required'],
+		validate: 'required',
 		className: ['form-group'],
 		options: [{
 			value: 'previous',
@@ -81,7 +81,7 @@ module.exports = {
 	},
 	'where': {
 		mixin: 'radio-group',
-		validate: ['required'],
+		validate: 'required',
 		className: ['form-group'],
 		options: [{
 			value: 'phone',
@@ -99,7 +99,7 @@ module.exports = {
 	},
   'has-complaint-reference': {
     mixin: 'radio-group',
-    validate: ['required'],
+    validate: 'required',
     className: ['form-group'],
     options: [{
       value: 'yes',
@@ -112,7 +112,7 @@ module.exports = {
     }]
   },
   'complaint-reference': {
-    validate: ['required'],
+    validate: 'required',
     dependent: {
       field: 'has-complaint-reference',
       value: 'yes'
@@ -124,7 +124,7 @@ module.exports = {
       attribute: 'rows',
       value: 5
     }],
-    validate: ['required'],
+    validate: 'required',
     'ignore-defaults': true,
     formatter: ['trim', 'hyphens']
   },
@@ -135,7 +135,7 @@ module.exports = {
   'complaint-date': {
   },
   'complaint-date-day': {
-    validate: ['numeric']
+    validate: 'numeric'
   },
   'complaint-date-month': {
     validate: ['required', 'numeric']
@@ -145,7 +145,7 @@ module.exports = {
   },
   'complaint-time': {
     mixin: 'input-text',
-    validate: ['required']
+    validate: 'required'
   },
   'phoned-from': {
     mixin: 'input-number',
@@ -153,7 +153,7 @@ module.exports = {
   },
   'has-reference': {
     mixin: 'radio-group',
-    validate: ['required'],
+    validate: 'required',
     className: ['form-group'],
     options: [{
       value: 'yes',
@@ -167,10 +167,48 @@ module.exports = {
     mixin: 'select',
     className: ['typeahead', 'js-hidden'],
     options: [''].concat(require('../../assets/countries').allCountries),
-    validate: ['required']
+    validate: 'required'
   },
   city: {
     mixin: 'input-text',
-    validate: ['required']
+    validate: 'required'
+  },
+  'reference-numbers': {
+    mixin: 'checkbox-group',
+    validate: 'required',
+    options: [{
+      value: 'gwf',
+      toggle: 'gwf-reference',
+      child: 'input-text'
+    }, {
+      value: 'ho',
+      toggle: 'ho-reference',
+      child: 'input-text'
+    }, {
+      value: 'ihs',
+      toggle: 'ihs-reference',
+      child: 'input-text'
+    }]
+  },
+  'gwf-reference': {
+    dependent: {
+      field: 'reference-numbers',
+      value: 'gwf'
+    },
+    validate: 'required'
+  },
+  'ho-reference': {
+    dependent: {
+      field: 'reference-numbers',
+      value: 'ho'
+    },
+    validate: 'required'
+  },
+  'ihs-reference': {
+    dependent: {
+      field: 'reference-numbers',
+      value: 'ihs'
+    },
+    validate: 'required'
   }
 };

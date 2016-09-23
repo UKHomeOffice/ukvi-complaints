@@ -201,6 +201,13 @@ module.exports = {
       }
     },
     '/which-reference': {
+      next: '/complaint-details',
+      fields: [
+        'reference-numbers',
+        'gwf-reference',
+        'ho-reference',
+        'ihs-reference'
+      ],
       locals: {
         section: 'complaint-details'
       }

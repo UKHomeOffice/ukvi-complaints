@@ -1,5 +1,5 @@
 {
-  "who": {
+  "applicant": {
     "required": "Tell us who you are"
   },
   "accept-declaration": {
@@ -86,6 +86,9 @@
     "numeric": "Enter a valid telephone number"
   },
   "has-complaint": {
+    "required": "Select an option"
+  },
+  "has-reference": {
     "required": "Select an option"
   },
   "country": {

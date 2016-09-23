@@ -108,5 +108,8 @@
   },
   "ihs-reference": {
     "required": "Tell us the IHS reference number"
+  },
+  "service-centre-city": {
+    "required": "Tell us in which UK city the premium service centre is"
   }
 }

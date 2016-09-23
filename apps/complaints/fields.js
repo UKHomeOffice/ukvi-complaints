@@ -172,5 +172,43 @@ module.exports = {
   city: {
     mixin: 'input-text',
     validate: ['required']
+  },
+  'reference-numbers': {
+    mixin: 'checkbox-group',
+    validate: 'required',
+    options: [{
+      value: 'gwf',
+      toggle: 'gwf-reference',
+      child: 'input-text'
+    }, {
+      value: 'ho',
+      toggle: 'ho-reference',
+      child: 'input-text'
+    }, {
+      value: 'ihs',
+      toggle: 'ihs-reference',
+      child: 'input-text'
+    }]
+  },
+  'gwf-reference': {
+    dependent: {
+      field: 'reference-numbers',
+      value: 'gwf'
+    },
+    validate: ['required']
+  },
+  'ho-reference': {
+    dependent: {
+      field: 'reference-numbers',
+      value: 'ho'
+    },
+    validate: ['required']
+  },
+  'ihs-reference': {
+    dependent: {
+      field: 'reference-numbers',
+      value: 'ihs'
+    },
+    validate: ['required']
   }
 };

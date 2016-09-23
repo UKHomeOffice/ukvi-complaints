@@ -93,5 +93,17 @@
   },
   "city": {
     "required": "Tell us where the visa application centre city is"
+  },
+  "reference-numbers": {
+    "required": "Tell us which reference numbers do you have"
+  },
+  "gwf-reference": {
+    "required": "Tell us the GWF reference number"
+  },
+  "ho-reference": {
+    "required": "Tell us the HO reference number"
+  },
+  "ihs-reference": {
+    "required": "Tell us the IHS reference number"
   }
 }

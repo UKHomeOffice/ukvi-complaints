@@ -144,5 +144,28 @@
   },
   "city": {
     "label": "City"
+  },
+  "reference-numbers": {
+    "legend": "Which reference numbers do you have? Select all that apply",
+    "options": {
+      "gwf": {
+        "label": "GWF reference number"
+      },
+      "ho": {
+        "label": "HO reference number"
+      },
+      "ihs": {
+        "label": "IHS reference number"
+      }
+    }
+  },
+  "gwf-reference": {
+    "label": "Enter reference number"
+  },
+  "ho-reference": {
+    "label": "Enter reference number"
+  },
+  "ihs-reference": {
+    "label": "Enter reference number"
   }
 }

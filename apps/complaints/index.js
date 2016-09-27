@@ -164,15 +164,18 @@ module.exports = {
       }
     },
     '/complaint-details': {
-      next: '/summary',
+      next: '/confirm',
       fields: ['complaint-details'],
       locals: {
         section: 'complaint-details'
       }
     },
-    '/summary': {
+    '/confirm': {
+      next: '/confirmation',
+      controller: require('./controllers/confirm'),
+      config: require('./confirm-step-config'),
       locals: {
-        section: 'summary'
+        section: 'confirm'
       }
     },
     '/complaint-date': {
@@ -213,6 +216,11 @@ module.exports = {
       locals: {
         section: 'complaint-details'
       }
+    }
+  },
+  '/confirmation': {
+    locals: {
+      section: 'confirmation'
     }
   }
 };

@@ -29,9 +29,9 @@ Scenario('An error is shown if field is not completed', (
 Scenario('On submitting the completed step I am taken to the summary step', (
   I,
   complaintDetailsPage,
-  summaryPage
+  confirmPage
 ) => {
   I.fillField(complaintDetailsPage['complaint-details'], complaintDetailsPage.value);
   I.submitForm();
-  I.seeInCurrentUrl(summaryPage.url);
+  I.seeInCurrentUrl(confirmPage.url);
 });

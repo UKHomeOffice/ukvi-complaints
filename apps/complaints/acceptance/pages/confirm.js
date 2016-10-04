@@ -77,35 +77,39 @@ module.exports = {
   },
 
   SeeTableElementsApplicantPreviousComplaint() {
-    I.seeElements(this.id.applicant);
-    I.seeElements(this.id['applicant-name']);
-    I.seeElements(this.id.dob);
-    I.seeElements(this.id['email-address']);
-    I.seeElements(this.id['phone-number']);
-    I.seeElements(this.id['complaint-type']);
-    I.seeElements(this.id['has-complaint-reference']);
-    I.seeElements(this.id['complaint-details']);
+    I.seeElements([
+      this.id.applicant,
+      this.id['applicant-name'],
+      this.id.dob,
+      this.id['email-address'],
+      this.id['phone-number'],
+      this.id['complaint-type'],
+      this.id['has-complaint-reference'],
+      this.id['complaint-details']
+    ]);
   },
 
   SeeTableElementsRepresentativeStaffPhoneReference() {
-    I.seeElements(this.id.applicant);
-    I.seeElements(this.id['accept-declaration']);
-    I.seeElements(this.id['applicant-name']);
-    I.seeElements(this.id['representative-name']);
-    I.seeElements(this.id.dob);
-    I.seeElements(this.id['email-address']);
-    I.seeElements(this.id['phone-number']);
-    I.seeElements(this.id['complaint-type']);
-    I.seeElements(this.id.where);
-    I.seeElements(this.id['complaint-phone-number']);
-    I.seeElements(this.id['complaint-date']);
-    I.seeElements(this.id['complaint-time']);
-    I.seeElements(this.id['phoned-from']);
-    I.seeElements(this.id['has-reference']);
-    I.seeElements(this.id['reference-numbers']);
-    I.seeElements(this.id['gwf-reference']);
-    I.seeElements(this.id['ho-reference']);
-    I.seeElements(this.id['ihs-reference']);
-    I.seeElements(this.id['complaint-details']);
+    I.seeElements([
+      this.id.applicant,
+      this.id['accept-declaration'],
+      this.id['applicant-name'],
+      this.id['representative-name'],
+      this.id.dob,
+      this.id['email-address'],
+      this.id['phone-number'],
+      this.id['complaint-type'],
+      this.id.where,
+      this.id['complaint-phone-number'],
+      this.id['complaint-date'],
+      this.id['complaint-time'],
+      this.id['phoned-from'],
+      this.id['has-reference'],
+      this.id['reference-numbers'],
+      this.id['gwf-reference'],
+      this.id['ho-reference'],
+      this.id['ihs-reference'],
+      this.id['complaint-details']
+    ]);
   }
 };

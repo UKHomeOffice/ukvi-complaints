@@ -19,17 +19,4 @@ module.exports = class ConfirmController extends BaseConfirmController {
     return locals;
   }
 
-  renderTemplate(template, recipient, data, res) {
-    return new Promise((resolve, reject) => {
-      res.render(template, {
-        recipient,
-        data
-      }, (err, html) => {
-        if (err) {
-          reject(err);
-        }
-        resolve(html);
-      });
-    });
-  }
 };

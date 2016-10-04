@@ -4,10 +4,9 @@ const controllers = require('hof').controllers;
 
 const pagesTranslations = require('./translations/src/en/pages.json');
 
-const isRep = req => req.sessionModel.get('applicant') === 'false';
-
 module.exports = {
   name: 'complaints',
+  params: '/:action?',
   steps: {
     '/': {
       controller: controllers.start,
@@ -24,7 +23,10 @@ module.exports = {
       },
       forks: [{
         target: '/representative-name',
-        condition: isRep
+        condition: {
+          field: 'applicant',
+          value: 'false'
+        }
       }]
     },
     '/applicant-name': {
@@ -35,7 +37,7 @@ module.exports = {
       }
     },
     '/representative-name': {
-      next: '/contact-details',
+      next: '/applicant-name',
       fields: ['representative-name'],
       locals: {
         section: 'personal-contact-details'
@@ -52,11 +54,7 @@ module.exports = {
       next: '/contact-details',
       locals: {
         section: 'personal-contact-details'
-      },
-      forks: [{
-        target: '/complaint-type',
-        condition: isRep
-      }]
+      }
     },
     '/contact-details': {
       fields: [
@@ -66,11 +64,7 @@ module.exports = {
       next: '/complaint-type',
       locals: {
         section: 'personal-contact-details'
-      },
-      forks: [{
-        target: '/applicant-name',
-        condition: isRep
-      }]
+      }
     },
     '/complaint-type': {
       next: '/has-reference',
@@ -219,8 +213,5 @@ module.exports = {
     }
   },
   '/confirmation': {
-    locals: {
-      section: 'confirmation'
-    }
   }
 };

@@ -20,15 +20,17 @@ module.exports = {
       'complaint-phone-number',
       'country',
       'city',
-      'complaint-details',
       'complaint-date',
       'complaint-time',
       'phoned-from',
+      'has-complaint-reference',
+      'complaint-reference',
       'has-reference',
       'reference-numbers',
       'gwf-reference',
       'ho-reference',
-      'ihs-reference'
+      'ihs-reference',
+      'complaint-details'
     ]
   }]
 };

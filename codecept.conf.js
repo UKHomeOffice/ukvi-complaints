@@ -26,6 +26,7 @@ module.exports = {
     complaintDatePage: pagesPath('complaint-date.js'),
     complaintTimePage: pagesPath('complaint-time.js'),
     phonedFromPage: pagesPath('phoned-from.js'),
-    whichReferencePage: pagesPath('which-reference.js')
+    whichReferencePage: pagesPath('which-reference.js'),
+    confirmationPage: pagesPath('confirmation.js')
   }
 };

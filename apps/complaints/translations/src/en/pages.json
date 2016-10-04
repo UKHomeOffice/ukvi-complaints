@@ -30,7 +30,6 @@
     "table": {
       "headers": {
         "personal-contact-details": "Your personal and contact details",
-        "complaint-details": "Complaint details",
         "contact-details": "Your personal and contact details",
         "applicant": "I am the",
         "accept-declaration": "Do you accept the declaration?",
@@ -48,10 +47,13 @@
         "complaint-date": "Date of call",
         "complaint-time": "Time of call",
         "phoned-from": "Telephone number called from",
+        "has-complaint-reference": "Has complaint reference number?",
+        "complaint-reference": "Complaint reference numbers",
         "reference-numbers": "Which reference numbers",
         "gwf-reference": "GWF reference number",
         "ho-reference": "HO reference number",
-        "ihs-reference": "IHS reference number"
+        "ihs-reference": "IHS reference number",
+        "complaint-details": "Details of the complaint"
       }
     }
   }

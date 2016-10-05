@@ -8,5 +8,11 @@ bootstrap({
 	fields: false,
 	routes: [
 		require('./apps/complaints/')
-	]
+	],
+  middleware: [(req, res, next) => {
+    /* eslint-disable no-console */
+    console.log('HEADERS>>>', req.headers);
+    next();
+    /* eslint-enable no-console */
+  }]
 });

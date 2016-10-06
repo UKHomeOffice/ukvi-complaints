@@ -72,3 +72,27 @@ input[type='checkbox'] ~ span.visuallyhidden {
 .twitter-typeahead {
   width: 100%;
 }
+
+.table-details {
+  width: 100%;
+  margin-bottom: 3em;
+
+  tbody {
+    td:nth-child(1) {
+      width: 40%;
+    }
+    td:nth-child(2) {
+      width: 60%;
+    }
+    td:nth-child(3) {
+      text-align: right;
+      padding-right: 0;
+    }
+  }
+
+  .button {
+    margin: 0;
+    background: #dde0e1;
+    color: #000;
+  }
+}

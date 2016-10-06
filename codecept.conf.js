@@ -22,10 +22,11 @@ module.exports = {
     visaApplicationCentrePage: pagesPath('visa-application-centre.js'),
     premiumServiceCentrePage: pagesPath('premium-service-centre.js'),
     complaintDetailsPage: pagesPath('complaint-details.js'),
-    summaryPage: pagesPath('summary.js'),
+    confirmPage: pagesPath('confirm.js'),
     complaintDatePage: pagesPath('complaint-date.js'),
     complaintTimePage: pagesPath('complaint-time.js'),
     phonedFromPage: pagesPath('phoned-from.js'),
-    whichReferencePage: pagesPath('which-reference.js')
+    whichReferencePage: pagesPath('which-reference.js'),
+    confirmationPage: pagesPath('confirmation.js')
   }
 };

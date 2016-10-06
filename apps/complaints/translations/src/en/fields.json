@@ -3,10 +3,12 @@
     "legend": "Who are you?",
     "options": {
       "true": {
-        "label": "I am the applicant"
+        "label": "I am the applicant",
+        "value": "applicant"
       },
       "false": {
-        "label": "I represent the applicant"
+        "label": "I represent the applicant",
+        "value": "representative"
       }
     }
   },

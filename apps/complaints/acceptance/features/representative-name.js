@@ -29,9 +29,9 @@ Scenario('I see an error if I continue without entering a name', (
 Scenario('I enter a name and submit form and I am taken to the contact-details page', (
   I,
   representativeNamePage,
-  contactDetailsPage
+  applicantNamePage
 ) => {
   I.fillField(representativeNamePage['representative-name'], representativeNamePage.value);
   I.submitForm();
-  I.seeInCurrentUrl(contactDetailsPage.url);
+  I.seeInCurrentUrl(applicantNamePage.url);
 });

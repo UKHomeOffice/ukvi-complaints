@@ -73,7 +73,7 @@ Scenario('I am taken to the complaint type page if I submit the form', (
 Scenario('I am taken to the applicant name type page if I am the representative', function *(
   I,
   contactDetailsPage,
-  applicantNamePage
+  complaintTypePage
 ) {
   yield I.setSessionData(steps.name, {
     applicant: 'false'
@@ -84,5 +84,5 @@ Scenario('I am taken to the applicant name type page if I am the representative'
     contactDetailsPage.validEmailAddress
   );
   I.submitForm();
-  I.seeInCurrentUrl(applicantNamePage.url);
+  I.seeInCurrentUrl(complaintTypePage.url);
 });

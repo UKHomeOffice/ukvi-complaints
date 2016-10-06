@@ -69,11 +69,11 @@ Scenario('On submitting the completed step I am taken to applicants contact step
 Scenario('On submitting the completed step I am taken to complaint type step if I am the representative', function *(
   I,
   applicantDOBPage,
-  complaintTypePage
+  contactDetailsPage
 ) {
   yield I.setSessionData(steps.name, {
     applicant: 'false'
   });
   applicantDOBPage.fillFormAndSubmit();
-  I.seeInCurrentUrl(complaintTypePage.url);
+  I.seeInCurrentUrl(contactDetailsPage.url);
 });

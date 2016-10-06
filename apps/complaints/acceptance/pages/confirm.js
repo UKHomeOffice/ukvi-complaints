@@ -1,5 +1,6 @@
 'use strict';
 
+const _ = require('lodash');
 let I;
 
 module.exports = {
@@ -77,39 +78,43 @@ module.exports = {
   },
 
   SeeTableElementsApplicantPreviousComplaint() {
-    I.seeElements([
-      this.id.applicant,
-      this.id['applicant-name'],
-      this.id.dob,
-      this.id['email-address'],
-      this.id['phone-number'],
-      this.id['complaint-type'],
-      this.id['has-complaint-reference'],
-      this.id['complaint-details']
-    ]);
+    I.seeElements(_.values(_.pick(
+        this.id,
+        [
+          'applicant',
+          'applicant-name',
+          'dob',
+          'email-address',
+          'phone-number',
+          'complaint-type',
+          'has-complaint-reference',
+          'complaint-details'
+        ])));
   },
 
   SeeTableElementsRepresentativeStaffPhoneReference() {
-    I.seeElements([
-      this.id.applicant,
-      this.id['accept-declaration'],
-      this.id['applicant-name'],
-      this.id['representative-name'],
-      this.id.dob,
-      this.id['email-address'],
-      this.id['phone-number'],
-      this.id['complaint-type'],
-      this.id.where,
-      this.id['complaint-phone-number'],
-      this.id['complaint-date'],
-      this.id['complaint-time'],
-      this.id['phoned-from'],
-      this.id['has-reference'],
-      this.id['reference-numbers'],
-      this.id['gwf-reference'],
-      this.id['ho-reference'],
-      this.id['ihs-reference'],
-      this.id['complaint-details']
-    ]);
+    I.seeElements(_.values(_.pick(
+        this.id,
+        [
+          'applicant',
+          'accept-declaration',
+          'applicant-name',
+          'representative-name',
+          'dob',
+          'email-address',
+          'phone-number',
+          'complaint-type',
+          'where',
+          'complaint-phone-number',
+          'complaint-date',
+          'complaint-time',
+          'phoned-from',
+          'has-reference',
+          'reference-numbers',
+          'gwf-reference',
+          'ho-reference',
+          'ihs-reference',
+          'complaint-details'
+        ])));
   }
 };

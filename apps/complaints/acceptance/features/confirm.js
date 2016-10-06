@@ -11,31 +11,31 @@ Before((
   I.visitPage(confirmPage, steps);
 });
 
-Scenario('I see the summary table labels following journey for Applicant and Previous Complaint', (
+Scenario('I see the summary table labels following journey for Applicant and Previous Complaint', function *(
   I,
   confirmPage
-) => {
-  I.setSessionData(steps.name, confirmPage.valuePreviousComplaint);
-  I.refreshPage();
+) {
+  yield I.setSessionData(steps.name, confirmPage.valuePreviousComplaint);
+  yield I.refreshPage();
   confirmPage.SeeTableElementsApplicantPreviousComplaint();
 });
 
-Scenario('I see the summary table labels following journey for Representative, Staff, Phone and Reference numbers', (
+Scenario('I see the summary table labels following journey for Representative, Staff, Phone and Reference numbers', function *(
   I,
   confirmPage
-) => {
-  I.setSessionData(steps.name, confirmPage.valueRepresentativeStaffPhoneReference);
-  I.refreshPage();
+) {
+  yield I.setSessionData(steps.name, confirmPage.valueRepresentativeStaffPhoneReference);
+  yield I.refreshPage();
   confirmPage.SeeTableElementsRepresentativeStaffPhoneReference();
 });
 
-Scenario('I am taken to the confirmation page if I submit the form', (
+Scenario('I am taken to the confirmation page if I submit the form', function *(
   I,
   confirmPage,
   confirmationPage
-) => {
-  I.setSessionData(steps.name, confirmPage.valuePreviousComplaint);
-  I.refreshPage();
+) {
+  yield I.setSessionData(steps.name, confirmPage.valuePreviousComplaint);
+  yield I.refreshPage();
   I.submitForm();
   I.seeInCurrentUrl(confirmationPage.url);
 });

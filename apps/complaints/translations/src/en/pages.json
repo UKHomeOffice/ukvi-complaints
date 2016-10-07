@@ -56,5 +56,15 @@
         "complaint-details": "Details of the complaint"
       }
     }
+  },
+  "confirmation": {
+    "header": " ",
+    "content-header": "The complaint has been sent.",
+    "content-copy-sent": "We have sent you an email containing the information you have provided to ",
+    "content-whats-next": "What happens next?",
+    "content-respond": "Your complaint will be reviewed and a full response provided by the relevant Home Office department within 20 working days.",
+    "content-misconduct": "If your complaint indicates serious professional misconduct it will be impartially investigated, which can take up to 12 weeks.",
+    "content-feedback-link": "What did you think of this service?",
+    "content-feedback-time": "(takes 30 seconds)"
   }
 }

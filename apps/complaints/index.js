@@ -210,8 +210,13 @@ module.exports = {
       locals: {
         section: 'complaint-details'
       }
+    },
+    '/confirmation': {
+      backLink: false,
+      clearSession: true,
+      locals: {
+        section: 'confirmation'
+      }
     }
-  },
-  '/confirmation': {
   }
 };

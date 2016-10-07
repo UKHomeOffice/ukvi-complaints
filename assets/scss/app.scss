@@ -96,3 +96,21 @@ input[type='checkbox'] ~ span.visuallyhidden {
     color: #000;
   }
 }
+
+.alert-complete {
+  padding: 3.65263em;
+  padding-left: 2em;
+}
+
+.icon-complete {
+  margin-right: 16px;
+}
+
+.icon:before {
+  height: 36px;
+  width: 36px;
+}
+
+.alert-message h1:first-child {
+  font-size: 35px;
+}

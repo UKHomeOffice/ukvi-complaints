@@ -2,8 +2,10 @@
 
 module.exports = {
   url: 'confirmation',
+  sentHeader: {
+    css: '.alert-message'
+  },
   content: {
-    sent: 'The complaint has been sent.',
     email: 'test@test.com'
   }
 };

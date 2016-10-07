@@ -19,6 +19,6 @@ Scenario('The correct fields elements are on the page', function *(
     'email-address': 'test@test.com'
   });
   yield I.refreshPage();
-  I.see(confirmationPage.content.sent);
+  I.seeElement(confirmationPage.sentHeader);
   I.see(confirmationPage.content.email);
 });

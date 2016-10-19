@@ -6,8 +6,9 @@
   "author": "HomeOffice",
   "repository": {
     "type": "git",
-    "url": "https://github.com/UKHomeOffice/UKVI-Complaints"
+    "url": "https://github.com/UKHomeOffice/UKVI-Complaints.git"
   },
+  "bugs": "https://github.com/UKHomeOffice/UKVI-Complaints/issues",
   "license": "./LICENSE",
   "readme": "./README.md",
   "scripts": {

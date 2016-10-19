@@ -80,7 +80,7 @@ pipeline:
     environment:
       - DOCKER_HOST=tcp://127.0.0.1:2375
     commands:
-      - docker login -u="ukhomeofficedigital+ukvi_complaints" -p=${DOCKER_PASSWORD} quay.io
+      - docker login -u="ukhomeofficedigital+drone" -p=${DOCKER_PASSWORD} quay.io
       - docker tag app quay.io/ukhomeofficedigital/ukvi-complaints:${DRONE_COMMIT_SHA}
       - docker push quay.io/ukhomeofficedigital/ukvi-complaints:${DRONE_COMMIT_SHA}
     when:

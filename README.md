@@ -6,7 +6,7 @@ This project is built with [HOF-Bootstrap](https://github.com/UKHomeOffice/hof-b
 
 Get the project from Github
 ```bash
-$ git clone git@github.com:UKHomeOffice/UKVI-Complaints.git && cd rotm
+$ git clone git@github.com:UKHomeOffice/UKVI-Complaints.git && cd UKVI-Complaints
 ```
 
 Install the dependencies and build the project resources

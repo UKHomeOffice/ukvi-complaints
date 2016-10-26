@@ -44,7 +44,8 @@ module.exports = {
       }
     },
     '/applicant-dob': {
-      controller: require('./controllers/applicant-dob'),
+      controller: controllers.date,
+      dateKey: 'dob',
       fields: [
         'dob',
         'dob-day',
@@ -166,14 +167,15 @@ module.exports = {
     },
     '/confirm': {
       next: '/confirmation',
-      controller: require('./controllers/confirm'),
-      config: require('./confirm-step-config'),
+      controller: controllers.confirm,
+      fieldsConfig: require('./fields'),
       locals: {
         section: 'confirm'
       }
     },
     '/complaint-date': {
       controller: require('./controllers/complaint-date'),
+      dateKey: 'complaint-date',
       fields: [
         'complaint-date',
         'complaint-date-day',

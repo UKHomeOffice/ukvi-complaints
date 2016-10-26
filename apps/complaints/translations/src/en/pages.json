@@ -1,6 +1,10 @@
 {
   "personal-contact-details": {
-    "header": "Personal and contact details"
+    "header": "Personal and contact details",
+    "summary": "Your personal and contact details"
+  },
+  "complaint-details": {
+    "summary": "Your complaint details"
   },
   "complaint-details": {
     "header": "Complaint details",
@@ -26,36 +30,7 @@
   },
   "confirm": {
     "header": "Is the information you have given us correct?",
-    "subheader": "If any information is incorrect, you can change it here.",
-    "table": {
-      "headers": {
-        "personal-contact-details": "Your personal and contact details",
-        "contact-details": "Your personal and contact details",
-        "applicant": "I am the",
-        "accept-declaration": "Do you accept the declaration?",
-        "applicant-name": "Applicant full name",
-        "representative-name": "Representative full name",
-        "dob": "Date of birth",
-        "email-address": "Email address",
-        "phone-number": "Telephone number",
-        "complaint-type": "What is the complaint about?",
-        "where": "Where did the incident take place?",
-        "has-reference": "Any reference numbers?",
-        "complaint-phone-number": "Telephone number called",
-        "country": "Visa application centre country",
-        "city": "Visa application centre city",
-        "complaint-date": "Date of call",
-        "complaint-time": "Time of call",
-        "phoned-from": "Telephone number called from",
-        "has-complaint-reference": "Has complaint reference number?",
-        "complaint-reference": "Complaint reference numbers",
-        "reference-numbers": "Which reference numbers",
-        "gwf-reference": "GWF reference number",
-        "ho-reference": "HO reference number",
-        "ihs-reference": "IHS reference number",
-        "complaint-details": "Details of the complaint"
-      }
-    }
+    "subheader": "If any information is incorrect, you can change it here."
   },
   "confirmation": {
     "header": " ",

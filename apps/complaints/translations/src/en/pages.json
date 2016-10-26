@@ -41,5 +41,28 @@
     "content-misconduct": "If your complaint indicates serious professional misconduct it will be impartially investigated, which can take up to 12 weeks.",
     "content-feedback-link": "What did you think of this service?",
     "content-feedback-time": "(takes 30 seconds)"
+  },
+  "email": {
+    "subject": "UKVI Complaints",
+    "intro": {
+      "customer": [
+        "line 1",
+        "line 2"
+      ],
+      "caseworker": [
+        "line 1",
+        "line 2"
+      ]
+    },
+    "outro": {
+      "customer": [
+        "line 1",
+        "line 2"
+      ],
+      "caseworker": [
+        "line 1",
+        "line 2"
+      ]
+    }
   }
 }

@@ -135,13 +135,16 @@ module.exports = {
   'complaint-date': {
   },
   'complaint-date-day': {
-    validate: 'numeric'
+    validate: 'numeric',
+    includeInSummary: false
   },
   'complaint-date-month': {
-    validate: ['required', 'numeric']
+    validate: ['required', 'numeric'],
+    includeInSummary: false
   },
   'complaint-date-year': {
-    validate: ['required', 'numeric']
+    validate: ['required', 'numeric'],
+    includeInSummary: false
   },
   'complaint-time': {
     mixin: 'input-text',

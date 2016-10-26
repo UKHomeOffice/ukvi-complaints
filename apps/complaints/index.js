@@ -165,14 +165,6 @@ module.exports = {
         section: 'complaint-details'
       }
     },
-    '/confirm': {
-      next: '/confirmation',
-      controller: controllers.confirm,
-      fieldsConfig: require('./fields'),
-      locals: {
-        section: 'confirm'
-      }
-    },
     '/complaint-date': {
       controller: require('./controllers/complaint-date'),
       dateKey: 'complaint-date',
@@ -211,6 +203,16 @@ module.exports = {
       ],
       locals: {
         section: 'complaint-details'
+      }
+    },
+    '/confirm': {
+      next: '/confirmation',
+      controller: controllers.confirm,
+      fieldsConfig: require('./fields'),
+      emailConfig: require('../../config').email,
+      customerEmailField: 'email-address',
+      locals: {
+        section: 'confirm'
       }
     },
     '/confirmation': {

@@ -1,6 +1,7 @@
 {
   "applicant": {
     "legend": "Who are you?",
+    "summary": "I am the",
     "options": {
       "true": {
         "label": "I am the applicant",
@@ -15,7 +16,8 @@
   "accept-declaration":  {
     "p1": "To make a complaint on behalf of someone else you must have their explicit consent, or have agreed consent from the Home Office, to handle this information.",
     "p2": "If you make a complaint on behalf of someone else without their prior consent, or without approval from the Home Office, you will be committing an unlawful act, as described in section 55 of the Data Protection Act 1998.",
-    "label": "I have permission from the complainant or the Home Office to make this complaint"
+    "label": "I have permission from the complainant or the Home Office to make this complaint",
+    "summary": "Do you accept the declaration?"
   },
   "applicant-name": {
     "label": {
@@ -23,10 +25,12 @@
         "true": "What is your full name?"
       },
       "default": "What is the applicant's full name?"
-    }
+    },
+    "summary": "Applicant full name"
   },
   "representative-name": {
-    "label": "What is your name?"
+    "label": "What is your name?",
+    "summary": "Representative full name"
   },
   "dob": {
     "legend": {
@@ -35,7 +39,8 @@
       },
       "default": "What's the applicant's date of birth?"
     },
-    "hint": "For example, 31 3 1980"
+    "hint": "For example, 31 3 1980",
+    "summary": "Date of birth"
   },
   "dob-day": {
     "label": "Day"
@@ -47,13 +52,16 @@
     "label": "Year"
   },
   "email-address": {
-    "label": "What's your email address?"
+    "label": "What's your email address?",
+    "summary": "Email address"
   },
   "phone-number": {
-    "label": "What's your telephone number? (optional)"
+    "label": "What's your telephone number? (optional)",
+    "summary": "Telephone number"
   },
   "complaint-type": {
     "legend": "What's the main reason for your complaint? If this is an existing complaint, select the first option",
+    "summary": "What is the complaint about?",
     "options": {
       "previous": {
         "label": "This is a previous complaint"
@@ -77,6 +85,7 @@
   },
   "where": {
     "legend": "Where did the incident take place?",
+    "summary": "Where did the incident take place?",
     "options": {
       "phone": {
         "label": "On the phone"
@@ -94,6 +103,7 @@
   },
   "has-complaint-reference": {
     "legend": "Do you have the complaint reference number?",
+    "summary": "Has complaint reference number?",
     "options": {
       "yes": {
         "label": "Yes"
@@ -105,18 +115,22 @@
   },
   "complaint-reference": {
     "hint": "For example, 123456",
-    "label": "Enter the reference number"
+    "label": "Enter the reference number",
+    "summary": "Complaint reference numbers"
   },
   "complaint-details":{
     "hint": "Be brief but include all important details",
-    "label": "Provide details of the complaint"
+    "label": "Provide details of the complaint",
+    "summary": "Details of the complaint"
   },
   "complaint-phone-number": {
-    "label": "What telephone number was called?"
+    "label": "What telephone number was called?",
+    "summary": "Telephone number called"
   },
   "complaint-date": {
     "legend": "What was the date of the call?",
-    "hint": "For example, 31 3 2016"
+    "hint": "For example, 31 3 2016",
+    "summary": "Date of call"
   },
   "complaint-date-day": {
     "label": "Day"
@@ -129,26 +143,32 @@
   },
   "complaint-time": {
     "hint": "For example, 10:30am or morning",
-    "label": "What was the time of call?"
+    "label": "What was the time of call?",
+    "summary": "Time of call"
   },
   "phoned-from": {
-    "label": "What number was the call made from?"
+    "label": "What number was the call made from?",
+    "summary": "Telephone number called from"
   },
   "has-reference": {
     "legend": "Do you have the GWF, HO or IHS reference number(s)?",
+    "summary": "Any reference numbers?",
     "options": {
       "yes": "Yes",
       "no": "No"
     }
   },
   "country": {
-    "label": "Country"
+    "label": "Country",
+    "summary": "Visa application centre country"
   },
   "city": {
-    "label": "City"
+    "label": "City",
+    "summary": "Visa application centre city"
   },
   "reference-numbers": {
     "legend": "Which reference numbers do you have? Select all that apply",
+    "summary": "Which reference numbers",
     "options": {
       "gwf": {
         "label": "GWF reference number"
@@ -162,13 +182,16 @@
     }
   },
   "gwf-reference": {
-    "label": "Enter reference number"
+    "label": "Enter reference number",
+    "summary": "GWF reference number"
   },
   "ho-reference": {
-    "label": "Enter reference number"
+    "label": "Enter reference number",
+    "summary": "HO reference number"
   },
   "ihs-reference": {
-    "label": "Enter reference number"
+    "label": "Enter reference number",
+    "summary": "IHS reference number"
   },
   "service-centre-city": {
     "label": "In which UK city is the premium service centre?"

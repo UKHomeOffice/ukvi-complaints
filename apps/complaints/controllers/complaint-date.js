@@ -6,11 +6,6 @@ const dateFormat = 'DD-MM-YYYY';
 
 module.exports = class ComplaintDateController extends DateController {
 
-  constructor(options) {
-    super(options);
-    this.dateKey = 'complaint-date';
-  }
-
   process(req, res, callback) {
     const format = this.options.dateFormat ? this.options.dateFormat : dateFormat;
     const dateParts = {};

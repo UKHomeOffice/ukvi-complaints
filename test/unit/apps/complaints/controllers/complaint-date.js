@@ -13,19 +13,15 @@ describe('apps/complaints/controllers/complaint-date', () => {
 
   describe('instantiated', () => {
 
-    let controller;
     const args = {template: 'index'};
 
     beforeEach(() => {
-        controller = new ComplaintDateController(args);
+      // eslint-disable-next-line no-new
+      new ComplaintDateController(args);
     });
 
     it('calls DateController with the arguments', () => {
       DateController.should.have.been.calledWith(args);
-    });
-
-    it('has complaint-date dateKey', () => {
-      controller.should.have.property('dateKey').and.equal('complaint-date');
     });
 
   });

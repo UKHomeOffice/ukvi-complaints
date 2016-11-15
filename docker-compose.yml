@@ -3,7 +3,7 @@ services:
   app:
     build: .
     environment:
-      - NODE_ENV=docker-compose
+      - NODE_ENV=ci
       - EMAIL_IGNORE_TLS=true
       - EMAIL_HOST=maildev
       - EMAIL_PORT=25

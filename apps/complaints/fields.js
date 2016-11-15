@@ -39,13 +39,19 @@ module.exports = {
 	'dob': {
 	},
 	'dob-day': {
-		validate: ['required', 'numeric']
+		validate: ['required', 'numeric'],
+    includeInEmail: false,
+    includeInSummary: false
 	},
 	'dob-month': {
-		validate: ['required', 'numeric']
+		validate: ['required', 'numeric'],
+    includeInEmail: false,
+    includeInSummary: false
 	},
 	'dob-year': {
-		validate: ['required', 'numeric']
+		validate: ['required', 'numeric'],
+    includeInEmail: false,
+    includeInSummary: false
 	},
 	'email-address': {
 		mixin: 'input-text',

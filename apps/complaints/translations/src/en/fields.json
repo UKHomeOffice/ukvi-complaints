@@ -154,8 +154,12 @@
     "legend": "Do you have the GWF, HO or IHS reference number(s)?",
     "summary": "Any reference numbers?",
     "options": {
-      "yes": "Yes",
-      "no": "No"
+      "yes": {
+        "label": "Yes"
+      },
+      "no": {
+        "label": "No"
+      }
     }
   },
   "country": {

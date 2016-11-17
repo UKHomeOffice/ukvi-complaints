@@ -1,10 +1,6 @@
 {{<partials-page}}
 {{$page-content}}
 <fieldset id="dob-group" class="{{#errors.dob}}validation-error{{/errors.dob}}">
-  <legend>
-    <span class="form-label-bold">{{#t}}fields.dob.legend{{/t}}</span>
-  </legend>
-
   {{#errors.dob}}
         <span id="dob-error" class="error-message">
           {{errors.dob.message}}

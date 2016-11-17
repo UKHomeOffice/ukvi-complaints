@@ -17,6 +17,9 @@
   "complaint-date": {
     "monthyear": "You only need to enter the month and year, however, if you enter the day it will make it easier to resolve this complaint."
   },
+  "complaint-time": {
+    "intro": "For example, 10:30am or morning"
+  },
   "reference-numbers": {
     "header": "Help with reference numbers",
     "items": [

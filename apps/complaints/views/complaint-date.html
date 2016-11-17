@@ -2,16 +2,11 @@
 {{$page-content}}
 <p>{{#t}}pages.complaint-date.monthyear{{/t}}</p>
 <fieldset id="complaint-date-group" class="{{#errors.complaint-date}}validation-error{{/errors.complaint-date}}">
-  <legend>
-    <span class="form-label-bold">{{#t}}fields.complaint-date.legend{{/t}}</span>
-  </legend>
-
   {{#errors.complaint-date}}
-        <span id="complaint-date-error" class="error-message">
-          {{errors.complaint-date.message}}
-        </span>
+    <span id="complaint-date-error" class="error-message">
+      {{errors.complaint-date.message}}
+    </span>
   {{/errors.complaint-date}}
-
   <p class="form-hint">{{#t}}fields.complaint-date.hint{{/t}}</p>
   <div class="form-group form-date">
     {{#input-date}}complaint-date{{/input-date}}

@@ -1,6 +1,6 @@
 'use strict';
 
-const DateController = require('hof').controllers.date;
+const DateController = require('hof-controllers').date;
 const moment = require('moment');
 const dateFormat = 'DD-MM-YYYY';
 

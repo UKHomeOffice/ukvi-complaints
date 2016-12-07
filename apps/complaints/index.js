@@ -1,6 +1,6 @@
 'use strict';
 
-const controllers = require('hof').controllers;
+const controllers = require('hof-controllers');
 
 const pagesTranslations = require('./translations/src/en/pages.json');
 

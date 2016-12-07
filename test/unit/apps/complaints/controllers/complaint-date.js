@@ -2,10 +2,8 @@
 
 const DateController = sinon.stub();
 const ComplaintDateController = require('proxyquire')('../../../../../apps/complaints/controllers/complaint-date', {
-  'hof': {
-    controllers: {
-      date: DateController
-    }
+  'hof-controllers': {
+    date: DateController
   }
 });
 

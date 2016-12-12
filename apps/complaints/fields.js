@@ -58,7 +58,6 @@ module.exports = {
     includeInSummary: false
 	},
 	'email-address': {
-    labelClassName: 'visuallyhidden',
 		mixin: 'input-text',
 		validate: ['required', 'email']
 	},

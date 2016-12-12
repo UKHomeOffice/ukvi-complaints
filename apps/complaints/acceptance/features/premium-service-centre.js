@@ -29,9 +29,9 @@ Scenario('An error is shown if field is not completed', (
 Scenario('On submitting the completed step I am taken to phoned from step', (
   I,
   premiumServiceCentrePage,
-  complaintDetailsPage
+  hasReferencePage
 ) => {
   I.fillField(premiumServiceCentrePage['service-centre-city'], premiumServiceCentrePage.value);
   I.submitForm();
-  I.seeInCurrentUrl(complaintDetailsPage.url);
+  I.seeInCurrentUrl(hasReferencePage.url);
 });

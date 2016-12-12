@@ -3,7 +3,7 @@
     "required": "Tell us who you are"
   },
   "accept-declaration": {
-    "required": "Please accept the declaration to continue"
+    "required": "You can’t make a complaint on behalf of someone else without consent. If you don’t have consent, don’t use this service"
   },
   "applicant-name": {
     "required": {

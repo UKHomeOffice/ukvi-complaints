@@ -26,6 +26,7 @@ module.exports = {
 	},
 	'accept-declaration': {
 		validate: 'required',
+		includeInSummary: false,
 		dependent: {
 			field: 'applicant',
 			value: 'false'
@@ -103,6 +104,7 @@ module.exports = {
       className: 'visuallyhidden'
     },
     className: ['form-group'],
+    includeInSummary: false,
     options: [
       {
         value: 'yes',
@@ -160,6 +162,7 @@ module.exports = {
   'has-reference': {
     mixin: 'radio-group',
     validate: 'required',
+    includeInSummary: false,
     legend: {
       className: 'visuallyhidden'
     },

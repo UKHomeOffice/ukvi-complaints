@@ -11,6 +11,14 @@ $path: "../img/";
   @include phase-banner(beta);
 }
 
+.form-date {
+  input {
+    &[id$="-year"] {
+      width: 70px;
+    }
+  }
+}
+
 #step {
   @include core-16;
   a {

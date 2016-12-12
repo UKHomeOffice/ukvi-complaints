@@ -28,7 +28,8 @@
         "true": "Your date of birth cannot be in the future"
       },
       "default": "The applicant's date of birth cannot be in the future"
-    }
+    },
+    "numeric": "Enter a valid date"
   },
   "email-address": {
     "required": "Tell us your email address",

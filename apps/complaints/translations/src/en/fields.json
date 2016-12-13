@@ -26,11 +26,11 @@
       },
       "default": "What is the applicant's full name?"
     },
-    "summary": "Applicant full name"
+    "summary": "Applicant's full name"
   },
   "representative-name": {
     "label": "What is your name?",
-    "summary": "Representative full name"
+    "summary": "Representative's full name"
   },
   "dob": {
     "legend": {

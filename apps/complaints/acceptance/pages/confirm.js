@@ -11,7 +11,6 @@ module.exports = {
   url: 'confirm',
   id: {
     applicant: '#applicant-change',
-    'accept-declaration': '#accept-declaration-change',
     'applicant-name': '#applicant-name-change',
     'representative-name': '#representative-name-change',
     dob: '#dob-change',
@@ -23,8 +22,6 @@ module.exports = {
     'complaint-date': '#complaint-date-change',
     'complaint-time': '#complaint-time-change',
     'phoned-from': '#phoned-from-change',
-    'has-complaint-reference': '#has-complaint-reference-change',
-    'has-reference': '#has-reference-change',
     'reference-numbers': '#reference-numbers-change',
     'gwf-reference': '#gwf-reference-change',
     'ho-reference': '#ho-reference-change',

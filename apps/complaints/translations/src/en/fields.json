@@ -116,7 +116,7 @@
   "complaint-reference": {
     "hint": "For example, 123456",
     "label": "Enter the reference number",
-    "summary": "Complaint reference numbers"
+    "summary": "Previous complaint reference number"
   },
   "complaint-details":{
     "hint": "Be brief but include all important details",

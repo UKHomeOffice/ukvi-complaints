@@ -1,27 +1,27 @@
 {
   "applicant": {
-    "required": "Tell us who you are"
+    "required": "Enter your name"
   },
   "accept-declaration": {
-    "required": "You can’t make a complaint on behalf of someone else without consent. If you don’t have consent, don’t use this service"
+    "required": "You can't make a complaint on behalf of someone else without consent. If you don't have consent, don't use this service"
   },
   "applicant-name": {
     "required": {
       "applicant": {
-        "true": "Tell us your full name"
+        "true": "Enter your full name"
       },
-      "default": "Tell us the applicant's full name"
+      "default": "Enter the applicant's full name"
     }
   },
   "representative-name": {
-    "required": "Tell us your name"
+    "required": "Enter your name"
   },
   "dob": {
     "required": {
       "applicant": {
-        "true": "Tell us your date of birth"
+        "true": "Enter your date of birth"
       },
-      "default": "Tell us the applicant's date of birth"
+      "default": "Enter the applicant's date of birth"
     },
     "future": {
       "applicant": {
@@ -32,7 +32,7 @@
     "numeric": "Enter a valid date"
   },
   "email-address": {
-    "required": "Tell us your email address",
+    "required": "Enter your email address",
     "email": "Enter a valid email address"
   },
   "phone-number": {
@@ -48,26 +48,26 @@
     "numeric": "Year must be numeric"
   },
   "complaint-type": {
-    "required": "Tell us the main reason for your complaint"
+    "required": "Enter the main reason for your complaint"
   },
   "where": {
-    "required": "Tell us where the incident took place"
+    "required": "Enter where the incident took place"
   },
   "has-complaint-reference": {
     "required": "Select an option"
   },
   "complaint-reference": {
-    "required": "Tell us the reference number"
+    "required": "Enter the reference number"
   },
   "complaint-details": {
-    "required": "Tell us the details of the complaint"
+    "required": "Enter the details of the complaint"
   },
   "complaint-phone-number": {
-    "required": "Tell us the telephone number that was called",
+    "required": "Enter the telephone number that was called",
     "numeric": "Enter a valid telephone number"
   },
   "complaint-date": {
-    "required": "Tell us your date of the call",
+    "required": "Enter the date of the call",
     "future": "The date of the call cannot be in the future"
   },
   "complaint-date-day": {
@@ -80,10 +80,10 @@
     "numeric": "Year must be numeric"
   },
   "complaint-time": {
-    "required": "Tell us the time of call"
+    "required": "Enter the time of call"
   },
   "phoned-from": {
-    "required": "Tell us the telephone number that the call was made from",
+    "required": "Enter the telephone number that the call was made from",
     "numeric": "Enter a valid telephone number"
   },
   "has-complaint": {
@@ -93,24 +93,24 @@
     "required": "Select an option"
   },
   "country": {
-    "required": "Tell us where the visa application centre country is"
+    "required": "Enter which country the visa application centre was in"
   },
   "city": {
-    "required": "Tell us where the visa application centre city is"
+    "required": "Enter which city the visa application centre city was in"
   },
   "reference-numbers": {
-    "required": "Tell us which reference numbers do you have"
+    "required": "Enter which reference numbers do you have"
   },
   "gwf-reference": {
-    "required": "Tell us the GWF reference number"
+    "required": "Enter the GWF reference number"
   },
   "ho-reference": {
-    "required": "Tell us the HO reference number"
+    "required": "Enter the HO reference number"
   },
   "ihs-reference": {
-    "required": "Tell us the IHS reference number"
+    "required": "Enter the IHS reference number"
   },
   "service-centre-city": {
-    "required": "Tell us in which UK city the premium service centre is"
+    "required": "Enter which UK city the premium service centre was in"
   }
 }

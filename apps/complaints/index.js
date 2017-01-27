@@ -207,7 +207,7 @@ module.exports = {
     },
     '/confirm': {
       next: '/confirmation',
-      controller: require('./controllers/confirm'),
+      controller: controllers.confirm,
       fieldsConfig: require('./fields'),
       emailConfig: require('../../config').email,
       customerEmailField: 'email-address',

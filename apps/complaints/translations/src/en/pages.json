@@ -49,7 +49,10 @@
     "content-feedback-time": "(takes 30 seconds)"
   },
   "email": {
-    "subject": "{{applicant-name}} {{date}} - UKVI Complaints",
+    "subject": {
+      "customer": "UKVI Complaints - Thank you for your submission",
+      "caseworker": "UKVI Complaints - We have received a new submission"
+    },
     "intro": {
       "customer": [
         "line 1",

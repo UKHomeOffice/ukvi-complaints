@@ -57,6 +57,7 @@
   },
   "phone-number": {
     "label": "What's your telephone number? (optional)",
+    "hint": "We may be able to provide a quicker response by phone",
     "summary": "Telephone number"
   },
   "complaint-type": {

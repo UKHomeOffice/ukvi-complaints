@@ -1,5 +1,9 @@
 'use strict';
 
+function phoneNumber(number) {
+  return number ? number.match(/^[\d-+ ()]+$/) : true;
+}
+
 module.exports = {
 	applicant: {
 		mixin: 'radio-group',
@@ -64,7 +68,7 @@ module.exports = {
 	},
 	'phone-number': {
 		mixin: 'input-number',
-		validate: 'numeric'
+		validate: [phoneNumber]
 	},
 	'complaint-type': {
     legend: {
@@ -133,7 +137,7 @@ module.exports = {
   'complaint-phone-number': {
     mixin: 'input-number',
     labelClassName: 'visuallyhidden',
-    validate: ['required', 'numeric']
+    validate: ['required', phoneNumber]
   },
   'complaint-date': {},
   'complaint-date-day': {
@@ -156,7 +160,7 @@ module.exports = {
   'phoned-from': {
     labelClassName: 'visuallyhidden',
     mixin: 'input-number',
-    validate: ['required', 'numeric']
+    validate: ['required', phoneNumber]
   },
   'has-reference': {
     mixin: 'radio-group',

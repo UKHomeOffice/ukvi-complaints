@@ -36,9 +36,13 @@
   "dependencies": {
     "browserify": "^12.0.1",
     "hof-bootstrap": "^6.0.2",
+    "hof-controllers": "^6.0.0",
+    "lodash": "^4.17.4",
+    "so-acceptance": "^4.2.0",
     "hof-frontend-toolkit": "^1.0.0",
     "hof-transpiler": "0.1.0",
     "jquery": "^2.1.4",
+    "moment": "^2.17.1",
     "node-sass": "^3.7.0",
     "typeahead-aria": "^1.0.1"
   },
@@ -56,8 +60,7 @@
     "proxyquire": "^1.5.0",
     "sinomocha": "^0.2.4",
     "sinon": "^1.15.3",
-    "sinon-chai": "^2.8.0",
-    "so-acceptance": "^4.1.0"
+    "sinon-chai": "^2.8.0"
   },
   "pre-commit": [
     "lint",

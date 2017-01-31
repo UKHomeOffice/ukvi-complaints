@@ -93,7 +93,8 @@
     "required": "Select an option"
   },
   "country": {
-    "required": "Enter which country the visa application centre was in"
+    "required": "Enter which country the visa application centre was in",
+    "equal": "Select a country from the list"
   },
   "city": {
     "required": "Enter which city the visa application centre city was in"

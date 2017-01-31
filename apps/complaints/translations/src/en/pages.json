@@ -9,7 +9,7 @@
   "complaint-details": {
     "header": "Complaint details",
     "quality-of-information": "If you're complaining about the quality of information provided, tell us where the information is - and include a link if it's on a website.",
-    "staff-behaviour": "If you're complaining about staff behaviour, tell us the names if known."
+    "staff-behaviour": "If you're complaining about staff behaviour, do not tell us the names on this form. We will collect these details at a later date if we need them."
   },
   "contact-details": {
     "header": "What are your contact details?"

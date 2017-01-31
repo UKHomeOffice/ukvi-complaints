@@ -1,6 +1,6 @@
 {
   "applicant": {
-    "required": "Enter your name"
+    "required": "Select who you are"
   },
   "accept-declaration": {
     "required": "You can't make a complaint on behalf of someone else without consent. If you don't have consent, don't use this service"
@@ -48,7 +48,7 @@
     "numeric": "Year must be numeric"
   },
   "complaint-type": {
-    "required": "Enter the main reason for your complaint"
+    "required": "Select the main reason for your complaint"
   },
   "where": {
     "required": "Enter where the incident took place"

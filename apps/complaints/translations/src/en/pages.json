@@ -55,22 +55,17 @@
     },
     "intro": {
       "customer": [
-        "line 1",
-        "line 2"
+        "Thank you for getting in touch. See a summary below of the information you submitted.",
+        "We will investigate your complaint and get back to you within 20 working days. Please wait for us to contact you and do not submit additional forms.",
+        "Your details"
       ],
       "caseworker": [
-        "line 1",
-        "line 2"
+        "UKVI Complaints form has been submitted with details as follows:"
       ]
     },
     "outro": {
       "customer": [
-        "line 1",
-        "line 2"
-      ],
-      "caseworker": [
-        "line 1",
-        "line 2"
+        "Need more help? Go to <a href=\"http://gov.uk\">GOV.UK</a> to find out more about visa applications"
       ]
     }
   }

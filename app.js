@@ -1,6 +1,6 @@
 'use strict';
 
-const bootstrap = require('hof-bootstrap');
+const bootstrap = require('hof');
 
 bootstrap({
 	translations: './apps/complaints/translations',

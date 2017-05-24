@@ -8,10 +8,6 @@ module.exports = {
   name: 'complaints',
   params: '/:action?',
   steps: {
-    '/': {
-      controller: controllers.start,
-      next: '/who'
-    },
     '/who': {
       fields: [
         'applicant',

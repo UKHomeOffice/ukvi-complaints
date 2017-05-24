@@ -15,7 +15,7 @@
     "start": "node .",
     "dev": "hof-build watch",
     "test": "NODE_ENV=test mocha",
-    "test:ci": "npm run lint && npm run style && npm run test",
+    "test:ci": "npm run lint && npm run test",
     "test:acceptance": "codeceptjs run ./node_modules/so-acceptance --steps",
     "lint": "npm-run-all --parallel lint:app lint:acceptance",
     "lint:app": "eslint .",
@@ -36,7 +36,6 @@
   "devDependencies": {
     "chai": "^3.0.0",
     "eslint-config-homeoffice": "^2.0.0",
-    "jscs": "^3.0.6",
     "mocha": "^2.2.5",
     "mocha-junit-reporter": "^1.4.0",
     "mocha-multi": "^0.7.1",

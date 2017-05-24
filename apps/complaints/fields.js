@@ -5,79 +5,71 @@ function phoneNumber(number) {
 }
 
 module.exports = {
-	applicant: {
-		mixin: 'radio-group',
-		legend: {
-			className: 'visuallyhidden'
-		},
-		validate: 'required',
-		className: ['form-group'],
-		options: [{
-			value: 'true',
-			label: 'fields.applicant.options.true.label'
-		}, {
-			value: 'false',
-			label: 'fields.applicant.options.false.label',
-			toggle: 'accept-declaration',
-			child: `<div id="accept-declaration-panel" class="reveal js-hidden">
-								<div class="panel-indent">
-									<p>{{#t}}fields.accept-declaration.p1{{/t}}</p>
-									<p>{{#t}}fields.accept-declaration.p2{{/t}}</p>
-									{{#checkbox}}accept-declaration{{/checkbox}}
-								</div>
-							</div>`
-		}]
-	},
-	'accept-declaration': {
-		validate: 'required',
-		includeInSummary: false,
-		dependent: {
-			field: 'applicant',
-			value: 'false'
-		}
-	},
-	'applicant-name': {
-		labelClassName: 'visuallyhidden',
-		mixin: 'input-text',
-		validate: 'required'
-	},
-	'representative-name': {
-    labelClassName: 'visuallyhidden',
-		mixin: 'input-text',
-		validate: 'required'
-	},
-	'dob': {},
-	'dob-day': {
-		validate: ['required', 'numeric'],
-    includeInEmail: false,
-    includeInSummary: false
-	},
-	'dob-month': {
-		validate: ['required', 'numeric'],
-    includeInEmail: false,
-    includeInSummary: false
-	},
-	'dob-year': {
-		validate: ['required', 'numeric'],
-    includeInEmail: false,
-    includeInSummary: false
-	},
-	'email-address': {
-		mixin: 'input-text',
-		validate: ['required', 'email']
-	},
-	'phone-number': {
-		mixin: 'input-number',
-		validate: [phoneNumber]
-	},
-	'complaint-type': {
+  applicant: {
+    mixin: 'radio-group',
     legend: {
       className: 'visuallyhidden'
     },
-		mixin: 'radio-group',
-		validate: 'required',
-		className: ['form-group'],
-		options: [
+    validate: 'required',
+    options: [
+      'true',
+      {
+        value: 'false',
+        toggle: 'accept-declaration',
+        child: 'partials/permission-declaration'
+      }
+    ]
+  },
+  'accept-declaration': {
+    validate: 'required',
+    includeInSummary: false,
+    dependent: {
+      field: 'applicant',
+      value: 'false'
+    }
+  },
+  'applicant-name': {
+    labelClassName: 'visuallyhidden',
+    mixin: 'input-text',
+    validate: 'required'
+  },
+  'representative-name': {
+    labelClassName: 'visuallyhidden',
+    mixin: 'input-text',
+    validate: 'required'
+  },
+  'dob': {},
+  'dob-day': {
+    validate: ['required', 'numeric'],
+    includeInEmail: false,
+    includeInSummary: false
+  },
+  'dob-month': {
+    validate: ['required', 'numeric'],
+    includeInEmail: false,
+    includeInSummary: false
+  },
+  'dob-year': {
+    validate: ['required', 'numeric'],
+    includeInEmail: false,
+    includeInSummary: false
+  },
+  'email-address': {
+    mixin: 'input-text',
+    validate: ['required', 'email']
+  },
+  'phone-number': {
+    mixin: 'input-number',
+    validate: [phoneNumber]
+  },
+  'complaint-type': {
+    legend: {
+      className: 'visuallyhidden'
+    },
+    mixin: 'radio-group',
+    validate: 'required',
+    className: ['form-group'],
+    options: [
       'previous',
       'staff',
       'appointment',
@@ -85,21 +77,21 @@ module.exports = {
       'quality',
       'something'
     ]
-	},
-	'where': {
-		mixin: 'radio-group',
-		validate: 'required',
+  },
+  'where': {
+    mixin: 'radio-group',
+    validate: 'required',
     legend: {
       className: 'visuallyhidden'
     },
-		className: ['form-group'],
-		options: [
+    className: ['form-group'],
+    options: [
       'phone',
       'visa-application-centre',
       'premium-service-centre',
       'letter'
     ]
-	},
+  },
   'has-complaint-reference': {
     mixin: 'radio-group',
     validate: 'required',

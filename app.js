@@ -1,10 +1,12 @@
 'use strict';
 
-const bootstrap = require('hof-bootstrap');
+const hof = require('hof');
 
-bootstrap({
-	translations: './apps/complaints/translations',
-	routes: [
-		require('./apps/complaints/')
-	]
+hof({
+  behaviours: [
+    require('./apps/complaints/behaviours/fields-filter')
+  ],
+  routes: [
+    require('./apps/complaints/')
+  ]
 });

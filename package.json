@@ -1,14 +1,14 @@
 {
-  "name": "UKVI-Complaints",
+  "name": "ukvi-complaints",
   "version": "0.1.0",
   "main": "app.js",
   "description": "UKVI Complaints form",
   "author": "HomeOffice",
   "repository": {
     "type": "git",
-    "url": "https://github.com/UKHomeOffice/UKVI-Complaints.git"
+    "url": "https://github.com/UKHomeOffice/ukvi-complaints.git"
   },
-  "bugs": "https://github.com/UKHomeOffice/UKVI-Complaints/issues",
+  "bugs": "https://github.com/UKHomeOffice/ukvi-complaints/issues",
   "license": "./LICENSE",
   "readme": "./README.md",
   "scripts": {

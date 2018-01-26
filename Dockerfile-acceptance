@@ -1,4 +1,4 @@
-FROM node:5
+FROM quay.io/ukhomeofficedigital/nodejs-base:v6
 
 WORKDIR /test
 

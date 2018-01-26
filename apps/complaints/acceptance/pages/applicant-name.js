@@ -1,12 +1,9 @@
 'use strict';
 
-const translations = require('../../translations/en/default');
-const applicantName = translations.fields['applicant-name'].label;
-
 module.exports = {
   url: 'applicant-name',
   'applicant-name': '#applicant-name',
-  representative: applicantName.default,
-  applicant: applicantName.applicant.true,
+  representative: 'What is the applicant\'s full name?',
+  applicant: 'What is your full name?',
   value: 'Sterling Archer'
 };

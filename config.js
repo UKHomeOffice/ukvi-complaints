@@ -9,7 +9,7 @@ module.exports = {
     replyTo: process.env.REPLY_TO || '',
     accessKeyId: process.env.AWS_USER || '',
     secretAccessKey: process.env.AWS_PASSWORD || '',
-    transportType: 'ses',
+    transportType: process.env.EMAIL_TRANSPORT || 'ses',
     region: process.env.EMAIL_REGION || ''
   }
 };

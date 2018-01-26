@@ -16,7 +16,8 @@
     "dev": "hof-build watch",
     "test": "NODE_ENV=test mocha",
     "test:ci": "npm run lint && npm run test",
-    "test:acceptance": "codeceptjs run ./node_modules/so-acceptance --steps",
+    "test:acceptance": "so-acceptance --steps",
+    "test:acceptance:local": "funkie --driver chromedriver npm run test:acceptance",
     "lint": "npm-run-all --parallel lint:app lint:acceptance",
     "lint:app": "eslint .",
     "lint:acceptance": "eslint --no-ignore -c ./node_modules/so-acceptance/.eslintrc ./apps/**/acceptance/**/*.js",
@@ -41,13 +42,14 @@
     "mocha-multi": "^0.7.1",
     "nodemon": "^1.9.2",
     "npm-run-all": "^1.7.0",
-    "phantomjs": "^2.1.7",
+    "funkie": "0.0.6",
+    "funkie-chromedriver": "0.0.1",
     "pre-commit": "^1.0.10",
     "proxyquire": "^1.5.0",
     "sinomocha": "^0.2.4",
     "sinon": "^1.15.3",
     "sinon-chai": "^2.8.0",
-    "so-acceptance": "^4.2.0"
+    "so-acceptance": "^5.0.1"
   },
   "pre-commit": [
     "lint",

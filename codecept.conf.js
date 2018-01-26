@@ -1,13 +1,28 @@
 'use strict';
 
+/* eslint no-process-env: 0 */
+/* eslint implicit-dependencies/no-implicit: [2, { dev: true }] */
+
 const path = require('path');
 
 const pagesPath = filename => path.resolve(__dirname,
   `./apps/complaints/acceptance/pages/${filename}`);
 
-module.exports = {
+module.exports = require('so-acceptance').extend({
   name: 'ukvi-complaints',
-  features: './apps/*/acceptance/features/**/*.js',
+  tests: './apps/**/acceptance/features/**/*.js',
+  helpers: {
+    WebDriverIO: {
+      host: 'localhost',
+      port: 4444,
+      path: '/wd/hub',
+      url: process.env.TEST_URL || 'http://localhost:8080',
+      browser: 'chrome',
+      desiredCapabilities: {
+        chromeOptions: { args: ['headless', 'disable-gpu'] }
+      }
+    }
+  },
   include: {
     whoPage: pagesPath('who.js'),
     applicantNamePage: pagesPath('applicant-name.js'),
@@ -29,4 +44,4 @@ module.exports = {
     whichReferencePage: pagesPath('which-reference.js'),
     confirmationPage: pagesPath('confirmation.js')
   }
-};
+});

@@ -1,4 +1,5 @@
 pipeline:
+
   build_6:
     image: node:6
     commands:
@@ -134,15 +135,3 @@ pipeline:
     when:
       event: deployment
       environment: prod
-
-  smoke_test:
-    image: docker:17.09.1
-    environment:
-      - DOCKER_HOST=tcp://172.17.0.1:2375
-    commands:
-      - docker run -d --userns host --net host --name=selenium-$${DRONE_COMMIT_SHA} selenium/standalone-chrome
-      - sleep 5
-      - docker run -e TEST_URL=https://ukvi-complaints-$${DRONE_DEPLOY_TO}.notprod.homeoffice.gov.uk --rm --userns host --net host acceptance-$${DRONE_COMMIT_SHA}
-      - docker rm -vf "selenium-$${DRONE_COMMIT_SHA}"
-    when:
-      event: deployment

@@ -22,7 +22,7 @@
     "lint:app": "eslint .",
     "lint:acceptance": "eslint --no-ignore -c ./node_modules/so-acceptance/.eslintrc ./apps/**/acceptance/**/*.js",
     "prepareapp": "hof-build",
-    "postinstall": "bash -c 'if [[ ${NODE_ENV} != production ]]; then npm run prepareapp; fi;'"
+    "postinstall": "npm run prepareapp"
   },
   "dependencies": {
     "hof": "^12.0.0",

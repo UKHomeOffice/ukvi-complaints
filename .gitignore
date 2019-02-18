@@ -4,4 +4,3 @@ node_modules
 public
 npm-debug.log
 .idea
-package-lock.json

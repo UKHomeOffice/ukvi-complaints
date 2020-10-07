@@ -1,1 +1,10 @@
-{}
+{
+  "theme": "govuk",
+  "routes": [
+    "./apps/ukvi-complaints"
+  ],
+  "session": {
+    "name": "ukvi-complaints.hof.sid",
+    "ttl": 3600
+  }
+}

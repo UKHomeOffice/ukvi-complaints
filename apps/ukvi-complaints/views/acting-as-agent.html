@@ -1,0 +1,11 @@
+{{<partials-page}}
+{{$page-content}}
+<fieldset id="dob-group" class="{{#errors.dob}}validation-error{{/errors.dob}}">
+  <p>You must have the applicant’s consent.</p>
+  <div class="form-group">
+    {{#radio-group}}acting-as-agent{{/radio-group}}
+  </div>
+</fieldset>
+{{#input-submit}}continue{{/input-submit}}
+{{/page-content}}
+{{/partials-page}}

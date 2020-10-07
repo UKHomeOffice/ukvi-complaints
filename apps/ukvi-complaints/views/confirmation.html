@@ -1,0 +1,24 @@
+{{<partials-page}}
+  {{$page-content}}
+    
+    <div class="alert-complete" role="alert">
+      <div class="alert-message">
+        <h1>Complaint submitted</h1>
+      </div>
+    </div>
+    
+  {{#values.applicant-email}}
+  <p>We have sent a confirmation email to {{values.applicant-email}}</p>
+  {{/values.applicant-email}}
+  {{#values.agent-email}}
+  <p>We have sent a confirmation email to {{values.agent-email}}</p>
+  {{/values.agent-email}}
+
+	<h2>What happens next?</h2>
+	<p>The Home Office will review your complaint and provide a full response within 20 working days. </p>
+  <p>If your complaint indicates serious professional misconduct it will be impartially investigated. This can take up to 12 weeks.</p>
+
+	<p><a href="https://eforms.homeoffice.gov.uk/outreach/Feedback.ofml?FormName=Complaints">What did you think of this service?</a> (takes 30 seconds)</p>
+
+  {{/page-content}}
+{{/partials-page}}

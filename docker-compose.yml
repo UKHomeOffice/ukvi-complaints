@@ -3,30 +3,26 @@ services:
   app:
     build: .
     environment:
-      - NODE_ENV=ci
-      - EMAIL_IGNORE_TLS=true
-      - EMAIL_HOST=maildev
-      - EMAIL_PORT=25
-      - CASEWORKER_EMAIL=caseworker@gov.uk.test
+      - NODE_ENV=development
+      - IGNORE_TLS=true
       - REDIS_HOST=redis
       - REDIS_PORT=6379
     links:
       - redis
-      - maildev
     ports:
       - "8080:8080"
     volumes:
-      - "/public"
+      - "/app/public"
   redis:
     image: redis
 
   nginx-proxy:
-    image: quay.io/ukhomeofficedigital/nginx-proxy:v1.2.3
+    image: quay.io/ukhomeofficedigital/nginx-proxy:v1.5.1
     environment:
       - PROXY_SERVICE_HOST=app
       - PROXY_SERVICE_PORT=8080
       - NAXSI_USE_DEFAULT_RULES=FALSE
-      - ADD_NGINX_SERVER_CFG=add_header Cache-Control private;add_header X-Frame-Options "SAMEORIGIN" always;add_header X-Content-Type-Options "nosniff" always;add_header X-XSS-Protection "1; mode=block" always;location /public {add_header Cache-Control max-age=86400;add_header X-Frame-Options "SAMEORIGIN" always;add_header X-Content-Type-Options "nosniff" always;add_header X-XSS-Protection "1; mode=block" always;alias /public;}
+      - ADD_NGINX_SERVER_CFG=add_header Cache-Control private;add_header X-Frame-Options "SAMEORIGIN" always;add_header X-Content-Type-Options "nosniff" always;add_header X-XSS-Protection "1; mode=block" always;location /public {add_header Cache-Control max-age=86400;add_header X-Frame-Options "SAMEORIGIN" always;add_header X-Content-Type-Options "nosniff" always;add_header X-XSS-Protection "1; mode=block" always;alias /app/public;}
       - ERROR_REDIRECT_CODES=599
     ports:
       - "443:443"
@@ -35,9 +31,3 @@ services:
       - app
     volumes_from:
       - app
-
-  maildev:
-    image: djfarrelly/maildev
-    ports:
-      - "8000:80"
-      - "25"

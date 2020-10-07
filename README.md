@@ -1,6 +1,4 @@
-# UKVI-Complaints [![Docker Repository on Quay](https://quay.io/repository/ukhomeofficedigital/ukvi-complaints/status "Docker Repository on Quay")](https://quay.io/repository/ukhomeofficedigital/ukvi-complaints) [![Build Status](https://drone.digital.homeoffice.gov.uk/api/badges/UKHomeOffice/UKVI-Complaints/status.svg)](https://drone.digital.homeoffice.gov.uk/UKHomeOffice/UKVI-Complaints)
-
-This project is built with [HOF-Bootstrap](https://github.com/UKHomeOffice/hof-bootstrap) and uses [Docker](https://www.docker.com/).
+# UKVI-Complaints [![Docker Repository on Quay](https://quay.io/repository/ukhomeofficedigital/ukvi-complaints/status "Docker Repository on Quay")](https://quay.io/repository/ukhomeofficedigital/ukvi-complaints)
 
 ## Getting started
 
@@ -25,5 +23,3 @@ Getting your hands dirty (You'll need [Redis](http://redis.io/) for this)
 ```bash
 $ npm run dev
 ```
-
-For anything else UKVI Complaints-related, look in [package.json](./package.json) for a full list of scripts etc, or refer to [HOF-Bootstrap](https://github.com/UKHomeOffice/hof-bootstrap).

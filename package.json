@@ -1,59 +1,36 @@
 {
-  "name": "ukvi-complaints",
-  "version": "0.1.0",
-  "main": "app.js",
-  "description": "UKVI Complaints form",
-  "author": "HomeOffice",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/UKHomeOffice/ukvi-complaints.git"
-  },
-  "bugs": "https://github.com/UKHomeOffice/ukvi-complaints/issues",
-  "license": "./LICENSE",
-  "readme": "./README.md",
+  "license": "MIT",
   "scripts": {
-    "start": "node .",
-    "dev": "hof-build watch",
-    "test": "NODE_ENV=test mocha",
-    "test:ci": "npm run lint && npm run test",
-    "test:acceptance": "so-acceptance --steps",
-    "test:acceptance:local": "funkie --driver chromedriver npm run test:acceptance",
-    "lint": "npm-run-all --parallel lint:app lint:acceptance",
-    "lint:app": "eslint .",
-    "lint:acceptance": "eslint --no-ignore -c ./node_modules/so-acceptance/.eslintrc ./apps/**/acceptance/**/*.js",
-    "prepareapp": "hof-build",
-    "postinstall": "npm run prepareapp"
+    "start": "node app.js",
+    "start:dev": "hof-build watch",
+    "test": "npm run test:lint",
+    "test:lint": "eslint .",
+    "build": "hof-build",
+    "postinstall": "npm run build"
   },
   "dependencies": {
-    "hof": "^12.0.0",
-    "hof-build": "^1.3.1",
-    "hof-controllers": "^6.0.3",
-    "hof-theme-govuk": "^2.0.2",
-    "deprecate": "1.0.0",
-    "jquery": "^2.1.4",
-    "lodash": "^4.17.4",
-    "moment": "^2.17.1",
-    "typeahead-aria": "^1.0.1"
+    "govuk-frontend": "^3.5.0",
+    "hof": "^13",
+    "hof-behaviour-summary-page": "^2.0.0",
+    "hof-behaviour-emailer": "^2.2.0",
+    "hof-build": "^1.3.4",
+    "hof-component-date": "^1.4.0",
+    "hof-template-mixins": "^5.0.1",
+    "hof-theme-govuk": "^4.3.0",
+    "hof-util-countries": "^1.0.0",
+    "typeahead-aria": "^1.0.4"
   },
   "devDependencies": {
-    "chai": "^3.0.0",
-    "eslint-config-homeoffice": "^2.0.0",
-    "mocha": "^2.2.5",
-    "mocha-junit-reporter": "^1.4.0",
-    "mocha-multi": "^0.7.1",
-    "nodemon": "^1.9.2",
-    "npm-run-all": "^1.7.0",
-    "funkie": "0.0.6",
-    "funkie-chromedriver": "0.0.1",
-    "pre-commit": "^1.0.10",
-    "proxyquire": "^1.5.0",
-    "sinomocha": "^0.2.4",
-    "sinon": "^1.15.3",
-    "sinon-chai": "^2.8.0",
-    "so-acceptance": "^5.0.1"
+    "eslint": "^3.14.0",
+    "eslint-config-homeoffice": "^2.1.0"
   },
-  "pre-commit": [
-    "lint",
-    "test"
-  ]
+  "name": "ukvi-complaints",
+  "version": "1.0.0",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "description": "",
+  "engines": {
+    "node": "10.11.0"
+  }
 }

@@ -1,0 +1,35 @@
+{{<partials-page}}
+{{$page-content}}
+<fieldset id="dob-group" class="{{#errors.dob}}validation-error{{/errors.dob}}">
+  <p>A reference number will help us look into your complaint more quickly</p>
+  <div class="form-group">
+    {{#radio-group}}reference-numbers{{/radio-group}}
+  </div>
+</fieldset>
+{{#input-submit}}continue{{/input-submit}}
+<br>
+<br>
+<details  data-module="govuk-details" >
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      Help with reference numbers
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+
+	<h3>GWF number</h3>
+	<p>You should have been given a GWF number if you applied for a visa outside of the UK</p>
+
+	<h3>Home Office reference number</h3>
+	<p>You should have been given a Home Office reference number if you applied for a visa within the UK. This could be an application or appeal number, an Application Registration Card (ARC) number or a case ID number.</p>
+
+	<h3>IHS number</h3>
+	<p>You should have been given an IHS number if you paid for the Immigration Health Surcharge.</p>
+
+	<h3>Unique application number</h3>
+	<p>This is a 16-digit number that appears on Home Office letters and emails related to your application.</p>
+
+  </div>
+</details>
+{{/page-content}}
+{{/partials-page}}

@@ -2,6 +2,8 @@
 
 ## Getting started
 
+Make sure you are using node 10.0.0
+
 Get the project from Github
 ```bash
 $ git clone git@github.com:UKHomeOffice/UKVI-Complaints.git && cd UKVI-Complaints

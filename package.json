@@ -1,7 +1,7 @@
 {
   "license": "MIT",
   "scripts": {
-    "start": "node app.js",
+    "start": "node app.js --env",
     "start:dev": "hof-build watch --env",
     "test": "npm run test:lint",
     "test:lint": "eslint .",
@@ -9,6 +9,7 @@
     "postinstall": "npm run build"
   },
   "dependencies": {
+    "dotenv": "^8.2.0",
     "govuk-frontend": "^3.5.0",
     "hof": "^13",
     "hof-behaviour-emailer": "^2.2.0",

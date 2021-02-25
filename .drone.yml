@@ -9,7 +9,7 @@ steps:
   image: node:10
   commands:
   - npm --loglevel warn install
-  # - npm run test
+  - npm run test
   when:
     branch: [ master, features/* ]
     event: push

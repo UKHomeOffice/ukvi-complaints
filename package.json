@@ -18,6 +18,7 @@
     "hof-template-mixins": "^5.0.1",
     "hof-theme-govuk": "^4.3.0",
     "hof-util-countries": "^1.0.0",
+    "sqs-producer": "^2.1.0",
     "typeahead-aria": "^1.0.4"
   },
   "devDependencies": {

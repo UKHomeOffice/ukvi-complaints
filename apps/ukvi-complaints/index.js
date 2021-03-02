@@ -6,6 +6,7 @@ const translation = require('./translations/en/default.json').fields;
 const moment = require('moment');
 const customerEmailer = require('./behaviours/customer-email')(config.email);
 const caseworkerEmailer = require('./behaviours/caseworker-email')(config.email);
+const addToSQS = require('./behaviours/add-to-sqs')(config);
 
 module.exports = {
   name: 'ukvi-complaints',
@@ -883,7 +884,7 @@ module.exports = {
       next: '/confirm'
     },
     '/confirm': {
-      behaviours: [caseworkerEmailer, customerEmailer, 'complete', require('hof-behaviour-summary-page')],
+      behaviours: [addToSQS, caseworkerEmailer, customerEmailer, 'complete', require('hof-behaviour-summary-page')],
       next: '/complete',
       sections: {
         'complaint-details': [

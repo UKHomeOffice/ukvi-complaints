@@ -36,10 +36,16 @@ sqs create-queue \
 --region eu-west-2 \
 ```
 
-This will return a url: 
+This will return a url, add this to config to place items on that queue: 
 ```
 http://localhost:4566/000000000000/local-queue
 ```
+
+To view what is on the queue currently run:
+```bash
+aws --endpoint-url=http://localhost:4566 --region eu-west-2 sqs receive-message --queue-url http://localhost:4566/000000000000/local-queue
+```
+
 
 ### Running in dev
 

@@ -19,6 +19,30 @@ Run the services locally with Docker Compose
 $ docker-compose up
 ```
 
+### Set up AWS SQS queue locally
+
+Run AWS services locally using localstack.
+
+```bash
+$ docker run --rm -p 4566:4566 -p 4571:4571 localstack/localstack
+```
+
+To create an SQS queue on the localstack instance.
+```bash
+aws \
+sqs create-queue \
+--queue-name local-queue \
+--endpoint-url http://localhost:4566 \
+--region eu-west-2 \
+```
+
+This will return a url: 
+```
+http://localhost:4566/000000000000/local-queue
+```
+
+### Running in dev
+
 Getting your hands dirty (You'll need [Redis](http://redis.io/) for this)
 ```bash
 $ npm run dev

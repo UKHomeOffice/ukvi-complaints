@@ -5,6 +5,14 @@ module.exports = config => {
 
   return superclass => class SQSIntegration extends superclass {
 
+    formatData(values) {
+      // todo format based on schema
+      return {
+        id: '123565',
+        body: 'test',
+      };
+    }
+
     saveValues(req, res, next) {
 
       super.saveValues(req, res, err => {
@@ -13,7 +21,11 @@ module.exports = config => {
           return next(err);
         }
 
-        const complaintData = SQSIntegration.formatData(req.sessionModel.toJSON());
+        const complaintData = {
+          id: '123565',
+          body: 'test',
+        };
+        // const complaintData = SQSIntegration.formatData(req.sessionModel.toJSON());
 
         const producer = Producer.create({
           queueUrl: config.aws.sqsUrl,
@@ -26,15 +38,11 @@ module.exports = config => {
           complaintData
         ]);
 
+        return next();
       });
     }
 
-    formatData(values) {
-      // todo format based on schema
-      return {
-        check: 'test',
-      };
-    }
+
   };
 };
 

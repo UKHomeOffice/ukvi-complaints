@@ -25,6 +25,6 @@ module.exports = {
   },
   aws: {
     region: process.env.AWS_REGION || 'eu-west-2',
-    sqsUrl: process.env.AWS_SQS_URL || 'http://localhost:4566/',
+    sqsUrl: process.env.AWS_SQS_URL || 'http://localhost:4566/000000000000/local-queue',
   }
 };

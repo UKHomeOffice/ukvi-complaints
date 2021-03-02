@@ -7,7 +7,7 @@ const translation = require('./translations/en/default.json').fields;
 const moment = require('moment');
 const customerEmailer = require('./behaviours/customer-email')(config.email);
 const caseworkerEmailer = require('./behaviours/caseworker-email')(config.email);
-const sendToSQS = require('./behaviours/send-to-sqs');
+const addToSQS = require('./behaviours/add-to-sqs')(config);
 
 module.exports = {
   name: 'ukvi-complaints',
@@ -868,7 +868,11 @@ module.exports = {
       next: '/confirm'
     },
     '/confirm': {
+<<<<<<< HEAD
       behaviours: [sendToSQS, caseworkerEmailer, customerEmailer, 'complete', require('hof-behaviour-summary-page')],
+=======
+      behaviours: [addToSQS, caseworkerEmailer, customerEmailer, 'complete', require('hof-behaviour-summary-page')],
+>>>>>>> c1812d2... Add sql-producer behaviour and instructions for setting up local stack queue
       next: '/complete',
       sections: {
         'complaint-details': [

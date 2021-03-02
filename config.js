@@ -1,5 +1,7 @@
 'use strict';
 
+const addToSqs = require("./apps/ukvi-complaints/behaviours/add-to-sqs");
+
 /* eslint no-process-env: 0 */
 
 module.exports = {
@@ -17,14 +19,10 @@ module.exports = {
     transportOptions: {
       accessKeyId: process.env.HOF_SES_USER || process.env.AWS_USER || '',
       secretAccessKey: process.env.HOF_SES_PASSWORD || process.env.AWS_PASSWORD || ''
-    },
-    emailCaseworker: true,
+    }
   },
-  awsSqs: {
+  aws: {
     region: process.env.AWS_REGION || 'eu-west-2',
-    queueUrl: process.env.SQS_URL || 'http://localhost:4566/000000000000/local-queue',
-    accessKeyId: process.env.ACCESS_KEY_ID || '',
-    secretAccessKey: process.env.SECRET_ACCESS_KEY || '',
-  },
-  writeToCasework: true,
+    sqsUrl: process.env.AWS_SQS_URL || 'http://localhost:4566/000000000000/local-queue',
+  }
 };

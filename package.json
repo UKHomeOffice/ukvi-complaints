@@ -23,12 +23,8 @@
     "hof-template-mixins": "^5.0.1",
     "hof-theme-govuk": "^4.3.0",
     "hof-util-countries": "^1.0.0",
-    "jquery": "^3.6.0",
-    "jsonschema": "^1.4.0",
-    "moment": "^2.29.1",
     "sqs-producer": "^2.1.0",
-    "typeahead-aria": "^1.0.4",
-    "uuid": "^8.3.2"
+    "typeahead-aria": "^1.0.4"
   },
   "devDependencies": {
     "@danmasta/mocha-sonar": "^1.0.0",

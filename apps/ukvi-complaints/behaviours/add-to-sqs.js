@@ -36,6 +36,8 @@ module.exports = config => {
         const complaintData = this.formatData(req.sessionModel.toJSON());
 
         console.log(complaintData);
+        console.log('>>>>>>>>>>>>');
+        console.log(complaintData.complaint.reporterDetails);
 
         const validator = new Validator();
         const valid = validator.validate(complaintData, decsSchema);

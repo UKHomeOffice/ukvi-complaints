@@ -39,7 +39,7 @@ class Complaint {
         };
 
         if (this.values['agent-phone']) {
-          applicantWithAgentDetails.agentPhone = this.values['agent-phone'];
+          applicantWithAgentDetails.agentDetails.agentPhone = this.values['agent-phone'];
         }
         return applicantWithAgentDetails;
       case 'no':

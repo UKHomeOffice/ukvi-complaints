@@ -1,146 +1,46 @@
+/* eslint-disable default-case */
 'use strict';
+const Validator = require('jsonschema').Validator;
 const { Producer } = require('sqs-producer');
-
-// ! All caps are enums that match up to values returned on session model
-      // ! To enum converters required
-      // ! Some sections present in every complaint
-      // ! Common include reference, reporterDetails
+const decsSchema = require('../schema/decs.json');
+const SubmittingApplicationComplaint = require('../lib/submitting-application');
 
 module.exports = config => {
 
   return superclass => class SQSIntegration extends superclass {
 
 
-    agentEnum(whoRepresenting) {
-      switch (whoRepresenting) {
-        case 'relative':
-          return 'RELATIVE';
-        case 'legal-rep':
-          return 'LEGAL_REP';
-        case 'sponsor':
-          return 'SPONSOR';
-        case 'support-org':
-          return 'SUPPORT_ORG';
-        default:
-          // ! What as default
-          return '';
-      }
-    }
+    // process - call formatData
 
-    createReporterDetails(values) {
-      switch (values['acting-as-agent']) {
-        case 'yes':
-          const applicantWithAgentDetails = {
-            applicantType: 'AGENT',
-            applicantDetails: {
-              applicantName: values['agent-representative-name'],
-              applicantNationality: values['agent-representative-nationality'],
-              applicantDob: values['agent-representative-dob']
-            },
-            agentDetails: {
-              agentName: values['agent-name'],
-              agentType: SQSIntegration.agentEnum(values['who-representing']),
-              agentEmail: values['agent-email'],
-            }
-          };
+    // validate - check data against schema
 
-          if (values['agent-phone']) {
-            applicantWithAgentDetails.agentPhone = values['agent-phone'];
-          }
-          return applicantWithAgentDetails;
-        case 'no':
-          const applicantDetails = {
-            applicantType: 'APPLICANT',
-            applicantName: values['applicant-name'],
-            applicantNationality: values['applicant-nationality'],
-            applicantDob: values['applicant-dob'],
-            applicantEmail: values['applicant-email'],
-          };
-          if (values['agent-phone']) {
-            applicantDetails.applicantPhone = values['applicant-phone'];
-          }
-          return applicantDetails;
-        default:
-          return '';
-      }
+    // saveValue - send to SQS queue
 
-
-    }
-
-    createReference(values) {
-      switch (values['reference-numbers']) {
-        case 'gwf':
-          return {
-            referenceType: 'GWF_REF',
-            reference: values['gwf-reference']
-          };
-        case 'ho':
-          return {
-            referenceType: 'HO_REF',
-            reference: values['ho-reference']
-          };
-        case 'ihs':
-          return {
-            referenceType: 'IHS_REF',
-            reference: values['ihs-reference']
-          };
-        case 'uan':
-          return {
-            referenceType: 'UAN_REF',
-            reference: values['uan-reference']
-          };
-        default:
-          // ! If not provided one what to return?
-          break;
-      }
-    }
-
-    createSubmittingApplicationComplaintJSON(values) {
-
-      //! Add the other ENUM Conversions
-
-      const submittingApplicationComplaint = {
-        complaintType: 'SUBMITTING_APPLICATION',
-        complaintDetails: {
-          complaintText: values['complaint-details'],
-          problemExperienced: 'TECHNICAL_ISSUES',
-          applicationLocation: 'INSIDE_UK'
-        },
-        reporterDetails: SQSIntegration.createReporterDetails(values),
-      };
-
-      if (values['reference-numbers'] !== 'none') {
-        submittingApplicationComplaint.reference = SQSIntegration.createReference(values);
-      }
-
-      return submittingApplicationComplaint;
-    }
 
     formatData(values) {
-
-
-      // todo format based on schema
-      return {
-        id: '123565',
-        body: 'test',
-      };
+      switch (values.reason) {
+        case 'immigration-application':
+          const submittingApplication = new SubmittingApplicationComplaint(values);
+          return submittingApplication.formatValues();
+        default:
+          return {
+            test: 'test'
+          };
+      }
     }
 
     saveValues(req, res, next) {
 
-      super.saveValues(req, res, err => {
-
-        if (err) {
-          return next(err);
-        }
-
         console.log(req.sessionModel.toJSON());
 
-        const complaintData = {
-          id: '123565',
-          body: 'test',
-        };
-        // const complaintData = SQSIntegration.formatData(req.sessionModel.toJSON());
+        const complaintData = this.formatData(req.sessionModel.toJSON());
+
+        console.log(complaintData);
+
+        const validator = new Validator();
+        const valid = validator.validate(complaintData, decsSchema);
+    
+        console.log(valid.errors);
 
         const producer = Producer.create({
           queueUrl: config.aws.sqsUrl,
@@ -149,14 +49,14 @@ module.exports = config => {
           // secretAccessKey: 'yourSecret'
         });
 
-        producer.send([
-          complaintData
-        ]).then(resp => {
-          console.log(resp);
-        });
+        // producer.send([
+        //   complaintData
+        // ]).then(resp => {
+        //   console.log(resp);
+        // });
 
         return next();
-      });
+
     }
 
 

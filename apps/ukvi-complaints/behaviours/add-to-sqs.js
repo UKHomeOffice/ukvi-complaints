@@ -4,6 +4,7 @@ const Validator = require('jsonschema').Validator;
 const { Producer } = require('sqs-producer');
 const decsSchema = require('../schema/decs.json');
 const SubmittingApplicationComplaint = require('../lib/submitting-application');
+const MakingAppointmentComplaint = require('../lib/making-appointment');
 
 module.exports = config => {
 
@@ -22,6 +23,9 @@ module.exports = config => {
         case 'immigration-application':
           const submittingApplication = new SubmittingApplicationComplaint(values);
           return submittingApplication.formatValues();
+        case 'immigration-appointment':
+          const makingApplication = new MakingAppointmentComplaint(values);
+          return makingApplication.formatValues();
         default:
           return {
             test: 'test'

@@ -5,6 +5,7 @@ const { Producer } = require('sqs-producer');
 const decsSchema = require('../schema/decs.json');
 const SubmittingApplicationComplaint = require('../lib/submitting-application');
 const MakingAppointmentComplaint = require('../lib/making-appointment');
+const DelaysComplaint = require('../lib/delays');
 
 module.exports = config => {
 
@@ -26,6 +27,9 @@ module.exports = config => {
         case 'immigration-appointment':
           const makingApplication = new MakingAppointmentComplaint(values);
           return makingApplication.formatValues();
+        case 'delays':
+          const delays = new DelaysComplaint(values);
+          return delays.formatValues();
         default:
           return {
             test: 'test'
@@ -45,7 +49,7 @@ module.exports = config => {
 
         const validator = new Validator();
         const valid = validator.validate(complaintData, decsSchema);
-    
+
         console.log(valid.errors);
 
         const producer = Producer.create({

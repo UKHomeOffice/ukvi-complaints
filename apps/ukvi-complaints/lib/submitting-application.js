@@ -4,6 +4,8 @@ const Complaint = require('./complaint');
 class SubmittingApplicationComplaint extends Complaint {
   constructor(values) {
     super(values);
+    this.complaintDetails.complaint.complaintType = 'SUBMITTING_APPLICATION';
+    this.complaintDetails.complaint.complaintDetails.problemExperienced = this.problemExperiencedEnum();
   }
 
   problemExperiencedEnum() {
@@ -17,29 +19,29 @@ class SubmittingApplicationComplaint extends Complaint {
     }
   }
 
-  formatValues() {
-    const complaintDetails = {
-      creationDate: this.creationDate,
-      complaint: {
-        complaintType: 'SUBMITTING_APPLICATION',
-        complaintDetails: {
-          complaintText: this.values['complaint-details'],
-          problemExperienced: this.problemExperiencedEnum(),
-        },
-        reporterDetails: this.createReporterDetails(),
-      }
-    };
+  // formatValues() {
+  //   const complaintDetails = {
+  //     creationDate: this.creationDate,
+  //     complaint: {
+  //       complaintType: 'SUBMITTING_APPLICATION',
+  //       complaintDetails: {
+  //         complaintText: this.values['complaint-details'],
+  //         problemExperienced: this.problemExperiencedEnum(),
+  //       },
+  //       reporterDetails: this.createReporterDetails(),
+  //     }
+  //   };
 
-    if (this.values['where-applied-from']) {
-      complaintDetails.complaint.complaintDetails.applicationLocation = this.applicationLocationEnum();
-    }
+  //   if (this.values['where-applied-from']) {
+  //     complaintDetails.complaint.complaintDetails.applicationLocation = this.applicationLocationEnum();
+  //   }
 
-    if (this.values['reference-numbers'] !== 'none') {
-      complaintDetails.complaint.reference = this.createReference();
-    }
+  //   if (this.values['reference-numbers'] !== 'none') {
+  //     complaintDetails.complaint.reference = this.createReference();
+  //   }
 
-    return complaintDetails;
-  }
+  //   return complaintDetails;
+  // }
 
 }
 

@@ -6,6 +6,7 @@ const decsSchema = require('../schema/decs.json');
 const SubmittingApplicationComplaint = require('../lib/submitting-application');
 const MakingAppointmentComplaint = require('../lib/making-appointment');
 const DelaysComplaint = require('../lib/delays');
+const BrpComplaint = require('../lib/brp');
 
 module.exports = config => {
 
@@ -23,13 +24,16 @@ module.exports = config => {
       switch (values.reason) {
         case 'immigration-application':
           const submittingApplication = new SubmittingApplicationComplaint(values);
-          return submittingApplication.formatValues();
+          return submittingApplication.complaintDetails;
         case 'immigration-appointment':
           const makingApplication = new MakingAppointmentComplaint(values);
-          return makingApplication.formatValues();
+          return makingApplication.complaintDetails;
         case 'delays':
           const delays = new DelaysComplaint(values);
-          return delays.formatValues();
+          return delays.complaintDetails;
+        case 'biometric-residence-permit':
+          const brp = new BrpComplaint(values);
+          return brp.complaintDetails;
         default:
           return {
             test: 'test'
@@ -44,8 +48,6 @@ module.exports = config => {
         const complaintData = this.formatData(req.sessionModel.toJSON());
 
         console.log(complaintData);
-        console.log('>>>>>>>>>>>>');
-        console.log(complaintData.complaint.reporterDetails);
 
         const validator = new Validator();
         const valid = validator.validate(complaintData, decsSchema);

@@ -4,6 +4,8 @@ const Complaint = require('./complaint');
 class MakingAppointmentComplaint extends Complaint {
   constructor(values) {
     super(values);
+    this.complaintDetails.complaint.complaintType = 'MAKING_APPOINTMENT';
+    this.complaintDetails.complaint.complaintDetails.problemExperienced = this.problemExperiencedEnum();
   }
 
   problemExperiencedEnum() {
@@ -20,30 +22,6 @@ class MakingAppointmentComplaint extends Complaint {
         return 'COMPLAIN_APPOINTMENTS';
 
     }
-  }
-
-  formatValues() {
-    const complaintDetails = {
-      creationDate: this.creationDate,
-      complaint: {
-        complaintType: 'MAKING_APPOINTMENT',
-        complaintDetails: {
-          complaintText: this.values['complaint-details'],
-          problemExperienced: this.problemExperiencedEnum(),
-        },
-        reporterDetails: this.createReporterDetails(),
-      }
-    };
-
-    if (this.values['where-applied-from']) {
-      complaintDetails.complaint.complaintDetails.applicationLocation = this.applicationLocationEnum();
-    }
-
-    if (this.values['reference-numbers'] !== 'none') {
-      complaintDetails.complaint.reference = this.createReference();
-    }
-
-    return complaintDetails;
   }
 }
 

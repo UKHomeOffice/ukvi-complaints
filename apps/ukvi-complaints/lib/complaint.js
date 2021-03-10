@@ -4,8 +4,23 @@ const moment = require('moment');
 class Complaint {
   constructor(values) {
     this.values = values;
-    this.creationDate = moment().format('YYYY-MM-DD');
+    this.complaintDetails = {
+      creationDate: moment().format('YYYY-MM-DD'),
+      complaint: {
+        reporterDetails: this.createReporterDetails(),
+        complaintDetails: {
+          complaintText: values['complaint-details']
+        }
+      }
+    };
 
+    if (this.values['reference-numbers'] !== 'none') {
+      this.complaintDetails.complaint.reference = this.createReference();
+    }
+
+    if (this.values['where-applied-from']) {
+      this.complaintDetails.complaint.complaintDetails.applicationLocation = this.applicationLocationEnum();
+    }
   }
 
   agentEnum() {

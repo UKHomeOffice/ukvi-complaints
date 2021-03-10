@@ -4,6 +4,11 @@ const Complaint = require('./complaint');
 class DelaysComplaint extends Complaint {
   constructor(values) {
     super(values);
+    this.complaintDetails.complaint.complaintType = 'DELAYS';
+    this.complaintDetails.complaint.complaintDetails.delayedWaitingFor = this.delayedWaitingForEnum();
+    if (this.values['return-of-documents']) {
+      this.complaintDetails.complaint.complaintDetails.documentReturnRequest = this.documentReturnRequestEnum();
+    }
   }
 
   delayedWaitingForEnum() {
@@ -26,33 +31,6 @@ class DelaysComplaint extends Complaint {
     }
   }
 
-  formatValues() {
-    const complaintDetails = {
-      creationDate: this.creationDate,
-      complaint: {
-        complaintType: 'DELAYS',
-        reporterDetails: this.createReporterDetails(),
-        complaintDetails: {
-          complaintText: this.values['complaint-details'],
-          delayedWaitingFor: this.delayedWaitingForEnum()
-        }
-      },
-    };
-
-    if (this.values['return-of-documents']) {
-      complaintDetails.complaint.complaintDetails.documentReturnRequest = this.documentReturnRequestEnum();
-    }
-
-    if (this.values['where-applied-from']) {
-      complaintDetails.complaint.complaintDetails.applicationLocation = this.applicationLocationEnum();
-    }
-
-    if (this.values['reference-numbers'] !== 'none') {
-      complaintDetails.complaint.reference = this.createReference();
-    }
-
-    return complaintDetails;
-  }
 }
 
 module.exports = DelaysComplaint;

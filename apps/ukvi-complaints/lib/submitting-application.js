@@ -4,7 +4,7 @@ const Complaint = require('./complaint');
 class SubmittingApplicationComplaint extends Complaint {
   constructor(values) {
     super(values);
-    this.complaintAttributes.complaint.complaintType = 'SUBMITTING_APPLICATION';
+    this.complaintAttributes.complaint.complaintType = 'SUBMITTING_APPLICATIO';
     this.complaintAttributes.complaint.complaintDetails.problemExperienced = this.problemExperiencedEnum();
   }
 

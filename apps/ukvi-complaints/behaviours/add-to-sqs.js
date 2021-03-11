@@ -18,14 +18,6 @@ module.exports = config => {
 
   return superclass => class SQSIntegration extends superclass {
 
-
-    // process - call formatData
-
-    // validate - check data against schema
-
-    // saveValue - send to SQS queue
-
-
     formatData(values) {
       switch (values.reason) {
         case 'immigration-application':
@@ -57,7 +49,7 @@ module.exports = config => {
             const informationIssue = new InformationIssueComplaint(values);
             return informationIssue.complaintAttributes;
           }
-          // todo staff behaviour face to face schema not working
+
           const staffBehaviour = new StaffBehaviourComplaint(values);
           return staffBehaviour.complaintAttributes;
 
@@ -68,46 +60,61 @@ module.exports = config => {
         case 'other-complaint':
           const somethingElse = new SomethingElseComplaint(values);
           return somethingElse.complaintAttributes;
+      }
+    }
 
-        default:
-          return {
-            test: 'test'
-          };
+    process(req, res, next) {
+      super.saveValues(req, res, (err) => {
+        try {
+          const complaintData = this.formatData(req.sessionModel.toJSON());
+          req.form.complaintData = complaintData;
+          return super.process(req, res, next);
+        } catch {
+          next(err);
+        }
+      });
+    }
+
+    validate(req, res, next) {
+      try {
+        const validator = new Validator();
+        const valid = validator.validate(req.form.complaintData, decsSchema);
+
+        if (valid.errors) {
+          throw new Error(valid.errors);
+        }
+
+        return super.validate(req, res, next);
+      } catch (err) {
+        return next(err);
       }
     }
 
     saveValues(req, res, next) {
+      super.saveValues(req, res, err => {
+        if (err) {
+          return next(err);
+        }
 
-        console.log(req.sessionModel.toJSON());
+        if (!config.writeToSQS) {
+          next();
+        } else {
+          const producer = Producer.create({
+            queueUrl: config.aws.sqsUrl,
+            region: config.aws.region,
+            // accessKeyId: 'yourAccessKey',
+            // secretAccessKey: 'yourSecret'
+          });
 
-        const complaintData = this.formatData(req.sessionModel.toJSON());
-
-        console.log(complaintData);
-        console.log('>>>>>>>>>>>>>>>>>');
-        console.log(complaintData.complaint.complaintDetails);
-
-        const validator = new Validator();
-        const valid = validator.validate(complaintData, decsSchema);
-
-        console.log(valid.errors);
-
-        const producer = Producer.create({
-          queueUrl: config.aws.sqsUrl,
-          region: config.aws.region,
-          // accessKeyId: 'yourAccessKey',
-          // secretAccessKey: 'yourSecret'
-        });
-
-        // producer.send([
-        //   complaintData
-        // ]).then(resp => {
-        //   console.log(resp);
-        // });
-
-        return next();
-
-    }
-
-
+          producer.send([{
+            // ! id?
+            body: JSON.stringify(req.form.complaintData),
+          }], error => {
+            next(error);
+          })
+          
+        }
+      })
+    };
   };
 };

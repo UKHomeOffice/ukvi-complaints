@@ -4,8 +4,8 @@ const Complaint = require('./complaint');
 class BrpComplaint extends Complaint {
   constructor(values) {
     super(values);
-    this.complaintDetails.complaint.complaintType = 'BIOMETRIC_RESIDENCE_PERMIT';
-    this.complaintDetails.complaint.complaintDetails.problemExperienced = this.problemExperiencedEnum();
+    this.complaintAttributes.complaint.complaintType = 'BIOMETRIC_RESIDENCE_PERMIT';
+    this.complaintAttributes.complaint.complaintDetails.problemExperienced = this.problemExperiencedEnum();
   }
 
   problemExperiencedEnum() {

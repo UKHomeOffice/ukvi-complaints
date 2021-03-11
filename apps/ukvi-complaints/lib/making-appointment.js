@@ -4,8 +4,8 @@ const Complaint = require('./complaint');
 class MakingAppointmentComplaint extends Complaint {
   constructor(values) {
     super(values);
-    this.complaintDetails.complaint.complaintType = 'MAKING_APPOINTMENT';
-    this.complaintDetails.complaint.complaintDetails.problemExperienced = this.problemExperiencedEnum();
+    this.complaintAttributes.complaint.complaintType = 'MAKING_APPOINTMENT';
+    this.complaintAttributes.complaint.complaintDetails.problemExperienced = this.problemExperiencedEnum();
   }
 
   problemExperiencedEnum() {
@@ -17,7 +17,7 @@ class MakingAppointmentComplaint extends Complaint {
       case 'technical-appointments':
         return 'TECHNICAL_APPOINTMENTS';
       case 'questions-appointments':
-        return 'QUESTION_APPOINTMENTS';
+        return 'QUESTIONS_APPOINTMENTS';
       case 'complain-appointments':
         return 'COMPLAIN_APPOINTMENTS';
 

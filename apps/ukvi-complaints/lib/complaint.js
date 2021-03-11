@@ -4,7 +4,7 @@ const moment = require('moment');
 class Complaint {
   constructor(values) {
     this.values = values;
-    this.complaintDetails = {
+    this.complaintAttributes = {
       creationDate: moment().format('YYYY-MM-DD'),
       complaint: {
         reporterDetails: this.createReporterDetails(),
@@ -14,12 +14,12 @@ class Complaint {
       }
     };
 
-    if (this.values['reference-numbers'] !== 'none') {
-      this.complaintDetails.complaint.reference = this.createReference();
+    if (this.values['reference-numbers'] && this.values['reference-numbers'] !== 'none') {
+      this.complaintAttributes.complaint.reference = this.createReference();
     }
 
     if (this.values['where-applied-from']) {
-      this.complaintDetails.complaint.complaintDetails.applicationLocation = this.applicationLocationEnum();
+      this.complaintAttributes.complaint.complaintDetails.applicationLocation = this.applicationLocationEnum();
     }
   }
 

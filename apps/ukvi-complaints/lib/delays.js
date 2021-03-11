@@ -4,10 +4,10 @@ const Complaint = require('./complaint');
 class DelaysComplaint extends Complaint {
   constructor(values) {
     super(values);
-    this.complaintDetails.complaint.complaintType = 'DELAYS';
-    this.complaintDetails.complaint.complaintDetails.delayedWaitingFor = this.delayedWaitingForEnum();
+    this.complaintAttributes.complaint.complaintType = 'DELAYS';
+    this.complaintAttributes.complaint.complaintDetails.delayedWaitingFor = this.delayedWaitingForEnum();
     if (this.values['return-of-documents']) {
-      this.complaintDetails.complaint.complaintDetails.documentReturnRequest = this.documentReturnRequestEnum();
+      this.complaintAttributes.complaint.complaintDetails.documentReturnRequest = this.documentReturnRequestEnum();
     }
   }
 

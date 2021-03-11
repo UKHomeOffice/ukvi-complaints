@@ -7,7 +7,8 @@
       "type": "object",
       "required": [
         "country",
-        "city"
+        "city",
+        "centreType"
       ],
       "additionalProperties": false,
       "properties": {
@@ -16,30 +17,50 @@
         },
         "city": {
           "type": "string"
+        },
+        "centreType": {
+          "type": "string",
+          "enum": [
+            "VAC"
+          ]
         }
       }
     },
     "SscCentre": {
       "type": "object",
       "required": [
-        "city"
+        "city",
+        "centreType"
       ],
       "additionalProperties": false,
       "properties": {
         "city": {
           "type": "string"
+        },
+        "centreType": {
+          "type": "string",
+          "enum": [
+            "SSC"
+          ]
         }
       }
     },
     "UkVcasCentre": {
       "type": "object",
       "required": [
-        "city"
+        "city",
+        "centreType"
       ],
       "additionalProperties": false,
       "properties": {
         "city": {
           "type": "string"
+        },
+        "centreType": {
+          "type": "string",
+          "enum": [
+            "UKVCAS"
+          ]
         }
       }
     },
@@ -274,13 +295,12 @@
         "SUBMITTING_APPLICATION",
         "MAKING_APPOINTMENT",
         "EXISTING",
-        "DOCUMENT_DELAYS",
+        "DELAYS",
         "IMMIGRATION_DECISION",
         "IMMIGRATION_STATUS_CHANGE",
         "BIOMETRIC_RESIDENCE_PERMIT",
         "REFUND",
-        "POOR_STAFF_BEHAVIOUR",
-        "POOR_INFORMATION",
+        "POOR_INFORMATION_OR_STAFF_BEHAVIOUR",
         "SOMETHING_ELSE"
       ]
     },
@@ -297,32 +317,24 @@
     "NoRefPreviousComplaintType": {
       "type": "object",
       "required": [
-        "previousComplaintType",
-        "complaintText"
+        "previousComplaintType"
       ],
       "additionalProperties": false,
       "properties": {
         "previousComplaintType": {
           "$ref": "#/definitions/ComplaintType"
-        },
-        "complaintText": {
-          "$ref": "#/definitions/ComplaintDetailsText"
         }
       }
     },
     "HasRefPreviousComplaintType": {
       "type": "object",
       "required": [
-        "complaintReferenceNumber",
-        "complaintText"
+        "complaintReferenceNumber"
       ],
       "additionalProperties": false,
       "properties": {
         "complaintReferenceNumber": {
           "type": "string"
-        },
-        "complaintText": {
-          "$ref": "#/definitions/ComplaintDetailsText"
         }
       }
     },
@@ -500,7 +512,7 @@
                 "LACK_AVAILABILITY",
                 "CHANGE_APPOINTMENT",
                 "TECHNICAL_APPOINTMENTS",
-                "QUESTION_APPOINTMENTS",
+                "QUESTIONS_APPOINTMENTS",
                 "COMPLAIN_APPOINTMENTS"
               ]
             }
@@ -817,12 +829,16 @@
         "complaintDetails": {
           "type": "object",
           "required": [
-            "previousComplaint"
+            "previousComplaint",
+            "complaintText"
           ],
           "additionalProperties": false,
           "properties": {
             "previousComplaint": {
               "$ref": "#/definitions/PreviousComplaintType"
+            },
+            "complaintText": {
+              "$ref": "#/definitions/ComplaintDetailsText"
             }
           }
         }
@@ -832,7 +848,6 @@
       "type": "object",
       "required": [
         "complaintType",
-        "reference",
         "reporterDetails",
         "complaintDetails"
       ],

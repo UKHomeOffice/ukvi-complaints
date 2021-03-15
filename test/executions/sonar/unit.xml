@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testExecutions version="1">
+    <file path="test/unit/behaviours/add-to-casework.spec.js">
+        <testCase name="Add to casework system #process It should add the complaintData to request" duration="2">
+            <failure message="TypeError: Cannot read property 'complaintData' of undefined">TypeError: Cannot read property 'complaintData' of undefined
+    at Context.it (test/unit/behaviours/add-to-casework.spec.js:66:28)
+    at process.topLevelDomainCallback (domain.js:121:23)</failure>
+        </testCase>
+    </file>
+</testExecutions>

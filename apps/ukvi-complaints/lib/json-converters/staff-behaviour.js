@@ -13,9 +13,21 @@ class StaffBehaviourComplaint extends Complaint {
       case 'face-to-face':
         return this.faceToFace();
       case 'on-phone':
-        return this.onPhone();
+        return {
+          experienceType: 'PHONE',
+          callDetails: {
+            numberCalled: this.values['called-number'],
+            date: this.values['called-date'],
+            time: this.values['called-time'],
+            calledFrom: this.values['called-from']
+          }
+        };
       case 'in-letter':
-        return this.inLetter();
+        return {
+          experienceType: 'LETTER_OR_EMAIL',
+        };
+      default:
+        throw new Error('invalid "staff-behaviour" value');
     }
   }
 
@@ -44,25 +56,9 @@ class StaffBehaviourComplaint extends Complaint {
           centreType: 'UKVCAS'
         };
         return experience;
+      default:
+        throw new Error('invalid "which-centre" value');
     }
-  }
-
-  onPhone() {
-    return {
-      experienceType: 'PHONE',
-      callDetails: {
-        numberCalled: this.values['called-number'],
-        date: this.values['called-date'],
-        time: this.values['called-time'],
-        calledFrom: this.values['called-from']
-      }
-    };
-  }
-
-  inLetter() {
-    return {
-      experienceType: 'LETTER_OR_EMAIL',
-    };
   }
 }
 

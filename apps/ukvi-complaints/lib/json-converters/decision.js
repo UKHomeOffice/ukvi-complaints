@@ -14,6 +14,8 @@ class DecisionComplaint extends Complaint {
         return 'NEGATIVE';
       case 'positive':
         return 'POSITIVE';
+      default:
+        throw new Error('invalid "decision-outcome" value');
     }
   }
 }

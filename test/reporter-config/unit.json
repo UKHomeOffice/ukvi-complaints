@@ -1,0 +1,12 @@
+{
+  "reporterEnabled": "spec, @danmasta/mocha-sonar, mochawesome",
+  "danmastaMochaSonarReporterOptions": {
+      "reporter": "",
+      "output": "test/executions/sonar/unit.xml"
+  },
+  "mochawesomeReporterOptions": {
+      "consoleReporter": "none",
+      "reportDir": "test/executions/mochawesome",
+      "reportFilename": "unit"
+  }
+}

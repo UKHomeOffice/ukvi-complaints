@@ -18,6 +18,8 @@ class ExistingComplaint extends Complaint {
         return {
           complaintReferenceNumber: this.values['complaint-reference-number'],
         };
+      default:
+        throw new Error('invalid "existing-complaint" value');
     }
   }
 
@@ -42,6 +44,8 @@ class ExistingComplaint extends Complaint {
         return 'POOR_INFORMATION_OR_STAFF_BEHAVIOUR';
       case 'other-complaint':
         return 'SOMETHING_ELSE';
+      default:
+        throw new Error('invalid "complaint-reason-previous" value');
     }
   }
 }

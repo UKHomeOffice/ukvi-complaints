@@ -4,7 +4,7 @@ const Complaint = require('./complaint');
 class SubmittingApplicationComplaint extends Complaint {
   constructor(values) {
     super(values);
-    this.complaintAttributes.complaint.complaintType = 'SUBMITTING_APPLICATIO';
+    this.complaintAttributes.complaint.complaintType = 'SUBMITTING_APPLICATION';
     this.complaintAttributes.complaint.complaintDetails.problemExperienced = this.problemExperiencedEnum();
   }
 
@@ -16,6 +16,8 @@ class SubmittingApplicationComplaint extends Complaint {
         return 'GUIDANCE';
       case 'complain':
         return 'SOMETHING_ELSE';
+      default:
+        throw new Error('invalid "immigration-application" value')
     }
   }
 }

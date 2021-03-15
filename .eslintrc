@@ -3,3 +3,22 @@ extends:
 
 env:
   es6: true
+  mocha: true
+
+overrides:
+- files:
+    "test/**/*.js"
+  rules:
+    implicit-dependencies/no-implicit: [error, { dev: true }]
+    max-nested-callbacks: off
+  globals:
+    chai: true
+    sinon: true
+    expect: true
+    proxyquire: true
+    browser: true
+    page: true
+    baseURL: true
+    submitPage: true
+    getErrorSummaries: true
+    getErrorMessages: true

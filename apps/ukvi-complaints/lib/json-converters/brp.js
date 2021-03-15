@@ -16,6 +16,8 @@ class BrpComplaint extends Complaint {
         return 'CARD_NOT_ARRIVED';
       case 'complain-brp':
         return 'COMPLAIN_BRP';
+      default:
+        throw new Error('invalid "biometric-residence-permit" value');
     }
   }
 }

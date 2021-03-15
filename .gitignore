@@ -1,7 +1,12 @@
 .DS_Store
-apps/*/translations/en
-node_modules
+node_modules/
 public
-npm-debug.log
+apps/*/translations/*
+!apps/*/translations/src
 .idea
+.DS_Store
+apps/.DS_Store
+.nyc_output
 .env
+test/executions
+test/coverage

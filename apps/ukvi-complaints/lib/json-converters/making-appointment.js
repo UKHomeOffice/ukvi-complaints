@@ -20,6 +20,8 @@ class MakingAppointmentComplaint extends Complaint {
         return 'QUESTIONS_APPOINTMENTS';
       case 'complain-appointments':
         return 'COMPLAIN_APPOINTMENTS';
+      default:
+        throw new Error('invalid "immigration-appointment" value');
 
     }
   }

@@ -33,6 +33,8 @@ class Complaint {
         return 'SPONSOR';
       case 'support-org':
         return 'SUPPORT_ORG';
+      default:
+        throw new Error('invalid "who-representing" value');
     }
   }
 
@@ -70,7 +72,7 @@ class Complaint {
         }
         return applicantDetails;
       default:
-        return '';
+        throw new Error('invalid "acting-as-agent" value');
     }
   }
 
@@ -97,8 +99,7 @@ class Complaint {
           reference: this.values['uan-reference']
         };
       default:
-        // ! If not provided one what to return?
-        break;
+        throw new Error('invalid "reference-numbers" value');
     }
   }
 
@@ -108,6 +109,8 @@ class Complaint {
         return 'INSIDE_UK';
       case 'outside-uk':
         return 'OUTSIDE_UK';
+      default:
+        throw new Error('invalid "where-applied-from" value');
     }
   }
 }

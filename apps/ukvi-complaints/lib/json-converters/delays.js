@@ -17,6 +17,8 @@ class DelaysComplaint extends Complaint {
         return 'APPLICATION_DELAY';
       case 'return-of-documents':
         return 'RETURN_OF_DOCUMENTS';
+      default:
+        throw new Error('invalid "delay-type" value');
     }
   }
 
@@ -28,6 +30,9 @@ class DelaysComplaint extends Complaint {
         return 'YES_DOCS_SERVICE';
       case 'no':
         return 'NO';
+      default:
+        throw new Error('invalid "return-of-documents" value');
+  
     }
   }
 

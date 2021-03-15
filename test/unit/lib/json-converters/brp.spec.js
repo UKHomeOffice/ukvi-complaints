@@ -33,8 +33,7 @@ describe('BrpComplaint', () => {
 
     it('throws an error if invalid biometric-residence-permit is passed', () => {
       const values = Object.assign({
-        'biometric-residence-permit': 'invalid',
-        reason: 'biometric-residence-permit'
+        'biometric-residence-permit': 'invalid'
       }, complaintDetailsBase);
 
       expect(() => new BrpComplaint(values)).to.throw('invalid "biometric-residence-permit" value');

@@ -1,9 +1,8 @@
 /* eslint-disable max-nested-callbacks */
 'use strict';
+// eslint-disable-next-line max-len
 const complaintDetailsBase = require('../test-data/complaint-base');
-const SubmittingApplicationComplaint = require(
-  '../../../../apps/ukvi-complaints/lib/json-converters/submitting-application'
-  );
+const SubmittingApplicationComplaint = require('../../../../apps/ukvi-complaints/lib/json-converters/submitting-application');
 
 describe('SubmittingApplicationComplaint', () => {
   describe('problemExperienced', () => {

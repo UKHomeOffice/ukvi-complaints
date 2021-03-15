@@ -25,7 +25,6 @@ describe('DecisionComplaint', () => {
 
     it('throws an error if invalid decision-outcome is passed', () => {
       const values = Object.assign({
-        reason: 'immigration-decision',
         'decision-outcome': 'invalid'
       }, complaintDetailsBase);
 

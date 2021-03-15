@@ -1,6 +1,5 @@
 'use strict';
 const moment = require('moment');
-const enums = require('../enums');
 
 class Complaint {
   constructor(values) {
@@ -20,19 +19,23 @@ class Complaint {
     }
 
     if (this.values['where-applied-from']) {
-      this.complaintAttributes.complaint.complaintDetails.applicationLocation = this.getFormattedEnum(
-        this.values['where-applied-from']
-      );
+      this.complaintAttributes.complaint.complaintDetails.applicationLocation = this.applicationLocationEnum();
     }
   }
 
-  getFormattedEnum(complaintField) {
-    if (enums[complaintField]) {
-      return enums[complaintField];
+  agentEnum() {
+    switch (this.values['who-representing']) {
+      case 'relative':
+        return 'RELATIVE';
+      case 'legal-rep':
+        return 'LEGAL_REP';
+      case 'sponsor':
+        return 'SPONSOR';
+      case 'support-org':
+        return 'SUPPORT_ORG';
+      default:
+        throw new Error('invalid "who-representing" value');
     }
-
-    const invalidField = Object.keys(this.values).find(key => this.values[key] === complaintField);
-    throw new Error(`invalid "${invalidField}" value`);
   }
 
   createReporterDetails() {
@@ -47,7 +50,7 @@ class Complaint {
           },
           agentDetails: {
             agentName: this.values['agent-name'],
-            agentType: this.getFormattedEnum(this.values['who-representing']),
+            agentType: this.agentEnum(),
             agentEmail: this.values['agent-email'],
           }
         };
@@ -74,25 +77,40 @@ class Complaint {
   }
 
   createReference() {
-    const referenceDetails = {
-      reference: this.values[`${this.values['reference-numbers']}-reference`]
-    };
-
     switch (this.values['reference-numbers']) {
       case 'gwf':
-        referenceDetails.referenceType = 'GWF_REF';
-        return referenceDetails;
+        return {
+          referenceType: 'GWF_REF',
+          reference: this.values['gwf-reference']
+        };
       case 'ho':
-        referenceDetails.referenceType = 'HO_REF';
-        return referenceDetails;
+        return {
+          referenceType: 'HO_REF',
+          reference: this.values['ho-reference']
+        };
       case 'ihs':
-        referenceDetails.referenceType = 'IHS_REF';
-        return referenceDetails;
+        return {
+          referenceType: 'IHS_REF',
+          reference: this.values['ihs-reference']
+        };
       case 'uan':
-        referenceDetails.referenceType = 'UAN_REF';
-        return referenceDetails;
+        return {
+          referenceType: 'UAN_REF',
+          reference: this.values['uan-reference']
+        };
       default:
         throw new Error('invalid "reference-numbers" value');
+    }
+  }
+
+  applicationLocationEnum() {
+    switch (this.values['where-applied-from']) {
+      case 'inside-uk':
+        return 'INSIDE_UK';
+      case 'outside-uk':
+        return 'OUTSIDE_UK';
+      default:
+        throw new Error('invalid "where-applied-from" value');
     }
   }
 }

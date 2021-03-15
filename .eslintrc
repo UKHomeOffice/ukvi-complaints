@@ -11,7 +11,6 @@ overrides:
   rules:
     implicit-dependencies/no-implicit: [error, { dev: true }]
     max-nested-callbacks: off
-    complexity: [error, 40]
   globals:
     chai: true
     sinon: true
@@ -23,7 +22,3 @@ overrides:
     submitPage: true
     getErrorSummaries: true
     getErrorMessages: true
-- files:
-    "apps/ukvi-complaints/behaviours/*.js"
-  rules:
-    complexity: [error, 40]

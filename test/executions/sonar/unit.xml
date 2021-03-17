@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <testExecutions version="1">
-    <file path="test/unit/behaviours/add-to-casework.spec.js">
-        <testCase name="Add to casework system #process It should add the complaintData to request" duration="2">
-            <failure message="TypeError: Cannot read property 'complaintData' of undefined">TypeError: Cannot read property 'complaintData' of undefined
-    at Context.it (test/unit/behaviours/add-to-casework.spec.js:66:28)
-    at process.topLevelDomainCallback (domain.js:121:23)</failure>
+    <file path="test/unit/lib/json-converters/complaint.spec.js">
+        <testCase name="Complaint complaintAttributes complaintDetails applicationLocation It throws an error if invalid &quot;where-applied-from-supplied&quot;" duration="1">
+            <failure message="Error: invalid location">Error: invalid location
+    at Complaint.applicationLocationEnum (apps/ukvi-complaints/lib/json-converters/complaint.js:2:3922)
+    at new Complaint (apps/ukvi-complaints/lib/json-converters/complaint.js:2:969)
+    at Context.&lt;anonymous&gt; (test/unit/lib/json-converters/complaint.spec.js:312:18)
+    at processImmediate (internal/timers.js:439:21)
+    at process.topLevelDomainCallback (domain.js:126:23)</failure>
         </testCase>
     </file>
 </testExecutions>

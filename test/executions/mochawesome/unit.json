@@ -1,13 +1,13 @@
 {
   "stats": {
-    "suites": 2,
+    "suites": 4,
     "tests": 1,
     "passes": 0,
     "pending": 0,
     "failures": 1,
-    "start": "2021-03-15T15:18:11.646Z",
-    "end": "2021-03-15T15:18:11.655Z",
-    "duration": 9,
+    "start": "2021-03-17T16:11:59.590Z",
+    "end": "2021-03-17T16:11:59.604Z",
+    "duration": 14,
     "testsRegistered": 1,
     "passPercent": 0,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "5adb7c2f-279e-4d71-aa94-87025da75163",
+      "uuid": "841ec064-d53d-4997-91fd-acfc4f17adc2",
       "title": "",
       "fullFile": "",
       "file": "",
@@ -27,72 +27,129 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "0f1fcf9a-aedd-4c4c-9b8e-29f2616ea125",
-          "title": "Add to casework system",
-          "fullFile": "/Users/JosephCoker/Projects/Home-Office/HOF/ukvi-complaints/test/unit/behaviours/add-to-casework.spec.js",
-          "file": "/test/unit/behaviours/add-to-casework.spec.js",
-          "beforeHooks": [],
+          "uuid": "b86fa7b1-56b5-4b5b-8fd5-239f3f2910b6",
+          "title": "Complaint",
+          "fullFile": "/Users/JosephCoker/Projects/Home-Office/HOF/ukvi-complaints/test/unit/lib/json-converters/complaint.spec.js",
+          "file": "/test/unit/lib/json-converters/complaint.spec.js",
+          "beforeHooks": [
+            {
+              "title": "\"before each\" hook in \"Complaint\"",
+              "fullTitle": "Complaint \"before each\" hook in \"Complaint\"",
+              "timedOut": false,
+              "duration": 6,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const momentStub = sinon.stub().returns({\n      format: () => (creationDate)\n    });\n    Complaint = proxyquire('../../../../apps/ukvi-complaints/lib/json-converters/complaint', {\n      'moment': momentStub\n    });",
+              "err": {},
+              "uuid": "33528974-282d-4f71-94d9-e5e2289327a8",
+              "parentUUID": "b86fa7b1-56b5-4b5b-8fd5-239f3f2910b6",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
           "afterHooks": [],
           "tests": [],
           "suites": [
             {
-              "uuid": "fa6bcba2-265f-4cbe-88e2-f0c912574bea",
-              "title": "#process",
-              "fullFile": "/Users/JosephCoker/Projects/Home-Office/HOF/ukvi-complaints/test/unit/behaviours/add-to-casework.spec.js",
-              "file": "/test/unit/behaviours/add-to-casework.spec.js",
-              "beforeHooks": [
-                {
-                  "title": "\"before each\" hook in \"#process\"",
-                  "fullTitle": "Add to casework system #process \"before each\" hook in \"#process\"",
-                  "timedOut": false,
-                  "duration": 1,
-                  "state": null,
-                  "speed": null,
-                  "pass": false,
-                  "fail": false,
-                  "pending": false,
-                  "context": null,
-                  "code": "this.clock = date => sinon.useFakeTimers(new Date(date));\nthis.clock('2021-01-01');\nreq = {\n  sessionModel: {\n    attributes: {\n      'csrf-secret': 'pTuaXZfpEH4Hi2GwjNTEH4ej',\n      errors: null,\n      reason: 'immigration-application',\n      steps:\n      ['/reason',\n        '/immigration-application',\n        '/application-technical',\n        '/application-ref-numbers',\n        '/acting-as-agent',\n        '/who-representing',\n        '/agent-name',\n        '/agent-contact-details',\n        '/agent-representative-name',\n        '/agent-representative-dob',\n        '/agent-representative-nationality',\n        '/complaint-details'],\n      'immigration-application': 'technical-issues',\n      'who-representing': 'legal-rep',\n      'agent-name': 'mm',\n      'agent-email': 'test@test.com',\n      'agent-phone': '12435667889',\n      'agent-representative-name': 'pp',\n      'agent-representative-dob': '1980-02-02',\n      'agent-representative-nationality': 'Ukraine',\n      'complaint-details': 'test',\n      'where-applied-from': 'inside-uk',\n      'reference-numbers': 'gwf',\n      'gwf-reference': 'GWF012345678',\n      'ho-reference': '',\n      'ihs-reference': '',\n      'uan-reference': '',\n      'acting-as-agent': 'yes' },\n  }\n};\nAddToCasework = Behaviour(Base);\ntestInstance = new AddToCasework();",
-                  "err": {},
-                  "uuid": "9599cb30-7e73-4507-8206-493e46c3549e",
-                  "parentUUID": "fa6bcba2-265f-4cbe-88e2-f0c912574bea",
-                  "isHook": true,
-                  "skipped": false
-                }
-              ],
+              "uuid": "2a00a716-5f4a-48ab-8cd7-6c1ba6138b5a",
+              "title": "complaintAttributes",
+              "fullFile": "/Users/JosephCoker/Projects/Home-Office/HOF/ukvi-complaints/test/unit/lib/json-converters/complaint.spec.js",
+              "file": "/test/unit/lib/json-converters/complaint.spec.js",
+              "beforeHooks": [],
               "afterHooks": [],
-              "tests": [
+              "tests": [],
+              "suites": [
                 {
-                  "title": "It should add the complaintData to request",
-                  "fullTitle": "Add to casework system #process It should add the complaintData to request",
-                  "timedOut": false,
-                  "duration": 2,
-                  "state": "failed",
-                  "speed": null,
-                  "pass": false,
-                  "fail": true,
-                  "pending": false,
-                  "context": null,
-                  "code": "testInstance.process(req, res, () => {});\nconsole.log(req);\nconsole.log(req.form.complaintData);\n// expect(req.form.complaintData).to.deep.equal({\n//   creationDate\n// });",
-                  "err": {
-                    "message": "TypeError: Cannot read property 'complaintData' of undefined",
-                    "estack": "TypeError: Cannot read property 'complaintData' of undefined\n    at Context.it (test/unit/behaviours/add-to-casework.spec.js:66:28)\n    at process.topLevelDomainCallback (domain.js:121:23)",
-                    "diff": null
-                  },
-                  "uuid": "60588a30-0205-48ce-a844-ebc17a91e216",
-                  "parentUUID": "fa6bcba2-265f-4cbe-88e2-f0c912574bea",
-                  "isHook": false,
-                  "skipped": false
+                  "uuid": "9ccca6af-43a2-4b9c-92cf-418bd5514d01",
+                  "title": "complaintDetails",
+                  "fullFile": "/Users/JosephCoker/Projects/Home-Office/HOF/ukvi-complaints/test/unit/lib/json-converters/complaint.spec.js",
+                  "file": "/test/unit/lib/json-converters/complaint.spec.js",
+                  "beforeHooks": [],
+                  "afterHooks": [],
+                  "tests": [],
+                  "suites": [
+                    {
+                      "uuid": "11ff7777-e92e-42ee-8f13-ac3251150497",
+                      "title": "applicationLocation",
+                      "fullFile": "/Users/JosephCoker/Projects/Home-Office/HOF/ukvi-complaints/test/unit/lib/json-converters/complaint.spec.js",
+                      "file": "/test/unit/lib/json-converters/complaint.spec.js",
+                      "beforeHooks": [
+                        {
+                          "title": "\"before each\" hook in \"applicationLocation\"",
+                          "fullTitle": "Complaint complaintAttributes complaintDetails applicationLocation \"before each\" hook in \"applicationLocation\"",
+                          "timedOut": false,
+                          "duration": 0,
+                          "state": null,
+                          "speed": null,
+                          "pass": false,
+                          "fail": false,
+                          "pending": false,
+                          "context": null,
+                          "code": "values = applicantTestValues;",
+                          "err": {},
+                          "uuid": "4972f1b0-823b-4dfc-aa7e-57ee49c9afa5",
+                          "parentUUID": "11ff7777-e92e-42ee-8f13-ac3251150497",
+                          "isHook": true,
+                          "skipped": false
+                        }
+                      ],
+                      "afterHooks": [],
+                      "tests": [
+                        {
+                          "title": "It throws an error if invalid \"where-applied-from-supplied\"",
+                          "fullTitle": "Complaint complaintAttributes complaintDetails applicationLocation It throws an error if invalid \"where-applied-from-supplied\"",
+                          "timedOut": false,
+                          "duration": 1,
+                          "state": "failed",
+                          "speed": null,
+                          "pass": false,
+                          "fail": true,
+                          "pending": false,
+                          "context": null,
+                          "code": "values['where-applied-from'] = 'location';\nexpect(new Complaint(values)).to.throw('invalid location');",
+                          "err": {
+                            "message": "Error: invalid location",
+                            "estack": "Error: invalid location\n    at Complaint.applicationLocationEnum (apps/ukvi-complaints/lib/json-converters/complaint.js:2:3922)\n    at new Complaint (apps/ukvi-complaints/lib/json-converters/complaint.js:2:969)\n    at Context.<anonymous> (test/unit/lib/json-converters/complaint.spec.js:312:18)\n    at processImmediate (internal/timers.js:439:21)\n    at process.topLevelDomainCallback (domain.js:126:23)",
+                            "diff": null
+                          },
+                          "uuid": "73283c30-9364-4a2b-8130-a93e3a963c3e",
+                          "parentUUID": "11ff7777-e92e-42ee-8f13-ac3251150497",
+                          "isHook": false,
+                          "skipped": false
+                        }
+                      ],
+                      "suites": [],
+                      "passes": [],
+                      "failures": [
+                        "73283c30-9364-4a2b-8130-a93e3a963c3e"
+                      ],
+                      "pending": [],
+                      "skipped": [],
+                      "duration": 1,
+                      "root": false,
+                      "rootEmpty": false,
+                      "_timeout": 2000
+                    }
+                  ],
+                  "passes": [],
+                  "failures": [],
+                  "pending": [],
+                  "skipped": [],
+                  "duration": 0,
+                  "root": false,
+                  "rootEmpty": false,
+                  "_timeout": 2000
                 }
               ],
-              "suites": [],
               "passes": [],
-              "failures": [
-                "60588a30-0205-48ce-a844-ebc17a91e216"
-              ],
+              "failures": [],
               "pending": [],
               "skipped": [],
-              "duration": 2,
+              "duration": 0,
               "root": false,
               "rootEmpty": false,
               "_timeout": 2000

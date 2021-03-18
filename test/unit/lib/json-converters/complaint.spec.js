@@ -18,8 +18,6 @@ describe('Complaint', () => {
   const testHoRef = 'HO3456789';
   const testIhsRef = 'IHS4567890';
   const testUanRef = 'UAN4567890';
-
-  let values;
   const applicantTestValues = {
     'applicant-name': testApplicantName,
     'applicant-dob': testApplicantDob,
@@ -59,30 +57,28 @@ describe('Complaint', () => {
 
 
   it('Should have property complaintAttributes which is an object', () => {
-    values = applicantTestValues;
-    complaint = new Complaint(values);
+    complaint = new Complaint(applicantTestValues);
     expect(complaint.complaintAttributes).to.be.an('object');
   });
 
   describe('complaintAttributes', () => {
 
     it('Should have creationDate set', () => {
-      values = applicantTestValues;
-      complaint = new Complaint(values);
+      complaint = new Complaint(applicantTestValues);
       expect(complaint.complaintAttributes.creationDate).to.eql(creationDate);
     });
 
 
     describe('reporterDetails', () => {
+      let reporterDetailsValues;
 
       describe('applicant', () => {
-
         beforeEach(() => {
-          values = applicantTestValues;
+          reporterDetailsValues = Object.assign({}, applicantTestValues);
         });
 
         it('Should return applicant details without phone number if not included', () => {
-          complaint = new Complaint(values);
+          complaint = new Complaint(reporterDetailsValues);
           expect(complaint.complaintAttributes.complaint.reporterDetails).to.eql({
             applicantType: applicantTypeApplicant,
             applicantName: testApplicantName,
@@ -93,8 +89,8 @@ describe('Complaint', () => {
         });
 
         it('Should return applicant details with phone number if included', () => {
-          values['applicant-phone'] = testApplicantPhone;
-          complaint = new Complaint(values);
+          reporterDetailsValues['applicant-phone'] = testApplicantPhone;
+          complaint = new Complaint(reporterDetailsValues);
           expect(complaint.complaintAttributes.complaint.reporterDetails).to.eql({
             applicantType: applicantTypeApplicant,
             applicantName: testApplicantName,
@@ -107,14 +103,15 @@ describe('Complaint', () => {
       });
 
       describe('agent', () => {
+        let agentValues;
 
         beforeEach(() => {
-          values = agentTestValues;
+          agentValues = Object.assign({}, agentTestValues);
         });
 
         it('it should return agent and applicant details with agentType RELATIVE', () => {
-          values['who-representing'] = 'relative';
-          complaint = new Complaint(values);
+          agentValues['who-representing'] = 'relative';
+          complaint = new Complaint(agentValues);
           expect(complaint.complaintAttributes.complaint.reporterDetails).to.eql({
             applicantType: applicantTypeAgent,
             applicantDetails: {
@@ -131,8 +128,8 @@ describe('Complaint', () => {
         });
 
         it('it should return agent and applicant details with agentType LEGAL_REP', () => {
-          values['who-representing'] = 'legal-rep';
-          complaint = new Complaint(values);
+          agentValues['who-representing'] = 'legal-rep';
+          complaint = new Complaint(agentValues);
           expect(complaint.complaintAttributes.complaint.reporterDetails).to.eql({
             applicantType: applicantTypeAgent,
             applicantDetails: {
@@ -149,8 +146,8 @@ describe('Complaint', () => {
         });
 
         it('it should return agent and applicant details with agentType SPONSOR', () => {
-          values['who-representing'] = 'sponsor';
-          complaint = new Complaint(values);
+          agentValues['who-representing'] = 'sponsor';
+          complaint = new Complaint(agentValues);
           expect(complaint.complaintAttributes.complaint.reporterDetails).to.eql({
             applicantType: applicantTypeAgent,
             applicantDetails: {
@@ -167,8 +164,8 @@ describe('Complaint', () => {
         });
 
         it('it should return agent and applicant details with agentType SUPPORT_ORG', () => {
-          values['who-representing'] = 'support-org';
-          complaint = new Complaint(values);
+          agentValues['who-representing'] = 'support-org';
+          complaint = new Complaint(agentValues);
           expect(complaint.complaintAttributes.complaint.reporterDetails).to.eql({
             applicantType: applicantTypeAgent,
             applicantDetails: {
@@ -185,9 +182,9 @@ describe('Complaint', () => {
         });
 
         it('Should return agent details with phone number if included', () => {
-          values['agent-phone'] = testAgentPhone;
-          values['who-representing'] = 'relative';
-          complaint = new Complaint(values);
+          agentValues['agent-phone'] = testAgentPhone;
+          agentValues['who-representing'] = 'relative';
+          complaint = new Complaint(agentValues);
           expect(complaint.complaintAttributes.complaint.reporterDetails).to.eql({
             applicantType: applicantTypeAgent,
             applicantDetails: {
@@ -205,9 +202,8 @@ describe('Complaint', () => {
         });
 
         it('should throw error if incorrect who-representing type specified', () => {
-          values['who-representing'] = 'error-agent';
-          complaint = new Complaint(values);
-          expect(complaint).to.throw();
+          agentValues['who-representing'] = 'error-agent';
+          expect(() => new Complaint(agentValues)).to.throw('invalid "who-representing" value');
         });
 
       });
@@ -215,25 +211,27 @@ describe('Complaint', () => {
     });
 
     describe('reference', () => {
+      let referenceValues;
+
       beforeEach(() => {
-        values = applicantTestValues;
+        referenceValues = Object.assign({}, applicantTestValues);
       });
 
       it('Does not include a reference if reference-number is not present', () => {
-        complaint = new Complaint(values);
+        complaint = new Complaint(referenceValues);
         expect(complaint.complaintAttributes.complaint).to.not.have.all.keys('reference');
       });
 
       it('Does not include a reference if reference-numbers is specified as "none"', () => {
-        values['reference-numbers'] = 'none';
-        complaint = new Complaint(values);
+        referenceValues['reference-numbers'] = 'none';
+        complaint = new Complaint(referenceValues);
         expect(complaint.complaintAttributes.complaint).to.not.have.all.keys('reference');
       });
 
       it('If "gwf" reference, reference number will be set on GWF_REF', () => {
-        values['reference-numbers'] = 'gwf';
-        values['gwf-reference'] = testGwfRef;
-        complaint = new Complaint(values);
+        referenceValues['reference-numbers'] = 'gwf';
+        referenceValues['gwf-reference'] = testGwfRef;
+        complaint = new Complaint(referenceValues);
         expect(complaint.complaintAttributes.complaint.reference).to.eql({
           referenceType: 'GWF_REF',
           reference: testGwfRef
@@ -241,9 +239,9 @@ describe('Complaint', () => {
       });
 
       it('If "ho" reference, reference number will be set on HO_REF', () => {
-        values['reference-numbers'] = 'ho';
-        values['ho-reference'] = testHoRef;
-        complaint = new Complaint(values);
+        referenceValues['reference-numbers'] = 'ho';
+        referenceValues['ho-reference'] = testHoRef;
+        complaint = new Complaint(referenceValues);
         expect(complaint.complaintAttributes.complaint.reference).to.eql({
           referenceType: 'HO_REF',
           reference: testHoRef
@@ -251,9 +249,9 @@ describe('Complaint', () => {
       });
 
       it('If "ihs" reference, reference number will be set on IHS_REF', () => {
-        values['reference-numbers'] = 'ihs';
-        values['ihs-reference'] = testIhsRef;
-        complaint = new Complaint(values);
+        referenceValues['reference-numbers'] = 'ihs';
+        referenceValues['ihs-reference'] = testIhsRef;
+        complaint = new Complaint(referenceValues);
         expect(complaint.complaintAttributes.complaint.reference).to.eql({
           referenceType: 'IHS_REF',
           reference: testIhsRef
@@ -261,9 +259,9 @@ describe('Complaint', () => {
       });
 
       it('If "uan" reference, reference number will be set on UAN_REF', () => {
-        values['reference-numbers'] = 'uan';
-        values['uan-reference'] = testUanRef;
-        complaint = new Complaint(values);
+        referenceValues['reference-numbers'] = 'uan';
+        referenceValues['uan-reference'] = testUanRef;
+        complaint = new Complaint(referenceValues);
         expect(complaint.complaintAttributes.complaint.reference).to.eql({
           referenceType: 'UAN_REF',
           reference: testUanRef
@@ -271,45 +269,40 @@ describe('Complaint', () => {
       });
 
       it('should throw error if incorrect ref type specified', () => {
-        expect(false).to.eql(true);
+        referenceValues['reference-numbers'] = 'fff';
+        expect(() => new Complaint(referenceValues)).to.throw('invalid "reference-numbers" value');
       });
 
     });
 
     describe('complaintDetails', () => {
-
-      describe('complaintText', () => {
-        it('It throws an error if not provided', () => {
-          expect(false).to.eql(true);
-        });
-      });
-
       describe('applicationLocation', () => {
+        let applicationLocationValues;
 
         beforeEach(() => {
-          values = applicantTestValues;
+          applicationLocationValues = Object.assign({}, applicantTestValues);
         });
 
         it('If no location provided, applicationLocation is not set', () => {
-          complaint = new Complaint(values);
+          complaint = new Complaint(applicationLocationValues);
           expect(complaint.complaintAttributes.complaint.complaintDetails).to.not.have.all.keys('applicationLocation');
         });
 
         it('If applied from "inside-uk", applicationLocation set to INSIDE_UK', () => {
-          values['where-applied-from'] = 'inside-uk';
-          complaint = new Complaint(values);
+          applicationLocationValues['where-applied-from'] = 'inside-uk';
+          complaint = new Complaint(applicationLocationValues);
           expect(complaint.complaintAttributes.complaint.complaintDetails.applicationLocation).to.eql('INSIDE_UK');
         });
 
         it('If applied from "outside-uk", applicationLocation set to OUTSIDE_UK', () => {
-          values['where-applied-from'] = 'outside-uk';
-          complaint = new Complaint(values);
+          applicationLocationValues['where-applied-from'] = 'outside-uk';
+          complaint = new Complaint(applicationLocationValues);
           expect(complaint.complaintAttributes.complaint.complaintDetails.applicationLocation).to.eql('OUTSIDE_UK');
         });
 
-        it.only('It throws an error if invalid "where-applied-from"', () => {
-          values['where-applied-from'] = 'location';
-          expect(new Complaint(values)).to.throw('invalid "where-applied-from" value');
+        it('It throws an error if invalid "where-applied-from"', () => {
+          applicationLocationValues['where-applied-from'] = 'location';
+          expect(() => new Complaint(applicationLocationValues)).to.throw('invalid "where-applied-from" value');
         });
       });
     });

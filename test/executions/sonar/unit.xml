@@ -1,13 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <testExecutions version="1">
-    <file path="test/unit/lib/json-converters/complaint.spec.js">
-        <testCase name="Complaint complaintAttributes complaintDetails applicationLocation It throws an error if invalid &quot;where-applied-from-supplied&quot;" duration="1">
-            <failure message="Error: invalid location">Error: invalid location
-    at Complaint.applicationLocationEnum (apps/ukvi-complaints/lib/json-converters/complaint.js:2:3922)
-    at new Complaint (apps/ukvi-complaints/lib/json-converters/complaint.js:2:969)
-    at Context.&lt;anonymous&gt; (test/unit/lib/json-converters/complaint.spec.js:312:18)
-    at processImmediate (internal/timers.js:439:21)
-    at process.topLevelDomainCallback (domain.js:126:23)</failure>
+    <file path="test/unit/behaviours/add-to-casework.spec.js">
+        <testCase name="Add to casework system #process It should add the complaintData to request" duration="2">
+            <failure message="TypeError: Cannot read property 'complaintData' of undefined">TypeError: Cannot read property 'complaintData' of undefined
+    at Context.it (test/unit/behaviours/add-to-casework.spec.js:66:28)
+    at process.topLevelDomainCallback (domain.js:121:23)</failure>
         </testCase>
+    </file>
+    <file path="test/unit/lib/json-converters/complaint.spec.js">
+        <testCase name="Complaint Should have property complaintAttributes which is an object" duration="2"/>
+        <testCase name="Complaint complaintAttributes Should have creationDate set" duration="1"/>
+        <testCase name="Complaint complaintAttributes reporterDetails applicant Should return applicant details without phone number if not included" duration="1"/>
+        <testCase name="Complaint complaintAttributes reporterDetails applicant Should return applicant details with phone number if included" duration="0"/>
+        <testCase name="Complaint complaintAttributes reporterDetails agent it should return agent and applicant details with agentType RELATIVE" duration="0"/>
+        <testCase name="Complaint complaintAttributes reporterDetails agent it should return agent and applicant details with agentType LEGAL_REP" duration="1"/>
+        <testCase name="Complaint complaintAttributes reporterDetails agent it should return agent and applicant details with agentType SPONSOR" duration="0"/>
+        <testCase name="Complaint complaintAttributes reporterDetails agent it should return agent and applicant details with agentType SUPPORT_ORG" duration="0"/>
+        <testCase name="Complaint complaintAttributes reporterDetails agent Should return agent details with phone number if included" duration="0"/>
+        <testCase name="Complaint complaintAttributes reporterDetails agent should throw error if incorrect who-representing type specified" duration="1"/>
+        <testCase name="Complaint complaintAttributes reference Does not include a reference if reference-number is not present" duration="1"/>
+        <testCase name="Complaint complaintAttributes reference Does not include a reference if reference-numbers is specified as &quot;none&quot;" duration="0"/>
+        <testCase name="Complaint complaintAttributes reference If &quot;gwf&quot; reference, reference number will be set on GWF_REF" duration="0"/>
+        <testCase name="Complaint complaintAttributes reference If &quot;ho&quot; reference, reference number will be set on HO_REF" duration="0"/>
+        <testCase name="Complaint complaintAttributes reference If &quot;ihs&quot; reference, reference number will be set on IHS_REF" duration="0"/>
+        <testCase name="Complaint complaintAttributes reference If &quot;uan&quot; reference, reference number will be set on UAN_REF" duration="0"/>
+        <testCase name="Complaint complaintAttributes reference should throw error if incorrect ref type specified" duration="0"/>
+        <testCase name="Complaint complaintAttributes complaintDetails applicationLocation If no location provided, applicationLocation is not set" duration="0"/>
+        <testCase name="Complaint complaintAttributes complaintDetails applicationLocation If applied from &quot;inside-uk&quot;, applicationLocation set to INSIDE_UK" duration="0"/>
+        <testCase name="Complaint complaintAttributes complaintDetails applicationLocation If applied from &quot;outside-uk&quot;, applicationLocation set to OUTSIDE_UK" duration="0"/>
+        <testCase name="Complaint complaintAttributes complaintDetails applicationLocation It throws an error if invalid &quot;where-applied-from&quot;" duration="0"/>
+    </file>
+    <file path="test/unit/lib/utils.spec.js">
+        <testCase name="utils #validateAgainstSchema returns true if the complaintData object fits the schema" duration="18"/>
+        <testCase name="utils #validateAgainstSchema throws an error if the complaintData object does not fit the schema" duration="3"/>
+        <testCase name="utils #sendToQueue calls create on the sqs producer with SQS parameters" duration="1"/>
+        <testCase name="utils #sendToQueue calls send on sqs producer with a unique id and stringifyed complaint data" duration="0"/>
+        <testCase name="utils #sendToQueue rejects an error if send fails" duration="0"/>
     </file>
 </testExecutions>

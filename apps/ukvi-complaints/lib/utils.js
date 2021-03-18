@@ -15,9 +15,8 @@ const validateAgainstSchema = (complaintData) => {
     }
 
     return true;
-
   } catch (err) {
-    throw new Error(err);
+    throw err;
   }
 };
 
@@ -31,13 +30,21 @@ const sendToQueue = (complaintData) => {
       // secretAccessKey: 'yourSecret'
     });
 
-    return producer.send([{
-      id: uuidv4(),
-      body: JSON.stringify(complaintData),
-    }], error => {
-      throw new Error(error);
+    return new Promise((resolve, reject) => {
+      producer.send(
+        [
+          {
+            id: uuidv4(),
+            body: JSON.stringify(complaintData)
+          }
+        ])
+      .then(() => {
+        resolve();
+      })
+      .catch(error => {
+        reject(error);
+      });
     });
-
   } catch (err) {
     throw err;
   }

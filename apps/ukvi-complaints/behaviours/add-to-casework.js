@@ -11,8 +11,6 @@ module.exports = superclass => class AddToCasework extends superclass {
         next();
       }
 
-      console.log(req.sessionModel.attributes);
-
       const complaintData = formatComplaintData(req.sessionModel.attributes);
       const valid = utils.validateAgainstSchema(complaintData);
 

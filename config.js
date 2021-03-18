@@ -19,7 +19,8 @@ module.exports = {
     transportOptions: {
       accessKeyId: process.env.HOF_SES_USER || process.env.AWS_USER || '',
       secretAccessKey: process.env.HOF_SES_PASSWORD || process.env.AWS_PASSWORD || ''
-    }
+    },
+    emailCaseworker: true,
   },
   aws: {
     region: process.env.AWS_REGION || 'eu-west-2',

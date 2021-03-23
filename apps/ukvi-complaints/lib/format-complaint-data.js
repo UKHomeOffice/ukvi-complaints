@@ -44,8 +44,12 @@ const formatComplaintData = (values) => {
         return informationIssue.complaintAttributes;
       }
 
-      const staffBehaviour = new StaffBehaviourComplaint(values);
+      if (values['poor-info-or-behaviour'] === 'staff-behaviour') {
+        const staffBehaviour = new StaffBehaviourComplaint(values);
       return staffBehaviour.complaintAttributes;
+      }
+
+      throw new Error('Invalid poor-info-or-behaviour value');
 
     case 'existing-complaint':
       const existing = new ExistingComplaint(values);

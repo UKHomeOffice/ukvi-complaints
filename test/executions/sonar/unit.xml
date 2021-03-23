@@ -1,40 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <testExecutions version="1">
-    <file path="test/unit/behaviours/add-to-casework.spec.js">
-        <testCase name="Add to casework system #process It should add the complaintData to request" duration="2">
-            <failure message="TypeError: Cannot read property 'complaintData' of undefined">TypeError: Cannot read property 'complaintData' of undefined
-    at Context.it (test/unit/behaviours/add-to-casework.spec.js:66:28)
-    at process.topLevelDomainCallback (domain.js:121:23)</failure>
-        </testCase>
+    <file path="test/unit/lib/format-complaint-data.spec.js">
+        <testCase name="#formatComplaintData reason immigration-application returns complaint data with type &quot;SUBMITTING_APPLICATION&quot;" duration="3"/>
+        <testCase name="#formatComplaintData reason immigration-appointment returns complaint data with type &quot;MAKING_APPOINTMENT&quot;" duration="1"/>
+        <testCase name="#formatComplaintData reason delays returns complaint data with type &quot;DELAYS&quot;" duration="0"/>
+        <testCase name="#formatComplaintData reason biometric-residence-permit returns complaint data with type &quot;BIOMETRIC_RESIDENCE_PERMIT&quot;" duration="0"/>
+        <testCase name="#formatComplaintData reason immigration-decision returns complaint data with type &quot;IMMIGRATION_DECISION&quot;" duration="0"/>
+        <testCase name="#formatComplaintData reason refund returns complaint data with type &quot;REFUND&quot;" duration="0"/>
+        <testCase name="#formatComplaintData reason staff-behaviour poor-information returns complaint data with type &quot;POOR_INFORMATION&quot;" duration="0"/>
+        <testCase name="#formatComplaintData reason staff-behaviour staff-behaviour returns complaint data with type &quot;POOR_STAFF_BEHAVIOUR&quot;" duration="1"/>
+        <testCase name="#formatComplaintData reason staff-behaviour invalid value throws an error if an invalid poor-info-or-behaviour value is provided" duration="1"/>
+        <testCase name="#formatComplaintData reason existing-complaint returns complaint data with type &quot;EXISTING&quot;" duration="0"/>
+        <testCase name="#formatComplaintData reason other-complaint returns complaint data with type &quot;SOMETHING_ELSE&quot;" duration="0"/>
+        <testCase name="#formatComplaintData reason invalid reason throws an error if an invalid reason is provided" duration="0"/>
     </file>
     <file path="test/unit/lib/json-converters/complaint.spec.js">
-        <testCase name="Complaint Should have property complaintAttributes which is an object" duration="2"/>
+        <testCase name="Complaint Should have property complaintAttributes which is an object" duration="0"/>
         <testCase name="Complaint complaintAttributes Should have creationDate set" duration="1"/>
         <testCase name="Complaint complaintAttributes reporterDetails applicant Should return applicant details without phone number if not included" duration="1"/>
-        <testCase name="Complaint complaintAttributes reporterDetails applicant Should return applicant details with phone number if included" duration="0"/>
+        <testCase name="Complaint complaintAttributes reporterDetails applicant Should return applicant details with phone number if included" duration="1"/>
         <testCase name="Complaint complaintAttributes reporterDetails agent it should return agent and applicant details with agentType RELATIVE" duration="0"/>
-        <testCase name="Complaint complaintAttributes reporterDetails agent it should return agent and applicant details with agentType LEGAL_REP" duration="1"/>
+        <testCase name="Complaint complaintAttributes reporterDetails agent it should return agent and applicant details with agentType LEGAL_REP" duration="0"/>
         <testCase name="Complaint complaintAttributes reporterDetails agent it should return agent and applicant details with agentType SPONSOR" duration="0"/>
-        <testCase name="Complaint complaintAttributes reporterDetails agent it should return agent and applicant details with agentType SUPPORT_ORG" duration="0"/>
-        <testCase name="Complaint complaintAttributes reporterDetails agent Should return agent details with phone number if included" duration="0"/>
-        <testCase name="Complaint complaintAttributes reporterDetails agent should throw error if incorrect who-representing type specified" duration="1"/>
+        <testCase name="Complaint complaintAttributes reporterDetails agent it should return agent and applicant details with agentType SUPPORT_ORG" duration="1"/>
+        <testCase name="Complaint complaintAttributes reporterDetails agent Should return agent details with phone number if included" duration="1"/>
+        <testCase name="Complaint complaintAttributes reporterDetails agent should throw error if incorrect who-representing type specified" duration="0"/>
         <testCase name="Complaint complaintAttributes reference Does not include a reference if reference-number is not present" duration="1"/>
-        <testCase name="Complaint complaintAttributes reference Does not include a reference if reference-numbers is specified as &quot;none&quot;" duration="0"/>
+        <testCase name="Complaint complaintAttributes reference Does not include a reference if reference-numbers is specified as &quot;none&quot;" duration="1"/>
         <testCase name="Complaint complaintAttributes reference If &quot;gwf&quot; reference, reference number will be set on GWF_REF" duration="0"/>
         <testCase name="Complaint complaintAttributes reference If &quot;ho&quot; reference, reference number will be set on HO_REF" duration="0"/>
         <testCase name="Complaint complaintAttributes reference If &quot;ihs&quot; reference, reference number will be set on IHS_REF" duration="0"/>
         <testCase name="Complaint complaintAttributes reference If &quot;uan&quot; reference, reference number will be set on UAN_REF" duration="0"/>
-        <testCase name="Complaint complaintAttributes reference should throw error if incorrect ref type specified" duration="0"/>
+        <testCase name="Complaint complaintAttributes reference should throw error if incorrect ref type specified" duration="1"/>
         <testCase name="Complaint complaintAttributes complaintDetails applicationLocation If no location provided, applicationLocation is not set" duration="0"/>
         <testCase name="Complaint complaintAttributes complaintDetails applicationLocation If applied from &quot;inside-uk&quot;, applicationLocation set to INSIDE_UK" duration="0"/>
-        <testCase name="Complaint complaintAttributes complaintDetails applicationLocation If applied from &quot;outside-uk&quot;, applicationLocation set to OUTSIDE_UK" duration="0"/>
-        <testCase name="Complaint complaintAttributes complaintDetails applicationLocation It throws an error if invalid &quot;where-applied-from&quot;" duration="0"/>
+        <testCase name="Complaint complaintAttributes complaintDetails applicationLocation If applied from &quot;outside-uk&quot;, applicationLocation set to OUTSIDE_UK" duration="1"/>
+        <testCase name="Complaint complaintAttributes complaintDetails applicationLocation It throws an error if invalid &quot;where-applied-from&quot;" duration="1"/>
     </file>
     <file path="test/unit/lib/utils.spec.js">
-        <testCase name="utils #validateAgainstSchema returns true if the complaintData object fits the schema" duration="18"/>
-        <testCase name="utils #validateAgainstSchema throws an error if the complaintData object does not fit the schema" duration="3"/>
+        <testCase name="utils #validateAgainstSchema returns true if the complaintData object fits the schema" duration="14"/>
+        <testCase name="utils #validateAgainstSchema throws an error if the complaintData object does not fit the schema" duration="2"/>
         <testCase name="utils #sendToQueue calls create on the sqs producer with SQS parameters" duration="1"/>
-        <testCase name="utils #sendToQueue calls send on sqs producer with a unique id and stringifyed complaint data" duration="0"/>
-        <testCase name="utils #sendToQueue rejects an error if send fails" duration="0"/>
+        <testCase name="utils #sendToQueue calls send on sqs producer with a unique id and stringifyed complaint data" duration="1"/>
+        <testCase name="utils #sendToQueue rejects if send fails" duration="0"/>
     </file>
 </testExecutions>

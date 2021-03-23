@@ -1,15 +1,15 @@
 {
   "stats": {
-    "suites": 13,
-    "tests": 27,
-    "passes": 26,
+    "suites": 26,
+    "tests": 38,
+    "passes": 38,
     "pending": 0,
-    "failures": 1,
-    "start": "2021-03-18T17:03:13.810Z",
-    "end": "2021-03-18T17:03:13.997Z",
-    "duration": 187,
-    "testsRegistered": 27,
-    "passPercent": 96.29629629629629,
+    "failures": 0,
+    "start": "2021-03-23T11:31:13.566Z",
+    "end": "2021-03-23T11:31:14.456Z",
+    "duration": 890,
+    "testsRegistered": 38,
+    "passPercent": 100,
     "pendingPercent": 0,
     "other": 0,
     "hasOther": false,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "53bdd07d-0ebe-4b7d-8e73-8efb556bce5d",
+      "uuid": "45e71f67-d2a3-4eaa-b58f-062fa3f84655",
       "title": "",
       "fullFile": "",
       "file": "",
@@ -27,72 +27,516 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "c188a006-6c2c-4b82-ae02-33bf96bea8dc",
-          "title": "Add to casework system",
-          "fullFile": "/Users/JosephCoker/Projects/Home-Office/HOF/ukvi-complaints/test/unit/behaviours/add-to-casework.spec.js",
-          "file": "/test/unit/behaviours/add-to-casework.spec.js",
+          "uuid": "3252f5d1-f904-497b-b5f9-451da5163792",
+          "title": "#formatComplaintData",
+          "fullFile": "/Users/JosephCoker/Projects/Home-Office/HOF/ukvi-complaints/test/unit/lib/format-complaint-data.spec.js",
+          "file": "/test/unit/lib/format-complaint-data.spec.js",
           "beforeHooks": [],
           "afterHooks": [],
           "tests": [],
           "suites": [
             {
-              "uuid": "820c4751-8550-4cb4-94a0-8c048e891fea",
-              "title": "#process",
-              "fullFile": "/Users/JosephCoker/Projects/Home-Office/HOF/ukvi-complaints/test/unit/behaviours/add-to-casework.spec.js",
-              "file": "/test/unit/behaviours/add-to-casework.spec.js",
-              "beforeHooks": [
-                {
-                  "title": "\"before each\" hook in \"#process\"",
-                  "fullTitle": "Add to casework system #process \"before each\" hook in \"#process\"",
-                  "timedOut": false,
-                  "duration": 1,
-                  "state": null,
-                  "speed": null,
-                  "pass": false,
-                  "fail": false,
-                  "pending": false,
-                  "context": null,
-                  "code": "this.clock = date => sinon.useFakeTimers(new Date(date));\nthis.clock('2021-01-01');\nreq = {\n  sessionModel: {\n    attributes: {\n      'csrf-secret': 'pTuaXZfpEH4Hi2GwjNTEH4ej',\n      errors: null,\n      reason: 'immigration-application',\n      steps:\n      ['/reason',\n        '/immigration-application',\n        '/application-technical',\n        '/application-ref-numbers',\n        '/acting-as-agent',\n        '/who-representing',\n        '/agent-name',\n        '/agent-contact-details',\n        '/agent-representative-name',\n        '/agent-representative-dob',\n        '/agent-representative-nationality',\n        '/complaint-details'],\n      'immigration-application': 'technical-issues',\n      'who-representing': 'legal-rep',\n      'agent-name': 'mm',\n      'agent-email': 'test@test.com',\n      'agent-phone': '12435667889',\n      'agent-representative-name': 'pp',\n      'agent-representative-dob': '1980-02-02',\n      'agent-representative-nationality': 'Ukraine',\n      'complaint-details': 'test',\n      'where-applied-from': 'inside-uk',\n      'reference-numbers': 'gwf',\n      'gwf-reference': 'GWF012345678',\n      'ho-reference': '',\n      'ihs-reference': '',\n      'uan-reference': '',\n      'acting-as-agent': 'yes' },\n  }\n};\nAddToCasework = Behaviour(Base);\ntestInstance = new AddToCasework();",
-                  "err": {},
-                  "uuid": "35f61742-4917-48aa-bed6-3326d4aa17c2",
-                  "parentUUID": "820c4751-8550-4cb4-94a0-8c048e891fea",
-                  "isHook": true,
-                  "skipped": false
-                }
-              ],
+              "uuid": "21d6a333-5f53-4f5b-b8a2-06bdfede8e7c",
+              "title": "reason",
+              "fullFile": "/Users/JosephCoker/Projects/Home-Office/HOF/ukvi-complaints/test/unit/lib/format-complaint-data.spec.js",
+              "file": "/test/unit/lib/format-complaint-data.spec.js",
+              "beforeHooks": [],
               "afterHooks": [],
-              "tests": [
+              "tests": [],
+              "suites": [
                 {
-                  "title": "It should add the complaintData to request",
-                  "fullTitle": "Add to casework system #process It should add the complaintData to request",
-                  "timedOut": false,
-                  "duration": 2,
-                  "state": "failed",
-                  "speed": null,
-                  "pass": false,
-                  "fail": true,
-                  "pending": false,
-                  "context": null,
-                  "code": "testInstance.process(req, res, () => {});\nconsole.log(req);\nconsole.log(req.form.complaintData);\n// expect(req.form.complaintData).to.deep.equal({\n//   creationDate\n// });",
-                  "err": {
-                    "message": "TypeError: Cannot read property 'complaintData' of undefined",
-                    "estack": "TypeError: Cannot read property 'complaintData' of undefined\n    at Context.it (test/unit/behaviours/add-to-casework.spec.js:66:28)\n    at process.topLevelDomainCallback (domain.js:121:23)",
-                    "diff": null
-                  },
-                  "uuid": "867b88a9-c27e-4386-b3b3-a3765a112e67",
-                  "parentUUID": "820c4751-8550-4cb4-94a0-8c048e891fea",
-                  "isHook": false,
-                  "skipped": false
+                  "uuid": "7b28c568-87e3-4e3d-8771-7435c7db5e9c",
+                  "title": "immigration-application",
+                  "fullFile": "/Users/JosephCoker/Projects/Home-Office/HOF/ukvi-complaints/test/unit/lib/format-complaint-data.spec.js",
+                  "file": "/test/unit/lib/format-complaint-data.spec.js",
+                  "beforeHooks": [],
+                  "afterHooks": [],
+                  "tests": [
+                    {
+                      "title": "returns complaint data with type \"SUBMITTING_APPLICATION\"",
+                      "fullTitle": "#formatComplaintData reason immigration-application returns complaint data with type \"SUBMITTING_APPLICATION\"",
+                      "timedOut": false,
+                      "duration": 3,
+                      "state": "passed",
+                      "speed": "fast",
+                      "pass": true,
+                      "fail": false,
+                      "pending": false,
+                      "context": null,
+                      "code": "const values = Object.assign({\n  reason: 'immigration-application',\n  'immigration-application': 'technical-issues',\n}, complaintDetailsBase);\nconst complaintData = formatComplaintData(values);\nexpect(complaintData.complaint.complaintType).to.eql('SUBMITTING_APPLICATION');",
+                      "err": {},
+                      "uuid": "bd6f2999-94e7-48aa-9ccd-9fa7121ba406",
+                      "parentUUID": "7b28c568-87e3-4e3d-8771-7435c7db5e9c",
+                      "isHook": false,
+                      "skipped": false
+                    }
+                  ],
+                  "suites": [],
+                  "passes": [
+                    "bd6f2999-94e7-48aa-9ccd-9fa7121ba406"
+                  ],
+                  "failures": [],
+                  "pending": [],
+                  "skipped": [],
+                  "duration": 3,
+                  "root": false,
+                  "rootEmpty": false,
+                  "_timeout": 2000
+                },
+                {
+                  "uuid": "6f660d02-cfa6-4ef6-956d-f8f35b9b17a6",
+                  "title": "immigration-appointment",
+                  "fullFile": "/Users/JosephCoker/Projects/Home-Office/HOF/ukvi-complaints/test/unit/lib/format-complaint-data.spec.js",
+                  "file": "/test/unit/lib/format-complaint-data.spec.js",
+                  "beforeHooks": [],
+                  "afterHooks": [],
+                  "tests": [
+                    {
+                      "title": "returns complaint data with type \"MAKING_APPOINTMENT\"",
+                      "fullTitle": "#formatComplaintData reason immigration-appointment returns complaint data with type \"MAKING_APPOINTMENT\"",
+                      "timedOut": false,
+                      "duration": 1,
+                      "state": "passed",
+                      "speed": "fast",
+                      "pass": true,
+                      "fail": false,
+                      "pending": false,
+                      "context": null,
+                      "code": "const values = Object.assign({\n  reason: 'immigration-appointment',\n  'immigration-appointment': 'lack-availability',\n}, complaintDetailsBase);\nconst complaintData = formatComplaintData(values);\nexpect(complaintData.complaint.complaintType).to.eql('MAKING_APPOINTMENT');",
+                      "err": {},
+                      "uuid": "968461f1-f04f-4d62-ba0d-c4a60a77894e",
+                      "parentUUID": "6f660d02-cfa6-4ef6-956d-f8f35b9b17a6",
+                      "isHook": false,
+                      "skipped": false
+                    }
+                  ],
+                  "suites": [],
+                  "passes": [
+                    "968461f1-f04f-4d62-ba0d-c4a60a77894e"
+                  ],
+                  "failures": [],
+                  "pending": [],
+                  "skipped": [],
+                  "duration": 1,
+                  "root": false,
+                  "rootEmpty": false,
+                  "_timeout": 2000
+                },
+                {
+                  "uuid": "3e6618c2-dc83-4437-8f66-53da7165b43f",
+                  "title": "delays",
+                  "fullFile": "/Users/JosephCoker/Projects/Home-Office/HOF/ukvi-complaints/test/unit/lib/format-complaint-data.spec.js",
+                  "file": "/test/unit/lib/format-complaint-data.spec.js",
+                  "beforeHooks": [],
+                  "afterHooks": [],
+                  "tests": [
+                    {
+                      "title": "returns complaint data with type \"DELAYS\"",
+                      "fullTitle": "#formatComplaintData reason delays returns complaint data with type \"DELAYS\"",
+                      "timedOut": false,
+                      "duration": 0,
+                      "state": "passed",
+                      "speed": "fast",
+                      "pass": true,
+                      "fail": false,
+                      "pending": false,
+                      "context": null,
+                      "code": "const values = Object.assign({\n  reason: 'delays',\n  'delay-type': 'application-delay',\n  'return-of-documents': 'yes-other',\n}, complaintDetailsBase);\nconst complaintData = formatComplaintData(values);\nexpect(complaintData.complaint.complaintType).to.eql('DELAYS');",
+                      "err": {},
+                      "uuid": "6475a1cd-6c0b-4f0a-86e9-ef907cddf18c",
+                      "parentUUID": "3e6618c2-dc83-4437-8f66-53da7165b43f",
+                      "isHook": false,
+                      "skipped": false
+                    }
+                  ],
+                  "suites": [],
+                  "passes": [
+                    "6475a1cd-6c0b-4f0a-86e9-ef907cddf18c"
+                  ],
+                  "failures": [],
+                  "pending": [],
+                  "skipped": [],
+                  "duration": 0,
+                  "root": false,
+                  "rootEmpty": false,
+                  "_timeout": 2000
+                },
+                {
+                  "uuid": "a72e07a4-0136-42d6-9100-cc0f4f6272d6",
+                  "title": "biometric-residence-permit",
+                  "fullFile": "/Users/JosephCoker/Projects/Home-Office/HOF/ukvi-complaints/test/unit/lib/format-complaint-data.spec.js",
+                  "file": "/test/unit/lib/format-complaint-data.spec.js",
+                  "beforeHooks": [],
+                  "afterHooks": [],
+                  "tests": [
+                    {
+                      "title": "returns complaint data with type \"BIOMETRIC_RESIDENCE_PERMIT\"",
+                      "fullTitle": "#formatComplaintData reason biometric-residence-permit returns complaint data with type \"BIOMETRIC_RESIDENCE_PERMIT\"",
+                      "timedOut": false,
+                      "duration": 0,
+                      "state": "passed",
+                      "speed": "fast",
+                      "pass": true,
+                      "fail": false,
+                      "pending": false,
+                      "context": null,
+                      "code": "const values = Object.assign({\n  reason: 'biometric-residence-permit',\n  'biometric-residence-permit': 'card-incorrect',\n}, complaintDetailsBase);\nconst complaintData = formatComplaintData(values);\nexpect(complaintData.complaint.complaintType).to.eql('BIOMETRIC_RESIDENCE_PERMIT');",
+                      "err": {},
+                      "uuid": "3b8c4955-ab46-422a-afbc-33b0952edb7a",
+                      "parentUUID": "a72e07a4-0136-42d6-9100-cc0f4f6272d6",
+                      "isHook": false,
+                      "skipped": false
+                    }
+                  ],
+                  "suites": [],
+                  "passes": [
+                    "3b8c4955-ab46-422a-afbc-33b0952edb7a"
+                  ],
+                  "failures": [],
+                  "pending": [],
+                  "skipped": [],
+                  "duration": 0,
+                  "root": false,
+                  "rootEmpty": false,
+                  "_timeout": 2000
+                },
+                {
+                  "uuid": "8cfdb7c1-7f84-413e-b30b-1363cea3326d",
+                  "title": "immigration-decision",
+                  "fullFile": "/Users/JosephCoker/Projects/Home-Office/HOF/ukvi-complaints/test/unit/lib/format-complaint-data.spec.js",
+                  "file": "/test/unit/lib/format-complaint-data.spec.js",
+                  "beforeHooks": [],
+                  "afterHooks": [],
+                  "tests": [
+                    {
+                      "title": "returns complaint data with type \"IMMIGRATION_DECISION\"",
+                      "fullTitle": "#formatComplaintData reason immigration-decision returns complaint data with type \"IMMIGRATION_DECISION\"",
+                      "timedOut": false,
+                      "duration": 0,
+                      "state": "passed",
+                      "speed": "fast",
+                      "pass": true,
+                      "fail": false,
+                      "pending": false,
+                      "context": null,
+                      "code": "const values = Object.assign({\n  reason: 'immigration-decision',\n  'decision-outcome': 'negative',\n}, complaintDetailsBase);\nconst complaintData = formatComplaintData(values);\nexpect(complaintData.complaint.complaintType).to.eql('IMMIGRATION_DECISION');",
+                      "err": {},
+                      "uuid": "0679d0b6-f900-4ce4-b549-9b9c873c454e",
+                      "parentUUID": "8cfdb7c1-7f84-413e-b30b-1363cea3326d",
+                      "isHook": false,
+                      "skipped": false
+                    }
+                  ],
+                  "suites": [],
+                  "passes": [
+                    "0679d0b6-f900-4ce4-b549-9b9c873c454e"
+                  ],
+                  "failures": [],
+                  "pending": [],
+                  "skipped": [],
+                  "duration": 0,
+                  "root": false,
+                  "rootEmpty": false,
+                  "_timeout": 2000
+                },
+                {
+                  "uuid": "634ea5e7-9bf1-4c6b-a132-d1ece59155b2",
+                  "title": "refund",
+                  "fullFile": "/Users/JosephCoker/Projects/Home-Office/HOF/ukvi-complaints/test/unit/lib/format-complaint-data.spec.js",
+                  "file": "/test/unit/lib/format-complaint-data.spec.js",
+                  "beforeHooks": [],
+                  "afterHooks": [],
+                  "tests": [
+                    {
+                      "title": "returns complaint data with type \"REFUND\"",
+                      "fullTitle": "#formatComplaintData reason refund returns complaint data with type \"REFUND\"",
+                      "timedOut": false,
+                      "duration": 0,
+                      "state": "passed",
+                      "speed": "fast",
+                      "pass": true,
+                      "fail": false,
+                      "pending": false,
+                      "context": null,
+                      "code": "const values = Object.assign({\n  reason: 'refund',\n}, complaintDetailsBase);\nconst complaintData = formatComplaintData(values);\nexpect(complaintData.complaint.complaintType).to.eql('REFUND');",
+                      "err": {},
+                      "uuid": "c98534b9-b368-40a2-8e56-bb391232946d",
+                      "parentUUID": "634ea5e7-9bf1-4c6b-a132-d1ece59155b2",
+                      "isHook": false,
+                      "skipped": false
+                    }
+                  ],
+                  "suites": [],
+                  "passes": [
+                    "c98534b9-b368-40a2-8e56-bb391232946d"
+                  ],
+                  "failures": [],
+                  "pending": [],
+                  "skipped": [],
+                  "duration": 0,
+                  "root": false,
+                  "rootEmpty": false,
+                  "_timeout": 2000
+                },
+                {
+                  "uuid": "1fc3295a-1ddf-4d9a-b166-286e314199b4",
+                  "title": "staff-behaviour",
+                  "fullFile": "/Users/JosephCoker/Projects/Home-Office/HOF/ukvi-complaints/test/unit/lib/format-complaint-data.spec.js",
+                  "file": "/test/unit/lib/format-complaint-data.spec.js",
+                  "beforeHooks": [],
+                  "afterHooks": [],
+                  "tests": [],
+                  "suites": [
+                    {
+                      "uuid": "c9df1a2e-f6ae-444c-ab6c-a282717732d3",
+                      "title": "poor-information",
+                      "fullFile": "/Users/JosephCoker/Projects/Home-Office/HOF/ukvi-complaints/test/unit/lib/format-complaint-data.spec.js",
+                      "file": "/test/unit/lib/format-complaint-data.spec.js",
+                      "beforeHooks": [],
+                      "afterHooks": [],
+                      "tests": [
+                        {
+                          "title": "returns complaint data with type \"POOR_INFORMATION\"",
+                          "fullTitle": "#formatComplaintData reason staff-behaviour poor-information returns complaint data with type \"POOR_INFORMATION\"",
+                          "timedOut": false,
+                          "duration": 0,
+                          "state": "passed",
+                          "speed": "fast",
+                          "pass": true,
+                          "fail": false,
+                          "pending": false,
+                          "context": null,
+                          "code": "const values = Object.assign({\n  reason: 'staff-behaviour',\n  'poor-info-or-behaviour': 'poor-information',\n}, complaintDetailsBase);\nconst complaintData = formatComplaintData(values);\nexpect(complaintData.complaint.complaintType).to.eql('POOR_INFORMATION');",
+                          "err": {},
+                          "uuid": "687b40aa-d27c-4883-9128-96583d2224ea",
+                          "parentUUID": "c9df1a2e-f6ae-444c-ab6c-a282717732d3",
+                          "isHook": false,
+                          "skipped": false
+                        }
+                      ],
+                      "suites": [],
+                      "passes": [
+                        "687b40aa-d27c-4883-9128-96583d2224ea"
+                      ],
+                      "failures": [],
+                      "pending": [],
+                      "skipped": [],
+                      "duration": 0,
+                      "root": false,
+                      "rootEmpty": false,
+                      "_timeout": 2000
+                    },
+                    {
+                      "uuid": "1095caf0-25c6-49e5-afee-cf5289c4d7c3",
+                      "title": "staff-behaviour",
+                      "fullFile": "/Users/JosephCoker/Projects/Home-Office/HOF/ukvi-complaints/test/unit/lib/format-complaint-data.spec.js",
+                      "file": "/test/unit/lib/format-complaint-data.spec.js",
+                      "beforeHooks": [],
+                      "afterHooks": [],
+                      "tests": [
+                        {
+                          "title": "returns complaint data with type \"POOR_STAFF_BEHAVIOUR\"",
+                          "fullTitle": "#formatComplaintData reason staff-behaviour staff-behaviour returns complaint data with type \"POOR_STAFF_BEHAVIOUR\"",
+                          "timedOut": false,
+                          "duration": 1,
+                          "state": "passed",
+                          "speed": "fast",
+                          "pass": true,
+                          "fail": false,
+                          "pending": false,
+                          "context": null,
+                          "code": "const values = Object.assign({\n  reason: 'staff-behaviour',\n  'poor-info-or-behaviour': 'staff-behaviour',\n  'staff-behaviour': 'in-letter',\n}, complaintDetailsBase);\nconst complaintData = formatComplaintData(values);\nexpect(complaintData.complaint.complaintType).to.eql('POOR_STAFF_BEHAVIOUR');",
+                          "err": {},
+                          "uuid": "0e3be30d-19a4-47ab-a9da-f68b8a9ad29e",
+                          "parentUUID": "1095caf0-25c6-49e5-afee-cf5289c4d7c3",
+                          "isHook": false,
+                          "skipped": false
+                        }
+                      ],
+                      "suites": [],
+                      "passes": [
+                        "0e3be30d-19a4-47ab-a9da-f68b8a9ad29e"
+                      ],
+                      "failures": [],
+                      "pending": [],
+                      "skipped": [],
+                      "duration": 1,
+                      "root": false,
+                      "rootEmpty": false,
+                      "_timeout": 2000
+                    },
+                    {
+                      "uuid": "57120a47-4c80-44dc-8fd6-95c51499668e",
+                      "title": "invalid value",
+                      "fullFile": "/Users/JosephCoker/Projects/Home-Office/HOF/ukvi-complaints/test/unit/lib/format-complaint-data.spec.js",
+                      "file": "/test/unit/lib/format-complaint-data.spec.js",
+                      "beforeHooks": [],
+                      "afterHooks": [],
+                      "tests": [
+                        {
+                          "title": "throws an error if an invalid poor-info-or-behaviour value is provided",
+                          "fullTitle": "#formatComplaintData reason staff-behaviour invalid value throws an error if an invalid poor-info-or-behaviour value is provided",
+                          "timedOut": false,
+                          "duration": 1,
+                          "state": "passed",
+                          "speed": "fast",
+                          "pass": true,
+                          "fail": false,
+                          "pending": false,
+                          "context": null,
+                          "code": "const values = Object.assign({\n  reason: 'staff-behaviour',\n  'poor-info-or-behaviour': 'invalid',\n}, complaintDetailsBase);\nexpect(() => formatComplaintData(values)).to.throw('Invalid poor-info-or-behaviour value');",
+                          "err": {},
+                          "uuid": "768252f9-40af-4f03-b4c6-c9284612d9fb",
+                          "parentUUID": "57120a47-4c80-44dc-8fd6-95c51499668e",
+                          "isHook": false,
+                          "skipped": false
+                        }
+                      ],
+                      "suites": [],
+                      "passes": [
+                        "768252f9-40af-4f03-b4c6-c9284612d9fb"
+                      ],
+                      "failures": [],
+                      "pending": [],
+                      "skipped": [],
+                      "duration": 1,
+                      "root": false,
+                      "rootEmpty": false,
+                      "_timeout": 2000
+                    }
+                  ],
+                  "passes": [],
+                  "failures": [],
+                  "pending": [],
+                  "skipped": [],
+                  "duration": 0,
+                  "root": false,
+                  "rootEmpty": false,
+                  "_timeout": 2000
+                },
+                {
+                  "uuid": "3a0a6484-effc-4156-a29e-3858ec3d00de",
+                  "title": "existing-complaint",
+                  "fullFile": "/Users/JosephCoker/Projects/Home-Office/HOF/ukvi-complaints/test/unit/lib/format-complaint-data.spec.js",
+                  "file": "/test/unit/lib/format-complaint-data.spec.js",
+                  "beforeHooks": [],
+                  "afterHooks": [],
+                  "tests": [
+                    {
+                      "title": "returns complaint data with type \"EXISTING\"",
+                      "fullTitle": "#formatComplaintData reason existing-complaint returns complaint data with type \"EXISTING\"",
+                      "timedOut": false,
+                      "duration": 0,
+                      "state": "passed",
+                      "speed": "fast",
+                      "pass": true,
+                      "fail": false,
+                      "pending": false,
+                      "context": null,
+                      "code": "const values = Object.assign({\n  reason: 'existing-complaint',\n  'existing-complaint': 'yes',\n  'complaint-reference-number': 'ghjkld',\n}, complaintDetailsBase);\nconst complaintData = formatComplaintData(values);\nexpect(complaintData.complaint.complaintType).to.eql('EXISTING');",
+                      "err": {},
+                      "uuid": "5e786a16-6ba5-49aa-87df-876cc5dd4eac",
+                      "parentUUID": "3a0a6484-effc-4156-a29e-3858ec3d00de",
+                      "isHook": false,
+                      "skipped": false
+                    }
+                  ],
+                  "suites": [],
+                  "passes": [
+                    "5e786a16-6ba5-49aa-87df-876cc5dd4eac"
+                  ],
+                  "failures": [],
+                  "pending": [],
+                  "skipped": [],
+                  "duration": 0,
+                  "root": false,
+                  "rootEmpty": false,
+                  "_timeout": 2000
+                },
+                {
+                  "uuid": "b8c2b8c2-4844-4589-9068-a0372569c667",
+                  "title": "other-complaint",
+                  "fullFile": "/Users/JosephCoker/Projects/Home-Office/HOF/ukvi-complaints/test/unit/lib/format-complaint-data.spec.js",
+                  "file": "/test/unit/lib/format-complaint-data.spec.js",
+                  "beforeHooks": [],
+                  "afterHooks": [],
+                  "tests": [
+                    {
+                      "title": "returns complaint data with type \"SOMETHING_ELSE\"",
+                      "fullTitle": "#formatComplaintData reason other-complaint returns complaint data with type \"SOMETHING_ELSE\"",
+                      "timedOut": false,
+                      "duration": 0,
+                      "state": "passed",
+                      "speed": "fast",
+                      "pass": true,
+                      "fail": false,
+                      "pending": false,
+                      "context": null,
+                      "code": "const values = Object.assign({\n  reason: 'other-complaint',\n}, complaintDetailsBase);\nconst complaintData = formatComplaintData(values);\nexpect(complaintData.complaint.complaintType).to.eql('SOMETHING_ELSE');",
+                      "err": {},
+                      "uuid": "40fb5a72-cc9f-44f5-8473-917e23761f8a",
+                      "parentUUID": "b8c2b8c2-4844-4589-9068-a0372569c667",
+                      "isHook": false,
+                      "skipped": false
+                    }
+                  ],
+                  "suites": [],
+                  "passes": [
+                    "40fb5a72-cc9f-44f5-8473-917e23761f8a"
+                  ],
+                  "failures": [],
+                  "pending": [],
+                  "skipped": [],
+                  "duration": 0,
+                  "root": false,
+                  "rootEmpty": false,
+                  "_timeout": 2000
+                },
+                {
+                  "uuid": "ed64935d-6a90-47ed-af28-c004ae22ea92",
+                  "title": "invalid reason",
+                  "fullFile": "/Users/JosephCoker/Projects/Home-Office/HOF/ukvi-complaints/test/unit/lib/format-complaint-data.spec.js",
+                  "file": "/test/unit/lib/format-complaint-data.spec.js",
+                  "beforeHooks": [],
+                  "afterHooks": [],
+                  "tests": [
+                    {
+                      "title": "throws an error if an invalid reason is provided",
+                      "fullTitle": "#formatComplaintData reason invalid reason throws an error if an invalid reason is provided",
+                      "timedOut": false,
+                      "duration": 0,
+                      "state": "passed",
+                      "speed": "fast",
+                      "pass": true,
+                      "fail": false,
+                      "pending": false,
+                      "context": null,
+                      "code": "const values = Object.assign({\n  reason: 'invalid',\n}, complaintDetailsBase);\nexpect(() => formatComplaintData(values)).to.throw('Complaint reason not recognized');",
+                      "err": {},
+                      "uuid": "9ce23800-1e38-4cce-80c2-17357d819d3e",
+                      "parentUUID": "ed64935d-6a90-47ed-af28-c004ae22ea92",
+                      "isHook": false,
+                      "skipped": false
+                    }
+                  ],
+                  "suites": [],
+                  "passes": [
+                    "9ce23800-1e38-4cce-80c2-17357d819d3e"
+                  ],
+                  "failures": [],
+                  "pending": [],
+                  "skipped": [],
+                  "duration": 0,
+                  "root": false,
+                  "rootEmpty": false,
+                  "_timeout": 2000
                 }
               ],
-              "suites": [],
               "passes": [],
-              "failures": [
-                "867b88a9-c27e-4386-b3b3-a3765a112e67"
-              ],
+              "failures": [],
               "pending": [],
               "skipped": [],
-              "duration": 2,
+              "duration": 0,
               "root": false,
               "rootEmpty": false,
               "_timeout": 2000
@@ -108,7 +552,7 @@
           "_timeout": 2000
         },
         {
-          "uuid": "df802e90-d278-4e5f-b5f5-22c5508c39dc",
+          "uuid": "5e02b225-d204-475b-8a93-4974aad66913",
           "title": "Complaint",
           "fullFile": "/Users/JosephCoker/Projects/Home-Office/HOF/ukvi-complaints/test/unit/lib/json-converters/complaint.spec.js",
           "file": "/test/unit/lib/json-converters/complaint.spec.js",
@@ -117,7 +561,7 @@
               "title": "\"before each\" hook in \"Complaint\"",
               "fullTitle": "Complaint \"before each\" hook in \"Complaint\"",
               "timedOut": false,
-              "duration": 4,
+              "duration": 3,
               "state": null,
               "speed": null,
               "pass": false,
@@ -126,8 +570,8 @@
               "context": null,
               "code": "const momentStub = sinon.stub().returns({\n      format: () => (creationDate)\n    });\n    Complaint = proxyquire('../../../../apps/ukvi-complaints/lib/json-converters/complaint', {\n      'moment': momentStub\n    });",
               "err": {},
-              "uuid": "720cfc9b-b120-4e54-8149-e71c3b19c257",
-              "parentUUID": "df802e90-d278-4e5f-b5f5-22c5508c39dc",
+              "uuid": "cfb9167c-8e5c-47c1-97ed-a4f605ea8c0c",
+              "parentUUID": "5e02b225-d204-475b-8a93-4974aad66913",
               "isHook": true,
               "skipped": false
             }
@@ -138,7 +582,7 @@
               "title": "Should have property complaintAttributes which is an object",
               "fullTitle": "Complaint Should have property complaintAttributes which is an object",
               "timedOut": false,
-              "duration": 2,
+              "duration": 0,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -147,15 +591,15 @@
               "context": null,
               "code": "complaint = new Complaint(applicantTestValues);\nexpect(complaint.complaintAttributes).to.be.an('object');",
               "err": {},
-              "uuid": "eea06418-7866-4797-a8de-bdd0a461969d",
-              "parentUUID": "df802e90-d278-4e5f-b5f5-22c5508c39dc",
+              "uuid": "0298ac59-99cc-41f7-b49e-196ff972929b",
+              "parentUUID": "5e02b225-d204-475b-8a93-4974aad66913",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [
             {
-              "uuid": "b2c7dbc7-e480-49b4-b9d6-16d71a7f6d03",
+              "uuid": "e8cc945a-9643-49ea-a589-d206584bc44d",
               "title": "complaintAttributes",
               "fullFile": "/Users/JosephCoker/Projects/Home-Office/HOF/ukvi-complaints/test/unit/lib/json-converters/complaint.spec.js",
               "file": "/test/unit/lib/json-converters/complaint.spec.js",
@@ -175,15 +619,15 @@
                   "context": null,
                   "code": "complaint = new Complaint(applicantTestValues);\nexpect(complaint.complaintAttributes.creationDate).to.eql(creationDate);",
                   "err": {},
-                  "uuid": "4aca486e-db30-4f4e-b99e-ac10f6a36254",
-                  "parentUUID": "b2c7dbc7-e480-49b4-b9d6-16d71a7f6d03",
+                  "uuid": "c391f25d-867c-4c7e-a797-1796a4b4cacd",
+                  "parentUUID": "e8cc945a-9643-49ea-a589-d206584bc44d",
                   "isHook": false,
                   "skipped": false
                 }
               ],
               "suites": [
                 {
-                  "uuid": "ca2641a5-0a76-449a-9e19-9eb80c01e881",
+                  "uuid": "af14b3ba-f59c-48e9-8472-7e7a8b09f887",
                   "title": "reporterDetails",
                   "fullFile": "/Users/JosephCoker/Projects/Home-Office/HOF/ukvi-complaints/test/unit/lib/json-converters/complaint.spec.js",
                   "file": "/test/unit/lib/json-converters/complaint.spec.js",
@@ -192,7 +636,7 @@
                   "tests": [],
                   "suites": [
                     {
-                      "uuid": "e88a1dc7-3bf0-43b4-81d7-a70e99538004",
+                      "uuid": "cc908d30-8f43-4deb-b788-fff531e8a022",
                       "title": "applicant",
                       "fullFile": "/Users/JosephCoker/Projects/Home-Office/HOF/ukvi-complaints/test/unit/lib/json-converters/complaint.spec.js",
                       "file": "/test/unit/lib/json-converters/complaint.spec.js",
@@ -210,8 +654,8 @@
                           "context": null,
                           "code": "reporterDetailsValues = Object.assign({}, applicantTestValues);",
                           "err": {},
-                          "uuid": "67d2ea32-2891-487b-bf37-2b01f6eb6cb7",
-                          "parentUUID": "e88a1dc7-3bf0-43b4-81d7-a70e99538004",
+                          "uuid": "0c365341-292d-4821-87fb-faf6dfcaa5c5",
+                          "parentUUID": "cc908d30-8f43-4deb-b788-fff531e8a022",
                           "isHook": true,
                           "skipped": false
                         }
@@ -231,8 +675,8 @@
                           "context": null,
                           "code": "complaint = new Complaint(reporterDetailsValues);\nexpect(complaint.complaintAttributes.complaint.reporterDetails).to.eql({\n  applicantType: applicantTypeApplicant,\n  applicantName: testApplicantName,\n  applicantNationality: testApplicantNationality,\n  applicantDob: testApplicantDob,\n  applicantEmail: testApplicantEmail,\n});",
                           "err": {},
-                          "uuid": "8fee9bd2-3a86-470a-8091-4955752b8c2f",
-                          "parentUUID": "e88a1dc7-3bf0-43b4-81d7-a70e99538004",
+                          "uuid": "a74268b1-7bce-4706-8628-8732200f414f",
+                          "parentUUID": "cc908d30-8f43-4deb-b788-fff531e8a022",
                           "isHook": false,
                           "skipped": false
                         },
@@ -240,7 +684,7 @@
                           "title": "Should return applicant details with phone number if included",
                           "fullTitle": "Complaint complaintAttributes reporterDetails applicant Should return applicant details with phone number if included",
                           "timedOut": false,
-                          "duration": 0,
+                          "duration": 1,
                           "state": "passed",
                           "speed": "fast",
                           "pass": true,
@@ -249,27 +693,27 @@
                           "context": null,
                           "code": "reporterDetailsValues['applicant-phone'] = testApplicantPhone;\ncomplaint = new Complaint(reporterDetailsValues);\nexpect(complaint.complaintAttributes.complaint.reporterDetails).to.eql({\n  applicantType: applicantTypeApplicant,\n  applicantName: testApplicantName,\n  applicantNationality: testApplicantNationality,\n  applicantDob: testApplicantDob,\n  applicantEmail: testApplicantEmail,\n  applicantPhone: testApplicantPhone,\n});",
                           "err": {},
-                          "uuid": "1ff50a37-3a98-42b6-86a9-7b5275d94b88",
-                          "parentUUID": "e88a1dc7-3bf0-43b4-81d7-a70e99538004",
+                          "uuid": "d29446e1-468e-46c9-922e-adf0be481b97",
+                          "parentUUID": "cc908d30-8f43-4deb-b788-fff531e8a022",
                           "isHook": false,
                           "skipped": false
                         }
                       ],
                       "suites": [],
                       "passes": [
-                        "8fee9bd2-3a86-470a-8091-4955752b8c2f",
-                        "1ff50a37-3a98-42b6-86a9-7b5275d94b88"
+                        "a74268b1-7bce-4706-8628-8732200f414f",
+                        "d29446e1-468e-46c9-922e-adf0be481b97"
                       ],
                       "failures": [],
                       "pending": [],
                       "skipped": [],
-                      "duration": 1,
+                      "duration": 2,
                       "root": false,
                       "rootEmpty": false,
                       "_timeout": 2000
                     },
                     {
-                      "uuid": "f135d5ef-e6a4-4a5b-b44a-0d8f096f6d35",
+                      "uuid": "54bae074-a3f2-4eef-91d1-6d133ff63899",
                       "title": "agent",
                       "fullFile": "/Users/JosephCoker/Projects/Home-Office/HOF/ukvi-complaints/test/unit/lib/json-converters/complaint.spec.js",
                       "file": "/test/unit/lib/json-converters/complaint.spec.js",
@@ -287,8 +731,8 @@
                           "context": null,
                           "code": "agentValues = Object.assign({}, agentTestValues);",
                           "err": {},
-                          "uuid": "52ad204b-18c8-49ee-833b-b7a118fcef68",
-                          "parentUUID": "f135d5ef-e6a4-4a5b-b44a-0d8f096f6d35",
+                          "uuid": "e447e8d6-79d2-4514-8446-34165f8a2760",
+                          "parentUUID": "54bae074-a3f2-4eef-91d1-6d133ff63899",
                           "isHook": true,
                           "skipped": false
                         }
@@ -308,8 +752,8 @@
                           "context": null,
                           "code": "agentValues['who-representing'] = 'relative';\ncomplaint = new Complaint(agentValues);\nexpect(complaint.complaintAttributes.complaint.reporterDetails).to.eql({\n  applicantType: applicantTypeAgent,\n  applicantDetails: {\n    applicantName: testApplicantName,\n    applicantNationality: testApplicantNationality,\n    applicantDob: testApplicantDob,\n  },\n  agentDetails: {\n    agentName: testAgentName,\n    agentType: 'RELATIVE',\n    agentEmail: testAgentEmail\n  }\n});",
                           "err": {},
-                          "uuid": "dbb9f0ba-8bf7-4fca-830c-664cd885e188",
-                          "parentUUID": "f135d5ef-e6a4-4a5b-b44a-0d8f096f6d35",
+                          "uuid": "bdf6d33c-0598-43f5-a6f5-ee4a2334f14d",
+                          "parentUUID": "54bae074-a3f2-4eef-91d1-6d133ff63899",
                           "isHook": false,
                           "skipped": false
                         },
@@ -317,7 +761,7 @@
                           "title": "it should return agent and applicant details with agentType LEGAL_REP",
                           "fullTitle": "Complaint complaintAttributes reporterDetails agent it should return agent and applicant details with agentType LEGAL_REP",
                           "timedOut": false,
-                          "duration": 1,
+                          "duration": 0,
                           "state": "passed",
                           "speed": "fast",
                           "pass": true,
@@ -326,8 +770,8 @@
                           "context": null,
                           "code": "agentValues['who-representing'] = 'legal-rep';\ncomplaint = new Complaint(agentValues);\nexpect(complaint.complaintAttributes.complaint.reporterDetails).to.eql({\n  applicantType: applicantTypeAgent,\n  applicantDetails: {\n    applicantName: testApplicantName,\n    applicantNationality: testApplicantNationality,\n    applicantDob: testApplicantDob,\n  },\n  agentDetails: {\n    agentName: testAgentName,\n    agentType: 'LEGAL_REP',\n    agentEmail: testAgentEmail\n  }\n});",
                           "err": {},
-                          "uuid": "e06c69c8-3ffc-4729-8a99-bea842074824",
-                          "parentUUID": "f135d5ef-e6a4-4a5b-b44a-0d8f096f6d35",
+                          "uuid": "fd646923-77da-4b84-8e45-d9998bb73efa",
+                          "parentUUID": "54bae074-a3f2-4eef-91d1-6d133ff63899",
                           "isHook": false,
                           "skipped": false
                         },
@@ -344,50 +788,14 @@
                           "context": null,
                           "code": "agentValues['who-representing'] = 'sponsor';\ncomplaint = new Complaint(agentValues);\nexpect(complaint.complaintAttributes.complaint.reporterDetails).to.eql({\n  applicantType: applicantTypeAgent,\n  applicantDetails: {\n    applicantName: testApplicantName,\n    applicantNationality: testApplicantNationality,\n    applicantDob: testApplicantDob,\n  },\n  agentDetails: {\n    agentName: testAgentName,\n    agentType: 'SPONSOR',\n    agentEmail: testAgentEmail\n  }\n});",
                           "err": {},
-                          "uuid": "c9e7ee30-864b-4d95-ad66-bab3de760228",
-                          "parentUUID": "f135d5ef-e6a4-4a5b-b44a-0d8f096f6d35",
+                          "uuid": "22c42f4c-8881-4fc2-b2a0-e05b6d2ca1b8",
+                          "parentUUID": "54bae074-a3f2-4eef-91d1-6d133ff63899",
                           "isHook": false,
                           "skipped": false
                         },
                         {
                           "title": "it should return agent and applicant details with agentType SUPPORT_ORG",
                           "fullTitle": "Complaint complaintAttributes reporterDetails agent it should return agent and applicant details with agentType SUPPORT_ORG",
-                          "timedOut": false,
-                          "duration": 0,
-                          "state": "passed",
-                          "speed": "fast",
-                          "pass": true,
-                          "fail": false,
-                          "pending": false,
-                          "context": null,
-                          "code": "agentValues['who-representing'] = 'support-org';\ncomplaint = new Complaint(agentValues);\nexpect(complaint.complaintAttributes.complaint.reporterDetails).to.eql({\n  applicantType: applicantTypeAgent,\n  applicantDetails: {\n    applicantName: testApplicantName,\n    applicantNationality: testApplicantNationality,\n    applicantDob: testApplicantDob,\n  },\n  agentDetails: {\n    agentName: testAgentName,\n    agentType: 'SUPPORT_ORG',\n    agentEmail: testAgentEmail\n  }\n});",
-                          "err": {},
-                          "uuid": "17e2be9a-c74c-4349-84ff-a1e9176c5b43",
-                          "parentUUID": "f135d5ef-e6a4-4a5b-b44a-0d8f096f6d35",
-                          "isHook": false,
-                          "skipped": false
-                        },
-                        {
-                          "title": "Should return agent details with phone number if included",
-                          "fullTitle": "Complaint complaintAttributes reporterDetails agent Should return agent details with phone number if included",
-                          "timedOut": false,
-                          "duration": 0,
-                          "state": "passed",
-                          "speed": "fast",
-                          "pass": true,
-                          "fail": false,
-                          "pending": false,
-                          "context": null,
-                          "code": "agentValues['agent-phone'] = testAgentPhone;\nagentValues['who-representing'] = 'relative';\ncomplaint = new Complaint(agentValues);\nexpect(complaint.complaintAttributes.complaint.reporterDetails).to.eql({\n  applicantType: applicantTypeAgent,\n  applicantDetails: {\n    applicantName: testApplicantName,\n    applicantNationality: testApplicantNationality,\n    applicantDob: testApplicantDob,\n  },\n  agentDetails: {\n    agentName: testAgentName,\n    agentType: 'RELATIVE',\n    agentEmail: testAgentEmail,\n    agentPhone: testAgentPhone,\n  }\n});",
-                          "err": {},
-                          "uuid": "523d3a1b-97e7-4982-814e-a9a89a85c642",
-                          "parentUUID": "f135d5ef-e6a4-4a5b-b44a-0d8f096f6d35",
-                          "isHook": false,
-                          "skipped": false
-                        },
-                        {
-                          "title": "should throw error if incorrect who-representing type specified",
-                          "fullTitle": "Complaint complaintAttributes reporterDetails agent should throw error if incorrect who-representing type specified",
                           "timedOut": false,
                           "duration": 1,
                           "state": "passed",
@@ -396,22 +804,58 @@
                           "fail": false,
                           "pending": false,
                           "context": null,
+                          "code": "agentValues['who-representing'] = 'support-org';\ncomplaint = new Complaint(agentValues);\nexpect(complaint.complaintAttributes.complaint.reporterDetails).to.eql({\n  applicantType: applicantTypeAgent,\n  applicantDetails: {\n    applicantName: testApplicantName,\n    applicantNationality: testApplicantNationality,\n    applicantDob: testApplicantDob,\n  },\n  agentDetails: {\n    agentName: testAgentName,\n    agentType: 'SUPPORT_ORG',\n    agentEmail: testAgentEmail\n  }\n});",
+                          "err": {},
+                          "uuid": "cf2ba032-fb19-4509-ba09-3501a1c0d31f",
+                          "parentUUID": "54bae074-a3f2-4eef-91d1-6d133ff63899",
+                          "isHook": false,
+                          "skipped": false
+                        },
+                        {
+                          "title": "Should return agent details with phone number if included",
+                          "fullTitle": "Complaint complaintAttributes reporterDetails agent Should return agent details with phone number if included",
+                          "timedOut": false,
+                          "duration": 1,
+                          "state": "passed",
+                          "speed": "fast",
+                          "pass": true,
+                          "fail": false,
+                          "pending": false,
+                          "context": null,
+                          "code": "agentValues['agent-phone'] = testAgentPhone;\nagentValues['who-representing'] = 'relative';\ncomplaint = new Complaint(agentValues);\nexpect(complaint.complaintAttributes.complaint.reporterDetails).to.eql({\n  applicantType: applicantTypeAgent,\n  applicantDetails: {\n    applicantName: testApplicantName,\n    applicantNationality: testApplicantNationality,\n    applicantDob: testApplicantDob,\n  },\n  agentDetails: {\n    agentName: testAgentName,\n    agentType: 'RELATIVE',\n    agentEmail: testAgentEmail,\n    agentPhone: testAgentPhone,\n  }\n});",
+                          "err": {},
+                          "uuid": "386000cb-9cac-4bfd-a126-3f2d3b181bf8",
+                          "parentUUID": "54bae074-a3f2-4eef-91d1-6d133ff63899",
+                          "isHook": false,
+                          "skipped": false
+                        },
+                        {
+                          "title": "should throw error if incorrect who-representing type specified",
+                          "fullTitle": "Complaint complaintAttributes reporterDetails agent should throw error if incorrect who-representing type specified",
+                          "timedOut": false,
+                          "duration": 0,
+                          "state": "passed",
+                          "speed": "fast",
+                          "pass": true,
+                          "fail": false,
+                          "pending": false,
+                          "context": null,
                           "code": "agentValues['who-representing'] = 'error-agent';\nexpect(() => new Complaint(agentValues)).to.throw('invalid \"who-representing\" value');",
                           "err": {},
-                          "uuid": "461a42fc-5b4b-47cf-abc5-88b6bd67edb6",
-                          "parentUUID": "f135d5ef-e6a4-4a5b-b44a-0d8f096f6d35",
+                          "uuid": "4cb9cb26-4c5d-4069-8e7a-f7b36440c238",
+                          "parentUUID": "54bae074-a3f2-4eef-91d1-6d133ff63899",
                           "isHook": false,
                           "skipped": false
                         }
                       ],
                       "suites": [],
                       "passes": [
-                        "dbb9f0ba-8bf7-4fca-830c-664cd885e188",
-                        "e06c69c8-3ffc-4729-8a99-bea842074824",
-                        "c9e7ee30-864b-4d95-ad66-bab3de760228",
-                        "17e2be9a-c74c-4349-84ff-a1e9176c5b43",
-                        "523d3a1b-97e7-4982-814e-a9a89a85c642",
-                        "461a42fc-5b4b-47cf-abc5-88b6bd67edb6"
+                        "bdf6d33c-0598-43f5-a6f5-ee4a2334f14d",
+                        "fd646923-77da-4b84-8e45-d9998bb73efa",
+                        "22c42f4c-8881-4fc2-b2a0-e05b6d2ca1b8",
+                        "cf2ba032-fb19-4509-ba09-3501a1c0d31f",
+                        "386000cb-9cac-4bfd-a126-3f2d3b181bf8",
+                        "4cb9cb26-4c5d-4069-8e7a-f7b36440c238"
                       ],
                       "failures": [],
                       "pending": [],
@@ -432,7 +876,7 @@
                   "_timeout": 2000
                 },
                 {
-                  "uuid": "c151be87-5d84-49bc-812b-9606c3b90098",
+                  "uuid": "f23dab3d-e7cb-4f79-843a-f1c66bbe2088",
                   "title": "reference",
                   "fullFile": "/Users/JosephCoker/Projects/Home-Office/HOF/ukvi-complaints/test/unit/lib/json-converters/complaint.spec.js",
                   "file": "/test/unit/lib/json-converters/complaint.spec.js",
@@ -450,8 +894,8 @@
                       "context": null,
                       "code": "referenceValues = Object.assign({}, applicantTestValues);",
                       "err": {},
-                      "uuid": "daa02a32-cafa-4827-a1dc-a8b2d1b1b498",
-                      "parentUUID": "c151be87-5d84-49bc-812b-9606c3b90098",
+                      "uuid": "beb3e8f2-28d6-401a-a4e1-5d96298d7861",
+                      "parentUUID": "f23dab3d-e7cb-4f79-843a-f1c66bbe2088",
                       "isHook": true,
                       "skipped": false
                     }
@@ -471,8 +915,8 @@
                       "context": null,
                       "code": "complaint = new Complaint(referenceValues);\nexpect(complaint.complaintAttributes.complaint).to.not.have.all.keys('reference');",
                       "err": {},
-                      "uuid": "a3f113a8-4127-4afc-aa1b-1add5ed56549",
-                      "parentUUID": "c151be87-5d84-49bc-812b-9606c3b90098",
+                      "uuid": "407b61aa-46b5-4460-b03b-fba1b33c82ba",
+                      "parentUUID": "f23dab3d-e7cb-4f79-843a-f1c66bbe2088",
                       "isHook": false,
                       "skipped": false
                     },
@@ -480,7 +924,7 @@
                       "title": "Does not include a reference if reference-numbers is specified as \"none\"",
                       "fullTitle": "Complaint complaintAttributes reference Does not include a reference if reference-numbers is specified as \"none\"",
                       "timedOut": false,
-                      "duration": 0,
+                      "duration": 1,
                       "state": "passed",
                       "speed": "fast",
                       "pass": true,
@@ -489,8 +933,8 @@
                       "context": null,
                       "code": "referenceValues['reference-numbers'] = 'none';\ncomplaint = new Complaint(referenceValues);\nexpect(complaint.complaintAttributes.complaint).to.not.have.all.keys('reference');",
                       "err": {},
-                      "uuid": "0a1c18c4-aa6c-4e70-899e-0d55722d5eb9",
-                      "parentUUID": "c151be87-5d84-49bc-812b-9606c3b90098",
+                      "uuid": "ad9ea4cc-d890-4179-bdda-6af2ac96a0b2",
+                      "parentUUID": "f23dab3d-e7cb-4f79-843a-f1c66bbe2088",
                       "isHook": false,
                       "skipped": false
                     },
@@ -507,8 +951,8 @@
                       "context": null,
                       "code": "referenceValues['reference-numbers'] = 'gwf';\nreferenceValues['gwf-reference'] = testGwfRef;\ncomplaint = new Complaint(referenceValues);\nexpect(complaint.complaintAttributes.complaint.reference).to.eql({\n  referenceType: 'GWF_REF',\n  reference: testGwfRef\n});",
                       "err": {},
-                      "uuid": "e28d9c40-8f3f-497a-9e54-9171b66e4d1e",
-                      "parentUUID": "c151be87-5d84-49bc-812b-9606c3b90098",
+                      "uuid": "6a8bd5d0-a5dc-4562-a443-6c9367815aa3",
+                      "parentUUID": "f23dab3d-e7cb-4f79-843a-f1c66bbe2088",
                       "isHook": false,
                       "skipped": false
                     },
@@ -525,8 +969,8 @@
                       "context": null,
                       "code": "referenceValues['reference-numbers'] = 'ho';\nreferenceValues['ho-reference'] = testHoRef;\ncomplaint = new Complaint(referenceValues);\nexpect(complaint.complaintAttributes.complaint.reference).to.eql({\n  referenceType: 'HO_REF',\n  reference: testHoRef\n});",
                       "err": {},
-                      "uuid": "57442512-ccf9-4ab4-b20b-83d8fe21b8a7",
-                      "parentUUID": "c151be87-5d84-49bc-812b-9606c3b90098",
+                      "uuid": "851c4067-612e-47e5-b58a-202491f682cc",
+                      "parentUUID": "f23dab3d-e7cb-4f79-843a-f1c66bbe2088",
                       "isHook": false,
                       "skipped": false
                     },
@@ -543,8 +987,8 @@
                       "context": null,
                       "code": "referenceValues['reference-numbers'] = 'ihs';\nreferenceValues['ihs-reference'] = testIhsRef;\ncomplaint = new Complaint(referenceValues);\nexpect(complaint.complaintAttributes.complaint.reference).to.eql({\n  referenceType: 'IHS_REF',\n  reference: testIhsRef\n});",
                       "err": {},
-                      "uuid": "03ebf78a-c091-4de2-80b9-e5dfca6deb6c",
-                      "parentUUID": "c151be87-5d84-49bc-812b-9606c3b90098",
+                      "uuid": "a83aa3ba-3785-40c9-9b12-c904320b8730",
+                      "parentUUID": "f23dab3d-e7cb-4f79-843a-f1c66bbe2088",
                       "isHook": false,
                       "skipped": false
                     },
@@ -561,8 +1005,8 @@
                       "context": null,
                       "code": "referenceValues['reference-numbers'] = 'uan';\nreferenceValues['uan-reference'] = testUanRef;\ncomplaint = new Complaint(referenceValues);\nexpect(complaint.complaintAttributes.complaint.reference).to.eql({\n  referenceType: 'UAN_REF',\n  reference: testUanRef\n});",
                       "err": {},
-                      "uuid": "db8fa646-f03d-40d2-8f9b-8bb4ce3a8c2e",
-                      "parentUUID": "c151be87-5d84-49bc-812b-9606c3b90098",
+                      "uuid": "945fe502-9971-49fd-9251-9c3e6c4e349c",
+                      "parentUUID": "f23dab3d-e7cb-4f79-843a-f1c66bbe2088",
                       "isHook": false,
                       "skipped": false
                     },
@@ -570,7 +1014,7 @@
                       "title": "should throw error if incorrect ref type specified",
                       "fullTitle": "Complaint complaintAttributes reference should throw error if incorrect ref type specified",
                       "timedOut": false,
-                      "duration": 0,
+                      "duration": 1,
                       "state": "passed",
                       "speed": "fast",
                       "pass": true,
@@ -579,32 +1023,32 @@
                       "context": null,
                       "code": "referenceValues['reference-numbers'] = 'fff';\nexpect(() => new Complaint(referenceValues)).to.throw('invalid \"reference-numbers\" value');",
                       "err": {},
-                      "uuid": "053bc920-869d-4542-be1f-939940acfa1f",
-                      "parentUUID": "c151be87-5d84-49bc-812b-9606c3b90098",
+                      "uuid": "aa46f23e-2876-46a8-8f75-3dccecdd1147",
+                      "parentUUID": "f23dab3d-e7cb-4f79-843a-f1c66bbe2088",
                       "isHook": false,
                       "skipped": false
                     }
                   ],
                   "suites": [],
                   "passes": [
-                    "a3f113a8-4127-4afc-aa1b-1add5ed56549",
-                    "0a1c18c4-aa6c-4e70-899e-0d55722d5eb9",
-                    "e28d9c40-8f3f-497a-9e54-9171b66e4d1e",
-                    "57442512-ccf9-4ab4-b20b-83d8fe21b8a7",
-                    "03ebf78a-c091-4de2-80b9-e5dfca6deb6c",
-                    "db8fa646-f03d-40d2-8f9b-8bb4ce3a8c2e",
-                    "053bc920-869d-4542-be1f-939940acfa1f"
+                    "407b61aa-46b5-4460-b03b-fba1b33c82ba",
+                    "ad9ea4cc-d890-4179-bdda-6af2ac96a0b2",
+                    "6a8bd5d0-a5dc-4562-a443-6c9367815aa3",
+                    "851c4067-612e-47e5-b58a-202491f682cc",
+                    "a83aa3ba-3785-40c9-9b12-c904320b8730",
+                    "945fe502-9971-49fd-9251-9c3e6c4e349c",
+                    "aa46f23e-2876-46a8-8f75-3dccecdd1147"
                   ],
                   "failures": [],
                   "pending": [],
                   "skipped": [],
-                  "duration": 1,
+                  "duration": 3,
                   "root": false,
                   "rootEmpty": false,
                   "_timeout": 2000
                 },
                 {
-                  "uuid": "a2c75688-9e4b-456f-97e1-08363e343a73",
+                  "uuid": "fb9a876f-94ae-4583-84c5-d5b66235ea12",
                   "title": "complaintDetails",
                   "fullFile": "/Users/JosephCoker/Projects/Home-Office/HOF/ukvi-complaints/test/unit/lib/json-converters/complaint.spec.js",
                   "file": "/test/unit/lib/json-converters/complaint.spec.js",
@@ -613,7 +1057,7 @@
                   "tests": [],
                   "suites": [
                     {
-                      "uuid": "0d997843-1b5a-473c-a7a1-8175943e5d37",
+                      "uuid": "8b078a28-6521-48a4-9bf8-b32de7dd0b7c",
                       "title": "applicationLocation",
                       "fullFile": "/Users/JosephCoker/Projects/Home-Office/HOF/ukvi-complaints/test/unit/lib/json-converters/complaint.spec.js",
                       "file": "/test/unit/lib/json-converters/complaint.spec.js",
@@ -631,8 +1075,8 @@
                           "context": null,
                           "code": "applicationLocationValues = Object.assign({}, applicantTestValues);",
                           "err": {},
-                          "uuid": "91b4fb6c-e6d7-4feb-810f-3bb6418a02de",
-                          "parentUUID": "0d997843-1b5a-473c-a7a1-8175943e5d37",
+                          "uuid": "835b7414-3932-4861-a814-17a0b4eed56b",
+                          "parentUUID": "8b078a28-6521-48a4-9bf8-b32de7dd0b7c",
                           "isHook": true,
                           "skipped": false
                         }
@@ -652,8 +1096,8 @@
                           "context": null,
                           "code": "complaint = new Complaint(applicationLocationValues);\nexpect(complaint.complaintAttributes.complaint.complaintDetails).to.not.have.all.keys('applicationLocation');",
                           "err": {},
-                          "uuid": "90ad20f4-08b3-4bb3-bd6c-c11a8429db2d",
-                          "parentUUID": "0d997843-1b5a-473c-a7a1-8175943e5d37",
+                          "uuid": "4e2ffbdb-5247-4384-afb5-09fb3fc3a1e7",
+                          "parentUUID": "8b078a28-6521-48a4-9bf8-b32de7dd0b7c",
                           "isHook": false,
                           "skipped": false
                         },
@@ -670,8 +1114,8 @@
                           "context": null,
                           "code": "applicationLocationValues['where-applied-from'] = 'inside-uk';\ncomplaint = new Complaint(applicationLocationValues);\nexpect(complaint.complaintAttributes.complaint.complaintDetails.applicationLocation).to.eql('INSIDE_UK');",
                           "err": {},
-                          "uuid": "ec7e31a6-d975-4c85-8d9c-8474d18a1c59",
-                          "parentUUID": "0d997843-1b5a-473c-a7a1-8175943e5d37",
+                          "uuid": "0e00c7f4-c9bb-4e16-a618-4a0ce4e0c783",
+                          "parentUUID": "8b078a28-6521-48a4-9bf8-b32de7dd0b7c",
                           "isHook": false,
                           "skipped": false
                         },
@@ -679,7 +1123,7 @@
                           "title": "If applied from \"outside-uk\", applicationLocation set to OUTSIDE_UK",
                           "fullTitle": "Complaint complaintAttributes complaintDetails applicationLocation If applied from \"outside-uk\", applicationLocation set to OUTSIDE_UK",
                           "timedOut": false,
-                          "duration": 0,
+                          "duration": 1,
                           "state": "passed",
                           "speed": "fast",
                           "pass": true,
@@ -688,8 +1132,8 @@
                           "context": null,
                           "code": "applicationLocationValues['where-applied-from'] = 'outside-uk';\ncomplaint = new Complaint(applicationLocationValues);\nexpect(complaint.complaintAttributes.complaint.complaintDetails.applicationLocation).to.eql('OUTSIDE_UK');",
                           "err": {},
-                          "uuid": "fbe2d52c-8c56-402b-9eb9-ef0724fd8c97",
-                          "parentUUID": "0d997843-1b5a-473c-a7a1-8175943e5d37",
+                          "uuid": "84c61afe-4926-4e4d-8f34-8d86a5ff2454",
+                          "parentUUID": "8b078a28-6521-48a4-9bf8-b32de7dd0b7c",
                           "isHook": false,
                           "skipped": false
                         },
@@ -697,7 +1141,7 @@
                           "title": "It throws an error if invalid \"where-applied-from\"",
                           "fullTitle": "Complaint complaintAttributes complaintDetails applicationLocation It throws an error if invalid \"where-applied-from\"",
                           "timedOut": false,
-                          "duration": 0,
+                          "duration": 1,
                           "state": "passed",
                           "speed": "fast",
                           "pass": true,
@@ -706,23 +1150,23 @@
                           "context": null,
                           "code": "applicationLocationValues['where-applied-from'] = 'location';\nexpect(() => new Complaint(applicationLocationValues)).to.throw('invalid \"where-applied-from\" value');",
                           "err": {},
-                          "uuid": "089f05ac-601a-4ba3-aa90-b2db1130e81c",
-                          "parentUUID": "0d997843-1b5a-473c-a7a1-8175943e5d37",
+                          "uuid": "85b32e65-f278-4c55-bc0f-273b2ca79c9b",
+                          "parentUUID": "8b078a28-6521-48a4-9bf8-b32de7dd0b7c",
                           "isHook": false,
                           "skipped": false
                         }
                       ],
                       "suites": [],
                       "passes": [
-                        "90ad20f4-08b3-4bb3-bd6c-c11a8429db2d",
-                        "ec7e31a6-d975-4c85-8d9c-8474d18a1c59",
-                        "fbe2d52c-8c56-402b-9eb9-ef0724fd8c97",
-                        "089f05ac-601a-4ba3-aa90-b2db1130e81c"
+                        "4e2ffbdb-5247-4384-afb5-09fb3fc3a1e7",
+                        "0e00c7f4-c9bb-4e16-a618-4a0ce4e0c783",
+                        "84c61afe-4926-4e4d-8f34-8d86a5ff2454",
+                        "85b32e65-f278-4c55-bc0f-273b2ca79c9b"
                       ],
                       "failures": [],
                       "pending": [],
                       "skipped": [],
-                      "duration": 0,
+                      "duration": 2,
                       "root": false,
                       "rootEmpty": false,
                       "_timeout": 2000
@@ -739,7 +1183,7 @@
                 }
               ],
               "passes": [
-                "4aca486e-db30-4f4e-b99e-ac10f6a36254"
+                "c391f25d-867c-4c7e-a797-1796a4b4cacd"
               ],
               "failures": [],
               "pending": [],
@@ -751,18 +1195,18 @@
             }
           ],
           "passes": [
-            "eea06418-7866-4797-a8de-bdd0a461969d"
+            "0298ac59-99cc-41f7-b49e-196ff972929b"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 2,
+          "duration": 0,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
         },
         {
-          "uuid": "1ff9fbab-55e6-4ba2-b708-42605fc74f5c",
+          "uuid": "bb23761d-a0c5-4f08-8314-29c836ef20a8",
           "title": "utils",
           "fullFile": "/Users/JosephCoker/Projects/Home-Office/HOF/ukvi-complaints/test/unit/lib/utils.spec.js",
           "file": "/test/unit/lib/utils.spec.js",
@@ -771,7 +1215,7 @@
               "title": "\"before each\" hook in \"utils\"",
               "fullTitle": "utils \"before each\" hook in \"utils\"",
               "timedOut": false,
-              "duration": 11,
+              "duration": 8,
               "state": null,
               "speed": null,
               "pass": false,
@@ -780,8 +1224,8 @@
               "context": null,
               "code": "uuidStub = sinon.stub().returns(testUuid);\nsendStub = sinon.stub().resolves();\nsendStub.withArgs({\n  id: testUuid,\n  body: JSON.stringify(invalidComplaintData)\n}).rejects();\ncreateSub = sinon.stub().returns({\n  send: sendStub\n});\nutils = proxyquire('../../../apps/ukvi-complaints/lib/utils', {\n  'sqs-producer': {\n    Producer: {\n      create: createSub\n    }\n  },\n  'uuid': {\n    v4: uuidStub\n  }\n});",
               "err": {},
-              "uuid": "9c64ed5f-6bfe-4a17-9be2-89ecd046ceb4",
-              "parentUUID": "1ff9fbab-55e6-4ba2-b708-42605fc74f5c",
+              "uuid": "968782a4-9090-4606-a3ff-15f9ffae4235",
+              "parentUUID": "bb23761d-a0c5-4f08-8314-29c836ef20a8",
               "isHook": true,
               "skipped": false
             }
@@ -800,8 +1244,8 @@
               "context": null,
               "code": "sinon.restore();",
               "err": {},
-              "uuid": "062ed307-0611-4a4c-9ddb-ff3381136d59",
-              "parentUUID": "1ff9fbab-55e6-4ba2-b708-42605fc74f5c",
+              "uuid": "c23b2124-c038-4440-865b-558d92d486a7",
+              "parentUUID": "bb23761d-a0c5-4f08-8314-29c836ef20a8",
               "isHook": true,
               "skipped": false
             }
@@ -809,7 +1253,7 @@
           "tests": [],
           "suites": [
             {
-              "uuid": "06f08a37-06e8-4ed7-b2bd-8e4a8ae9b751",
+              "uuid": "785ad712-2242-41e4-aa10-37c850ed7ead",
               "title": "#validateAgainstSchema",
               "fullFile": "/Users/JosephCoker/Projects/Home-Office/HOF/ukvi-complaints/test/unit/lib/utils.spec.js",
               "file": "/test/unit/lib/utils.spec.js",
@@ -820,7 +1264,7 @@
                   "title": "returns true if the complaintData object fits the schema",
                   "fullTitle": "utils #validateAgainstSchema returns true if the complaintData object fits the schema",
                   "timedOut": false,
-                  "duration": 18,
+                  "duration": 14,
                   "state": "passed",
                   "speed": "fast",
                   "pass": true,
@@ -829,8 +1273,8 @@
                   "context": null,
                   "code": "expect(utils.validateAgainstSchema(validComplaintData)).to.eql(true);",
                   "err": {},
-                  "uuid": "45b2df2f-1811-4d97-adb9-b9f8ed205b43",
-                  "parentUUID": "06f08a37-06e8-4ed7-b2bd-8e4a8ae9b751",
+                  "uuid": "0ebf82b7-7528-48c1-85d3-27949a434c38",
+                  "parentUUID": "785ad712-2242-41e4-aa10-37c850ed7ead",
                   "isHook": false,
                   "skipped": false
                 },
@@ -838,7 +1282,7 @@
                   "title": "throws an error if the complaintData object does not fit the schema",
                   "fullTitle": "utils #validateAgainstSchema throws an error if the complaintData object does not fit the schema",
                   "timedOut": false,
-                  "duration": 3,
+                  "duration": 2,
                   "state": "passed",
                   "speed": "fast",
                   "pass": true,
@@ -847,27 +1291,27 @@
                   "context": null,
                   "code": "expect(() => utils.validateAgainstSchema(invalidComplaintData)).to.throw();",
                   "err": {},
-                  "uuid": "75804426-d195-45df-8b64-7954b26196ea",
-                  "parentUUID": "06f08a37-06e8-4ed7-b2bd-8e4a8ae9b751",
+                  "uuid": "becedfeb-1495-4aa4-8091-69f594d02763",
+                  "parentUUID": "785ad712-2242-41e4-aa10-37c850ed7ead",
                   "isHook": false,
                   "skipped": false
                 }
               ],
               "suites": [],
               "passes": [
-                "45b2df2f-1811-4d97-adb9-b9f8ed205b43",
-                "75804426-d195-45df-8b64-7954b26196ea"
+                "0ebf82b7-7528-48c1-85d3-27949a434c38",
+                "becedfeb-1495-4aa4-8091-69f594d02763"
               ],
               "failures": [],
               "pending": [],
               "skipped": [],
-              "duration": 21,
+              "duration": 16,
               "root": false,
               "rootEmpty": false,
               "_timeout": 2000
             },
             {
-              "uuid": "f0edd310-e5d2-405a-b0bf-aea72998e4ea",
+              "uuid": "ca4f7171-6116-461e-8168-be902f9bb34c",
               "title": "#sendToQueue",
               "fullFile": "/Users/JosephCoker/Projects/Home-Office/HOF/ukvi-complaints/test/unit/lib/utils.spec.js",
               "file": "/test/unit/lib/utils.spec.js",
@@ -887,8 +1331,8 @@
                   "context": null,
                   "code": "utils.sendToQueue(validComplaintData);\nexpect(createSub).to.have.been.calledOnceWith({\n  queueUrl: 'http://localhost:4566/000000000000/local-queue',\n  region: 'eu-west-2'\n});",
                   "err": {},
-                  "uuid": "2b680c1d-797c-4deb-a769-34789a1a0ab2",
-                  "parentUUID": "f0edd310-e5d2-405a-b0bf-aea72998e4ea",
+                  "uuid": "714d956e-9a5e-4333-8a99-6611ac89fb92",
+                  "parentUUID": "ca4f7171-6116-461e-8168-be902f9bb34c",
                   "isHook": false,
                   "skipped": false
                 },
@@ -896,7 +1340,7 @@
                   "title": "calls send on sqs producer with a unique id and stringifyed complaint data",
                   "fullTitle": "utils #sendToQueue calls send on sqs producer with a unique id and stringifyed complaint data",
                   "timedOut": false,
-                  "duration": 0,
+                  "duration": 1,
                   "state": "passed",
                   "speed": "fast",
                   "pass": true,
@@ -905,14 +1349,14 @@
                   "context": null,
                   "code": "utils.sendToQueue(validComplaintData);\nexpect(sendStub).to.have.been.calledOnceWith(\n  [\n    {\n      id: testUuid,\n      body: JSON.stringify(validComplaintData)\n    }\n  ]\n);",
                   "err": {},
-                  "uuid": "a9f49d0b-e8b7-4690-9119-d245af2d63a2",
-                  "parentUUID": "f0edd310-e5d2-405a-b0bf-aea72998e4ea",
+                  "uuid": "9b68c2ce-0a51-4a38-a7c7-5e9637e0a1da",
+                  "parentUUID": "ca4f7171-6116-461e-8168-be902f9bb34c",
                   "isHook": false,
                   "skipped": false
                 },
                 {
-                  "title": "rejects an error if send fails",
-                  "fullTitle": "utils #sendToQueue rejects an error if send fails",
+                  "title": "rejects if send fails",
+                  "fullTitle": "utils #sendToQueue rejects if send fails",
                   "timedOut": false,
                   "duration": 0,
                   "state": "passed",
@@ -923,22 +1367,22 @@
                   "context": null,
                   "code": "// eslint-disable-next-line no-unused-expressions\nexpect(utils.sendToQueue(invalidComplaintData)).to.be.rejected;",
                   "err": {},
-                  "uuid": "c65bf870-0e65-441b-9c37-c06bec52832c",
-                  "parentUUID": "f0edd310-e5d2-405a-b0bf-aea72998e4ea",
+                  "uuid": "e3b20aaa-0e1b-4557-ab00-140ced44d707",
+                  "parentUUID": "ca4f7171-6116-461e-8168-be902f9bb34c",
                   "isHook": false,
                   "skipped": false
                 }
               ],
               "suites": [],
               "passes": [
-                "2b680c1d-797c-4deb-a769-34789a1a0ab2",
-                "a9f49d0b-e8b7-4690-9119-d245af2d63a2",
-                "c65bf870-0e65-441b-9c37-c06bec52832c"
+                "714d956e-9a5e-4333-8a99-6611ac89fb92",
+                "9b68c2ce-0a51-4a38-a7c7-5e9637e0a1da",
+                "e3b20aaa-0e1b-4557-ab00-140ced44d707"
               ],
               "failures": [],
               "pending": [],
               "skipped": [],
-              "duration": 1,
+              "duration": 2,
               "root": false,
               "rootEmpty": false,
               "_timeout": 2000

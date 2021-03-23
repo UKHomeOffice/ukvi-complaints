@@ -33,6 +33,5 @@ module.exports = superclass => class AddToCasework extends superclass {
     return next(err);
   }
 
-
 };
 

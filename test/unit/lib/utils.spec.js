@@ -2,7 +2,6 @@
 'use strict';
 const { expect } = require('chai');
 const proxyquire = require('proxyquire');
-// const sqsProducer = require('sqs-producer');
 
 describe('utils', () => {
   let utils;
@@ -105,7 +104,7 @@ describe('utils', () => {
       );
     });
 
-    it('rejects an error if send fails', () => {
+    it('rejects if send fails', () => {
       // eslint-disable-next-line no-unused-expressions
       expect(utils.sendToQueue(invalidComplaintData)).to.be.rejected;
     });

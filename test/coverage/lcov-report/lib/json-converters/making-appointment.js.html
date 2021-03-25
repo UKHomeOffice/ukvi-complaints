@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">63.64% </span>
+                <span class="strong">16.67% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>7/11</span>
+                <span class='fraction'>2/12</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">20% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/5</span>
+                <span class='fraction'>0/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>0/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">63.64% </span>
+                <span class="strong">16.67% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>7/11</span>
+                <span class='fraction'>2/12</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -85,20 +85,24 @@
 <a name='L26'></a><a href='#L26'>26</a>
 <a name='L27'></a><a href='#L27'>27</a>
 <a name='L28'></a><a href='#L28'>28</a>
-<a name='L29'></a><a href='#L29'>29</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -117,24 +121,26 @@
 const Complaint = require('./complaint');
 &nbsp;
 class MakingAppointmentComplaint extends Complaint {
-  constructor(values) {
-    super(values);
-    this.complaintAttributes.complaint.complaintType = 'MAKING_APPOINTMENT';
-    this.complaintAttributes.complaint.complaintDetails.problemExperienced = this.problemExperiencedEnum();
+<span class="fstat-no" title="function not covered" >  co</span>nstructor(values) {
+<span class="cstat-no" title="statement not covered" >    super(values);</span>
+<span class="cstat-no" title="statement not covered" >    this.complaintAttributes.complaint.complaintType = 'MAKING_APPOINTMENT';</span>
+<span class="cstat-no" title="statement not covered" >    this.complaintAttributes.complaint.complaintDetails.problemExperienced = this.problemExperiencedEnum();</span>
   }
 &nbsp;
-  problemExperiencedEnum() {
-    switch (this.values['immigration-appointment']) {
+<span class="fstat-no" title="function not covered" >  pr</span>oblemExperiencedEnum() {
+<span class="cstat-no" title="statement not covered" >    switch (this.values['immigration-appointment']) {</span>
       case 'lack-availability':
-        return 'LACK_AVAILABILITY';
-<span class="branch-1 cbranch-no" title="branch not covered" >      case 'change-appointment':</span>
+<span class="cstat-no" title="statement not covered" >        return 'LACK_AVAILABILITY';</span>
+      case 'change-appointment':
 <span class="cstat-no" title="statement not covered" >        return 'CHANGE_APPOINTMENT';</span>
-<span class="branch-2 cbranch-no" title="branch not covered" >      case 'technical-appointments':</span>
+      case 'technical-appointments':
 <span class="cstat-no" title="statement not covered" >        return 'TECHNICAL_APPOINTMENTS';</span>
-<span class="branch-3 cbranch-no" title="branch not covered" >      case 'questions-appointments':</span>
+      case 'questions-appointments':
 <span class="cstat-no" title="statement not covered" >        return 'QUESTIONS_APPOINTMENTS';</span>
-<span class="branch-4 cbranch-no" title="branch not covered" >      case 'complain-appointments':</span>
+      case 'complain-appointments':
 <span class="cstat-no" title="statement not covered" >        return 'COMPLAIN_APPOINTMENTS';</span>
+      default:
+<span class="cstat-no" title="statement not covered" >        throw new Error('invalid "immigration-appointment" value');</span>
 &nbsp;
     }
   }
@@ -148,7 +154,7 @@ module.exports = MakingAppointmentComplaint;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Tue Mar 23 2021 11:28:26 GMT+0000 (Greenwich Mean Time)
+                at Thu Mar 25 2021 13:27:50 GMT+0000 (Greenwich Mean Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>

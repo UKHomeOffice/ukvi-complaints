@@ -2,24 +2,10 @@
 'use strict';
 
 const { expect } = require('chai');
+const complaintDetailsBase = require('./test-data/complaint-base');
 const formatComplaintData = require('../../../apps/ukvi-complaints/lib/format-complaint-data');
 
 describe('#formatComplaintData', () => {
-  const complaintDetailsBase = {
-    'reference-numbers': 'none',
-    'gwf-reference': '',
-    'ho-reference': '',
-    'ihs-reference': '',
-    'uan-reference': '',
-    'acting-as-agent': 'no',
-    'applicant-name': 'JJ',
-    'applicant-dob': '1980-02-02',
-    'applicant-nationality': 'Ukraine',
-    'applicant-email': 'test@test.com',
-    'applicant-phone': '1234567890',
-    'complaint-details': 'test'
-  };
-
   describe('reason', () => {
 
     describe('immigration-application', () => {
@@ -93,6 +79,7 @@ describe('#formatComplaintData', () => {
       it('returns complaint data with type "REFUND"', () => {
         const values = Object.assign({
           reason: 'refund',
+          refund: 'no',
         }, complaintDetailsBase);
         const complaintData = formatComplaintData(values);
         expect(complaintData.complaint.complaintType).to.eql('REFUND');

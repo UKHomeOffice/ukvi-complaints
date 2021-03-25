@@ -29,6 +29,8 @@ class RefundComplaint extends Complaint {
         return 'NOT_YET';
       case 'yes':
         return 'YES';
+      default:
+        throw new Error('invalid "refund" value');
     }
   }
 
@@ -46,6 +48,8 @@ class RefundComplaint extends Complaint {
         return 'IHS';
       case 'eu-settlement':
         return 'EU_SETTLEMENT';
+      default:
+        throw new Error('invalid "refund-type" value')
     }
   }
 

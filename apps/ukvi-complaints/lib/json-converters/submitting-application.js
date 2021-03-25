@@ -16,6 +16,8 @@ class SubmittingApplicationComplaint extends Complaint {
         return 'GUIDANCE';
       case 'complain':
         return 'SOMETHING_ELSE';
+      default:
+        throw new Error('invalid "immigration-application" value')
     }
   }
 }

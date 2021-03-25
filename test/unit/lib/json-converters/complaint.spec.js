@@ -41,9 +41,6 @@ describe('Complaint', () => {
     'acting-as-agent': 'yes',
   };
 
-  // ! TODO do when dodgy data comes in
-  // ! Do with errors
-
   beforeEach(() => {
 
     const momentStub = sinon.stub().returns({

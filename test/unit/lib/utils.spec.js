@@ -80,6 +80,12 @@ describe('utils', () => {
       expect(() => utils.validateAgainstSchema(invalidComplaintData)).to.throw();
     });
 
+    it('throws an error if the complaintData object contains "undefined" value', () => {
+      const invalidComplaintDetails = Object.assign({}, validComplaintData);
+      invalidComplaintDetails.complaint.complaintDetails.complaintText = undefined;
+      expect(() => utils.validateAgainstSchema(invalidComplaintDetails)).to.throw();
+    });
+
   });
 
   describe('#sendToQueue', () => {

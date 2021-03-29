@@ -22,9 +22,11 @@ module.exports = {
     },
     emailCaseworker: true,
   },
-  aws: {
+  awsSqs: {
     region: process.env.AWS_REGION || 'eu-west-2',
-    sqsUrl: process.env.AWS_SQS_URL || 'http://localhost:4566/000000000000/local-queue',
+    queueUrl: process.env.SQS_URL || 'http://localhost:4566/000000000000/local-queue',
+    accessKeyId: process.env.ACCESS_KEY_ID || '',
+    secretAccessKey: process.env.SECRET_ACCESS_KEY || '',
   },
   writeToCasework: true,
 };

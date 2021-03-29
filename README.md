@@ -36,7 +36,7 @@ sqs create-queue \
 --region eu-west-2 \
 ```
 
-This will return a url, add this to config to place items on that queue: 
+This will return a url, add this is the url of the localstack sqs queue: 
 ```
 http://localhost:4566/000000000000/local-queue
 ```

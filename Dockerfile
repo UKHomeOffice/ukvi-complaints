@@ -1,4 +1,4 @@
-FROM node:10-alpine
+FROM node:14.15.4
 
 RUN apk upgrade --no-cache
 RUN addgroup -S app

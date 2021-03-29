@@ -3,7 +3,7 @@ const config = require('../../../config');
 const utils = require('../lib/utils');
 const formatComplaintData = require('../lib/format-complaint-data');
 
-module.exports = superclass => class AddToCasework extends superclass {
+module.exports = superclass => class SendToSQS extends superclass {
 
   saveValues(req, res, next) {
     try {
@@ -20,11 +20,11 @@ module.exports = superclass => class AddToCasework extends superclass {
             next();
           })
           .catch(err => {
-            AddToCasework.handleError(next, err);
+            SendToSQS.handleError(next, err);
           });
       }
     } catch (err) {
-      AddToCasework.handleError(next, err);
+      SendToSQS.handleError(next, err);
     }
   }
 

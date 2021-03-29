@@ -94,7 +94,9 @@ describe('utils', () => {
       utils.sendToQueue(validComplaintData);
       expect(createSub).to.have.been.calledOnceWith({
         queueUrl: 'http://localhost:4566/000000000000/local-queue',
-        region: 'eu-west-2'
+        region: 'eu-west-2',
+        accessKeyId: '',
+        secretAccessKey: '',
       });
     });
 
@@ -104,7 +106,7 @@ describe('utils', () => {
         [
           {
             id: testUuid,
-            body: JSON.stringify(validComplaintData)
+            body: JSON.stringify(validComplaintData),
           }
         ]
       );

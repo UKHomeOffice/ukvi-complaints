@@ -1,0 +1,25 @@
+{{<layout}}
+  {{$header}}
+    {{#error.formNotSubmitted}}
+      {{#t}}pages.error.header{{/t}}
+    {{/error.formNotSubmitted}}
+    {{^error.formNotSubmitted}}
+      {{content.title}}
+    {{/error.formNotSubmitted}}
+  {{/header}}
+  {{$content}}
+    <div class="error">
+      {{#error.formNotSubmitted}}
+        <p><a href="/confirm">{{#t}}pages.error.text{{/t}}</a></p>
+      {{/error.formNotSubmitted}}
+      {{^error.formNotSubmitted}}
+        <p>{{{content.message}}}</p>
+        <a href="" class="button" role="button">{{#t}}buttons.try-again{{/t}}</a>
+      {{/error.formNotSubmitted}}
+      {{#showStack}}
+        <br>
+        <pre>{{error.stack}}</pre>
+      {{/showStack}}
+    </div>
+  {{/content}}
+{{/layout}}

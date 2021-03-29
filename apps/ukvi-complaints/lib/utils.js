@@ -23,12 +23,8 @@ const validateAgainstSchema = (complaintData) => {
 
 const sendToQueue = (complaintData) => {
   try {
-    const producer = Producer.create({
-      queueUrl: config.aws.sqsUrl,
-      region: config.aws.region,
-      // accessKeyId: 'yourAccessKey',
-      // secretAccessKey: 'yourSecret'
-    });
+
+    const producer = Producer.create(config.awsSqs);
 
     return new Promise((resolve, reject) => {
       producer.send(

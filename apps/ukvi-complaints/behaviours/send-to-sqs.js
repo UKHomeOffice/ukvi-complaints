@@ -1,12 +1,10 @@
 'use strict';
-const Validator = require('jsonschema').Validator;
 const config = require('../../../config');
-const { validAgainstSchema, sendToQueue } = require('../lib/utils');
+const utils = require('../lib/utils');
 const formatComplaintData = require('../lib/format-complaint-data');
 
 module.exports = superclass => class SendToSQS extends superclass {
 
-  // eslint-disable-next-line consistent-return
   saveValues(req, res, next) {
     try {
       if (!config.writeToCasework) {
@@ -14,9 +12,10 @@ module.exports = superclass => class SendToSQS extends superclass {
       }
 
       const complaintData = formatComplaintData(req.sessionModel.attributes);
+      const valid = utils.validateAgainstSchema(complaintData);
 
-      if (validAgainstSchema(complaintData, new Validator())) {
-        return sendToQueue(complaintData)
+      if (valid) {
+        utils.sendToQueue(complaintData)
           .then(() => {
             next();
           })
@@ -29,11 +28,8 @@ module.exports = superclass => class SendToSQS extends superclass {
     }
   }
 
-
   static handleError(next, err) {
     err.formNotSubmitted = true;
-    // eslint-disable-next-line no-console
-    console.error(err);
     return next(err);
   }
 

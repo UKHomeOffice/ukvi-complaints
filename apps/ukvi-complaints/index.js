@@ -7,7 +7,7 @@ const translation = require('./translations/en/default.json').fields;
 const moment = require('moment');
 const customerEmailer = require('./behaviours/customer-email')(config.email);
 const caseworkerEmailer = require('./behaviours/caseworker-email')(config.email);
-const addToCasework = require('./behaviours/add-to-casework');
+const sendToSQS = require('./behaviours/send-to-sqs');
 
 module.exports = {
   name: 'ukvi-complaints',

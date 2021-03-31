@@ -1,5 +1,6 @@
 {
   "theme": "govuk",
+  "views": "./apps/ukvi-complaints/views",
   "routes": [
     "./apps/ukvi-complaints"
   ],

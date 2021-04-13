@@ -49,7 +49,7 @@ class RefundComplaint extends Complaint {
       case 'eu-settlement':
         return 'EU_SETTLEMENT';
       default:
-        throw new Error('invalid "refund-type" value')
+        throw new Error('invalid "refund-type" value');
     }
   }
 

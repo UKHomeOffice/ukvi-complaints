@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 'use strict';
 
 const config = require('../../config');
@@ -676,23 +677,6 @@ module.exports = {
         condition: {
           field: 'refund-type-automatic',
           value: 'eu-settlement'
-        }
-      }]
-    },
-    // eslint-disable-next-line no-dupe-keys
-    '/refund-when': {
-      fields: ['refund-when'],
-      forks: [{
-        target: '/refund-less-than',
-        condition: {
-          field: 'refund-when',
-          value: 'less-than'
-        }
-      }, {
-        target: '/refund-more-than',
-        condition: {
-          field: 'refund-when',
-          value: 'more-than'
         }
       }]
     },

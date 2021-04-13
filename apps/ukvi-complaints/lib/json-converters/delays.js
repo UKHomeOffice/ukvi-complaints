@@ -32,7 +32,7 @@ class DelaysComplaint extends Complaint {
         return 'NO';
       default:
         throw new Error('invalid "return-of-documents" value');
-  
+
     }
   }
 

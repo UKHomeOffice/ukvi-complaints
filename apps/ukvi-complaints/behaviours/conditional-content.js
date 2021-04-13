@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = superclass => class extends superclass {
 
 	locals(req, res, next) {

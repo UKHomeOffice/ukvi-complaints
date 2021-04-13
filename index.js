@@ -1,3 +1,4 @@
+/* eslint-disable no-process-env */
 'use strict';
 const hof = require('hof');
 

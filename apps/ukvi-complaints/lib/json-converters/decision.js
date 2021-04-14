@@ -5,18 +5,9 @@ class DecisionComplaint extends Complaint {
   constructor(values) {
     super(values);
     this.complaintAttributes.complaint.complaintType = 'IMMIGRATION_DECISION';
-    this.complaintAttributes.complaint.complaintDetails.decisionOutcome = this.decisionOutcomeEnum();
-  }
-
-  decisionOutcomeEnum() {
-    switch (this.values['decision-outcome']) {
-      case 'negative':
-        return 'NEGATIVE';
-      case 'positive':
-        return 'POSITIVE';
-      default:
-        throw new Error('invalid "decision-outcome" value');
-    }
+    this.complaintAttributes.complaint.complaintDetails.decisionOutcome = this.getFormattedEnum(
+      this.values['decision-outcome']
+    );
   }
 }
 

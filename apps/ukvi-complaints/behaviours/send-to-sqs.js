@@ -1,8 +1,12 @@
 'use strict';
+const Validator = require('jsonschema').Validator;
 const config = require('../../../config');
-const utils = require('../lib/utils');
+const { validAgainstSchema, sendToQueue } = require('../lib/utils');
 const formatComplaintData = require('../lib/format-complaint-data');
 
+const createValidator = () => {
+  return new Validator();
+};
 module.exports = superclass => class SendToSQS extends superclass {
 
   saveValues(req, res, next) {
@@ -12,10 +16,9 @@ module.exports = superclass => class SendToSQS extends superclass {
       }
 
       const complaintData = formatComplaintData(req.sessionModel.attributes);
-      const valid = utils.validateAgainstSchema(complaintData);
 
-      if (valid) {
-        utils.sendToQueue(complaintData)
+      if (validAgainstSchema(complaintData, createValidator())) {
+        sendToQueue(complaintData)
           .then(() => {
             next();
           })
@@ -30,6 +33,8 @@ module.exports = superclass => class SendToSQS extends superclass {
 
   static handleError(next, err) {
     err.formNotSubmitted = true;
+    // eslint-disable-next-line no-console
+    console.error(err);
     return next(err);
   }
 

@@ -8,6 +8,10 @@ describe('utils', () => {
   let createSub;
   let sendStub;
   let uuidStub;
+  let testSchema = {
+    'test': 'schema'
+  };
+
   const testUuid = '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d';
   const validComplaintData = {
     creationDate: '2021-03-17',
@@ -62,7 +66,8 @@ describe('utils', () => {
       },
       'uuid': {
         v4: uuidStub
-      }
+      },
+      '../schema/decs.json': testSchema
     });
   });
 
@@ -71,19 +76,37 @@ describe('utils', () => {
   });
 
   describe('#validateAgainstSchema', () => {
+    let testValidator;
+    let validateStub;
+
+    beforeEach(() => {
+      validateStub = sinon.stub();
+      validateStub.withArgs(validComplaintData, testSchema).returns({
+        errors: []
+      });
+      validateStub.withArgs(invalidComplaintData, testSchema).returns({
+        errors: [
+          'validation error'
+        ]
+      });
+
+      testValidator = {
+        validate: validateStub
+      };
+    });
 
     it('returns true if the complaintData object fits the schema', () => {
-      expect(utils.validateAgainstSchema(validComplaintData)).to.eql(true);
+      expect(utils.validAgainstSchema(validComplaintData, testValidator)).to.eql(true);
+    });
+
+    it('calls validate method on the validator once', () => {
+      utils.validAgainstSchema(validComplaintData, testValidator);
+
+      expect(validateStub).to.have.been.calledOnceWith(validComplaintData, testSchema);
     });
 
     it('throws an error if the complaintData object does not fit the schema', () => {
-      expect(() => utils.validateAgainstSchema(invalidComplaintData)).to.throw();
-    });
-
-    it('throws an error if the complaintData object contains "undefined" value', () => {
-      const invalidComplaintDetails = Object.assign({}, validComplaintData);
-      invalidComplaintDetails.complaint.complaintDetails.complaintText = undefined;
-      expect(() => utils.validateAgainstSchema(invalidComplaintDetails)).to.throw();
+      expect(() => utils.validAgainstSchema(invalidComplaintData, testSchema)).to.throw();
     });
 
   });

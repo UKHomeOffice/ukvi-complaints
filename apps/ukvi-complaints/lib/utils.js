@@ -32,6 +32,7 @@ const sendToQueue = (complaintData) => {
           }
         ])
       .then((response) => {
+        // eslint-disable-next-line no-console
         console.log(response);
         resolve();
       })

@@ -678,6 +678,7 @@ module.exports = {
         }
       }]
     },
+    // eslint-disable-next-line no-dupe-keys
     '/refund-when': {
       fields: ['refund-when'],
       forks: [{

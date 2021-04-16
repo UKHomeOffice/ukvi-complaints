@@ -1,5 +1,13 @@
-extends:
-- "homeoffice/config/default"
-
-env:
-  es6: true
+{
+  "extends": "homeoffice/config/default",
+  "rules": {
+    "no-unused-vars": "warn",
+    "no-process-env": "warn",
+    "implicit-dependencies/no-implicit": "off",
+    "consistent-return": "off",
+    "strict": "off"
+  },
+  "env": {
+    "es6": true
+  }
+}

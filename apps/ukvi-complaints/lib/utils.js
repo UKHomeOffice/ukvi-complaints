@@ -14,7 +14,7 @@ const validAgainstSchema = (data, validator) => {
 
     return true;
   } catch (err) {
-    throw err;
+    throw new Error('Validation against schema failed', err);
   }
 };
 
@@ -41,7 +41,7 @@ const sendToQueue = (complaintData) => {
       });
     });
   } catch (err) {
-    throw err;
+    throw new Error('Failed to send to queue', err);
   }
 };
 

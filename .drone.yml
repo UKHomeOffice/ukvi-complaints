@@ -101,7 +101,7 @@ steps:
       from_secret: kube_server_dev
     KUBE_TOKEN_DEV:
       from_secret: kube_token_dev
-    KUBE_NAMESPACE: ukvi-complaints-preprod
+    KUBE_NAMESPACE: sas-ukvi-complaints-preprod
     APP_IMAGE_TAG: ${DRONE_COMMIT_SHA}
   when:
     event: promote

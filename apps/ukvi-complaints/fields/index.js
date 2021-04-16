@@ -501,7 +501,7 @@ module.exports = {
       attribute: 'rows',
       value: 12
     }],
-    validate: ['required', { type: 'maxlength', arguments: 99999 }],
+    validate: ['required', { type: 'maxlength', arguments: 50000 }],
     'ignore-defaults': true,
     formatter: ['trim', 'hyphens'],
     className: ['form-control-3-4'],

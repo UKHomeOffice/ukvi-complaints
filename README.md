@@ -83,7 +83,7 @@ To run the unit tests:
 $ npm run test:unit
 ```
 
-To test the integration with the SQS queue (To run these tests you need to have the mock SQS running via docker using the command in the previous section):
+To launch the server and test the integration with the SQS queue (To run these tests you need to have the mock SQS running via docker using the command in the previous section):
 ```bash
 $ npm run test:sqs:server
 ```

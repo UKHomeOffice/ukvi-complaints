@@ -19,7 +19,6 @@ Run the services locally with Docker Compose
 $ docker-compose up
 ```
 
-
 Getting your hands dirty (You'll need [Redis](http://redis.io/) for this)
 ```bash
 $ npm run dev

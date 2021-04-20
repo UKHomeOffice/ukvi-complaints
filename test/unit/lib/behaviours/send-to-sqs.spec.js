@@ -57,7 +57,7 @@ describe('SendToSQS', () => {
 
     const Behaviour = proxyquire('../../../../apps/ukvi-complaints/behaviours/send-to-sqs', {
       '../../../config': {
-        writeToCasework: true
+        sendToQueue: true
       },
       '../lib/utils': {
         validAgainstSchema: validAgainstSchemaStub,
@@ -77,7 +77,25 @@ describe('SendToSQS', () => {
   describe('saveValues', () => {
     describe('config.writeToCasework', () => {
       it('If false sendToQueue should not be called', () => {
-        // ! HERE
+        const SQSBehaviour = proxyquire('../../../../apps/ukvi-complaints/behaviours/send-to-sqs', {
+            '../../../config': {
+              sendToQueue: false
+            },
+            '../lib/utils': {
+              validAgainstSchema: validAgainstSchemaStub,
+              sendToQueue: sendToQueueStub,
+            },
+            '../lib/format-complaint-data': formatComplaintDataStub
+          }
+        );
+
+        const SendToQueue = SQSBehaviour(Base);
+        const sendToQueue = new SendToQueue();
+
+        sendToQueue.saveValues(req, res, nextStub);
+
+        expect(sendToQueueStub).to.have.callCount(0);
+
       });
 
     });

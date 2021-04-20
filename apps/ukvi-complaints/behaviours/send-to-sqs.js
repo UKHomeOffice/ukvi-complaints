@@ -9,8 +9,8 @@ module.exports = superclass => class SendToSQS extends superclass {
   // eslint-disable-next-line consistent-return
   saveValues(req, res, next) {
     try {
-      if (!config.writeToCasework) {
-        next();
+      if (!config.sendToQueue) {
+        return next();
       }
 
       const complaintData = formatComplaintData(req.sessionModel.attributes);

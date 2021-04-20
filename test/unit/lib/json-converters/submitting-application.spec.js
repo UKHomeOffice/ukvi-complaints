@@ -1,7 +1,7 @@
 /* eslint-disable max-nested-callbacks */
 'use strict';
 const complaintDetailsBase = require('../test-data/complaint-base');
-const SubmittingApplicationComplaint = require(
+const getSubmittingApplicationComplaint = require(
   '../../../../apps/ukvi-complaints/lib/json-converters/submitting-application'
   );
 
@@ -12,9 +12,10 @@ describe('SubmittingApplicationComplaint', () => {
         'immigration-application': 'technical-issues',
       }, complaintDetailsBase);
 
-      const submittingApplicationComplaint = new SubmittingApplicationComplaint(values);
+      const submittingApplicationComplaint = getSubmittingApplicationComplaint(values);
+
       expect(
-        submittingApplicationComplaint.complaintAttributes.complaint.complaintDetails.problemExperienced
+        submittingApplicationComplaint.complaint.complaintDetails.problemExperienced
         ).to.eql('TECHNICAL_ISSUES');
     });
 
@@ -23,9 +24,9 @@ describe('SubmittingApplicationComplaint', () => {
         'immigration-application': 'guidance',
       }, complaintDetailsBase);
 
-      const submittingApplicationComplaint = new SubmittingApplicationComplaint(values);
+      const submittingApplicationComplaint = getSubmittingApplicationComplaint(values);
       expect(
-        submittingApplicationComplaint.complaintAttributes.complaint.complaintDetails.problemExperienced
+        submittingApplicationComplaint.complaint.complaintDetails.problemExperienced
         ).to.eql('GUIDANCE');
     });
 
@@ -34,9 +35,9 @@ describe('SubmittingApplicationComplaint', () => {
         'immigration-application': 'complain',
       }, complaintDetailsBase);
 
-      const submittingApplicationComplaint = new SubmittingApplicationComplaint(values);
+      const submittingApplicationComplaint = getSubmittingApplicationComplaint(values);
       expect(
-        submittingApplicationComplaint.complaintAttributes.complaint.complaintDetails.problemExperienced
+        submittingApplicationComplaint.complaint.complaintDetails.problemExperienced
         ).to.eql('SOMETHING_ELSE');
     });
 
@@ -45,7 +46,7 @@ describe('SubmittingApplicationComplaint', () => {
         'immigration-application': 'invalid',
       }, complaintDetailsBase);
 
-      expect(() => new SubmittingApplicationComplaint(values)).to.throw('invalid "immigration-application" value');
+      expect(() => getSubmittingApplicationComplaint(values)).to.throw('invalid "immigration-application" value');
     });
   });
 

@@ -1,10 +1,9 @@
 /* eslint-disable max-nested-callbacks */
 'use strict';
-const { expect } = require('chai');
 const complaintDetailsBase = require('../test-data/complaint-base');
-const StaffBehaviourComplaint = require('../../../../apps/ukvi-complaints/lib/json-converters/staff-behaviour');
+const getStaffBehaviourComplaint = require('../../../../apps/ukvi-complaints/lib/json-converters/staff-behaviour');
 
-describe('StaffBehaviourComplaint', () => {
+describe('getStaffBehaviourComplaint', () => {
   describe('experience', () => {
 
     it('throws an error if invalid staff-behaviour is passed', () => {
@@ -12,7 +11,7 @@ describe('StaffBehaviourComplaint', () => {
         'staff-behaviour': 'invalid',
       }, complaintDetailsBase);
 
-      expect(() => new StaffBehaviourComplaint(values)).to.throw('invalid "staff-behaviour" value');
+      expect(() => getStaffBehaviourComplaint(values)).to.throw('invalid "staff-behaviour" value');
     });
 
     describe('face-to-face', () => {
@@ -30,9 +29,9 @@ describe('StaffBehaviourComplaint', () => {
             'vac-city': city,
           }, complaintDetailsBase);
 
-          const staffBehaviourComplaint = new StaffBehaviourComplaint(values);
+          const staffBehaviourComplaint = getStaffBehaviourComplaint(values);
           expect(
-            staffBehaviourComplaint.complaintAttributes.complaint.complaintDetails.experience
+            staffBehaviourComplaint.complaint.complaintDetails.experience
             ).to.eql({
               experienceType: 'FACE_TO_FACE',
               location: {
@@ -52,9 +51,9 @@ describe('StaffBehaviourComplaint', () => {
             'ssc-city': city,
           }, complaintDetailsBase);
 
-          const staffBehaviourComplaint = new StaffBehaviourComplaint(values);
+          const staffBehaviourComplaint = getStaffBehaviourComplaint(values);
           expect(
-            staffBehaviourComplaint.complaintAttributes.complaint.complaintDetails.experience
+            staffBehaviourComplaint.complaint.complaintDetails.experience
             ).to.eql({
               experienceType: 'FACE_TO_FACE',
               location: {
@@ -73,9 +72,9 @@ describe('StaffBehaviourComplaint', () => {
             'ukvcas-city': city,
           }, complaintDetailsBase);
 
-          const staffBehaviourComplaint = new StaffBehaviourComplaint(values);
+          const staffBehaviourComplaint = getStaffBehaviourComplaint(values);
           expect(
-            staffBehaviourComplaint.complaintAttributes.complaint.complaintDetails.experience
+            staffBehaviourComplaint.complaint.complaintDetails.experience
             ).to.eql({
               experienceType: 'FACE_TO_FACE',
               location: {
@@ -91,7 +90,7 @@ describe('StaffBehaviourComplaint', () => {
             'which-centre': 'invalid',
           }, complaintDetailsBase);
 
-          expect(() => new StaffBehaviourComplaint(values)).to.throw('invalid "which-centre" value');
+          expect(() => getStaffBehaviourComplaint(values)).to.throw('invalid "which-centre" value');
         });
 
       });
@@ -113,9 +112,9 @@ describe('StaffBehaviourComplaint', () => {
           'called-from': calledFrom,
         }, complaintDetailsBase);
 
-        const staffBehaviourComplaint = new StaffBehaviourComplaint(values);
+        const staffBehaviourComplaint = getStaffBehaviourComplaint(values);
         expect(
-          staffBehaviourComplaint.complaintAttributes.complaint.complaintDetails.experience
+          staffBehaviourComplaint.complaint.complaintDetails.experience
           ).to.eql({
             experienceType: 'PHONE',
             callDetails: {
@@ -134,8 +133,8 @@ describe('StaffBehaviourComplaint', () => {
           'staff-behaviour': 'in-letter',
         }, complaintDetailsBase);
 
-        const staffBehaviourComplaint = new StaffBehaviourComplaint(values);
-        expect(staffBehaviourComplaint.complaintAttributes.complaint.complaintDetails.experience.experienceType
+        const staffBehaviourComplaint = getStaffBehaviourComplaint(values);
+        expect(staffBehaviourComplaint.complaint.complaintDetails.experience.experienceType
           ).to.eql('LETTER_OR_EMAIL');
       });
     });

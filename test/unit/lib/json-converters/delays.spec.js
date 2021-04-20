@@ -1,18 +1,18 @@
 /* eslint-disable max-nested-callbacks */
 'use strict';
 const complaintDetailsBase = require('../test-data/complaint-base');
-const DelaysComplaint = require('../../../../apps/ukvi-complaints/lib/json-converters/delays');
+const getDelaysComplaint = require('../../../../apps/ukvi-complaints/lib/json-converters/delays');
 
-describe('DelaysComplaint', () => {
+describe('getDelaysComplaint', () => {
   describe('delayedWaitingFor', () => {
     it('returns "APPLICATION_DELAY" if "application-delay" delay-type value passed in', () => {
       const values = Object.assign({
         'delay-type': 'application-delay'
       }, complaintDetailsBase);
 
-      const delaysComplaint = new DelaysComplaint(values);
+      const delaysComplaint = getDelaysComplaint(values);
       expect(
-        delaysComplaint.complaintAttributes.complaint.complaintDetails.delayedWaitingFor
+        delaysComplaint.complaint.complaintDetails.delayedWaitingFor
         ).to.eql('APPLICATION_DELAY');
     });
 
@@ -21,9 +21,9 @@ describe('DelaysComplaint', () => {
         'delay-type': 'return-of-documents'
       }, complaintDetailsBase);
 
-      const delaysComplaint = new DelaysComplaint(values);
+      const delaysComplaint = getDelaysComplaint(values);
       expect(
-        delaysComplaint.complaintAttributes.complaint.complaintDetails.delayedWaitingFor
+        delaysComplaint.complaint.complaintDetails.delayedWaitingFor
         ).to.eql('RETURN_OF_DOCUMENTS');
     });
 
@@ -32,7 +32,7 @@ describe('DelaysComplaint', () => {
         'delay-type': 'invalid'
       }, complaintDetailsBase);
 
-      expect(() => new DelaysComplaint(values)).to.throw('invalid "delay-type" value');
+      expect(() => getDelaysComplaint(values)).to.throw('invalid "delay-type" value');
     });
 
   });
@@ -44,9 +44,9 @@ describe('DelaysComplaint', () => {
         'return-of-documents': 'yes-other'
       }, complaintDetailsBase);
 
-      const delaysComplaint = new DelaysComplaint(values);
+      const delaysComplaint = getDelaysComplaint(values);
       expect(
-        delaysComplaint.complaintAttributes.complaint.complaintDetails.documentReturnRequest
+        delaysComplaint.complaint.complaintDetails.documentReturnRequest
         ).to.eql('YES_OTHER');
     });
 
@@ -56,9 +56,9 @@ describe('DelaysComplaint', () => {
         'return-of-documents': 'yes-docs-service'
       }, complaintDetailsBase);
 
-      const delaysComplaint = new DelaysComplaint(values);
+      const delaysComplaint = getDelaysComplaint(values);
       expect(
-        delaysComplaint.complaintAttributes.complaint.complaintDetails.documentReturnRequest
+        delaysComplaint.complaint.complaintDetails.documentReturnRequest
         ).to.eql('YES_DOCS_SERVICE');
     });
 
@@ -68,9 +68,9 @@ describe('DelaysComplaint', () => {
         'return-of-documents': 'no'
       }, complaintDetailsBase);
 
-      const delaysComplaint = new DelaysComplaint(values);
+      const delaysComplaint = getDelaysComplaint(values);
       expect(
-        delaysComplaint.complaintAttributes.complaint.complaintDetails.documentReturnRequest
+        delaysComplaint.complaint.complaintDetails.documentReturnRequest
         ).to.eql('NO');
     });
 
@@ -80,7 +80,7 @@ describe('DelaysComplaint', () => {
         'return-of-documents': 'invalid'
       }, complaintDetailsBase);
 
-      expect(() => new DelaysComplaint(values)).to.throw('invalid "return-of-documents" value');
+      expect(() => getDelaysComplaint(values)).to.throw('invalid "return-of-documents" value');
     });
   });
 

@@ -1,19 +1,21 @@
 'use strict';
-const Complaint = require('./complaint');
+const complaint = require('./complaint');
 
-class DelaysComplaint extends Complaint {
-  constructor(values) {
-    super(values);
-    this.complaintAttributes.complaint.complaintType = 'DELAYS';
-    this.complaintAttributes.complaint.complaintDetails.delayedWaitingFor = this.getFormattedEnum(
-      this.values['delay-type']
+const getDelaysComplaint = (values) => {
+  let data = complaint.getComplaint(values);
+  data.complaint.complaintType = 'DELAYS';
+  const delayType = 'delay-type';
+  data.complaint.complaintDetails.delayedWaitingFor = complaint.getFormattedEnum(
+    values[delayType], delayType
+  );
+
+  const returnOfDocuments = 'return-of-documents';
+  if (values[returnOfDocuments]) {
+    data.complaint.complaintDetails.documentReturnRequest = complaint.getFormattedEnum(
+      values[returnOfDocuments], returnOfDocuments
     );
-    if (this.values['return-of-documents']) {
-      this.complaintAttributes.complaint.complaintDetails.documentReturnRequest = this.getFormattedEnum(
-        this.values['return-of-documents']
-      );
-    }
   }
-}
+  return data;
+};
 
-module.exports = DelaysComplaint;
+module.exports = getDelaysComplaint;

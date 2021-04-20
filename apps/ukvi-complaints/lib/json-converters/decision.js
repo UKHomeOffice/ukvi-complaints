@@ -1,14 +1,15 @@
 'use strict';
-const Complaint = require('./complaint');
+const complaint = require('./complaint');
 
-class DecisionComplaint extends Complaint {
-  constructor(values) {
-    super(values);
-    this.complaintAttributes.complaint.complaintType = 'IMMIGRATION_DECISION';
-    this.complaintAttributes.complaint.complaintDetails.decisionOutcome = this.getFormattedEnum(
-      this.values['decision-outcome']
-    );
-  }
-}
+const getDecisionComplaint = (values) => {
+  let data = complaint.getComplaint(values);
+  data.complaint.complaintType = 'IMMIGRATION_DECISION';
+  const enumReference = 'decision-outcome';
+  data.complaint.complaintDetails.decisionOutcome = complaint.getFormattedEnum(
+    values[enumReference], enumReference
+  );
+  return data;
+};
 
-module.exports = DecisionComplaint;
+
+module.exports = getDecisionComplaint;

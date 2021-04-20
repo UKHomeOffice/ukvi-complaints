@@ -1,9 +1,10 @@
 /* eslint-disable max-nested-callbacks */
 'use strict';
 const complaintDetailsBase = require('../test-data/complaint-base');
-const MakingAppointmentComplaint = require('../../../../apps/ukvi-complaints/lib/json-converters/making-appointment');
+const getMakingAppointmentComplaint = require(
+  '../../../../apps/ukvi-complaints/lib/json-converters/making-appointment');
 
-describe('MakingAppointmentComplaint', () => {
+describe('getMakingAppointmentComplaint', () => {
   describe('problemExperienced', () => {
 
     it('returns "LACK_AVAILABILITY" if "lack-availability" immigration-appointment value passed in', () => {
@@ -11,9 +12,9 @@ describe('MakingAppointmentComplaint', () => {
         'immigration-appointment': 'lack-availability',
       }, complaintDetailsBase);
 
-      const makingAppointmentComplaint = new MakingAppointmentComplaint(values);
+      const makingAppointmentComplaint = getMakingAppointmentComplaint(values);
       expect(
-        makingAppointmentComplaint.complaintAttributes.complaint.complaintDetails.problemExperienced
+        makingAppointmentComplaint.complaint.complaintDetails.problemExperienced
         ).to.eql('LACK_AVAILABILITY');
     });
 
@@ -22,9 +23,9 @@ describe('MakingAppointmentComplaint', () => {
         'immigration-appointment': 'change-appointment',
       }, complaintDetailsBase);
 
-      const makingAppointmentComplaint = new MakingAppointmentComplaint(values);
+      const makingAppointmentComplaint = getMakingAppointmentComplaint(values);
       expect(
-        makingAppointmentComplaint.complaintAttributes.complaint.complaintDetails.problemExperienced
+        makingAppointmentComplaint.complaint.complaintDetails.problemExperienced
         ).to.eql('CHANGE_APPOINTMENT');
     });
 
@@ -33,9 +34,9 @@ describe('MakingAppointmentComplaint', () => {
         'immigration-appointment': 'technical-appointments',
       }, complaintDetailsBase);
 
-      const makingAppointmentComplaint = new MakingAppointmentComplaint(values);
+      const makingAppointmentComplaint = getMakingAppointmentComplaint(values);
       expect(
-        makingAppointmentComplaint.complaintAttributes.complaint.complaintDetails.problemExperienced
+        makingAppointmentComplaint.complaint.complaintDetails.problemExperienced
         ).to.eql('TECHNICAL_APPOINTMENTS');
     });
 
@@ -44,9 +45,9 @@ describe('MakingAppointmentComplaint', () => {
         'immigration-appointment': 'questions-appointments',
       }, complaintDetailsBase);
 
-      const makingAppointmentComplaint = new MakingAppointmentComplaint(values);
+      const makingAppointmentComplaint = getMakingAppointmentComplaint(values);
       expect(
-        makingAppointmentComplaint.complaintAttributes.complaint.complaintDetails.problemExperienced
+        makingAppointmentComplaint.complaint.complaintDetails.problemExperienced
         ).to.eql('QUESTIONS_APPOINTMENTS');
     });
 
@@ -55,9 +56,9 @@ describe('MakingAppointmentComplaint', () => {
         'immigration-appointment': 'complain-appointments',
       }, complaintDetailsBase);
 
-      const makingAppointmentComplaint = new MakingAppointmentComplaint(values);
+      const makingAppointmentComplaint = getMakingAppointmentComplaint(values);
       expect(
-        makingAppointmentComplaint.complaintAttributes.complaint.complaintDetails.problemExperienced
+        makingAppointmentComplaint.complaint.complaintDetails.problemExperienced
         ).to.eql('COMPLAIN_APPOINTMENTS');
     });
 
@@ -66,7 +67,7 @@ describe('MakingAppointmentComplaint', () => {
         'immigration-appointment': 'invalid'
       }, complaintDetailsBase);
 
-      expect(() => new MakingAppointmentComplaint(values)).to.throw('invalid "immigration-appointment" value');
+      expect(() => getMakingAppointmentComplaint(values)).to.throw('invalid "immigration-appointment" value');
     });
 
   });

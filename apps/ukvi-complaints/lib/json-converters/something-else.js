@@ -1,11 +1,10 @@
 'use strict';
-const Complaint = require('./complaint');
+const complaint = require('./complaint');
 
-class SomethingElseComplaint extends Complaint {
-  constructor(values) {
-    super(values);
-    this.complaintAttributes.complaint.complaintType = 'SOMETHING_ELSE';
-  }
-}
+const getSomethingElseComplaint = (values) => {
+  let data = complaint.getComplaint(values);
+  data.complaint.complaintType = 'SOMETHING_ELSE';
+  return data;
+};
 
-module.exports = SomethingElseComplaint;
+module.exports = getSomethingElseComplaint;

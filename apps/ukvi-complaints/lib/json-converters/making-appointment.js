@@ -1,14 +1,14 @@
 'use strict';
-const Complaint = require('./complaint');
+const complaint = require('./complaint');
 
-class MakingAppointmentComplaint extends Complaint {
-  constructor(values) {
-    super(values);
-    this.complaintAttributes.complaint.complaintType = 'MAKING_APPOINTMENT';
-    this.complaintAttributes.complaint.complaintDetails.problemExperienced = this.getFormattedEnum(
-      this.values['immigration-appointment']
-    );
-  }
-}
+const getMakingAppointmentComplaint = (values) => {
+  let data = complaint.getComplaint(values);
+  data.complaint.complaintType = 'MAKING_APPOINTMENT';
+  const immigrationAppointment = 'immigration-appointment';
+  data.complaint.complaintDetails.problemExperienced = complaint.getFormattedEnum(
+    values[immigrationAppointment], immigrationAppointment
+  );
+  return data;
+};
 
-module.exports = MakingAppointmentComplaint;
+module.exports = getMakingAppointmentComplaint;

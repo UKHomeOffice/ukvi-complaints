@@ -1,14 +1,15 @@
 'use strict';
-const Complaint = require('./complaint');
 
-class BrpComplaint extends Complaint {
-  constructor(values) {
-    super(values);
-    this.complaintAttributes.complaint.complaintType = 'BIOMETRIC_RESIDENCE_PERMIT';
-    this.complaintAttributes.complaint.complaintDetails.problemExperienced = this.getFormattedEnum(
-      this.values['biometric-residence-permit']
-    );
-  }
-}
+const complaint = require('./complaint');
 
-module.exports = BrpComplaint;
+const getBrpComplaint = (values) => {
+  let data = complaint.getComplaint(values);
+  data.complaint.complaintType = 'BIOMETRIC_RESIDENCE_PERMIT';
+  const enumReference = 'biometric-residence-permit';
+  data.complaint.complaintDetails.problemExperienced = complaint.getFormattedEnum(
+    values[enumReference], enumReference
+  );
+  return data;
+};
+
+module.exports = getBrpComplaint;

@@ -1,63 +1,53 @@
 'use strict';
 
-const SubmittingApplicationComplaint = require('./json-converters/submitting-application');
-const MakingAppointmentComplaint = require('./json-converters/making-appointment');
-const DelaysComplaint = require('./json-converters/delays');
-const BrpComplaint = require('./json-converters/brp');
-const DecisionComplaint = require('./json-converters/decision');
-const RefundComplaint = require('./json-converters/refund');
-const InformationIssueComplaint = require('./json-converters/information-issue');
-const StaffBehaviourComplaint = require('./json-converters/staff-behaviour');
-const ExistingComplaint = require('./json-converters/existing');
-const SomethingElseComplaint = require('./json-converters/something-else');
+const getSubmittingApplicationComplaint = require('./json-converters/submitting-application');
+const getMakingAppointmentComplaint = require('./json-converters/making-appointment');
+const getDelaysComplaint = require('./json-converters/delays');
+const getBrpComplaint = require('./json-converters/brp');
+const getDecisionComplaint = require('./json-converters/decision');
+const getRefundComplaint = require('./json-converters/refund');
+const getInformationIssueComplaint = require('./json-converters/information-issue');
+const getStaffBehaviourComplaint = require('./json-converters/staff-behaviour');
+const getExistingComplaint = require('./json-converters/existing');
+const getSomethingElseComplaint = require('./json-converters/something-else');
 
 // eslint-disable-next-line complexity
 const formatComplaintData = (values) => {
   switch (values.reason) {
     case 'immigration-application':
-      const submittingApplication = new SubmittingApplicationComplaint(values);
-      return submittingApplication.complaintAttributes;
+      return getSubmittingApplicationComplaint(values);
 
     case 'immigration-appointment':
-      const makingApplication = new MakingAppointmentComplaint(values);
-      return makingApplication.complaintAttributes;
+      return getMakingAppointmentComplaint(values);
 
     case 'delays':
-      const delays = new DelaysComplaint(values);
-      return delays.complaintAttributes;
+      return getDelaysComplaint(values);
 
     case 'biometric-residence-permit':
-      const brp = new BrpComplaint(values);
-      return brp.complaintAttributes;
+      return getBrpComplaint(values);
 
     case 'immigration-decision':
-      const decision = new DecisionComplaint(values);
-      return decision.complaintAttributes;
+      return getDecisionComplaint(values);
 
     case 'refund':
-      const refund = new RefundComplaint(values);
-      return refund.complaintAttributes;
+      return getRefundComplaint(values);
 
     case 'staff-behaviour':
       if (values['poor-info-or-behaviour'] === 'poor-information') {
-        const informationIssue = new InformationIssueComplaint(values);
-        return informationIssue.complaintAttributes;
+        return getInformationIssueComplaint(values);
       }
 
       if (values['poor-info-or-behaviour'] === 'staff-behaviour') {
-        const staffBehaviour = new StaffBehaviourComplaint(values);
-      return staffBehaviour.complaintAttributes;
+        return getStaffBehaviourComplaint(values);
       }
 
       throw new Error('Invalid poor-info-or-behaviour value');
 
     case 'existing-complaint':
-      const existing = new ExistingComplaint(values);
-      return existing.complaintAttributes;
+      return getExistingComplaint(values);
 
     case 'other-complaint':
-      const somethingElse = new SomethingElseComplaint(values);
-      return somethingElse.complaintAttributes;
+      return getSomethingElseComplaint(values);
 
     default:
       throw new Error('Complaint reason not recognized');

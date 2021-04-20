@@ -1,11 +1,10 @@
 /* eslint-disable max-nested-callbacks */
 'use strict';
 
-const { expect } = require('chai');
 const complaintDetailsBase = require('./test-data/complaint-base');
 const formatComplaintData = require('../../../apps/ukvi-complaints/lib/format-complaint-data');
 
-describe('#formatComplaintData', () => {
+describe('formatComplaintData', () => {
   describe('reason', () => {
 
     describe('immigration-application', () => {

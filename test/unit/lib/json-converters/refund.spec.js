@@ -1,18 +1,18 @@
 /* eslint-disable max-nested-callbacks */
 'use strict';
 const complaintDetailsBase = require('../test-data/complaint-base');
-const RefundComplaint = require('../../../../apps/ukvi-complaints/lib/json-converters/refund');
+const getRefundComplaint = require('../../../../apps/ukvi-complaints/lib/json-converters/refund');
 
-describe('RefundComplaint', () => {
+describe('getRefundComplaint', () => {
   describe('refundRequested', () => {
     it('returns "NO" if "no" refund value passed in', () => {
       const values = Object.assign({
         'refund': 'no',
       }, complaintDetailsBase);
 
-      const refundComplaint = new RefundComplaint(values);
+      const refundComplaint = getRefundComplaint(values);
       expect(
-        refundComplaint.complaintAttributes.complaint.complaintDetails.refundRequested
+        refundComplaint.complaint.complaintDetails.refundRequested
         ).to.eql('NO');
     });
 
@@ -21,9 +21,9 @@ describe('RefundComplaint', () => {
         'refund': 'yes',
       }, complaintDetailsBase);
 
-      const refundComplaint = new RefundComplaint(values);
+      const refundComplaint = getRefundComplaint(values);
       expect(
-        refundComplaint.complaintAttributes.complaint.complaintDetails.refundRequested
+        refundComplaint.complaint.complaintDetails.refundRequested
         ).to.eql('YES');
     });
 
@@ -32,9 +32,9 @@ describe('RefundComplaint', () => {
         'refund': 'not-yet',
       }, complaintDetailsBase);
 
-      const refundComplaint = new RefundComplaint(values);
+      const refundComplaint = getRefundComplaint(values);
       expect(
-        refundComplaint.complaintAttributes.complaint.complaintDetails.refundRequested
+        refundComplaint.complaint.complaintDetails.refundRequested
         ).to.eql('NOT_YET');
     });
 
@@ -43,7 +43,7 @@ describe('RefundComplaint', () => {
         'refund': 'invalid'
       }, complaintDetailsBase);
 
-      expect(() => new RefundComplaint(values)).to.throw('invalid "refund" value');
+      expect(() => getRefundComplaint(values)).to.throw('invalid "refund" value');
     });
 
   });
@@ -55,9 +55,9 @@ describe('RefundComplaint', () => {
         'refund-type': 'standard',
       }, complaintDetailsBase);
 
-      const refundComplaint = new RefundComplaint(values);
+      const refundComplaint = getRefundComplaint(values);
       expect(
-        refundComplaint.complaintAttributes.complaint.complaintDetails.refundType
+        refundComplaint.complaint.complaintDetails.refundType
         ).to.eql('STANDARD');
     });
 
@@ -67,9 +67,9 @@ describe('RefundComplaint', () => {
         'refund-type': 'priority',
       }, complaintDetailsBase);
 
-      const refundComplaint = new RefundComplaint(values);
+      const refundComplaint = getRefundComplaint(values);
       expect(
-        refundComplaint.complaintAttributes.complaint.complaintDetails.refundType
+        refundComplaint.complaint.complaintDetails.refundType
         ).to.eql('PRIORITY');
     });
 
@@ -79,9 +79,9 @@ describe('RefundComplaint', () => {
         'refund-type': 'super-priority',
       }, complaintDetailsBase);
 
-      const refundComplaint = new RefundComplaint(values);
+      const refundComplaint = getRefundComplaint(values);
       expect(
-        refundComplaint.complaintAttributes.complaint.complaintDetails.refundType
+        refundComplaint.complaint.complaintDetails.refundType
         ).to.eql('SUPER_PRIORITY');
     });
 
@@ -91,9 +91,9 @@ describe('RefundComplaint', () => {
         'refund-type': 'premium',
       }, complaintDetailsBase);
 
-      const refundComplaint = new RefundComplaint(values);
+      const refundComplaint = getRefundComplaint(values);
       expect(
-        refundComplaint.complaintAttributes.complaint.complaintDetails.refundType
+        refundComplaint.complaint.complaintDetails.refundType
         ).to.eql('PREMIUM');
     });
 
@@ -103,9 +103,9 @@ describe('RefundComplaint', () => {
         'refund-type': 'ihs',
       }, complaintDetailsBase);
 
-      const refundComplaint = new RefundComplaint(values);
+      const refundComplaint = getRefundComplaint(values);
       expect(
-        refundComplaint.complaintAttributes.complaint.complaintDetails.refundType
+        refundComplaint.complaint.complaintDetails.refundType
         ).to.eql('IHS');
     });
 
@@ -115,9 +115,9 @@ describe('RefundComplaint', () => {
         'refund-type': 'eu-settlement',
       }, complaintDetailsBase);
 
-      const refundComplaint = new RefundComplaint(values);
+      const refundComplaint = getRefundComplaint(values);
       expect(
-        refundComplaint.complaintAttributes.complaint.complaintDetails.refundType
+        refundComplaint.complaint.complaintDetails.refundType
         ).to.eql('EU_SETTLEMENT');
     });
 
@@ -127,7 +127,7 @@ describe('RefundComplaint', () => {
         'refund-type': 'invalid'
       }, complaintDetailsBase);
 
-      expect(() => new RefundComplaint(values)).to.throw('invalid "refund-type" value');
+      expect(() => getRefundComplaint(values)).to.throw('invalid "refund-type" value');
     });
   });
 

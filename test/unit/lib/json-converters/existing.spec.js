@@ -2,20 +2,20 @@
 /* eslint-disable max-nested-callbacks */
 'use strict';
 const complaintDetailsBase = require('../test-data/complaint-base');
-const ExistingComplaint = require('../../../../apps/ukvi-complaints/lib/json-converters/existing');
+const getExistingComplaint = require('../../../../apps/ukvi-complaints/lib/json-converters/existing');
 
-describe('ExistingComplaint', () => {
+describe('getExistingComplaint', () => {
   describe('previousComplaint', () => {
-    it('returns complaint reference number if "yes" existing-complaint value passed in', () => {
+    it('returns existingComplaintreference number if "yes" existing-existingComplaintvalue passed in', () => {
       const refNumber = '23456789o0p9';
       const values = Object.assign({
         'existing-complaint': 'yes',
         'complaint-reference-number': refNumber
       }, complaintDetailsBase);
 
-      const existingComplaint = new ExistingComplaint(values);
+      const existingComplaint = getExistingComplaint(values);
       expect(
-        existingComplaint.complaintAttributes.complaint.complaintDetails.previousComplaint.complaintReferenceNumber
+        existingComplaint.complaint.complaintDetails.previousComplaint.complaintReferenceNumber
         ).to.eql(refNumber);
     });
 
@@ -26,9 +26,9 @@ describe('ExistingComplaint', () => {
             'complaint-reason-previous': 'immigration-application'
           }, complaintDetailsBase);
 
-          const existingComplaint = new ExistingComplaint(values);
+          const existingComplaint = getExistingComplaint(values);
           expect(
-            existingComplaint.complaintAttributes.complaint.complaintDetails.previousComplaint.previousComplaintType
+            existingComplaint.complaint.complaintDetails.previousComplaint.previousComplaintType
             ).to.eql('SUBMITTING_APPLICATION');
         });
 
@@ -38,9 +38,9 @@ describe('ExistingComplaint', () => {
             'complaint-reason-previous': 'immigration-appointment'
           }, complaintDetailsBase);
 
-          const existingComplaint = new ExistingComplaint(values);
+          const existingComplaint = getExistingComplaint(values);
           expect(
-            existingComplaint.complaintAttributes.complaint.complaintDetails.previousComplaint.previousComplaintType
+            existingComplaint.complaint.complaintDetails.previousComplaint.previousComplaintType
             ).to.eql('MAKING_APPOINTMENT');
         });
 
@@ -50,9 +50,9 @@ describe('ExistingComplaint', () => {
             'complaint-reason-previous': 'delays'
           }, complaintDetailsBase);
 
-          const existingComplaint = new ExistingComplaint(values);
+          const existingComplaint = getExistingComplaint(values);
           expect(
-            existingComplaint.complaintAttributes.complaint.complaintDetails.previousComplaint.previousComplaintType
+            existingComplaint.complaint.complaintDetails.previousComplaint.previousComplaintType
             ).to.eql('DELAYS');
         });
 
@@ -62,9 +62,9 @@ describe('ExistingComplaint', () => {
             'complaint-reason-previous': 'biometric-residence-permit'
           }, complaintDetailsBase);
 
-          const existingComplaint = new ExistingComplaint(values);
+          const existingComplaint = getExistingComplaint(values);
           expect(
-            existingComplaint.complaintAttributes.complaint.complaintDetails.previousComplaint.previousComplaintType
+            existingComplaint.complaint.complaintDetails.previousComplaint.previousComplaintType
             ).to.eql('BIOMETRIC_RESIDENCE_PERMIT');
         });
 
@@ -74,9 +74,9 @@ describe('ExistingComplaint', () => {
             'complaint-reason-previous': 'immigration-decision'
           }, complaintDetailsBase);
 
-          const existingComplaint = new ExistingComplaint(values);
+          const existingComplaint = getExistingComplaint(values);
           expect(
-            existingComplaint.complaintAttributes.complaint.complaintDetails.previousComplaint.previousComplaintType
+            existingComplaint.complaint.complaintDetails.previousComplaint.previousComplaintType
             ).to.eql('IMMIGRATION_DECISION');
         });
 
@@ -86,9 +86,9 @@ describe('ExistingComplaint', () => {
             'complaint-reason-previous': 'immigration-status-change'
           }, complaintDetailsBase);
 
-          const existingComplaint = new ExistingComplaint(values);
+          const existingComplaint = getExistingComplaint(values);
           expect(
-            existingComplaint.complaintAttributes.complaint.complaintDetails.previousComplaint.previousComplaintType
+            existingComplaint.complaint.complaintDetails.previousComplaint.previousComplaintType
             ).to.eql('IMMIGRATION_STATUS_CHANGE');
         });
 
@@ -98,9 +98,9 @@ describe('ExistingComplaint', () => {
             'complaint-reason-previous': 'refund'
           }, complaintDetailsBase);
 
-          const existingComplaint = new ExistingComplaint(values);
+          const existingComplaint = getExistingComplaint(values);
           expect(
-            existingComplaint.complaintAttributes.complaint.complaintDetails.previousComplaint.previousComplaintType
+            existingComplaint.complaint.complaintDetails.previousComplaint.previousComplaintType
             ).to.eql('REFUND');
         });
 
@@ -110,9 +110,9 @@ describe('ExistingComplaint', () => {
             'complaint-reason-previous': 'staff-behaviour'
           }, complaintDetailsBase);
 
-          const existingComplaint = new ExistingComplaint(values);
+          const existingComplaint = getExistingComplaint(values);
           expect(
-            existingComplaint.complaintAttributes.complaint.complaintDetails.previousComplaint.previousComplaintType
+            existingComplaint.complaint.complaintDetails.previousComplaint.previousComplaintType
             ).to.eql('POOR_INFORMATION_OR_STAFF_BEHAVIOUR');
         });
 
@@ -122,9 +122,9 @@ describe('ExistingComplaint', () => {
             'complaint-reason-previous': 'other-complaint'
           }, complaintDetailsBase);
 
-          const existingComplaint = new ExistingComplaint(values);
+          const existingComplaint = getExistingComplaint(values);
           expect(
-            existingComplaint.complaintAttributes.complaint.complaintDetails.previousComplaint.previousComplaintType
+            existingComplaint.complaint.complaintDetails.previousComplaint.previousComplaintType
             ).to.eql('SOMETHING_ELSE');
         });
 
@@ -134,17 +134,17 @@ describe('ExistingComplaint', () => {
             'complaint-reason-previous': 'invalid'
           }, complaintDetailsBase);
 
-          expect(() => new ExistingComplaint(values)).to.throw('invalid "complaint-reason-previous" value');
+          expect(() => getExistingComplaint(values)).to.throw('invalid "complaint-reason-previous" value');
         });
 
       });
 
-    it('throws an error if invalid existing-complaint value is passed', () => {
+    it('throws an error if invalid existing-existingComplaintvalue is passed', () => {
       const values = Object.assign({
         'existing-complaint': 'invalid'
       }, complaintDetailsBase);
 
-      expect(() => new ExistingComplaint(values)).to.throw('invalid "existing-complaint" value');
+      expect(() => getExistingComplaint(values)).to.throw('invalid "existing-complaint" value');
     });
 
 

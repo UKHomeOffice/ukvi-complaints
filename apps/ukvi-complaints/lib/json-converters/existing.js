@@ -1,28 +1,28 @@
 'use strict';
-const Complaint = require('./complaint');
+const complaint = require('./complaint');
 
-class ExistingComplaint extends Complaint {
-  constructor(values) {
-    super(values);
-    this.complaintAttributes.complaint.complaintType = 'EXISTING';
-    this.complaintAttributes.complaint.complaintDetails.previousComplaint = this.formatPreviousComplaint();
+const formatPreviousComplaint = (values) => {
+  switch (values['existing-complaint']) {
+    case 'no':
+      const complaintReason = 'complaint-reason-previous';
+      return {
+        previousComplaintType: complaint.getFormattedEnum(values[complaintReason], complaintReason),
+      };
+    case 'yes':
+      return {
+        complaintReferenceNumber: values['complaint-reference-number'],
+      };
+    default:
+      throw new Error('invalid "existing-complaint" value');
   }
+};
 
-  formatPreviousComplaint() {
-    switch (this.values['existing-complaint']) {
-      case 'no':
-        return {
-          previousComplaintType: this.getFormattedEnum(this.values['complaint-reason-previous']),
-        };
-      case 'yes':
-        return {
-          complaintReferenceNumber: this.values['complaint-reference-number'],
-        };
-      default:
-        throw new Error('invalid "existing-complaint" value');
-    }
-  }
+const getExistingComplaint = (values) => {
+  let data = complaint.getComplaint(values);
+  data.complaint.complaintType = 'EXISTING';
+  data.complaint.complaintDetails.previousComplaint = formatPreviousComplaint(values);
+  return data;
+};
 
-}
 
-module.exports = ExistingComplaint;
+module.exports = getExistingComplaint;

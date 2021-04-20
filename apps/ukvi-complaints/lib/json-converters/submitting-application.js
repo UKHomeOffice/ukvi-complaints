@@ -1,14 +1,16 @@
 'use strict';
-const Complaint = require('./complaint');
+const complaint = require('./complaint');
 
-class SubmittingApplicationComplaint extends Complaint {
-  constructor(values) {
-    super(values);
-    this.complaintAttributes.complaint.complaintType = 'SUBMITTING_APPLICATION';
-    this.complaintAttributes.complaint.complaintDetails.problemExperienced = this.getFormattedEnum(
-      this.values['immigration-application']
-    );
-  }
-}
+const getSubmittingApplicationComplaint = (values) => {
+  let data = complaint.getComplaint(values);
+  data.complaint.complaintType = 'SUBMITTING_APPLICATION';
+  const enumReference = 'immigration-application';
+  data.complaint.complaintDetails.problemExperienced = complaint.getFormattedEnum(
+    values[enumReference], enumReference
+  );
+  return data;
+};
 
-module.exports = SubmittingApplicationComplaint;
+module.exports = getSubmittingApplicationComplaint;
+
+

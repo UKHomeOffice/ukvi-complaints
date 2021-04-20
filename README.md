@@ -2,6 +2,7 @@
 
 ## Getting started
 
+
 Get the project from Github
 ```bash
 $ git clone git@github.com:UKHomeOffice/UKVI-Complaints.git && cd UKVI-Complaints
@@ -18,6 +19,7 @@ Run the services locally with Docker Compose
 ```bash
 $ docker-compose up
 ```
+
 
 ### Set up AWS SQS queue locally
 

@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 'use strict';
 
 const config = require('../../config');
@@ -6,6 +7,7 @@ const translation = require('./translations/en/default.json').fields;
 const moment = require('moment');
 const customerEmailer = require('./behaviours/customer-email')(config.email);
 const caseworkerEmailer = require('./behaviours/caseworker-email')(config.email);
+const sendToSQS = require('./behaviours/send-to-sqs');
 
 module.exports = {
   name: 'ukvi-complaints',
@@ -678,23 +680,6 @@ module.exports = {
         }
       }]
     },
-    // eslint-disable-next-line no-dupe-keys
-    '/refund-when': {
-      fields: ['refund-when'],
-      forks: [{
-        target: '/refund-less-than',
-        condition: {
-          field: 'refund-when',
-          value: 'less-than'
-        }
-      }, {
-        target: '/refund-more-than',
-        condition: {
-          field: 'refund-when',
-          value: 'more-than'
-        }
-      }]
-    },
     '/refund-less-than': {
 
     },
@@ -883,7 +868,7 @@ module.exports = {
       next: '/confirm'
     },
     '/confirm': {
-      behaviours: [caseworkerEmailer, customerEmailer, 'complete', require('hof-behaviour-summary-page')],
+      behaviours: [sendToSQS, caseworkerEmailer, customerEmailer, 'complete', require('hof-behaviour-summary-page')],
       next: '/complete',
       sections: {
         'complaint-details': [

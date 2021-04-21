@@ -1,13 +1,29 @@
-{
-  "extends": "homeoffice/config/default",
-  "rules": {
-    "no-unused-vars": "warn",
-    "no-process-env": "warn",
-    "implicit-dependencies/no-implicit": "off",
-    "consistent-return": "off",
-    "strict": "off"
-  },
-  "env": {
-    "es6": true
-  }
-}
+extends:
+- "homeoffice/config/default"
+
+env:
+  es6: true
+  mocha: true
+
+overrides:
+- files:
+    "test/**/*.js"
+  rules:
+    implicit-dependencies/no-implicit: [error, { dev: true }]
+    max-nested-callbacks: off
+    complexity: [error, 40]
+  globals:
+    chai: true
+    sinon: true
+    expect: true
+    proxyquire: true
+    browser: true
+    page: true
+    baseURL: true
+    submitPage: true
+    getErrorSummaries: true
+    getErrorMessages: true
+- files:
+    "apps/ukvi-complaints/behaviours/*.js"
+  rules:
+    complexity: [error, 40]

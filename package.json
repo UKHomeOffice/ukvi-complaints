@@ -1,10 +1,15 @@
 {
   "license": "MIT",
+  "config": {
+    "reporter": "--reporter mocha-multi-reporters --reporter-options configFile=test/reporter-config"
+  },
   "scripts": {
     "start": "node app.js",
     "start:dev": "hof-build watch --env",
-    "test": "npm run test:lint",
+    "test": "npm run test:lint && npm run test:unit",
     "test:lint": "eslint .",
+    "test:unit": "nyc --report-dir=test/coverage --reporter=lcov mocha \"test/unit/**/*.spec.js\" --timeout 10000 --require test/test-helpers.js -- $npm_package_config_reporter/unit.json",
+    "test:check": "mocha \"test/unit/**/*.spec.js\"",
     "build": "hof-build",
     "postinstall": "npm run build"
   },
@@ -18,11 +23,26 @@
     "hof-template-mixins": "^5.0.1",
     "hof-theme-govuk": "^4.3.0",
     "hof-util-countries": "^1.0.0",
-    "typeahead-aria": "^1.0.4"
+    "jquery": "^3.6.0",
+    "jsonschema": "^1.4.0",
+    "moment": "^2.29.1",
+    "sqs-producer": "^2.1.0",
+    "typeahead-aria": "^1.0.4",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "eslint": "^7.22.0",
-    "eslint-config-homeoffice": "^2.1.0"
+    "@danmasta/mocha-sonar": "^1.0.0",
+    "chai": "^4.3.4",
+    "chai-as-promised": "^7.1.1",
+    "eslint": "^5.16.0",
+    "eslint-config-homeoffice": "^2.1.0",
+    "mocha": "^8.3.2",
+    "mocha-multi-reporters": "^1.5.1",
+    "mochawesome": "^6.2.2",
+    "nyc": "^15.1.0",
+    "proxyquire": "^2.1.3",
+    "sinon": "^9.2.4",
+    "sinon-chai": "^3.6.0"
   },
   "name": "ukvi-complaints",
   "version": "1.0.0",

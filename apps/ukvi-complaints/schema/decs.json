@@ -13,10 +13,12 @@
       "additionalProperties": false,
       "properties": {
         "country": {
-          "type": "string"
+          "type": "string",
+          "maxLength": 100
         },
         "city": {
-          "type": "string"
+          "type": "string",
+          "maxLength": 100
         },
         "centreType": {
           "type": "string",
@@ -35,7 +37,8 @@
       "additionalProperties": false,
       "properties": {
         "city": {
-          "type": "string"
+          "type": "string",
+          "maxLength": 100
         },
         "centreType": {
           "type": "string",
@@ -54,7 +57,8 @@
       "additionalProperties": false,
       "properties": {
         "city": {
-          "type": "string"
+          "type": "string",
+          "maxLength": 100
         },
         "centreType": {
           "type": "string",
@@ -65,7 +69,8 @@
       }
     },
     "ComplaintDetailsText": {
-      "type": "string"
+      "type": "string",
+      "maxLength": 50000
     },
     "AgentDetails": {
       "type": "object",
@@ -77,7 +82,8 @@
       "additionalProperties": false,
       "properties": {
         "agentName": {
-          "type": "string"
+          "type": "string",
+          "maxLength": 150
         },
         "agentType": {
           "type": "string",
@@ -89,10 +95,12 @@
           ]
         },
         "agentEmail": {
-          "type": "string"
+          "type": "string",
+          "maxLength": 256
         },
         "agentPhone": {
-          "type": "string"
+          "type": "string",
+          "maxLength": 50
         }
       }
     },
@@ -106,14 +114,17 @@
       "additionalProperties": false,
       "properties": {
         "applicantName": {
-          "type": "string"
+          "type": "string",
+          "maxLength": 100
         },
         "applicantNationality": {
-          "type": "string"
+          "type": "string",
+          "maxLength": 100
         },
         "applicantDob": {
           "type": "string",
-          "format": "date"
+          "format": "date",
+          "maxLength": 50
         }
       }
     },
@@ -135,20 +146,25 @@
           ]
         },
         "applicantName": {
-          "type": "string"
+          "type": "string",
+          "maxLength": 100
         },
         "applicantNationality": {
-          "type": "string"
+          "type": "string",
+          "maxLength": 100
         },
         "applicantDob": {
           "type": "string",
-          "format": "date"
+          "format": "date",
+          "maxLength": 50
         },
         "applicantEmail": {
-          "type": "string"
+          "type": "string",
+          "maxLength": 256
         },
         "applicantPhone": {
-          "type": "string"
+          "type": "string",
+          "maxLength": 50
         }
       }
     },
@@ -214,7 +230,8 @@
           ]
         },
         "reference": {
-          "type": "string"
+          "type": "string",
+          "maxLength": 100
         }
       }
     },
@@ -234,7 +251,8 @@
           ]
         },
         "reference": {
-          "type": "string"
+          "type": "string",
+          "maxLength": 100
         }
       }
     },
@@ -254,7 +272,8 @@
           ]
         },
         "reference": {
-          "type": "string"
+          "type": "string",
+          "maxLength": 100
         }
       }
     },
@@ -274,7 +293,8 @@
           ]
         },
         "reference": {
-          "type": "string"
+          "type": "string",
+          "maxLength": 100
         }
       }
     },
@@ -334,7 +354,8 @@
       "additionalProperties": false,
       "properties": {
         "complaintReferenceNumber": {
-          "type": "string"
+          "type": "string",
+          "maxLength": 100
         }
       }
     },
@@ -392,18 +413,22 @@
           "additionalProperties": false,
           "properties": {
             "numberCalled": {
-              "type": "string"
+              "type": "string",
+              "maxLength": 50
             },
             "date": {
               "type": "string",
-              "description": "30 April or early June"
+              "description": "30 April or early June",
+              "maxLength": 50
             },
             "time": {
               "type": "string",
-              "description": "10:30am"
+              "description": "10:30am",
+              "maxLength": 50
             },
             "calledFrom": {
-              "type": "string"
+              "type": "string",
+              "maxLength": 50
             }
           }
         }
@@ -568,7 +593,8 @@
               ]
             },
             "applicationSubmittedWhen": {
-              "type": "string"
+              "type": "string",
+              "maxLength": 50
             },
             "applicationLocation": {
               "$ref": "#/definitions/ApplicationLocation"

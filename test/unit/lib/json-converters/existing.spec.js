@@ -6,12 +6,13 @@ const getExistingComplaint = require('../../../../apps/ukvi-complaints/lib/json-
 
 describe('getExistingComplaint', () => {
   describe('previousComplaint', () => {
-    it('returns existingComplaintreference number if "yes" existing-existingComplaintvalue passed in', () => {
+    it('returns existing complaint reference number if "yes" existing-complaint value passed in', () => {
       const refNumber = '23456789o0p9';
-      const values = Object.assign({
+      const values = {
         'existing-complaint': 'yes',
-        'complaint-reference-number': refNumber
-      }, complaintDetailsBase);
+        'complaint-reference-number': refNumber,
+        'complaint-details': 'test'
+      };
 
       const existingComplaint = getExistingComplaint(values);
       expect(

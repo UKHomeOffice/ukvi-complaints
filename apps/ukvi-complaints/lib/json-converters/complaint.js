@@ -76,12 +76,16 @@ const getComplaint = (values) => {
   let data = {
     creationDate: moment().format('YYYY-MM-DD'),
     complaint: {
-      reporterDetails: createReporterDetails(values),
       complaintDetails: {
         complaintText: values['complaint-details']
       }
     }
   };
+
+  if (values['acting-as-agent']) {
+    data.complaint.reporterDetails = createReporterDetails(values);
+  }
+
   if (values['reference-numbers'] && values['reference-numbers'] !== 'none') {
     data.complaint.reference = createReference(values);
   }

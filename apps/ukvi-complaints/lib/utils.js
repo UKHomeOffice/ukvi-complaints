@@ -19,7 +19,7 @@ const validAgainstSchema = (data, validator) => {
 };
 
 
-const sendToQueue = (complaintData) => {
+const sendToQueue = (data, id) => {
   try {
     const producer = Producer.create(config.awsSqs);
 
@@ -27,13 +27,22 @@ const sendToQueue = (complaintData) => {
       producer.send(
         [
           {
-            id: uuidv4(),
-            body: JSON.stringify(complaintData)
+            id,
+            body: JSON.stringify(data)
           }
         ])
       .then((response) => {
+        const log = {
+          sqsResponse: response,
+          complaintDetails: {
+            sqsMessageId: response[0].MessageId,
+            complaintId: id,
+            data
+          }
+        };
+
         // eslint-disable-next-line no-console
-        console.log(response);
+        console.log('Successfully sent to SQS queue', log);
         resolve();
       })
       .catch(error => {
@@ -41,7 +50,7 @@ const sendToQueue = (complaintData) => {
       });
     });
   } catch (err) {
-    throw new Error('Failed to send to queue', err);
+    throw new Error('Failed to send to sqs queue', err);
   }
 };
 

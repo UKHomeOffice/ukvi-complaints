@@ -43,7 +43,7 @@ module.exports = superclass => class SendToSQS extends superclass {
     err.formNotSubmitted = true;
     err.complaintDetails = complaintDetails;
     // eslint-disable-next-line no-console
-    console.error(err);
+    console.error('Failed to send to SQS queue: ', err);
     return next(err);
   }
 

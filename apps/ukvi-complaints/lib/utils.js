@@ -41,7 +41,7 @@ const sendToQueue = (data, id) => {
         };
 
         // eslint-disable-next-line no-console
-        console.log('Successfully sent to SQS queue', log);
+        console.log('Successfully sent to SQS queue: ', log);
         resolve();
       })
       .catch(error => {

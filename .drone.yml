@@ -14,6 +14,14 @@ steps:
     branch: [ master, feature/* ]
     event: push
 
+- name: redis-test-service
+  pull: if-not-exists
+  image: redis
+  detach: true
+  when:
+    branch: [ master, feature/* ]
+    event: push
+
 - name: build_ukvi-complaints
   pull: if-not-exists
   image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/dind

@@ -1,5 +1,4 @@
 'use strict';
-const { v4: uuidv4 } = require('uuid');
 const { Producer } = require('sqs-producer');
 const config = require('../../../config');
 const decsSchema = require('../schema/decs.json');

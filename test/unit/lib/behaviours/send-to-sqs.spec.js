@@ -14,6 +14,10 @@ describe('SendToSQS', () => {
   let formatComplaintDataStub;
   let sendToQueueStub;
   let validAgainstSchemaStub;
+  let uuidStub;
+
+  const testUuid = '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d';
+
   const complaintData = {
     data: 'test'
   };
@@ -45,6 +49,8 @@ describe('SendToSQS', () => {
 
     nextStub = sinon.stub();
 
+    uuidStub = sinon.stub().returns(testUuid);
+
     validAgainstSchemaStub = sinon.stub().returns(true);
 
     formatComplaintDataStub = sinon.stub().returns(complaintData);
@@ -52,8 +58,8 @@ describe('SendToSQS', () => {
     formatComplaintDataStub.withArgs(badDataReq.sessionModel.attributes).returns(badComplaintData);
 
     sendToQueueStub = sinon.stub();
-    sendToQueueStub.withArgs(complaintData).resolves();
-    sendToQueueStub.withArgs(badComplaintData).rejects(testError);
+    sendToQueueStub.withArgs(complaintData, testUuid).resolves();
+    sendToQueueStub.withArgs(badComplaintData, testUuid).rejects(testError);
 
     const Behaviour = proxyquire('../../../../apps/ukvi-complaints/behaviours/send-to-sqs', {
       '../../../config': {
@@ -62,6 +68,9 @@ describe('SendToSQS', () => {
       '../lib/utils': {
         validAgainstSchema: validAgainstSchemaStub,
         sendToQueue: sendToQueueStub,
+      },
+      'uuid': {
+        v4: uuidStub
       },
       '../lib/format-complaint-data': formatComplaintDataStub
     });
@@ -89,10 +98,10 @@ describe('SendToSQS', () => {
           }
         );
 
-        const SendToQueue = SQSBehaviour(Base);
-        const sendToQueue = new SendToQueue();
+        const SendToSQSBehaviour = SQSBehaviour(Base);
+        const sendToSQSBehaviour = new SendToSQSBehaviour();
 
-        sendToQueue.saveValues(req, res, nextStub);
+        sendToSQSBehaviour.saveValues(req, res, nextStub);
 
         expect(sendToQueueStub).to.have.callCount(0);
 

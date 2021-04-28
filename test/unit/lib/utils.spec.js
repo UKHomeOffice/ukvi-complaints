@@ -7,7 +7,6 @@ describe('utils', () => {
   let utils;
   let createSub;
   let sendStub;
-  let uuidStub;
   let testSchema = {
     'test': 'schema'
   };
@@ -48,7 +47,6 @@ describe('utils', () => {
 
 
   beforeEach(() => {
-    uuidStub = sinon.stub().returns(testUuid);
     sendStub = sinon.stub().resolves();
     sendStub.withArgs({
       id: testUuid,
@@ -63,9 +61,6 @@ describe('utils', () => {
         Producer: {
           create: createSub
         }
-      },
-      'uuid': {
-        v4: uuidStub
       },
       '../schema/decs.json': testSchema
     });
@@ -114,7 +109,7 @@ describe('utils', () => {
   describe('#sendToQueue', () => {
 
     it('calls create on the sqs producer with SQS parameters', () => {
-      utils.sendToQueue(validComplaintData);
+      utils.sendToQueue(validComplaintData, testUuid);
       expect(createSub).to.have.been.calledOnceWith({
         queueUrl: 'http://localhost:4566/000000000000/local-queue',
         region: 'eu-west-2',
@@ -124,7 +119,7 @@ describe('utils', () => {
     });
 
     it('calls send on sqs producer with a unique id and stringifyed complaint data', () => {
-      utils.sendToQueue(validComplaintData);
+      utils.sendToQueue(validComplaintData, testUuid);
       expect(sendStub).to.have.been.calledOnceWith(
         [
           {

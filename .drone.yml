@@ -19,6 +19,7 @@ steps:
   commands:
     - npm i -s && npm run build
     - npm test
+    - npm run test:integration:server
   when:
     branch: [ master, feature/* ]
     event: push

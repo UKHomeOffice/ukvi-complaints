@@ -11,6 +11,7 @@
     "test:unit": "nyc --report-dir=test/coverage --reporter=lcov mocha \"test/unit/**/*.spec.js\" --timeout 10000 --require test/test-helpers.js -- $npm_package_config_reporter/unit.json",
     "test:check": "mocha \"test/unit/**/*.spec.js\"",
     "build": "hof-build",
+    "script": "npm run build",
     "postinstall": "npm run build"
   },
   "dependencies": {

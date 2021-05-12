@@ -20,6 +20,7 @@ Run the services locally with Docker Compose
 $ docker-compose up
 ```
 
+
 ### Set up AWS SQS queue locally
 
 Run AWS services locally using localstack.

@@ -6,7 +6,7 @@ module.exports = {
   dateFormat: 'DD-MM-YYYY',
   dateTimeFormat: 'DD-MM-YYYY, hh:mma',
   redis: {
-    password: process.env.REDIS_PASSWORD,
+    password: process.env.REDIS_PASSWORD
   },
   email: {
     from: process.env.FROM_ADDRESS || 'stub-email@stub.com',

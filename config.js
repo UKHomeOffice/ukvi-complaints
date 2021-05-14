@@ -28,5 +28,5 @@ module.exports = {
     accessKeyId: process.env.ACCESS_KEY_ID || '',
     secretAccessKey: process.env.SECRET_ACCESS_KEY || '',
   },
-  sendToQueue: process.env.SEND_TO_DECS_QUEUE === 'on',
+  sendToQueue: process.env.SEND_TO_DECS_QUEUE === 'online',
 };

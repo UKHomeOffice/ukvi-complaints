@@ -2,7 +2,6 @@
 
 ## Getting started
 
-
 Get the project from Github
 ```bash
 $ git clone git@github.com:UKHomeOffice/UKVI-Complaints.git && cd UKVI-Complaints

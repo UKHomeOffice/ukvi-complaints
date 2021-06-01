@@ -46,7 +46,6 @@ To view what is on the queue currently run:
 aws --endpoint-url=http://localhost:4566 --region eu-west-2 sqs receive-message --queue-url http://localhost:4566/000000000000/local-queue --max-number-of-messages 10
 ```
 
-
 ### Running in dev
 
 Getting your hands dirty (You'll need [Redis](http://redis.io/) for this)

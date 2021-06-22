@@ -1,4 +1,5 @@
 'use strict';
+/* eslint-disable consistent-return */
 
 const config = require('../../config');
 const conditionalContent = require('./behaviours/conditional-content');
@@ -678,31 +679,9 @@ module.exports = {
         }
       }]
     },
-    '/refund-when': {
-      fields: ['refund-when'],
-      forks: [{
-        target: '/refund-less-than',
-        condition: {
-          field: 'refund-when',
-          value: 'less-than'
-        }
-      }, {
-        target: '/refund-more-than',
-        condition: {
-          field: 'refund-when',
-          value: 'more-than'
-        }
-      }]
-    },
-    '/refund-less-than': {
-
-    },
-    '/refund-more-than': {
-
-    },
-    '/refund-request': {
-
-    },
+    '/refund-less-than': {},
+    '/refund-more-than': {},
+    '/refund-request': {},
     '/poor-info-or-behaviour': {
       fields: ['poor-info-or-behaviour'],
       forks: [{

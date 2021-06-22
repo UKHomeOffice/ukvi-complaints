@@ -1,5 +1,7 @@
 /* eslint-disable no-process-env */
 'use strict';
+/* eslint-disable no-process-env */
+
 const hof = require('hof');
 
 const settings = require('./hof.settings');

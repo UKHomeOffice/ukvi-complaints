@@ -571,30 +571,16 @@ module.exports = {
     validate: [
       'required',
       'date',
-      {
-        type: 'before',
-        arguments: moment().subtract(18, 'years').format('YYYY-MM-DD')
-      },
-      {
-        type: 'after',
-        arguments: '1900-01-01'
-      }
-    ],
+      { type: 'before', arguments: moment().subtract(18, 'years').format('YYYY-MM-DD') },
+      { type: 'after', arguments: '1900-01-01' }],
   }),
 
   'agent-representative-dob': dateComponent('agent-representative-dob', {
     validate: [
       'required',
       'date',
-      {
-        type: 'before',
-        arguments: moment().subtract(18, 'years').format('YYYY-MM-DD')
-      },
-      {
-        type: 'after',
-        arguments: '1900-01-01'
-      }
-    ],
+      { type: 'before', arguments: moment().subtract(18, 'years').format('YYYY-MM-DD') },
+      { type: 'after', arguments: '1900-01-01' }],
   }),
 
   'applicant-email': {
@@ -653,4 +639,3 @@ module.exports = {
     ]
   }
 };
-

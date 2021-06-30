@@ -13,6 +13,10 @@ const sendToSQS = require('./behaviours/send-to-sqs');
 module.exports = {
   name: 'ukvi-complaints',
   baseUrl: '/',
+  pages: {
+    '/terms-and-conditions': 'terms',
+    '/cookies': 'cookies',
+  },
   steps: {
     '/reason': {
       fields: ['reason'],

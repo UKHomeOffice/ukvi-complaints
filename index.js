@@ -23,7 +23,7 @@ app.use((req, res, next) => {
     { path: '/terms-and-conditions', property: 'base.terms' }
   ];
   // set service name for cookie banner
-  res.locals.serviceName = 'UKVI Complaints';
+  res.locals.serviceName = 'UK Visas and Immigration complaints';
   next();
 });
 

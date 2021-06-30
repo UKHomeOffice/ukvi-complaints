@@ -11,6 +11,10 @@ const caseworkerEmailer = require('./behaviours/caseworker-email')(config.email)
 module.exports = {
   name: 'ukvi-complaints',
   baseUrl: '/',
+  pages: {
+    '/terms-and-conditions': 'terms',
+    '/cookies': 'cookies',
+  },
   steps: {
     '/reason': {
       fields: ['reason'],

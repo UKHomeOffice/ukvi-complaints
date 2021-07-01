@@ -6,5 +6,7 @@
   "session": {
     "name": "hod.sid",
     "ttl": 3600
-  }
+  },
+  "getCookies": false,
+  "getTerms": false
 }

@@ -3,8 +3,6 @@
 
 const config = require('../../config');
 const conditionalContent = require('./behaviours/conditional-content');
-const translation = require('./translations/en/default.json').fields;
-const moment = require('moment');
 const customerEmailer = require('./behaviours/customer-email')(config.email);
 const caseworkerEmailer = require('./behaviours/caseworker-email')(config.email);
 
@@ -882,16 +880,16 @@ module.exports = {
             field: ['delay-type']
           },
           {
-            field: ['return-of-documents']            
+            field: ['return-of-documents']
           },
           {
             field: ['decision-outcome']
           },
           {
-            field: ['biometric-residence-permit']          
+            field: ['biometric-residence-permit']
           },
           {
-            field: ['poor-info-or-behaviour']           
+            field: ['poor-info-or-behaviour']
           },
           {
             field: ['staff-behaviour']
@@ -900,10 +898,10 @@ module.exports = {
             field: ['which-centre']
           },
           {
-            field: ['refund']           
+            field: ['refund']
           },
           {
-            field: ['refund-when']         
+            field: ['refund-when']
           },
           {
             field: ['refund-type']

@@ -3,8 +3,6 @@
 
 const config = require('../../config');
 const conditionalContent = require('./behaviours/conditional-content');
-const translation = require('./translations/en/default.json').fields;
-const moment = require('moment');
 const customerEmailer = require('./behaviours/customer-email')(config.email);
 const caseworkerEmailer = require('./behaviours/caseworker-email')(config.email);
 
@@ -870,132 +868,52 @@ module.exports = {
       sections: {
         'complaint-details': [
           {
-            field: 'reason',
-            parse: (value) => {
-              if (value) {
-                return translation.reason.options[value].label;
-              }
-            }
+            field: ['reason']
           },
           {
-            field: 'immigration-application',
-            parse: (value) => {
-              if (value) {
-                return translation['immigration-application'].options[value].label;
-              }
-            }
+            field: ['immigration-application']
           },
           {
-            field: 'immigration-appointment',
-            parse: (value) => {
-              if (value) {
-                return translation['immigration-appointment'].options[value].label;
-              }
-            }
+            field: ['immigration-appointment']
           },
           {
-            field: 'delay-type',
-            parse: (value) => {
-              if (value) {
-                return translation['delay-type'].options[value].label;
-              }
-            }
+            field: ['delay-type']
           },
           {
-            field: 'return-of-documents',
-            parse: (value) => {
-              if (value) {
-                return translation['return-of-documents'].options[value].label;
-              }
-            }
+            field: ['return-of-documents']
           },
           {
-            field: 'decision-outcome',
-            parse: (value) => {
-              if (value) {
-                return translation['decision-outcome'].options[value].label;
-              }
-            }
+            field: ['decision-outcome']
           },
           {
-            field: 'biometric-residence-permit',
-            parse: (value) => {
-              if (value) {
-                return translation['biometric-residence-permit'].options[value].label;
-              }
-            }
+            field: ['biometric-residence-permit']
           },
           {
-            field: 'poor-info-or-behaviour',
-            parse: (value) => {
-              if (value) {
-                return translation['poor-info-or-behaviour'].options[value].label;
-              }
-            }
+            field: ['poor-info-or-behaviour']
           },
           {
-            field: 'staff-behaviour',
-            parse: (value) => {
-              if (value) {
-                return translation['staff-behaviour'].options[value].label;
-              }
-            }
+            field: ['staff-behaviour']
           },
           {
-            field: 'which-centre',
-            parse: (value) => {
-              if (value) {
-                return translation['which-centre'].options[value].label;
-              }
-            }
+            field: ['which-centre']
           },
           {
-            field: 'refund',
-            parse: (value) => {
-              if (value) {
-                return translation.refund.options[value].label;
-              }
-            }
+            field: ['refund']
           },
           {
-            field: 'refund-when',
-            parse: (value) => {
-              if (value) {
-                return translation['refund-when'].options[value].label;
-              }
-            }
+            field: ['refund-when']
           },
           {
-            field: 'refund-type',
-            parse: (value) => {
-              if (value) {
-                return translation['refund-type'].options[value].label;
-              }
-            }
+            field: ['refund-type']
           },
           {
-            field: 'where-applied-from',
-            parse: (value) => {
-              if (value) {
-                return translation['where-applied-from'].options[value].label;
-              }
-            }
+            field: ['where-applied-from']
           },
           {
-            field: 'existing-complaint',
-            parse: (value) => {
-              if (value) {
-                return translation['existing-complaint'].options[value].label;
-              }
-            }
+            field: ['existing-complaint']
           },
           {
-            field: 'complaint-reason-previous',
-            parse: (value) => {
-              if (value) {
-                return translation['complaint-reason-previous'].options[value].label;
-              }
-            }
+            field: ['complaint-reason-previous']
           },
           'called-number',
           'called-date',
@@ -1016,38 +934,21 @@ module.exports = {
         'agent-details': [
           'agent-name',
           {
-            field: 'who-representing',
-            parse: (value) => {
-              if (value) {
-                return translation['who-representing'].options[value].label;
-              }
-            }
+            field: ['who-representing']
           }
         ],
         'applicant-details': [
           'agent-representative-name',
           'agent-representative-nationality',
           {
-            field: 'agent-representative-dob',
-            parse: (value) => {
-              if (value) {
-                if (value) {
-                  return moment(value).format('D MMMM YYYY');
-                }
-              }
-            }
+            field: ['agent-representative-dob']
           }
         ],
         'your-details': [
           'applicant-name',
           'applicant-nationality',
           {
-            field: 'applicant-dob',
-            parse: (value) => {
-              if (value) {
-                return moment(value).format('D MMMM YYYY');
-              }
-            }
+            field: ['applicant-dob']
           }
         ],
         'contact-details': [

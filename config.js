@@ -11,7 +11,7 @@ module.exports = {
   email: {
     from: process.env.FROM_ADDRESS || 'stub@stub.com',
     replyTo: process.env.REPLY_TO || 'stub@stub.com',
-    transport: process.env.EMAIL_TRANSPORT || 'stub',
+    transport: process.env.EMAIL_TRANSPORT || 'ses',
     caseworker: process.env.CASEWORKER_EMAIL || 'stub@stub.com',
     recipient: process.env.CASEWORKER_EMAIL || 'stub@stub.com',
     transportOptions: {

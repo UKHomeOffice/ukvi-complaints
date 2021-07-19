@@ -15,6 +15,7 @@
     "hof-behaviour-summary-page": "^3.3.0",
     "hof-build": "^2.0.0",
     "hof-component-date": "^1.4.0",
+    "hof-middleware": "^2.2.4",
     "hof-theme-govuk": "^5.2.4",
     "hof-util-countries": "^1.0.0",
     "jquery": "^3.6.0",

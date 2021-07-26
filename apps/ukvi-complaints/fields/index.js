@@ -88,7 +88,7 @@ module.exports = {
     ]
   },
 
-  'delays': {
+  delays: {
     mixin: 'radio-group',
     validate: 'required',
     legend: {
@@ -251,7 +251,7 @@ module.exports = {
     ]
   },
 
-  'refund': {
+  refund: {
     mixin: 'radio-group',
     validate: 'required',
     legend: {
@@ -329,7 +329,7 @@ module.exports = {
     validate: 'required',
     legend: {
       className: 'visuallyhidden'
-    },
+    }
   },
 
   'ssc-city': {
@@ -338,7 +338,7 @@ module.exports = {
     legend: {
       className: 'visuallyhidden'
     },
-    className: ['form-group'],
+    className: ['form-group']
   },
 
   'ukvcas-city': {
@@ -347,7 +347,7 @@ module.exports = {
     legend: {
       className: 'visuallyhidden'
     },
-    className: ['form-group'],
+    className: ['form-group']
   },
 
   'called-date': {
@@ -356,7 +356,7 @@ module.exports = {
     legend: {
       className: 'visuallyhidden'
     },
-    className: ['form-group'],
+    className: ['form-group']
   },
   'called-time': {
     mixin: 'input-text',
@@ -364,7 +364,7 @@ module.exports = {
     legend: {
       className: 'visuallyhidden'
     },
-    className: ['form-group'],
+    className: ['form-group']
   },
   'called-from': {
     mixin: 'input-text',
@@ -372,7 +372,7 @@ module.exports = {
     legend: {
       className: 'visuallyhidden'
     },
-    className: ['form-group'],
+    className: ['form-group']
   },
 
   'existing-complaint': {
@@ -441,7 +441,7 @@ module.exports = {
       toggle: 'uan-reference',
       child: 'input-text'
     }, {
-      value: 'none',
+      value: 'none'
     }]
   },
   'gwf-reference': {
@@ -495,7 +495,7 @@ module.exports = {
     validate: 'required',
     'ignore-defaults': true,
     formatter: ['trim', 'hyphens'],
-    className: ['form-control-3-4'],
+    className: ['form-control-3-4']
   },
 
   'acting-as-agent': {
@@ -562,7 +562,7 @@ module.exports = {
       'required',
       'date',
       { type: 'before', arguments: moment().subtract(18, 'years').format('YYYY-MM-DD') },
-      { type: 'after', arguments: '1900-01-01' }],
+      { type: 'after', arguments: '1900-01-01' }]
   }),
 
   'agent-representative-dob': dateComponent('agent-representative-dob', {
@@ -570,7 +570,7 @@ module.exports = {
       'required',
       'date',
       { type: 'before', arguments: moment().subtract(18, 'years').format('YYYY-MM-DD') },
-      { type: 'after', arguments: '1900-01-01' }],
+      { type: 'after', arguments: '1900-01-01' }]
   }),
 
   'applicant-email': {
@@ -613,7 +613,7 @@ module.exports = {
     className: ['']
   },
 
-  'where': {
+  where: {
     mixin: 'radio-group',
     validate: 'required',
     legend: {
@@ -628,4 +628,3 @@ module.exports = {
     ]
   }
 };
-

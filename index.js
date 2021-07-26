@@ -3,7 +3,7 @@
 
 const hof = require('hof');
 
-const addDynamicSettings = (settings) => {
+const addDynamicSettings = settings => {
   settings.routes = settings.routes.map(route => require(route));
   settings.root = __dirname;
   settings.start = false;

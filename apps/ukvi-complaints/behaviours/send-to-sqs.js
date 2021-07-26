@@ -1,4 +1,5 @@
 'use strict';
+<<<<<<< HEAD
 const Validator = require('jsonschema').Validator;
 const { v4: uuidv4 } = require('uuid');
 const config = require('../../../config');
@@ -8,6 +9,16 @@ const formatComplaintData = require('../lib/format-complaint-data');
 module.exports = superclass => class SendToSQS extends superclass {
 
   // eslint-disable-next-line consistent-return
+=======
+
+const Validator = require('jsonschema').Validator;
+const { v4: uuidv4 } = require('uuid');
+const config = require('../../../config');
+const { validAgainstSchema, sendToQueue } = require('../../../lib/utils');
+const formatComplaintData = require('../../../lib/format-complaint-data');
+
+module.exports = superclass => class SendToSQS extends superclass {
+>>>>>>> Add SQS behaviour and changes needed to enable it
   saveValues(req, res, next) {
     let complaintId;
     let complaintData;
@@ -42,6 +53,7 @@ module.exports = superclass => class SendToSQS extends superclass {
     };
     err.formNotSubmitted = true;
     err.complaintDetails = complaintDetails;
+<<<<<<< HEAD
     // eslint-disable-next-line no-console
     console.error('Failed to send to SQS queue: ', err);
     return next(err);
@@ -49,3 +61,9 @@ module.exports = superclass => class SendToSQS extends superclass {
 
 };
 
+=======
+    console.error('Failed to send to SQS queue: ', err);
+    return next(err);
+  }
+};
+>>>>>>> Add SQS behaviour and changes needed to enable it

@@ -17,6 +17,16 @@ module.exports = {
     transportOptions: {
       accessKeyId: process.env.HOF_SES_USER || process.env.AWS_USER || '',
       secretAccessKey: process.env.HOF_SES_PASSWORD || process.env.AWS_PASSWORD || ''
-    }
-  }
+    },
+    emailCaseworker: true,
+  },
+  awsSqs: {
+  region: process.env.AWS_REGION || 'eu-west-2',
+    queueUrl:
+    process.env.SQS_URL || 'http://localhost:9324/queue/first-queue',
+    accessKeyId: process.env.ACCESS_KEY_ID || 'stub',
+    secretAccessKey: process.env.SECRET_ACCESS_KEY || 'stub',
+  },
+  // sendToQueue: process.env.SEND_TO_DECS_QUEUE === 'online',
+  sendToQueue: true
 };

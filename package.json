@@ -6,10 +6,8 @@
   "scripts": {
     "start": "node app.js",
     "start:dev": "hof-build watch --env",
-    "test": "npm run test:lint && npm run test:unit",
-    "test:lint": "eslint .",
-    "test:unit": "nyc --report-dir=test/coverage --reporter=lcov mocha \"test/unit/**/*.spec.js\" --timeout 10000 --require test/test-helpers.js -- $npm_package_config_reporter/unit.json",
-    "test:check": "mocha \"test/unit/**/*.spec.js\"",
+    "test": "npm run test:lint",
+    "test:lint": "eslint . --config ./node_modules/eslint-config-hof/default.js",
     "build": "hof-build",
     "postinstall": "npm run build"
   },
@@ -34,8 +32,8 @@
     "@danmasta/mocha-sonar": "^1.0.0",
     "chai": "^4.3.4",
     "chai-as-promised": "^7.1.1",
-    "eslint": "^5.16.0",
-    "eslint-config-homeoffice": "^2.1.0",
+    "eslint": "^7.30.0",
+    "eslint-config-hof": "^1.0.4",
     "mocha": "^8.3.2",
     "mocha-multi-reporters": "^1.5.1",
     "mochawesome": "^6.2.2",

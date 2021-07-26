@@ -10,3 +10,4 @@ apps/.DS_Store
 .env
 test/executions
 test/coverage
+.emails

@@ -2,6 +2,9 @@
 
 ## Getting started
 
+The UKVI complaints service is a HOF app that users of UKVI can use to send complaints about their experience to the UKVI team.
+The service has been integrated with the DECS case working system, by pushing each form submission to an AWS SQS queue which the DECS system will retrieve.
+
 Get the project from Github
 ```bash
 $ git clone git@github.com:UKHomeOffice/UKVI-Complaints.git && cd UKVI-Complaints

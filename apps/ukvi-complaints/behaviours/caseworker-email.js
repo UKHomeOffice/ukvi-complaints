@@ -206,7 +206,7 @@ const getDataRows = (model, translate) => {
         model['agent-phone'] && {
           label: 'Agent Phone number',
           value: model['agent-phone']
-        },
+        }
       ]
     }
   ].filter(Boolean);
@@ -226,9 +226,9 @@ module.exports = config => {
     subject: (model, translate) => translate('pages.email.caseworker.subject'),
     template: path.resolve(__dirname, '../emails/caseworker.html'),
     parse: (model, translate) => {
-        return Object.assign(model, {
-          data: getDataRows(model, translate)
-        });
+      return Object.assign(model, {
+        data: getDataRows(model, translate)
+      });
     }
   }));
 };

@@ -4,7 +4,7 @@
     "start": "node app.js",
     "start:dev": "hof-build watch --env",
     "test": "npm run test:lint",
-    "test:lint": "eslint .",
+    "test:lint": "eslint . --config ./node_modules/eslint-config-hof/default.js",
     "build": "hof-build",
     "postinstall": "npm run build"
   },
@@ -19,12 +19,15 @@
     "hof-theme-govuk": "^5.2.4",
     "hof-util-countries": "^1.0.0",
     "jquery": "^3.6.0",
+    "jsonschema": "^1.4.0",
     "moment": "^2.29.1",
-    "typeahead-aria": "^1.0.4"
+    "sqs-producer": "^2.1.0",
+    "typeahead-aria": "^1.0.4",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "eslint": "^5.16.0",
-    "eslint-config-homeoffice": "^2.1.0"
+    "eslint": "^7.30.0",
+    "eslint-config-hof": "^1.0.4"
   },
   "name": "ukvi-complaints",
   "version": "1.0.0",

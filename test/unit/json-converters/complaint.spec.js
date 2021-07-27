@@ -24,7 +24,7 @@ describe('complaint', () => {
     'applicant-nationality': testApplicantNationality,
     'applicant-email': testApplicantEmail,
     'complaint-details': testComplaintDetails,
-    'acting-as-agent': 'no',
+    'acting-as-agent': 'no'
   };
 
   const applicantTypeAgent = 'AGENT';
@@ -38,7 +38,7 @@ describe('complaint', () => {
     'agent-representative-name': testApplicantName,
     'agent-representative-dob': testApplicantDob,
     'agent-representative-nationality': testApplicantNationality,
-    'acting-as-agent': 'yes',
+    'acting-as-agent': 'yes'
   };
 
   describe('getFormattedEnum', () => {
@@ -69,7 +69,7 @@ describe('complaint', () => {
           applicantName: testApplicantName,
           applicantNationality: testApplicantNationality,
           applicantDob: testApplicantDob,
-          applicantEmail: testApplicantEmail,
+          applicantEmail: testApplicantEmail
         });
       });
 
@@ -82,7 +82,7 @@ describe('complaint', () => {
           applicantNationality: testApplicantNationality,
           applicantDob: testApplicantDob,
           applicantEmail: testApplicantEmail,
-          applicantPhone: testApplicantPhone,
+          applicantPhone: testApplicantPhone
         });
       });
     });
@@ -102,7 +102,7 @@ describe('complaint', () => {
           applicantDetails: {
             applicantName: testApplicantName,
             applicantNationality: testApplicantNationality,
-            applicantDob: testApplicantDob,
+            applicantDob: testApplicantDob
           },
           agentDetails: {
             agentName: testAgentName,
@@ -120,7 +120,7 @@ describe('complaint', () => {
           applicantDetails: {
             applicantName: testApplicantName,
             applicantNationality: testApplicantNationality,
-            applicantDob: testApplicantDob,
+            applicantDob: testApplicantDob
           },
           agentDetails: {
             agentName: testAgentName,
@@ -138,7 +138,7 @@ describe('complaint', () => {
           applicantDetails: {
             applicantName: testApplicantName,
             applicantNationality: testApplicantNationality,
-            applicantDob: testApplicantDob,
+            applicantDob: testApplicantDob
           },
           agentDetails: {
             agentName: testAgentName,
@@ -156,7 +156,7 @@ describe('complaint', () => {
           applicantDetails: {
             applicantName: testApplicantName,
             applicantNationality: testApplicantNationality,
-            applicantDob: testApplicantDob,
+            applicantDob: testApplicantDob
           },
           agentDetails: {
             agentName: testAgentName,
@@ -175,13 +175,13 @@ describe('complaint', () => {
           applicantDetails: {
             applicantName: testApplicantName,
             applicantNationality: testApplicantNationality,
-            applicantDob: testApplicantDob,
+            applicantDob: testApplicantDob
           },
           agentDetails: {
             agentName: testAgentName,
             agentType: 'RELATIVE',
             agentEmail: testAgentEmail,
-            agentPhone: testAgentPhone,
+            agentPhone: testAgentPhone
           }
         });
       });
@@ -190,9 +190,7 @@ describe('complaint', () => {
         agentValues['who-representing'] = 'error-agent';
         expect(() => createReporterDetails(agentValues)).to.throw('invalid "who-representing" value');
       });
-
     });
-
   });
 
   describe('createReference', () => {
@@ -248,7 +246,6 @@ describe('complaint', () => {
       referenceValues['reference-numbers'] = 'fff';
       expect(() => createReference(referenceValues)).to.throw('invalid "reference-numbers" value');
     });
-
   });
 
   describe('getComplaint', () => {
@@ -264,7 +261,7 @@ describe('complaint', () => {
       });
 
       getComplaint = proxyquire('../../../lib/json-converters/complaint', {
-        'moment': momentStub
+        moment: momentStub
       }).getComplaint;
     });
 

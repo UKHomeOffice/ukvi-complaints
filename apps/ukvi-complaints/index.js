@@ -2,8 +2,6 @@
 
 const config = require('../../config');
 const conditionalContent = require('./behaviours/conditional-content');
-const translation = require('./translations/en/default.json').fields;
-const moment = require('moment');
 const customerEmailer = require('./behaviours/customer-email')(config.email);
 const caseworkerEmailer = require('./behaviours/caseworker-email')(config.email);
 const sendToSQS = require('./behaviours/send-to-sqs');

@@ -6,8 +6,8 @@ describe('utils', () => {
   let utils;
   let createSub;
   let sendStub;
-  let testSchema = {
-    'test': 'schema'
+  const testSchema = {
+    test: 'schema'
   };
 
   const testUuid = '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d';
@@ -26,7 +26,7 @@ describe('utils', () => {
           agentType: 'LEGAL_REP',
           agentEmail: 'test@test.com',
           agentPhone: '12435667889'
-        },
+        }
       },
       complaintDetails: {
         complaintText: 'test',
@@ -102,18 +102,16 @@ describe('utils', () => {
     it('throws an error if the complaintData object does not fit the schema', () => {
       expect(() => utils.validAgainstSchema(invalidComplaintData, testSchema)).to.throw();
     });
-
   });
 
   describe('#sendToQueue', () => {
-
     it('calls create on the sqs producer with SQS parameters', () => {
       utils.sendToQueue(validComplaintData, testUuid);
       expect(createSub).to.have.been.calledOnceWith({
         queueUrl: 'http://localhost:9324/queue/first-queue',
         region: 'eu-west-2',
         accessKeyId: 'stub',
-        secretAccessKey: 'stub',
+        secretAccessKey: 'stub'
       });
     });
 
@@ -123,7 +121,7 @@ describe('utils', () => {
         [
           {
             id: testUuid,
-            body: JSON.stringify(validComplaintData),
+            body: JSON.stringify(validComplaintData)
           }
         ]
       );
@@ -133,7 +131,5 @@ describe('utils', () => {
       // eslint-disable-next-line no-unused-expressions
       expect(utils.sendToQueue(invalidComplaintData)).to.be.rejected;
     });
-
   });
-
 });

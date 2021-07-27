@@ -30,7 +30,5 @@ describe('getDecisionComplaint', () => {
 
       expect(() => getDecisionComplaint(values)).to.throw('invalid "decision-outcome" value');
     });
-
   });
-
 });

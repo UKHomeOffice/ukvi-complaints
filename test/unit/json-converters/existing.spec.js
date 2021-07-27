@@ -19,7 +19,7 @@ describe('getExistingComplaint', () => {
     });
 
     describe('previousComplaintType', () => {
-      it('returns "SUBMITTING_APPLICATION" if "immigration-application" complaint-reason-previous value passed in', () => {
+      it('returns "SUBMITTING_APPLICATION" if "immigration-application" value passed in', () => {
         const values = Object.assign({
           'existing-complaint': 'no',
           'complaint-reason-previous': 'immigration-application'
@@ -55,7 +55,7 @@ describe('getExistingComplaint', () => {
         ).to.eql('DELAYS');
       });
 
-      it('returns "BIOMETRIC_RESIDENCE_PERMIT" if "biometric-residence-permit" complaint-reason-previous value passed in', () => {
+      it('returns "BIOMETRIC_RESIDENCE_PERMIT" if "biometric-residence-permit" value passed in', () => {
         const values = Object.assign({
           'existing-complaint': 'no',
           'complaint-reason-previous': 'biometric-residence-permit'
@@ -79,7 +79,7 @@ describe('getExistingComplaint', () => {
         ).to.eql('IMMIGRATION_DECISION');
       });
 
-      it('returns "IMMIGRATION_STATUS_CHANGE" if "immigration-status-change" complaint-reason-previous value passed in', () => {
+      it('returns "IMMIGRATION_STATUS_CHANGE" if "immigration-status-change" value passed in', () => {
         const values = Object.assign({
           'existing-complaint': 'no',
           'complaint-reason-previous': 'immigration-status-change'
@@ -103,7 +103,7 @@ describe('getExistingComplaint', () => {
         ).to.eql('REFUND');
       });
 
-      it('returns "POOR_INFORMATION_OR_STAFF_BEHAVIOUR" if "staff-behaviour" complaint-reason-previous value passed in', () => {
+      it('returns "POOR_INFORMATION_OR_STAFF_BEHAVIOUR" if "staff-behaviour" value passed in', () => {
         const values = Object.assign({
           'existing-complaint': 'no',
           'complaint-reason-previous': 'staff-behaviour'
@@ -135,7 +135,6 @@ describe('getExistingComplaint', () => {
 
         expect(() => getExistingComplaint(values)).to.throw('invalid "complaint-reason-previous" value');
       });
-
     });
 
     it('throws an error if invalid existing-existingComplaintvalue is passed', () => {
@@ -145,7 +144,5 @@ describe('getExistingComplaint', () => {
 
       expect(() => getExistingComplaint(values)).to.throw('invalid "existing-complaint" value');
     });
-
   });
-
 });

@@ -33,7 +33,6 @@ describe('getDelaysComplaint', () => {
 
       expect(() => getDelaysComplaint(values)).to.throw('invalid "delay-type" value');
     });
-
   });
 
   describe('documentReturnRequest', () => {
@@ -82,5 +81,4 @@ describe('getDelaysComplaint', () => {
       expect(() => getDelaysComplaint(values)).to.throw('invalid "return-of-documents" value');
     });
   });
-
 });

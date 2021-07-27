@@ -6,7 +6,7 @@ describe('getRefundComplaint', () => {
   describe('refundRequested', () => {
     it('returns "NO" if "no" refund value passed in', () => {
       const values = Object.assign({
-        'refund': 'no',
+        refund: 'no'
       }, complaintDetailsBase);
 
       const refundComplaint = getRefundComplaint(values);
@@ -17,7 +17,7 @@ describe('getRefundComplaint', () => {
 
     it('returns "YES" if "yes" refund value passed in', () => {
       const values = Object.assign({
-        'refund': 'yes',
+        refund: 'yes'
       }, complaintDetailsBase);
 
       const refundComplaint = getRefundComplaint(values);
@@ -28,7 +28,7 @@ describe('getRefundComplaint', () => {
 
     it('returns "NOT_YET" if "not-yet" refund value passed in', () => {
       const values = Object.assign({
-        'refund': 'not-yet',
+        refund: 'not-yet'
       }, complaintDetailsBase);
 
       const refundComplaint = getRefundComplaint(values);
@@ -39,19 +39,18 @@ describe('getRefundComplaint', () => {
 
     it('throws an error if invalid refund value is passed', () => {
       const values = Object.assign({
-        'refund': 'invalid'
+        refund: 'invalid'
       }, complaintDetailsBase);
 
       expect(() => getRefundComplaint(values)).to.throw('invalid "refund" value');
     });
-
   });
 
   describe('refundType', () => {
     it('returns "STANDARD" if "standard" refund-type value passed in', () => {
       const values = Object.assign({
-        'refund': 'yes',
-        'refund-type': 'standard',
+        refund: 'yes',
+        'refund-type': 'standard'
       }, complaintDetailsBase);
 
       const refundComplaint = getRefundComplaint(values);
@@ -62,8 +61,8 @@ describe('getRefundComplaint', () => {
 
     it('returns "PRIORITY" if "priority" refund-type value passed in', () => {
       const values = Object.assign({
-        'refund': 'yes',
-        'refund-type': 'priority',
+        refund: 'yes',
+        'refund-type': 'priority'
       }, complaintDetailsBase);
 
       const refundComplaint = getRefundComplaint(values);
@@ -74,8 +73,8 @@ describe('getRefundComplaint', () => {
 
     it('returns "SUPER_PRIORITY" if "super-priority" refund-type value passed in', () => {
       const values = Object.assign({
-        'refund': 'yes',
-        'refund-type': 'super-priority',
+        refund: 'yes',
+        'refund-type': 'super-priority'
       }, complaintDetailsBase);
 
       const refundComplaint = getRefundComplaint(values);
@@ -86,8 +85,8 @@ describe('getRefundComplaint', () => {
 
     it('returns "PREMIUM" if "premium" refund-type value passed in', () => {
       const values = Object.assign({
-        'refund': 'yes',
-        'refund-type': 'premium',
+        refund: 'yes',
+        'refund-type': 'premium'
       }, complaintDetailsBase);
 
       const refundComplaint = getRefundComplaint(values);
@@ -98,8 +97,8 @@ describe('getRefundComplaint', () => {
 
     it('returns "IHS" if "ihs" refund-type value passed in', () => {
       const values = Object.assign({
-        'refund': 'yes',
-        'refund-type': 'ihs',
+        refund: 'yes',
+        'refund-type': 'ihs'
       }, complaintDetailsBase);
 
       const refundComplaint = getRefundComplaint(values);
@@ -110,8 +109,8 @@ describe('getRefundComplaint', () => {
 
     it('returns "EU_SETTLEMENT" if "eu-settlement" refund-type value passed in', () => {
       const values = Object.assign({
-        'refund': 'yes',
-        'refund-type': 'eu-settlement',
+        refund: 'yes',
+        'refund-type': 'eu-settlement'
       }, complaintDetailsBase);
 
       const refundComplaint = getRefundComplaint(values);
@@ -122,12 +121,11 @@ describe('getRefundComplaint', () => {
 
     it('throws an error if invalid refund-type is passed', () => {
       const values = Object.assign({
-        'refund': 'yes',
+        refund: 'yes',
         'refund-type': 'invalid'
       }, complaintDetailsBase);
 
       expect(() => getRefundComplaint(values)).to.throw('invalid "refund-type" value');
     });
   });
-
 });

@@ -15,10 +15,10 @@ module.exports = {
     caseworker: process.env.CASEWORKER_EMAIL || 'stub-email@stub.com',
     recipient: process.env.CASEWORKER_EMAIL || 'stub-email@stub.com',
     transportOptions: {
-      accessKeyId: process.env.HOF_SES_USER || process.env.AWS_USER || '',
-      secretAccessKey: process.env.HOF_SES_PASSWORD || process.env.AWS_PASSWORD || ''
+      accessKeyId: process.env.HOF_SES_USER || process.env.AWS_USER || 'stub',
+      secretAccessKey: process.env.HOF_SES_PASSWORD || process.env.AWS_PASSWORD || 'stub'
     },
-    emailCaseworker: true,
+    emailCaseworker: true
   },
   awsSqs: {
     region: process.env.AWS_REGION || 'eu-west-2',

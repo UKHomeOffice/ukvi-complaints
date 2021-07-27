@@ -612,7 +612,7 @@ module.exports = {
     mixin: 'select',
     options: [{ label: ' ', value: '' }].concat(require('hof-util-countries')()),
     validate: 'required',
-    className: ['typeahead', 'js-hidden']
+    className: ['typeahead']
   },
 
   'applicant-phone': {

@@ -66,9 +66,9 @@ describe('SendToSQS', () => {
       },
       '../../../lib/utils': {
         validAgainstSchema: validAgainstSchemaStub,
-        sendToQueue: sendToQueueStub,
+        sendToQueue: sendToQueueStub
       },
-      'uuid': {
+      uuid: {
         v4: uuidStub
       },
       '../../../lib/format-complaint-data': formatComplaintDataStub
@@ -86,15 +86,15 @@ describe('SendToSQS', () => {
     describe('config.writeToCasework', () => {
       it('If false sendToQueue should not be called', () => {
         const SQSBehaviour = proxyquire('../../../apps/ukvi-complaints/behaviours/send-to-sqs', {
-            '../../../config': {
-              sendToQueue: false
-            },
-            '../../../lib/utils': {
-              validAgainstSchema: validAgainstSchemaStub,
-              sendToQueue: sendToQueueStub,
-            },
-            '../../../lib/format-complaint-data': formatComplaintDataStub
-          }
+          '../../../config': {
+            sendToQueue: false
+          },
+          '../../../lib/utils': {
+            validAgainstSchema: validAgainstSchemaStub,
+            sendToQueue: sendToQueueStub
+          },
+          '../../../lib/format-complaint-data': formatComplaintDataStub
+        }
         );
 
         const SendToSQSBehaviour = SQSBehaviour(Base);
@@ -103,9 +103,7 @@ describe('SendToSQS', () => {
         sendToSQSBehaviour.saveValues(req, res, nextStub);
 
         expect(sendToQueueStub).to.have.callCount(0);
-
       });
-
     });
 
     describe('If valid complaint data', () => {
@@ -125,8 +123,6 @@ describe('SendToSQS', () => {
             expect(nextStub).to.have.been.calledOnceWith();
           });
       });
-
-
     });
 
     describe('If invalid complaint data', () => {
@@ -147,7 +143,6 @@ describe('SendToSQS', () => {
           .then(() => {
             expect(nextStub).to.have.been.calledOnceWith(testError);
           });
-
       });
 
       it('should add formNotSubmitted flag to the error', () => {

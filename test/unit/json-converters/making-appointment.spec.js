@@ -5,10 +5,9 @@ const getMakingAppointmentComplaint = require(
 
 describe('getMakingAppointmentComplaint', () => {
   describe('problemExperienced', () => {
-
     it('returns "LACK_AVAILABILITY" if "lack-availability" immigration-appointment value passed in', () => {
       const values = Object.assign({
-        'immigration-appointment': 'lack-availability',
+        'immigration-appointment': 'lack-availability'
       }, complaintDetailsBase);
 
       const makingAppointmentComplaint = getMakingAppointmentComplaint(values);
@@ -19,7 +18,7 @@ describe('getMakingAppointmentComplaint', () => {
 
     it('returns "CHANGE_APPOINTMENT" if "change-appointment" immigration-appointment value passed in', () => {
       const values = Object.assign({
-        'immigration-appointment': 'change-appointment',
+        'immigration-appointment': 'change-appointment'
       }, complaintDetailsBase);
 
       const makingAppointmentComplaint = getMakingAppointmentComplaint(values);
@@ -30,7 +29,7 @@ describe('getMakingAppointmentComplaint', () => {
 
     it('returns "TECHNICAL_APPOINTMENTS" if "technical-appointments" immigration-appointment value passed in', () => {
       const values = Object.assign({
-        'immigration-appointment': 'technical-appointments',
+        'immigration-appointment': 'technical-appointments'
       }, complaintDetailsBase);
 
       const makingAppointmentComplaint = getMakingAppointmentComplaint(values);
@@ -41,7 +40,7 @@ describe('getMakingAppointmentComplaint', () => {
 
     it('returns "QUESTIONS_APPOINTMENTS" if "questions-appointments" immigration-appointment value passed in', () => {
       const values = Object.assign({
-        'immigration-appointment': 'questions-appointments',
+        'immigration-appointment': 'questions-appointments'
       }, complaintDetailsBase);
 
       const makingAppointmentComplaint = getMakingAppointmentComplaint(values);
@@ -52,7 +51,7 @@ describe('getMakingAppointmentComplaint', () => {
 
     it('returns "COMPLAIN_APPOINTMENTS" if "complain-appointments" immigration-appointment value passed in', () => {
       const values = Object.assign({
-        'immigration-appointment': 'complain-appointments',
+        'immigration-appointment': 'complain-appointments'
       }, complaintDetailsBase);
 
       const makingAppointmentComplaint = getMakingAppointmentComplaint(values);
@@ -68,7 +67,5 @@ describe('getMakingAppointmentComplaint', () => {
 
       expect(() => getMakingAppointmentComplaint(values)).to.throw('invalid "immigration-appointment" value');
     });
-
   });
-
 });

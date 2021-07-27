@@ -11,3 +11,6 @@ apps/.DS_Store
 test/executions
 test/coverage
 .emails
+test/executions
+test/coverage
+.nyc_output

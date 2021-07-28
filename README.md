@@ -67,7 +67,7 @@ This uses the Dockerfile in the sqs-mock folder to create an SQS queue on your s
 
 You can view the next message on the queue by using the command:
 ```bash
-$ npm run sqs-setup
+$  node test/get-from-sqs.js
 ```
 The messages will be returned one at a time.
 

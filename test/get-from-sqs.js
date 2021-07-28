@@ -14,6 +14,7 @@ async function get() {
   });
   // return await queue.receiveMessage({QueueUrl: 'http://localhost:9324/queue/first-queue'}).promise();
   const item = await queue.receiveMessage({QueueUrl: 'http://localhost:9324/queue/first-queue'}).promise();
+  // eslint-disable-next-line no-console
   console.log(item.Messages);
 }
 

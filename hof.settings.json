@@ -4,6 +4,7 @@
   "routes": [
     "./apps/ukvi-complaints"
   ],
+  "views": "./apps/ukvi-complaints/views",
   "session": {
     "name": "hod.sid",
     "ttl": 3600

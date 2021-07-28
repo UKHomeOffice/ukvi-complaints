@@ -1,9 +1,2 @@
-deploy
-public
-secrets.env
-node_modules
-apps/**/translations/**/default.json
-apps/**/acceptance/**/*.js
-LICENSE
-README.md
-CONTRIBUTING.md
+/test/coverage
+/test/executions

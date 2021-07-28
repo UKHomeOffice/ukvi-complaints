@@ -1,17 +1,17 @@
 'use strict';
-/* eslint-disable consistent-return */
 
 const config = require('../../config');
 const conditionalContent = require('./behaviours/conditional-content');
 const customerEmailer = require('./behaviours/customer-email')(config.email);
 const caseworkerEmailer = require('./behaviours/caseworker-email')(config.email);
+const sendToSQS = require('./behaviours/send-to-sqs');
 
 module.exports = {
   name: 'ukvi-complaints',
   baseUrl: '/',
   pages: {
     '/terms-and-conditions': 'terms',
-    '/cookies': 'cookies',
+    '/cookies': 'cookies'
   },
   steps: {
     '/reason': {
@@ -71,7 +71,7 @@ module.exports = {
           field: 'reason',
           value: 'other-complaint'
         }
-      }],
+      }]
     },
     '/immigration-application': {
       fields: ['immigration-application'],
@@ -863,7 +863,7 @@ module.exports = {
       next: '/confirm'
     },
     '/confirm': {
-      behaviours: [caseworkerEmailer, customerEmailer, 'complete', require('hof-behaviour-summary-page')],
+      behaviours: [sendToSQS, caseworkerEmailer, customerEmailer, 'complete', require('hof-behaviour-summary-page')],
       next: '/complete',
       sections: {
         'complaint-details': [
@@ -955,7 +955,7 @@ module.exports = {
           'applicant-email',
           'applicant-phone',
           'agent-email',
-          'agent-phone',
+          'agent-phone'
         ]
       }
     },

@@ -5,3 +5,7 @@ public
 npm-debug.log
 .idea
 .env
+.emails
+test/executions
+test/coverage
+.nyc_output

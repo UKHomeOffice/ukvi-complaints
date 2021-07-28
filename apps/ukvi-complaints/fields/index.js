@@ -349,7 +349,6 @@ module.exports = {
     },
     className: ['form-group']
   },
-
   'called-number': {
     mixin: 'input-text',
     validate: ['required', { type: 'maxlength', arguments: 50 }],
@@ -480,7 +479,6 @@ module.exports = {
     },
     validate: ['required', { type: 'maxlength', arguments: 100 }]
   },
-
   'when-applied': {
     mixin: 'input-text',
     validate: ['required', { type: 'maxlength', arguments: 50 }],
@@ -494,7 +492,6 @@ module.exports = {
     mixin: 'input-text',
     validate: [{ type: 'maxlength', arguments: 100 }]
   },
-
   'complaint-details': {
     mixin: 'textarea',
     attributes: [{
@@ -617,6 +614,7 @@ module.exports = {
 
   'applicant-phone': {
     mixin: 'input-text',
+    validate: [{ type: 'maxlength', arguments: 50 }],
     legend: {
       className: 'visuallyhidden'
     },

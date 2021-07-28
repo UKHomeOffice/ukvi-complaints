@@ -418,29 +418,29 @@
 		}
 	},
 	"vac-country": {
-		"label": "Country",
+    "label": "Country",
     "validation": {
       "required": "Enter the country the visa application centre is in"
     }
 	},
-	"vac-city": {
-		"label": "City",
+  "vac-city": {
+    "label": "City",
     "validation": {
       "required": "Enter the city the visa application centre is in"
     }
-	},
-	"ssc-city": {
-		"label": "City",
+  },
+  "ssc-city": {
+    "label": "City",
     "validation": {
       "required": "Enter the city the service support centre is in"
     }
-	},
-	"ukvcas-city": {
-		"label": "City",
+  },
+  "ukvcas-city": {
+    "label": "City",
     "validation": {
       "required": "Enter the city the service point is in"
     }
-	},
+  },
 	"called-number": {
 		"label": "Telephone number",
 		"hint": "For international numbers include the country code"

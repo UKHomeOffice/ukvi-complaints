@@ -23,7 +23,7 @@ module.exports = {
   awsSqs: {
     region: process.env.AWS_REGION || 'eu-west-2',
     queueUrl:
-    process.env.SQS_URL || 'http://localhost:9324/queue/first-queue',
+    process.env.SQS_URL || '',
     accessKeyId: process.env.ACCESS_KEY_ID || 'stub',
     secretAccessKey: process.env.SECRET_ACCESS_KEY || 'stub'
   },

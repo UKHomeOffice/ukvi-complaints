@@ -7,6 +7,7 @@ const { validAgainstSchema, sendToQueue } = require('../../../lib/utils');
 const formatComplaintData = require('../../../lib/format-complaint-data');
 
 module.exports = superclass => class SendToSQS extends superclass {
+  // eslint-disable-next-line consistent-return
   saveValues(req, res, next) {
     let complaintId;
     let complaintData;

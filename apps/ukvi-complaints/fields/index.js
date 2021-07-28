@@ -355,7 +355,7 @@ module.exports = {
     legend: {
       className: 'visuallyhidden'
     },
-    className: ['form-group'],
+    className: ['form-group']
   },
   'called-date': {
     mixin: 'input-text',

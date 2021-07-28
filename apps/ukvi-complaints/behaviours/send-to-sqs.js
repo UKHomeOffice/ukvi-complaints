@@ -41,21 +41,8 @@ module.exports = superclass => class SendToSQS extends superclass {
     };
     err.formNotSubmitted = true;
     err.complaintDetails = complaintDetails;
-<<<<<<< HEAD
-<<<<<<< HEAD
     // eslint-disable-next-line no-console
     console.error('Failed to send to SQS queue: ', err);
     return next(err);
   }
-
 };
-
-=======
-=======
-    // Should this be req.log rather than console.error?
->>>>>>> Fix linting errors
-    console.error('Failed to send to SQS queue: ', err);
-    return next(err);
-  }
-};
->>>>>>> Add SQS behaviour and changes needed to enable it

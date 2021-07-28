@@ -10,6 +10,8 @@
     "test:lint": "eslint . --config ./node_modules/eslint-config-hof/default.js",
     "test:unit": "nyc --report-dir=test/coverage --reporter=lcov mocha \"test/unit/**/*.spec.js\" --timeout 10000 --require test/test-helpers.js -- $npm_package_config_reporter/unit.json",
     "test:check": "mocha \"test/unit/**/*.spec.js\"",
+    "sqs-setup": "docker build -q -t sqs-mock test/integration/sqs-mock && docker run --name sqs-mock -p 9324:9324 -d sqs-mock",
+    "sqs-cleanup": "docker stop sqs-mock && docker container rm sqs-mock",
     "build": "hof-build",
     "postinstall": "npm run build"
   },

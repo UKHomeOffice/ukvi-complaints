@@ -41,7 +41,6 @@ module.exports = superclass => class SendToSQS extends superclass {
     };
     err.formNotSubmitted = true;
     err.complaintDetails = complaintDetails;
-    // Should this be req.log rather than console.error?
     console.error('Failed to send to SQS queue: ', err);
     return next(err);
   }

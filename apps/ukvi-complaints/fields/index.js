@@ -321,7 +321,7 @@ module.exports = {
     mixin: 'select',
     options: [{ label: ' ', value: '' }].concat(require('hof-util-countries')()),
     validate: ['required', { type: 'maxlength', arguments: 100 }],
-    className: ['typeahead', 'js-hidden']
+    className: ['typeahead']
   },
 
   'vac-city': {

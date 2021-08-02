@@ -598,7 +598,7 @@ module.exports = {
 
   'agent-representative-name': {
     mixin: 'input-text',
-    validate: ['required', { type: 'maxlength', arguments: 150 }],
+    validate: ['required', { type: 'maxlength', arguments: 100 }],
     legend: {
       className: 'visuallyhidden'
     },

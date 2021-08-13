@@ -6,7 +6,6 @@ const hof = require('hof');
 const addDynamicSettings = settings => {
   settings.routes = settings.routes.map(route => require(route));
   settings.root = __dirname;
-  settings.start = false;
 
   if (process.env.REDIS_URL) {
     settings.redis = process.env.REDIS_URL;
@@ -23,7 +22,7 @@ app.use((req, res, next) => {
     { path: '/terms-and-conditions', property: 'base.terms' }
   ];
   // set service name for cookie banner
-  res.locals.serviceName = 'UK Visas and Immigration complaints';
+  res.locals.appName = 'UK Visas and Immigration complaints';
   next();
 });
 

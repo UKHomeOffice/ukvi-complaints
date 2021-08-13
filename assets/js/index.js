@@ -1,6 +1,7 @@
 'use strict';
 
-require('hof-theme-govuk');
+require('hof/frontend/themes/gov-uk/client-js');
+
 const $ = require('jquery');
 const typeahead = require('typeahead-aria');
 const Bloodhound = require('typeahead-aria').Bloodhound;

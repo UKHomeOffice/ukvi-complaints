@@ -1,11 +1,12 @@
 {
-  "theme": "govuk",
+  "appName": "UKVI Complaints",
+  "theme": "govUK",
   "routes": [
     "./apps/ukvi-complaints"
   ],
-  "views": "./apps/ukvi-complaints/views",
+  "views": ["./apps/ukvi-complaints/views"],
   "session": {
-    "name": "hod.sid",
+    "name": "ukvi-complaints.hof.sid",
     "ttl": 3600
   },
   "getCookies": false,

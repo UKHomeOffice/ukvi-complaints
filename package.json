@@ -25,6 +25,7 @@
     "hof-middleware": "^2.2.4",
     "hof-theme-govuk": "^5.2.4",
     "hof-util-countries": "^1.0.0",
+    "hot-shots": "^8.5.0",
     "jquery": "^3.6.0",
     "jsonschema": "^1.4.0",
     "moment": "^2.29.1",

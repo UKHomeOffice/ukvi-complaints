@@ -107,6 +107,7 @@ steps:
   - name: build_image
     image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/dind
     commands:
+      - n=0; while [ "$n" -lt 60 ] && [ ! docker stats --no-stream ]; do n=$(( n + 1 )); sleep 1; done
       - docker build --no-cache -t $${IMAGE_REPO}:$${DRONE_COMMIT_SHA} .
     volumes:
       - name: dockersock
@@ -140,18 +141,16 @@ steps:
       KUBE_TOKEN:
         from_secret: kube_token_dev
     commands:
-      - export KUBE_TOKEN=$${KUBE_TOKEN}
       - export KUBE_NAMESPACE=$${BRANCH_ENV}
       - export INGRESS_INTERNAL_ANNOTATIONS=$${HOF_CONFIG}/ingress-internal-annotations.yaml
       - export INGRESS_EXTERNAL_ANNOTATIONS=$${HOF_CONFIG}/ingress-external-annotations.yaml
       - export CONFIGMAP_VALUES=$${HOF_CONFIG}/configmap-values.yaml
       - export NGINX_SETTINGS=$${HOF_CONFIG}/nginx-settings.yaml
-      - export DRONE_SOURCE_BRANCH=$(echo $${DRONE_SOURCE_BRANCH} | tr '[:upper:]' '[:lower:]')
-      - kd --insecure-skip-tls-verify --check-interval 10s -f kube/redis-service.yml -f kube/redis-network-policy.yml -f kube/redis-deployment.yml
-      - kd --insecure-skip-tls-verify -f kube/configmap.yaml -f kube/ingress-internal.yaml -f kube/networkpolicy-internal.yaml -f kube/service.yaml
-      - kd --insecure-skip-tls-verify --timeout 10m --check-interval 10s -f kube/deployment.yaml
+      - export DRONE_SOURCE_BRANCH=$(echo $${DRONE_SOURCE_BRANCH} | tr '[:upper:]' '[:lower:]' | tr '/' '-')
+      - kd --insecure-skip-tls-verify --timeout 10m --check-interval 10s -f kube/configmaps -f kube/certs
+      - kd --insecure-skip-tls-verify --timeout 10m --check-interval 10s -f kube/redis -f kube/app
       - sleep $${READY_FOR_TEST_DELAY}
-      - echo "UAT Branch - ukvic-$${DRONE_SOURCE_BRANCH}.internal.$${BRANCH_ENV}.homeoffice.gov.uk"
+      - echo "UAT Branch - $${APP_NAME}-$${DRONE_SOURCE_BRANCH}.internal.$${BRANCH_ENV}.homeoffice.gov.uk"
     when:
       branch: main
       event: pull_request
@@ -201,7 +200,7 @@ steps:
   # - name: acceptance_tests_branch
   #   <<: *acceptance_tests
   #   commands:
-  #     - export ACCEPTANCE_HOST_NAME=https://$${APP_NAME}-$${DRONE_SOURCE_BRANCH}.branch.internal.sas-notprod.homeoffice.gov.uk
+  #     - export ACCEPTANCE_HOST_NAME=https://$${APP_NAME}-$${DRONE_SOURCE_BRANCH}.internal.$${BRANCH_ENV}.homeoffice.gov.uk
   #     - npm run test:acceptance
   #   when:
   #     branch: main
@@ -245,14 +244,13 @@ steps:
       KUBE_TOKEN:
         from_secret: kube_token_dev
     commands:
-      - export KUBE_TOKEN=$${KUBE_TOKEN}
       - export KUBE_NAMESPACE=$${UAT_ENV}
       - export INGRESS_EXTERNAL_ANNOTATIONS=$${HOF_CONFIG}/ingress-external-annotations.yaml
       - export CONFIGMAP_VALUES=$${HOF_CONFIG}/configmap-values.yaml
       - export NGINX_SETTINGS=$${HOF_CONFIG}/nginx-settings.yaml
-      - kd --insecure-skip-tls-verify --check-interval 10s -f kube/redis-service.yml -f kube/redis-network-policy.yml -f kube/redis-deployment.yml
-      - kd --insecure-skip-tls-verify -f kube/configmap.yaml -f kube/ingress-external.yaml -f kube/networkpolicy-external.yaml -f kube/service.yaml
-      - kd --insecure-skip-tls-verify --timeout 10m --check-interval 10s -f kube/deployment.yaml
+      - kd --insecure-skip-tls-verify --timeout 10m --check-interval 10s -f kube/configmaps/configmap.yml -f kube/app/service.yml
+      - kd --insecure-skip-tls-verify --timeout 10m --check-interval 10s -f kube/app/networkpolicy-external.yml -f kube/app/ingress-external.yml
+      - kd --insecure-skip-tls-verify --timeout 10m --check-interval 10s -f kube/redis -f kube/app/deployment.yml
       - sleep $${READY_FOR_TEST_DELAY}
     when:
       branch: main
@@ -280,7 +278,7 @@ steps:
       - name: dockersock
         path: /root/.dockersock
     commands:
-      - drone build info $GIT_REPO $DRONE_BUILD_NUMBER --format {{.Message}} | grep -o " '.*' " | tr -d "[ ']" | tr '[:upper:]' '[:lower:]' > /root/.dockersock/branch_name.txt
+      - drone build info $GIT_REPO $DRONE_BUILD_NUMBER --format {{.Message}} | grep -o '[^ ]\+$' -m1 | sed 's|UKHomeOffice/||g' | tr '[:upper:]' '[:lower:]' | tr '/' '-' > /root/.dockersock/branch_name.txt
     when:
       branch: main
       event: push
@@ -298,18 +296,15 @@ steps:
       - name: dockersock
         path: /root/.dockersock
     commands:
-      - export KUBE_TOKEN=$${KUBE_TOKEN}
       - export KUBE_NAMESPACE=$${BRANCH_ENV}
+      - export INGRESS_EXTERNAL_ANNOTATIONS=$${HOF_CONFIG}/ingress-external-annotations.yaml
       - export INGRESS_INTERNAL_ANNOTATIONS=$${HOF_CONFIG}/ingress-internal-annotations.yaml
       - export CONFIGMAP_VALUES=$${HOF_CONFIG}/configmap-values.yaml
       - export NGINX_SETTINGS=$${HOF_CONFIG}/nginx-settings.yaml
       - export DRONE_SOURCE_BRANCH=$(cat /root/.dockersock/branch_name.txt)
-      - kubectl="kubectl --insecure-skip-tls-verify --server=$${KUBE_SERVER} --namespace=$${KUBE_NAMESPACE} --token=$${KUBE_TOKEN}"
-      - kd --delete --insecure-skip-tls-verify --check-interval 10s -f kube/redis-service.yml -f kube/redis-network-policy.yml -f kube/redis-deployment.yml
-      - kd --delete --insecure-skip-tls-verify -f kube/configmap.yaml -f kube/ingress-internal.yaml -f kube/networkpolicy-internal.yaml -f kube/service.yaml
-      - kd --delete --insecure-skip-tls-verify --timeout 10m --check-interval 10s -f kube/deployment.yaml
-      - $${kubectl} delete secret $${APP_NAME}-internal-$${DRONE_SOURCE_BRANCH} --ignore-not-found=true
-      - echo "Torn Down UAT Branch - $${APP_NAME}-$${DRONE_SOURCE_BRANCH}.branch.internal.sas-notprod.homeoffice.gov.uk"
+      - kd --delete --insecure-skip-tls-verify --timeout 10m --check-interval 10s -f kube/configmaps/configmap.yml
+      - kd --delete --insecure-skip-tls-verify --timeout 10m --check-interval 10s -f kube/redis -f kube/app
+      - echo "Torn Down UAT Branch - $${APP_NAME}-$${DRONE_SOURCE_BRANCH}.internal.$${BRANCH_ENV}.homeoffice.gov.uk"
     when:
       branch: main
       event: push
@@ -324,14 +319,13 @@ steps:
       KUBE_TOKEN:
         from_secret: kube_token_stg
     commands:
-      - export KUBE_TOKEN=$${KUBE_TOKEN}
       - export KUBE_NAMESPACE=$${STG_ENV}
-      - export INGRESS_EXTERNAL_ANNOTATIONS=$${HOF_CONFIG}/ingress-internal-annotations.yaml
+      - export INGRESS_EXTERNAL_ANNOTATIONS=$${HOF_CONFIG}/ingress-external-annotations.yaml
       - export CONFIGMAP_VALUES=$${HOF_CONFIG}/configmap-values.yaml
       - export NGINX_SETTINGS=$${HOF_CONFIG}/nginx-settings.yaml
-      - kd --insecure-skip-tls-verify --check-interval 10s -f kube/redis-service.yml -f kube/redis-network-policy.yml -f kube/redis-deployment.yml
-      - kd --insecure-skip-tls-verify -f kube/configmap.yaml -f kube/ingress-external.yaml -f kube/networkpolicy-external.yaml -f kube/service.yaml
-      - kd --insecure-skip-tls-verify --timeout 10m --check-interval 10s -f kube/deployment.yaml
+      - kd --insecure-skip-tls-verify --timeout 10m --check-interval 10s -f kube/configmaps/configmap.yml -f kube/app/service.yml
+      - kd --insecure-skip-tls-verify --timeout 10m --check-interval 10s -f kube/app/networkpolicy-external.yml -f kube/app/ingress-external.yml
+      - kd --insecure-skip-tls-verify --timeout 10m --check-interval 10s -f kube/redis -f kube/app/deployment.yml
       - sleep $${READY_FOR_TEST_DELAY}
     when:
       branch: main
@@ -379,14 +373,13 @@ steps:
       KUBE_TOKEN:
         from_secret: kube_token_prod
     commands:
-      - export KUBE_TOKEN=$${KUBE_TOKEN}
       - export KUBE_NAMESPACE=$${PROD_ENV}
       - export INGRESS_EXTERNAL_ANNOTATIONS=$${HOF_CONFIG}/ingress-external-annotations.yaml
       - export CONFIGMAP_VALUES=$${HOF_CONFIG}/configmap-values.yaml
       - export NGINX_SETTINGS=$${HOF_CONFIG}/nginx-settings.yaml
-      - kd --insecure-skip-tls-verify --check-interval 10s -f kube/redis-service.yml -f kube/redis-network-policy.yml -f kube/redis-deployment.yml
-      - kd --insecure-skip-tls-verify -f kube/configmap.yaml -f kube/ingress-external.yaml -f kube/networkpolicy-external.yaml -f kube/service.yaml
-      - kd --insecure-skip-tls-verify --timeout 10m --check-interval 10s -f kube/deployment.yaml
+      - kd --insecure-skip-tls-verify --timeout 10m --check-interval 10s -f kube/configmaps/configmap.yml -f kube/app/service.yml
+      - kd --insecure-skip-tls-verify --timeout 10m --check-interval 10s -f kube/app/networkpolicy-external.yml -f kube/app/ingress-external.yml
+      - kd --insecure-skip-tls-verify --timeout 10m --check-interval 10s -f kube/redis -f kube/app/deployment.yml
       - sleep $${READY_FOR_TEST_DELAY}
     when:
       target: PROD

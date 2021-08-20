@@ -1,6 +1,6 @@
 'use strict';
 const complaintDetailsBase = require('../test-data/complaint-base');
-const getBrpComplaint = require('../../../lib/json-converters/brp');
+const getBrpComplaint = require('../../../../apps/ukvi-complaints/lib/json-converters/brp');
 
 describe('getBrpComplaint', () => {
   describe('problemExperienced', () => {

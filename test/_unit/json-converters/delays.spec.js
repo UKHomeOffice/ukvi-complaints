@@ -1,6 +1,7 @@
+/* eslint-disable max-nested-callbacks */
 'use strict';
 const complaintDetailsBase = require('../test-data/complaint-base');
-const getDelaysComplaint = require('../../../lib/json-converters/delays');
+const getDelaysComplaint = require('../../../../apps/ukvi-complaints/lib/json-converters/delays');
 
 describe('getDelaysComplaint', () => {
   describe('delayedWaitingFor', () => {
@@ -12,7 +13,7 @@ describe('getDelaysComplaint', () => {
       const delaysComplaint = getDelaysComplaint(values);
       expect(
         delaysComplaint.complaint.complaintDetails.delayedWaitingFor
-      ).to.eql('APPLICATION_DELAY');
+        ).to.eql('APPLICATION_DELAY');
     });
 
     it('returns "RETURN_OF_DOCUMENTS" if "return-of-documents" delay-type value passed in', () => {
@@ -23,7 +24,7 @@ describe('getDelaysComplaint', () => {
       const delaysComplaint = getDelaysComplaint(values);
       expect(
         delaysComplaint.complaint.complaintDetails.delayedWaitingFor
-      ).to.eql('RETURN_OF_DOCUMENTS');
+        ).to.eql('RETURN_OF_DOCUMENTS');
     });
 
     it('throws an error if invalid delay-type is passed', () => {
@@ -33,6 +34,7 @@ describe('getDelaysComplaint', () => {
 
       expect(() => getDelaysComplaint(values)).to.throw('invalid "delay-type" value');
     });
+
   });
 
   describe('documentReturnRequest', () => {
@@ -45,7 +47,7 @@ describe('getDelaysComplaint', () => {
       const delaysComplaint = getDelaysComplaint(values);
       expect(
         delaysComplaint.complaint.complaintDetails.documentReturnRequest
-      ).to.eql('YES_OTHER');
+        ).to.eql('YES_OTHER');
     });
 
     it('returns "YES_DOCS_SERVICE" if "yes-docs-service" return-of-documents value passed in', () => {
@@ -57,7 +59,7 @@ describe('getDelaysComplaint', () => {
       const delaysComplaint = getDelaysComplaint(values);
       expect(
         delaysComplaint.complaint.complaintDetails.documentReturnRequest
-      ).to.eql('YES_DOCS_SERVICE');
+        ).to.eql('YES_DOCS_SERVICE');
     });
 
     it('returns "NO" if "yes-docs-service" return-of-documents value passed in', () => {
@@ -69,7 +71,7 @@ describe('getDelaysComplaint', () => {
       const delaysComplaint = getDelaysComplaint(values);
       expect(
         delaysComplaint.complaint.complaintDetails.documentReturnRequest
-      ).to.eql('NO');
+        ).to.eql('NO');
     });
 
     it('throws an error if invalid return-of-documents is passed', () => {
@@ -81,4 +83,5 @@ describe('getDelaysComplaint', () => {
       expect(() => getDelaysComplaint(values)).to.throw('invalid "return-of-documents" value');
     });
   });
+
 });

@@ -1,6 +1,7 @@
+/* eslint-disable max-nested-callbacks */
 'use strict';
 const complaintDetailsBase = require('../test-data/complaint-base');
-const getDecisionComplaint = require('../../../lib/json-converters/decision');
+const getDecisionComplaint = require('../../../../apps/ukvi-complaints/lib/json-converters/decision');
 
 describe('getDecisionComplaint', () => {
   describe('decisionOutcome', () => {

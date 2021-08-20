@@ -1,19 +1,23 @@
+/* eslint-disable max-nested-callbacks */
 'use strict';
 const complaintDetailsBase = require('../test-data/complaint-base');
-const getStaffBehaviourComplaint = require('../../../lib/json-converters/staff-behaviour');
+const getStaffBehaviourComplaint = require('../../../../apps/ukvi-complaints/lib/json-converters/staff-behaviour');
 
 describe('getStaffBehaviourComplaint', () => {
   describe('experience', () => {
+
     it('throws an error if invalid staff-behaviour is passed', () => {
       const values = Object.assign({
-        'staff-behaviour': 'invalid'
+        'staff-behaviour': 'invalid',
       }, complaintDetailsBase);
 
       expect(() => getStaffBehaviourComplaint(values)).to.throw('invalid "staff-behaviour" value');
     });
 
     describe('face-to-face', () => {
+
       describe('which-centre', () => {
+
         it('returns vac location information if "vac" which-centre value passed in', () => {
           const country = 'Ukraine';
           const city = 'Kiev';
@@ -22,20 +26,20 @@ describe('getStaffBehaviourComplaint', () => {
             'staff-behaviour': 'face-to-face',
             'which-centre': 'vac',
             'vac-country': country,
-            'vac-city': city
+            'vac-city': city,
           }, complaintDetailsBase);
 
           const staffBehaviourComplaint = getStaffBehaviourComplaint(values);
           expect(
             staffBehaviourComplaint.complaint.complaintDetails.experience
-          ).to.eql({
-            experienceType: 'FACE_TO_FACE',
-            location: {
-              country,
-              city,
-              centreType: 'VAC'
-            }
-          });
+            ).to.eql({
+              experienceType: 'FACE_TO_FACE',
+              location: {
+                country,
+                city,
+                centreType: 'VAC'
+              }
+            });
         });
 
         it('returns ssc location information if "ssc" which-centre value passed in', () => {
@@ -44,19 +48,19 @@ describe('getStaffBehaviourComplaint', () => {
           const values = Object.assign({
             'staff-behaviour': 'face-to-face',
             'which-centre': 'ssc',
-            'ssc-city': city
+            'ssc-city': city,
           }, complaintDetailsBase);
 
           const staffBehaviourComplaint = getStaffBehaviourComplaint(values);
           expect(
             staffBehaviourComplaint.complaint.complaintDetails.experience
-          ).to.eql({
-            experienceType: 'FACE_TO_FACE',
-            location: {
-              city,
-              centreType: 'SSC'
-            }
-          });
+            ).to.eql({
+              experienceType: 'FACE_TO_FACE',
+              location: {
+                city,
+                centreType: 'SSC'
+              }
+            });
         });
 
         it('returns ukvcas location information if "ukvcas" which-centre value passed in', () => {
@@ -65,30 +69,32 @@ describe('getStaffBehaviourComplaint', () => {
           const values = Object.assign({
             'staff-behaviour': 'face-to-face',
             'which-centre': 'ukvcas',
-            'ukvcas-city': city
+            'ukvcas-city': city,
           }, complaintDetailsBase);
 
           const staffBehaviourComplaint = getStaffBehaviourComplaint(values);
           expect(
             staffBehaviourComplaint.complaint.complaintDetails.experience
-          ).to.eql({
-            experienceType: 'FACE_TO_FACE',
-            location: {
-              city,
-              centreType: 'UKVCAS'
-            }
-          });
+            ).to.eql({
+              experienceType: 'FACE_TO_FACE',
+              location: {
+                city,
+                centreType: 'UKVCAS'
+              }
+            });
         });
 
         it('throws an error if invalid which-centre is passed', () => {
           const values = Object.assign({
             'staff-behaviour': 'face-to-face',
-            'which-centre': 'invalid'
+            'which-centre': 'invalid',
           }, complaintDetailsBase);
 
           expect(() => getStaffBehaviourComplaint(values)).to.throw('invalid "which-centre" value');
         });
+
       });
+
     });
 
     describe('on-phone', () => {
@@ -103,34 +109,36 @@ describe('getStaffBehaviourComplaint', () => {
           'called-number': phoneNumber,
           'called-date': date,
           'called-time': time,
-          'called-from': calledFrom
+          'called-from': calledFrom,
         }, complaintDetailsBase);
 
         const staffBehaviourComplaint = getStaffBehaviourComplaint(values);
         expect(
           staffBehaviourComplaint.complaint.complaintDetails.experience
-        ).to.eql({
-          experienceType: 'PHONE',
-          callDetails: {
-            numberCalled: phoneNumber,
-            date,
-            time,
-            calledFrom: calledFrom
-          }
-        });
+          ).to.eql({
+            experienceType: 'PHONE',
+            callDetails: {
+              numberCalled: phoneNumber,
+              date,
+              time,
+              calledFrom: calledFrom
+            }
+          });
       });
     });
 
     describe('in-letter', () => {
       it('returns experienceType "LETTER_OR_EMAIL"', () => {
         const values = Object.assign({
-          'staff-behaviour': 'in-letter'
+          'staff-behaviour': 'in-letter',
         }, complaintDetailsBase);
 
         const staffBehaviourComplaint = getStaffBehaviourComplaint(values);
         expect(staffBehaviourComplaint.complaint.complaintDetails.experience.experienceType
-        ).to.eql('LETTER_OR_EMAIL');
+          ).to.eql('LETTER_OR_EMAIL');
       });
     });
+
   });
+
 });

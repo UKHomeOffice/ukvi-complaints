@@ -1,6 +1,6 @@
 'use strict';
 
-const dateComponent = require('hof-component-date');
+const dateComponent = require('hof').components.date;
 const moment = require('moment');
 
 module.exports = {
@@ -319,7 +319,7 @@ module.exports = {
 
   'vac-country': {
     mixin: 'select',
-    options: [{ label: ' ', value: '' }].concat(require('hof-util-countries')()),
+    options: [{ label: ' ', value: '' }].concat(require('hof').utils.countries()),
     validate: ['required', { type: 'maxlength', arguments: 100 }],
     className: ['typeahead']
   },
@@ -591,7 +591,7 @@ module.exports = {
 
   'applicant-nationality': {
     mixin: 'select',
-    options: [{ label: ' ', value: '' }].concat(require('hof-util-countries')()),
+    options: [{ label: ' ', value: '' }].concat(require('hof').utils.countries()),
     validate: 'required',
     className: ['typeahead']
   },
@@ -607,7 +607,7 @@ module.exports = {
 
   'agent-representative-nationality': {
     mixin: 'select',
-    options: [{ label: ' ', value: '' }].concat(require('hof-util-countries')()),
+    options: [{ label: ' ', value: '' }].concat(require('hof').utils.countries()),
     validate: 'required',
     className: ['typeahead']
   },

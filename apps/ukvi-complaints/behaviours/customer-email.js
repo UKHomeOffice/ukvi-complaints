@@ -1,6 +1,6 @@
 'use strict';
 
-const Emailer = require('hof-behaviour-emailer');
+const Emailer = require('hof').components.emailer;
 const path = require('path');
 const moment = require('moment');
 

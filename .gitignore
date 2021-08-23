@@ -9,3 +9,4 @@ npm-debug.log
 test/executions
 test/coverage
 .nyc_output
+coverage

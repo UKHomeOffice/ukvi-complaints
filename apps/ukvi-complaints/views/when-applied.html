@@ -1,0 +1,15 @@
+{{<partials-page}}
+  {{$back}}
+    <a class="link-back" href="/request-upgrade">{{#t}}buttons.back{{/t}}</a>
+  {{/back}}
+  {{$page-content}}
+
+
+    {{#fields}}
+      {{#renderField}}{{/renderField}}
+    {{/fields}}
+    {{#input-submit}}continue{{/input-submit}}
+
+
+  {{/page-content}}
+{{/partials-page}}

@@ -1,4 +1,4 @@
-##To get clarification about your entitlements
+## To get clarification about your entitlements
 
 If you want clarification on your Visa entitlements contact UKVI.
 

@@ -1,4 +1,4 @@
-##Check your entitlements
+## Check your entitlements
 
 You can check your visa entitlements by contacting UKVI by phone or email.
 

@@ -198,20 +198,20 @@ steps:
   #     event: pull_request
 
   # Snyk & Anchore security scans which run after branch deployment to prevent blocking of PR UAT tests
-  - name: snyk_scan
-    pull: if-not-exists
-    image: node:14
-    environment:
-      SNYK_TOKEN:
-        from_secret: snyk_token
-    commands:
-      - yarn run test:snyk
-    when:
-      branch:
-        include:
-          - main
-          - feature/*
-      event: pull_request
+  # - name: snyk_scan
+  #   pull: if-not-exists
+  #   image: node:14
+  #   environment:
+  #     SNYK_TOKEN:
+  #       from_secret: snyk_token
+  #   commands:
+  #     - yarn run test:snyk
+  #   when:
+  #     branch:
+  #       include:
+  #         - main
+  #         - feature/*
+  #     event: pull_request
 
   - name: anchore_scan
     image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/anchore-submission:latest
@@ -291,9 +291,9 @@ steps:
     image: quay.io/ukhomeofficedigital/kd:v1.14.0
     environment:
       KUBE_SERVER:
-        from_secret: kube_server_stg
+        from_secret: kube_server_dev
       KUBE_TOKEN:
-        from_secret: kube_token_stg
+        from_secret: kube_token_dev
     commands:
       - bin/deploy.sh $${STG_ENV}
     when:

@@ -1,4 +1,4 @@
-##Check what your visa entitles you to
+## Check what your visa entitles you to
 
 You can check what your visa entitles you to by contacting UKVI on phone or email.
 

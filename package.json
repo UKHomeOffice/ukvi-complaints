@@ -22,7 +22,7 @@
     "postinstall": "yarn run build"
   },
   "dependencies": {
-    "hof": "^19.9.17",
+    "hof": "^19.9.18",
     "hot-shots": "^8.5.0",
     "jquery": "^3.6.0",
     "jsonschema": "^1.4.0",

@@ -240,6 +240,21 @@ steps:
       branch: main
       event: push
 
+# Deploy to Staging environment
+  - name: deploy_to_stg
+    pull: if-not-exists
+    image: quay.io/ukhomeofficedigital/kd:v1.14.0
+    environment:
+      KUBE_SERVER:
+        from_secret: kube_server_dev
+      KUBE_TOKEN:
+        from_secret: kube_token_dev
+    commands:
+      - bin/deploy.sh $${STG_ENV}
+    when:
+      branch: main
+      event: push
+
   # - name: acceptance_tests_uat
   #   <<: *acceptance_tests
   #   commands:
@@ -281,21 +296,6 @@ steps:
         path: /root/.dockersock
     commands:
       - bin/deploy.sh tear_down
-    when:
-      branch: main
-      event: push
-
-  # Deploy to Staging environment
-  - name: deploy_to_stg
-    pull: if-not-exists
-    image: quay.io/ukhomeofficedigital/kd:v1.14.0
-    environment:
-      KUBE_SERVER:
-        from_secret: kube_server_dev
-      KUBE_TOKEN:
-        from_secret: kube_token_dev
-    commands:
-      - bin/deploy.sh $${STG_ENV}
     when:
       branch: main
       event: push

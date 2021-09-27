@@ -27,6 +27,7 @@
     "jquery": "^3.6.0",
     "jsonschema": "^1.4.0",
     "moment": "^2.29.1",
+    "path-parse": "^1.0.7",
     "sqs-producer": "^2.1.0",
     "typeahead-aria": "^1.0.4",
     "uuid": "^8.3.2"

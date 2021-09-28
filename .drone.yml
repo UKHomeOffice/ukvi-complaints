@@ -285,7 +285,7 @@ steps:
       branch: main
       event: push
 
-    # Deploy to Staging environment
+  # Deploy to Staging environment
   - name: deploy_to_stg
     pull: if-not-exists
     image: quay.io/ukhomeofficedigital/kd:v1.14.0
@@ -328,7 +328,7 @@ steps:
       target: PROD
       event: promote
 
-    # Deploy to Production environment
+  # Deploy to Production environment
   - name: deploy_to_prod
     pull: if-not-exists
     image: quay.io/ukhomeofficedigital/kd:v1.14.0

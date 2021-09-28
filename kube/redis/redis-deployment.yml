@@ -25,7 +25,7 @@ spec:
         name: redis-{{ .DRONE_SOURCE_BRANCH }}
         service: redis-{{ .DRONE_SOURCE_BRANCH }}
         app: redis-{{ .DRONE_SOURCE_BRANCH }}
-        {{ if eq .KUBE_NAMESPACE .STG_ENV }}
+        {{ else if eq .KUBE_NAMESPACE .STG_ENV }}
         name: redis
         service: redis
         {{ else }}

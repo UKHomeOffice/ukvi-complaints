@@ -10,7 +10,7 @@ ignore:
     - hof > request:
         reason: Need to replace request in HOF
         expires: '2022-09-18T14:58:46.388Z'
-  SNYK-JS-PATH-PARSE-23343:
+  SNYK-JS-PATHPARSE-1077067:
     - '*':
         reason: Need to replace request in HOF
         expires: '2021-11-01T17:02:21.865Z'

@@ -240,21 +240,6 @@ steps:
       branch: main
       event: push
 
-# Deploy to Staging environment
-  - name: deploy_to_stg
-    pull: if-not-exists
-    image: quay.io/ukhomeofficedigital/kd:v1.14.0
-    environment:
-      KUBE_SERVER:
-        from_secret: kube_server_dev
-      KUBE_TOKEN:
-        from_secret: kube_token_dev
-    commands:
-      - bin/deploy.sh $${STG_ENV}
-    when:
-      branch: main
-      event: push
-
   # - name: acceptance_tests_uat
   #   <<: *acceptance_tests
   #   commands:
@@ -300,6 +285,21 @@ steps:
       branch: main
       event: push
 
+  # Deploy to Staging environment
+  - name: deploy_to_stg
+    pull: if-not-exists
+    image: quay.io/ukhomeofficedigital/kd:v1.14.0
+    environment:
+      KUBE_SERVER:
+        from_secret: kube_server_dev
+      KUBE_TOKEN:
+        from_secret: kube_token_dev
+    commands:
+      - bin/deploy.sh $${STG_ENV}
+    when:
+      branch: main
+      event: push
+
   # Checks a build being promoted has passed, is on main which effectively means a healthy build on Staging
   - name: sanity_check_build_prod
     pull: if-not-exists
@@ -328,7 +328,7 @@ steps:
       target: PROD
       event: promote
 
-    # Deploy to Production environment
+  # Deploy to Production environment
   - name: deploy_to_prod
     pull: if-not-exists
     image: quay.io/ukhomeofficedigital/kd:v1.14.0

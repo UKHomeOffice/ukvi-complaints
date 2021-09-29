@@ -13,8 +13,6 @@ spec:
     matchLabels:
       {{ if eq .KUBE_NAMESPACE .BRANCH_ENV }}
       app: redis-{{ .DRONE_SOURCE_BRANCH }}
-      {{ else if eq .KUBE_NAMESPACE .STG_ENV }}
-      name: redis
       {{ else }}
       app: redis
       {{ end }}
@@ -25,9 +23,6 @@ spec:
         name: redis-{{ .DRONE_SOURCE_BRANCH }}
         service: redis-{{ .DRONE_SOURCE_BRANCH }}
         app: redis-{{ .DRONE_SOURCE_BRANCH }}
-        {{ else if eq .KUBE_NAMESPACE .STG_ENV }}
-        name: redis
-        service: redis
         {{ else }}
         name: redis
         service: redis

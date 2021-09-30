@@ -213,7 +213,7 @@ steps:
           - feature/*
       event: pull_request
 
-  # - name: anchore_scan
+  - name: anchore_scan
     image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/anchore-submission:latest
     pull: always
     environment:
@@ -225,7 +225,7 @@ steps:
       branch: main
       event: pull_request
 
-  Deploy to Main UAT environment
+  # Deploy to Main UAT environment
   - name: deploy_to_uat
     pull: if-not-exists
     image: quay.io/ukhomeofficedigital/kd:v1.14.0

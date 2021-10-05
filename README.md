@@ -29,7 +29,6 @@ $ npm run dev
 
 ### SQS Service
 
-
 As the form has been integrated with the DECS case working system, we have added functionality to output the form to an SQS queue.
 To set up the SQS queue locally you can use the command:
 ```bash

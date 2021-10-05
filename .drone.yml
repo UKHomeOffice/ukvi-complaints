@@ -213,17 +213,17 @@ steps:
           - feature/*
       event: pull_request
 
-  # - name: anchore_scan
-  #   image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/anchore-submission:latest
-  #   pull: always
-  #   environment:
-  #     IMAGE_NAME: ukvi-complaints:${DRONE_COMMIT_SHA}
-  #     LOCAL_IMAGE: true
-  #     TOLERATE: medium
-  #     WHITELIST_FILE: hof-services-config/UKVI_Complaints/anchore-cve-exceptions.txt
-  #   when:
-  #     branch: main
-  #     event: pull_request
+  - name: anchore_scan
+    image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/anchore-submission:latest
+    pull: always
+    environment:
+      IMAGE_NAME: ukvi-complaints:${DRONE_COMMIT_SHA}
+      LOCAL_IMAGE: true
+      TOLERATE: medium
+      WHITELIST_FILE: hof-services-config/UKVI_Complaints/anchore-cve-exceptions.txt
+    when:
+      branch: main
+      event: pull_request
 
   # Deploy to Main UAT environment
   - name: deploy_to_uat

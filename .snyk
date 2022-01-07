@@ -14,4 +14,12 @@ ignore:
     - '*':
         reason: Need to replace request in HOF
         expires: '2021-11-01T17:02:21.865Z'
+  SNYK-JS-JSONSCHEMA-1920922:
+     - '*':
+        reason: This service uses a later version without the vulnerability
+        expires: '2022-11-01T17:02:21.865Z'
+  SNYK-JS-SHELLQUOTE-1766506:
+     - '*':
+        reason: Not used by this service
+        expires: '2022-11-01T17:02:21.865Z'
 patch: {}

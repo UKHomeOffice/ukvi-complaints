@@ -530,7 +530,7 @@ module.exports = {
 
   'agent-name': {
     mixin: 'input-text',
-    validate: ['required', { type: 'maxlength', arguments: 150 }],
+    validate: ['required', 'notUrl', { type: 'maxlength', arguments: 150 }],
     legend: {
       className: 'visuallyhidden'
     },
@@ -557,7 +557,7 @@ module.exports = {
 
   'applicant-name': {
     mixin: 'input-text',
-    validate: ['required', { type: 'maxlength', arguments: 100 }],
+    validate: ['required', 'notUrl', { type: 'maxlength', arguments: 100 }],
     legend: {
       className: 'visuallyhidden'
     },
@@ -598,7 +598,7 @@ module.exports = {
 
   'agent-representative-name': {
     mixin: 'input-text',
-    validate: ['required', { type: 'maxlength', arguments: 100 }],
+    validate: ['required', 'notUrl', { type: 'maxlength', arguments: 100 }],
     legend: {
       className: 'visuallyhidden'
     },

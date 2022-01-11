@@ -574,7 +574,8 @@
 		"legend": "",
 		"label": "Full name",
 		"validation": {
-			"required": "Enter your name"
+			"required": "Enter your full name",
+			"notUrl": "Enter your full name"
 		}
 	},
 	"agent-email": {
@@ -594,7 +595,8 @@
 		"legend": "",
 		"label": "Applicant’s full name",
 		"validation": {
-			"required": "Enter the applicant's full name"
+			"required": "Enter the applicant's full name",
+			"notUrl": "Enter the applicant's full name"
 		}
 	},
 	"agent-representative-nationality": {
@@ -609,7 +611,8 @@
 		"legend": "",
 		"label": "Full name",
 		"validation": {
-			"required": "Enter your name"
+			"required": "Enter your full name", 
+			"notUrl":"Enter your full name"
 		}
 	},
 	"applicant-dob": {

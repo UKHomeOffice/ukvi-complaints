@@ -162,28 +162,32 @@
 		"label": "Enter GWF number",
 		"hint": "For example, GWF012345678.",
 		"validation": {
-			"required": "Enter the GWF number"
+			"required": "Enter the GWF number",
+			"notUrl": "Enter the GWF number"
 		}
 	},
 	"ho-reference": {
 		"label": "Enter Home Office reference number",
 		"hint": "For example, 012345678",
 		"validation": {
-			"required": "Enter the Home Office reference number"
+			"required": "Enter the Home Office reference number",
+			"notUrl": "Enter the Home Office reference number"
 		}
 	},
 	"ihs-reference": {
 		"label": "Enter IHS number",
 		"hint": "For example, IHS123456789",
 		"validation": {
-			"required": "Enter the IHS number"
+			"required": "Enter the IHS number",
+			"notUrl": "Enter the IHS number"
 		}
 	},
 	"uan-reference": {
 		"label": "Enter Unique Application Number",
 		"hint": "For example, 1234-5678-9123-4567",
 		"validation": {
-			"required": "Enter the Unique Application Number"
+			"required": "Enter the Unique Application Number",
+			"notUrl": "Enter the Unique Application Number"
 		}
 	},
 	"agent-representative-dob": {
@@ -426,42 +430,53 @@
   "vac-city": {
     "label": "City",
     "validation": {
-      "required": "Enter the city the visa application centre is in"
+      "required": "Enter the city the visa application centre is in",
+			"notUrl": "Enter the city the visa application centre is in"
     }
   },
   "ssc-city": {
     "label": "City",
     "validation": {
-      "required": "Enter the city the service support centre is in"
+      "required": "Enter the city the service support centre is in",
+			"notUrl": "Enter the city the service support centre is in"
     }
   },
   "ukvcas-city": {
     "label": "City",
     "validation": {
-      "required": "Enter the city the service point is in"
+      "required": "Enter the city the service point is in",
+			"notUrl": "Enter the city the service point is in"
     }
   },
 	"called-number": {
 		"label": "Telephone number",
-		"hint": "For international numbers include the country code"
+		"hint": "For international numbers include the country code",
+		"validation": {
+      "internationalPhoneNumber": "Enter a valid telephone number"
+    }
 	},
 	"called-date": {
 		"label": "Date of the call",
 		"hint": "For example, 30 April or early June",
 		"validation": {
-			"required": "Enter the date of the call"
+			"required": "Enter the date of the call",
+			"notUrl": "Enter the date of the call"
 		}
 	},
 	"called-time": {
 		"label": "Time of the call",
 		"hint": "For example, 10:30am or morning",
 		"validation": {
-			"required": "Enter the time of the call"
+			"required": "Enter the time of the call",
+			"notUrl": "Enter the time of the call"
 		}
 	},
 	"called-from": {
 		"label": "Telephone number",
-		"hint": "For international numbers include the country code"
+		"hint": "For international numbers include the country code",
+		"validation": {
+      "internationalPhoneNumber": "Enter a valid telephone number"
+    }
 	},
 	"existing-complaint": {
 		"options": {
@@ -512,11 +527,17 @@
 		}
 	},
 	"complaint-reference-number": {
-		"label": " "
+		"label": " ",
+		"validation": {
+			"notUrl": "Enter the reference number for your complaint "
+		}
 	},
 	"when-applied": {
 		"label": " ",
-		"hint": "If you can't remember the exact date, just provide the month."
+		"hint": "If you can't remember the exact date, just provide the month.",
+		"validation": {
+			"notUrl": "Enter when you submitted you application "
+		}
 	},
 	"complaint-details": {
 		"label": "Complaint details",
@@ -589,7 +610,10 @@
 	"agent-phone": {
 		"legend": "",
 		"label": "Phone number (optional)",
-		"hint": "We may call if we need more information "
+		"hint": "We may call if we need more information ",
+		"validation": {
+			"internationalPhoneNumber": "Enter a valid phone number"
+		}
 	},
 	"agent-representative-name": {
 		"legend": "",
@@ -644,6 +668,9 @@
 	},
 	"applicant-phone": {
 		"legend": "",
-		"label": "Phone number (optional)"
+		"label": "Phone number (optional)",
+		"validation": {
+			"internationalPhoneNumber": "Enter a valid phone number"
+		}
 	}
 }

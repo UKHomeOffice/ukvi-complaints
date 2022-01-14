@@ -8,5 +8,6 @@
   "session": {
     "name": "ukvi-complaints.hof.sid",
     "ttl": 3600
-  }
+  },
+  "getAccessibility": true
 }

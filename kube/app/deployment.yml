@@ -116,17 +116,17 @@ spec:
             - name: SQS_URL
               valueFrom:
                 secretKeyRef:
-                  name: hocs-epsilon-ukvi-complaint-queue
+                  name: cs-prod-case-creator-sqs
                   key: sqs_url
             - name: ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:
-                  name: hocs-epsilon-ukvi-complaint-queue
+                  name: cs-prod-case-creator-sqs
                   key: access_key_id
             - name: SECRET_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
-                  name: hocs-epsilon-ukvi-complaint-queue
+                  name: cs-prod-case-creator-sqs
                   key: secret_access_key
             {{ end }}
           {{ if not (eq .KUBE_NAMESPACE .BRANCH_ENV) }}

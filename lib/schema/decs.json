@@ -870,6 +870,41 @@
         }
       }
     },
+    "ComplaintReview": {
+      "type": "object",
+      "required": [
+        "complaintType",
+        "complaintDetails"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "complaintType": {
+          "type": "string",
+          "enum": [
+            "EXISTING"
+          ]
+        },
+        "reporterDetails": {
+          "$ref": "#/definitions/ReporterDetails"
+        },
+        "complaintDetails": {
+          "type": "object",
+          "required": [
+            "previousComplaint",
+            "complaintText"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "previousComplaint": {
+              "$ref": "#/definitions/PreviousComplaintType"
+            },
+            "complaintText": {
+              "$ref": "#/definitions/ComplaintDetailsText"
+            }
+          }
+        }
+      }
+    },
     "SomethingElseComplaint": {
       "type": "object",
       "required": [

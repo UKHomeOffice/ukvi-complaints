@@ -119,6 +119,18 @@ describe('formatComplaintData', () => {
       });
     });
 
+    describe('complaint-review', () => {
+      it('returns complaint data with type "REVIEW"', () => {
+        const values = Object.assign({
+          reason: 'complaint-review',
+          'complaint-review': 'yes',
+          'complaint-reference-number': 'ghjkld'
+        }, complaintDetailsBase);
+        const complaintData = formatComplaintData(values);
+        expect(complaintData.complaint.complaintType).to.eql('EXISTING');
+      });
+    });
+
     describe('other-complaint', () => {
       it('returns complaint data with type "SOMETHING_ELSE"', () => {
         const values = Object.assign({

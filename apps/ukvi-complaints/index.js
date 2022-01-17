@@ -66,6 +66,12 @@ module.exports = {
           value: 'existing-complaint'
         }
       }, {
+        target: '/complaint-review',
+        condition: {
+          field: 'reason',
+          value: 'complaint-review'
+        }
+      }, {
         target: '/application-ref-numbers',
         condition: {
           field: 'reason',
@@ -784,6 +790,22 @@ module.exports = {
         }
       }]
     },
+    '/complaint-review': {
+      fields: ['complaint-review'],
+      forks: [{
+        target: '/complaint-reference-number',
+        condition: {
+          field: 'complaint-review',
+          value: 'yes'
+        }
+      }, {
+        target: '/complaint-reason-previous',
+        condition: {
+          field: 'complaint-review',
+          value: 'no'
+        }
+      }]
+    },
     '/complaint-reference-number': {
       fields: ['complaint-reference-number'],
       next: '/complaint-details'
@@ -911,6 +933,9 @@ module.exports = {
           },
           {
             field: ['existing-complaint']
+          },
+          {
+            field: ['complaint-review']
           },
           {
             field: ['complaint-reason-previous']

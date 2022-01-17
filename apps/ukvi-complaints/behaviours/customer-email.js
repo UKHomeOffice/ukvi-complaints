@@ -70,6 +70,10 @@ const getDataRows = (model, translate) => {
           label: translate('pages.confirm.fields.existing-complaint.label'),
           value: translate(`fields.existing-complaint.options[${model['existing-complaint']}].label`)
         },
+        model['complaint-review'] && {
+          label: translate('pages.confirm.fields.complaint-review.label'),
+          value: translate(`fields.complaint-review.options[${model['complaint-review']}].label`)
+        },
         model['complaint-reason-previous'] && {
           label: translate('pages.confirm.fields.complaint-reason-previous.label'),
           value: translate(`fields.complaint-reason-previous.options[${model['complaint-reason-previous']}].label`)

@@ -101,7 +101,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: cs-prod-case-creator-sqs
-                  key: sqs_url
+                  key: sqs_queue_url
             - name: ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:
@@ -117,7 +117,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: cs-prod-case-creator-sqs
-                  key: sqs_url
+                  key: sqs_queue_url
             - name: ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:

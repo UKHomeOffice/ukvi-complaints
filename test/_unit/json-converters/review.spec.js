@@ -1,148 +1,148 @@
 'use strict';
 const complaintDetailsBase = require('../test-data/complaint-base');
-const getExistingComplaint = require('../../../lib/json-converters/existing');
+const getComplaintReview = require('../../../lib/json-converters/review');
 
-describe('getExistingComplaint', () => {
+describe('getComplaintReview', () => {
   describe('previousComplaint', () => {
-    it('returns existing complaint reference number if "yes" existing-complaint value passed in', () => {
+    it('returns existing complaint reference number if "yes" complaint-review value passed in', () => {
       const refNumber = '23456789o0p9';
       const values = {
-        'existing-complaint': 'yes',
+        'complaint-review': 'yes',
         'complaint-reference-number': refNumber,
         'complaint-details': 'test'
       };
 
-      const existingComplaint = getExistingComplaint(values);
+      const complaintReview = getComplaintReview(values);
       expect(
-        existingComplaint.complaint.complaintDetails.previousComplaint.complaintReferenceNumber
+        complaintReview.complaint.complaintDetails.previousComplaint.complaintReferenceNumber
       ).to.eql(refNumber);
     });
 
     describe('previousComplaintType', () => {
       it('returns "SUBMITTING_APPLICATION" if "immigration-application" value passed in', () => {
         const values = Object.assign({
-          'existing-complaint': 'no',
+          'complaint-review': 'no',
           'complaint-reason-previous': 'immigration-application'
         }, complaintDetailsBase);
 
-        const existingComplaint = getExistingComplaint(values);
+        const complaintReview = getComplaintReview(values);
         expect(
-          existingComplaint.complaint.complaintDetails.previousComplaint.previousComplaintType
+          complaintReview.complaint.complaintDetails.previousComplaint.previousComplaintType
         ).to.eql('SUBMITTING_APPLICATION');
       });
 
       it('returns "MAKING_APPOINTMENT" if "immigration-appointment" complaint-reason-previous value passed in', () => {
         const values = Object.assign({
-          'existing-complaint': 'no',
+          'complaint-review': 'no',
           'complaint-reason-previous': 'immigration-appointment'
         }, complaintDetailsBase);
 
-        const existingComplaint = getExistingComplaint(values);
+        const complaintReview = getComplaintReview(values);
         expect(
-          existingComplaint.complaint.complaintDetails.previousComplaint.previousComplaintType
+          complaintReview.complaint.complaintDetails.previousComplaint.previousComplaintType
         ).to.eql('MAKING_APPOINTMENT');
       });
 
       it('returns "DELAYS" if "delays" complaint-reason-previous value passed in', () => {
         const values = Object.assign({
-          'existing-complaint': 'no',
+          'complaint-review': 'no',
           'complaint-reason-previous': 'delays'
         }, complaintDetailsBase);
 
-        const existingComplaint = getExistingComplaint(values);
+        const complaintReview = getComplaintReview(values);
         expect(
-          existingComplaint.complaint.complaintDetails.previousComplaint.previousComplaintType
+          complaintReview.complaint.complaintDetails.previousComplaint.previousComplaintType
         ).to.eql('DELAYS');
       });
 
       it('returns "BIOMETRIC_RESIDENCE_PERMIT" if "biometric-residence-permit" value passed in', () => {
         const values = Object.assign({
-          'existing-complaint': 'no',
+          'complaint-review': 'no',
           'complaint-reason-previous': 'biometric-residence-permit'
         }, complaintDetailsBase);
 
-        const existingComplaint = getExistingComplaint(values);
+        const complaintReview = getComplaintReview(values);
         expect(
-          existingComplaint.complaint.complaintDetails.previousComplaint.previousComplaintType
+          complaintReview.complaint.complaintDetails.previousComplaint.previousComplaintType
         ).to.eql('BIOMETRIC_RESIDENCE_PERMIT');
       });
 
       it('returns "IMMIGRATION_DECISION" if "immigration-decision" complaint-reason-previous value passed in', () => {
         const values = Object.assign({
-          'existing-complaint': 'no',
+          'complaint-review': 'no',
           'complaint-reason-previous': 'immigration-decision'
         }, complaintDetailsBase);
 
-        const existingComplaint = getExistingComplaint(values);
+        const complaintReview = getComplaintReview(values);
         expect(
-          existingComplaint.complaint.complaintDetails.previousComplaint.previousComplaintType
+          complaintReview.complaint.complaintDetails.previousComplaint.previousComplaintType
         ).to.eql('IMMIGRATION_DECISION');
       });
 
       it('returns "IMMIGRATION_STATUS_CHANGE" if "immigration-status-change" value passed in', () => {
         const values = Object.assign({
-          'existing-complaint': 'no',
+          'complaint-review': 'no',
           'complaint-reason-previous': 'immigration-status-change'
         }, complaintDetailsBase);
 
-        const existingComplaint = getExistingComplaint(values);
+        const complaintReview = getComplaintReview(values);
         expect(
-          existingComplaint.complaint.complaintDetails.previousComplaint.previousComplaintType
+          complaintReview.complaint.complaintDetails.previousComplaint.previousComplaintType
         ).to.eql('IMMIGRATION_STATUS_CHANGE');
       });
 
       it('returns "REFUND" if "refund" complaint-reason-previous value passed in', () => {
         const values = Object.assign({
-          'existing-complaint': 'no',
+          'complaint-review': 'no',
           'complaint-reason-previous': 'refund'
         }, complaintDetailsBase);
 
-        const existingComplaint = getExistingComplaint(values);
+        const complaintReview = getComplaintReview(values);
         expect(
-          existingComplaint.complaint.complaintDetails.previousComplaint.previousComplaintType
+          complaintReview.complaint.complaintDetails.previousComplaint.previousComplaintType
         ).to.eql('REFUND');
       });
 
       it('returns "POOR_INFORMATION_OR_STAFF_BEHAVIOUR" if "staff-behaviour" value passed in', () => {
         const values = Object.assign({
-          'existing-complaint': 'no',
+          'complaint-review': 'no',
           'complaint-reason-previous': 'staff-behaviour'
         }, complaintDetailsBase);
 
-        const existingComplaint = getExistingComplaint(values);
+        const complaintReview = getComplaintReview(values);
         expect(
-          existingComplaint.complaint.complaintDetails.previousComplaint.previousComplaintType
+          complaintReview.complaint.complaintDetails.previousComplaint.previousComplaintType
         ).to.eql('POOR_INFORMATION_OR_STAFF_BEHAVIOUR');
       });
 
       it('returns "SOMETHING_ELSE" if "other-complaint" complaint-reason-previous value passed in', () => {
         const values = Object.assign({
-          'existing-complaint': 'no',
+          'complaint-review': 'no',
           'complaint-reason-previous': 'other-complaint'
         }, complaintDetailsBase);
 
-        const existingComplaint = getExistingComplaint(values);
+        const complaintReview = getComplaintReview(values);
         expect(
-          existingComplaint.complaint.complaintDetails.previousComplaint.previousComplaintType
+          complaintReview.complaint.complaintDetails.previousComplaint.previousComplaintType
         ).to.eql('SOMETHING_ELSE');
       });
 
       it('throws an error if invalid complaint-reason-previous value is passed', () => {
         const values = Object.assign({
-          'existing-complaint': 'no',
+          'complaint-review': 'no',
           'complaint-reason-previous': 'invalid'
         }, complaintDetailsBase);
 
-        expect(() => getExistingComplaint(values)).to.throw('invalid "complaint-reason-previous" value');
+        expect(() => getComplaintReview(values)).to.throw('invalid "complaint-reason-previous" value');
       });
     });
 
     it('throws an error if invalid existing-complaint value is passed', () => {
       const values = Object.assign({
-        'existing-complaint': 'invalid'
+        'complaint-review': 'invalid'
       }, complaintDetailsBase);
 
-      expect(() => getExistingComplaint(values)).to.throw('invalid "existing-complaint" value');
+      expect(() => getComplaintReview(values)).to.throw('invalid "complaint-review" value');
     });
   });
 });

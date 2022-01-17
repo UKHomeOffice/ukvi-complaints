@@ -28,8 +28,11 @@
 				"label": "Poor information or staff behaviour"
 			},
 			"existing-complaint": {
-				"label": "An existing complaint"
+        "label": "An existing complaint (Complaint not responded to)"
 			},
+      "complaint-review": {
+        "label": "A complaint review (Initial response received, customer request review)"
+      },
 			"other-complaint": {
 				"label": "Something else"
 			}
@@ -476,6 +479,19 @@
 			"required": "Select if you have a reference number for the existing complaint"
 		}
 	},
+  "complaint-review": {
+    "options": {
+      "yes": {
+        "label": "Yes"
+      },
+      "no": {
+        "label": "No"
+      }
+    },
+    "validation": {
+      "required": "Select if you have a reference number for the existing complaint"
+    }
+  },
 	"complaint-reason-previous": {
 		"legend": " ",
 		"options": {
@@ -504,8 +520,11 @@
 				"label": "Poor information or staff behaviour"
 			},
 			"existing-complaint": {
-				"label": "An existing complaint"
+        "label": "An existing complaint (Complaint not responded to)"
 			},
+      "complaint-review": {
+        "label": "A complaint review (Initial response received, customer request review)"
+      },
 			"other-complaint": {
 				"label": "Something else"
 			}

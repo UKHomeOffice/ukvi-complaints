@@ -15,6 +15,7 @@ module.exports = {
       'refund',
       'staff-behaviour',
       'existing-complaint',
+      'complaint-review',
       'other-complaint'
     ],
     validate: 'required'
@@ -381,7 +382,6 @@ module.exports = {
     },
     className: ['form-group']
   },
-
   'existing-complaint': {
     mixin: 'radio-group',
     validate: 'required',
@@ -394,7 +394,18 @@ module.exports = {
       'no'
     ]
   },
-
+  'complaint-review': {
+    mixin: 'radio-group',
+    validate: 'required',
+    legend: {
+      className: 'visuallyhidden'
+    },
+    className: ['form-group'],
+    options: [
+      'yes',
+      'no'
+    ]
+  },
   'complaint-reason-previous': {
     mixin: 'radio-group',
     options: [
@@ -410,8 +421,6 @@ module.exports = {
     ],
     validate: 'required'
   },
-
-
   'other-complaint': {
     mixin: 'radio-group',
     validate: 'required',

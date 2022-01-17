@@ -235,6 +235,9 @@
   "existing-complaint": {
     "header": "Do you have a reference number for the complaint?"
   },
+  "complaint-review": {
+    "header": "Do you have a reference number for the complaint?"
+  },
   "other-complaint": {
     "header": "What is the issue with your immigration application?"
   },
@@ -394,6 +397,9 @@
         "label": "Reference number for your complaint"
       },
       "existing-complaint": {
+        "label": "Do you have a reference number for the complaint"
+      },
+      "complaint-review": {
         "label": "Do you have a reference number for the complaint"
       },
       "complaint-reason-previous": {

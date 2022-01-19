@@ -12,7 +12,7 @@ $ git clone git@github.com:UKHomeOffice/UKVI-Complaints.git && cd UKVI-Complaint
 
 Install the dependencies and build the project resources
 ```bash
-$ npm install
+$ yarn install
 ```
 
 [Install Docker Compose](https://docs.docker.com/compose/install/)

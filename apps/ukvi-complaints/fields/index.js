@@ -411,7 +411,6 @@ module.exports = {
     validate: 'required'
   },
 
-
   'other-complaint': {
     mixin: 'radio-group',
     validate: 'required',

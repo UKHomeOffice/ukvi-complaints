@@ -452,6 +452,7 @@
 		"label": "Telephone number",
 		"hint": "For international numbers include the country code",
 		"validation": {
+			"required": "Enter a valid telephone number",
       "internationalPhoneNumber": "Enter a valid telephone number"
     }
 	},
@@ -475,6 +476,7 @@
 		"label": "Telephone number",
 		"hint": "For international numbers include the country code",
 		"validation": {
+			"required": "Enter a valid telephone number",
       "internationalPhoneNumber": "Enter a valid telephone number"
     }
 	},

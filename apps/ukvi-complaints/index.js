@@ -887,16 +887,12 @@ module.exports = {
         ],
         'agent-details': [
           'agent-name',
-          {
-            field: ['who-representing']
-          }
+          'who-representing'
         ],
         'applicant-details': [
           'agent-representative-name',
           'agent-representative-nationality',
-          {
-            field: ['agent-representative-dob']
-          }
+            'agent-representative-dob'
         ],
         'your-details': [
           'applicant-name',

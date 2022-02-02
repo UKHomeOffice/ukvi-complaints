@@ -12,5 +12,9 @@ if (process.env.REDIS_URL) {
 }
 
 const app = hof(settings);
+app.use((req, res, next) => {
+  res.locals.htmlLang = 'en';
+  next();
+});
 
 module.exports = app;

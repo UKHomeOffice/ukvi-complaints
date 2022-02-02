@@ -892,7 +892,7 @@ module.exports = {
         'applicant-details': [
           'agent-representative-name',
           'agent-representative-nationality',
-            'agent-representative-dob'
+          'agent-representative-dob'
         ],
         'your-details': [
           'applicant-name',

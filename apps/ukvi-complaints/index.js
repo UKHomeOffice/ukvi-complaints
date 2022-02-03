@@ -867,54 +867,8 @@ module.exports = {
       next: '/complete',
       sections: {
         'complaint-details': [
-          {
-            field: ['reason']
-          },
-          {
-            field: ['immigration-application']
-          },
-          {
-            field: ['immigration-appointment']
-          },
-          {
-            field: ['delay-type']
-          },
-          {
-            field: ['return-of-documents']
-          },
-          {
-            field: ['decision-outcome']
-          },
-          {
-            field: ['biometric-residence-permit']
-          },
-          {
-            field: ['poor-info-or-behaviour']
-          },
-          {
-            field: ['staff-behaviour']
-          },
-          {
-            field: ['which-centre']
-          },
-          {
-            field: ['refund']
-          },
-          {
-            field: ['refund-when']
-          },
-          {
-            field: ['refund-type']
-          },
-          {
-            field: ['where-applied-from']
-          },
-          {
-            field: ['existing-complaint']
-          },
-          {
-            field: ['complaint-reason-previous']
-          },
+          'reason',
+          'immigration-application',
           'called-number',
           'called-date',
           'called-time',
@@ -933,23 +887,17 @@ module.exports = {
         ],
         'agent-details': [
           'agent-name',
-          {
-            field: ['who-representing']
-          }
+          'who-representing'
         ],
         'applicant-details': [
           'agent-representative-name',
           'agent-representative-nationality',
-          {
-            field: ['agent-representative-dob']
-          }
+          'agent-representative-dob'
         ],
         'your-details': [
           'applicant-name',
           'applicant-nationality',
-          {
-            field: ['applicant-dob']
-          }
+          'applicant-dob'
         ],
         'contact-details': [
           'applicant-email',

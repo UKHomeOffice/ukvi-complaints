@@ -453,7 +453,7 @@
 		"hint": "For international numbers include the country code",
 		"validation": {
 			"required": "Enter a valid telephone number",
-      "internationalPhoneNumber": "Enter a valid telephone number"
+      "notUrl": "Enter a valid telephone number"
     }
 	},
 	"called-date": {
@@ -477,7 +477,7 @@
 		"hint": "For international numbers include the country code",
 		"validation": {
 			"required": "Enter a valid telephone number",
-      "internationalPhoneNumber": "Enter a valid telephone number"
+      "notUrl": "Enter a valid telephone number"
     }
 	},
 	"existing-complaint": {
@@ -614,7 +614,7 @@
 		"label": "Phone number (optional)",
 		"hint": "We may call if we need more information ",
 		"validation": {
-			"internationalPhoneNumber": "Enter a valid phone number"
+			"notUrl": "Enter a valid phone number"
 		}
 	},
 	"agent-representative-name": {
@@ -672,7 +672,7 @@
 		"legend": "",
 		"label": "Phone number (optional)",
 		"validation": {
-			"internationalPhoneNumber": "Enter a valid phone number"
+			"notUrl": "Enter a valid phone number"
 		}
 	}
 }

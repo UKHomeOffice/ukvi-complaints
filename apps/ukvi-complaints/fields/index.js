@@ -351,7 +351,7 @@ module.exports = {
   },
   'called-number': {
     mixin: 'input-text',
-    validate: ['required', 'internationalPhoneNumber', { type: 'maxlength', arguments: 50 }],
+    validate: ['required', 'notUrl', { type: 'maxlength', arguments: 50 }],
     legend: {
       className: 'visuallyhidden'
     },
@@ -375,7 +375,7 @@ module.exports = {
   },
   'called-from': {
     mixin: 'input-text',
-    validate: ['required', 'internationalPhoneNumber', { type: 'maxlength', arguments: 50 }],
+    validate: ['required', 'notUrl', { type: 'maxlength', arguments: 50 }],
     legend: {
       className: 'visuallyhidden'
     },
@@ -547,7 +547,7 @@ module.exports = {
 
   'agent-phone': {
     mixin: 'input-text',
-    validate: ['internationalPhoneNumber', { type: 'maxlength', arguments: 50 }],
+    validate: ['notUrl', { type: 'maxlength', arguments: 50 }],
     legend: {
       className: 'visuallyhidden'
     },
@@ -613,7 +613,7 @@ module.exports = {
 
   'applicant-phone': {
     mixin: 'input-text',
-    validate: ['internationalPhoneNumber', { type: 'maxlength', arguments: 50 }],
+    validate: ['notUrl', { type: 'maxlength', arguments: 50 }],
     legend: {
       className: 'visuallyhidden'
     },

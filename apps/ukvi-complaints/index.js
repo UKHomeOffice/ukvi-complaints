@@ -5,6 +5,7 @@ const conditionalContent = require('./behaviours/conditional-content');
 const customerEmailer = require('./behaviours/customer-email')(config.email);
 const caseworkerEmailer = require('./behaviours/caseworker-email')(config.email);
 const sendToSQS = require('./behaviours/send-to-sqs');
+const ResetOnChange = require('./behaviours/reset-on-change');
 
 module.exports = {
   name: 'ukvi-complaints',
@@ -16,6 +17,9 @@ module.exports = {
   steps: {
     '/reason': {
       fields: ['reason'],
+      behaviours: ResetOnChange({
+        field: 'reason'
+      }),
       next: '/immigration-application',
       forks: [{
         target: '/immigration-application',

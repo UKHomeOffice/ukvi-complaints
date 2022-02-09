@@ -18,7 +18,7 @@ module.exports = {
     '/reason': {
       fields: ['reason'],
       behaviours: ResetOnChange({
-        field: 'what'
+        field: 'reason'
       }),
       next: '/immigration-application',
       forks: [{

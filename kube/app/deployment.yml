@@ -84,40 +84,40 @@ spec:
             - name: SQS_URL
               valueFrom:
                 secretKeyRef:
-                  name: hocs-delta-ukvi-complaint-queue
-                  key: sqs_url
+                  name: hocs-delta-case-creator-sqs
+                  key: sqs_queue_url
             - name: ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:
-                  name: hocs-delta-ukvi-complaint-queue
+                  name: hocs-delta-case-creator-sqs
                   key: access_key_id
             - name: SECRET_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
-                  name: hocs-delta-ukvi-complaint-queue
+                  name: hocs-delta-case-creator-sqs
                   key: secret_access_key
             {{ else if (eq .KUBE_NAMESPACE .STG_ENV) }}
             - name: SQS_URL
               valueFrom:
                 secretKeyRef:
-                  name: hocs-epsilon-ukvi-complaint-queue
-                  key: sqs_url
+                  name: hocs-epsilon-case-creator-sqs
+                  key: sqs_queue_url
             - name: ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:
-                  name: hocs-epsilon-ukvi-complaint-queue
+                  name: hocs-epsilon-case-creator-sqs
                   key: access_key_id
             - name: SECRET_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
-                  name: hocs-epsilon-ukvi-complaint-queue
+                  name: hocs-epsilon-case-creator-sqs
                   key: secret_access_key
             {{ else if (eq .KUBE_NAMESPACE .PROD_ENV) }}
             - name: SQS_URL
               valueFrom:
                 secretKeyRef:
                   name: cs-prod-case-creator-sqs
-                  key: sqs_url
+                  key: sqs_queue_url
             - name: ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:

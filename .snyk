@@ -22,4 +22,8 @@ ignore:
      - '*':
         reason: Not used by this service
         expires: '2022-11-01T17:02:21.865Z'
+  SNYK-JS-CACHEDPATHRELATIVE-2342653:
+     - '*':
+        reason: No direct upgrade or patch
+        expires: '2022-11-01T17:02:21.865Z'
 patch: {}

@@ -327,7 +327,7 @@ module.exports = {
 
   'vac-city': {
     mixin: 'input-text',
-    validate: ['required', { type: 'maxlength', arguments: 100 }],
+    validate: ['required', 'notUrl', { type: 'maxlength', arguments: 100 }],
     legend: {
       className: 'visuallyhidden'
     }
@@ -335,7 +335,7 @@ module.exports = {
 
   'ssc-city': {
     mixin: 'input-text',
-    validate: ['required', { type: 'maxlength', arguments: 100 }],
+    validate: ['required', 'notUrl', { type: 'maxlength', arguments: 100 }],
     legend: {
       className: 'visuallyhidden'
     },
@@ -344,7 +344,7 @@ module.exports = {
 
   'ukvcas-city': {
     mixin: 'input-text',
-    validate: ['required', { type: 'maxlength', arguments: 100 }],
+    validate: ['required', 'notUrl', { type: 'maxlength', arguments: 100 }],
     legend: {
       className: 'visuallyhidden'
     },
@@ -352,7 +352,7 @@ module.exports = {
   },
   'called-number': {
     mixin: 'input-text',
-    validate: ['required', { type: 'maxlength', arguments: 50 }],
+    validate: ['required', 'notUrl', { type: 'maxlength', arguments: 50 }],
     legend: {
       className: 'visuallyhidden'
     },
@@ -360,7 +360,7 @@ module.exports = {
   },
   'called-date': {
     mixin: 'input-text',
-    validate: ['required', { type: 'maxlength', arguments: 50 }],
+    validate: ['required', 'notUrl', { type: 'maxlength', arguments: 50 }],
     legend: {
       className: 'visuallyhidden'
     },
@@ -368,7 +368,7 @@ module.exports = {
   },
   'called-time': {
     mixin: 'input-text',
-    validate: ['required', { type: 'maxlength', arguments: 50 }],
+    validate: ['required', 'notUrl', { type: 'maxlength', arguments: 50 }],
     legend: {
       className: 'visuallyhidden'
     },
@@ -376,7 +376,7 @@ module.exports = {
   },
   'called-from': {
     mixin: 'input-text',
-    validate: ['required', { type: 'maxlength', arguments: 50 }],
+    validate: ['required', 'notUrl', { type: 'maxlength', arguments: 50 }],
     legend: {
       className: 'visuallyhidden'
     },
@@ -461,7 +461,7 @@ module.exports = {
     }]
   },
   'gwf-reference': {
-    validate: ['required', { type: 'maxlength', arguments: 100 }],
+    validate: ['required', 'notUrl', { type: 'maxlength', arguments: 100 }],
     dependent: {
       field: 'reference-numbers',
       value: 'gwf'
@@ -472,25 +472,25 @@ module.exports = {
       field: 'reference-numbers',
       value: 'ho'
     },
-    validate: ['required', { type: 'maxlength', arguments: 100 }]
+    validate: ['required', 'notUrl', { type: 'maxlength', arguments: 100 }]
   },
   'ihs-reference': {
     dependent: {
       field: 'reference-numbers',
       value: 'ihs'
     },
-    validate: ['required', { type: 'maxlength', arguments: 100 }]
+    validate: ['required', 'notUrl', { type: 'maxlength', arguments: 100 }]
   },
   'uan-reference': {
     dependent: {
       field: 'reference-numbers',
       value: 'uan'
     },
-    validate: ['required', { type: 'maxlength', arguments: 100 }]
+    validate: ['required', 'notUrl', { type: 'maxlength', arguments: 100 }]
   },
   'when-applied': {
     mixin: 'input-text',
-    validate: ['required', { type: 'maxlength', arguments: 50 }],
+    validate: ['required', 'notUrl', { type: 'maxlength', arguments: 50 }],
     legend: {
       className: 'visuallyhidden'
     },
@@ -499,7 +499,7 @@ module.exports = {
 
   'complaint-reference-number': {
     mixin: 'input-text',
-    validate: [{ type: 'maxlength', arguments: 100 }]
+    validate: ['notUrl', { type: 'maxlength', arguments: 100 }]
   },
   'complaint-details': {
     mixin: 'textarea',
@@ -539,7 +539,7 @@ module.exports = {
 
   'agent-name': {
     mixin: 'input-text',
-    validate: ['required', { type: 'maxlength', arguments: 150 }],
+    validate: ['required', 'notUrl', { type: 'maxlength', arguments: 150 }],
     legend: {
       className: 'visuallyhidden'
     },
@@ -557,7 +557,7 @@ module.exports = {
 
   'agent-phone': {
     mixin: 'input-text',
-    validate: [{ type: 'maxlength', arguments: 50 }],
+    validate: ['notUrl', { type: 'maxlength', arguments: 50 }],
     legend: {
       className: 'visuallyhidden'
     },
@@ -566,7 +566,7 @@ module.exports = {
 
   'applicant-name': {
     mixin: 'input-text',
-    validate: ['required', { type: 'maxlength', arguments: 100 }],
+    validate: ['required', 'notUrl', { type: 'maxlength', arguments: 100 }],
     legend: {
       className: 'visuallyhidden'
     },
@@ -607,7 +607,7 @@ module.exports = {
 
   'agent-representative-name': {
     mixin: 'input-text',
-    validate: ['required', { type: 'maxlength', arguments: 100 }],
+    validate: ['required', 'notUrl', { type: 'maxlength', arguments: 100 }],
     legend: {
       className: 'visuallyhidden'
     },
@@ -623,7 +623,7 @@ module.exports = {
 
   'applicant-phone': {
     mixin: 'input-text',
-    validate: [{ type: 'maxlength', arguments: 50 }],
+    validate: ['notUrl', { type: 'maxlength', arguments: 50 }],
     legend: {
       className: 'visuallyhidden'
     },

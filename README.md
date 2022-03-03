@@ -12,7 +12,7 @@ $ git clone git@github.com:UKHomeOffice/UKVI-Complaints.git && cd UKVI-Complaint
 
 Install the dependencies and build the project resources
 ```bash
-$ npm install
+$ yarn install
 ```
 
 [Install Docker Compose](https://docs.docker.com/compose/install/)
@@ -24,7 +24,7 @@ $ docker-compose up
 
 Getting your hands dirty (You'll need [Redis](http://redis.io/) for this)
 ```bash
-$ npm run dev
+$ npm start
 ```
 
 ### SQS Service

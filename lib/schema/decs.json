@@ -315,6 +315,7 @@
         "SUBMITTING_APPLICATION",
         "MAKING_APPOINTMENT",
         "EXISTING",
+        "REVIEW",
         "DELAYS",
         "IMMIGRATION_DECISION",
         "IMMIGRATION_STATUS_CHANGE",
@@ -881,7 +882,7 @@
         "complaintType": {
           "type": "string",
           "enum": [
-            "EXISTING"
+            "REVIEW"
           ]
         },
         "reporterDetails": {

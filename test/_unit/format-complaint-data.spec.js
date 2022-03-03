@@ -127,7 +127,7 @@ describe('formatComplaintData', () => {
           'complaint-reference-number': 'ghjkld'
         }, complaintDetailsBase);
         const complaintData = formatComplaintData(values);
-        expect(complaintData.complaint.complaintType).to.eql('EXISTING');
+        expect(complaintData.complaint.complaintType).to.eql('REVIEW');
       });
     });
 

@@ -974,6 +974,9 @@
           "$ref": "#/definitions/ExistingComplaint"
         },
         {
+          "$ref": "#/definitions/ComplaintReview"
+        },
+        {
           "$ref": "#/definitions/SomethingElseComplaint"
         },
         {

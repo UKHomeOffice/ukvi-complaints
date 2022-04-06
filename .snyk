@@ -26,4 +26,8 @@ ignore:
      - '*':
         reason: No direct upgrade or patch
         expires: '2022-11-01T17:02:21.865Z'
+  SNYK-JS-MINIMIST-2429795:
+   - '*':
+        reason: low severity
+        expires: '2022-11-01T17:02:21.865Z'
 patch: {}

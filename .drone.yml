@@ -6,7 +6,7 @@ type: kubernetes
 environment:
   APP_NAME: ukvi-complaints
   PROD_ENV: ukvi-complaints
-  STG_ENV: ukvi-complaints-preprod
+  STG_ENV: ukvi-complaints-stg
   UAT_ENV: ukvi-complaints-uat
   BRANCH_ENV: ukvi-complaints-branch
   PRODUCTION_URL: www.ukvi-complaints.homeoffice.gov.uk
@@ -240,20 +240,20 @@ steps:
       branch: main
       event: pull_request
 
-  # # TEST Deploy to Master STG environment
-  # - name: TEST_deploy_to_stg
-  #   pull: if-not-exists
-  #   image: quay.io/ukhomeofficedigital/kd:v1.14.0
-  #   environment:
-  #     KUBE_SERVER:
-  #       from_secret: kube_server_stg
-  #     KUBE_TOKEN:
-  #       from_secret: kube_token_stg
-  #   commands:
-  #     - bin/deploy.sh $${STG_ENV}
-  #   when:
-  #     branch: main
-  #     event: pull_request
+  # TEST Deploy to Master STG environment
+  - name: TEST_deploy_to_stg
+    pull: if-not-exists
+    image: quay.io/ukhomeofficedigital/kd:v1.14.0
+    environment:
+      KUBE_SERVER:
+        from_secret: kube_server_stg
+      KUBE_TOKEN:
+        from_secret: kube_token_stg
+    commands:
+      - bin/deploy.sh $${STG_ENV}
+    when:
+      branch: main
+      event: pull_request
 
   # Deploy to Main UAT environment
   - name: deploy_to_uat
@@ -321,9 +321,9 @@ steps:
     image: quay.io/ukhomeofficedigital/kd:v1.14.0
     environment:
       KUBE_SERVER:
-        from_secret: kube_server_dev
+        from_secret: kube_server_stg
       KUBE_TOKEN:
-        from_secret: kube_token_dev
+        from_secret: kube_token_stg
     commands:
       - bin/deploy.sh $${STG_ENV}
     when:

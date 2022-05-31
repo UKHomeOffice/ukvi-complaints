@@ -11,12 +11,11 @@
   },
   "rateLimits": {
     "requests": {
-      "active": false,
-      "maxWindowRequestCount": 100
+      "active": true,
+      "maxWindowRequestCount": 25
     },
     "submissions": {
-      "active": true,
-      "maxWindowRequestCount": 2
+      "active": true
     }
   },
   "getAccessibility": true

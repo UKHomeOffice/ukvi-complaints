@@ -9,5 +9,14 @@
     "name": "ukvi-complaints.hof.sid",
     "ttl": 3600
   },
+  "rateLimits": {
+    "requests": {
+      "active": true,
+      "maxWindowRequestCount": 26
+    },
+    "submissions": {
+      "active": false
+    }
+  },
   "getAccessibility": true
 }

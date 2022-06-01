@@ -15,7 +15,7 @@
       "maxWindowRequestCount": 26
     },
     "submissions": {
-      "active": true
+      "active": false
     }
   },
   "getAccessibility": true

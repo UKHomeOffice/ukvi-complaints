@@ -78,6 +78,7 @@ module.exports = {
       }]
     },
     '/immigration-application': {
+      next: '/application-technical',
       fields: ['immigration-application'],
       forks: [{
         target: '/application-technical',
@@ -100,6 +101,7 @@ module.exports = {
       }]
     },
     '/application-technical': {
+      next: '/application-technical-inside-uk',
       fields: ['where-applied-from'],
       forks: [{
         target: '/application-technical-inside-uk',
@@ -115,16 +117,15 @@ module.exports = {
         }
       }]
     },
-
     '/application-technical-inside-uk': {
-
+      next: '/application-ref-numbers'
     },
 
     '/application-technical-outside-uk': {
-
+      next: '/application-ref-numbers'
     },
-
     '/application-guidance-where': {
+      next: '/application-guidance-inside-uk',
       fields: ['where-applied-from'],
       forks: [{
         target: '/application-guidance-inside-uk',
@@ -142,12 +143,15 @@ module.exports = {
     },
 
     '/application-guidance-inside-uk': {
+      next: '/application-ref-numbers'
     },
 
     '/application-guidance-outside-uk': {
+      next: '/application-ref-numbers'
     },
 
     '/immigration-appointment': {
+      next: '/lack-availability',
       fields: ['immigration-appointment'],
       forks: [{
         target: '/lack-availability',
@@ -182,6 +186,7 @@ module.exports = {
       }]
     },
     '/lack-availability': {
+      next: 'lack-availability-inside',
       fields: ['where-applied-from'],
       forks: [{
         target: '/lack-availability-inside',
@@ -198,12 +203,13 @@ module.exports = {
       }]
     },
     '/lack-availability-inside': {
-
+      next: '/application-ref-numbers'
     },
     '/lack-availability-outside': {
-
+      next: '/application-ref-numbers'
     },
     '/change-appointment': {
+      next: '/change-appointment-inside',
       fields: ['where-applied-from'],
       forks: [{
         target: '/change-appointment-inside',
@@ -221,12 +227,13 @@ module.exports = {
     },
 
     '/change-appointment-inside': {
-
+      next: '/application-ref-numbers'
     },
     '/change-appointment-outside': {
-
+      next: '/application-ref-numbers'
     },
     '/appointment-technical': {
+      next: '/appointment-technical-inside',
       fields: ['where-applied-from'],
       forks: [{
         target: '/appointment-technical-inside',
@@ -243,12 +250,13 @@ module.exports = {
       }]
     },
     '/appointment-technical-inside': {
-
+      next: '/application-ref-numbers'
     },
     '/appointment-technical-outside': {
-
+      next: '/application-ref-numbers'
     },
     '/questions-appointments': {
+      next: '/questions-appointments-inside',
       fields: ['where-applied-from'],
       forks: [{
         target: '/questions-appointments-inside',
@@ -265,12 +273,13 @@ module.exports = {
       }]
     },
     '/questions-appointments-outside': {
-
+      next: '/application-ref-numbers'
     },
     '/questions-appointments-inside': {
-
+      next: '/application-ref-numbers'
     },
     '/delays': {
+      next: '/request-upgrade',
       fields: ['delay-type'],
       forks: [{
         target: '/request-upgrade',
@@ -287,6 +296,7 @@ module.exports = {
       }]
     },
     '/application-delay': {
+      next: '/request-upgrade',
       fields: ['application-delay'],
       forks: [{
         target: '/request-upgrade',
@@ -304,6 +314,7 @@ module.exports = {
     },
 
     '/request-upgrade': {
+      next: '/upgrade-inside-uk',
       fields: ['where-applied-from'],
       forks: [{
         target: '/upgrade-inside-uk',
@@ -321,10 +332,10 @@ module.exports = {
     },
 
     '/upgrade-inside-uk': {
-
+      next: '/when-applied'
     },
     '/upgrade-outside-uk': {
-
+      next: '/when-applied'
     },
     '/application-ref-numbers': {
       fields: [
@@ -337,6 +348,7 @@ module.exports = {
       next: '/acting-as-agent'
     },
     '/return-of-documents': {
+      next: '/report-lost-docs-service',
       fields: ['return-of-documents'],
       forks: [{
         target: '/report-lost-docs-service',
@@ -359,6 +371,7 @@ module.exports = {
       }]
     },
     '/requested-documents': {
+      next: '/have-requested',
       fields: ['requested-documents'],
       forks: [{
         target: '/have-requested',
@@ -375,6 +388,7 @@ module.exports = {
       }]
     },
     '/have-requested': {
+      next: '/report-lost-docs-service',
       fields: ['have-requested'],
       forks: [{
         target: '/report-lost-docs-service',
@@ -397,6 +411,7 @@ module.exports = {
       next: '/complaint-details'
     },
     '/immigration-decision': {
+      next: '/decision-outcome',
       fields: ['immigration-decision'],
       forks: [{
         target: '/decision-outcome',
@@ -413,6 +428,7 @@ module.exports = {
       }]
     },
     '/decision-outcome': {
+      next: '/positive-outcome-where',
       fields: ['decision-outcome'],
       forks: [{
         target: '/positive-outcome-where',
@@ -430,6 +446,7 @@ module.exports = {
     },
 
     '/positive-outcome-where': {
+      next: '/positive-outcome-inside',
       fields: ['where-applied-from'],
       forks: [{
         target: '/positive-outcome-inside',
@@ -445,18 +462,17 @@ module.exports = {
         }
       }]
     },
-
     '/positive-outcome-inside': {
       next: '/complaint-details'
     },
     '/positive-outcome-outside': {
       next: '/complaint-details'
     },
-
     '/negative-outcome': {
       next: '/complaint-details'
     },
     '/immigration-status-change': {
+      next: '/questions-status-change',
       fields: ['immigration-status-change'],
       forks: [{
         target: '/questions-status-change',
@@ -472,11 +488,11 @@ module.exports = {
         }
       }]
     },
-
     '/questions-status-change': {
       next: '/complaint-details'
     },
     '/biometric-residence-permit': {
+      next: '/card-not-arrived',
       fields: ['biometric-residence-permit'],
       forks: [{
         target: '/card-not-arrived',
@@ -505,18 +521,19 @@ module.exports = {
       }]
     },
     '/card-not-arrived': {
-      next: 'complaint-detials'
+      next: '/complaint-details'
     },
     '/letter-not-arrived': {
-      next: 'complaint-detials'
+      next: '/complaint-details'
     },
     '/card-incorrect': {
-      next: 'complaint-detials'
+      next: '/complaint-details'
     },
     '/complain-brp': {
-      next: 'complaint-detials'
+      next: '/complaint-details'
     },
     '/refund-type': {
+      next: '/refund-ihs-where-from',
       fields: ['refund-type'],
       forks: [{
         target: '/refund-ihs-where-from',
@@ -557,6 +574,7 @@ module.exports = {
       }]
     },
     '/refund-ihs-where-from': {
+      next: '/refund-ihs',
       fields: ['where-applied-from'],
       forks: [{
         target: '/refund-ihs',
@@ -573,15 +591,16 @@ module.exports = {
       }]
     },
     '/refund-ihs': {
-
+      next: '/application-ref-numbers'
     },
     '/refund-ihs-outside': {
-
+      next: '/application-ref-numbers'
     },
     '/refund-standard': {
-
+      next: '/application-ref-numbers'
     },
     '/refund-priority-where-from': {
+      next: '/refund-priority',
       fields: ['where-applied-from'],
       forks: [{
         target: '/refund-priority',
@@ -598,12 +617,13 @@ module.exports = {
       }]
     },
     '/refund-priority': {
-
+      next: '/application-ref-numbers'
     },
     '/refund-priority-outside': {
-
+      next: '/application-ref-numbers'
     },
     '/refund-super-priority-where-from': {
+      next: '/refund-super-priority',
       fields: ['where-applied-from'],
       forks: [{
         target: '/refund-super-priority',
@@ -620,18 +640,19 @@ module.exports = {
       }]
     },
     '/refund-super-priority': {
-
+      next: '/application-ref-numbers'
     },
     '/refund-super-priority-outside': {
-
+      next: '/application-ref-numbers'
     },
     '/refund-premium': {
-
+      next: '/application-ref-numbers'
     },
     '/refund-eu-settlement': {
-
+      next: '/application-ref-numbers'
     },
     '/refund': {
+      next: '/refund-when',
       fields: ['refund'],
       forks: [{
         target: '/refund-when',
@@ -654,6 +675,7 @@ module.exports = {
       }]
     },
     '/refund-when': {
+      next: '/refund-less-than',
       fields: ['refund-when'],
       forks: [{
         target: '/refund-less-than',
@@ -670,6 +692,7 @@ module.exports = {
       }]
     },
     '/refund-type-automatic': {
+      next: '/refund-ihs-where-from',
       fields: ['refund-type-automatic'],
       forks: [{
         target: '/refund-ihs-where-from',
@@ -686,9 +709,12 @@ module.exports = {
       }]
     },
     '/refund-less-than': {},
-    '/refund-more-than': {},
+    '/refund-more-than': {
+      next: '/application-ref-numbers'
+    },
     '/refund-request': {},
     '/poor-info-or-behaviour': {
+      next: '/application-ref-numbers',
       fields: ['poor-info-or-behaviour'],
       forks: [{
         target: '/application-ref-numbers',
@@ -705,6 +731,7 @@ module.exports = {
       }]
     },
     '/staff-behaviour': {
+      next: '/face-to-face',
       fields: ['staff-behaviour'],
       forks: [{
         target: '/face-to-face',
@@ -727,6 +754,7 @@ module.exports = {
       }]
     },
     '/face-to-face': {
+      next: '/vac',
       fields: ['which-centre'],
       forks: [{
         target: '/vac',
@@ -773,6 +801,7 @@ module.exports = {
       next: '/application-ref-numbers'
     },
     '/existing-complaint': {
+      next: '/complaint-reference-number',
       fields: ['existing-complaint'],
       forks: [{
         target: '/complaint-reference-number',
@@ -805,6 +834,7 @@ module.exports = {
       next: '/application-ref-numbers'
     },
     '/acting-as-agent': {
+      next: '/who-representing',
       fields: ['acting-as-agent'],
       forks: [{
         target: '/who-representing',

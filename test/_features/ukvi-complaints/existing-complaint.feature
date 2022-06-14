@@ -1,0 +1,851 @@
+@feature @existing-complaint
+Feature: An existing complaint
+
+  Scenario: I am on the an existing complaint (existing-complaint) journey, I am acting on behalf of myself and want
+  to enquire about an existing complaint using a reference number.
+  On the confirm page I want to change the complaint type and the complaint reference number.
+    Given I start the 'reason' application journey
+    Then I should see 'What is the complaint about?' on the page
+    Then I check 'reason-existing-complaint'
+    Then I select 'Continue'
+    Then I should be on the 'existing-complaint' page showing 'Do you have a reference number for the complaint?'
+    Then I check 'existing-complaint-yes'
+    Then I select 'Continue'
+    Then I should be on the 'complaint-reference-number' page showing 'What is the reference number for your complaint?'
+    Then I fill 'complaint-reference-number' with 'REF1234567890'
+    Then I select 'Continue'
+    Then I should be on the 'complaint-details' page showing 'What are the details of your complaint?'
+    Then I fill 'complaint-details' text area with 'Details of a complaint'
+    Then I select 'Continue'
+    Then I should be on the 'confirm' page showing 'Check your answers'
+    Then I should see 'The reason for the complaint' and 'An existing complaint' on the page
+    Then I should see 'Reference number for your complaint' and 'REF1234567890' on the page
+    Then I should see 'Complaint details' and 'Details of a complaint' on the page
+
+    # Change Complaint Reason
+    Then I select change link 'reason-change-'
+    Then I should see 'What is the complaint about?' on the page
+    Then I check 'reason-existing-complaint'
+    Then I select 'Continue'
+    Then I should be on the 'confirm' page showing 'Check your answers'
+    Then I should see 'The reason for the complaint' and 'An existing complaint' on the page
+    Then I should see 'Reference number for your complaint' and 'REF1234567890' on the page
+    Then I should see 'Complaint details' and 'Details of a complaint' on the page
+
+    # Change the Complaint Reference Number
+    Then I select change link 'complaint-reference-number-change'
+    Then I should see 'What is the reference number for your complaint?' on the page
+    Then I fill 'complaint-reference-number' with 'REF1234567891'
+    Then I select 'Continue'
+    Then I should be on the 'confirm' page showing 'Check your answers'
+    Then I should see 'The reason for the complaint' and 'An existing complaint' on the page
+    Then I should see 'Reference number for your complaint' and 'REF1234567891' on the page
+    Then I should see 'Complaint details' and 'Details of a complaint' on the page
+
+
+  Scenario: I am on the an existing complaint (existing-complaint) journey, I am acting on behalf of myself and want
+  to enquire about an existing complaint with 'Submitting an application' and I do not have a reference number.
+  On the confirm page I want to change the complaint type.
+    Given I start the 'reason' application journey
+    Then I should see 'What is the complaint about?' on the page
+    Then I check 'reason-existing-complaint'
+    Then I select 'Continue'
+    Then I should be on the 'existing-complaint' page showing 'Do you have a reference number for the complaint?'
+    Then I check 'existing-complaint-no'
+    Then I select 'Continue'
+    Then I should be on the 'complaint-reason-previous' page showing 'What was your original complaint about?'
+    Then I check 'complaint-reason-previous-immigration-application'
+    Then I select 'Continue'
+    Then I should be on the 'acting-as-agent' page showing 'Are you making this complaint on behalf of someone else?'
+    Then I check 'acting-as-agent-no'
+    Then I select 'Continue'
+    Then I should be on the 'applicant-name' page showing 'What is your full name?'
+    Then I fill 'applicant-name' with 'Person A'
+    Then I select 'Continue'
+    Then I should be on the 'applicant-dob' page showing 'What is your date of birth?'
+    Then I fill 'applicant-dob-day' with '1'
+    Then I fill 'applicant-dob-month' with '1'
+    Then I fill 'applicant-dob-year' with '1981'
+    Then I select 'Continue'
+    Then I should be on the 'applicant-nationality' page showing 'What is your country of nationality?'
+    Then I fill 'applicant-nationality' with 'British Overseas Citizen' option
+    Then I select 'Continue'
+    Then I should be on the 'applicant-contact-details' page showing 'What are your contact details?'
+    Then I fill 'applicant-email' with 'test@test.com'
+    Then I fill 'applicant-phone' with '02079462345'
+    Then I select 'Continue'
+    Then I should be on the 'complaint-details' page showing 'What are the details of your complaint?'
+    Then I fill 'complaint-details' text area with 'Details of a complaint'
+    Then I select 'Continue'
+    Then I should be on the 'confirm' page showing 'Check your answers'
+    Then I should see 'The reason for the complaint' and 'An existing complaint' on the page
+    Then I should see 'Complaint details' and 'Details of a complaint' on the page
+    Then I should see 'Full name' and 'Person A' on the page
+    Then I should see 'Country of nationality' and 'British Overseas Citizen' on the page
+    Then I should see 'Date of birth' and '1981-01-01' on the page
+    Then I should see 'Email address' and '	test@test.com' on the page
+    Then I should see 'Phone number (optional)' and '(optional)	02079462345' on the page
+
+    # Change Complaint Reason
+    Then I select change link 'reason-change-'
+    Then I should see 'What is the complaint about?' on the page
+    Then I check 'reason-existing-complaint'
+    Then I select 'Continue'
+    Then I should be on the 'confirm' page showing 'Check your answers'
+    Then I should be on the 'confirm' page showing 'Check your answers'
+    Then I should see 'The reason for the complaint' and 'An existing complaint' on the page
+    Then I should see 'Complaint details' and 'Details of a complaint' on the page
+    Then I should see 'Full name' and 'Person A' on the page
+    Then I should see 'Country of nationality' and 'British Overseas Citizen' on the page
+    Then I should see 'Date of birth' and '1981-01-01' on the page
+    Then I should see 'Email address' and '	test@test.com' on the page
+    Then I should see 'Phone number (optional)' and '(optional)	02079462345' on the page
+
+
+  Scenario: I am on the an existing complaint (existing-complaint) journey, I am acting on behalf of myself and want
+  to enquire about an existing complaint with 'Making an appointment' and I do not have a reference number.
+  On the confirm page I want to change the complaint type.
+    Given I start the 'reason' application journey
+    Then I should see 'What is the complaint about?' on the page
+    Then I check 'reason-existing-complaint'
+    Then I select 'Continue'
+    Then I should be on the 'existing-complaint' page showing 'Do you have a reference number for the complaint?'
+    Then I check 'existing-complaint-no'
+    Then I select 'Continue'
+    Then I should be on the 'complaint-reason-previous' page showing 'What was your original complaint about?'
+    Then I check 'complaint-reason-previous-immigration-appointment'
+    Then I select 'Continue'
+    Then I should be on the 'acting-as-agent' page showing 'Are you making this complaint on behalf of someone else?'
+    Then I check 'acting-as-agent-no'
+    Then I select 'Continue'
+    Then I should be on the 'applicant-name' page showing 'What is your full name?'
+    Then I fill 'applicant-name' with 'Person A'
+    Then I select 'Continue'
+    Then I should be on the 'applicant-dob' page showing 'What is your date of birth?'
+    Then I fill 'applicant-dob-day' with '1'
+    Then I fill 'applicant-dob-month' with '1'
+    Then I fill 'applicant-dob-year' with '1981'
+    Then I select 'Continue'
+    Then I should be on the 'applicant-nationality' page showing 'What is your country of nationality?'
+    Then I fill 'applicant-nationality' with 'British Overseas Citizen' option
+    Then I select 'Continue'
+    Then I should be on the 'applicant-contact-details' page showing 'What are your contact details?'
+    Then I fill 'applicant-email' with 'test@test.com'
+    Then I fill 'applicant-phone' with '02079462345'
+    Then I select 'Continue'
+    Then I should be on the 'complaint-details' page showing 'What are the details of your complaint?'
+    Then I fill 'complaint-details' text area with 'Details of a complaint'
+    Then I select 'Continue'
+    Then I should be on the 'confirm' page showing 'Check your answers'
+    Then I should see 'The reason for the complaint' and 'An existing complaint' on the page
+    Then I should see 'Complaint details' and 'Details of a complaint' on the page
+    Then I should see 'Full name' and 'Person A' on the page
+    Then I should see 'Country of nationality' and 'British Overseas Citizen' on the page
+    Then I should see 'Date of birth' and '1981-01-01' on the page
+    Then I should see 'Email address' and '	test@test.com' on the page
+    Then I should see 'Phone number (optional)' and '(optional)	02079462345' on the page
+
+    # Change Complaint Reason
+    Then I select change link 'reason-change-'
+    Then I should see 'What is the complaint about?' on the page
+    Then I check 'reason-existing-complaint'
+    Then I select 'Continue'
+    Then I should be on the 'confirm' page showing 'Check your answers'
+    Then I should be on the 'confirm' page showing 'Check your answers'
+    Then I should see 'The reason for the complaint' and 'An existing complaint' on the page
+    Then I should see 'Complaint details' and 'Details of a complaint' on the page
+    Then I should see 'Full name' and 'Person A' on the page
+    Then I should see 'Country of nationality' and 'British Overseas Citizen' on the page
+    Then I should see 'Date of birth' and '1981-01-01' on the page
+    Then I should see 'Email address' and '	test@test.com' on the page
+    Then I should see 'Phone number (optional)' and '(optional)	02079462345' on the page
+
+
+  Scenario: I am on the an existing complaint (existing-complaint) journey, I am acting on behalf of myself and want
+  to enquire about an existing complaint with 'Waiting for a decision or documents' and I do not have a reference number.
+  On the confirm page I want to change the complaint type.
+    Given I start the 'reason' application journey
+    Then I should see 'What is the complaint about?' on the page
+    Then I check 'reason-existing-complaint'
+    Then I select 'Continue'
+    Then I should be on the 'existing-complaint' page showing 'Do you have a reference number for the complaint?'
+    Then I check 'existing-complaint-no'
+    Then I select 'Continue'
+    Then I should be on the 'complaint-reason-previous' page showing 'What was your original complaint about?'
+    Then I check 'complaint-reason-previous-delays'
+    Then I select 'Continue'
+    Then I should be on the 'acting-as-agent' page showing 'Are you making this complaint on behalf of someone else?'
+    Then I check 'acting-as-agent-no'
+    Then I select 'Continue'
+    Then I should be on the 'applicant-name' page showing 'What is your full name?'
+    Then I fill 'applicant-name' with 'Person A'
+    Then I select 'Continue'
+    Then I should be on the 'applicant-dob' page showing 'What is your date of birth?'
+    Then I fill 'applicant-dob-day' with '1'
+    Then I fill 'applicant-dob-month' with '1'
+    Then I fill 'applicant-dob-year' with '1981'
+    Then I select 'Continue'
+    Then I should be on the 'applicant-nationality' page showing 'What is your country of nationality?'
+    Then I fill 'applicant-nationality' with 'British Overseas Citizen' option
+    Then I select 'Continue'
+    Then I should be on the 'applicant-contact-details' page showing 'What are your contact details?'
+    Then I fill 'applicant-email' with 'test@test.com'
+    Then I fill 'applicant-phone' with '02079462345'
+    Then I select 'Continue'
+    Then I should be on the 'complaint-details' page showing 'What are the details of your complaint?'
+    Then I fill 'complaint-details' text area with 'Details of a complaint'
+    Then I select 'Continue'
+    Then I should be on the 'confirm' page showing 'Check your answers'
+    Then I should see 'The reason for the complaint' and 'An existing complaint' on the page
+    Then I should see 'Complaint details' and 'Details of a complaint' on the page
+    Then I should see 'Full name' and 'Person A' on the page
+    Then I should see 'Country of nationality' and 'British Overseas Citizen' on the page
+    Then I should see 'Date of birth' and '1981-01-01' on the page
+    Then I should see 'Email address' and '	test@test.com' on the page
+    Then I should see 'Phone number (optional)' and '(optional)	02079462345' on the page
+
+    # Change Complaint Reason
+    Then I select change link 'reason-change-'
+    Then I should see 'What is the complaint about?' on the page
+    Then I check 'reason-existing-complaint'
+    Then I select 'Continue'
+    Then I should be on the 'confirm' page showing 'Check your answers'
+    Then I should be on the 'confirm' page showing 'Check your answers'
+    Then I should see 'The reason for the complaint' and 'An existing complaint' on the page
+    Then I should see 'Complaint details' and 'Details of a complaint' on the page
+    Then I should see 'Full name' and 'Person A' on the page
+    Then I should see 'Country of nationality' and 'British Overseas Citizen' on the page
+    Then I should see 'Date of birth' and '1981-01-01' on the page
+    Then I should see 'Email address' and '	test@test.com' on the page
+    Then I should see 'Phone number (optional)' and '(optional)	02079462345' on the page
+
+
+  Scenario: I am on the an existing complaint (existing-complaint) journey, I am acting on behalf of myself and want
+  to enquire about an existing complaint with 'A negative or positive decision' and I do not have a reference number.
+  On the confirm page I want to change the complaint type.
+    Given I start the 'reason' application journey
+    Then I should see 'What is the complaint about?' on the page
+    Then I check 'reason-existing-complaint'
+    Then I select 'Continue'
+    Then I should be on the 'existing-complaint' page showing 'Do you have a reference number for the complaint?'
+    Then I check 'existing-complaint-no'
+    Then I select 'Continue'
+    Then I should be on the 'complaint-reason-previous' page showing 'What was your original complaint about?'
+    Then I check 'complaint-reason-previous-immigration-decision'
+    Then I select 'Continue'
+    Then I should be on the 'acting-as-agent' page showing 'Are you making this complaint on behalf of someone else?'
+    Then I check 'acting-as-agent-no'
+    Then I select 'Continue'
+    Then I should be on the 'applicant-name' page showing 'What is your full name?'
+    Then I fill 'applicant-name' with 'Person A'
+    Then I select 'Continue'
+    Then I should be on the 'applicant-dob' page showing 'What is your date of birth?'
+    Then I fill 'applicant-dob-day' with '1'
+    Then I fill 'applicant-dob-month' with '1'
+    Then I fill 'applicant-dob-year' with '1981'
+    Then I select 'Continue'
+    Then I should be on the 'applicant-nationality' page showing 'What is your country of nationality?'
+    Then I fill 'applicant-nationality' with 'British Overseas Citizen' option
+    Then I select 'Continue'
+    Then I should be on the 'applicant-contact-details' page showing 'What are your contact details?'
+    Then I fill 'applicant-email' with 'test@test.com'
+    Then I fill 'applicant-phone' with '02079462345'
+    Then I select 'Continue'
+    Then I should be on the 'complaint-details' page showing 'What are the details of your complaint?'
+    Then I fill 'complaint-details' text area with 'Details of a complaint'
+    Then I select 'Continue'
+    Then I should be on the 'confirm' page showing 'Check your answers'
+    Then I should see 'The reason for the complaint' and 'An existing complaint' on the page
+    Then I should see 'Complaint details' and 'Details of a complaint' on the page
+    Then I should see 'Full name' and 'Person A' on the page
+    Then I should see 'Country of nationality' and 'British Overseas Citizen' on the page
+    Then I should see 'Date of birth' and '1981-01-01' on the page
+    Then I should see 'Email address' and '	test@test.com' on the page
+    Then I should see 'Phone number (optional)' and '(optional)	02079462345' on the page
+
+    # Change Complaint Reason
+    Then I select change link 'reason-change-'
+    Then I should see 'What is the complaint about?' on the page
+    Then I check 'reason-existing-complaint'
+    Then I select 'Continue'
+    Then I should be on the 'confirm' page showing 'Check your answers'
+    Then I should be on the 'confirm' page showing 'Check your answers'
+    Then I should see 'The reason for the complaint' and 'An existing complaint' on the page
+    Then I should see 'Complaint details' and 'Details of a complaint' on the page
+    Then I should see 'Full name' and 'Person A' on the page
+    Then I should see 'Country of nationality' and 'British Overseas Citizen' on the page
+    Then I should see 'Date of birth' and '1981-01-01' on the page
+    Then I should see 'Email address' and '	test@test.com' on the page
+    Then I should see 'Phone number (optional)' and '(optional)	02079462345' on the page
+
+
+  Scenario: I am on the an existing complaint (existing-complaint) journey, I am acting on behalf of myself and want
+  to enquire about an existing complaint with 'Immigration status change' and I do not have a reference number.
+  On the confirm page I want to change the complaint type.
+    Given I start the 'reason' application journey
+    Then I should see 'What is the complaint about?' on the page
+    Then I check 'reason-existing-complaint'
+    Then I select 'Continue'
+    Then I should be on the 'existing-complaint' page showing 'Do you have a reference number for the complaint?'
+    Then I check 'existing-complaint-no'
+    Then I select 'Continue'
+    Then I should be on the 'complaint-reason-previous' page showing 'What was your original complaint about?'
+    Then I check 'complaint-reason-previous-immigration-status-change'
+    Then I select 'Continue'
+    Then I should be on the 'acting-as-agent' page showing 'Are you making this complaint on behalf of someone else?'
+    Then I check 'acting-as-agent-no'
+    Then I select 'Continue'
+    Then I should be on the 'applicant-name' page showing 'What is your full name?'
+    Then I fill 'applicant-name' with 'Person A'
+    Then I select 'Continue'
+    Then I should be on the 'applicant-dob' page showing 'What is your date of birth?'
+    Then I fill 'applicant-dob-day' with '1'
+    Then I fill 'applicant-dob-month' with '1'
+    Then I fill 'applicant-dob-year' with '1981'
+    Then I select 'Continue'
+    Then I should be on the 'applicant-nationality' page showing 'What is your country of nationality?'
+    Then I fill 'applicant-nationality' with 'British Overseas Citizen' option
+    Then I select 'Continue'
+    Then I should be on the 'applicant-contact-details' page showing 'What are your contact details?'
+    Then I fill 'applicant-email' with 'test@test.com'
+    Then I fill 'applicant-phone' with '02079462345'
+    Then I select 'Continue'
+    Then I should be on the 'complaint-details' page showing 'What are the details of your complaint?'
+    Then I fill 'complaint-details' text area with 'Details of a complaint'
+    Then I select 'Continue'
+    Then I should be on the 'confirm' page showing 'Check your answers'
+    Then I should see 'The reason for the complaint' and 'An existing complaint' on the page
+    Then I should see 'Complaint details' and 'Details of a complaint' on the page
+    Then I should see 'Full name' and 'Person A' on the page
+    Then I should see 'Country of nationality' and 'British Overseas Citizen' on the page
+    Then I should see 'Date of birth' and '1981-01-01' on the page
+    Then I should see 'Email address' and '	test@test.com' on the page
+    Then I should see 'Phone number (optional)' and '(optional)	02079462345' on the page
+
+    # Change Complaint Reason
+    Then I select change link 'reason-change-'
+    Then I should see 'What is the complaint about?' on the page
+    Then I check 'reason-existing-complaint'
+    Then I select 'Continue'
+    Then I should be on the 'confirm' page showing 'Check your answers'
+    Then I should be on the 'confirm' page showing 'Check your answers'
+    Then I should see 'The reason for the complaint' and 'An existing complaint' on the page
+    Then I should see 'Complaint details' and 'Details of a complaint' on the page
+    Then I should see 'Full name' and 'Person A' on the page
+    Then I should see 'Country of nationality' and 'British Overseas Citizen' on the page
+    Then I should see 'Date of birth' and '1981-01-01' on the page
+    Then I should see 'Email address' and '	test@test.com' on the page
+    Then I should see 'Phone number (optional)' and '(optional)	02079462345' on the page
+
+
+  Scenario: I am on the an existing complaint (existing-complaint) journey, I am acting on behalf of myself and want
+  to enquire about an existing complaint with 'Biometric residence permits (BRPs)' and I do not have a reference number.
+  On the confirm page I want to change the complaint type.
+    Given I start the 'reason' application journey
+    Then I should see 'What is the complaint about?' on the page
+    Then I check 'reason-existing-complaint'
+    Then I select 'Continue'
+    Then I should be on the 'existing-complaint' page showing 'Do you have a reference number for the complaint?'
+    Then I check 'existing-complaint-no'
+    Then I select 'Continue'
+    Then I should be on the 'complaint-reason-previous' page showing 'What was your original complaint about?'
+    Then I check 'complaint-reason-previous-biometric-residence-permit'
+    Then I select 'Continue'
+    Then I should be on the 'acting-as-agent' page showing 'Are you making this complaint on behalf of someone else?'
+    Then I check 'acting-as-agent-no'
+    Then I select 'Continue'
+    Then I should be on the 'applicant-name' page showing 'What is your full name?'
+    Then I fill 'applicant-name' with 'Person A'
+    Then I select 'Continue'
+    Then I should be on the 'applicant-dob' page showing 'What is your date of birth?'
+    Then I fill 'applicant-dob-day' with '1'
+    Then I fill 'applicant-dob-month' with '1'
+    Then I fill 'applicant-dob-year' with '1981'
+    Then I select 'Continue'
+    Then I should be on the 'applicant-nationality' page showing 'What is your country of nationality?'
+    Then I fill 'applicant-nationality' with 'British Overseas Citizen' option
+    Then I select 'Continue'
+    Then I should be on the 'applicant-contact-details' page showing 'What are your contact details?'
+    Then I fill 'applicant-email' with 'test@test.com'
+    Then I fill 'applicant-phone' with '02079462345'
+    Then I select 'Continue'
+    Then I should be on the 'complaint-details' page showing 'What are the details of your complaint?'
+    Then I fill 'complaint-details' text area with 'Details of a complaint'
+    Then I select 'Continue'
+    Then I should be on the 'confirm' page showing 'Check your answers'
+    Then I should see 'The reason for the complaint' and 'An existing complaint' on the page
+    Then I should see 'Complaint details' and 'Details of a complaint' on the page
+    Then I should see 'Full name' and 'Person A' on the page
+    Then I should see 'Country of nationality' and 'British Overseas Citizen' on the page
+    Then I should see 'Date of birth' and '1981-01-01' on the page
+    Then I should see 'Email address' and '	test@test.com' on the page
+    Then I should see 'Phone number (optional)' and '(optional)	02079462345' on the page
+
+    # Change Complaint Reason
+    Then I select change link 'reason-change-'
+    Then I should see 'What is the complaint about?' on the page
+    Then I check 'reason-existing-complaint'
+    Then I select 'Continue'
+    Then I should be on the 'confirm' page showing 'Check your answers'
+    Then I should be on the 'confirm' page showing 'Check your answers'
+    Then I should see 'The reason for the complaint' and 'An existing complaint' on the page
+    Then I should see 'Complaint details' and 'Details of a complaint' on the page
+    Then I should see 'Full name' and 'Person A' on the page
+    Then I should see 'Country of nationality' and 'British Overseas Citizen' on the page
+    Then I should see 'Date of birth' and '1981-01-01' on the page
+    Then I should see 'Email address' and '	test@test.com' on the page
+    Then I should see 'Phone number (optional)' and '(optional)	02079462345' on the page
+
+
+  Scenario: I am on the an existing complaint (existing-complaint) journey, I am acting on behalf of myself and want
+  to enquire about an existing complaint with 'Refunds' and I do not have a reference number.
+  On the confirm page I want to change the complaint type.
+    Given I start the 'reason' application journey
+    Then I should see 'What is the complaint about?' on the page
+    Then I check 'reason-existing-complaint'
+    Then I select 'Continue'
+    Then I should be on the 'existing-complaint' page showing 'Do you have a reference number for the complaint?'
+    Then I check 'existing-complaint-no'
+    Then I select 'Continue'
+    Then I should be on the 'complaint-reason-previous' page showing 'What was your original complaint about?'
+    Then I check 'complaint-reason-previous-refund'
+    Then I select 'Continue'
+    Then I should be on the 'acting-as-agent' page showing 'Are you making this complaint on behalf of someone else?'
+    Then I check 'acting-as-agent-no'
+    Then I select 'Continue'
+    Then I should be on the 'applicant-name' page showing 'What is your full name?'
+    Then I fill 'applicant-name' with 'Person A'
+    Then I select 'Continue'
+    Then I should be on the 'applicant-dob' page showing 'What is your date of birth?'
+    Then I fill 'applicant-dob-day' with '1'
+    Then I fill 'applicant-dob-month' with '1'
+    Then I fill 'applicant-dob-year' with '1981'
+    Then I select 'Continue'
+    Then I should be on the 'applicant-nationality' page showing 'What is your country of nationality?'
+    Then I fill 'applicant-nationality' with 'British Overseas Citizen' option
+    Then I select 'Continue'
+    Then I should be on the 'applicant-contact-details' page showing 'What are your contact details?'
+    Then I fill 'applicant-email' with 'test@test.com'
+    Then I fill 'applicant-phone' with '02079462345'
+    Then I select 'Continue'
+    Then I should be on the 'complaint-details' page showing 'What are the details of your complaint?'
+    Then I fill 'complaint-details' text area with 'Details of a complaint'
+    Then I select 'Continue'
+    Then I should be on the 'confirm' page showing 'Check your answers'
+    Then I should see 'The reason for the complaint' and 'An existing complaint' on the page
+    Then I should see 'Complaint details' and 'Details of a complaint' on the page
+    Then I should see 'Full name' and 'Person A' on the page
+    Then I should see 'Country of nationality' and 'British Overseas Citizen' on the page
+    Then I should see 'Date of birth' and '1981-01-01' on the page
+    Then I should see 'Email address' and '	test@test.com' on the page
+    Then I should see 'Phone number (optional)' and '(optional)	02079462345' on the page
+
+    # Change Complaint Reason
+    Then I select change link 'reason-change-'
+    Then I should see 'What is the complaint about?' on the page
+    Then I check 'reason-existing-complaint'
+    Then I select 'Continue'
+    Then I should be on the 'confirm' page showing 'Check your answers'
+    Then I should be on the 'confirm' page showing 'Check your answers'
+    Then I should see 'The reason for the complaint' and 'An existing complaint' on the page
+    Then I should see 'Complaint details' and 'Details of a complaint' on the page
+    Then I should see 'Full name' and 'Person A' on the page
+    Then I should see 'Country of nationality' and 'British Overseas Citizen' on the page
+    Then I should see 'Date of birth' and '1981-01-01' on the page
+    Then I should see 'Email address' and '	test@test.com' on the page
+    Then I should see 'Phone number (optional)' and '(optional)	02079462345' on the page
+
+
+  Scenario: I am on the an existing complaint (existing-complaint) journey, I am acting on behalf of myself and want
+  to enquire about an existing complaint with 'Poor information or staff behaviour' and I do not have a reference number.
+  On the confirm page I want to change the complaint type, applicants name, nationality and date of birth.
+    Given I start the 'reason' application journey
+    Then I should see 'What is the complaint about?' on the page
+    Then I check 'reason-existing-complaint'
+    Then I select 'Continue'
+    Then I should be on the 'existing-complaint' page showing 'Do you have a reference number for the complaint?'
+    Then I check 'existing-complaint-no'
+    Then I select 'Continue'
+    Then I should be on the 'complaint-reason-previous' page showing 'What was your original complaint about?'
+    Then I check 'complaint-reason-previous-staff-behaviour'
+    Then I select 'Continue'
+    Then I should be on the 'acting-as-agent' page showing 'Are you making this complaint on behalf of someone else?'
+    Then I check 'acting-as-agent-no'
+    Then I select 'Continue'
+    Then I should be on the 'applicant-name' page showing 'What is your full name?'
+    Then I fill 'applicant-name' with 'Person A'
+    Then I select 'Continue'
+    Then I should be on the 'applicant-dob' page showing 'What is your date of birth?'
+    Then I fill 'applicant-dob-day' with '1'
+    Then I fill 'applicant-dob-month' with '1'
+    Then I fill 'applicant-dob-year' with '1981'
+    Then I select 'Continue'
+    Then I should be on the 'applicant-nationality' page showing 'What is your country of nationality?'
+    Then I fill 'applicant-nationality' with 'British Overseas Citizen' option
+    Then I select 'Continue'
+    Then I should be on the 'applicant-contact-details' page showing 'What are your contact details?'
+    Then I fill 'applicant-email' with 'test@test.com'
+    Then I fill 'applicant-phone' with '02079462345'
+    Then I select 'Continue'
+    Then I should be on the 'complaint-details' page showing 'What are the details of your complaint?'
+    Then I fill 'complaint-details' text area with 'Details of a complaint'
+    Then I select 'Continue'
+    Then I should be on the 'confirm' page showing 'Check your answers'
+    Then I should see 'The reason for the complaint' and 'An existing complaint' on the page
+    Then I should see 'Complaint details' and 'Details of a complaint' on the page
+    Then I should see 'Full name' and 'Person A' on the page
+    Then I should see 'Country of nationality' and 'British Overseas Citizen' on the page
+    Then I should see 'Date of birth' and '1981-01-01' on the page
+    Then I should see 'Email address' and '	test@test.com' on the page
+    Then I should see 'Phone number (optional)' and '(optional)	02079462345' on the page
+
+    # Change Complaint Reason
+    Then I select change link 'reason-change-'
+    Then I should see 'What is the complaint about?' on the page
+    Then I check 'reason-existing-complaint'
+    Then I select 'Continue'
+    Then I should be on the 'confirm' page showing 'Check your answers'
+    Then I should be on the 'confirm' page showing 'Check your answers'
+    Then I should see 'The reason for the complaint' and 'An existing complaint' on the page
+    Then I should see 'Complaint details' and 'Details of a complaint' on the page
+    Then I should see 'Full name' and 'Person A' on the page
+    Then I should see 'Country of nationality' and 'British Overseas Citizen' on the page
+    Then I should see 'Date of birth' and '1981-01-01' on the page
+    Then I should see 'Email address' and '	test@test.com' on the page
+    Then I should see 'Phone number (optional)' and '(optional)	02079462345' on the page
+
+  # Change Applicants Name
+    Then I select change link 'applicant-name-change'
+    Then I should see 'What is your full name?' on the page
+    Then I fill 'applicant-name' with 'Person A Changed'
+    Then I select 'Continue'
+    Then I should be on the 'confirm' page showing 'Check your answers'
+    Then I should see 'The reason for the complaint' and 'An existing complaint' on the page
+    Then I should see 'Complaint details' and 'Details of a complaint' on the page
+    Then I should see 'Full name' and 'Person A Changed' on the page
+    Then I should see 'Country of nationality' and 'British Overseas Citizen' on the page
+    Then I should see 'Date of birth' and '1981-01-01' on the page
+    Then I should see 'Email address' and '	test@test.com' on the page
+    Then I should see 'Phone number (optional)' and '(optional)	02079462345' on the page
+
+  # Change Applicants Nationality
+    Then I select change link 'applicant-nationality-change'
+    Then I should see 'What is your country of nationality?' on the page
+    Then I fill 'applicant-nationality' with 'British Overseas Territory Citizen' option
+    Then I select 'Continue'
+    Then I should be on the 'confirm' page showing 'Check your answers'
+    Then I should see 'The reason for the complaint' and 'An existing complaint' on the page
+    Then I should see 'Complaint details' and 'Details of a complaint' on the page
+    Then I should see 'Full name' and 'Person A Changed' on the page
+    Then I should see 'Country of nationality' and 'British Overseas Territory Citizen' on the page
+    Then I should see 'Date of birth' and '1981-01-01' on the page
+    Then I should see 'Email address' and '	test@test.com' on the page
+    Then I should see 'Phone number (optional)' and '(optional)	02079462345' on the page
+
+  # Change Applicants Date of Birth
+    Then I select change link 'applicant-dob-change'
+    Then I should see 'What is your date of birth?' on the page
+    Then I fill 'applicant-dob-day' with '1'
+    Then I fill 'applicant-dob-month' with '1'
+    Then I fill 'applicant-dob-year' with '1982'
+    Then I select 'Continue'
+    Then I should be on the 'confirm' page showing 'Check your answers'
+    Then I should see 'The reason for the complaint' and 'An existing complaint' on the page
+    Then I should see 'Complaint details' and 'Details of a complaint' on the page
+    Then I should see 'Full name' and 'Person A Changed' on the page
+    Then I should see 'Country of nationality' and 'British Overseas Territory Citizen' on the page
+    Then I should see 'Date of birth' and '1982-01-01' on the page
+    Then I should see 'Email address' and '	test@test.com' on the page
+    Then I should see 'Phone number (optional)' and '(optional)	02079462345' on the page
+
+
+  Scenario: I am on the an existing complaint (existing-complaint) journey, I am acting on behalf of myself and want
+  to enquire about an existing complaint with 'Something else' and I do not have a reference number.
+  On the confirm page I want to change the complaint type, applicants email address and phone number.
+    Given I start the 'reason' application journey
+    Then I should see 'What is the complaint about?' on the page
+    Then I check 'reason-existing-complaint'
+    Then I select 'Continue'
+    Then I should be on the 'existing-complaint' page showing 'Do you have a reference number for the complaint?'
+    Then I check 'existing-complaint-no'
+    Then I select 'Continue'
+    Then I should be on the 'complaint-reason-previous' page showing 'What was your original complaint about?'
+    Then I check 'complaint-reason-previous-other-complaint'
+    Then I select 'Continue'
+    Then I should be on the 'acting-as-agent' page showing 'Are you making this complaint on behalf of someone else?'
+    Then I check 'acting-as-agent-no'
+    Then I select 'Continue'
+    Then I should be on the 'applicant-name' page showing 'What is your full name?'
+    Then I fill 'applicant-name' with 'Person A'
+    Then I select 'Continue'
+    Then I should be on the 'applicant-dob' page showing 'What is your date of birth?'
+    Then I fill 'applicant-dob-day' with '1'
+    Then I fill 'applicant-dob-month' with '1'
+    Then I fill 'applicant-dob-year' with '1981'
+    Then I select 'Continue'
+    Then I should be on the 'applicant-nationality' page showing 'What is your country of nationality?'
+    Then I fill 'applicant-nationality' with 'British Overseas Citizen' option
+    Then I select 'Continue'
+    Then I should be on the 'applicant-contact-details' page showing 'What are your contact details?'
+    Then I fill 'applicant-email' with 'test@test.com'
+    Then I fill 'applicant-phone' with '02079462345'
+    Then I select 'Continue'
+    Then I should be on the 'complaint-details' page showing 'What are the details of your complaint?'
+    Then I fill 'complaint-details' text area with 'Details of a complaint'
+    Then I select 'Continue'
+    Then I should be on the 'confirm' page showing 'Check your answers'
+    Then I should see 'The reason for the complaint' and 'An existing complaint' on the page
+    Then I should see 'Complaint details' and 'Details of a complaint' on the page
+    Then I should see 'Full name' and 'Person A' on the page
+    Then I should see 'Country of nationality' and 'British Overseas Citizen' on the page
+    Then I should see 'Date of birth' and '1981-01-01' on the page
+    Then I should see 'Email address' and '	test@test.com' on the page
+    Then I should see 'Phone number (optional)' and '(optional)	02079462345' on the page
+
+    # Change Complaint Reason
+    Then I select change link 'reason-change-'
+    Then I should see 'What is the complaint about?' on the page
+    Then I check 'reason-existing-complaint'
+    Then I select 'Continue'
+    Then I should be on the 'confirm' page showing 'Check your answers'
+    Then I should see 'The reason for the complaint' and 'An existing complaint' on the page
+    Then I should see 'Complaint details' and 'Details of a complaint' on the page
+    Then I should see 'Full name' and 'Person A' on the page
+    Then I should see 'Country of nationality' and 'British Overseas Citizen' on the page
+    Then I should see 'Date of birth' and '1981-01-01' on the page
+    Then I should see 'Email address' and '	test@test.com' on the page
+    Then I should see 'Phone number (optional)' and '(optional)	02079462345' on the page
+
+    # Change Email Address
+    Then I select change link 'applicant-email-change'
+    Then I should see 'What are your contact details?' on the page
+    Then I fill 'applicant-email' with 'test@test.com'
+    Then I select 'Continue'
+    Then I should be on the 'confirm' page showing 'Check your answers'
+    Then I should see 'The reason for the complaint' and 'An existing complaint' on the page
+    Then I should see 'Complaint details' and 'Details of a complaint' on the page
+    Then I should see 'Full name' and 'Person A' on the page
+    Then I should see 'Country of nationality' and 'British Overseas Citizen' on the page
+    Then I should see 'Date of birth' and '1981-01-01' on the page
+    Then I should see 'Email address' and '	test@test.com' on the page
+    Then I should see 'Phone number (optional)' and '(optional)	02079462345' on the page
+
+    # Change Phone Number
+    Then I select change link 'applicant-phone-change'
+    Then I should see 'What are your contact details?' on the page
+    Then I fill 'applicant-phone' with '02079462346'
+    Then I select 'Continue'
+    Then I should be on the 'confirm' page showing 'Check your answers'
+    Then I should see 'The reason for the complaint' and 'An existing complaint' on the page
+    Then I should see 'Complaint details' and 'Details of a complaint' on the page
+    Then I should see 'Full name' and 'Person A' on the page
+    Then I should see 'Country of nationality' and 'British Overseas Citizen' on the page
+    Then I should see 'Date of birth' and '1981-01-01' on the page
+    Then I should see 'Email address' and '	test@test.com' on the page
+    Then I should see 'Phone number (optional)' and '(optional)	02079462346' on the page
+
+
+  Scenario: I am on the an existing complaint (existing-complaint) journey, I am a legal representative
+  and want to enquire about an existing complaint with 'Submitting an application' and I do not have a reference number.
+  On the confirm page I want to change the legal representative to I am a sponsor, and my representatives contact details.
+    Given I start the 'reason' application journey
+    Then I should see 'What is the complaint about?' on the page
+    Then I check 'reason-existing-complaint'
+    Then I select 'Continue'
+    Then I should be on the 'existing-complaint' page showing 'Do you have a reference number for the complaint?'
+    Then I check 'existing-complaint-no'
+    Then I select 'Continue'
+    Then I should be on the 'complaint-reason-previous' page showing 'What was your original complaint about?'
+    Then I check 'complaint-reason-previous-immigration-application'
+    Then I select 'Continue'
+    Then I should be on the 'acting-as-agent' page showing 'Are you making this complaint on behalf of someone else?'
+    Then I check 'acting-as-agent-yes'
+    Then I select 'Continue'
+    Then I should be on the 'who-representing' page showing 'What is your relation to the applicant?'
+    Then I check 'who-representing-legal-rep'
+    Then I select 'Continue'
+    Then I should be on the 'agent-name' page showing 'What is your name?'
+    Then I fill 'agent-name' with 'Legal Representative A'
+    Then I select 'Continue'
+    Then I should be on the 'agent-contact-details' page showing 'Where should we send our response?'
+    Then I fill 'agent-email' with 'test@test.com'
+    Then I fill 'agent-phone' with '02079462345'
+    Then I select 'Continue'
+    Then I should be on the 'agent-representative-name' page showing 'What is the applicant’s full name?'
+    Then I fill 'agent-representative-name' with 'Applicant B'
+    Then I select 'Continue'
+    Then I should be on the 'agent-representative-dob' page showing 'What is the applicant’s date of birth?'
+    Then I fill 'agent-representative-dob-day' with '1'
+    Then I fill 'agent-representative-dob-month' with '1'
+    Then I fill 'agent-representative-dob-year' with '1981'
+    Then I select 'Continue'
+    Then I should be on the 'agent-representative-nationality' page showing 'What is the applicant’s country of nationality?'
+    Then I fill 'agent-representative-nationality' with 'British Overseas Citizen' option
+    Then I select 'Continue'
+    Then I should be on the 'complaint-details' page showing 'What are the details of your complaint?'
+    Then I fill 'complaint-details' text area with 'Details of a complaint'
+    Then I select 'Continue'
+    Then I should be on the 'confirm' page showing 'Check your answers'
+    Then I should see 'The reason for the complaint' and 'An existing complaint' on the page
+    Then I should see 'Complaint details' and 'Details of a complaint' on the page
+    Then I should see 'Full name' and 'Legal Representative A' on the page
+    Then I should see 'Relation to applicant' and 'I am a legal representative' on the page
+    Then I should see 'Applicant’s full name' and 'Applicant B' on the page
+    Then I should see 'Applicant’s country of nationality' and 'British Overseas Citizen' on the page
+    Then I should see 'Applicant’s date of birth' and '1981-01-01' on the page
+    Then I should see 'Email address' and 'test@test.com' on the page
+    Then I should see 'Phone number (optional)' and '02079462345' on the page
+
+    # Change the Legal Representative to Sponsor
+    Then I select change link 'who-representing-change-'
+    Then I should see 'What is your relation to the applicant?' on the page
+    Then I check 'who-representing-sponsor'
+    Then I select 'Continue'
+    Then I should be on the 'confirm' page showing 'Check your answers'
+    Then I should see 'The reason for the complaint' and 'An existing complaint' on the page
+    Then I should see 'Complaint details' and 'Details of a complaint' on the page
+    Then I should see 'Full name' and 'Legal Representative A' on the page
+    Then I should see 'Relation to applicant' and 'I am a sponsor' on the page
+    Then I should see 'Applicant’s full name' and 'Applicant B' on the page
+    Then I should see 'Applicant’s country of nationality' and 'British Overseas Citizen' on the page
+    Then I should see 'Applicant’s date of birth' and '1981-01-01' on the page
+    Then I should see 'Email address' and 'test@test.com' on the page
+    Then I should see 'Phone number (optional)' and '02079462345' on the page
+
+    # Change the Sponsors Email and Telephone Details
+    Then I select change link 'agent-email-change'
+    Then I should see 'Where should we send our response?' on the page
+    Then I fill 'agent-email' with 'test@test.com'
+    Then I fill 'agent-phone' with '02079462346'
+    Then I select 'Continue'
+    Then I should be on the 'confirm' page showing 'Check your answers'
+    Then I should see 'The reason for the complaint' and 'An existing complaint' on the page
+    Then I should see 'Complaint details' and 'Details of a complaint' on the page
+    Then I should see 'Full name' and 'Legal Representative A' on the page
+    Then I should see 'Relation to applicant' and 'I am a sponsor' on the page
+    Then I should see 'Applicant’s full name' and 'Applicant B' on the page
+    Then I should see 'Applicant’s country of nationality' and 'British Overseas Citizen' on the page
+    Then I should see 'Applicant’s date of birth' and '1981-01-01' on the page
+    Then I should see 'Email address' and 'test@test.com' on the page
+    Then I should see 'Phone number (optional)' and '02079462346' on the page
+
+    # Change the Sponsors Name
+    Then I select change link 'agent-name-change'
+    Then I should see 'What is your name?' on the page
+    Then I fill 'agent-name' with 'Sponsor C'
+    Then I select 'Continue'
+    Then I should be on the 'confirm' page showing 'Check your answers'
+    Then I should see 'The reason for the complaint' and 'An existing complaint' on the page
+    Then I should see 'Complaint details' and 'Details of a complaint' on the page
+    Then I should see 'Full name' and 'Sponsor C' on the page
+    Then I should see 'Relation to applicant' and 'I am a sponsor' on the page
+    Then I should see 'Applicant’s full name' and 'Applicant B' on the page
+    Then I should see 'Applicant’s country of nationality' and 'British Overseas Citizen' on the page
+    Then I should see 'Applicant’s date of birth' and '1981-01-01' on the page
+    Then I should see 'Email address' and 'test@test.com' on the page
+    Then I should see 'Phone number (optional)' and '02079462346' on the page
+
+
+  Scenario: I am on the an existing complaint (existing-complaint) journey, I am a relative or friend of
+  applicant and want to to enquire about an existing complaint with 'Biometric residence permits (BRPs)'
+  and I do not have a reference number.
+  On the confirm page I want to change the applicants name, nationality and date of birth.
+    Given I start the 'reason' application journey
+    Then I should see 'What is the complaint about?' on the page
+    Then I check 'reason-existing-complaint'
+    Then I select 'Continue'
+    Then I should be on the 'existing-complaint' page showing 'Do you have a reference number for the complaint?'
+    Then I check 'existing-complaint-no'
+    Then I select 'Continue'
+    Then I should be on the 'complaint-reason-previous' page showing 'What was your original complaint about?'
+    Then I check 'complaint-reason-previous-biometric-residence-permit'
+    Then I select 'Continue'
+    Then I should be on the 'acting-as-agent' page showing 'Are you making this complaint on behalf of someone else?'
+    Then I check 'acting-as-agent-yes'
+    Then I select 'Continue'
+    Then I should be on the 'who-representing' page showing 'What is your relation to the applicant?'
+    Then I check 'who-representing-relative'
+    Then I select 'Continue'
+    Then I should be on the 'agent-name' page showing 'What is your name?'
+    Then I fill 'agent-name' with 'Relative or Friend D'
+    Then I select 'Continue'
+    Then I should be on the 'agent-contact-details' page showing 'Where should we send our response?'
+    Then I fill 'agent-email' with 'test@test.com'
+    Then I fill 'agent-phone' with '02079462345'
+    Then I select 'Continue'
+    Then I should be on the 'agent-representative-name' page showing 'What is the applicant’s full name?'
+    Then I fill 'agent-representative-name' with 'Applicant B'
+    Then I select 'Continue'
+    Then I should be on the 'agent-representative-dob' page showing 'What is the applicant’s date of birth?'
+    Then I fill 'agent-representative-dob-day' with '1'
+    Then I fill 'agent-representative-dob-month' with '1'
+    Then I fill 'agent-representative-dob-year' with '1981'
+    Then I select 'Continue'
+    Then I should be on the 'agent-representative-nationality' page showing 'What is the applicant’s country of nationality?'
+    Then I fill 'agent-representative-nationality' with 'British Overseas Citizen' option
+    Then I select 'Continue'
+    Then I should be on the 'complaint-details' page showing 'What are the details of your complaint?'
+    Then I fill 'complaint-details' text area with 'Details of a complaint'
+    Then I select 'Continue'
+    Then I should be on the 'confirm' page showing 'Check your answers'
+    Then I should see 'The reason for the complaint' and 'An existing complaint' on the page
+    Then I should see 'Complaint details' and 'Details of a complaint' on the page
+    Then I should see 'Full name' and 'Relative or Friend D' on the page
+    Then I should see 'Relation to applicant' and 'I am a relative or friend' on the page
+    Then I should see 'Applicant’s full name' and 'Applicant B' on the page
+    Then I should see 'Applicant’s country of nationality' and 'British Overseas Citizen' on the page
+    Then I should see 'Applicant’s date of birth' and '1981-01-01' on the page
+    Then I should see 'Email address' and 'test@test.com' on the page
+    Then I should see 'Phone number (optional)' and '02079462345' on the page
+
+    # Change the Applicants Name
+    Then I select change link 'agent-representative-name-change'
+    Then I should see 'What is the applicant’s full name?' on the page
+    Then I fill 'agent-representative-name' with 'Applicant B Changed'
+    Then I select 'Continue'
+    Then I should be on the 'confirm' page showing 'Check your answers'
+    Then I should see 'The reason for the complaint' and 'An existing complaint' on the page
+    Then I should see 'Complaint details' and 'Details of a complaint' on the page
+    Then I should see 'Full name' and 'Relative or Friend D' on the page
+    Then I should see 'Relation to applicant' and 'I am a relative or friend' on the page
+    Then I should see 'Applicant’s full name' and 'Applicant B Changed' on the page
+    Then I should see 'Applicant’s country of nationality' and 'British Overseas Citizen' on the page
+    Then I should see 'Applicant’s date of birth' and '1981-01-01' on the page
+    Then I should see 'Email address' and 'test@test.com' on the page
+    Then I should see 'Phone number (optional)' and '02079462345' on the page
+    Then I select change link 'agent-representative-nationality-change'
+
+    # Change the Applicants Nationality
+    Then I should see 'What is the applicant’s country of nationality?' on the page
+    Then I fill 'agent-representative-nationality' with 'British Overseas Territory Citizen' option
+    Then I select 'Continue'
+    Then I should be on the 'confirm' page showing 'Check your answers'
+    Then I should see 'The reason for the complaint' and 'An existing complaint' on the page
+    Then I should see 'Complaint details' and 'Details of a complaint' on the page
+    Then I should see 'Full name' and 'Relative or Friend D' on the page
+    Then I should see 'Relation to applicant' and 'I am a relative or friend' on the page
+    Then I should see 'Applicant’s full name' and 'Applicant B Changed' on the page
+    Then I should see 'Applicant’s country of nationality' and 'British Overseas Territory Citizen' on the page
+    Then I should see 'Applicant’s date of birth' and '1981-01-01' on the page
+    Then I should see 'Email address' and 'test@test.com' on the page
+    Then I should see 'Phone number (optional)' and '02079462345' on the page
+
+    # Change the Applicants Date of Birth
+    Then I select change link 'agent-representative-dob-change'
+    Then I should see 'What is the applicant’s date of birth?' on the page
+    Then I fill 'agent-representative-dob-day' with '2'
+    Then I fill 'agent-representative-dob-month' with '2'
+    Then I fill 'agent-representative-dob-year' with '1982'
+    Then I select 'Continue'
+    Then I should be on the 'confirm' page showing 'Check your answers'
+    Then I should see 'The reason for the complaint' and 'An existing complaint' on the page
+    Then I should see 'Complaint details' and 'Details of a complaint' on the page
+    Then I should see 'Full name' and 'Relative or Friend D' on the page
+    Then I should see 'Relation to applicant' and 'I am a relative or friend' on the page
+    Then I should see 'Applicant’s full name' and 'Applicant B' on the page
+    Then I should see 'Applicant’s country of nationality' and 'British Overseas Territory Citizen' on the page
+    Then I should see 'Applicant’s date of birth' and '1982-02-02' on the page
+    Then I should see 'Email address' and 'test@test.com' on the page
+    Then I should see 'Phone number (optional)' and '02079462345' on the page
+
+

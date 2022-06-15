@@ -68,13 +68,13 @@ spec:
             - name: AWS_USER
               valueFrom:
                 secretKeyRef:
-                  name: aws
-                  key: user
+                  name: ses
+                  key: smtp_username
             - name: AWS_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: aws
-                  key: password
+                  name: ses
+                  key: smtp_password
             - name: SESSION_SECRET
               valueFrom:
                 secretKeyRef:

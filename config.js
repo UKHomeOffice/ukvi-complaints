@@ -9,8 +9,8 @@ module.exports = {
     password: process.env.REDIS_PASSWORD
   },
   email: {
-    from: process.env.FROM_ADDRESS || 'stub@stub.com',
-    replyTo: process.env.REPLY_TO || 'stub@stub.com',
+    from: 'emmanuel@ukvi-complaints.sas-notprod.homeoffice.gov.uk',
+    replyTo: 'emmanuel@ukvi-complaints.sas-notprod.homeoffice.gov.uk',
     transport: process.env.EMAIL_TRANSPORT || 'ses',
     caseworker: process.env.CASEWORKER_EMAIL || 'stub@stub.com',
     recipient: process.env.CASEWORKER_EMAIL || 'stub@stub.com',

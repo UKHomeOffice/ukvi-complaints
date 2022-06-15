@@ -12,7 +12,7 @@
   "rateLimits": {
     "requests": {
       "active": true,
-      "maxWindowRequestCount": 25
+      "maxWindowRequestCount": 50
     },
     "submissions": {
       "active": true

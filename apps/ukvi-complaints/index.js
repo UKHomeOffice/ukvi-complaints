@@ -405,10 +405,10 @@ module.exports = {
       }]
     },
     '/request-docs-service': {
-      next: '/complaint-details'
+      next: '/application-ref-numbers'
     },
     '/report-lost-docs-service': {
-      next: '/complaint-details'
+      next: '/application-ref-numbers'
     },
     '/immigration-decision': {
       next: '/decision-outcome',
@@ -463,13 +463,13 @@ module.exports = {
       }]
     },
     '/positive-outcome-inside': {
-      next: '/complaint-details'
+      next: '/application-ref-numbers'
     },
     '/positive-outcome-outside': {
-      next: '/complaint-details'
+      next: '/application-ref-numbers'
     },
     '/negative-outcome': {
-      next: '/complaint-details'
+      next: '/application-ref-numbers'
     },
     '/immigration-status-change': {
       next: '/questions-status-change',
@@ -489,7 +489,7 @@ module.exports = {
       }]
     },
     '/questions-status-change': {
-      next: '/complaint-details'
+      next: '/application-ref-numbers'
     },
     '/biometric-residence-permit': {
       next: '/card-not-arrived',
@@ -521,13 +521,13 @@ module.exports = {
       }]
     },
     '/card-not-arrived': {
-      next: '/complaint-details'
+      next: '/application-ref-numbers'
     },
     '/letter-not-arrived': {
-      next: '/complaint-details'
+      next: '/application-ref-numbers'
     },
     '/card-incorrect': {
-      next: '/complaint-details'
+      next: '/application-ref-numbers'
     },
     '/complain-brp': {
       next: '/complaint-details'

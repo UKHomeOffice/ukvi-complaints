@@ -1,678 +1,678 @@
 {
-	"reason": {
-		"label": "The reason for the complaint",
-		"legend": " ",
-		"options": {
-			"immigration-application": {
-				"label": "Submitting an application"
-			},
-			"immigration-appointment": {
-				"label": "Making an appointment"
-			},
-			"delays": {
-				"label": "Waiting for a decision or documents"
-			},
-			"immigration-decision": {
-				"label": "A negative or positive decision"
-			},
-			"immigration-status-change": {
-				"label": "Immigration status change"
-			},
-			"biometric-residence-permit": {
-				"label": "Biometric residence permits (BRPs)"
-			},
-			"refund": {
-				"label": "Refunds"
-			},
-			"staff-behaviour": {
-				"label": "Poor information or staff behaviour"
-			},
-			"existing-complaint": {
-				"label": "An existing complaint"
-			},
-			"other-complaint": {
-				"label": "Something else"
-			}
-		},
-		"validation": {
-			"required": "Select the reason for your complaint"
-		}
-	},
-	"immigration-application": {
-		"legend": " ",
-		"options": {
-			"technical-issues": {
-				"label": "Technical issues with the website or payments"
-			},
-			"guidance": {
-				"label": "Unclear or misleading guidance"
-			},
-			"complain": {
-				"label": "Something else"
-			}
-		},
-		"validation": {
-			"required": "Select the problem you had with the application process"
-		}
-	},
-	"where-applied-from": {
-		"legend": " ",
-		"options": {
-			"inside-uk": {
-				"label": "In the UK"
-			},
-			"outside-uk": {
-				"label": "Outside of the UK"
-			}
-		},
-		"validation": {
-			"required": "Select if your application was made inside or outside of the UK"
-		}
-	},
-	"immigration-appointment": {
-		"legend": " ",
-		"options": {
-			"lack-availability": {
-				"label": "Difficulty getting an appointment"
-			},
-			"change-appointment": {
-				"label": "Difficulty changing an appointment"
-			},
-			"technical-appointments": {
-				"label": "Technical issues with booking an appointment"
-			},
-			"questions-appointments": {
-				"label": "I have a question about my appointment"
-			},
-			"complain-appointments": {
-				"label": "Something else"
-			}
-		},
-		"validation": {
-			"required": "Select the problem you had with making an appointment"
-		}
-	},
-	"delay-type": {
-		"legend": " ",
-		"options": {
-			"application-delay": {
-				"label": "A decision on an application"
-			},
-			"return-of-documents": {
-				"label": "The return of some documents"
-			}
-		},
-		"validation": {
-			"required": "Select if you are waiting for a decision or the return of some documents"
-		}
-	},
-	"application-delay": {
-		"legend": " ",
-		"options": {
-			"request-upgrade": {
-				"label": "Request upgrade to Piority service to fast track your Visa application"
-			},
-			"application-ref-numbers": {
-				"label": "Complain that your visa application took longer than it should to be processed"
-			}
-		},
-		"validation": {
-			"required": "Please select an option"
-		}
-	},
-	"have-reference-numbers": {
-		"legend": " ",
-		"options": {
-			"yes": {
-				"label": "Yes"
-			},
-			"no": {
-				"label": "No"
-			}
-		},
-		"validation": {
-			"required": "Please select an option"
-		}
-	},
-	"reference-numbers": {
-		"hint": "Select one ",
-		"legend": "A reference number will help us look into your complaint more quickly.",
-		"options": {
-			"gwf": {
-				"label": "GWF number"
-			},
-			"ho": {
-				"label": "Home Office reference number"
-			},
-			"ihs": {
-				"label": "IHS reference number"
-			},
-			"uan": {
-				"label": "Unique Application Number"
-			},
-			"none": {
-				"label": "I don’t have any of these "
-			}
-		},
-		"validation": {
-			"required": "Select whether or not you have a reference number"
-		}
-	},
-	"gwf-reference": {
-		"label": "Enter GWF number",
-		"hint": "For example, GWF012345678.",
-		"validation": {
-			"required": "Enter the GWF number",
-			"notUrl": "Enter the GWF number"
-		}
-	},
-	"ho-reference": {
-		"label": "Enter Home Office reference number",
-		"hint": "For example, 012345678",
-		"validation": {
-			"required": "Enter the Home Office reference number",
-			"notUrl": "Enter the Home Office reference number"
-		}
-	},
-	"ihs-reference": {
-		"label": "Enter IHS number",
-		"hint": "For example, IHS123456789",
-		"validation": {
-			"required": "Enter the IHS number",
-			"notUrl": "Enter the IHS number"
-		}
-	},
-	"uan-reference": {
-		"label": "Enter Unique Application Number",
-		"hint": "For example, 1234-5678-9123-4567",
-		"validation": {
-			"required": "Enter the Unique Application Number",
-			"notUrl": "Enter the Unique Application Number"
-		}
-	},
-	"agent-representative-dob": {
-		"hint": "For example, 31 3 1980",
-		"summary": "Date of birth",
-		"label": "Applicant’s date of birth",
-		"validation": {
-			"required": "Enter the applicant's date of birth",
-			"date": "Enter the applicant's date of birth",
-    		"before": "The applicant must be over 18 years old to make a complaint",
-    		"after": "The applicant's date of birth is too far in the past"
-		}
-	},
-	"return-of-documents": {
-		"legend": " ",
-		"options": {
-			"yes-docs-service": {
-				"label": "Yes, using the online form"
-			},
-			"yes-other": {
-				"label": "Yes, by phone, email or another way"
-			},
-			"no": {
-				"label": "No"
-			}
-		},
-		"validation": {
-			"required": "Select if you have already asked for the documents back"
-		}
-	},
-	"requested-documents": {
-		"legend": " ",
-		"options": {
-			"yes": {
-				"label": "Yes"
-			},
-			"no": {
-				"label": "No"
-			}
-		},
-		"validation": {
-			"required": "Please select an option"
-		}
-	},
-	"have-requested": {
-		"legend": " ",
-		"options": {
-			"used-service": {
-				"label": "Used the return of documents online service"
-			},
-			"something-else": {
-				"label": "Used something else"
-			}
-		}
-	},
-	"immigration-decision": {
-		"legend": " ",
-		"options": {
-			"yes": {
-				"label": "Yes"
-			},
-			"no": {
-				"label": "No"
-			}
-		},
-		"validation": {
-			"required": "Please select an option"
-		}
-	},
-	"decision-outcome": {
-		"legend": " ",
-		"options": {
-			"positive": {
-				"label": "Positive"
-			},
-			"negative": {
-				"label": "Negative"
-			}
-		},
-		"validation": {
-			"required": "Select if the decision you received was negative or positive"
-		}
-	},
-	"immigration-status-change": {
-		"legend": " ",
-		"options": {
-			"questions-status-change": {
-				"label": "You have questions about your immigration status change"
-			},
-			"complain-status-change": {
-				"label": "You want to complain about your immigration status change"
-			}
-		},
-		"validation": {
-			"required": "Please select an option"
-		}
-	},
-	"biometric-residence-permit": {
-		"legend": " ",
-		"options": {
-			"card-not-arrived": {
-				"label": "It has not arrived"
-			},
-			"card-incorrect": {
-				"label": "It is incorrect"
-			},
-			"complain-brp": {
-				"label": "Something else"
-			}
-		},
-		"validation": {
-			"required": "Select the problem with your BRP card"
-		}
-	},
-	"refund-type": {
-		"legend": " ",
-		"options": {
-			"standard": {
-				"label": "Standard service fee"
-			},
-			"priority": {
-				"label": "Priority service fee"
-			},
-			"super-priority": {
-				"label": "Super priority service fee"
-			},
-			"premium": {
-				"label": "Added value service fee"
-			},
-			"ihs": {
-				"label": "Immigration Health Surcharge (IHS) fee"
-			},
-			"eu-settlement": {
-				"label": "EU Settlement Scheme fee"
-			}
-		},
-		"validation": {
-			"required": "Select the fee you want to be refunded"
-		}
-	},
-	"refund-type-automatic": {
-		"legend": " ",
-		"options": {
-			"ihs": {
-				"label": "Immigration Health Surcharge (IHS) fee"
-			},
-			"eu-settlement": {
-				"label": "EU Settlement Scheme fee"
-			}
-		},
-		"validation": {
-			"required": "Select the fee you are waiting to be refunded"
-		}
-	},
-	"refund": {
-		"legend": " ",
-		"options": {
-			"yes": {
-				"label": "Yes"
-			},
-			"no": {
-				"label": "Not yet"
-			},
-			"not-yet": {
-				"label": "No, I was told the refund would be automatic"
-			}
-		},
-		"validation": {
-			"required": "Select if you have already requested a refund"
-		}
-	},
-	"refund-when": {
-		"legend": " ",
-		"options": {
-			"less-than": {
-				"label": "Less than 6 weeks ago"
-			},
-			"more-than": {
-				"label": "More than 6 weeks ago"
-			}
-		},
-		"validation": {
-			"required": "Select the length of time you've been waiting for a refund"
-		}
-	},
-	"poor-info-or-behaviour": {
-		"legend": " ",
-		"options": {
-			"poor-information": {
-				"label": "Unclear or misleading information"
-			},
-			"staff-behaviour": {
-				"label": "Poor staff behaviour"
-			}
-		},
-		"validation": {
-			"required": "Select if the problem was with poor staff behaviour or information"
-		}
-	},
-	"staff-behaviour": {
-		"legend": " ",
-		"options": {
-			"face-to-face": {
-				"label": "In person"
-			},
-			"on-phone": {
-				"label": "On the phone"
-			},
-			"in-letter": {
-				"label": "In a letter or email"
-			}
-		},
-		"validation": {
-			"required": "Select where you experienced poor behaviour"
-		}
-	},
-	"which-centre": {
-		"legend": " ",
-		"options": {
-			"vac": {
-				"label": "Outside the UK, at a visa application centre"
-			},
-			"ssc": {
-				"label": "In the UK, at a service support centre"
-			},
-			"ukvcas": {
-				"label": "In the UK, at a visa and citizenship application service point"
-			}
-		},
-		"validation": {
-			"required": "Select where the incident took place"
-		}
-	},
-	"vac-country": {
+  "reason": {
+    "label": "The reason for the complaint",
+    "legend": " ",
+    "options": {
+      "immigration-application": {
+        "label": "Submitting an application"
+      },
+      "immigration-appointment": {
+        "label": "Making an appointment"
+      },
+      "delays": {
+        "label": "Waiting for a decision or documents"
+      },
+      "immigration-decision": {
+        "label": "A negative or positive decision"
+      },
+      "immigration-status-change": {
+        "label": "Immigration status change"
+      },
+      "biometric-residence-permit": {
+        "label": "Biometric residence permits (BRPs)"
+      },
+      "refund": {
+        "label": "Refunds"
+      },
+      "staff-behaviour": {
+        "label": "Staff behaviour"
+      },
+      "existing-complaint": {
+        "label": "An existing complaint"
+      },
+      "other-complaint": {
+        "label": "Something else"
+      }
+    },
+    "validation": {
+      "required": "Select the reason for your complaint"
+    }
+  },
+  "immigration-application": {
+    "legend": " ",
+    "options": {
+      "technical-issues": {
+        "label": "Technical issues with the website or payments"
+      },
+      "guidance": {
+        "label": "Unclear or misleading guidance"
+      },
+      "complain": {
+        "label": "Something else"
+      }
+    },
+    "validation": {
+      "required": "Select the problem you had with the application process"
+    }
+  },
+  "where-applied-from": {
+    "legend": " ",
+    "options": {
+      "inside-uk": {
+        "label": "In the UK"
+      },
+      "outside-uk": {
+        "label": "Outside of the UK"
+      }
+    },
+    "validation": {
+      "required": "Select if your application was made inside or outside of the UK"
+    }
+  },
+  "immigration-appointment": {
+    "legend": " ",
+    "options": {
+      "lack-availability": {
+        "label": "Difficulty getting an appointment"
+      },
+      "change-appointment": {
+        "label": "Difficulty changing an appointment"
+      },
+      "technical-appointments": {
+        "label": "Technical issues with booking an appointment"
+      },
+      "questions-appointments": {
+        "label": "I have a question about my appointment"
+      },
+      "complain-appointments": {
+        "label": "Something else"
+      }
+    },
+    "validation": {
+      "required": "Select the problem you had with making an appointment"
+    }
+  },
+  "delay-type": {
+    "legend": " ",
+    "options": {
+      "application-delay": {
+        "label": "A decision on an application"
+      },
+      "return-of-documents": {
+        "label": "The return of some documents"
+      }
+    },
+    "validation": {
+      "required": "Select if you are waiting for a decision or the return of some documents"
+    }
+  },
+  "application-delay": {
+    "legend": " ",
+    "options": {
+      "request-upgrade": {
+        "label": "Request upgrade to Piority service to fast track your Visa application"
+      },
+      "application-ref-numbers": {
+        "label": "Complain that your visa application took longer than it should to be processed"
+      }
+    },
+    "validation": {
+      "required": "Please select an option"
+    }
+  },
+  "have-reference-numbers": {
+    "legend": " ",
+    "options": {
+      "yes": {
+        "label": "Yes"
+      },
+      "no": {
+        "label": "No"
+      }
+    },
+    "validation": {
+      "required": "Please select an option"
+    }
+  },
+  "reference-numbers": {
+    "hint": "Select one ",
+    "legend": "If you do not provide the correct reference number, this could delay us in responding to your complaint.",
+    "options": {
+      "gwf": {
+        "label": "GWF number"
+      },
+      "ho": {
+        "label": "Home Office reference number"
+      },
+      "ihs": {
+        "label": "IHS reference number"
+      },
+      "uan": {
+        "label": "Unique Application Number"
+      },
+      "none": {
+        "label": "I don’t have any of these "
+      }
+    },
+    "validation": {
+      "required": "Select whether or not you have a reference number"
+    }
+  },
+  "gwf-reference": {
+    "label": "Enter GWF number",
+    "hint": "For example, GWF012345678.",
+    "validation": {
+      "required": "Enter the GWF number",
+      "notUrl": "Enter the GWF number"
+    }
+  },
+  "ho-reference": {
+    "label": "Enter Home Office reference number",
+    "hint": "For example, 012345678",
+    "validation": {
+      "required": "Enter the Home Office reference number",
+      "notUrl": "Enter the Home Office reference number"
+    }
+  },
+  "ihs-reference": {
+    "label": "Enter IHS number",
+    "hint": "For example, IHS123456789",
+    "validation": {
+      "required": "Enter the IHS number",
+      "notUrl": "Enter the IHS number"
+    }
+  },
+  "uan-reference": {
+    "label": "Enter Unique Application Number",
+    "hint": "For example, 1234-5678-9123-4567",
+    "validation": {
+      "required": "Enter the Unique Application Number",
+      "notUrl": "Enter the Unique Application Number"
+    }
+  },
+  "agent-representative-dob": {
+    "hint": "For example, 31 3 1980",
+    "summary": "Date of birth",
+    "label": "Applicant’s date of birth",
+    "validation": {
+      "required": "Enter the applicant's date of birth",
+      "date": "Enter the applicant's date of birth",
+      "before": "The applicant must be over 18 years old to make a complaint",
+      "after": "The applicant's date of birth is too far in the past"
+    }
+  },
+  "return-of-documents": {
+    "legend": " ",
+    "options": {
+      "yes-docs-service": {
+        "label": "Yes, using the online form"
+      },
+      "yes-other": {
+        "label": "Yes, by phone, email or another way"
+      },
+      "no": {
+        "label": "No"
+      }
+    },
+    "validation": {
+      "required": "Select if you have already asked for the documents back"
+    }
+  },
+  "requested-documents": {
+    "legend": " ",
+    "options": {
+      "yes": {
+        "label": "Yes"
+      },
+      "no": {
+        "label": "No"
+      }
+    },
+    "validation": {
+      "required": "Please select an option"
+    }
+  },
+  "have-requested": {
+    "legend": " ",
+    "options": {
+      "used-service": {
+        "label": "Used the return of documents online service"
+      },
+      "something-else": {
+        "label": "Used something else"
+      }
+    }
+  },
+  "immigration-decision": {
+    "legend": " ",
+    "options": {
+      "yes": {
+        "label": "Yes"
+      },
+      "no": {
+        "label": "No"
+      }
+    },
+    "validation": {
+      "required": "Please select an option"
+    }
+  },
+  "decision-outcome": {
+    "legend": " ",
+    "options": {
+      "positive": {
+        "label": "Positive"
+      },
+      "negative": {
+        "label": "Negative"
+      }
+    },
+    "validation": {
+      "required": "Select if the decision you received was negative or positive"
+    }
+  },
+  "immigration-status-change": {
+    "legend": " ",
+    "options": {
+      "questions-status-change": {
+        "label": "You have questions about your immigration status change"
+      },
+      "complain-status-change": {
+        "label": "You want to complain about your immigration status change"
+      }
+    },
+    "validation": {
+      "required": "Please select an option"
+    }
+  },
+  "biometric-residence-permit": {
+    "legend": " ",
+    "options": {
+      "card-not-arrived": {
+        "label": "It has not arrived"
+      },
+      "card-incorrect": {
+        "label": "It is incorrect"
+      },
+      "complain-brp": {
+        "label": "Something else"
+      }
+    },
+    "validation": {
+      "required": "Select the problem with your BRP card"
+    }
+  },
+  "refund-type": {
+    "legend": " ",
+    "options": {
+      "standard": {
+        "label": "Standard service fee"
+      },
+      "priority": {
+        "label": "Priority service fee"
+      },
+      "super-priority": {
+        "label": "Super priority service fee"
+      },
+      "premium": {
+        "label": "Added value service fee"
+      },
+      "ihs": {
+        "label": "Immigration Health Surcharge (IHS) fee"
+      },
+      "eu-settlement": {
+        "label": "EU Settlement Scheme fee"
+      }
+    },
+    "validation": {
+      "required": "Select the fee you want to be refunded"
+    }
+  },
+  "refund-type-automatic": {
+    "legend": " ",
+    "options": {
+      "ihs": {
+        "label": "Immigration Health Surcharge (IHS) fee"
+      },
+      "eu-settlement": {
+        "label": "EU Settlement Scheme fee"
+      }
+    },
+    "validation": {
+      "required": "Select the fee you are waiting to be refunded"
+    }
+  },
+  "refund": {
+    "legend": " ",
+    "options": {
+      "yes": {
+        "label": "Yes"
+      },
+      "no": {
+        "label": "Not yet"
+      },
+      "not-yet": {
+        "label": "No"
+      }
+    },
+    "validation": {
+      "required": "Select if you have already requested a refund"
+    }
+  },
+  "refund-when": {
+    "legend": " ",
+    "options": {
+      "less-than": {
+        "label": "Less than 6 weeks ago"
+      },
+      "more-than": {
+        "label": "More than 6 weeks ago"
+      }
+    },
+    "validation": {
+      "required": "Select the length of time you've been waiting for a refund"
+    }
+  },
+  "poor-info-or-behaviour": {
+    "legend": " ",
+    "options": {
+      "poor-information": {
+        "label": "Unclear or misleading information"
+      },
+      "staff-behaviour": {
+        "label": "Poor staff behaviour"
+      }
+    },
+    "validation": {
+      "required": "Select if the problem was with poor staff behaviour or information"
+    }
+  },
+  "staff-behaviour": {
+    "legend": " ",
+    "options": {
+      "face-to-face": {
+        "label": "In person"
+      },
+      "on-phone": {
+        "label": "On the phone"
+      },
+      "in-letter": {
+        "label": "In a letter or email"
+      }
+    },
+    "validation": {
+      "required": "Select where you experienced poor behaviour"
+    }
+  },
+  "which-centre": {
+    "legend": " ",
+    "options": {
+      "vac": {
+        "label": "Outside the UK, at a visa application centre"
+      },
+      "ssc": {
+        "label": "In the UK, at a service support centre"
+      },
+      "ukvcas": {
+        "label": "In the UK, at a visa and citizenship application service point"
+      }
+    },
+    "validation": {
+      "required": "Select where the incident took place"
+    }
+  },
+  "vac-country": {
     "label": "Country",
     "validation": {
       "required": "Enter the country the visa application centre is in"
     }
-	},
+  },
   "vac-city": {
     "label": "City",
     "validation": {
       "required": "Enter the city the visa application centre is in",
-			"notUrl": "Enter the city the visa application centre is in"
+      "notUrl": "Enter the city the visa application centre is in"
     }
   },
   "ssc-city": {
     "label": "City",
     "validation": {
       "required": "Enter the city the service support centre is in",
-			"notUrl": "Enter the city the service support centre is in"
+      "notUrl": "Enter the city the service support centre is in"
     }
   },
   "ukvcas-city": {
     "label": "City",
     "validation": {
       "required": "Enter the city the service point is in",
-			"notUrl": "Enter the city the service point is in"
+      "notUrl": "Enter the city the service point is in"
     }
   },
-	"called-number": {
-		"label": "Telephone number",
-		"hint": "For international numbers include the country code",
-		"validation": {
-			"required": "Enter a valid telephone number",
+  "called-number": {
+    "label": "Telephone number",
+    "hint": "For international numbers include the country code",
+    "validation": {
+      "required": "Enter a valid telephone number",
       "notUrl": "Enter a valid telephone number"
     }
-	},
-	"called-date": {
-		"label": "Date of the call",
-		"hint": "For example, 30 April or early June",
-		"validation": {
-			"required": "Enter the date of the call",
-			"notUrl": "Enter the date of the call"
-		}
-	},
-	"called-time": {
-		"label": "Time of the call",
-		"hint": "For example, 10:30am or morning",
-		"validation": {
-			"required": "Enter the time of the call",
-			"notUrl": "Enter the time of the call"
-		}
-	},
-	"called-from": {
-		"label": "Telephone number",
-		"hint": "For international numbers include the country code",
-		"validation": {
-			"required": "Enter a valid telephone number",
+  },
+  "called-date": {
+    "label": "Date of the call",
+    "hint": "For example, 30 April or early June",
+    "validation": {
+      "required": "Enter the date of the call",
+      "notUrl": "Enter the date of the call"
+    }
+  },
+  "called-time": {
+    "label": "Time of the call",
+    "hint": "For example, 10:30am or morning",
+    "validation": {
+      "required": "Enter the time of the call",
+      "notUrl": "Enter the time of the call"
+    }
+  },
+  "called-from": {
+    "label": "Telephone number",
+    "hint": "For international numbers include the country code",
+    "validation": {
+      "required": "Enter a valid telephone number",
       "notUrl": "Enter a valid telephone number"
     }
-	},
-	"existing-complaint": {
-		"options": {
-			"yes": {
-				"label": "Yes"
-			},
-			"no": {
-				"label": "No"
-			}
-		},
-		"validation": {
-			"required": "Select if you have a reference number for the existing complaint"
-		}
-	},
-	"complaint-reason-previous": {
-		"legend": " ",
-		"options": {
-			"immigration-application": {
-				"label": "Submitting an application"
-			},
-			"immigration-appointment": {
-				"label": "Making an appointment"
-			},
-			"delays": {
-				"label": "Waiting for a decision or documents"
-			},
-			"immigration-decision": {
-				"label": "A negative or positive decision"
-			},
-			"immigration-status-change": {
-				"label": "Immigration status change"
-			},
-			"biometric-residence-permit": {
-				"label": "Biometric residence permits (BRPs)"
-			},
-			"refund": {
-				"label": "Refunds"
-			},
-			"staff-behaviour": {
-				"label": "Poor information or staff behaviour"
-			},
-			"existing-complaint": {
-				"label": "An existing complaint"
-			},
-			"other-complaint": {
-				"label": "Something else"
-			}
-		}
-	},
-	"complaint-reference-number": {
-		"label": " ",
-		"validation": {
-			"notUrl": "Enter the reference number for your complaint "
-		}
-	},
-	"when-applied": {
-		"label": " ",
-		"hint": "If you can't remember the exact date, just provide the month.",
-		"validation": {
-			"notUrl": "Enter when you submitted you application "
-		}
-	},
-	"complaint-details": {
-		"label": "Complaint details",
-		"validation": {
-			"required": "Enter more details about why you are making a complaint"
-		}
-	},
-	"other-complaint": {
-		"legend": " ",
-		"options": {
-			"xxy": {
-				"label": "xxy"
-			},
-			"xxx": {
-				"label": "xxx"
-			}
-		}
-	},
-	"acting-as-agent": {
-		"label": "Are you completing this form on behalf of the applicant?",
-		"options": {
-			"yes": {
-				"label": "Yes"
-			},
-			"no": {
-				"label": "No"
-			}
-		},
-		"validation": {
-			"required": "Select if you are completing this form on behalf of an applicant"
-		}
-	},
-	"who-representing": {
-		"label": "What is your relation to the applicant?",
-		"legend": " ",
-		"options": {
-			"legal-rep": {
-				"label": "I am a legal representative"
-			},
-			"relative": {
-				"label": "I am a relative or friend"
-			},
-			"sponsor": {
-				"label": "I am a sponsor"
-			},
-			"support-org": {
-				"label": "I provide expert support or technical assistance"
-			}
-		},
-		"validation": {
-			"required": "Select your relation to the applicant"
-		}
-	},
-	"agent-name": {
-		"legend": "",
-		"label": "Full name",
-		"validation": {
-			"required": "Enter your full name",
-			"notUrl": "Enter your full name"
-		}
-	},
-	"agent-email": {
-		"legend": "",
-		"label": "Email address",
-		"validation": {
-			"required": "Enter an email address",
-			"email": "Enter a valid email address"
-		}
-	},
-	"agent-phone": {
-		"legend": "",
-		"label": "Phone number (optional)",
-		"hint": "We may call if we need more information ",
-		"validation": {
-			"notUrl": "Enter a valid phone number"
-		}
-	},
-	"agent-representative-name": {
-		"legend": "",
-		"label": "Applicant’s full name",
-		"validation": {
-			"required": "Enter the applicant's full name",
-			"notUrl": "Enter the applicant's full name"
-		}
-	},
-	"agent-representative-nationality": {
-		"legend": "",
-		"label": "Applicant’s country of nationality",
-		"validation": {
-			"required": "Select the applicant's country of nationality",
-			"equal": "You must choose a country from the list"
-		}
-	},
-	"applicant-name": {
-		"legend": "",
-		"label": "Full name",
-		"validation": {
-			"required": "Enter your full name", 
-			"notUrl":"Enter your full name"
-		}
-	},
-	"applicant-dob": {
-		"label": "Date of birth",
-		"hint": "For example, 31 3 1980",
-		"validation": {
-			"required": "Enter a date of birth",
-			"date": "Enter a valid date of birth",
-    		"before": "You must be over 18 years old to make a complaint",
-    		"after": "Your date of birth is too far in the past"
-		}
-	},
-	"applicant-nationality": {
-		"legend": "",
-		"label": "Country of nationality",
-		"validation": {
-			"required": "You must choose a country from the list",
-			"equal": "You must choose a country from the list"
-		}
-	},
-	"applicant-email": {
-		"legend": "",
-		"label": "Email address",
-		"hint": "We will use this to send our response",
-		"validation": {
-			"required": "Enter an email address",
-			"email": "Enter a valid email address"
-		}
-	},
-	"applicant-phone": {
-		"legend": "",
-		"label": "Phone number (optional)",
-		"validation": {
-			"notUrl": "Enter a valid phone number"
-		}
-	}
+  },
+  "existing-complaint": {
+    "options": {
+      "yes": {
+        "label": "Yes"
+      },
+      "no": {
+        "label": "No"
+      }
+    },
+    "validation": {
+      "required": "Select if you have a reference number for the existing complaint"
+    }
+  },
+  "complaint-reason-previous": {
+    "legend": " ",
+    "options": {
+      "immigration-application": {
+        "label": "Submitting an application"
+      },
+      "immigration-appointment": {
+        "label": "Making an appointment"
+      },
+      "delays": {
+        "label": "Waiting for a decision or documents"
+      },
+      "immigration-decision": {
+        "label": "A negative or positive decision"
+      },
+      "immigration-status-change": {
+        "label": "Immigration status change"
+      },
+      "biometric-residence-permit": {
+        "label": "Biometric residence permits (BRPs)"
+      },
+      "refund": {
+        "label": "Refunds"
+      },
+      "staff-behaviour": {
+        "label": "Staff behaviour"
+      },
+      "existing-complaint": {
+        "label": "An existing complaint"
+      },
+      "other-complaint": {
+        "label": "Something else"
+      }
+    }
+  },
+  "complaint-reference-number": {
+    "label": " ",
+    "validation": {
+      "notUrl": "Enter the reference number for your complaint "
+    }
+  },
+  "when-applied": {
+    "label": " ",
+    "hint": "If you can't remember the exact date, just provide the month.",
+    "validation": {
+      "notUrl": "Enter when you submitted you application "
+    }
+  },
+  "complaint-details": {
+    "label": "Complaint details",
+    "validation": {
+      "required": "Enter more details about why you are making a complaint"
+    }
+  },
+  "other-complaint": {
+    "legend": " ",
+    "options": {
+      "xxy": {
+        "label": "xxy"
+      },
+      "xxx": {
+        "label": "xxx"
+      }
+    }
+  },
+  "acting-as-agent": {
+    "label": "Are you completing this form on behalf of the applicant?",
+    "options": {
+      "yes": {
+        "label": "Yes"
+      },
+      "no": {
+        "label": "No"
+      }
+    },
+    "validation": {
+      "required": "Select if you are completing this form on behalf of an applicant"
+    }
+  },
+  "who-representing": {
+    "label": "What is your relation to the applicant?",
+    "legend": " ",
+    "options": {
+      "legal-rep": {
+        "label": "I am a legal representative"
+      },
+      "relative": {
+        "label": "I am a relative or friend"
+      },
+      "sponsor": {
+        "label": "I am a sponsor"
+      },
+      "support-org": {
+        "label": "I provide expert support or technical assistance"
+      }
+    },
+    "validation": {
+      "required": "Select your relation to the applicant"
+    }
+  },
+  "agent-name": {
+    "legend": "",
+    "label": "Full name",
+    "validation": {
+      "required": "Enter your full name",
+      "notUrl": "Enter your full name"
+    }
+  },
+  "agent-email": {
+    "legend": "",
+    "label": "Email address",
+    "validation": {
+      "required": "Enter an email address",
+      "email": "Enter a valid email address"
+    }
+  },
+  "agent-phone": {
+    "legend": "",
+    "label": "Phone number (optional)",
+    "hint": "We may call if we need more information ",
+    "validation": {
+      "notUrl": "Enter a valid phone number"
+    }
+  },
+  "agent-representative-name": {
+    "legend": "",
+    "label": "Applicant’s full name",
+    "validation": {
+      "required": "Enter the applicant's full name",
+      "notUrl": "Enter the applicant's full name"
+    }
+  },
+  "agent-representative-nationality": {
+    "legend": "",
+    "label": "Applicant’s country of nationality",
+    "validation": {
+      "required": "Select the applicant's country of nationality",
+      "equal": "You must choose a country from the list"
+    }
+  },
+  "applicant-name": {
+    "legend": "",
+    "label": "Full name",
+    "validation": {
+      "required": "Enter your full name",
+      "notUrl":"Enter your full name"
+    }
+  },
+  "applicant-dob": {
+    "label": "Date of birth",
+    "hint": "For example, 31 3 1980",
+    "validation": {
+      "required": "Enter a date of birth",
+      "date": "Enter a valid date of birth",
+      "before": "You must be over 18 years old to make a complaint",
+      "after": "Your date of birth is too far in the past"
+    }
+  },
+  "applicant-nationality": {
+    "legend": "",
+    "label": "Country of nationality",
+    "validation": {
+      "required": "You must choose a country from the list",
+      "equal": "You must choose a country from the list"
+    }
+  },
+  "applicant-email": {
+    "legend": "",
+    "label": "Email address",
+    "hint": "We will use this to send our response",
+    "validation": {
+      "required": "Enter an email address",
+      "email": "Enter a valid email address"
+    }
+  },
+  "applicant-phone": {
+    "legend": "",
+    "label": "Phone number (optional)",
+    "validation": {
+      "notUrl": "Enter a valid phone number"
+    }
+  }
 }

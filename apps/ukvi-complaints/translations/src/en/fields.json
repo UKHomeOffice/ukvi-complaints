@@ -373,20 +373,6 @@
       "required": "Select the length of time you've been waiting for a refund"
     }
   },
-  "poor-info-or-behaviour": {
-    "legend": " ",
-    "options": {
-      "poor-information": {
-        "label": "Unclear or misleading information"
-      },
-      "staff-behaviour": {
-        "label": "Poor staff behaviour"
-      }
-    },
-    "validation": {
-      "required": "Select if the problem was with poor staff behaviour or information"
-    }
-  },
   "staff-behaviour": {
     "legend": " ",
     "options": {

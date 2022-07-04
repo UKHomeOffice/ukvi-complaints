@@ -58,7 +58,7 @@ module.exports = {
           value: 'refund'
         }
       }, {
-        target: '/poor-info-or-behaviour',
+        target: '/staff-behaviour',
         condition: {
           field: 'reason',
           value: 'staff-behaviour'
@@ -688,22 +688,6 @@ module.exports = {
     '/refund-less-than': {},
     '/refund-more-than': {},
     '/refund-request': {},
-    '/poor-info-or-behaviour': {
-      fields: ['poor-info-or-behaviour'],
-      forks: [{
-        target: '/application-ref-numbers',
-        condition: {
-          field: 'poor-info-or-behaviour',
-          value: 'poor-information'
-        }
-      }, {
-        target: '/staff-behaviour',
-        condition: {
-          field: 'poor-info-or-behaviour',
-          value: 'staff-behaviour'
-        }
-      }]
-    },
     '/staff-behaviour': {
       fields: ['staff-behaviour'],
       forks: [{

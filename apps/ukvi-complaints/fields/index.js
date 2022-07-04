@@ -276,19 +276,6 @@ module.exports = {
       'more-than'
     ]
   },
-
-  'poor-info-or-behaviour': {
-    mixin: 'radio-group',
-    validate: 'required',
-    legend: {
-      className: 'visuallyhidden'
-    },
-    className: ['form-group'],
-    options: [
-      'poor-information',
-      'staff-behaviour'
-    ]
-  },
   'staff-behaviour': {
     mixin: 'radio-group',
     validate: 'required',

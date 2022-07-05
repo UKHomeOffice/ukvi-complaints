@@ -218,19 +218,6 @@ module.exports = config => {
     console.warn('WARNING: Email `from` address must be provided. Falling back to stub email transport.');
   }
 
-  /* Emailer = function(){
-        this.emailer = nodemailer.createTransport({
-        host: 'email-smtp.eu-west-1.amazonaws.com',
-        port: 587,
-        secure: false, // true for 465, false for other ports
-        auth: {
-          user: 'AKIAWRJU7WETAEQVVQW3', // generated ses user
-          pass: 'BFFTgZTZhYPVSQKkabovMekP8GHhUneb2nkPmylBtuda', // generated ses password
-        },
-      });
-      }
-   */
-
   return Emailer(Object.assign({}, config, {
     transport: config.from ? config.transport : 'stub',
     recipient: model => model['applicant-email'] || model['agent-email'] || 'noop@localhost',

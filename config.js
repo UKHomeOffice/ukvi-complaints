@@ -20,9 +20,9 @@ module.exports = {
       host: process.env.EMAIL_HOST || 'email-smtp.eu-west-1.amazonaws.com',
       port: process.env.EMAIL_PORT || 465,
       auth: {
-        user: process.env.HOF_SES_USER || process.env.AWS_USER ,
+        user: process.env.HOF_SES_USER || process.env.AWS_USER,
         pass: process.env.HOF_SES_PASSWORD || process.env.AWS_PASSWORD
-      },
+      }
     },
     emailCaseworker: true
   },

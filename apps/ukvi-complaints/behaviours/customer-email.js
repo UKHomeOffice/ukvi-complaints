@@ -38,10 +38,6 @@ const getDataRows = (model, translate) => {
           label: translate('pages.confirm.fields.biometric-residence-permit.label'),
           value: translate(`fields.biometric-residence-permit.options[${model['biometric-residence-permit']}].label`)
         },
-        model['poor-info-or-behaviour'] && {
-          label: translate('pages.confirm.fields.poor-info-or-behaviour.label'),
-          value: translate(`fields.poor-info-or-behaviour.options[${model['poor-info-or-behaviour']}].label`)
-        },
         model['staff-behaviour'] && {
           label: translate('pages.confirm.fields.staff-behaviour.label'),
           value: translate(`fields.staff-behaviour.options[${model['staff-behaviour']}].label`)

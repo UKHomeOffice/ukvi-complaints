@@ -3,25 +3,26 @@ kind: pipeline
 name: default
 type: kubernetes
 
-environment:
-  APP_NAME: ukvi-complaints
-  PROD_ENV: ukvi-complaints
-  STG_ENV: ukvi-complaints-stg
-  UAT_ENV: ukvi-complaints-uat
-  BRANCH_ENV: ukvi-complaints-branch
-  PRODUCTION_URL: www.ukvi-complaints.homeoffice.gov.uk
-  IMAGE_URL: quay.io/ukhomeofficedigital
-  IMAGE_REPO: ukvi-complaints
-  GIT_REPO: UKHomeOffice/ukvi-complaints
-  HOF_CONFIG: hof-services-config/UKVI_Complaints
-  NON_PROD_AVAILABILITY: Mon-Fri 08:00-23:00 Europe/London
-  READY_FOR_TEST_DELAY: 20s
-  NOTIFY_STUB: stub
+steps:
+- name: build
+  pull: if-not-exists
+  image: node:14
+  commands:
+  - npm --loglevel warn install
+  - npm run test
+  when:
+    branch: [ master, feature/* ]
+    event: push
 
-trigger:
-  branch:
-    - feature/*
-    - main
+- name: build_ukvi-complaints
+  pull: if-not-exists
+  image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/dind
+  commands:
+  - n=0; while [ "$n" -lt 60 ] && [ ! docker stats --no-stream ]; do n=$(( n + 1 )); sleep 1; done
+  - docker build -t app-$${DRONE_COMMIT_SHA} .
+  when:
+    branch: [ master, feature/* ]
+    event: push
 
 linting: &linting
   pull: if-not-exists
@@ -31,11 +32,41 @@ linting: &linting
   commands:
     - yarn run test:lint
 
-unit_tests: &unit_tests
+- name: clone_repo_build
+  pull: if-not-exists
+  image: docker:git
+  environment:
+    DRONE_GIT_USERNAME:
+      from_secret: DRONE_GIT_USERNAME
+    DRONE_GIT_TOKEN:
+      from_secret: DRONE_GIT_TOKEN
+  commands:
+    - git clone https://$${DRONE_GIT_USERNAME}:$${DRONE_GIT_TOKEN}@github.com/UKHomeOffice/kube-ukvi-complaints.git
+    - cd kube-ukvi-complaints
+    - if ! [ $(git tag -l dev-${DRONE_COMMIT_SHA}) ]; then git tag dev-${DRONE_COMMIT_SHA} && git push origin --tags; fi
+  when:
+    branch: master
+    event: push
+
+- name: clone_repo_promote
   pull: if-not-exists
   image: node:14
   environment:
-    NOTIFY_KEY: USE_MOCK
+    DRONE_GIT_USERNAME:
+      from_secret: DRONE_GIT_USERNAME
+    DRONE_GIT_TOKEN:
+      from_secret: DRONE_GIT_TOKEN
+  commands:
+    - git clone https://$${DRONE_GIT_USERNAME}:$${DRONE_GIT_TOKEN}@github.com/UKHomeOffice/kube-ukvi-complaints.git
+    - cd kube-ukvi-complaints
+    - if ! [ $(git tag -l ${DRONE_DEPLOY_TO}-${DRONE_COMMIT_SHA}) ]; then git tag ${DRONE_DEPLOY_TO}-${DRONE_COMMIT_SHA} && git push origin --tags; fi
+  when:
+    event: promote
+    target: [ preprod, prod ]
+
+- name: deploy_to_dev
+  pull: if-not-exists
+  image: quay.io/ukhomeofficedigital/kd:v1.14.0
   commands:
     - yarn run test:unit
 

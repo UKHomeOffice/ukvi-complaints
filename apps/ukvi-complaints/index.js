@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 'use strict';
 
 const config = require('../../config');
@@ -5,7 +6,6 @@ const conditionalContent = require('./behaviours/conditional-content');
 const customerEmailer = require('./behaviours/customer-email')(config.email);
 const caseworkerEmailer = require('./behaviours/caseworker-email')(config.email);
 const sendToSQS = require('./behaviours/send-to-sqs');
-const ResetOnChange = require('./behaviours/reset-on-change');
 
 module.exports = {
   name: 'ukvi-complaints',
@@ -685,9 +685,37 @@ module.exports = {
         }
       }]
     },
+<<<<<<< HEAD
     '/refund-less-than': {},
     '/refund-more-than': {},
     '/refund-request': {},
+=======
+    '/refund-less-than': {
+
+    },
+    '/refund-more-than': {
+
+    },
+    '/refund-request': {
+
+    },
+    '/poor-info-or-behaviour': {
+      fields: ['poor-info-or-behaviour'],
+      forks: [{
+        target: '/application-ref-numbers',
+        condition: {
+          field: 'poor-info-or-behaviour',
+          value: 'poor-information'
+        }
+      }, {
+        target: '/staff-behaviour',
+        condition: {
+          field: 'poor-info-or-behaviour',
+          value: 'staff-behaviour'
+        }
+      }]
+    },
+>>>>>>> 1bc76527f0f3a2d13da407ca959cd02d2a34f55b
     '/staff-behaviour': {
       fields: ['staff-behaviour'],
       forks: [{
@@ -851,7 +879,11 @@ module.exports = {
       next: '/confirm'
     },
     '/confirm': {
+<<<<<<< HEAD
       behaviours: [sendToSQS, caseworkerEmailer, customerEmailer, 'complete', require('hof').components.summary],
+=======
+      behaviours: [sendToSQS, caseworkerEmailer, customerEmailer, 'complete', require('hof-behaviour-summary-page')],
+>>>>>>> 1bc76527f0f3a2d13da407ca959cd02d2a34f55b
       next: '/complete',
       sections: {
         'complaint-details': [

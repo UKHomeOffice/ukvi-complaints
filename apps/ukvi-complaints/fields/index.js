@@ -306,14 +306,24 @@ module.exports = {
 
   'vac-country': {
     mixin: 'select',
+<<<<<<< HEAD
     options: [{ label: ' ', value: '' }].concat(require('hof').utils.countries()),
     validate: ['required', { type: 'maxlength', arguments: 100 }],
     className: ['typeahead']
+=======
+    options: [{ label: ' ', value: '' }].concat(require('hof-util-countries')()),
+    validate: ['required', { type: 'maxlength', arguments: 100 }],
+    className: ['typeahead', 'js-hidden']
+>>>>>>> 1bc76527f0f3a2d13da407ca959cd02d2a34f55b
   },
 
   'vac-city': {
     mixin: 'input-text',
+<<<<<<< HEAD
     validate: ['required', 'notUrl', { type: 'maxlength', arguments: 100 }],
+=======
+    validate: ['required', { type: 'maxlength', arguments: 100 }],
+>>>>>>> 1bc76527f0f3a2d13da407ca959cd02d2a34f55b
     legend: {
       className: 'visuallyhidden'
     }
@@ -321,7 +331,11 @@ module.exports = {
 
   'ssc-city': {
     mixin: 'input-text',
+<<<<<<< HEAD
     validate: ['required', 'notUrl', { type: 'maxlength', arguments: 100 }],
+=======
+    validate: ['required', { type: 'maxlength', arguments: 100 }],
+>>>>>>> 1bc76527f0f3a2d13da407ca959cd02d2a34f55b
     legend: {
       className: 'visuallyhidden'
     },
@@ -330,7 +344,11 @@ module.exports = {
 
   'ukvcas-city': {
     mixin: 'input-text',
+<<<<<<< HEAD
     validate: ['required', 'notUrl', { type: 'maxlength', arguments: 100 }],
+=======
+    validate: ['required', { type: 'maxlength', arguments: 100 }],
+>>>>>>> 1bc76527f0f3a2d13da407ca959cd02d2a34f55b
     legend: {
       className: 'visuallyhidden'
     },
@@ -344,9 +362,24 @@ module.exports = {
     },
     className: ['form-group']
   },
+<<<<<<< HEAD
   'called-date': {
     mixin: 'input-text',
     validate: ['required', 'notUrl', { type: 'maxlength', arguments: 50 }],
+=======
+
+  'called-number': {
+    mixin: 'input-text',
+    validate: ['required', { type: 'maxlength', arguments: 50 }],
+    legend: {
+      className: 'visuallyhidden'
+    },
+    className: ['form-group'],
+  },
+  'called-date': {
+    mixin: 'input-text',
+    validate: ['required', { type: 'maxlength', arguments: 50 }],
+>>>>>>> 1bc76527f0f3a2d13da407ca959cd02d2a34f55b
     legend: {
       className: 'visuallyhidden'
     },
@@ -354,7 +387,11 @@ module.exports = {
   },
   'called-time': {
     mixin: 'input-text',
+<<<<<<< HEAD
     validate: ['required', 'notUrl', { type: 'maxlength', arguments: 50 }],
+=======
+    validate: ['required', { type: 'maxlength', arguments: 50 }],
+>>>>>>> 1bc76527f0f3a2d13da407ca959cd02d2a34f55b
     legend: {
       className: 'visuallyhidden'
     },
@@ -362,7 +399,11 @@ module.exports = {
   },
   'called-from': {
     mixin: 'input-text',
+<<<<<<< HEAD
     validate: ['required', 'notUrl', { type: 'maxlength', arguments: 50 }],
+=======
+    validate: ['required', { type: 'maxlength', arguments: 50 }],
+>>>>>>> 1bc76527f0f3a2d13da407ca959cd02d2a34f55b
     legend: {
       className: 'visuallyhidden'
     },
@@ -438,7 +479,11 @@ module.exports = {
     }]
   },
   'gwf-reference': {
+<<<<<<< HEAD
     validate: ['required', 'notUrl', { type: 'maxlength', arguments: 100 }],
+=======
+    validate: ['required', { type: 'maxlength', arguments: 100 }],
+>>>>>>> 1bc76527f0f3a2d13da407ca959cd02d2a34f55b
     dependent: {
       field: 'reference-numbers',
       value: 'gwf'
@@ -449,25 +494,41 @@ module.exports = {
       field: 'reference-numbers',
       value: 'ho'
     },
+<<<<<<< HEAD
     validate: ['required', 'notUrl', { type: 'maxlength', arguments: 100 }]
+=======
+    validate: ['required', { type: 'maxlength', arguments: 100 }]
+>>>>>>> 1bc76527f0f3a2d13da407ca959cd02d2a34f55b
   },
   'ihs-reference': {
     dependent: {
       field: 'reference-numbers',
       value: 'ihs'
     },
+<<<<<<< HEAD
     validate: ['required', 'notUrl', { type: 'maxlength', arguments: 100 }]
+=======
+    validate: ['required', { type: 'maxlength', arguments: 100 }]
+>>>>>>> 1bc76527f0f3a2d13da407ca959cd02d2a34f55b
   },
   'uan-reference': {
     dependent: {
       field: 'reference-numbers',
       value: 'uan'
     },
+<<<<<<< HEAD
     validate: ['required', 'notUrl', { type: 'maxlength', arguments: 100 }]
+=======
+    validate: ['required', { type: 'maxlength', arguments: 100 }]
+>>>>>>> 1bc76527f0f3a2d13da407ca959cd02d2a34f55b
   },
   'when-applied': {
     mixin: 'input-text',
+<<<<<<< HEAD
     validate: ['required', 'notUrl', { type: 'maxlength', arguments: 50 }],
+=======
+    validate: ['required', { type: 'maxlength', arguments: 50 }],
+>>>>>>> 1bc76527f0f3a2d13da407ca959cd02d2a34f55b
     legend: {
       className: 'visuallyhidden'
     },
@@ -476,7 +537,11 @@ module.exports = {
 
   'complaint-reference-number': {
     mixin: 'input-text',
+<<<<<<< HEAD
     validate: ['notUrl', { type: 'maxlength', arguments: 100 }]
+=======
+    validate: [{ type: 'maxlength', arguments: 100 }]
+>>>>>>> 1bc76527f0f3a2d13da407ca959cd02d2a34f55b
   },
   'complaint-details': {
     mixin: 'textarea',
@@ -516,7 +581,11 @@ module.exports = {
 
   'agent-name': {
     mixin: 'input-text',
+<<<<<<< HEAD
     validate: ['required', 'notUrl', { type: 'maxlength', arguments: 150 }],
+=======
+    validate: ['required', { type: 'maxlength', arguments: 150 }],
+>>>>>>> 1bc76527f0f3a2d13da407ca959cd02d2a34f55b
     legend: {
       className: 'visuallyhidden'
     },
@@ -534,7 +603,11 @@ module.exports = {
 
   'agent-phone': {
     mixin: 'input-text',
+<<<<<<< HEAD
     validate: ['notUrl', { type: 'maxlength', arguments: 50 }],
+=======
+    validate: [{ type: 'maxlength', arguments: 50 }],
+>>>>>>> 1bc76527f0f3a2d13da407ca959cd02d2a34f55b
     legend: {
       className: 'visuallyhidden'
     },
@@ -543,7 +616,11 @@ module.exports = {
 
   'applicant-name': {
     mixin: 'input-text',
+<<<<<<< HEAD
     validate: ['required', 'notUrl', { type: 'maxlength', arguments: 100 }],
+=======
+    validate: ['required', { type: 'maxlength', arguments: 100 }],
+>>>>>>> 1bc76527f0f3a2d13da407ca959cd02d2a34f55b
     legend: {
       className: 'visuallyhidden'
     },
@@ -554,16 +631,40 @@ module.exports = {
     validate: [
       'required',
       'date',
+<<<<<<< HEAD
       { type: 'before', arguments: moment().subtract(18, 'years').format('YYYY-MM-DD') },
       { type: 'after', arguments: '1900-01-01' }]
+=======
+      {
+        type: 'before',
+        arguments: moment().subtract(18, 'years').format('YYYY-MM-DD')
+      },
+      {
+        type: 'after',
+        arguments: '1900-01-01'
+      }
+    ],
+>>>>>>> 1bc76527f0f3a2d13da407ca959cd02d2a34f55b
   }),
 
   'agent-representative-dob': dateComponent('agent-representative-dob', {
     validate: [
       'required',
       'date',
+<<<<<<< HEAD
       { type: 'before', arguments: moment().subtract(18, 'years').format('YYYY-MM-DD') },
       { type: 'after', arguments: '1900-01-01' }]
+=======
+      {
+        type: 'before',
+        arguments: moment().subtract(18, 'years').format('YYYY-MM-DD')
+      },
+      {
+        type: 'after',
+        arguments: '1900-01-01'
+      }
+    ],
+>>>>>>> 1bc76527f0f3a2d13da407ca959cd02d2a34f55b
   }),
 
   'applicant-email': {
@@ -584,7 +685,11 @@ module.exports = {
 
   'agent-representative-name': {
     mixin: 'input-text',
+<<<<<<< HEAD
     validate: ['required', 'notUrl', { type: 'maxlength', arguments: 100 }],
+=======
+    validate: ['required', { type: 'maxlength', arguments: 150 }],
+>>>>>>> 1bc76527f0f3a2d13da407ca959cd02d2a34f55b
     legend: {
       className: 'visuallyhidden'
     },
@@ -604,6 +709,7 @@ module.exports = {
     legend: {
       className: 'visuallyhidden'
     },
+    validate: [{ type: 'maxlength', arguments: 50 }],
     className: ['']
   },
 

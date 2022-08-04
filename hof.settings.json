@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
   "appName": "UKVI Complaints",
   "theme": "govUK",
+=======
+  "theme": "govuk",
+  "views": "./apps/ukvi-complaints/views",
+>>>>>>> 1bc76527f0f3a2d13da407ca959cd02d2a34f55b
   "routes": [
     "./apps/ukvi-complaints"
   ],

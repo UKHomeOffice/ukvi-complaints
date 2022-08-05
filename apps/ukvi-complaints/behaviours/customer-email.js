@@ -213,6 +213,7 @@ module.exports = config => {
     // eslint-disable-next-line no-console
     console.warn('WARNING: Email `from` address must be provided. Falling back to stub email transport.');
   }
+
   return Emailer(Object.assign({}, config, {
     transport: config.from ? config.transport : 'stub',
     recipient: model => model['applicant-email'] || model['agent-email'] || 'noop@localhost',

@@ -73,36 +73,14 @@ describe('formatComplaintData', () => {
     });
 
     describe('staff-behaviour', () => {
-      describe('poor-information', () => {
-        it('returns complaint data with type "POOR_INFORMATION"', () => {
-          const values = Object.assign({
-            reason: 'staff-behaviour',
-            'poor-info-or-behaviour': 'poor-information'
-          }, complaintDetailsBase);
-          const complaintData = formatComplaintData(values);
-          expect(complaintData.complaint.complaintType).to.eql('POOR_INFORMATION');
-        });
-      });
-
       describe('staff-behaviour', () => {
         it('returns complaint data with type "POOR_STAFF_BEHAVIOUR"', () => {
           const values = Object.assign({
             reason: 'staff-behaviour',
-            'poor-info-or-behaviour': 'staff-behaviour',
             'staff-behaviour': 'in-letter'
           }, complaintDetailsBase);
           const complaintData = formatComplaintData(values);
           expect(complaintData.complaint.complaintType).to.eql('POOR_STAFF_BEHAVIOUR');
-        });
-      });
-
-      describe('invalid value', () => {
-        it('throws an error if an invalid poor-info-or-behaviour value is provided', () => {
-          const values = Object.assign({
-            reason: 'staff-behaviour',
-            'poor-info-or-behaviour': 'invalid'
-          }, complaintDetailsBase);
-          expect(() => formatComplaintData(values)).to.throw('Invalid poor-info-or-behaviour value');
         });
       });
     });

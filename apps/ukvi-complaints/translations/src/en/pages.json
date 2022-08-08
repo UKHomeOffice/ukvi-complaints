@@ -202,9 +202,6 @@
   "refund-more-than": {
     "header": "If you requested a refund more than 6 weeks ago"
   },
-  "poor-info-or-behaviour": {
-    "header": "What was the problem?"
-  },
   "staff-behaviour": {
     "header": "Where did you experience poor behaviour?"
   },
@@ -368,9 +365,6 @@
 			},
 			"none": {
 				"label": "I don’t have any of these"
-      },
-      "poor-info-or-behaviour": {
-        "label": "What was the problem"
       },
       "staff-behaviour": {
         "label": "Where did you experience poor behaviour"

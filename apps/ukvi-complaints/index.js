@@ -186,7 +186,7 @@ module.exports = {
       }]
     },
     '/lack-availability': {
-      next: 'lack-availability-inside',
+      next: '/lack-availability-inside',
       fields: ['where-applied-from'],
       forks: [{
         target: '/lack-availability-inside',
@@ -330,22 +330,11 @@ module.exports = {
         }
       }]
     },
-
     '/upgrade-inside-uk': {
       next: '/when-applied'
     },
     '/upgrade-outside-uk': {
       next: '/when-applied'
-    },
-    '/application-ref-numbers': {
-      fields: [
-        'reference-numbers',
-        'gwf-reference',
-        'ho-reference',
-        'ihs-reference',
-        'uan-reference'
-      ],
-      next: '/acting-as-agent'
     },
     '/return-of-documents': {
       next: '/report-lost-docs-service',
@@ -369,6 +358,16 @@ module.exports = {
           value: 'no'
         }
       }]
+    },
+    '/application-ref-numbers': {
+      fields: [
+        'reference-numbers',
+        'gwf-reference',
+        'ho-reference',
+        'ihs-reference',
+        'uan-reference'
+      ],
+      next: '/acting-as-agent'
     },
     '/requested-documents': {
       next: '/have-requested',
@@ -850,7 +849,6 @@ module.exports = {
         }
       }]
     },
-
     '/who-representing': {
       fields: ['who-representing'],
       next: '/agent-name'

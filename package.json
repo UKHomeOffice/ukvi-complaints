@@ -26,11 +26,13 @@
     "postinstall": "yarn run build"
   },
   "dependencies": {
+    "aws4": "^1.11.0",
     "hof": "^19.14.16",
     "hot-shots": "^8.5.0",
     "jquery": "^3.6.0",
     "jsonschema": "^1.4.0",
-    "moment": "^2.29.2",
+    "moment": "^2.29.4",
+    "nodemailer": "^6.7.5",
     "path-parse": "^1.0.7",
     "sqs-producer": "^2.1.0",
     "ssh2": "1.4.0",
@@ -40,7 +42,7 @@
   "devDependencies": {
     "@cucumber/cucumber": "^7.3.0",
     "@cucumber/pretty-formatter": "^1.0.0-alpha.1",
-    "aws-sdk": "^2.955.0",
+    "aws-sdk": "^2.1155.0",
     "chai": "^4.3.4",
     "chai-as-promised": "^7.1.1",
     "eslint": "^7.30.0",

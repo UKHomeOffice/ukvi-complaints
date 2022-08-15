@@ -23,6 +23,7 @@ module.exports = {
   hosts: {
     acceptanceTests: process.env.ACCEPTANCE_HOST_NAME || `http://localhost:${process.env.PORT || 8080}`
   },
+
   awsSqs: {
     region: process.env.AWS_REGION || 'eu-west-2',
     queueUrl: process.env.SQS_URL || 'http://localhost:9324/queue/first-queue',

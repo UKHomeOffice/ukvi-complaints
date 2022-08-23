@@ -27,3 +27,20 @@
 .twitter-typeahead {
   width: 100%;
 }
+
+/* Links instead of regular buttons */
+.button-continue .button {
+  background-color: Transparent;
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  font-family: inherit;
+  color: #45297e;
+  -webkit-box-shadow: 0 0px 0 #003618;
+  box-shadow: 0 0px 0 #003618;
+  &:hover, &:active {
+    color: #4088c3;
+  }
+  text-decoration: underline;
+  cursor: pointer;
+}

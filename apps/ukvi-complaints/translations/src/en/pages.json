@@ -253,6 +253,9 @@
   "acting-as-agent": {
     "header": "Are you making this complaint on behalf of someone else?"
   },
+  "who-representing": {
+    "header": "What is your relation to applicant?"
+  },
   "agent-name": {
     "header": "What is your name?"
   },

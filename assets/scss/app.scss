@@ -28,6 +28,29 @@
   width: 100%;
 }
 
+header {
+  margin-top: 1.25em;
+  margin-bottom: 0.5em;
+}
+
+ul {
+  @extend .text;
+  @extend .list;
+  @extend .list-bullet;
+}
+
+a {
+  @extend .govuk-link;
+}
+
+header {
+  margin-top: 0;
+}
+
+.govuk-header__logotype{
+  display: inline;
+}
+
 /* Links instead of regular buttons */
 .button-continue .button {
   background-color: Transparent;

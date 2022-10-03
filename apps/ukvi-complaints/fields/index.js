@@ -551,6 +551,7 @@ module.exports = {
   },
 
   'applicant-dob': dateComponent('applicant-dob', {
+    mixin: 'input-date',
     validate: [
       'required',
       'date',
@@ -559,6 +560,7 @@ module.exports = {
   }),
 
   'agent-representative-dob': dateComponent('agent-representative-dob', {
+    mixin: 'input-date',
     validate: [
       'required',
       'date',

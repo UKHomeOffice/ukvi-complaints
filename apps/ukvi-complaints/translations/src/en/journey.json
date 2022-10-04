@@ -1,4 +1,8 @@
 {
   "header": "UK Visas and Immigration complaints",
-  "phase": "beta"
+  "phase": "beta",
+  "confirmation": {
+    "message": "Complaint submitted",
+    "details": " "
+  }
 }

@@ -3796,6 +3796,11 @@ govuk-elements-sass@^3.1.3:
   dependencies:
     govuk_frontend_toolkit "^7.1.0"
 
+govuk-frontend@3.14:
+  version "3.14.0"
+  resolved "https://registry.yarnpkg.com/govuk-frontend/-/govuk-frontend-3.14.0.tgz#d3a9c54437c08f5188f87b1f4480ba60e95c8eb6"
+  integrity sha512-y7FTuihCSA8Hty+e9h0uPhCoNanCAN+CLioNFlPmlbeHXpbi09VMyxTcH+XfnMPY4Cp++7096v0rLwwdapTXnA==
+
 govuk_frontend_toolkit@^7.1.0:
   version "7.6.0"
   resolved "https://registry.yarnpkg.com/govuk_frontend_toolkit/-/govuk_frontend_toolkit-7.6.0.tgz#b09a60631afbba4bfac76a8b7c02e72419c29cf5"
@@ -3956,10 +3961,10 @@ hmac-drbg@^1.0.1:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.1"
 
-hof@^19.14.16:
-  version "19.14.16"
-  resolved "https://registry.yarnpkg.com/hof/-/hof-19.14.16.tgz#2c8f89bca6e7b69d263671372fda2f3189d48707"
-  integrity sha512-xUEhmhX9nUY042NpHfonxhPrD+LYtZgc+UpLy0JenNdz9vbKLToR/PHOLne9wzON1ISgrtkfjt1bZsC3zJ3eTw==
+hof@20.0.0-beta.38:
+  version "20.0.0-beta.38"
+  resolved "https://registry.yarnpkg.com/hof/-/hof-20.0.0-beta.38.tgz#9c076f31d76e281b5e940d8df021335dfb53b30b"
+  integrity sha512-Cv88LzBkBEWwkYaXm9AxJmlmY6BxKUlC7la2vgcvdr8f68kfybB9V3CiXsCFGSzHsmQfii1pAPWyJxqLqnEmXw==
   dependencies:
     aliasify "^2.1.0"
     bluebird "^3.7.2"
@@ -3983,6 +3988,7 @@ hof@^19.14.16:
     findup "^0.1.5"
     glob "^7.2.0"
     govuk-elements-sass "^3.1.3"
+    govuk-frontend "3.14"
     govuk_template_mustache "^0.26.0"
     helmet "^3.22.0"
     hogan-express-strict "^0.5.4"
@@ -3997,7 +4003,7 @@ hof@^19.14.16:
     minimatch "^3.0.3"
     minimist "^1.2.6"
     mixwith "^0.1.1"
-    moment "^2.29.4"
+    moment "^2.29.2"
     morgan "^1.10.0"
     mustache "^2.3.0"
     nodemailer "^6.6.3"
@@ -4014,7 +4020,6 @@ hof@^19.14.16:
     uglify-js "^3.14.3"
     underscore "^1.12.1"
     urijs "^1.19.11"
-    uuid "^8.3.2"
     winston "^3.7.2"
 
 hogan-express-strict@^0.5.4:
@@ -5512,7 +5517,7 @@ module-not-found-error@^1.0.1:
   resolved "https://registry.yarnpkg.com/module-not-found-error/-/module-not-found-error-1.0.1.tgz#cf8b4ff4f29640674d6cdd02b0e3bc523c2bbdc0"
   integrity sha1-z4tP9PKWQGdNbN0CsOO8UjwrvcA=
 
-moment@^2.29.4:
+moment@^2.29.2, moment@^2.29.4:
   version "2.29.4"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.4.tgz#3dbe052889fe7c1b2ed966fcb3a77328964ef108"
   integrity sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==
@@ -6567,12 +6572,12 @@ redis-commands@^1.7.0:
 redis-errors@^1.0.0, redis-errors@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/redis-errors/-/redis-errors-1.2.0.tgz#eb62d2adb15e4eaf4610c04afe1529384250abad"
-  integrity sha1-62LSrbFeTq9GEMBK/hUpOEJQq60=
+  integrity sha512-1qny3OExCf0UvUV/5wpYKf2YwPcOqXzkwKKSmKHiE6ZMQs5heeE/c8eXK+PNllPvmjgAbfnsbpkGZWy8cBpn9w==
 
 redis-parser@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/redis-parser/-/redis-parser-3.0.0.tgz#b66d828cdcafe6b4b8a428a7def4c6bcac31c8b4"
-  integrity sha1-tm2CjNyv5rS4pCin3vTGvKwxyLQ=
+  integrity sha512-DJnGAeenTdpMEH6uAJRK/uiyEIH9WVsUmoLwzudwGJUwZPp80PDBWPHXSAGNPwNvIXAbe7MSUB1zQFugFml66A==
   dependencies:
     redis-errors "^1.0.0"
 

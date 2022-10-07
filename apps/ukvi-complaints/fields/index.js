@@ -487,7 +487,7 @@ module.exports = {
     validate: ['required', { type: 'maxlength', arguments: 50000 }],
     'ignore-defaults': true,
     formatter: ['trim', 'hyphens'],
-    className: ['form-control-3-4']
+    className: ['govuk-textarea']
   },
 
   'acting-as-agent': {
@@ -538,7 +538,7 @@ module.exports = {
     legend: {
       className: 'visuallyhidden'
     },
-    className: ['']
+    className: ['govuk-input', 'govuk-input--width-20']
   },
 
   'applicant-name': {
@@ -606,7 +606,7 @@ module.exports = {
     legend: {
       className: 'visuallyhidden'
     },
-    className: ['']
+    className: ['govuk-input', 'govuk-input--width-20']
   },
 
   where: {

@@ -487,7 +487,7 @@ module.exports = {
     validate: ['required', { type: 'maxlength', arguments: 50000 }],
     'ignore-defaults': true,
     formatter: ['trim', 'hyphens'],
-    className: ['govuk-textarea']
+    className: ['govuk-js-character-count']
   },
 
   'acting-as-agent': {

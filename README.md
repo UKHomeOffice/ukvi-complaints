@@ -47,3 +47,5 @@ You can then close the docker image by using the command:
 ```bash
 $ npm run sqs-cleanup
 ```
+
+

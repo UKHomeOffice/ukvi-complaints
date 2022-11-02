@@ -487,7 +487,7 @@ module.exports = {
     validate: ['required', { type: 'maxlength', arguments: 50000 }],
     'ignore-defaults': true,
     formatter: ['trim', 'hyphens'],
-    className: ['form-control-3-4']
+    className: ['govuk-js-character-count']
   },
 
   'acting-as-agent': {
@@ -538,7 +538,7 @@ module.exports = {
     legend: {
       className: 'visuallyhidden'
     },
-    className: ['']
+    className: ['govuk-input', 'govuk-input--width-20']
   },
 
   'applicant-name': {
@@ -551,6 +551,7 @@ module.exports = {
   },
 
   'applicant-dob': dateComponent('applicant-dob', {
+    mixin: 'input-date',
     validate: [
       'required',
       'date',
@@ -559,6 +560,7 @@ module.exports = {
   }),
 
   'agent-representative-dob': dateComponent('agent-representative-dob', {
+    mixin: 'input-date',
     validate: [
       'required',
       'date',
@@ -604,7 +606,7 @@ module.exports = {
     legend: {
       className: 'visuallyhidden'
     },
-    className: ['']
+    className: ['govuk-input', 'govuk-input--width-20']
   },
 
   where: {

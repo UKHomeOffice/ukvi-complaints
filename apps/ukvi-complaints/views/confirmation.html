@@ -1,12 +1,7 @@
 {{<partials-page}}
   {{$page-content}}
-    
-    <div class="alert-complete" role="alert">
-      <div class="alert-message">
-        <h1>Complaint submitted</h1>
-      </div>
-    </div>
-    
+  {{>partials-confirmation-alert}}
+
   {{#values.applicant-email}}
   <p>We have sent a confirmation email to {{values.applicant-email}}</p>
   {{/values.applicant-email}}

@@ -485,7 +485,6 @@ module.exports = {
       value: 12
     }],
     validate: ['required', { type: 'maxlength', arguments: 50000 }],
-    'ignore-defaults': true,
     formatter: ['trim', 'hyphens'],
     className: ['govuk-js-character-count']
   },

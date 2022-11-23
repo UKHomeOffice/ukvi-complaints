@@ -3964,7 +3964,7 @@ hmac-drbg@^1.0.1:
 hof@^20.1.15:
   version "20.1.15"
   resolved "https://registry.yarnpkg.com/hof/-/hof-20.1.15.tgz#2e9cb659d9e6d67080061eeb95926ce4066e3721"
-  integrity sha512-Aka6ujuASdmnU7JO/LJHomcXrFuaZQ9eQIRiqxqhjfHBAk618sg5bTW7KguhViVxe2mG/Xp7aBjx0nhpP7fJNQ==
+  integrity sha512-Aka6ujuASdmnU7JO/LJHomcXrFuaZQ9eQIRiqxqhjfHBAk618sg5bTW7KguhViVxe2mG/Xp7aBjx0nhpP7fJNQ
   dependencies:
     aliasify "^2.1.0"
     bluebird "^3.7.2"

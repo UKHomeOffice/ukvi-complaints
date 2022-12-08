@@ -315,7 +315,7 @@
         "SUBMITTING_APPLICATION",
         "MAKING_APPOINTMENT",
         "EXISTING",
-        "WAITING_FOR_DECISION_OR_DOCUMENT",
+        "DELAYS",
         "IMMIGRATION_DECISION",
         "IMMIGRATION_STATUS_CHANGE",
         "BIOMETRIC_RESIDENCE_PERMIT",
@@ -557,7 +557,7 @@
         "complaintType": {
           "type": "string",
           "enum": [
-            "WAITING_FOR_DECISION_OR_DOCUMENT"
+            "DELAYS"
           ]
         },
         "reference": {

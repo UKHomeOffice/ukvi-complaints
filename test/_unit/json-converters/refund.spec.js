@@ -46,6 +46,32 @@ describe('getRefundComplaint', () => {
     });
   });
 
+  describe('refundWhen', () => {
+    it('returns "MORE_THAN_SIX_WEEKS" if "more-than" refund-when value passed in', () => {
+      const values = Object.assign({
+        refund: 'yes',
+        'refund-when': 'more-than'
+      }, complaintDetailsBase);
+
+      const refundComplaint = getRefundComplaint(values);
+      expect(
+        refundComplaint.complaint.complaintDetails.refundWhen
+      ).to.eql('MORE_THAN_SIX_WEEKS');
+    });
+
+    it('returns "LESS_THAN_SIX_WEEKS" if "less-than" refund-when value passed in', () => {
+      const values = Object.assign({
+        refund: 'yes',
+        'refund-when': 'less-than'
+      }, complaintDetailsBase);
+
+      const refundComplaint = getRefundComplaint(values);
+      expect(
+        refundComplaint.complaint.complaintDetails.refundWhen
+      ).to.eql('LESS_THAN_SIX_WEEKS');
+    });
+  });
+
   describe('refundType', () => {
     it('returns "STANDARD" if "standard" refund-type value passed in', () => {
       const values = Object.assign({

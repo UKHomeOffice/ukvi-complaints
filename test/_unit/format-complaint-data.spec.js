@@ -28,14 +28,14 @@ describe('formatComplaintData', () => {
     });
 
     describe('delays', () => {
-      it('returns complaint data with type "WAITING_FOR_DECISION_OR_DOCUMENT"', () => {
+      it('returns complaint data with type "DELAYS"', () => {
         const values = Object.assign({
           reason: 'delays',
           'delay-type': 'application-delay',
           'return-of-documents': 'yes-other'
         }, complaintDetailsBase);
         const complaintData = formatComplaintData(values);
-        expect(complaintData.complaint.complaintType).to.eql('WAITING_FOR_DECISION_OR_DOCUMENT');
+        expect(complaintData.complaint.complaintType).to.eql('DELAYS');
       });
     });
 

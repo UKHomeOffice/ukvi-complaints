@@ -43,7 +43,7 @@ describe('getExistingComplaint', () => {
         ).to.eql('MAKING_APPOINTMENT');
       });
 
-      it('returns "WAITING_FOR_DECISION_OR_DOCUMENT" if "delays" complaint-reason-previous value passed in', () => {
+      it('returns "DELAYS" if "delays" complaint-reason-previous value passed in', () => {
         const values = Object.assign({
           'existing-complaint': 'no',
           'complaint-reason-previous': 'delays'
@@ -52,7 +52,7 @@ describe('getExistingComplaint', () => {
         const existingComplaint = getExistingComplaint(values);
         expect(
           existingComplaint.complaint.complaintDetails.previousComplaint.previousComplaintType
-        ).to.eql('WAITING_FOR_DECISION_OR_DOCUMENT');
+        ).to.eql('DELAYS');
       });
 
       it('returns "BIOMETRIC_RESIDENCE_PERMIT" if "biometric-residence-permit" value passed in', () => {

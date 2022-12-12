@@ -3961,7 +3961,7 @@ hmac-drbg@^1.0.1:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.1"
 
-hof@^20.1.10:
+hof@20.1.17:
   version "20.1.17"
   resolved "https://registry.yarnpkg.com/hof/-/hof-20.1.17.tgz#8f9507fb88059df152d6af183019cd4374936b03"
   integrity sha512-TVLPAEvAfP1PLTdm/iVk/7FBJeqEYa5lyiS3nNk7CEFgvQb45HA2bhvo4W/kVc3NJS2dFYdKMjPUWl7aLAx5dQ==

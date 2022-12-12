@@ -7,7 +7,7 @@
   "statements": 96,
   "branches": 85,
   "functions": 100,
-  "lines": 96,
+  "lines": 95,
   "exclude": [
     "test/**/*.js",
     "apps/**/sections/**/*.js",

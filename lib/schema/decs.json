@@ -746,6 +746,13 @@
                 "IHS",
                 "EU_SETTLEMENT"
               ]
+            },
+            "refundWhen": {
+              "type": "string",
+              "enum": [
+                "MORE_THAN_SIX_WEEKS",
+                "LESS_THAN_SIX_WEEKS"
+              ]
             }
           }
         }

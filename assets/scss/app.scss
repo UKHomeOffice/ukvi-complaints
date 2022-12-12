@@ -47,18 +47,31 @@ header {
 }
 
 /* Links instead of regular buttons */
-.button-continue .button {
+.button-continue .govuk-button {
   background-color: Transparent;
   background: none!important;
   border: none;
   padding: 0!important;
   font-family: inherit;
-  color: #45297e;
+  line-height: 25px;
   -webkit-box-shadow: 0 0px 0 #003618;
   box-shadow: 0 0px 0 #003618;
-  &:hover, &:active {
-    color: #4088c3;
-  }
   text-decoration: underline;
   cursor: pointer;
+  margin-bottom: 1em;
+  color: #1d70b8;
+  font-size: 1em;
+}
+
+.button-continue:active {
+  background: #ffdd00;
+}
+
+.button-continue .govuk-button:active {
+  color: black;
+  line-height: 23px;
+  border-bottom-style: solid;
+  border-bottom-color: black;
+  border-bottom-width: 4px;
+  text-decoration: none;
 }

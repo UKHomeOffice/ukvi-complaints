@@ -365,7 +365,10 @@ module.exports = {
         'gwf-reference',
         'ho-reference',
         'ihs-reference',
-        'uan-reference'
+        'uan-reference',
+        'case-id-reference',
+        'payment-reference',
+        'other-reference'
       ],
       next: '/acting-as-agent'
     },
@@ -898,6 +901,9 @@ module.exports = {
           'ho-reference',
           'ihs-reference',
           'uan-reference',
+          'case-id-reference',
+          'payment-reference',
+          'other-reference',
           'complaint-details'
         ],
         'agent-details': [

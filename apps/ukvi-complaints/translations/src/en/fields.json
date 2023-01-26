@@ -150,6 +150,15 @@
       "uan": {
         "label": "Unique Application Number"
       },
+      "case-id": {
+        "label": "Case ID"
+      },
+      "payment": {
+        "label": "Payment reference number"
+      },
+      "other": {
+        "label": "Other reference number"
+      },
       "none": {
         "label": "I don’t have any of these "
       }
@@ -188,6 +197,30 @@
     "validation": {
       "required": "Enter the Unique Application Number",
       "notUrl": "Enter the Unique Application Number"
+    }
+  },
+  "case-id-reference": {
+    "label": "Enter your Case ID number",
+    "hint": null,
+    "validation": {
+      "required": "Enter your Case ID number",
+      "notUrl": "Enter your Case ID number"
+    }
+  },
+  "payment-reference": {
+    "label": "Enter your payment reference number",
+    "hint": null,
+    "validation": {
+      "required": "Enter your payment reference number",
+      "notUrl": "Enter your payment reference number"
+    }
+  },
+  "other-reference": {
+    "label": "Enter your reference number",
+    "hint": null,
+    "validation": {
+      "required": "Enter your reference number",
+      "notUrl": "Enter your reference number"
     }
   },
   "agent-representative-dob": {

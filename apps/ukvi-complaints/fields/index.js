@@ -6,7 +6,17 @@ const moment = require('moment');
 module.exports = {
   reason: {
     mixin: 'radio-group',
-    options: ['immigration-application', 'immigration-appointment', 'delays', 'immigration-decision', 'biometric-residence-permit', 'refund', 'staff-behaviour', 'existing-complaint', 'other-complaint'],
+    options: [
+      'immigration-application',
+      'immigration-appointment',
+      'delays',
+      'immigration-decision',
+      'biometric-residence-permit',
+      'refund',
+      'staff-behaviour',
+      'existing-complaint',
+      'other-complaint'
+    ],
     validate: 'required'
   },
 
@@ -23,7 +33,13 @@ module.exports = {
       className: 'visuallyhidden'
     },
     className: ['form-group'],
-    options: ['lack-availability', 'change-appointment', 'technical-appointments', 'questions-appointments', 'complain-appointments']
+    options: [
+      'lack-availability',
+      'change-appointment',
+      'technical-appointments',
+      'questions-appointments',
+      'complain-appointments'
+    ]
   }, 'where-applied-from': {
     mixin: 'radio-group', validate: 'required', legend: {
       className: 'visuallyhidden'
@@ -191,7 +207,17 @@ module.exports = {
 
   'complaint-reason-previous': {
     mixin: 'radio-group',
-    options: ['immigration-application', 'immigration-appointment', 'delays', 'immigration-decision', 'immigration-status-change', 'biometric-residence-permit', 'refund', 'staff-behaviour', 'other-complaint'],
+    options: [
+      'immigration-application',
+      'immigration-appointment',
+      'delays',
+      'immigration-decision',
+      'immigration-status-change',
+      'biometric-residence-permit',
+      'refund',
+      'staff-behaviour',
+      'other-complaint'
+    ],
     validate: 'required'
   },
 

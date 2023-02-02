@@ -201,26 +201,23 @@
   },
   "case-id-reference": {
     "label": "Enter your Case ID number",
-    "hint": null,
     "validation": {
       "required": "Enter your Case ID number",
-      "notUrl": "Enter your Case ID number"
+      "notUrl": "Reference number must not be a URL"
     }
   },
   "payment-reference": {
     "label": "Enter your payment reference number",
-    "hint": null,
     "validation": {
       "required": "Enter your payment reference number",
-      "notUrl": "Enter your payment reference number"
+      "notUrl": "Reference number must not be a URL"
     }
   },
   "other-reference": {
     "label": "Enter your reference number",
-    "hint": null,
     "validation": {
       "required": "Enter your reference number",
-      "notUrl": "Enter your reference number"
+      "notUrl": "Reference number must not be a URL"
     }
   },
   "agent-representative-dob": {

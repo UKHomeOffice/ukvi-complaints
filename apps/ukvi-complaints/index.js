@@ -665,12 +665,6 @@ module.exports = {
           field: 'refund',
           value: 'no'
         }
-      }, {
-        target: '/refund-type-automatic',
-        condition: {
-          field: 'refund',
-          value: 'not-yet'
-        }
       }]
     },
     '/refund-when': {

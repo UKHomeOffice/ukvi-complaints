@@ -350,9 +350,6 @@
       },
       "no": {
         "label": "No"
-      },
-      "not-yet": {
-        "label": "Not yet"
       }
     },
     "validation": {

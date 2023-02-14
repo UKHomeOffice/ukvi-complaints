@@ -18,6 +18,9 @@ describe('complaint', () => {
   const testHoRef = 'HO3456789';
   const testIhsRef = 'IHS4567890';
   const testUanRef = 'UAN4567890';
+  const testCaseIdRef = 'CASEID4567890';
+  const testPaymentRef = 'PAYMENT4567890';
+  const testOtherRef = 'OTHER4567890';
   const applicantTestValues = {
     'applicant-name': testApplicantName,
     'applicant-dob': testApplicantDob,
@@ -239,6 +242,36 @@ describe('complaint', () => {
       expect(reference).to.eql({
         referenceType: 'UAN_REF',
         reference: testUanRef
+      });
+    });
+
+    it('If "case-id" reference, reference number will be set on CASE_ID_REF', () => {
+      referenceValues['reference-numbers'] = 'case-id';
+      referenceValues['case-id-reference'] = testCaseIdRef;
+      const reference = createReference(referenceValues);
+      expect(reference).to.eql({
+        referenceType: 'CASE_ID_REF',
+        reference: testCaseIdRef
+      });
+    });
+
+    it('If "payment" reference, reference number will be set on PAY_REF', () => {
+      referenceValues['reference-numbers'] = 'payment';
+      referenceValues['payment-reference'] = testPaymentRef;
+      const reference = createReference(referenceValues);
+      expect(reference).to.eql({
+        referenceType: 'PAY_REF',
+        reference: testPaymentRef
+      });
+    });
+
+    it('If "other" reference, reference number will be set on OTHER_REF', () => {
+      referenceValues['reference-numbers'] = 'other';
+      referenceValues['other-reference'] = testOtherRef;
+      const reference = createReference(referenceValues);
+      expect(reference).to.eql({
+        referenceType: 'OTHER_REF',
+        reference: testOtherRef
       });
     });
 

@@ -211,6 +211,15 @@
         },
         {
           "$ref": "#/definitions/UanReference"
+        },
+        {
+          "$ref": "#/definitions/CaseIdReference"
+        },
+        {
+          "$ref": "#/definitions/PaymentReference"
+        },
+        {
+          "$ref": "#/definitions/OtherReference"
         }
       ]
     },
@@ -290,6 +299,69 @@
           "type": "string",
           "enum": [
             "UAN_REF"
+          ]
+        },
+        "reference": {
+          "type": "string",
+          "maxLength": 100
+        }
+      }
+    },
+    "CaseIdReference": {
+      "type": "object",
+      "description": "1234-5678-9123-4567",
+      "required": [
+        "referenceType",
+        "reference"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "referenceType": {
+          "type": "string",
+          "enum": [
+            "CASE_ID_REF"
+          ]
+        },
+        "reference": {
+          "type": "string",
+          "maxLength": 100
+        }
+      }
+    },
+    "PaymentReference": {
+      "type": "object",
+      "description": "1234-5678-9123-4567",
+      "required": [
+        "referenceType",
+        "reference"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "referenceType": {
+          "type": "string",
+          "enum": [
+            "PAY_REF"
+          ]
+        },
+        "reference": {
+          "type": "string",
+          "maxLength": 100
+        }
+      }
+    },
+    "OtherReference": {
+      "type": "object",
+      "description": "1234-5678-9123-4567",
+      "required": [
+        "referenceType",
+        "reference"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "referenceType": {
+          "type": "string",
+          "enum": [
+            "OTHER_REF"
           ]
         },
         "reference": {

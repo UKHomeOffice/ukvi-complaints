@@ -8,6 +8,7 @@ const complaintDetailsBase = {
   'uan-reference': '',
   'case-id-reference': '',
   'payment-reference': '',
+  'other-reference': '',
   'acting-as-agent': 'no',
   'applicant-name': 'JJ',
   'applicant-dob': '1980-02-02',

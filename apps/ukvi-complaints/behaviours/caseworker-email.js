@@ -126,6 +126,18 @@ const getDataRows = (model, translate) => {
           label: translate('pages.confirm.fields.uan-reference.label'),
           value: model['uan-reference']
         },
+        model['case-id-reference'] && {
+          label: translate('pages.confirm.fields.case-id-reference.label'),
+          value: model['case-id-reference']
+        },
+        model['payment-reference'] && {
+          label: translate('pages.confirm.fields.payment-reference.label'),
+          value: model['payment-reference']
+        },
+        model['other-reference'] && {
+          label: translate('pages.confirm.fields.other-reference.label'),
+          value: model['other-reference']
+        },
         model['complaint-details'] && {
           label: translate('pages.confirm.fields.complaint-details.label'),
           value: model['complaint-details']

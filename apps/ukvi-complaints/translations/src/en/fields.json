@@ -154,10 +154,10 @@
         "label": "Case ID"
       },
       "payment": {
-        "label": "Payment reference number"
+        "label": "Any payment reference"
       },
       "other": {
-        "label": "Other reference number"
+        "label": "Any other reference"
       },
       "none": {
         "label": "I don’t have any of these "

@@ -895,6 +895,8 @@ module.exports = {
           'vac-country',
           'vac-city',
           'ukvcas-city',
+          'refund',
+          'refund-type',
           'when-applied',
           'complaint-reference-number',
           'gwf-reference',

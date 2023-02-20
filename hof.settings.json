@@ -1,4 +1,10 @@
 {
+  "build" : {
+    "sass": {
+      "quietDeps": true,
+      "outputStyle": "compressed"
+    }
+  },
   "appName": "UKVI Complaints",
   "theme": "govUK",
   "routes": [

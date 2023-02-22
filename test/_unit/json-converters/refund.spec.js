@@ -26,19 +26,6 @@ describe('getRefundComplaint', () => {
       ).to.eql('YES');
     });
 
-    /*
-    it('returns "NOT_YET" if "not-yet" refund value passed in', () => {
-      const values = Object.assign({
-        refund: 'not-yet'
-      }, complaintDetailsBase);
-
-      const refundComplaint = getRefundComplaint(values);
-      expect(
-        refundComplaint.complaint.complaintDetails.refundRequested
-      ).to.eql('NOT_YET');
-    });
-    */
-
     it('throws an error if invalid refund value is passed', () => {
       const values = Object.assign({
         refund: 'invalid'

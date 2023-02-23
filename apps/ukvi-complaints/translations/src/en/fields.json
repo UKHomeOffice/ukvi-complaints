@@ -349,7 +349,7 @@
         "label": "Yes"
       },
       "no": {
-        "label": "No"
+        "label": "No, I was told refund would be automatic"
       }
     },
     "validation": {

@@ -58,6 +58,10 @@ const getDataRows = (model, translate) => {
           label: translate('pages.confirm.fields.refund-type.label'),
           value: translate(`fields.refund-type.options[${model['refund-type']}].label`)
         },
+        model['refund-type-automatic'] && {
+          label: translate('pages.confirm.fields.refund-type-automatic.label'),
+          value: translate(`fields.refund-type-automatic.options[${model['refund-type-automatic']}].label`)
+        },
         model['where-applied-from'] && {
           label: translate('pages.confirm.fields.where-applied-from.label'),
           value: translate(`fields.where-applied-from.options[${model['where-applied-from']}].label`)
@@ -128,7 +132,7 @@ const getDataRows = (model, translate) => {
         },
         model['complaint-details'] && {
           label: translate('pages.confirm.fields.complaint-details.label'),
-          value: model['complaint-details']
+          value: model['complaint-details'].substring(0, 100).padEnd(100, "...")
         }
       ]
     },

@@ -333,6 +333,9 @@
       "refund-type": {
         "label": "Which type of refund do you want to request"
       },
+      "refund-type-automatic": {
+        "label": "What are you waiting to be refunded?"
+      },
       "where-applied-from": {
         "label": "Where did you make your application"
       },

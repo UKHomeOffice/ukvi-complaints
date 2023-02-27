@@ -333,9 +333,6 @@
     "options": {
       "ihs": {
         "label": "Immigration Health Surcharge (IHS) fee"
-      },
-      "eu-settlement": {
-        "label": "EU Settlement Scheme fee"
       }
     },
     "validation": {

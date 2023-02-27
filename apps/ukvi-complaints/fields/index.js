@@ -246,8 +246,7 @@ module.exports = {
     },
     className: ['form-group'],
     options: [
-      'ihs',
-      'eu-settlement'
+      'ihs'
     ]
   },
 

@@ -132,7 +132,7 @@ const getDataRows = (model, translate) => {
         },
         model['complaint-details'] && {
           label: translate('pages.confirm.fields.complaint-details.label'),
-          value: model['complaint-details'].substring(0, 100).padEnd(100, "...")
+          value: model['complaint-details'].substring(0, 100).padEnd(100, '...')
         }
       ]
     },

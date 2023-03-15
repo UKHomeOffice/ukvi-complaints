@@ -6,7 +6,7 @@
   "author": "",
   "description": "",
   "engines": {
-    "node": ">=14.15.0"
+    "node": ">=18.12.1"
   },
   "license": "MIT",
   "scripts": {
@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "aws4": "^1.11.0",
-    "hof": "^20.1.10",
+    "hof": "^20.2.3",
     "hot-shots": "^8.5.0",
     "jquery": "^3.6.0",
     "jsonschema": "^1.4.0",
@@ -48,7 +48,7 @@
     "eslint": "^7.30.0",
     "eslint-config-hof": "^1.2.1",
     "funkie": "^0.0.6",
-    "funkie-chromedriver": "0.0.1",
+    "funkie-chromedriver": "0.1.0",
     "mocha": "^9.0.3",
     "mock-fs": "^5.1.2",
     "nyc": "^15.1.0",

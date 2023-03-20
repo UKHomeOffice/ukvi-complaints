@@ -17,7 +17,7 @@ services:
     image: redis
 
   nginx-proxy:
-    image: quay.io/ukhomeofficedigital/nginx-proxy:latest
+    image: quay.io/ukhomeofficedigital/nginx-proxy:v1.5.1
     environment:
       - PROXY_SERVICE_HOST=app
       - PROXY_SERVICE_PORT=8080

@@ -260,8 +260,7 @@ module.exports = {
     className: ['form-group'],
     options: [
       'yes',
-      'no',
-      'not-yet'
+      'no'
     ]
   },
   'refund-when': {

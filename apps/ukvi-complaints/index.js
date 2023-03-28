@@ -665,12 +665,6 @@ module.exports = {
           field: 'refund',
           value: 'no'
         }
-      }, {
-        target: '/refund-type-automatic',
-        condition: {
-          field: 'refund',
-          value: 'not-yet'
-        }
       }]
     },
     '/refund-when': {
@@ -892,7 +886,13 @@ module.exports = {
           'vac-country',
           'vac-city',
           'ukvcas-city',
+          'refund',
+          'refund-type',
+          'refund-ihs-where-from',
+          'refund-super-priority-where-from',
+          'refund-priority-where-from',
           'when-applied',
+          'where-applied-from',
           'complaint-reference-number',
           'gwf-reference',
           'ho-reference',

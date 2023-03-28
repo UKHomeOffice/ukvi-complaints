@@ -349,10 +349,7 @@
         "label": "Yes"
       },
       "no": {
-        "label": "No"
-      },
-      "not-yet": {
-        "label": "Not yet"
+        "label": "No, I was told refund would be automatic"
       }
     },
     "validation": {
@@ -530,7 +527,8 @@
   "complaint-details": {
     "label": "Complaint details",
     "validation": {
-      "required": "Enter more details about why you are making a complaint"
+      "required": "Enter more details about why you are making a complaint",
+      "maxlength": "Enter fewer than 50000 characters"
     }
   },
   "other-complaint": {

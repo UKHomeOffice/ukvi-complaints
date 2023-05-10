@@ -150,6 +150,15 @@
       "uan": {
         "label": "Unique Application Number"
       },
+      "case-id": {
+        "label": "Case ID"
+      },
+      "payment": {
+        "label": "Any payment reference"
+      },
+      "other": {
+        "label": "Any other reference"
+      },
       "none": {
         "label": "I don’t have any of these "
       }
@@ -188,6 +197,27 @@
     "validation": {
       "required": "Enter the Unique Application Number",
       "notUrl": "Enter the Unique Application Number"
+    }
+  },
+  "case-id-reference": {
+    "label": "Enter your Case ID number",
+    "validation": {
+      "required": "Enter your Case ID number",
+      "notUrl": "Reference number must not be a URL"
+    }
+  },
+  "payment-reference": {
+    "label": "Enter your payment reference number",
+    "validation": {
+      "required": "Enter your payment reference number",
+      "notUrl": "Reference number must not be a URL"
+    }
+  },
+  "other-reference": {
+    "label": "Enter your reference number",
+    "validation": {
+      "required": "Enter your reference number",
+      "notUrl": "Reference number must not be a URL"
     }
   },
   "agent-representative-dob": {
@@ -530,7 +560,8 @@
   "complaint-details": {
     "label": "Complaint details",
     "validation": {
-      "required": "Enter more details about why you are making a complaint"
+      "required": "Enter more details about why you are making a complaint",
+      "maxlength": "Enter fewer than 50000 characters"
     }
   },
   "other-complaint": {

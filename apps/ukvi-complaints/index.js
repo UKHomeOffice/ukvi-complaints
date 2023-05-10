@@ -365,7 +365,10 @@ module.exports = {
         'gwf-reference',
         'ho-reference',
         'ihs-reference',
-        'uan-reference'
+        'uan-reference',
+        'case-id-reference',
+        'payment-reference',
+        'other-reference'
       ],
       next: '/acting-as-agent'
     },
@@ -892,12 +895,21 @@ module.exports = {
           'vac-country',
           'vac-city',
           'ukvcas-city',
+          'refund',
+          'refund-type',
+          'refund-ihs-where-from',
+          'refund-super-priority-where-from',
+          'refund-priority-where-from',
           'when-applied',
+          'where-applied-from',
           'complaint-reference-number',
           'gwf-reference',
           'ho-reference',
           'ihs-reference',
           'uan-reference',
+          'case-id-reference',
+          'payment-reference',
+          'other-reference',
           'complaint-details'
         ],
         'agent-details': [

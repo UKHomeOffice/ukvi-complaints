@@ -197,7 +197,7 @@
     "validation": {
       "required": "Enter the applicant's date of birth",
       "date": "Enter the applicant's date of birth",
-      "before": "The applicant must be over 18 years old to make a complaint",
+      "before": "You must be over 18 years old to make a complaint. Please send your complaint to complaints@homeoffice.gov.uk as per our landing page instruction",
       "after": "The applicant's date of birth is too far in the past"
     }
   },

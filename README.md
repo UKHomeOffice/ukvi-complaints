@@ -41,13 +41,9 @@ You can view the next message on the queue by using the command:
 ```bash
 $  node test/get-from-sqs.js
 ```
-The messages will be returned one at a time.
+The messages will be returned one at a time........
 
 You can then close the docker image by using the command:
 ```bash
 $ npm run sqs-cleanup
 ```
-
-
-
-

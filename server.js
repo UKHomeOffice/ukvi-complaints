@@ -12,7 +12,7 @@ settings.csp = {
     'ssl.gstatic.com',
     'www.google.co.uk/ads/ga-audiences'
   ],
-    connectSrc: [
+  connectSrc: [
     'https://www.google-analytics.com',
     'https://region1.google-analytics.com',
     'https://region1.analytics.google.com'

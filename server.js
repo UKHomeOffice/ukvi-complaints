@@ -17,7 +17,7 @@ settings.csp = {
     'https://region1.google-analytics.com',
     'https://region1.analytics.google.com'
   ]
-}
+};
 
 if (process.env.REDIS_URL) {
   settings.redis = process.env.REDIS_URL;

@@ -26,4 +26,3 @@ Getting your hands dirty (You'll need [Redis](http://redis.io/) for this)
 ```bash
 $ yarn start
 ```
-

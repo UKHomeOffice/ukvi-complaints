@@ -1,10 +1,10 @@
-FROM node:lts-alpine@sha256:19eaf41f3b8c2ac2f609ac8103f9246a6a6d46716cdbe49103fdb116e55ff0cc
+FROM node:lts-bullseye-slim@sha256:afa1dce5757ec9be0ab8a9ed567b2b3c60cf39b4ca3281df3f7d9e0fdec0c8fb
 
 USER root
 
 # Update packages as a result of Anchore security vulnerability checks
-RUN apk update && \
-    apk add --upgrade gnutls binutils nodejs npm apk-tools libjpeg-turbo libcurl libx11 libxml2
+RUN apt-get update && \
+    apt-get install -y gnutls-bin binutils nodejs npm libjpeg62-turbo libcurl4 libx11-6 libxml2
 
 # Setup nodejs group & nodejs user
 RUN addgroup --system nodejs --gid 998 && \

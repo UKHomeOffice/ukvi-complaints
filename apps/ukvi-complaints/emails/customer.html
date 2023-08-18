@@ -1,28 +1,15 @@
-<p>We will investigate and provide a response within 20 working days.</p>
+We will investigate and provide a response within 20 working days.
 
 {{#data}}
-  {{#title}}
-    <h3>{{title}}</h3>
-  {{/title}}
-  <table width="100%" cellspacing="0" cellpadding="0" rules="none">
-    {{#table}}
-      {{#linebreak}}
-      <tr>
-        <td colspan="2" style="border-bottom:1px solid #333;"></td>
-      </tr>
-      {{/linebreak}}
-      {{#value}}
-      <tr>
-        <td width="40%" style="padding: 15px 0;border-bottom:1px solid #ccc;">{{label}}</td>
-        <td width="60%" style="padding: 15px 0;border-bottom:1px solid #ccc;">{{value}}</td>
-      </tr>
-      {{/value}}
-    {{/table}}
-  </table>
+  #{{title}}
+  {{#table}}
+  {{#value}}
+    {{label}}: {{value}}
+   - - -
+  {{/value}}
+  {{/table}}
 {{/data}}
 
-<div style="background:#ccc;padding: 0 20px 10px;border-top:5px solid #912B88;margin-top:20px;">
-  <h4>Further complaints</h4>
+  #Further complaints
 
-  <p>If you have another complaint about UK Visas and Immigration you can <a href="https://www.ukvi-complaints.homeoffice.gov.uk/">start a new complaint</a>.</p>
-</div>
+  If you have another complaint about UK Visas and Immigration you can [start a new complaint](https://www.ukvi-complaints.homeoffice.gov.uk/)

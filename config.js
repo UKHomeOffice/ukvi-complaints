@@ -9,22 +9,9 @@ module.exports = {
     password: process.env.REDIS_PASSWORD
   },
   email: {
-    from: process.env.FROM_ADDRESS,
-    replyTo: process.env.REPLY_TO,
-    transport: process.env.EMAIL_TRANSPORT || 'smtp',
-    caseworker: process.env.CASEWORKER_EMAIL || 'sas-hof-test@digital.homeoffice.gov.uk',
-    recipient: process.env.CASEWORKER_EMAIL || 'sas-hof-test@digital.homeoffice.gov.uk',
-    transportOptions: {
-      accessKeyId: process.env.HOF_SES_USER || process.env.AWS_USER || 'stub',
-      secretAccessKey: process.env.HOF_SES_PASSWORD || process.env.AWS_PASSWORD || 'stub',
-      host: process.env.EMAIL_HOST || 'email-smtp.eu-west-1.amazonaws.com',
-      port: process.env.EMAIL_PORT || 465,
-      auth: {
-        user: process.env.HOF_SES_USER || process.env.AWS_USER,
-        pass: process.env.HOF_SES_PASSWORD || process.env.AWS_PASSWORD
-      }
-    },
-    emailCaseworker: true
+    notifyApiKey: process.env.NOTIFY_KEY,
+    notifyTemplate: process.env.NOTIFY_TEMPLATE,
+    caseworker: process.env.CASEWORKER_EMAIL || 'sas-hof-test@digital.homeoffice.gov.uk'
   },
   hosts: {
     acceptanceTests: process.env.ACCEPTANCE_HOST_NAME || `http://localhost:${process.env.PORT || 8080}`

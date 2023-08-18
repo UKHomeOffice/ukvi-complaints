@@ -1,21 +1,11 @@
+#A new UK Visas and Immigration complaint has been submitted
 
 {{#data}}
-  {{#title}}
-    <h3>{{title}}</h3>
-  {{/title}}
-  <table width="100%" cellspacing="0" cellpadding="0" rules="none">
-    {{#table}}
-      {{#linebreak}}
-      <tr>
-        <td colspan="2" style="border-bottom:1px solid #333;"></td>
-      </tr>
-      {{/linebreak}}
-      {{#value}}
-      <tr>
-        <td width="40%" style="padding: 15px 0;border-bottom:1px solid #ccc;">{{label}}</td>
-        <td width="60%" style="padding: 15px 0;border-bottom:1px solid #ccc;">{{value}}</td>
-      </tr>
-      {{/value}}
-    {{/table}}
-  </table>
+  #{{title}}
+  {{#table}}
+  {{#value}}
+    {{label}}: {{value}}
+  - - -
+  {{/value}}
+  {{/table}}
 {{/data}}

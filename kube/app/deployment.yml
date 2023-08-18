@@ -80,6 +80,11 @@ spec:
                 secretKeyRef:
                   name: session-secret
                   key: token
+            - name: NOTIFY_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: notify-key
+                  key: notify-key
             {{ if or (eq .KUBE_NAMESPACE .BRANCH_ENV) (eq .KUBE_NAMESPACE .UAT_ENV) }}
             - name: SQS_URL
               valueFrom:

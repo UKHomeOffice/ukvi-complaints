@@ -1,6 +1,7 @@
 'use strict';
 
-const Emailer = require('hof').components.emailer;
+const hof = require('hof');
+const Notify = hof.components.notify;
 const path = require('path');
 const moment = require('moment');
 
@@ -140,7 +141,7 @@ const getDataRows = (model, translate) => {
           value: model['agent-name']
         },
         {
-          label: 'What is your relation to the applicant?',
+          label: 'What is your relation to the applicant',
           value: translate(`fields['who-representing'].options[${model['who-representing']}].label`)
         }
       ]
@@ -209,13 +210,7 @@ const getDataRows = (model, translate) => {
 };
 
 module.exports = config => {
-  if (config.transport !== 'stub' && !config.from && !config.replyTo) {
-    // eslint-disable-next-line no-console
-    console.warn('WARNING: Email `from` address must be provided. Falling back to stub email transport.');
-  }
-
-  return Emailer(Object.assign({}, config, {
-    transport: config.from ? config.transport : 'stub',
+  return Notify(Object.assign({}, config, {
     recipient: model => model['applicant-email'] || model['agent-email'] || 'noop@localhost',
     subject: (model, translate) => translate('pages.email.customer.subject'),
     template: path.resolve(__dirname, '../emails/customer.html'),

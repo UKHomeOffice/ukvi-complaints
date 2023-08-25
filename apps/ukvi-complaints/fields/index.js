@@ -438,7 +438,7 @@ module.exports = {
     }]
   },
   'gwf-reference': {
-    validate: ['required', 'notUrl', { type: 'maxlength', arguments: 100 }],
+    validate: ['required', 'notUrl', { type: 'maxlength', arguments: 100 }, { type: 'regex', arguments: /^GWF[0-9]{9}$/ }],
     dependent: {
       field: 'reference-numbers',
       value: 'gwf'
@@ -449,21 +449,21 @@ module.exports = {
       field: 'reference-numbers',
       value: 'ho'
     },
-    validate: ['required', 'notUrl', { type: 'maxlength', arguments: 100 }]
+    validate: ['required', 'numeric', 'notUrl', { type: 'maxlength', arguments: 100 }]
   },
   'ihs-reference': {
     dependent: {
       field: 'reference-numbers',
       value: 'ihs'
     },
-    validate: ['required', 'notUrl', { type: 'maxlength', arguments: 100 }]
+    validate: ['required', 'notUrl', { type: 'maxlength', arguments: 100 }, { type: 'regex', arguments: /^IHS[0-9]{9}$/ }]
   },
   'uan-reference': {
     dependent: {
       field: 'reference-numbers',
       value: 'uan'
     },
-    validate: ['required', 'notUrl', { type: 'maxlength', arguments: 100 }]
+    validate: ['required', 'notUrl', { type: 'maxlength', arguments: 100 }, { type: 'regex', arguments: /^\d{4}-\d{4}-\d{4}-\d{4}$/}]
   },
   'when-applied': {
     mixin: 'input-text',
@@ -476,7 +476,7 @@ module.exports = {
 
   'complaint-reference-number': {
     mixin: 'input-text',
-    validate: ['notUrl', { type: 'maxlength', arguments: 100 }]
+    validate: ['required', 'notUrl', { type: 'maxlength', arguments: 100 }]
   },
   'complaint-details': {
     mixin: 'textarea',

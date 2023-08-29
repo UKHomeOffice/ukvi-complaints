@@ -438,7 +438,12 @@ module.exports = {
     }]
   },
   'gwf-reference': {
-    validate: ['required', 'notUrl', { type: 'maxlength', arguments: 100 }, { type: 'regex', arguments: /^GWF[0-9]{9}$/ }],
+    validate: [
+      'required',
+      'notUrl',
+      { type: 'maxlength', arguments: 100 },
+      { type: 'regex', arguments: /^GWF[0-9]{9}$/ }
+    ],
     dependent: {
       field: 'reference-numbers',
       value: 'gwf'
@@ -456,14 +461,24 @@ module.exports = {
       field: 'reference-numbers',
       value: 'ihs'
     },
-    validate: ['required', 'notUrl', { type: 'maxlength', arguments: 100 }, { type: 'regex', arguments: /^IHS[0-9]{9}$/ }]
+    validate: [
+      'required',
+      'notUrl',
+      { type: 'maxlength', arguments: 100 },
+      { type: 'regex', arguments: /^IHS[0-9]{9}$/ }
+    ]
   },
   'uan-reference': {
     dependent: {
       field: 'reference-numbers',
       value: 'uan'
     },
-    validate: ['required', 'notUrl', { type: 'maxlength', arguments: 100 }, { type: 'regex', arguments: /^\d{4}-\d{4}-\d{4}-\d{4}$/}]
+    validate: [
+      'required',
+      'notUrl',
+      { type: 'maxlength', arguments: 100 },
+      { type: 'regex', arguments: /^\d{4}-\d{4}-\d{4}-\d{4}$/}
+    ]
   },
   'when-applied': {
     mixin: 'input-text',

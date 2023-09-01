@@ -163,8 +163,7 @@
     "hint": "For example, GWF012345678.",
     "validation": {
       "required": "Enter the GWF number",
-      "notUrl": "Enter the GWF number",
-      "regex": "Invalid GWF number. Please ensure the number starts with GWF followed by 9 digits"
+      "notUrl": "Enter the GWF number"
     }
   },
   "ho-reference": {
@@ -172,7 +171,6 @@
     "hint": "For example, 012345678",
     "validation": {
       "required": "Enter the Home Office reference number",
-      "numeric": "Number must only contain digits",
       "notUrl": "Enter the Home Office reference number"
     }
   },
@@ -181,8 +179,7 @@
     "hint": "For example, IHS123456789",
     "validation": {
       "required": "Enter the IHS number",
-      "notUrl": "Enter the IHS number",
-      "regex": "Invalid IHS number. Please ensure the number starts with IHS followed by 9 digits"
+      "notUrl": "Enter the IHS number"
     }
   },
   "uan-reference": {
@@ -190,8 +187,7 @@
     "hint": "For example, 1234-5678-9123-4567",
     "validation": {
       "required": "Enter the Unique Application Number",
-      "notUrl": "Enter the Unique Application Number",
-      "regex": "Invalid UAN number. Please ensure your number follows the format: xxxx-xxxx-xxxx-xxxx"
+      "notUrl": "Enter the Unique Application Number"
     }
   },
   "agent-representative-dob": {

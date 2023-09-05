@@ -19,7 +19,6 @@
     "test:acceptance_browser": "ACCEPTANCE_WITH_BROWSER=true TAGS=\"${TAGS:=@feature}\" yarn run test:cucumber",
     "test:cucumber": "cucumber-js -f @cucumber/pretty-formatter \"test/_features/**/*.feature\" --require test/_features/test.setup.js --require \"test/_features/step_definitions/**/*.js\" --tags $TAGS",
     "test:cucumber-name": "cucumber-js -f @cucumber/pretty-formatter \"test/_features/**/*.feature\" --require test/_features/test.setup.js --require \"test/_features/step_definitions/**/*.js\" --name $NAME",
-    "test:cucumber:validations": "cucumber-js -f @cucumber/pretty-formatter \"test/_features/ukvi-complaints/validation.feature\" --require test/_features/test.setup.js --require \"test/_features/step_definitions/**/*.js\"",
     "sqs-setup": "docker build -q -t sqs-mock test/_integration/sqs-mock && docker run --name sqs-mock -p 9324:9324 -d sqs-mock",
     "sqs-cleanup": "docker stop sqs-mock && docker container rm sqs-mock",
     "test:snyk": "snyk config set api=SNYK_TOKEN && snyk test",

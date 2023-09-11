@@ -6,7 +6,7 @@ export BRANCH=$(drone build info $GIT_REPO $DRONE_BUILD_PARENT --format {{.Targe
 export EVENT=$(drone build info $GIT_REPO $DRONE_BUILD_PARENT --format {{.Event}})
 export REFS=$(drone build info $GIT_REPO $DRONE_BUILD_PARENT --format {{.Ref}})
 
-if [[ "$STATUS" != "success" || "$BRANCH" != "main" || "$EVENT" != "push" || "$REFS" != "refs/heads/main" ]]; then
+if [[ "$STATUS" != "success" || "$BRANCH" != "master" || "$EVENT" != "push" || "$REFS" != "refs/heads/master" ]]; then
   echo "Build number $DRONE_BUILD_PARENT has not passed all relevant checks to Staging!"
   exit 1
 fi

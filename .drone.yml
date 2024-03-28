@@ -151,7 +151,7 @@ steps:
       - tag
 
 
-  # Deploy to pull request UAT environment
+  ## Deploy to pull request UAT environment
   - name: deploy_to_branch
     pull: if-not-exists
     image: quay.io/ukhomeofficedigital/kd:v1.14.0

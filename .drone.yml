@@ -62,8 +62,8 @@ steps:
     when:
       branch:
         include:
-        - master
-        - feature/*
+          - master
+          - feature/*
       event: [push, pull_request]
 
   - name: setup_deploy
@@ -77,8 +77,9 @@ steps:
     when:
       branch:
         include:
-        - master
-      event: push
+          - master
+          - feature/*
+      event: [push, pull_request]
 
   - name: linting_deploy
     <<: *linting
@@ -86,7 +87,8 @@ steps:
       branch:
         include:
           - master
-      event: push
+          - feature/*
+      event: [push, pull_request]
 
   - name: unit_tests_deploy
     <<: *unit_tests
@@ -94,7 +96,8 @@ steps:
       branch:
         include:
           - master
-      event: push
+          - feature/*
+      event: [push, pull_request]
 
   - name: sonar_scanner_deploy
     <<: *sonar_scanner
@@ -102,7 +105,8 @@ steps:
       branch:
         include:
           - master
-      event: push
+          - feature/*
+      event: [push, pull_request]
 
   - name: build_image
     image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/dind
@@ -113,7 +117,10 @@ steps:
       - name: dockersock
         path: /var/run
     when:
-      branch: master
+      branch: 
+        inbclude:
+        - master
+        - feature/*
       event: [push, pull_request]
 
   - name: image_to_quay
@@ -123,11 +130,14 @@ steps:
       DOCKER_PASSWORD:
         from_secret: DOCKER_PASSWORD
     commands:
-    - docker login -u="ukhomeofficedigital+sas_fbis_robot" -p=$${DOCKER_PASSWORD} quay.io
+    - docker login -u="ukhomeofficedigital+sas" -p=$${DOCKER_PASSWORD} quay.io
     - docker tag $${IMAGE_REPO}:$${DRONE_COMMIT_SHA} $${IMAGE_URL}/$${IMAGE_REPO}:$${DRONE_COMMIT_SHA}
     - docker push $${IMAGE_URL}/$${IMAGE_REPO}:$${DRONE_COMMIT_SHA}
     when:
-      branch: master
+      branch: 
+        include:
+        - master
+        - feature/*
       event: [push, pull_request]
 
   # Trivy Security Scannner

@@ -42,11 +42,11 @@ ignore:
    - '*':
         reason: low severity
         expires: '2024-11-01T17:02:21.865Z'
- SNYK-JS-REQUEST-3361831:
+  SNYK-JS-REQUEST-3361831:
    - '*':
         reason: low severity
         expires: '2024-11-01T17:02:21.865Z'
- SNYK-JS-TOUGHCOOKIE-5672873:
+  SNYK-JS-TOUGHCOOKIE-5672873:
    - '*':
         reason: low severity
         expires: '2024-11-01T17:02:21.865Z'

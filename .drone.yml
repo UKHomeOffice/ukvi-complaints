@@ -85,7 +85,8 @@ steps:
     when:
       branch:
         include:
-         - master   
+         - master
+         - feature/*
       event: push
 
   - name: unit_tests_deploy

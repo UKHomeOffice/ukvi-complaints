@@ -38,10 +38,6 @@ ignore:
    - '*':
         reason: low severity
         expires: '2024-11-01T17:02:21.865Z'
-  SNYK-JS-AXIOS-6124857:
-   - '*':
-        reason: low severity
-        expires: '2024-11-01T17:02:21.865Z'
  SNYK-JS-INFLIGHT-6095116:
    - '*':
         reason: low severity

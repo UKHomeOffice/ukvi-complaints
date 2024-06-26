@@ -62,8 +62,8 @@ steps:
     when:
       branch:
         include:
-          - master
-          - feature/*
+        - master
+        - feature/*
       event: [push, pull_request]
 
   - name: setup_deploy
@@ -77,8 +77,7 @@ steps:
     when:
       branch:
         include:
-          - master
-          - feature/*
+        - master
       event: [push, pull_request]
 
   - name: linting_deploy
@@ -86,9 +85,9 @@ steps:
     when:
       branch:
         include:
-          - master
-          - feature/*
-      event: [push, pull_request]
+         - master
+         - feature/*
+      event: push
 
   - name: unit_tests_deploy
     <<: *unit_tests
@@ -96,8 +95,7 @@ steps:
       branch:
         include:
           - master
-          - feature/*
-      event: [push, pull_request]
+      event: push
 
   - name: sonar_scanner_deploy
     <<: *sonar_scanner
@@ -105,8 +103,7 @@ steps:
       branch:
         include:
           - master
-          - feature/*
-      event: [push, pull_request]
+      event: push
 
   - name: build_image
     image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/dind
@@ -130,7 +127,7 @@ steps:
       DOCKER_PASSWORD:
         from_secret: DOCKER_PASSWORD
     commands:
-    - docker login -u="ukhomeofficedigital+sas" -p=$${DOCKER_PASSWORD} quay.io
+    - docker login -u="ukhomeofficedigital+sas_fbis_robot" -p=$${DOCKER_PASSWORD} quay.io
     - docker tag $${IMAGE_REPO}:$${DRONE_COMMIT_SHA} $${IMAGE_URL}/$${IMAGE_REPO}:$${DRONE_COMMIT_SHA}
     - docker push $${IMAGE_URL}/$${IMAGE_REPO}:$${DRONE_COMMIT_SHA}
     when:
@@ -197,8 +194,8 @@ steps:
     when:
       branch:
         include:
-          - master
-          - feature/*
+        - master
+        - feature/*
       event: pull_request
 
   - name: unit_tests_branch
@@ -215,8 +212,8 @@ steps:
     when:
       branch:
         include:
-          - master
-          - feature/*
+        - master
+        - feature/*
       event: pull_request
 
   - name: acceptance_tests_branch
@@ -243,11 +240,11 @@ steps:
     when:
       branch:
         include:
-          - master
-          - feature/*
+        - master
+        - feature/*
       event: pull_request
 
-  # # TEST Deploy to Master UAT environment
+   # TEST Deploy to Master UAT environment
   # - name: TEST_deploy_to_uat
   #   pull: if-not-exists
   #   image: quay.io/ukhomeofficedigital/kd:v1.14.0

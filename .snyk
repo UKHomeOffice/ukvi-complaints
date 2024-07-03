@@ -55,4 +55,9 @@ ignore:
    - '*':
         reason: low severity
         expires: '2024-11-01T17:02:21.865Z'
+
+  SNYK-JS-ASYNC-7414156:
+   - '*':
+        reason: low severity
+        expires: '2024-11-01T17:02:21.865Z'
 patch: {}

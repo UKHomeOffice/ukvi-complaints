@@ -98,6 +98,10 @@ steps:
       - name: dockersock
         path: /var/run
     when:
+      branch:
+        include:
+        - master
+    when:
       event: [push, pull_request]
 
   - name: notify-slack
@@ -118,6 +122,10 @@ steps:
     volumes:
       - name: dockersock
         path: /var/run
+    when:
+      branch:
+        include:
+        - master
     when:
       event: [push, pull_request]
   

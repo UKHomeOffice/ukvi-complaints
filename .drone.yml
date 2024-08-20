@@ -101,7 +101,7 @@ steps:
       - jq -r '.Results[].Vulnerabilities[] | "\(.VulnerabilityID) | \(.Severity) | \(.PkgName) | \(.FixedVersion)"' /drone/src/trivy-report.json >> /drone/src/trivy-table.txt
     volumes:
       - name: dockersock
-        path: /drone/src
+        path: /drone/src1
     when:
       event: [push, pull_request]
 
@@ -123,7 +123,7 @@ steps:
       - generate-table
     volumes:
       - name: dockersock
-        path: /drone/src
+        path: /drone/src2
     when:
       event: [push, pull_request]
   

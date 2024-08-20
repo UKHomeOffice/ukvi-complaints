@@ -99,6 +99,8 @@ steps:
       - echo "Vulnerability | Severity | Package | Fixed Version" > /var/run/trivy-table.txt
       - echo "------------- | -------- | ------- | -------------" >> /var/run/trivy-table.txt
       - jq -r '.Results[].Vulnerabilities[] | "\(.VulnerabilityID) | \(.Severity) | \(.PkgName) | \(.FixedVersion)"' /var/run/trivy-report.json >> /var/run/trivy-table.txt
+    depends_on:
+      - trivy-scan
     volumes:
       - name: dockersock
         path: /var/run

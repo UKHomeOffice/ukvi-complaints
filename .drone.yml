@@ -93,7 +93,7 @@ steps:
       - cat /var/run/trivy-report.txt
       
       # Store the scan result into an environment variable for Slack notification
-      - export SLACK_MESSAGE=$(cat /drone/src/trivy-report.txt)
+      - export SLACK_MESSAGE=$(cat /var/run/trivy-report.txt)
     volumes:
       - name: dockersock
         path: /var/run

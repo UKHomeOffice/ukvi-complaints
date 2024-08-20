@@ -96,9 +96,9 @@ steps:
   - name: generate-table
     image: busybox
     commands:
-      - echo "Vulnerability | Severity | Package | Fixed Version" > /drone/src/trivy-table.txt
-      - echo "------------- | -------- | ------- | -------------" >> /drone/src/trivy-table.txt
-      - jq -r '.Results[].Vulnerabilities[] | "\(.VulnerabilityID) | \(.Severity) | \(.PkgName) | \(.FixedVersion)"' /drone/src/trivy-report.json >> /drone/src/trivy-table.txt
+      - echo "Vulnerability | Severity | Package | Fixed Version" > /var/run/trivy-table.txt
+      - echo "------------- | -------- | ------- | -------------" >> /var/run/trivy-table.txt
+      - jq -r '.Results[].Vulnerabilities[] | "\(.VulnerabilityID) | \(.Severity) | \(.PkgName) | \(.FixedVersion)"' /var/run/trivy-report.json >> /var/run/trivy-table.txt
     volumes:
       - name: dockersock
         path: /var/run

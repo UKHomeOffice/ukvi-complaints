@@ -87,7 +87,7 @@ steps:
     image: aquasec/trivy:latest
     commands:
       # Run Trivy scan and save output to a text file
-      - trivy image --severity HIGH,CRITICAL --format table --output /var/run/trivy-report.txt node:lts-alpine@sha256:eb8101caae9ac02229bd64c024919fe3d4504ff7f329da79ca60a04db08cef52
+      - trivy image --severity HIGH,CRITICAL --format table --output /var/run/trivy-report.txt node:lts-alpine@sha256:19eaf41f3b8c2ac2f609ac8103f9246a6a6d46716cdbe49103fdb116e55ff0cc
       
       # Display the output for debugging (optional)
       - cat /var/run/trivy-report.txt

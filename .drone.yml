@@ -84,7 +84,8 @@ steps:
       event: [push, pull_request]
 
   - name: generate-table
-    image: busybox
+    pull: if-not-exists
+    image: plugins/slack:1.4.1
     commands:
       - echo "Vulnerability | Severity | Package | Fixed Version" > trivy-table.txt
       - echo "------------- | -------- | ------- | -------------" >> trivy-table.txt

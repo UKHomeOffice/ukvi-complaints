@@ -85,7 +85,7 @@ steps:
 
   - name: generate-table
     pull: if-not-exists
-    image: plugins/slack:1.4.1
+    image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/trivy/client:latest
     commands:
       - echo "Vulnerability | Severity | Package | Fixed Version" > trivy-table.txt
       - echo "------------- | -------- | ------- | -------------" >> trivy-table.txt

@@ -86,21 +86,14 @@ steps:
   - name: trivy-scan
     image: aquasec/trivy:latest
     commands:
-      - trivy image --format json --output /var/run/trivy-report.json node:lts-alpine@sha256:eb8101caae9ac02229bd64c024919fe3d4504ff7f329da79ca60a04db08cef52
-    volumes:
-      - name: dockersock
-        path: /var/run
-    when:
-      event: [push, pull_request]
-
-  - name: generate-table
-    image: busybox
-    commands:
-      - echo "Vulnerability | Severity | Package | Fixed Version" > /var/run/trivy-table.txt
-      - echo "------------- | -------- | ------- | -------------" >> /var/run/trivy-table.txt
-      - jq -r '.Results[].Vulnerabilities[] | "\(.VulnerabilityID) | \(.Severity) | \(.PkgName) | \(.FixedVersion)"' /var/run/trivy-report.json >> /var/run/trivy-table.txt
-    depends_on:
-      - trivy-scan
+      # Run Trivy scan and save output to a text file
+      - trivy image --severity HIGH,CRITICAL --format table --output /var/run/trivy-report.txt node:lts-alpine@sha256:eb8101caae9ac02229bd64c024919fe3d4504ff7f329da79ca60a04db08cef52
+      
+      # Display the output for debugging (optional)
+      - cat /drone/src/trivy-report.txt
+      
+      # Store the scan result into an environment variable for Slack notification
+      - export SLACK_MESSAGE=$(cat /drone/src/trivy-report.txt)
     volumes:
       - name: dockersock
         path: /var/run
@@ -111,18 +104,17 @@ steps:
     image: plugins/slack
     settings:
       webhook:
-        from_secret: slack_webhook
-      channel: "#your-channel"
-      username: "Trivy Bot"
+        from_secret: slack_sas_hof_security_webhook
+      channel: sas-hof-security
       template: |
         {
-          "text": "*Vulnerability Report*\n\n{{ report }}",
+          "text": "*Trivy Vulnerability Report*\n\n```{{ report }}```",
         }
     environment:
       report:
-        from_secret: SLACK_TRIVY_REPORT
+        from_secret: SLACK_MESSAGE
     depends_on:
-      - generate-table
+      - trivy-scan
     volumes:
       - name: dockersock
         path: /var/run

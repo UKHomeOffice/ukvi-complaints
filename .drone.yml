@@ -86,10 +86,10 @@ steps:
   - name: trivy-scan
     image: aquasec/trivy:latest
     commands:
-      - trivy image --format json --output /drone/src/trivy-report.json node:lts-alpine@sha256:eb8101caae9ac02229bd64c024919fe3d4504ff7f329da79ca60a04db08cef52
+      - trivy image --format json --output /var/run/trivy-report.json node:lts-alpine@sha256:eb8101caae9ac02229bd64c024919fe3d4504ff7f329da79ca60a04db08cef52
     volumes:
       - name: dockersock
-        path: /drone/src
+        path: /var/run
     when:
       event: [push, pull_request]
 
@@ -101,7 +101,7 @@ steps:
       - jq -r '.Results[].Vulnerabilities[] | "\(.VulnerabilityID) | \(.Severity) | \(.PkgName) | \(.FixedVersion)"' /drone/src/trivy-report.json >> /drone/src/trivy-table.txt
     volumes:
       - name: dockersock
-        path: /drone/src1
+        path: /var/run
     when:
       event: [push, pull_request]
 
@@ -123,7 +123,7 @@ steps:
       - generate-table
     volumes:
       - name: dockersock
-        path: /drone/src2
+        path: /var/run
     when:
       event: [push, pull_request]
   

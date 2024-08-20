@@ -76,10 +76,35 @@ steps:
         memory: 1024Mi
     environment:
       IMAGE_NAME: node:lts-alpine@sha256:eb8101caae9ac02229bd64c024919fe3d4504ff7f329da79ca60a04db08cef52
-      SEVERITY: MEDIUM,HIGH,CRITICAL  --dependency-tree
+      SEVERITY: MEDIUM,HIGH,CRITICAL  --dependency-tree --output trivy-report.json
       FAIL_ON_DETECTION: false
       IGNORE_UNFIXED: false
       ALLOW_CVE_LIST_FILE: hof-services-config/infrastructure/trivy/.trivyignore.yaml
+    when:
+      event: [push, pull_request]
+
+  - name: generate-table
+    image: busybox
+    commands:
+      - echo "Vulnerability | Severity | Package | Fixed Version" > trivy-table.txt
+      - echo "------------- | -------- | ------- | -------------" >> trivy-table.txt
+      - jq -r '.Results[].Vulnerabilities[] | "\(.VulnerabilityID) | \(.Severity) | \(.PkgName) | \(.FixedVersion)"' trivy-report.json >> trivy-table.txt
+      - export SLACK_TRIVY_REPORT="$(cat trivy-table.txt)"
+    when:
+      event: [push, pull_request]
+
+  - name: notify_slack_security_scans
+    pull: if-not-exists
+    image: plugins/slack:1.4.1
+    settings:
+      channel: sas-hof-security
+      failure: ignore
+      template: |
+        {
+          "text": "*Vulnerability Report*\n\n{{ report }}",
+        }
+      webhook:
+        from_secret: slack_sas_hof_security_webhook
     when:
       event: [push, pull_request]
   

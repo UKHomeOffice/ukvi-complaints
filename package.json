@@ -6,7 +6,7 @@
   "author": "",
   "description": "",
   "engines": {
-    "node": ">=20.16.0 <21.0.0"
+    "node": ">=22.6.0"
   },
   "license": "MIT",
   "scripts": {

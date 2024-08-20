@@ -83,29 +83,47 @@ steps:
     when:
       event: [push, pull_request]
 
-  - name: generate-table
-    pull: if-not-exists
-    image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/trivy/client:latest
+  - name: trivy-scan
+    image: aquasec/trivy:latest
     commands:
-      - echo "Vulnerability | Severity | Package | Fixed Version" > trivy-table.txt
-      - echo "------------- | -------- | ------- | -------------" >> trivy-table.txt
-      - jq -r '.Results[].Vulnerabilities[] | "\(.VulnerabilityID) | \(.Severity) | \(.PkgName) | \(.FixedVersion)"' trivy-report.json >> trivy-table.txt
-      - export SLACK_TRIVY_REPORT="$(cat trivy-table.txt)"
+      - trivy image --format json --output /drone/src/trivy-report.json node:lts-alpine@sha256:eb8101caae9ac02229bd64c024919fe3d4504ff7f329da79ca60a04db08cef52
+    volumes:
+      - name: dockersock
+        path: /drone/src
     when:
       event: [push, pull_request]
 
-  - name: notify_slack_security_scans
-    pull: if-not-exists
-    image: plugins/slack:1.4.1
+  - name: generate-table
+    image: busybox
+    commands:
+      - echo "Vulnerability | Severity | Package | Fixed Version" > /drone/src/trivy-table.txt
+      - echo "------------- | -------- | ------- | -------------" >> /drone/src/trivy-table.txt
+      - jq -r '.Results[].Vulnerabilities[] | "\(.VulnerabilityID) | \(.Severity) | \(.PkgName) | \(.FixedVersion)"' /drone/src/trivy-report.json >> /drone/src/trivy-table.txt
+    volumes:
+      - name: dockersock
+        path: /drone/src
+    when:
+      event: [push, pull_request]
+
+  - name: notify-slack
+    image: plugins/slack
     settings:
-      channel: sas-hof-security
-      failure: ignore
+      webhook:
+        from_secret: slack_webhook
+      channel: "#your-channel"
+      username: "Trivy Bot"
       template: |
         {
           "text": "*Vulnerability Report*\n\n{{ report }}",
         }
-      webhook:
-        from_secret: slack_sas_hof_security_webhook
+    environment:
+      report:
+        from_secret: SLACK_TRIVY_REPORT
+    depends_on:
+      - generate-table
+    volumes:
+      - name: dockersock
+        path: /drone/src
     when:
       event: [push, pull_request]
   

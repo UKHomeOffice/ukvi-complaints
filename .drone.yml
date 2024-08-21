@@ -97,7 +97,7 @@ steps:
       
       # Store the scan result into an environment variable for Slack notification
       - export SLACK_MESSAGE=$(cat /var/run/trivy-report.txt)
-      - curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"\`\`\`$SLACK_MESSAGE\`\`\`\"}" $SLACK_WEBHOOK_URL
+      - curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"\`\`\` ${{SLACK_MESSAGE}} \`\`\`\"}" ${{SLACK_WEBHOOK_URL}}
     volumes:
       - name: dockersock
         path: /var/run

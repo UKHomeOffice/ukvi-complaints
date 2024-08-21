@@ -86,7 +86,7 @@ steps:
   - name: trivy-scan
     image: aquasec/trivy:latest
     environment:
-      DRONE_GIT_USERNAME:
+      SLACK_WEBHOOK_URL:
         from_secret: slack_sas_hof_security_webhook
     commands:
       # Run Trivy scan and save output to a text file
@@ -97,11 +97,7 @@ steps:
       
       # Store the scan result into an environment variable for Slack notification
       - export SLACK_MESSAGE=$(cat /var/run/trivy-report.txt)
-      - POST 
-      Content-type: application/json
-      {
-          "text": "$SLACK_MESSAGE"
-      }
+      - curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"\`\`\`$SLACK_MESSAGE\`\`\`\"}" $SLACK_WEBHOOK_URL
     volumes:
       - name: dockersock
         path: /var/run
@@ -320,7 +316,7 @@ steps:
   #     KUBE_TOKEN:
   #       from_secret: kube_token_stg
   #   commands:
-  #     - bin/deploy.sh $${STG_ENV}
+  #     - bcin/deploy.sh $${STG_ENV}
   #   when:
   #     branch: master
   #     event: pull_request

@@ -48,8 +48,6 @@
     "chromedriver": ">119.0.1",
     "eslint": "^7.30.0",
     "eslint-config-hof": "^1.2.1",
-    "funkie": "^0.0.6",
-    "funkie-chromedriver": "0.1.0",
     "mocha": "^9.0.3",
     "mock-fs": "^5.1.2",
     "nyc": "^15.1.0",

@@ -924,6 +924,7 @@ module.exports = {
     },
     '/complete': {
       template: 'confirmation'
-    }
+    },
+    '/accessibility': {}
   }
 };

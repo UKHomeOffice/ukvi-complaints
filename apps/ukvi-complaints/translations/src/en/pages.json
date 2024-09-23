@@ -415,16 +415,8 @@
   "error": {
     "header": "Sorry, your form has not been sent",
     "text": "Please try again using the online form"
+  },
+  "accessibility": {
+    "header": "Accessibility statement"
   }
 }
-
-
-
-
-
-
-
-
-
-
-

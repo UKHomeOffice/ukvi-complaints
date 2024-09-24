@@ -417,7 +417,7 @@
     "text": "Please try again using the online form"
   },
   "accessibility": {
-    "header": "Accessibility statement for Additional Security Checks",
+    "header": "Accessibility statement",
     "intro": "This accessibility statement applies to the 'Additional Security Checks' service.",
     "intro-p2": "This service is run by the Home Office. We want as many people as possible to be able to use this service. For example, that means you should be able to:",
     "intro-p2-li1": "change colours, contrast levels and fonts",
@@ -434,7 +434,7 @@
     "reporting-p2-link": "Read tips on contacting organisations about inaccessible websites.",
     "enforcement-header": "Enforcement procedure",
     "enforcement-p1-pre-link": "The Equality and Human Rights Commission (EHRC) is responsible for enforcing the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018 (the 'accessibility regulations'). If you're not happy with how we respond to your complaint,",
-    "enforcement-p1-link": "contact the Equality Advisory and Support Service (EASS).",
+    "enforcement-p1-link": "contact the Equality Advisory and Support Service (EASS)",
     "enforcement-p2": "If you are in Northern Ireland and are not happy with how wee respond to your complaint you can contact the Equalities Commission for Northern Ireland who are responsible for enforcing the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018 (the 'accessibility regulations') in Northern Ireland.",
     "technical-info-header": "Technical information about this website's accessibility",
     "technical-info-p1": "The Home Office is committed to making its online services accessible, in accordance with the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018",
@@ -457,14 +457,3 @@
     "preparation-p3": "We tested the service based on a user's ability to complete key journeys. All parts of the chosen journeys were tested, including documents. Journeys were chosen on a number of factors including usage statistics, risk assessments and subject matter."
   }
 }
-
-
-
-
-
-
-
-
-
-
-

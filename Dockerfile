@@ -1,8 +1,8 @@
-FROM node:lts-alpine@sha256:19eaf41f3b8c2ac2f609ac8103f9246a6a6d46716cdbe49103fdb116e55ff0cc
+FROM node:lts-alpine@sha256:eb8101caae9ac02229bd64c024919fe3d4504ff7f329da79ca60a04db08cef52
 
 USER root
 
-# Update packages as a result of Anchore security vulnerability checks
+# Update packages as a result of Trivy security vulnerability checks
 RUN apk update && \
     apk add --upgrade gnutls binutils nodejs npm apk-tools libjpeg-turbo libcurl libx11 libxml2
 

@@ -9,7 +9,7 @@ Get the project from Github
 $ git clone git@github.com:UKHomeOffice/UKVI-Complaints.git && cd UKVI-Complaints
 ```
 
-Install the dependencies and build the project resources
+Install the dependencies and build the project resources 
 ```bash
 $ yarn install
 ```

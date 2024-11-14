@@ -210,14 +210,19 @@ const getDataRows = (model, translate) => {
 };
 
 module.exports = config => {
-  return Notify(Object.assign({}, config, {
-    recipient: model => model['applicant-email'] || model['agent-email'] || 'noop@localhost',
-    subject: (model, translate) => translate('pages.email.customer.subject'),
-    template: path.resolve(__dirname, '../emails/customer.html'),
-    parse: (model, translate) => {
-      return Object.assign(model, {
-        data: getDataRows(model, translate)
-      });
-    }
-  }));
+  if (model => model['applicant-email'] || model['agent-email']) {
+    return Notify(Object.assign({}, config, {
+      recipient: model => model['applicant-email'] || model['agent-email'],
+      subject: (model, translate) => translate('pages.email.customer.subject'),
+      template: path.resolve(__dirname, '../emails/customer.html'),
+      parse: (model, translate) => {
+        return Object.assign(model, {
+          data: getDataRows(model, translate)
+        });
+      }
+    }));
+  }
+  else {
+    return null;
+  }
 };

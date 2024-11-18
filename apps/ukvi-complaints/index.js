@@ -3,6 +3,7 @@
 const config = require('../../config');
 const conditionalContent = require('./behaviours/conditional-content');
 const customerEmailer = require('./behaviours/customer-email')(config.email);
+const SkipCustomerEmailer = require('./behaviours/skip-customer-email');
 const caseworkerEmailer = require('./behaviours/caseworker-email')(config.email);
 const sendToSQS = require('./behaviours/send-to-sqs');
 const ResetOnChange = require('./behaviours/reset-on-change');
@@ -878,7 +879,7 @@ module.exports = {
       next: '/confirm'
     },
     '/confirm': {
-      behaviours: [sendToSQS, caseworkerEmailer, customerEmailer, 'complete', require('hof').components.summary],
+      behaviours: [SkipCustomerEmailer, sendToSQS, caseworkerEmailer, customerEmailer, 'complete', require('hof').components.summary],
       next: '/complete',
       sections: {
         'complaint-details': [

@@ -96,6 +96,8 @@ steps:
         include:
           - master
       event: push
+    depends_on:
+      - setup_deploy
 
   - name: sonar_scanner_deploy
     <<: *sonar_scanner
@@ -119,6 +121,8 @@ steps:
         - master
         - feature/*
       event: [push, pull_request]
+    depends_on:
+      - setup_deploy
 
   - name: image_to_quay
     pull: if-not-exists
@@ -136,6 +140,8 @@ steps:
         - master
         - feature/*
       event: [push, pull_request]
+    depends_on:
+      - build_image
 
   # Trivy Security Scannner
   - name: scan-image
@@ -156,6 +162,8 @@ steps:
       - pull_request
       - push
       - tag
+    depends_on:
+      - build_image
 
 
   # Deploy to pull request UAT environment
@@ -173,6 +181,9 @@ steps:
     when:
       branch: master
       event: pull_request
+    depends_on:
+      - clone_repos
+      - image_to_quay
 
   - name: setup_branch
     pull: if-not-exists
@@ -188,6 +199,8 @@ steps:
           - master
           - feature/*
       event: pull_request
+    depends_on:
+      - build_image
 
   - name: linting_branch
     <<: *linting
@@ -197,6 +210,8 @@ steps:
         - master
         - feature/*
       event: pull_request
+    depends_on:
+      - setup_branch
 
   - name: unit_tests_branch
     <<: *unit_tests
@@ -206,6 +221,8 @@ steps:
         - master
         - feature/*
       event: pull_request
+    depends_on:
+      - setup_branch
 
   - name: sonar_scanner_branch
     <<: *sonar_scanner
@@ -215,6 +232,8 @@ steps:
         - master
         - feature/*
       event: pull_request
+    depends_on:
+      - setup_branch
 
   - name: acceptance_tests_branch
     <<: *acceptance_tests
@@ -227,6 +246,8 @@ steps:
     when:
       branch: master
       event: pull_request
+    depends_on:
+      - setup_branch
 
   # Snyk security scans which run after branch deployment to prevent blocking of PR UAT tests
   - name: snyk_scan
@@ -243,6 +264,8 @@ steps:
         - master
         - feature/*
       event: pull_request
+    depends_on:
+      - setup_deploy
 
    # TEST Deploy to Master UAT environment
   # - name: TEST_deploy_to_uat

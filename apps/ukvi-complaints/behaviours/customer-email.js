@@ -210,7 +210,6 @@ const getDataRows = (model, translate) => {
 };
 
 module.exports = config => {
-  console.log('CUSTOMER EMAIL BEHAVIOUR IS RUNNING')
   return Notify(Object.assign({}, config, {
     recipient: model => model['applicant-email'] || model['agent-email'] || 'noop@localhost',
     subject: (model, translate) => translate('pages.email.customer.subject'),

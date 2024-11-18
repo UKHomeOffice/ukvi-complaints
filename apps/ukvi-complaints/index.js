@@ -3,7 +3,6 @@
 const config = require('../../config');
 const conditionalContent = require('./behaviours/conditional-content');
 const customerEmailer = require('./behaviours/customer-email')(config.email);
-const SkipCustomerEmailer = require('./behaviours/skip-customer-email');
 const caseworkerEmailer = require('./behaviours/caseworker-email')(config.email);
 const sendToSQS = require('./behaviours/send-to-sqs');
 const ResetOnChange = require('./behaviours/reset-on-change');
@@ -876,11 +875,74 @@ module.exports = {
     '/complaint-details': {
       behaviours: [conditionalContent],
       fields: ['complaint-details'],
+      forks: [
+        {
+          target: '/no-email-confirm',
+          condition: req => {
+            if (req.sessionModel.get('applicant-email') === undefined && req.sessionModel.get('agent-email') === undefined) {
+              return true
+            }
+          }
+        },
+        {
+          target: '/confirm',
+          condition: req => {
+            if (req.sessionModel.get('applicant-email') || req.sessionModel.get('agent-email')) {
+              return true
+            }
+          }
+        }],
       next: '/confirm'
     },
     '/confirm': {
-      behaviours: [SkipCustomerEmailer, sendToSQS, caseworkerEmailer, customerEmailer, 'complete', require('hof').components.summary],
+      behaviours: [sendToSQS, caseworkerEmailer, customerEmailer, 'complete', require('hof').components.summary],
       next: '/complete',
+      sections: {
+        'complaint-details': [
+          'reason',
+          'immigration-application',
+          'called-number',
+          'called-date',
+          'called-time',
+          'called-from',
+          'ssc-city',
+          'vac-country',
+          'vac-city',
+          'ukvcas-city',
+          'when-applied',
+          'complaint-reference-number',
+          'gwf-reference',
+          'ho-reference',
+          'ihs-reference',
+          'uan-reference',
+          'complaint-details'
+        ],
+        'agent-details': [
+          'agent-name',
+          'who-representing'
+        ],
+        'applicant-details': [
+          'agent-representative-name',
+          'agent-representative-nationality',
+          'agent-representative-dob'
+        ],
+        'your-details': [
+          'applicant-name',
+          'applicant-nationality',
+          'applicant-dob'
+        ],
+        'contact-details': [
+          'applicant-email',
+          'applicant-phone',
+          'agent-email',
+          'agent-phone'
+        ]
+      }
+    },
+    '/no-email-confirm': {
+      behaviours: [sendToSQS, caseworkerEmailer, 'complete', require('hof').components.summary],
+      next: '/complete',
+      template: 'confirm',
       sections: {
         'complaint-details': [
           'reason',

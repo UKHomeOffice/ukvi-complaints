@@ -875,28 +875,48 @@ module.exports = {
     '/complaint-details': {
       behaviours: [conditionalContent],
       fields: ['complaint-details'],
-      forks: [
-        {
-          target: '/no-email-confirm',
-          condition: req => {
-            if (req.sessionModel.get('applicant-email') === undefined && req.sessionModel.get('agent-email') === undefined) {
-              return true
-            }
-          }
-        },
-        {
-          target: '/confirm',
-          condition: req => {
-            if (req.sessionModel.get('applicant-email') || req.sessionModel.get('agent-email')) {
-              return true
-            }
-          }
-        }],
+      // forks: [
+      //   {
+      //     target: '/confirm',
+      //     condition: req => {
+      //       if (req.sessionModel.get('applicant-email') === undefined && req.sessionModel.get('agent-email') === undefined) {
+      //         console.log('no email')
+      //         return true;
+      //       }
+      //     },
+      //     behaviours: [sendToSQS, caseworkerEmailer, 'complete', require('hof').components.summary]
+      //   },
+      //   {
+      //     target: '/confirm',
+      //     condition: req => {
+      //       if (req.sessionModel.get('applicant-email') || req.sessionModel.get('agent-email')) {
+      //         console.log('email')
+      //         return true
+      //       }
+      //     },
+      //     behaviours: [sendToSQS, caseworkerEmailer, customerEmailer, 'complete', require('hof').components.summary]
+      //   }],
+      // forks: [
+      //   {
+      //     target: '/no-email-confirm',
+      //     condition: req => {
+      //       if (req.sessionModel.get('applicant-email') === undefined && req.sessionModel.get('agent-email') === undefined) {
+      //         return true
+      //       }
+      //     }
+      //   },
+      //   {
+      //     target: '/confirm',
+      //     condition: req => {
+      //       if (req.sessionModel.get('applicant-email') || req.sessionModel.get('agent-email')) {
+      //         return true
+      //       }
+      //     }
+      //   }],
       next: '/confirm'
     },
     '/confirm': {
-      behaviours: [sendToSQS, caseworkerEmailer, customerEmailer, 'complete', require('hof').components.summary],
-      next: '/complete',
+      // behaviours: [sendToSQS, caseworkerEmailer, customerEmailer, 'complete', require('hof').components.summary],
       sections: {
         'complaint-details': [
           'reason',
@@ -939,52 +959,52 @@ module.exports = {
         ]
       }
     },
-    '/no-email-confirm': {
-      behaviours: [sendToSQS, caseworkerEmailer, 'complete', require('hof').components.summary],
-      next: '/complete',
-      template: 'confirm',
-      sections: {
-        'complaint-details': [
-          'reason',
-          'immigration-application',
-          'called-number',
-          'called-date',
-          'called-time',
-          'called-from',
-          'ssc-city',
-          'vac-country',
-          'vac-city',
-          'ukvcas-city',
-          'when-applied',
-          'complaint-reference-number',
-          'gwf-reference',
-          'ho-reference',
-          'ihs-reference',
-          'uan-reference',
-          'complaint-details'
-        ],
-        'agent-details': [
-          'agent-name',
-          'who-representing'
-        ],
-        'applicant-details': [
-          'agent-representative-name',
-          'agent-representative-nationality',
-          'agent-representative-dob'
-        ],
-        'your-details': [
-          'applicant-name',
-          'applicant-nationality',
-          'applicant-dob'
-        ],
-        'contact-details': [
-          'applicant-email',
-          'applicant-phone',
-          'agent-email',
-          'agent-phone'
-        ]
-      }
-    },
+    // '/no-email-confirm': {
+    //   behaviours: [sendToSQS, caseworkerEmailer, 'complete', require('hof').components.summary],
+    //   next: '/complete',
+    //   template: 'confirm',
+    //   sections: {
+    //     'complaint-details': [
+    //       'reason',
+    //       'immigration-application',
+    //       'called-number',
+    //       'called-date',
+    //       'called-time',
+    //       'called-from',
+    //       'ssc-city',
+    //       'vac-country',
+    //       'vac-city',
+    //       'ukvcas-city',
+    //       'when-applied',
+    //       'complaint-reference-number',
+    //       'gwf-reference',
+    //       'ho-reference',
+    //       'ihs-reference',
+    //       'uan-reference',
+    //       'complaint-details'
+    //     ],
+    //     'agent-details': [
+    //       'agent-name',
+    //       'who-representing'
+    //     ],
+    //     'applicant-details': [
+    //       'agent-representative-name',
+    //       'agent-representative-nationality',
+    //       'agent-representative-dob'
+    //     ],
+    //     'your-details': [
+    //       'applicant-name',
+    //       'applicant-nationality',
+    //       'applicant-dob'
+    //     ],
+    //     'contact-details': [
+    //       'applicant-email',
+    //       'applicant-phone',
+    //       'agent-email',
+    //       'agent-phone'
+    //     ]
+    //   }
+    // },
     '/complete': {
       template: 'confirmation'
     },

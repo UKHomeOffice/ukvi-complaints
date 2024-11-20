@@ -916,7 +916,7 @@ module.exports = {
       next: '/confirm'
     },
     '/confirm': {
-      // behaviours: [sendToSQS, caseworkerEmailer, customerEmailer, 'complete', require('hof').components.summary],
+      behaviours: [sendToSQS, caseworkerEmailer, customerEmailer, 'complete', require('hof').components.summary],
       sections: {
         'complaint-details': [
           'reason',

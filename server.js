@@ -5,6 +5,7 @@ const hof = require('hof');
 const settings = require('./hof.settings');
 
 settings.routes = settings.routes.map(route => require(route));
+settings.behaviours = settings.behaviours.map(require);
 settings.root = __dirname;
 settings.csp = {
   imgSrc: [

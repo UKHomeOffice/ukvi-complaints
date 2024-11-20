@@ -1,5 +1,3 @@
-'use strict';
-
 const hof = require('hof');
 const Notify = hof.components.notify;
 const path = require('path');
@@ -212,6 +210,15 @@ const getDataRows = (model, translate) => {
 module.exports = config => {
   return Notify(Object.assign({}, config, {
     recipient: model => model['applicant-email'] || model['agent-email'] || 'noop@localhost',
+    // // if given an in box to send 'no email option forms
+    // recipient: model => {
+    //   if (model['applicant-email'] || model['agent-email']) {
+    //     return model['applicant-email'] || model['agent-email']
+    //   } else {
+    //    return config.noEmailGivenInbox
+    //   }
+    // },
+    // recipient: model => model['applicant-email'] || model['agent-email'] || config.noEmailGivenInbox,
     subject: (model, translate) => translate('pages.email.customer.subject'),
     template: path.resolve(__dirname, '../emails/customer.html'),
     parse: (model, translate) => {

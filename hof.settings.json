@@ -4,6 +4,9 @@
   "routes": [
     "./apps/ukvi-complaints"
   ],
+  "behaviours": [
+    "./apps/ukvi-complaints/behaviours/skip-customer-email"
+  ],
   "views": ["./apps/ukvi-complaints/views"],
   "session": {
     "name": "ukvi-complaints.hof.sid",

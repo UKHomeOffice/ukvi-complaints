@@ -11,16 +11,18 @@ module.exports = {
   email: {
     notifyApiKey: process.env.NOTIFY_KEY,
     notifyTemplate: process.env.NOTIFY_TEMPLATE,
-    caseworker: process.env.CASEWORKER_EMAIL || 'sas-hof-test@digital.homeoffice.gov.uk'
+    caseworker: process.env.CASEWORKER_EMAIL,
+    // noEmail sets default inbox where an email is expected by govNotify but not requested in the form
+    noEmail: process.env.NO_EMAIL_GIVEN_INBOX
   },
   hosts: {
-    acceptanceTests: process.env.ACCEPTANCE_HOST_NAME || `http://localhost:${process.env.PORT || 8080}`
+    acceptanceTests: process.env.ACCEPTANCE_HOST_NAME
   },
   awsSqs: {
-    region: process.env.AWS_REGION || 'eu-west-2',
-    queueUrl: process.env.SQS_URL || 'http://localhost:9324/queue/first-queue',
-    accessKeyId: process.env.ACCESS_KEY_ID || 'stub',
-    secretAccessKey: process.env.SECRET_ACCESS_KEY || 'stub'
+    region: process.env.AWS_REGION,
+    queueUrl: process.env.SQS_URL,
+    accessKeyId: process.env.ACCESS_KEY_ID,
+    secretAccessKey: process.env.SECRET_ACCESS_KEY
   },
   sendToQueue: process.env.SEND_TO_DECS_QUEUE === 'online'
 };

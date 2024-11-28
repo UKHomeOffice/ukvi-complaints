@@ -2,18 +2,6 @@
 version: v1.22.1
 # ignores vulnerabilities until expiry date; change duration by modifying expiry date
 ignore:
-  SNYK-JS-AXIOS-6032459:
-    - hof > notifications-node-client > axios:
-        reason: Need to update notifications-node-client in HOF to version 8.0.0
-        expires: '2024-10-21T00:00:00.000Z'
-  SNYK-JS-AXIOS-6124857:
-    - hof > notifications-node-client > axios:
-      reason: Need to update notifications-node-client in HOF to version 8.0.0.
-      expires: '2024-10-21T00:00:00.000Z'
-  SNYK-JS-AXIOS-6144788:
-    - hof > notifications-node-client > axios:
-      reason: Need to update notifications-node-client in HOF to version 8.0.0.
-      expires: '2024-10-21T00:00:00.000Z'
   SNYK-JS-INFLIGHT-6095116:
     - '*':
       reason: No update available.

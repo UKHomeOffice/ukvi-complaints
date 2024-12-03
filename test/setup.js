@@ -1,4 +1,8 @@
 'use strict';
+process.env.AWS_REGION = 'eu-west-2';
+process.env.SQS_URL = 'http://localhost:9324/queue/first-queue';
+process.env.ACCESS_KEY_ID = 'stub';
+process.env.SECRET_ACCESS_KEY = 'stub';
 
 global.chai = require('chai');
 global.expect = chai.expect;

@@ -5,9 +5,9 @@ ignore:
   SNYK-JS-INFLIGHT-6095116:
     - '*':
       reason: No update available.
-      expires: '2024-10-21T00:00:00.000Z'
+      expires: '2024-01-19:00:00.000Z'
   SNYK-JS-MARKDOWNIT-6483324:
     - hof > markdown-it:
       reason: Need to update markdown-it in HOF to version 13.0.2.
-      expires: '2024-10-28T00:00:00.000Z'
+      expires: '2024-01-02T00:00:00.000Z'
 patch: {}

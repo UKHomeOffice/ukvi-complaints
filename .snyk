@@ -10,4 +10,8 @@ ignore:
     - hof > markdown-it:
       reason: Need to update markdown-it in HOF to version 13.0.2.
       expires: '2024-01-02T00:00:00.000Z'
+  SNYK-JS-ELLIPTIC-8187303:
+    - '*':
+      reason: No update available.
+      expires: '2025-02-13'
 patch: {}

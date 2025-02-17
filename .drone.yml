@@ -18,10 +18,22 @@ environment:
   READY_FOR_TEST_DELAY: 20s
   NOTIFY_STUB: stub
 
+include_default_branch: &include_default_branch
+  include:
+    - master
+
+include_default_and_feature_branches: &include_default_and_feature_branches
+  include:
+    - master
+    - feature/*
+    
 trigger:
   branch:
-    - feature/*
-    - master
+    <<: *include_default_and_feature_branches
+
+node_image: &node_image
+  pull: if-not-exists
+  image: node:20.18.0-alpine3.20@sha256:d504f23acdda979406cf3bdbff0dff7933e5c4ec183dda404ed24286c6125e60
 
 linting: &linting
   pull: if-not-exists

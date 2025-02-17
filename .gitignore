@@ -11,3 +11,12 @@ test/coverage
 .nyc_output
 coverage
 .vscode/settings.json
+.vscode
+.vscode-server
+dump.rdb
+yarn-error.log
+output/
+test/_accessibility/tmp/*
+.nyc_output
+.devcontainer/*.env
+.cache

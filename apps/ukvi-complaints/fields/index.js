@@ -1,7 +1,6 @@
 'use strict';
 
 const dateComponent = require('hof').components.date;
-const moment = require('moment');
 
 module.exports = {
   reason: {
@@ -555,7 +554,6 @@ module.exports = {
     validate: [
       'required',
       'date',
-      { type: 'before', arguments: moment().subtract(18, 'years').format('YYYY-MM-DD') },
       { type: 'after', arguments: '1900-01-01' }]
   }),
 
@@ -564,7 +562,6 @@ module.exports = {
     validate: [
       'required',
       'date',
-      { type: 'before', arguments: moment().subtract(18, 'years').format('YYYY-MM-DD') },
       { type: 'after', arguments: '1900-01-01' }]
   }),
 

@@ -118,7 +118,7 @@ steps:
         <<: *include_default_and_feature_branches
       event: [push, pull_request]
     depends_on:
-      - setup
+      - setup_deploy
 
   - name: unit_tests_deploy
     <<: *unit_tests
@@ -127,7 +127,7 @@ steps:
         <<: *include_default_branch
       event: [push, pull_request]
     depends_on:
-      - setup
+      - setup_deploy
 
   - name: sonar_scanner_deploy
     <<: *sonar_scanner
@@ -151,8 +151,8 @@ steps:
         <<: *include_default_and_feature_branches
       event: [push, pull_request]
     depends_on:
-      - linting
-      - unit_tests
+      - linting_deploy
+      - unit_tests_deploy
 
   - name: image_to_quay
     pull: if-not-exists

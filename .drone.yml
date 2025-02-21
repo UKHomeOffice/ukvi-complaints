@@ -223,6 +223,8 @@ steps:
       branch:
         <<: *include_default_and_feature_branches
       event: pull_request
+    depends_on:
+      - deploy_to_branch
 
   - name: linting_branch
     <<: *linting
@@ -231,6 +233,8 @@ steps:
         include:
           <<: *include_default_and_feature_branches
       event: pull_request
+    depends_on:
+      - setup_branch
 
   - name: unit_tests_branch
     <<: *unit_tests
@@ -238,6 +242,8 @@ steps:
       branch:
         <<: *include_default_and_feature_branches
       event: pull_request
+    depends_on:
+      - linting_branch
 
   - name: sonar_scanner_branch
     <<: *sonar_scanner
@@ -245,6 +251,8 @@ steps:
       branch:
         <<: *include_default_and_feature_branches
       event: pull_request
+    depends_on:
+      - unit_tests_branch
 
   - name: acceptance_tests_branch
     <<: *acceptance_tests
@@ -258,6 +266,8 @@ steps:
       branch:
         <<: *include_default_branch
       event: pull_request
+    depends_on:
+      - sonar_scanner_branch
 
   - name: deploy_to_uat
     pull: if-not-exists

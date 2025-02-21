@@ -209,7 +209,7 @@ steps:
       event: pull_request
     depends_on:
       - clone_repos
-      - image_to_ecr
+      - image_to_quay
 
   - name: setup_branch
     pull: if-not-exists
@@ -275,7 +275,7 @@ steps:
       event: push
     depends_on:
       - clone_repos
-      - image_to_ecr
+      - image_to_quay
 
   - name: acceptance_tests_uat
     <<: *acceptance_tests
@@ -346,7 +346,7 @@ steps:
       event: push
     depends_on:
       - clone_repos
-      - image_to_ecr
+      - image_to_quay
 
   # Checks a build being promoted has passed, is on master which effectively means a healthy build on Staging
   - name: sanity_check_build_prod

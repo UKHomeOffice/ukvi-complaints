@@ -36,16 +36,14 @@ node_image: &node_image
   image: node:20.18.0-alpine3.20@sha256:d504f23acdda979406cf3bdbff0dff7933e5c4ec183dda404ed24286c6125e60
 
 linting: &linting
-  pull: if-not-exists
-  image: node:20
+  <<: *node_image
   environment:
     NOTIFY_KEY: USE_MOCK
   commands:
     - yarn run test:lint
 
 unit_tests: &unit_tests
-  pull: if-not-exists
-  image: node:20
+  <<: *node_image
   environment:
     NOTIFY_KEY: USE_MOCK
   commands:
@@ -58,6 +56,7 @@ sonar_scanner: &sonar_scanner
     - sonar-scanner -Dproject.settings=./sonar-project.properties
 
 acceptance_tests: &acceptance_tests
+  failure: ignore
   pull: if-not-exists
   image: mcr.microsoft.com/playwright:v1.12.3-focal
 
@@ -109,7 +108,7 @@ steps:
       - yarn run postinstall
     when:
       branch:
-        <<: *include_default_and_feature_branches
+        <<: *include_default_branch
       event: [push, pull_request]
 
   - name: linting_deploy
@@ -125,7 +124,7 @@ steps:
     <<: *unit_tests
     when:
       branch:
-        <<: *include_default_and_feature_branches
+        <<: *include_default_branch
       event: [push, pull_request]
     depends_on:
       - setup
@@ -134,7 +133,7 @@ steps:
     <<: *sonar_scanner
     when:
       branch:
-        <<: *include_default_and_feature_branches
+        <<: *include_default_branch
       event: [push, pull_request]
 
   - name: build_image
@@ -167,9 +166,7 @@ steps:
     - docker push $${IMAGE_URL}/$${IMAGE_REPO}:$${DRONE_COMMIT_SHA}
     when:
       branch: 
-        include:
-        - master
-        - feature/*
+        <<: *include_default_and_feature_branches
       event: [push, pull_request]
 
   # Trivy Security Scannner for scanning nodejs packages in Yarn
@@ -224,9 +221,7 @@ steps:
       - yarn run postinstall
     when:
       branch:
-        include:
-          - master
-          - feature/*
+        <<: *include_default_and_feature_branches
       event: pull_request
 
   - name: linting_branch
@@ -234,26 +229,21 @@ steps:
     when:
       branch:
         include:
-        - master
-        - feature/*
+          <<: *include_default_and_feature_branches
       event: pull_request
 
   - name: unit_tests_branch
     <<: *unit_tests
     when:
       branch:
-        include:
-        - master
-        - feature/*
+        <<: *include_default_and_feature_branches
       event: pull_request
 
   - name: sonar_scanner_branch
     <<: *sonar_scanner
     when:
       branch:
-        include:
-        - master
-        - feature/*
+        <<: *include_default_and_feature_branches
       event: pull_request
 
   - name: acceptance_tests_branch
@@ -265,7 +255,8 @@ steps:
       - npx playwright install
       - npm run test:acceptance
     when:
-      branch: master
+      branch:
+        <<: *include_default_branch
       event: pull_request
 
   - name: deploy_to_uat
@@ -293,7 +284,8 @@ steps:
     - npx playwright install
     - npm run test:acceptance
     when:
-      branch: master
+      branch:
+        <<: *include_default_branch
       event: push
 
     # Get pull request branch so correct PR UAT environment is torn down in the tear_down_branch step that follows

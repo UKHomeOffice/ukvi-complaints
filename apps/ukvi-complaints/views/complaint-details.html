@@ -1,12 +1,62 @@
-{{<partials-page}}
-  {{$page-content}}
-    <div>
-      <p>Briefly summarise your complaint. Include anything that can help our investigation. For example, if your application was submitted alongside applications for family members.</p>
-      <p>Please do not provide bank details or names of staff members (if relevant). We will ask for them later if necessary.</p>
-    </div>
-	 {{#fields}}
-      {{#renderField}}{{/renderField}}
-    {{/fields}}
-    {{#input-submit}}continue{{/input-submit}}
-  {{/page-content}}
-{{/partials-page}}
+{{<partials-page}} {{$encoding}}enctype="multipart/form-data"{{/encoding}}
+{{$page-content}}
+<div>
+  <p>
+    Briefly summarise your complaint. Include anything that can help our
+    investigation. For example, if your application was submitted alongside
+    applications for family members.
+  </p>
+  <p>
+    Please do not provide bank details or names of staff members (if relevant).
+    We will ask for them later if necessary.
+  </p>
+</div>
+
+<div>
+  {{#renderField}}complaint-details{{/renderField}}
+
+  <p>
+    Please attach any documents which may help us investigate this complaint
+  </p>
+
+  {{#renderField}}file{{/renderField}}
+
+  <button
+    class="govuk-button govuk-button--secondary"
+    name="upload-file"
+    value="upload-file"
+  >
+    {{#t}}buttons.upload-file{{/t}}
+  </button>
+
+  {{^values.files}}
+  <h2 class="govuk-heading-m">No file uploaded</h2>
+  {{/values.files}}
+
+  <p>{{#values.files.length}}</p>
+  <h2 class="govup-heading-m">File uploaded</h2>
+
+  <p>{{#t}}fields.files.label{{/t}}</p>
+  <table class="table-address-loop">
+    <tbody>
+      {{#values.files}}
+      <tr class="files-summary">
+        <td>{{name}}</td>
+        <td>
+          <a href="?delete={{id}}" class="govuk-link float-button"
+            >{{#t}}buttons.remove-file{{/t}}</a
+          >
+        </td>
+        <td>
+          <div class="image-wrapper">
+            <img src="{{thumbnail}}" width="300px" />
+          </div>
+        </td>
+      </tr>
+      {{/values.files}}
+    </tbody>
+  </table>
+
+  {{/values.files.length}}
+</div>
+{{#input-submit}}continue{{/input-submit}} {{/page-content}} {{/partials-page}}

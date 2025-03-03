@@ -32,6 +32,8 @@ ul {
   @extend .text;
   @extend .list;
   @extend .list-bullet;
+  @extend .govuk-list;
+  @extend .govuk-list--bullet;
 }
 
 a {
@@ -44,6 +46,10 @@ header {
 
 .govuk-header__logotype{
   display: inline;
+}
+
+.float-button {
+  float: right;
 }
 
 /* Links instead of regular buttons */
@@ -74,4 +80,11 @@ header {
   border-bottom-color: black;
   border-bottom-width: 4px;
   text-decoration: none;
+}
+
+.wrap-table-cell,
+.confirm-row,
+.section-header {
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }

@@ -625,7 +625,7 @@
     "label": "Full name",
     "validation": {
       "required": "Enter your full name",
-      "notUrl":"Enter your full name"
+      "notUrl": "Enter your full name"
     }
   },
   "applicant-dob": {
@@ -660,6 +660,13 @@
     "label": "Phone number (optional)",
     "validation": {
       "notUrl": "Enter a valid phone number"
+    }
+  },
+  "file": {
+    "label": "Files Uploaded",
+    "validation": {
+      "unsaved": "Save your file",
+      "maxFileSize": "The selected file must be 21mb or smaller"
     }
   }
 }

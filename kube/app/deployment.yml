@@ -83,6 +83,38 @@ spec:
                 secretKeyRef:
                   name: session-secret
                   key: token
+            - name: KEYCLOAK_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: keycloak-client-fv
+                  key: secret
+            - name: KEYCLOAK_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: keycloak-client-fv
+                  key: id
+            - name: KEYCLOAK_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: keycloak-user
+                  key: username
+            - name: KEYCLOAK_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: keycloak-user
+                  key: password
+            - name: FILE_VAULT_URL
+            {{ if eq .KUBE_NAMESPACE .PROD_ENV }}
+              value: https://fv-asc-sas.homeoffice.gov.uk
+            {{ if eq .KUBE_NAMESPACE .STG_ENV }}
+              value: https://fv-asv-stg.sas.homeoffice.gov.uk
+            {{ if eq .KUBE_NAMESPACE .UAT_ENV }}
+              value: https://fv-asc-uat.sas-notprod.homeoffice.gov.uk
+            {{ if eq .KUBE_NAMESPACE .BRANCH_ENV }}
+              value: https://fv-{{ .DRONE_SOURCE_BRANCH }}.asc-branch.homeoffice.gov.uk/file
+            - name: DEBUG
+              value: "*"
+            {{ end }}
             - name: NOTIFY_KEY
               valueFrom:
                 secretKeyRef:

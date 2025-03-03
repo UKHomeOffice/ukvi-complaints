@@ -1,5 +1,7 @@
 {
   "start": "Start now",
   "confirm": "Send complaint",
-  "complaint": "Continue making your complaint"
+  "complaint": "Continue making your complaint",
+  "upload-file": "Upload File",
+  "remove-file": "Remove"
 }

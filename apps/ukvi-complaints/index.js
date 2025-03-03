@@ -4,8 +4,11 @@ const config = require('../../config');
 const conditionalContent = require('./behaviours/conditional-content');
 const customerEmailer = require('./behaviours/customer-email')(config.email);
 const caseworkerEmailer = require('./behaviours/caseworker-email')(config.email);
+const RemoveFile = require('./behaviours/remove-file');
+const SaveFile = require('./behaviours/save-file');
 const sendToSQS = require('./behaviours/send-to-sqs');
 const ResetOnChange = require('./behaviours/reset-on-change');
+let myTag;
 
 module.exports = {
   name: 'ukvi-complaints',
@@ -17,9 +20,7 @@ module.exports = {
   steps: {
     '/reason': {
       fields: ['reason'],
-      behaviours: ResetOnChange({
-        field: 'reason'
-      }),
+      behaviours: [ResetOnChange({ field: 'reason' })],
       next: '/immigration-application',
       forks: [{
         target: '/immigration-application',
@@ -873,8 +874,8 @@ module.exports = {
       next: '/complaint-details'
     },
     '/complaint-details': {
-      behaviours: [conditionalContent],
-      fields: ['complaint-details'],
+      behaviours: [conditionalContent, SaveFile('file'), RemoveFile],
+      fields: ['complaint-details', 'file'],
       next: '/confirm'
     },
     '/confirm': {
@@ -898,6 +899,16 @@ module.exports = {
           'ho-reference',
           'ihs-reference',
           'uan-reference',
+          {
+            step: '/complaint-details',
+            field: 'files',
+            parse: (list, req) => {
+              if (!req.sessionModel.get('files')) {
+                return null;
+              }
+              return Array.isArray(list) ? list.map(a => a.name).join('\n') : list || 'None';
+            }
+          },
           'complaint-details'
         ],
         'agent-details': [

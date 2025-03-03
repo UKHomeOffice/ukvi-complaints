@@ -238,10 +238,10 @@
   "when-applied": {
     "header": "When did you submit your application?"
   },
-  "complaint-reference-number":{
+  "complaint-reference-number": {
     "header": "What is the reference number for your complaint?"
   },
-  "complaint-reason-previous":{
+  "complaint-reason-previous": {
     "header": "What was your original complaint about?"
   },
   "complaint-details": {
@@ -300,6 +300,9 @@
       "complaint-details": {
         "label": "Complaint details"
       },
+      "files": {
+        "label": "Files you have uploaded"
+      },
       "reason": {
         "label": "The reason for the complaint"
       },
@@ -343,31 +346,31 @@
         "label": "Relation to applicant"
       },
       "gwf-reference": {
-				"label": "GWF number"
+        "label": "GWF number"
       },
       "called-number": {
-				"label": "Telephone number called"
+        "label": "Telephone number called"
       },
       "called-date": {
-				"label": "Date of the call"
+        "label": "Date of the call"
       },
       "called-time": {
-				"label": "Time of the call"
+        "label": "Time of the call"
       },
       "called-from": {
-				"label": "Telephone number the call was made from"
+        "label": "Telephone number the call was made from"
       },
-			"ho-reference": {
-				"label": "Home Office reference number"
-			},
-			"ihs-reference": {
-				"label": "IHS reference number"
-			},
-			"uan-reference": {
-				"label": "Unique Application Number"
-			},
-			"none": {
-				"label": "I don’t have any of these"
+      "ho-reference": {
+        "label": "Home Office reference number"
+      },
+      "ihs-reference": {
+        "label": "IHS reference number"
+      },
+      "uan-reference": {
+        "label": "Unique Application Number"
+      },
+      "none": {
+        "label": "I don’t have any of these"
       },
       "staff-behaviour": {
         "label": "Where did you experience poor behaviour"
@@ -378,7 +381,7 @@
       "ssc-city": {
         "label": "Where in the UK is the service support centre"
       },
-      "vac-country" : {
+      "vac-country": {
         "label": "Where is the visa application centre country"
       },
       "vac-city": {

@@ -554,7 +554,8 @@ module.exports = {
     validate: [
       'required',
       'date',
-      { type: 'after', arguments: '1900-01-01' }]
+      { type: 'after', arguments: '1900-01-01' },
+      'before']
   }),
 
   'agent-representative-dob': dateComponent('agent-representative-dob', {
@@ -562,7 +563,8 @@ module.exports = {
     validate: [
       'required',
       'date',
-      { type: 'after', arguments: '1900-01-01' }]
+      { type: 'after', arguments: '1900-01-01' },
+      'before']
   }),
 
   'applicant-email': {

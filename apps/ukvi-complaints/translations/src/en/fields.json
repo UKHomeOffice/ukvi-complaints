@@ -197,7 +197,8 @@
     "validation": {
       "required": "Enter the applicant's date of birth",
       "date": "Enter the applicant's date of birth",
-      "after": "The applicant's date of birth is too far in the past"
+      "after": "The applicant's date of birth must be after 01 01 1900",
+      "before": "The applicant's date of birth must be in the past"
     }
   },
   "return-of-documents": {
@@ -633,7 +634,8 @@
     "validation": {
       "required": "Enter a date of birth",
       "date": "Enter a valid date of birth",
-      "after": "Your date of birth is too far in the past"
+      "after": "Your date of birth must be after 01 01 1900",
+      "before": "Your date of birth must be in the past"
     }
   },
   "applicant-nationality": {

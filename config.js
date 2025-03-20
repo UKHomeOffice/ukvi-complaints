@@ -1,5 +1,4 @@
 'use strict';
-const useMocks = process.env.USE_MOCKS === 'true'
 
 /* eslint no-process-env: 0 */
 
@@ -23,30 +22,27 @@ module.exports = {
   awsSqs: {
     region: process.env.AWS_REGION,
     queueUrl: process.env.SQS_URL,
-    // accessKeyId: process.env.ACCESS_KEY_ID,
-    // secretAccessKey: process.env.SECRET_ACCESS_KEY
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+    accessKeyId: process.env.ACCESS_KEY_ID,
+    secretAccessKey: process.env.SECRET_ACCESS_KEY
   },
   sendToQueue: process.env.SEND_TO_DECS_QUEUE === 'online',
   feedbackUrl: process.env.FEEDBACK_URL,
-  useMocks: useMocks,
-  csp: {
-    imgSrc: ['data:']
-  },
   upload: {
-    maxFileSize: '21mb',
+    maxFileSizeInBytes: 21 * 1000 * 1000, // 25MB in bytes
     hostname: process.env.FILE_VAULT_URL,
     allowedMimeTypes: [
-      'application/msword',
-      'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-      'application/vnd.oasis.opendocument.text',
-      'application/rtf',
       'application/pdf',
       'image/jpeg',
       'image/jpg',
       'image/png'
-    ]
+    ],
+    documentCategories: {
+      'upload-complaint-doc': {
+        allowMultipleUploads: true,
+        limit: 3,
+        limitValidationError: 'maxComplaintUpload'
+      }
+    }
   },
   keycloak: {
     token: process.env.KEYCLOAK_TOKEN_URL,

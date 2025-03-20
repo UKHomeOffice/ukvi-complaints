@@ -247,6 +247,17 @@
   "complaint-details": {
     "header": "What are the details of your complaint?"
   },
+  "upload-complaint-document": {
+    "header": "Upload documents (optional)",
+    "p1": "Please attach any documents which may help us investigate this complaint",
+    "upload-file": "Upload a file",
+    "file-format": "Your file must be JPEG, PDF or PNG, and be 21MB or less",
+    "no-file-uploaded": "No files uploaded",
+    "files-uploaded": "Files uploaded",
+    "uploading-document": "Uploading your document...",
+    "maxFileSize": "The selected file must be 21MB or smaller",
+    "fileType": "The selected file must be a JPG, JPEG, PDF or PNG"
+  },
   "acting-as-agent": {
     "header": "Are you making this complaint on behalf of someone else?"
   },
@@ -300,7 +311,7 @@
       "complaint-details": {
         "label": "Complaint details"
       },
-      "files": {
+      "upload-complaint-doc": {
         "label": "Files you have uploaded"
       },
       "reason": {

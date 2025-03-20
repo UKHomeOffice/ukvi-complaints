@@ -662,11 +662,9 @@
       "notUrl": "Enter a valid phone number"
     }
   },
-  "file": {
-    "label": "Files Uploaded",
+  "file-upload": {
     "validation": {
-      "unsaved": "Save your file",
-      "maxFileSize": "The selected file must be 21mb or smaller"
+      "maxComplaintUpload" : "You can only upload upto {{maxComplaintUpload}} files or less. Remove a file before uploading another"
     }
   }
 }

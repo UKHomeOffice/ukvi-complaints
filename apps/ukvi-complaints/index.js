@@ -4,11 +4,10 @@ const config = require('../../config');
 const conditionalContent = require('./behaviours/conditional-content');
 const customerEmailer = require('./behaviours/customer-email')(config.email);
 const caseworkerEmailer = require('./behaviours/caseworker-email')(config.email);
-const RemoveFile = require('./behaviours/remove-file');
-const SaveFile = require('./behaviours/save-file');
+const SaveDocument = require('./behaviours/save-file');
+const RemoveDocument = require('./behaviours/remove-file');
 const sendToSQS = require('./behaviours/send-to-sqs');
 const ResetOnChange = require('./behaviours/reset-on-change');
-let myTag;
 
 module.exports = {
   name: 'ukvi-complaints',
@@ -874,8 +873,17 @@ module.exports = {
       next: '/complaint-details'
     },
     '/complaint-details': {
-      behaviours: [conditionalContent, SaveFile('file'), RemoveFile],
-      fields: ['complaint-details', 'file'],
+      behaviours: [conditionalContent],
+      continueOnEdit: true,
+      fields: ['complaint-details'],
+      next: '/upload-complaint-document'
+    },
+    '/upload-complaint-document': {
+      behaviours: [
+        SaveDocument('upload-complaint-doc', 'file-upload'),
+        RemoveDocument('upload-complaint-doc')
+      ],
+      fields: ['file-upload'],
       next: '/confirm'
     },
     '/confirm': {
@@ -899,17 +907,17 @@ module.exports = {
           'ho-reference',
           'ihs-reference',
           'uan-reference',
+          'complaint-details',
           {
-            step: '/complaint-details',
-            field: 'files',
+            step: '/upload-complaint-document',
+            field: 'upload-complaint-doc',
             parse: (list, req) => {
-              if (!req.sessionModel.get('files')) {
+              if (!req.sessionModel.get('upload-complaint-doc')) {
                 return null;
               }
               return Array.isArray(list) ? list.map(a => a.name).join('\n') : list || 'None';
             }
-          },
-          'complaint-details'
+          }
         ],
         'agent-details': [
           'agent-name',

@@ -1,93 +1,135 @@
-'use strict'
-/* eslint-disable */
+/* eslint-disable node/no-deprecated-api */
+'use strict';
+
 const url = require('url');
-const { model: Model } = require('hof');
-const uuid = require('uuid').v4
-const { Jimp } = require('jimp');
-const fs = require('fs');
-const noPreview = 'data:image/png;base64,' + fs.readFileSync('assets/images/no-preview.png', { encoding: 'base64' });
-const config = require('../../../config');
+const Model = require('hof').model;
+const uuid = require('uuid').v4;
 const FormData = require('form-data');
-const logger = require('hof/lib/logger')({ env: config.env })
+
+const config = require('../../../config');
+const logger = require('hof/lib/logger')({ env: config.env });
 
 module.exports = class UploadModel extends Model {
-    constructor(...args) {
-        super(...args);
-        this.set('id', uuid());
-    }
-    async save() {
-        try {
-            const attributes = {
-                url: config.upload.hostname
-            };
-            const reqConf = url.parse(this.url(attributes));  //TODO url.parse is deprecated.  replace with new URL(......)
-            // const reqConf = new URL(this.url(attributes));
-            const formData = new FormData();
-            formData.append('document', this.get('data'), {
-                filename: this.get('name'),
-                contentType: this.get('mimetype')
-            });
-            reqConf.data = formData;
-            reqConf.method = 'POST';
-            reqConf.headers = {
-                ...formData.getHeaders()
-            };
-            const result = await new Promise((resolve, reject) => {
-                this.request(reqConf, (err, data) => {
-                    if (err) {
-                        return reject(err);
-                    }
-                    return resolve(data);
-                });
-            });
-            logger.info(`Successfully saved data`);
-            await this.set({ url: result.url });
-            await this.thumbnail();
-            this.unset('data');
-        } catch (err) {
-            logger.error('Error in save method ', err)
-            throw err;
-        }
+  constructor(...args) {
+    super(...args);
+    this.set('id', uuid());
+  }
+
+  save() {
+    if (!config.upload.hostname) {
+      const errorMsg = 'File-vault hostname is not defined';
+      logger.error(errorMsg);
+      throw new Error(errorMsg);
     }
 
-    async thumbnail() {
-        try {
-            const image = await Jimp.read(this.get('data'));
-            image.resize({ w: 300 })
-            const thumbnail = await image.getBase64(this.get('mimetype'));
-            this.set('thumbnail', thumbnail);
-        } catch (error) {
-            this.set('thumbnail', noPreview);
-            logger.error('Error in thumbnail:  ', error)
+    const attributes = {
+      url: config.upload.hostname
+    };
+
+    const formData = new FormData();
+    formData.append('document', this.get('data'), {
+      filename: this.get('name'),
+      contentType: this.get('mimetype')
+    });
+
+    const reqConf = url.parse(this.url(attributes));
+    reqConf.data = formData;
+    reqConf.method = 'POST';
+    reqConf.headers = {
+      ...formData.getHeaders()
+    };
+
+    return new Promise((resolve, reject) => {
+      return this.request(reqConf, (err, data) => {
+        if (err) {
+          logger.error(`File upload failed: ${err.message},
+            error: ${JSON.stringify(err)}`);
+          return reject(new Error(`File upload failed: ${err.message}`));
         }
+
+        if (
+          !data ||
+          typeof data !== 'object' ||
+          Object.keys(data).length === 0
+        ) {
+          const errorMsg = 'Received empty or invalid response from file-vault';
+          logger.error(errorMsg);
+          return reject(new Error(errorMsg));
+        }
+
+        logger.info(
+          `Received response from file-vault with keys: ${Object.keys(data)}`
+        );
+        return resolve(data);
+      });
+    })
+      .then(result => {
+        try {
+          this.set({
+            url: result.url
+              .replace('/file/', '/file/generate-link/')
+              .split('?')[0]
+          });
+        } catch (err) {
+          const errorMsg = `No url in response: ${err.message}`;
+          logger.error(errorMsg);
+          throw new Error(errorMsg);
+        }
+      })
+      .then(() => {
+        this.unset('data');
+      });
+  }
+
+  async auth() {
+    const requiredProperties = [
+      'token',
+      'username',
+      'password',
+      'clientId',
+      'secret'
+    ];
+
+    for (const property of requiredProperties) {
+      if (!config.keycloak[property]) {
+        const errorMsg = `Keycloak ${property} is not defined`;
+        logger.error(errorMsg);
+        throw new Error(errorMsg);
+      }
     }
 
-    async auth() {
-        try {
-            if (!config.keycloak.token) {
-                logger.error('keycloak token url is not defined');
-                return Promise.resolve({
-                    bearer: 'abc123'
-                });
-            }
-            const tokenReq = {
-                url: config.keycloak.token,
-                headers: { 'content-type': 'application/x-www-form-urlencoded' },
-                data: {
-                    username: config.keycloak.username,
-                    password: config.keycloak.password,
-                    grant_type: 'password',
-                    client_id: config.keycloak.clientId,
-                    client_secret: config.keycloak.secret
-                },
-                method: 'POST'
-            };
-            const response = await this._request(tokenReq);
-            return { bearer: response.data.access_token };
-        } catch (err) {
-            const body = err.response.data
-            logger.error(`Error in auth method: ${body.error} - ${body.error_description}`);
-            throw err || new Error(`${body.error} - ${body.error_description}`);
-        }
+    const tokenReq = {
+      url: config.keycloak.token,
+      headers: { 'content-type': 'application/x-www-form-urlencoded' },
+      data: {
+        username: config.keycloak.username,
+        password: config.keycloak.password,
+        grant_type: 'password',
+        client_id: config.keycloak.clientId,
+        client_secret: config.keycloak.secret
+      },
+      method: 'POST'
+    };
+
+    try {
+      const response = await this._request(tokenReq);
+
+      if (!response.data || !response.data.access_token) {
+        const errorMsg = 'No access token in response';
+        logger.error(errorMsg);
+        throw new Error(errorMsg);
+      }
+
+      logger.info('Successfully retrieved access token');
+      return {
+        bearer: response.data.access_token
+      };
+    } catch (err) {
+      const errorMsg = `Error occurred: ${err.message}, 
+        Cause: ${err.response.status} ${err.response.statusText}, 
+        Data: ${JSON.stringify(err.response.data)}`;
+      logger.error(errorMsg);
+      throw new Error(errorMsg);
     }
+  }
 };

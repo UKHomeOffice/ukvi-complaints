@@ -3,5 +3,6 @@
   "confirm": "Send complaint",
   "complaint": "Continue making your complaint",
   "upload-file": "Upload File",
-  "remove-file": "Remove"
+  "remove-file": "Remove",
+  "remove": "Remove"
 }

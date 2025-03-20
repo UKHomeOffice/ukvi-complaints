@@ -5,12 +5,10 @@ const hof = require('hof');
 const settings = require('./hof.settings');
 const config = require('./config');
 const mockAPIs = require('./mock-apis');
-// const lodash_get = require('lodash.get');
 const _ = require('lodash');
-const { ApplicationAutoScaling } = require('aws-sdk');
 const busboy = require('busboy');
-const bytes = require('bytes');
 const bl = require('bl');
+const logger = require('hof/lib/logger')({ env: config.env });
 
 settings.routes = settings.routes.map(route => require(route));
 settings.root = __dirname;
@@ -50,67 +48,74 @@ if (config.env === 'development' || config.env === 'test') {
       req.session[`hof-wizard-${appName}`][key] = req.body.sessionProperties[key];
     });
     res.send('SEssion populate complete');
-  })
+  });
 }
 
 
 app.use((req, res, next) => {
   if (req.is('multipart/form-data')) {
-    let bb;
     try {
-      bb = busboy({
+      const bb = busboy({
         headers: req.headers,
         limits: {
-          fileSize: bytes('50mb')
+          fileSize: config.upload.maxFileSizeInBytes
         }
       });
+
+      bb.on('field', (key, value) => {
+        req.body[key] = value;
+      });
+
+      bb.on('file', (key, file, fileInfo) => {
+        file.pipe(
+          bl((err, d) => {
+            if (err) {
+              logger.log('error', `Error processing file : ${err}`);
+              return;
+            }
+            if (!(d.length || fileInfo.filename)) {
+              logger.log('warn', 'Empty file received');
+              return;
+            }
+
+            const fileData = {
+              data: file.truncated ? null : d,
+              name: fileInfo.filename || null,
+              encoding: fileInfo.encoding,
+              mimetype: fileInfo.mimeType,
+              truncated: file.truncated,
+              size: file.truncated ? null : Buffer.byteLength(d, 'binary')
+            };
+
+            if (settings.multi) {
+              req.files[key] = req.files[key] || [];
+              req.files[key].push(fileData);
+            } else {
+              req.files[key] = fileData;
+            }
+          })
+        );
+      });
+
+      let error;
+
+      bb.on('error', function (err) {
+        error = err;
+        next(err);
+      });
+
+      bb.on('finish', function () {
+        if (!error) {
+          next();
+        }
+      });
+      req.files = req.files || {};
+      req.body = req.body || {};
+      req.pipe(bb);
     } catch (err) {
-      return next(err);
-    }
-
-    bb.on('field', function (key, value) {
-      req.body[key] = value;
-    });
-
-    bb.on('file', function (key, file, fileInfo) {
-      file.pipe(bl(function (err, d) {
-        if (err || !(d.length || fileInfo.filename)) {
-          return;
-        }
-        const fileData = {
-          data: file.truncated ? null : d,
-          name: fileInfo.filename || null,
-          encoding: fileInfo.encoding,
-          mimetype: fileInfo.mimeType || null,
-          truncated: file.truncated,
-          size: file.truncated ? null : Buffer.byteLength(d, 'binary')
-        };
-
-        if (settings.multi) {
-          req.files[key] = req.files[key] || [];
-          req.files[key].push(fileData);
-        } else {
-          req.files[key] = fileData;
-        }
-      }));
-    });
-
-    let error;
-
-    bb.on('error', function (err) {
-      error = err;
+      logger.log('error', `Error processing file: ${err}`);
       next(err);
-    });
-
-    bb.on('finish', function () {
-      if (error) {
-        return;
-      }
-      next();
-    });
-    req.files = req.files || {};
-    req.body = req.body || {};
-    req.pipe(bb);
+    }
   } else {
     next();
   }

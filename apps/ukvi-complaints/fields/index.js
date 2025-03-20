@@ -622,9 +622,5 @@ module.exports = {
       'premium-service-centre',
       'letter'
     ]
-  },
-  file: {
-    mixin: 'input-file',
-    labelClassName: 'visuallyhidden',
   }
 };

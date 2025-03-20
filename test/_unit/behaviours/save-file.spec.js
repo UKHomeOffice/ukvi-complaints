@@ -7,6 +7,7 @@ describe('Test for Save Document Behaviour', () => {
     process() {}
     locals() {}
     saveValues() {}
+    validateField() {}
   }
 
   let req;
@@ -121,6 +122,64 @@ describe('Test for Save Document Behaviour', () => {
 
     after(() => {
       Base.prototype.saveValues.restore();
+    });
+  });
+
+  describe('Validate field tests', () => {
+    before(() => {
+      sinon.stub(Base.prototype, 'validateField').returns('file-upload', req);
+      instance = new (SaveDocumentBehaviour(
+        'upload-complaint-doc',
+        'file-upload'
+      )(Base))();
+    });
+
+    it('validateField - valid', () => {
+      Base.prototype.ValidationError = sinon.stub();
+      const updatedDoc = {
+        'file-upload': {
+          name: 'test.pdf',
+          encoding: '7bit',
+          mimetype: 'pdf',
+          truncated: false,
+          size: 123456
+        }
+      };
+      req.files = updatedDoc;
+      instance.validateField('file-upload', req);
+      expect(Base.prototype.validateField.called).to.be.false;
+    });
+
+    it('validateField - invalid size', () => {
+      Base.prototype.ValidationError = sinon.stub();
+      const updatedDoc = {
+        'file-upload': {
+          name: 'test.pdf',
+          encoding: '7bit',
+          mimetype: 'pdf',
+          truncated: true,
+          size: 2352652
+        }
+      };
+      req.files = updatedDoc;
+      instance.validateField('file-upload', req);
+      expect(Base.prototype.validateField.called).to.be.false;
+    });
+
+    it('validateField - invalid mimetype', () => {
+      Base.prototype.ValidationError = sinon.stub();
+      const updatedDoc = {
+        'file-upload': {
+          name: 'test.ppt',
+          encoding: '7bit',
+          mimetype: 'ppt',
+          truncated: false,
+          size: 12358
+        }
+      };
+      req.files = updatedDoc;
+      instance.validateField('file-upload', req);
+      expect(Base.prototype.validateField.called).to.be.false;
     });
   });
 });

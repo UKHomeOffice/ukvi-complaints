@@ -14,4 +14,8 @@ ignore:
     - '*':
       reason: No update available.
       expires: '2025-03-07T:00:00.000Z'
+  SNYK-JS-AXIOS-9292519:
+    - '*':
+      reason: fixed in Axios v1.8.2.
+      expires: '2025-04-10:00:00.000Z'
 patch: {}

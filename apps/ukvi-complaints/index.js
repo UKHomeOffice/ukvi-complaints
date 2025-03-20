@@ -801,7 +801,7 @@ module.exports = {
     },
     '/complaint-reference-number': {
       fields: ['complaint-reference-number'],
-      next: '/complaint-details'
+      next: '/complaint-reason-previous'
     },
     '/complaint-reason-previous': {
       fields: ['complaint-reason-previous'],

@@ -16,8 +16,7 @@ settings.csp = {
   imgSrc: [
     'www.google-analytics.com',
     'ssl.gstatic.com',
-    'www.google.co.uk/ads/ga-audiences',
-    'data:'
+    'www.google.co.uk/ads/ga-audiences'
   ],
   connectSrc: [
     'https://www.google-analytics.com',

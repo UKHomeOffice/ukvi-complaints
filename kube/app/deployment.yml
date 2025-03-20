@@ -56,140 +56,140 @@ spec:
                 {{ end }}
           env:
             # because some internal services have self signed certs
-              - name: TZ
+            - name: TZ
               value: Europe/London
-              - name: NODE_TLS_REJECT_UNAUTHORIZED
-                value: "0"
-              - name: REDIS_PORT
-                value: "6379"
-              - name: REDIS_HOST
-                {{ if eq .KUBE_NAMESPACE .BRANCH_ENV }}
-                value: redis-{{ .DRONE_SOURCE_BRANCH }}
-                {{ else }}
-                value: redis
-                {{ end }}
-              - name: AWS_USER
-                valueFrom:
-                  secretKeyRef:
-                    name: ses
-                    key: smtp_username
-              - name: AWS_PASSWORD
-                valueFrom:
-                  secretKeyRef:
-                    name: ses
-                    key: smtp_password
-              - name: SESSION_SECRET
-                valueFrom:
-                  secretKeyRef:
-                    name: session-secret
-                    key: token
-              - name: NOTIFY_KEY
-                valueFrom:
-                  secretKeyRef:
-                    name: notify-key
-                    key: notify-key
-              - name: USE_MOCKS
-                value: "false"
-              - name: AWS_PASSWORD
-                valueFrom:
-                  secretKeyRef:
-                    name: file-vault
-                    #encryption_key is randomly generated password used to encrypt the params that are returned by file-vault
-                    key: encryption_key
-              - name: AWS_EXPIRY_TIME
-                value: "120" # 2 minutes in seconds
-              - name: RETURN_ORIGINAL_SIGNED_URL
-                value: "no"
-              - name: ALLOW_GENERATE_LINK_ROUTE
-                value: "yes"
-              - name: KEYCLOAK_SECRET
-                valueFrom:
-                  secretKeyRef:
-                    name: keycloak-client
-                    key: secret
-              - name: KEYCLOAK_CLIENT_ID
-                valueFrom:
-                  secretKeyRef:
-                    name: keycloak-client
-                    key: id
-              - name: KEYCLOAK_USERNAME
-                valueFrom:
-                  secretKeyRef:
-                    name: keycloak-user
-                    key: username
-              - name: KEYCLOAK_PASSWORD
-                valueFrom:
-                  secretKeyRef:
-                    name: keycloak-user
-                    key: password
-              - name: SESSION_SECRET
-                valueFrom:
-                  secretKeyRef:
-                    name: session-secret
-                    key: session-secret
-              - name: FILE_VAULT_URL
-              {{ if eq .KUBE_NAMESPACE .PROD_ENV }}
-              value: https://fv-{{ .APP_NAME }}.sas.homeoffice.gov.uk/file
-              {{ else if eq .KUBE_NAMESPACE .STG_ENV }}
-              value: https://fv-{{ .APP_NAME }}.stg.sas.homeoffice.gov.uk/file
-              {{ else if eq .KUBE_NAMESPACE .UAT_ENV }}
-              value: https://fv-{{ .APP_NAME }}.uat.sas-notprod.homeoffice.gov.uk/file
-              {{ else if eq .KUBE_NAMESPACE .BRANCH_ENV }}
-              value: https://fv-{{ .DRONE_SOURCE_BRANCH }}.branch.sas-notprod.homeoffice.gov.uk/file
-              {{ end }}
+            - name: NODE_TLS_REJECT_UNAUTHORIZED
+              value: "0"
+            - name: REDIS_PORT
+              value: "6379"
+            - name: REDIS_HOST
               {{ if eq .KUBE_NAMESPACE .BRANCH_ENV }}
-              - name: DEBUG
-                value: "*"
+              value: redis-{{ .DRONE_SOURCE_BRANCH }}
+              {{ else }}
+              value: redis
               {{ end }}
-              {{ if or (eq .KUBE_NAMESPACE .BRANCH_ENV) (eq .KUBE_NAMESPACE .UAT_ENV) }}
-              - name: SQS_URL
-                valueFrom:
-                  secretKeyRef:
-                    name: cs-demo-case-creator-sqs
-                    key: sqs_queue_url
-              - name: ACCESS_KEY_ID
-                valueFrom:
-                  secretKeyRef:
-                    name: cs-demo-case-creator-sqs
-                    key: access_key_id
-              - name: SECRET_ACCESS_KEY
-                valueFrom:
-                  secretKeyRef:
-                    name: cs-demo-case-creator-sqs
-                    key: secret_access_key
-              {{ else if (eq .KUBE_NAMESPACE .STG_ENV) }}
-              - name: SQS_URL
-                valueFrom:
-                  secretKeyRef:
-                    name: hocs-epsilon-case-creator-sqs
-                    key: sqs_queue_url
-              - name: ACCESS_KEY_ID
-                valueFrom:
-                  secretKeyRef:
-                    name: hocs-epsilon-case-creator-sqs
-                    key: access_key_id
-              - name: SECRET_ACCESS_KEY
-                valueFrom:
-                  secretKeyRef:
-                    name: hocs-epsilon-case-creator-sqs
-                    key: secret_access_key
-              {{ else if (eq .KUBE_NAMESPACE .PROD_ENV) }}
-              - name: SQS_URL
-                valueFrom:
-                  secretKeyRef:
-                    name: cs-prod-case-creator-sqs
-                    key: sqs_queue_url
-              - name: ACCESS_KEY_ID
-                valueFrom:
-                  secretKeyRef:
-                    name: cs-prod-case-creator-sqs
-                    key: access_key_id
-              - name: SECRET_ACCESS_KEY
-                valueFrom:
-                  secretKeyRef:
-                    name: cs-prod-case-creator-sqs
-                    key: secret_access_key
-              {{ end }}
+            - name: AWS_USER
+              valueFrom:
+                secretKeyRef:
+                  name: ses
+                  key: smtp_username
+            - name: AWS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: ses
+                  key: smtp_password
+            - name: SESSION_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: session-secret
+                  key: token
+            - name: NOTIFY_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: notify-key
+                  key: notify-key
+            - name: USE_MOCKS
+              value: "false"
+            - name: AWS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: file-vault
+                  #encryption_key is randomly generated password used to encrypt the params that are returned by file-vault
+                  key: encryption_key
+            - name: AWS_EXPIRY_TIME
+              value: "120" # 2 minutes in seconds
+            - name: RETURN_ORIGINAL_SIGNED_URL
+              value: "no"
+            - name: ALLOW_GENERATE_LINK_ROUTE
+              value: "yes"
+            - name: KEYCLOAK_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: keycloak-client
+                  key: secret
+            - name: KEYCLOAK_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: keycloak-client
+                  key: id
+            - name: KEYCLOAK_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: keycloak-user
+                  key: username
+            - name: KEYCLOAK_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: keycloak-user
+                  key: password
+            - name: SESSION_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: session-secret
+                  key: session-secret            
+            - name: FILE_VAULT_URL
+            {{ if eq .KUBE_NAMESPACE .PROD_ENV }}
+              value: https://fv-{{ .APP_NAME }}.sas.homeoffice.gov.uk/file
+            {{ else if eq .KUBE_NAMESPACE .STG_ENV }}
+              value: https://fv-{{ .APP_NAME }}.stg.sas.homeoffice.gov.uk/file
+            {{ else if eq .KUBE_NAMESPACE .UAT_ENV }}
+              value: https://fv-{{ .APP_NAME }}.uat.sas-notprod.homeoffice.gov.uk/file
+            {{ else if eq .KUBE_NAMESPACE .BRANCH_ENV }}
+              value: https://fv-{{ .DRONE_SOURCE_BRANCH }}.branch.sas-notprod.homeoffice.gov.uk/file
+            {{ end }}
+            {{ if eq .KUBE_NAMESPACE .BRANCH_ENV }}
+            - name: DEBUG
+              value: "*"
+            {{ end }}          
+            {{ if or (eq .KUBE_NAMESPACE .BRANCH_ENV) (eq .KUBE_NAMESPACE .UAT_ENV) }}
+            - name: SQS_URL
+              valueFrom:
+                secretKeyRef:
+                  name: cs-demo-case-creator-sqs
+                  key: sqs_queue_url
+            - name: ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: cs-demo-case-creator-sqs
+                  key: access_key_id
+            - name: SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: cs-demo-case-creator-sqs
+                  key: secret_access_key
+            {{ else if (eq .KUBE_NAMESPACE .STG_ENV) }}
+            - name: SQS_URL
+              valueFrom:
+                secretKeyRef:
+                  name: hocs-epsilon-case-creator-sqs
+                  key: sqs_queue_url
+            - name: ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: hocs-epsilon-case-creator-sqs
+                  key: access_key_id
+            - name: SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: hocs-epsilon-case-creator-sqs
+                  key: secret_access_key
+            {{ else if (eq .KUBE_NAMESPACE .PROD_ENV) }}
+            - name: SQS_URL
+              valueFrom:
+                secretKeyRef:
+                  name: cs-prod-case-creator-sqs
+                  key: sqs_queue_url
+            - name: ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: cs-prod-case-creator-sqs
+                  key: access_key_id
+            - name: SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: cs-prod-case-creator-sqs
+                  key: secret_access_key
+            {{ end }}
           {{ if not (eq .KUBE_NAMESPACE .BRANCH_ENV) }}
           livenessProbe:
             httpGet:
@@ -226,14 +226,14 @@ spec:
               cpu: 250m
               memory: 256Mi
           env:
-  {{ file .NGINX_SETTINGS | indent 12 }}
-ports:
-  - containerPort: 10443
-volumeMounts:
-  - mountPath: /public
-    name: public
-securityContext:
-  runAsNonRoot: true
-volumes:
-  - name: public
-    emptyDir: {}
+{{ file .NGINX_SETTINGS | indent 12 }}
+          ports:
+            - containerPort: 10443
+          volumeMounts:
+            - mountPath: /public
+              name: public
+          securityContext:
+            runAsNonRoot: true
+      volumes:
+        - name: public
+          emptyDir: {}

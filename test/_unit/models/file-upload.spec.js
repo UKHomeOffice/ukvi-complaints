@@ -23,7 +23,6 @@ describe('UploadModel', () => {
     };
     formDataStub = sinon.stub().returns(formDataInstanceStub);
 
-    // Mock config object
     configMock = {
       upload: {
         hostname: 'http://example.com'
@@ -64,7 +63,7 @@ describe('UploadModel', () => {
         'form-data': formDataStub,
         'hof/lib/logger': () => loggerStub,
         url: { parse: sinon.stub().returns({}) },
-        '../../../config': configMock // Proxyquire config
+        '../../../config': configMock
       }
     );
 
@@ -77,7 +76,7 @@ describe('UploadModel', () => {
 
   describe('#save', () => {
     it('should throw an error if hostname is not defined', () => {
-      configMock.upload.hostname = null; // Set hostname to null to trigger error
+      configMock.upload.hostname = null;
       expect(() => model.save()).to.throw('File-vault hostname is not defined');
       expect(loggerStub.error.calledWith('File-vault hostname is not defined'))
         .to.be.true;

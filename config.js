@@ -28,7 +28,7 @@ module.exports = {
   sendToQueue: process.env.SEND_TO_DECS_QUEUE === 'online',
   feedbackUrl: process.env.FEEDBACK_URL,
   upload: {
-    maxFileSizeInBytes: 21 * 1000 * 1000, // 25MB in bytes
+    maxFileSizeInBytes: 21 * 1000 * 1000, // 21MB in bytes
     hostname: process.env.FILE_VAULT_URL,
     allowedMimeTypes: [
       'application/pdf',

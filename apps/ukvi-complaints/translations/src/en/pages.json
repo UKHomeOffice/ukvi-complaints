@@ -238,14 +238,25 @@
   "when-applied": {
     "header": "When did you submit your application?"
   },
-  "complaint-reference-number":{
+  "complaint-reference-number": {
     "header": "What is the reference number for your complaint?"
   },
-  "complaint-reason-previous":{
+  "complaint-reason-previous": {
     "header": "What was your original complaint about?"
   },
   "complaint-details": {
     "header": "What are the details of your complaint?"
+  },
+  "upload-complaint-document": {
+    "header": "Upload documents (optional)",
+    "p1": "Please attach any documents which may help us investigate this complaint",
+    "upload-file": "Upload a file",
+    "file-format": "Your file must be JPEG, PDF or PNG, and be 21MB or less",
+    "no-file-uploaded": "No files uploaded",
+    "files-uploaded": "Files uploaded",
+    "uploading-document": "Uploading your document...",
+    "maxFileSize": "The selected file must be 21MB or smaller",
+    "fileType": "The selected file must be a JPG, JPEG, PDF or PNG"
   },
   "acting-as-agent": {
     "header": "Are you making this complaint on behalf of someone else?"
@@ -300,6 +311,9 @@
       "complaint-details": {
         "label": "Complaint details"
       },
+      "upload-complaint-doc": {
+        "label": "Files uploaded"
+      },
       "reason": {
         "label": "The reason for the complaint"
       },
@@ -343,31 +357,31 @@
         "label": "Relation to applicant"
       },
       "gwf-reference": {
-				"label": "GWF number"
+        "label": "GWF number"
       },
       "called-number": {
-				"label": "Telephone number called"
+        "label": "Telephone number called"
       },
       "called-date": {
-				"label": "Date of the call"
+        "label": "Date of the call"
       },
       "called-time": {
-				"label": "Time of the call"
+        "label": "Time of the call"
       },
       "called-from": {
-				"label": "Telephone number the call was made from"
+        "label": "Telephone number the call was made from"
       },
-			"ho-reference": {
-				"label": "Home Office reference number"
-			},
-			"ihs-reference": {
-				"label": "IHS reference number"
-			},
-			"uan-reference": {
-				"label": "Unique Application Number"
-			},
-			"none": {
-				"label": "I don’t have any of these"
+      "ho-reference": {
+        "label": "Home Office reference number"
+      },
+      "ihs-reference": {
+        "label": "IHS reference number"
+      },
+      "uan-reference": {
+        "label": "Unique Application Number"
+      },
+      "none": {
+        "label": "I don’t have any of these"
       },
       "staff-behaviour": {
         "label": "Where did you experience poor behaviour"
@@ -378,7 +392,7 @@
       "ssc-city": {
         "label": "Where in the UK is the service support centre"
       },
-      "vac-country" : {
+      "vac-country": {
         "label": "Where is the visa application centre country"
       },
       "vac-city": {

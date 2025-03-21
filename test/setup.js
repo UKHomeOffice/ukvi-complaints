@@ -6,6 +6,7 @@ process.env.SECRET_ACCESS_KEY = 'stub';
 
 global.chai = require('chai');
 global.expect = chai.expect;
+global.reqres = require('hof').utils.reqres;
 global.sinon = require('sinon');
 global.proxyquire = require('proxyquire');
 

@@ -625,7 +625,7 @@
     "label": "Full name",
     "validation": {
       "required": "Enter your full name",
-      "notUrl":"Enter your full name"
+      "notUrl": "Enter your full name"
     }
   },
   "applicant-dob": {
@@ -660,6 +660,11 @@
     "label": "Phone number (optional)",
     "validation": {
       "notUrl": "Enter a valid phone number"
+    }
+  },
+  "file-upload": {
+    "validation": {
+      "maxComplaintUpload" : "You can only upload upto {{maxComplaintUpload}} files or less. Remove a file before uploading another"
     }
   }
 }

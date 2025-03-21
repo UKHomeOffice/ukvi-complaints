@@ -593,6 +593,8 @@ Feature: An existing complaint
     Then I should be on the 'complaint-details' page showing 'What are the details of your complaint?'
     Then I fill 'complaint-details' text area with 'Details of a complaint'
     Then I select 'Continue'
+    Then I should be on the 'upload-complaint-document' page
+    Then I select 'Continue'
     Then I should be on the 'confirm' page showing 'Check your answers'
     Then I should see 'The reason for the complaint' and 'An existing complaint' on the page
     Then I should see 'Complaint details' and 'Details of a complaint' on the page

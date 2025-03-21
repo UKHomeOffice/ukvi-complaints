@@ -41,6 +41,8 @@ Feature: Submitting an application
     Then I should be on the 'complaint-details' page showing 'What are the details of your complaint?'
     Then I fill 'complaint-details' text area with 'Details of a complaint'
     Then I select 'Continue'
+    Then I should be on the 'upload-complaint-document' page
+    Then I select 'Continue'
     Then I should be on the 'confirm' page showing 'Check your answers'
     Then I should see 'The reason for the complaint' and 'Submitting an application' on the page
     Then I should see 'Problem with the application process' and 'Technical issues with the website or payments' on the page
@@ -130,6 +132,8 @@ Feature: Submitting an application
     Then I should be on the 'complaint-details' page showing 'What are the details of your complaint?'
     Then I fill 'complaint-details' text area with 'Details of a complaint'
     Then I select 'Continue'
+    Then I should be on the 'upload-complaint-document' page
+    Then I select 'Continue'
     Then I should be on the 'confirm' page showing 'Check your answers'
     Then I should see 'The reason for the complaint' and 'Submitting an application' on the page
     Then I should see 'Problem with the application process' and 'Unclear or misleading guidance' on the page
@@ -218,6 +222,8 @@ Feature: Submitting an application
     Then I select 'Continue'
     Then I should be on the 'complaint-details' page showing 'What are the details of your complaint?'
     Then I fill 'complaint-details' text area with 'Details of a complaint'
+    Then I select 'Continue'
+    Then I should be on the 'upload-complaint-document' page
     Then I select 'Continue'
     Then I should be on the 'confirm' page showing 'Check your answers'
     Then I should see 'The reason for the complaint' and 'Submitting an application' on the page
@@ -327,6 +333,8 @@ Feature: Submitting an application
     Then I select 'Continue'
     Then I should be on the 'complaint-details' page showing 'What are the details of your complaint?'
     Then I fill 'complaint-details' text area with 'Details of a complaint'
+    Then I select 'Continue'
+    Then I should be on the 'upload-complaint-document' page
     Then I select 'Continue'
     Then I should be on the 'confirm' page showing 'Check your answers'
     Then I should see 'The reason for the complaint' and 'Submitting an application' on the page

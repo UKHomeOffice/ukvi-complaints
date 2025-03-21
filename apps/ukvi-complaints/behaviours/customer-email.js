@@ -5,6 +5,8 @@ const Notify = hof.components.notify;
 const path = require('path');
 const moment = require('moment');
 
+const { parseDocumentList } = require('../../../lib/utils');
+
 // eslint-disable-next-line complexity
 const getDataRows = (model, translate) => {
   return [
@@ -130,6 +132,10 @@ const getDataRows = (model, translate) => {
         model['complaint-details'] && {
           label: translate('pages.confirm.fields.complaint-details.label'),
           value: model['complaint-details']
+        },
+        parseDocumentList(model('upload-complaint-doc')) && {
+          label: translate('pages.confirm.fields.upload-complaint-doc.label'),
+          value: parseDocumentList(model('upload-complaint-doc'))
         }
       ]
     },

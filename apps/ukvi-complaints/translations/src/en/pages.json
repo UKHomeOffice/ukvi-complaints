@@ -312,7 +312,7 @@
         "label": "Complaint details"
       },
       "upload-complaint-doc": {
-        "label": "Files you have uploaded"
+        "label": "Files uploaded"
       },
       "reason": {
         "label": "The reason for the complaint"

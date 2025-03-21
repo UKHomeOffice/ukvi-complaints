@@ -154,6 +154,8 @@ Feature: A negative or positive decision
     Then I should see 'What are the details of your complaint?' on the page
     Then I fill 'complaint-details' text area with 'More details of a complaint'
     Then I select 'Continue'
+    Then I should be on the 'upload-complaint-document' page
+    Then I select 'Continue'
     Then I should be on the 'confirm' page showing 'Check your answers'
     Then I should see 'The reason for the complaint' and 'A negative or positive decision' on the page
     Then I should see 'GWF number' and 'GWF012345678' on the page
@@ -246,6 +248,8 @@ Feature: A negative or positive decision
     Then I select change link 'complaint-details-change'
     Then I should see 'What are the details of your complaint?' on the page
     Then I fill 'complaint-details' text area with 'More details of a complaint'
+    Then I select 'Continue'
+    Then I should be on the 'upload-complaint-document' page
     Then I select 'Continue'
     Then I should be on the 'confirm' page showing 'Check your answers'
     Then I should see 'The reason for the complaint' and 'A negative or positive decision' on the page

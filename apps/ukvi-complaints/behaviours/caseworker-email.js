@@ -133,9 +133,9 @@ const getDataRows = (model, translate) => {
           label: translate('pages.confirm.fields.complaint-details.label'),
           value: model['complaint-details']
         },
-        parseDocumentList(model('upload-complaint-doc')) && {
+        parseDocumentList(model['upload-complaint-doc']) && {
           label: translate('pages.confirm.fields.upload-complaint-doc.label'),
-          value: parseDocumentList(model('upload-complaint-doc'))
+          value: parseDocumentList(model['upload-complaint-doc'])
         }
       ]
     },

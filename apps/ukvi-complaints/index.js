@@ -874,7 +874,6 @@ module.exports = {
     },
     '/complaint-details': {
       behaviours: [conditionalContent],
-      continueOnEdit: true,
       fields: ['complaint-details'],
       next: '/upload-complaint-document'
     },

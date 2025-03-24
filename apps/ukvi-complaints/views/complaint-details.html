@@ -1,12 +1,14 @@
 {{<partials-page}}
-  {{$page-content}}
-    <div>
-      <p>Briefly summarise your complaint. Include anything that can help our investigation. For example, if your application was submitted alongside applications for family members.</p>
+{{$page-content}}
+<div>
+  <p>
+    Briefly summarise your complaint. Include anything that can help our
+    investigation. For example, if your application was submitted alongside
+    applications for family members.
+  </p>
       <p>Please do not provide bank details or names of staff members (if relevant). We will ask for them later if necessary.</p>
-    </div>
+          </div>
 	 {{#fields}}
       {{#renderField}}{{/renderField}}
     {{/fields}}
-    {{#input-submit}}continue{{/input-submit}}
-  {{/page-content}}
-{{/partials-page}}
+{{#input-submit}}continue{{/input-submit}} {{/page-content}} {{/partials-page}}

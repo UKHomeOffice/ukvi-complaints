@@ -4,6 +4,8 @@ const config = require('../../config');
 const conditionalContent = require('./behaviours/conditional-content');
 const customerEmailer = require('./behaviours/customer-email')(config.email);
 const caseworkerEmailer = require('./behaviours/caseworker-email')(config.email);
+const SaveDocument = require('./behaviours/save-file');
+const RemoveDocument = require('./behaviours/remove-file');
 const sendToSQS = require('./behaviours/send-to-sqs');
 const ResetOnChange = require('./behaviours/reset-on-change');
 
@@ -17,9 +19,7 @@ module.exports = {
   steps: {
     '/reason': {
       fields: ['reason'],
-      behaviours: ResetOnChange({
-        field: 'reason'
-      }),
+      behaviours: [ResetOnChange({ field: 'reason' })],
       next: '/immigration-application',
       forks: [{
         target: '/immigration-application',
@@ -875,6 +875,14 @@ module.exports = {
     '/complaint-details': {
       behaviours: [conditionalContent],
       fields: ['complaint-details'],
+      next: '/upload-complaint-document'
+    },
+    '/upload-complaint-document': {
+      behaviours: [
+        SaveDocument('upload-complaint-doc', 'file-upload'),
+        RemoveDocument('upload-complaint-doc')
+      ],
+      fields: ['file-upload'],
       next: '/confirm'
     },
     '/confirm': {
@@ -898,7 +906,17 @@ module.exports = {
           'ho-reference',
           'ihs-reference',
           'uan-reference',
-          'complaint-details'
+          'complaint-details',
+          {
+            step: '/upload-complaint-document',
+            field: 'upload-complaint-doc',
+            parse: (list, req) => {
+              if (!req.sessionModel.get('upload-complaint-doc')) {
+                return null;
+              }
+              return Array.isArray(list) ? list.map(a => a.name).join('\n') : list || 'None';
+            }
+          }
         ],
         'agent-details': [
           'agent-name',

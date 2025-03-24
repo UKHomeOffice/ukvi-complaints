@@ -1,0 +1,56 @@
+{{<partials-page}} {{$encoding}}enctype="multipart/form-data" name="file-upload-form" {{/encoding}}
+{{$page-content}}
+
+<p class="govuk-body">{{#t}}pages.upload-complaint-document.p1{{/t}}</p>
+
+<div class="govuk-form-group" id="hofFileUpload">
+    <label class="govuk-label" for="file-upload">
+        <h2>{{#t}}pages.upload-complaint-document.upload-file{{/t}}</h2>
+        <span class="govuk-hint">{{#t}}pages.upload-complaint-document.file-format{{/t}}</span>
+    </label>
+    <p id="file-upload-error-maxFileSize" class="govuk-error-message govuk-!-display-none">
+        <span id="validation-error" class="govuk-visually-hidden">{{#t}}journey.error{{/t}}:</span> {{#t}}pages.upload-complaint-document.maxFileSize{{/t}}
+    </p>
+    <p id="file-upload-error-fileType" class="govuk-error-message govuk-!-display-none">
+        <span id="validation-error" class="govuk-visually-hidden">{{#t}}journey.error{{/t}}:</span> {{#t}}pages.upload-complaint-document.fileType{{/t}}
+    </p>
+
+    <input class="govuk-file-upload" id="file-upload" name="file-upload" type="file" value="upload-complaint-doc">
+
+    <div id="upload-page-loading-spinner" class="spinner-container">
+        <div class="spinner-loader"></div>
+        <span class="spinner-message">{{#t}}pages.upload-complaint-document.uploading-document{{/t}}</span>
+    </div>
+
+</div>
+
+{{^values.upload-complaint-doc}}
+<h2 class="govuk-heading-m">{{#t}}pages.upload-complaint-document.no-file-uploaded{{/t}}</h2>
+{{/values.upload-complaint-doc}}
+
+{{#values.upload-complaint-doc.length}}
+<h2 class="govuk-heading-m">{{#t}}pages.upload-complaint-document.files-uploaded{{/t}}</h2>
+
+<div id="uploaded-documents" class="govuk-width-container">
+    {{#values.upload-complaint-doc}}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-three-quarters">
+            {{name}}
+        </div>
+        <div class="govuk-grid-column-one-quarter">
+            <a href="?delete={{id}}" class="govuk-link">{{#t}}buttons.remove{{/t}}<span class="visuallyhidden">{{name}}</span></a>
+        </div>
+    </div>
+    <div class="file-upload-hrline"></div>
+    {{/values.upload-complaint-doc}}
+</div>
+
+{{/values.upload-complaint-doc.length}}
+
+
+<button class="govuk-button" name="optionalFileUpload" value="upload-complaint-doc">
+    {{#t}}buttons.continue{{/t}}
+</button>
+
+{{/page-content}}
+{{/partials-page}}

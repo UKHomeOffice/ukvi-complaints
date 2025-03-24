@@ -132,4 +132,24 @@ describe('utils', () => {
       expect(utils.sendToQueue(invalidComplaintData)).to.be.rejected;
     });
   });
+
+  describe('parseDocumentList tests', () => {
+    it('should return empty string - input non array', () => {
+      expect(utils.parseDocumentList('not-array')).to.be.equal('');
+    });
+
+    it('should return empty string - input empty array', () => {
+      expect(utils.parseDocumentList([])).to.be.equal('');
+    });
+
+    it('should return formatted result - input document info', () => {
+      const docs = [
+        { name: 'doc1.pdf', url: 'http://doc1-url' },
+        { name: 'doc2.pdf', url: 'http://doc2-url' }
+      ];
+      const result = utils.parseDocumentList(docs);
+      expect(result).to.contain('[doc1.pdf](http://doc1-url)');
+      expect(result).to.contain('[doc2.pdf](http://doc2-url)');
+    });
+  });
 });

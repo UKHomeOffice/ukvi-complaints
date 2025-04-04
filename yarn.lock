@@ -1439,10 +1439,10 @@ bl@^1.2.1:
     readable-stream "^2.3.5"
     safe-buffer "^5.1.1"
 
-bl@^6.0.20:
-  version "6.0.20"
-  resolved "https://registry.yarnpkg.com/bl/-/bl-6.0.20.tgz#70527afc27d2158b88db55a99ad8813ab7d82914"
-  integrity sha512-JMP0loH6ApbpT4Aa9oU5NqAkdDvcyc8koeuK8i5mYoBCVj3XCXG0uweGNN2m6DqaCO2yRHdm+MjCeTsR5VsmcA==
+bl@^6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/bl/-/bl-6.1.0.tgz#cc35ce7a2e8458caa8c8fb5deeed6537b73e4504"
+  integrity sha512-ClDyJGQkc8ZtzdAAbAwBmhMSpwN/sC9HA8jxdYm6nVUbCfZbe2mgza4qh7AuEYyEPB/c4Kznf9s66bnsKMQDjw==
   dependencies:
     "@types/readable-stream" "^4.0.0"
     buffer "^6.0.3"

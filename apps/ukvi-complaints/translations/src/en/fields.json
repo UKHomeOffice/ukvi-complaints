@@ -481,6 +481,9 @@
   },
   "complaint-reason-previous": {
     "legend": " ",
+    "validation": {
+      "required": "Select what was your original complaint about"
+    },
     "options": {
       "immigration-application": {
         "label": "Submitting an application"
@@ -525,7 +528,8 @@
     "label": " ",
     "hint": "If you can't remember the exact date, just provide the month.",
     "validation": {
-      "notUrl": "Enter when you submitted you application "
+      "notUrl": "Enter when you submitted you application",
+      "required": "Enter when you submitted you application"
     }
   },
   "complaint-details": {

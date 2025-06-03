@@ -206,11 +206,11 @@ spec:
           {{ end }}
           resources:
             requests:
-              cpu: "20m"
-              memory: "100Mi"
-            limits:
               cpu: "100m"
-              memory: "200Mi"
+              memory: "256Mi"
+            limits:
+              cpu: "250m"
+              memory: "512Mi"
           volumeMounts:
             - mountPath: /public
               name: public

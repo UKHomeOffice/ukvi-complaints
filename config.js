@@ -4,8 +4,12 @@
 
 module.exports = {
   env: 'development',
-  dateFormat: 'DD-MM-YYYY',
-  dateTimeFormat: 'DD-MM-YYYY, hh:mma',
+  dateLocales: 'en-GB',
+  dateFormat: {
+    day: '2-digit',
+    month: 'long',
+    year: 'numeric'
+  },
   redis: {
     password: process.env.REDIS_PASSWORD
   },

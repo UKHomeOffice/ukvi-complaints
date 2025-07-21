@@ -1,16 +1,8 @@
-'use strict';
-
-const hof = require('hof');
-const Notify = hof.components.notify;
-const path = require('path');
-
 const { parseDocumentList } = require('../../../lib/utils');
-
 const config = require('../../../config');
 const dateFormatter = new Intl.DateTimeFormat(config.dateLocales, config.dateFormat);
 
-// eslint-disable-next-line complexity
-const getDataRows = (model, translate) => {
+const getDataEmail = (model, translate) => {
   return [
     {
       title: 'Complaint details',
@@ -142,14 +134,14 @@ const getDataRows = (model, translate) => {
       ]
     },
     model['agent-name'] && {
-      title: 'Your details',
+      title: 'Agent details',
       table: [
         {
-          label: 'Full name',
+          label: 'Agent’s Full name',
           value: model['agent-name']
         },
         {
-          label: 'What is your relation to the applicant',
+          label: 'Agent’s relation to the applicant',
           value: translate(`fields['who-representing'].options[${model['who-representing']}].label`)
         }
       ]
@@ -158,7 +150,7 @@ const getDataRows = (model, translate) => {
       title: 'Applicant details',
       table: [
         {
-          label: 'Applicants full name',
+          label: 'Applicant’s full name',
           value: model['agent-representative-name']
         },
         {
@@ -172,7 +164,7 @@ const getDataRows = (model, translate) => {
       ]
     },
     model['applicant-name'] && {
-      title: 'Your details',
+      title: 'Applicant details',
       table: [
         {
           label: 'Full name',
@@ -217,15 +209,6 @@ const getDataRows = (model, translate) => {
   ].filter(Boolean);
 };
 
-module.exports = config => {
-  return Notify(Object.assign({}, config, {
-    recipient: model => model['applicant-email'] || model['agent-email'] || config.noEmail,
-    subject: (model, translate) => translate('pages.email.customer.subject'),
-    template: path.resolve(__dirname, '../emails/customer.html'),
-    parse: (model, translate) => {
-      return Object.assign(model, {
-        data: getDataRows(model, translate)
-      });
-    }
-  }));
+module.exports = {
+  getDataEmail
 };

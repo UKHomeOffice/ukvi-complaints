@@ -13,6 +13,7 @@ module.exports = {
     notifyApiKey: process.env.NOTIFY_KEY,
     notifyTemplate: process.env.NOTIFY_TEMPLATE,
     caseworker: process.env.CASEWORKER_EMAIL,
+    caseworkerTwo: process.env.CASEWORKER_EMAIL_2,
     // noEmail sets default inbox where an email is expected by govNotify but not requested in the form
     noEmail: process.env.NO_EMAIL_GIVEN_INBOX
   },

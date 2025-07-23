@@ -3,11 +3,9 @@
 const hof = require('hof');
 const Notify = hof.components.notify;
 const path = require('path');
+const moment = require('moment');
 
 const { parseDocumentList } = require('../../../lib/utils');
-
-const config = require('../../../config');
-const dateFormatter = new Intl.DateTimeFormat(config.dateLocales, config.dateFormat);
 
 // eslint-disable-next-line complexity
 const getDataRows = (model, translate) => {
@@ -167,7 +165,7 @@ const getDataRows = (model, translate) => {
         },
         {
           label: 'Applicant’s date of birth',
-          value: dateFormatter.format(new Date(model['agent-representative-dob']))
+          value: moment(model['agent-representative-dob']).format('D MMMM YYYY')
         }
       ]
     },
@@ -184,7 +182,7 @@ const getDataRows = (model, translate) => {
         },
         {
           label: 'Date of birth',
-          value: dateFormatter.format(new Date(model['applicant-dob']))
+          value: moment(model['applicant-dob']).format('D MMMM YYYY')
         }
       ]
     },

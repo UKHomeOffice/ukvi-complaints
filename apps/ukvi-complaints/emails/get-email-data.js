@@ -2,7 +2,7 @@ const { parseDocumentList } = require('../../../lib/utils');
 const config = require('../../../config');
 const dateFormatter = new Intl.DateTimeFormat(config.dateLocales, config.dateFormat);
 
-const getDataEmail = (model, translate) => {
+const getEmailData = (model, translate) => {
   return [
     {
       title: 'Complaint details',
@@ -210,5 +210,5 @@ const getDataEmail = (model, translate) => {
 };
 
 module.exports = {
-  getDataEmail
+  getEmailData
 };

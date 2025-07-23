@@ -1,6 +1,5 @@
 const { parseDocumentList } = require('../../../lib/utils');
-const config = require('../../../config');
-const dateFormatter = new Intl.DateTimeFormat(config.dateLocales, config.dateFormat);
+const moment = require('moment');
 
 const getEmailData = (model, translate) => {
   return [
@@ -159,7 +158,7 @@ const getEmailData = (model, translate) => {
         },
         {
           label: 'Applicant’s date of birth',
-          value: dateFormatter.format(new Date(model['agent-representative-dob']))
+          value: moment(model['agent-representative-dob']).format('D MMMM YYYY')
         }
       ]
     },
@@ -176,7 +175,7 @@ const getEmailData = (model, translate) => {
         },
         {
           label: 'Date of birth',
-          value: dateFormatter.format(new Date(model['applicant-dob']))
+          value: moment(model['applicant-dob']).format('D MMMM YYYY')
         }
       ]
     },

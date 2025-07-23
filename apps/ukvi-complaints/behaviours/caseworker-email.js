@@ -7,7 +7,7 @@ const getEmailData = require('../emails/get-email-data').getEmailData;
 
 module.exports = config => {
   return Notify(Object.assign({}, config, {
-    recipient: config.caseworker,
+    recipient: config.caseworkerEmail,
     subject: (model, translate) => translate('pages.email.caseworker.subject'),
     template: path.resolve(__dirname, '../emails/caseworker.html'),
     parse: (model, translate) => {

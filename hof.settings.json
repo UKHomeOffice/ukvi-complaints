@@ -10,7 +10,7 @@
   "views": ["./apps/ukvi-complaints/views"],
   "session": {
     "name": "ukvi-complaints.hof.sid",
-    "ttl": 20
+    "ttl": 3600
   },
   "getAccessibility": false
 }

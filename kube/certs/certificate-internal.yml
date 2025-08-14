@@ -7,7 +7,7 @@ metadata:
 spec:
   commonName: "*.branch.internal.sas-notprod.homeoffice.gov.uk"
   dnsNames:
-  - "*branch.internal.sas-notprod.homeoffice.gov.uk"
+  - "*.branch.internal.sas-notprod.homeoffice.gov.uk"
   issuerRef:
     kind: ClusterIssuer
     name: letsencrypt-prod

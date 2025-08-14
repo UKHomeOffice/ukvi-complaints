@@ -12,8 +12,7 @@ spec:
   tls:
     - hosts:
       {{ if eq .KUBE_NAMESPACE .BRANCH_ENV }}
-        - {{ .DRONE_BUILD_NUMBER }}.internal.{{ .BRANCH_ENV }}.homeoffice.gov.uk
-        - ukvic-{{ .DRONE_SOURCE_BRANCH }}.internal.{{ .BRANCH_ENV }}.homeoffice.gov.uk
+        - ukvic-{{ .DRONE_SOURCE_BRANCH }}.branch.internal.sas-notprod.homeoffice.gov.uk
       {{ else if eq .KUBE_NAMESPACE .UAT_ENV }}
         - ukvic.uat.internal.sas-notprod.homeoffice.gov.uk
         - {{ .APP_NAME }}.uat.internal.sas-notprod.homeoffice.gov.uk
@@ -28,7 +27,7 @@ spec:
       {{ end }}
   rules:
     {{ if eq .KUBE_NAMESPACE .BRANCH_ENV }}
-    - host: ukvic-{{ .DRONE_SOURCE_BRANCH }}.internal.{{ .BRANCH_ENV }}.homeoffice.gov.uk
+    - host: ukvic-{{ .DRONE_SOURCE_BRANCH }}.branch.internal.sas-notprod.homeoffice.gov.uk
     {{ else if eq .KUBE_NAMESPACE .UAT_ENV }}
     - host: {{ .APP_NAME }}.uat.internal.sas-notprod.homeoffice.gov.uk
     {{ else if eq .KUBE_NAMESPACE .STG_ENV }}

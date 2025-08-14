@@ -5,9 +5,9 @@ metadata:
   labels:
     cert-manager.io/solver: route53
 spec:
-  commonName: "*.{{ .BRANCH_ENV }}.homeoffice.gov.uk"
+  commonName: "*.branch.sas-notprod.homeoffice.gov.uk"
   dnsNames:
-  - "*.{{ .BRANCH_ENV }}.homeoffice.gov.uk"
+  - "*.branch.sas-notprod.homeoffice.gov.uk"
   issuerRef:
     kind: ClusterIssuer
     name: letsencrypt-prod

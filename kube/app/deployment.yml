@@ -136,10 +136,6 @@ spec:
               value: https://fv-{{ .APP_NAME }}.uat.sas-notprod.homeoffice.gov.uk/file
             {{ else if eq .KUBE_NAMESPACE .BRANCH_ENV }}
               value: https://fv-{{ .DRONE_SOURCE_BRANCH }}.branch.sas-notprod.homeoffice.gov.uk/file
-            {{ end }}
-            {{ if eq .KUBE_NAMESPACE .BRANCH_ENV }}
-            - name: DEBUG
-              value: "*"
             {{ end }}          
             {{ if or (eq .KUBE_NAMESPACE .BRANCH_ENV) (eq .KUBE_NAMESPACE .UAT_ENV) }}
             - name: SQS_URL

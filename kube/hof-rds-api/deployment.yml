@@ -71,7 +71,7 @@ spec:
                 secretKeyRef:
                   key: db_name
                   {{ if or (eq .KUBE_NAMESPACE .BRANCH_ENV) (eq .KUBE_NAMESPACE .UAT_ENV) }}
-                  name: ukvicnotprod
+                  name: ukvicnotprod-rds
                   {{ else if eq .KUBE_NAMESPACE .STG_ENV }}
                   name: {{ .APP_NAME }}-rds-stg
                   {{ else }}

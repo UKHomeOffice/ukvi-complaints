@@ -1,0 +1,122 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  {{ if eq .KUBE_NAMESPACE .BRANCH_ENV }}
+  name: data-service-{{ .DRONE_SOURCE_BRANCH }}
+  {{ else }}
+  name: data-service
+  {{ end }}
+spec:
+  {{ if eq .KUBE_NAMESPACE .PROD_ENV }}
+  replicas: 2
+  {{ else }}
+  replicas: 1
+  {{ end }}
+  selector:
+    matchLabels:
+      {{ if eq .KUBE_NAMESPACE .BRANCH_ENV }}
+      name: data-service-{{ .DRONE_SOURCE_BRANCH }}
+      service: data-service-{{ .DRONE_SOURCE_BRANCH }}
+      {{ else }}
+      name: data-service
+      service: data-service
+      {{ end }}
+  template:
+    metadata:
+      labels:
+        {{ if eq .KUBE_NAMESPACE .BRANCH_ENV }}
+        name: data-service-{{ .DRONE_SOURCE_BRANCH }}
+        service: data-service-{{ .DRONE_SOURCE_BRANCH }}
+        {{ else }}
+        name: data-service
+        service: data-service
+        {{ end }}
+        build: "{{.DRONE_BUILD_NUMBER}}"
+        commit: "{{.DRONE_COMMIT_SHA}}"
+    spec:
+      containers:
+        - name: data-service
+          image: quay.io/ukhomeofficedigital/hof-rds-api:3.1.2@sha256:1b48e63b3a28a2d748f7b02de5b66a1a37f5d9920e8e226b93b5f45d44f8388c
+          imagePullPolicy: Always
+          envFrom:
+            - configMapRef:
+                {{ if eq .KUBE_NAMESPACE .BRANCH_ENV }}
+                name: {{ .APP_NAME }}-configmap-{{ .DRONE_SOURCE_BRANCH }}
+                {{ else }}
+                name: {{ .APP_NAME }}-configmap
+                {{ end }}
+          env:
+            - name: SERVICE_NAME
+              value: "csl"
+            - name: MAX_PAYLOAD_SIZE
+              value: "30mb"
+            - name: REQUEST_TIMEOUT
+              value: "10000"
+            - name: HTTPS_PORT
+              value: "3443"
+            - name: DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  key: endpoint
+                  {{ if or (eq .KUBE_NAMESPACE .BRANCH_ENV) (eq .KUBE_NAMESPACE .UAT_ENV) }}
+                  name: {{ .APP_NAME }}-notprod-rds
+                  {{ else if eq .KUBE_NAMESPACE .STG_ENV }}
+                  name: {{ .APP_NAME }}-rds-stg
+                  {{ else }}
+                  name: {{ .APP_NAME }}-rds-prod
+                  {{ end }}
+            - name: DB_NAME
+              valueFrom:
+                secretKeyRef:
+                  key: db_name
+                  {{ if or (eq .KUBE_NAMESPACE .BRANCH_ENV) (eq .KUBE_NAMESPACE .UAT_ENV) }}
+                  name: {{ .APP_NAME }}-notprod-rds
+                  {{ else if eq .KUBE_NAMESPACE .STG_ENV }}
+                  name: {{ .APP_NAME }}-rds-stg
+                  {{ else }}
+                  name: {{ .APP_NAME }}-rds-prod
+                  {{ end }}
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  key: username
+                  {{ if or (eq .KUBE_NAMESPACE .BRANCH_ENV) (eq .KUBE_NAMESPACE .UAT_ENV) }}
+                  name: {{ .APP_NAME }}-notprod-rds
+                  {{ else if eq .KUBE_NAMESPACE .STG_ENV }}
+                  name: {{ .APP_NAME }}-rds-stg
+                  {{ else }}
+                  name: {{ .APP_NAME }}-rds-prod
+                  {{ end }}
+            - name: DB_PASS
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  {{ if or (eq .KUBE_NAMESPACE .BRANCH_ENV) (eq .KUBE_NAMESPACE .UAT_ENV) }}
+                  name: {{ .APP_NAME }}-notprod-rds
+                  {{ else if eq .KUBE_NAMESPACE .STG_ENV }}
+                  name: {{ .APP_NAME }}-rds-stg
+                  {{ else }}
+                  name: {{ .APP_NAME }}-rds-prod
+                  {{ end }}
+          resources:
+            requests:
+              memory: 4Gi
+              cpu: 200m
+            limits:
+              memory: 8Gi
+              cpu: 400m
+          securityContext:
+            runAsNonRoot: true
+          volumeMounts:
+            - mountPath: /certs
+              name: certs
+              readOnly: true
+      volumes:
+        - name: certs
+          secret:
+            {{ if eq .KUBE_NAMESPACE .BRANCH_ENV }}
+            secretName: branch-tls-external
+            {{ else }}
+            secretName: data-service-cert-cmio
+            {{ end }}

@@ -39,7 +39,7 @@ spec:
       http:
         paths:
           - path: /
-            backend:
+            backend: 
               {{ if eq .KUBE_NAMESPACE .BRANCH_ENV }}
               serviceName: data-service-{{ .DRONE_SOURCE_BRANCH }}
               {{ else }}

@@ -32,17 +32,16 @@
     "busboy-body-parser": "^0.3.2",
     "form-data": "^4.0.1",
     "hof": "~22.8.4",
-    "hot-shots": "^8.5.0",
+    "hot-shots": "^11.2.0",
     "jimp": "^1.6.0",
     "jquery": "^3.6.0",
     "jsonschema": "^1.4.0",
     "moment": "^2.29.4",
-    "nodemailer": "^6.7.5",
     "path-parse": "^1.0.7",
-    "sqs-producer": "^2.1.0",
+    "sqs-producer": "^8.0.0",
     "ssh2": "^1.16.0",
     "typeahead-aria": "^1.0.4",
-    "uuid": "^9.0.0"
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@cucumber/cucumber": "^7.3.0",

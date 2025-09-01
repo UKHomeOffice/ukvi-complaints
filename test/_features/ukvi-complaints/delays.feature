@@ -218,8 +218,6 @@ Feature: Waiting for a decision or documents
     Then I should be on the 'complaint-details' page showing 'What are the details of your complaint?'
     Then I fill 'complaint-details' text area with 'Details of a complaint'
     Then I select 'Continue'
-    Then I should be on the 'upload-complaint-document' page
-    Then I select 'Continue'
     Then I should be on the 'confirm' page showing 'Check your answers'
     Then I should see 'The reason for the complaint' and 'Waiting for a decision or documents' on the page
     Then I should see 'GWF number' and 'GWF012345678' on the page
@@ -253,6 +251,8 @@ Feature: Waiting for a decision or documents
     Then I select change link 'complaint-details-change'
     Then I should see 'What are the details of your complaint?' on the page
     Then I fill 'complaint-details' text area with 'More details of a complaint'
+    Then I select 'Continue'
+    Then I should be on the 'upload-complaint-document' page
     Then I select 'Continue'
     Then I should be on the 'confirm' page showing 'Check your answers'
     Then I should see 'The reason for the complaint' and 'Waiting for a decision or documents' on the page
@@ -490,4 +490,3 @@ Feature: Waiting for a decision or documents
     Then I should see 'Applicant’s date of birth' and '1982-02-02' on the page
     Then I should see 'Email address' and 'test@test.com' on the page
     Then I should see 'Phone number (optional)' and '02079462345' on the page
-

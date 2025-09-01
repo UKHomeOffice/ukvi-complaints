@@ -943,6 +943,8 @@ module.exports = {
     '/complete': {
       template: 'confirmation'
     },
-    '/accessibility': {}
+    '/accessibility': {},
+    '/session-timeout': {},
+    '/exit': {}
   }
 };

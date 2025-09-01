@@ -10,7 +10,8 @@ const busboy = require('busboy');
 const bl = require('bl');
 const logger = require('hof/lib/logger')({ env: config.env });
 
-settings.routes = settings.routes.map(route => require(route));
+settings.routes = settings.routes.map(require);
+settings.behaviours = settings.behaviours.map(require);
 settings.root = __dirname;
 settings.csp = {
   imgSrc: [

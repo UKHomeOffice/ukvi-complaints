@@ -3,7 +3,8 @@
 const config = require('../../config');
 const conditionalContent = require('./behaviours/conditional-content');
 const customerEmailer = require('./behaviours/customer-email')(config.email);
-const caseworkerEmailer = require('./behaviours/caseworker-email')(config.email);
+const caseworkerEmailerOne = require('./behaviours/caseworker-email')(config.email);
+const caseworkerEmailerTwo = require('./behaviours/caseworker-email-2')(config.email);
 const SaveDocument = require('./behaviours/save-file');
 const RemoveDocument = require('./behaviours/remove-file');
 const sendToSQS = require('./behaviours/send-to-sqs');
@@ -886,7 +887,14 @@ module.exports = {
       next: '/confirm'
     },
     '/confirm': {
-      behaviours: [sendToSQS, caseworkerEmailer, customerEmailer, 'complete', require('hof').components.summary],
+      behaviours: [
+        sendToSQS,
+        caseworkerEmailerOne,
+        caseworkerEmailerTwo,
+        customerEmailer,
+        'complete',
+        require('hof').components.summary
+      ],
       next: '/complete',
       sections: {
         'complaint-details': [

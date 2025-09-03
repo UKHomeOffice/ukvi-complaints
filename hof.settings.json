@@ -1,9 +1,6 @@
 {
   "appName": "UKVI Complaints",
   "theme": "govUK",
-  "behaviours": [
-    "hof/components/session-timeout-warning"
-  ],
   "routes": [
     "./apps/ukvi-complaints"
   ],

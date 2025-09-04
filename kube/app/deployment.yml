@@ -143,12 +143,12 @@ spec:
                 secretKeyRef:
                   name: cs-demo-case-creator-sqs
                   key: sqs_queue_url
-            - name: ACCESS_KEY_ID
+            - name: AWS_ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:
                   name: cs-demo-case-creator-sqs
                   key: access_key_id
-            - name: SECRET_ACCESS_KEY
+            - name: AWS_SECRET_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
                   name: cs-demo-case-creator-sqs
@@ -159,12 +159,12 @@ spec:
                 secretKeyRef:
                   name: hocs-epsilon-case-creator-sqs
                   key: sqs_queue_url
-            - name: ACCESS_KEY_ID
+            - name: AWS_ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:
                   name: hocs-epsilon-case-creator-sqs
                   key: access_key_id
-            - name: SECRET_ACCESS_KEY
+            - name: AWS_SECRET_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
                   name: hocs-epsilon-case-creator-sqs
@@ -175,12 +175,12 @@ spec:
                 secretKeyRef:
                   name: cs-prod-case-creator-sqs
                   key: sqs_queue_url
-            - name: ACCESS_KEY_ID
+            - name: AWS_ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:
                   name: cs-prod-case-creator-sqs
-                  key: access_key_id
-            - name: SECRET_ACCESS_KEY
+                  key: aws_access_key_id
+            - name: AWS_SECRET_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
                   name: cs-prod-case-creator-sqs

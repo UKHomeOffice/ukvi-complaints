@@ -179,7 +179,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: cs-prod-case-creator-sqs
-                  key: aws_access_key_id
+                  key: access_key_id
             - name: AWS_SECRET_ACCESS_KEY
               valueFrom:
                 secretKeyRef:

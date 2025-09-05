@@ -50,5 +50,10 @@ module.exports = {
     password: process.env.KEYCLOAK_PASSWORD,
     clientId: process.env.KEYCLOAK_CLIENT_ID,
     secret: process.env.KEYCLOAK_SECRET
+  },
+  saveService: {
+    port: process.env.DATASERVICE_SERVICE_PORT_HTTPS,
+    host: process.env.DATASERVICE_SERVICE_HOST &&
+      `https://${process.env.DATASERVICE_SERVICE_HOST}` || 'http://127.0.0.1'
   }
 };

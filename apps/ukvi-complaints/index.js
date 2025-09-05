@@ -888,7 +888,12 @@ module.exports = {
       next: '/confirm'
     },
     '/confirm': {
-      behaviours: [sendToSQS, caseworkerEmailer, customerEmailer, 'complete', require('hof').components.summary, SaveFormSession],
+      behaviours: [sendToSQS,
+        caseworkerEmailer,
+        customerEmailer,
+        'complete',
+        require('hof').components.summary,
+        SaveFormSession],
       next: '/complete',
       sections: {
         'complaint-details': [

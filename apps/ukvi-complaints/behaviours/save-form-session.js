@@ -5,6 +5,7 @@ const config = require('../../../config');
 const applicationsUrl = `${config.saveService.host}:${config.saveService.port}/submitted_applications`;
 
 module.exports = superclass => class extends superclass {
+  // testing new branch same code
   requestBody(id, patchObj, postObj) {
     if (id === undefined || id.length === 0) {
       return {

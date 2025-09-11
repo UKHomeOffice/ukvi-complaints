@@ -219,7 +219,7 @@ module.exports = class Reports {
           const fileUUID = response.url.split('/file/')[1].split('?')[0];
           logger.log({
             level: 'info',
-            message: `Lamp CSV generated for ${this.type}, UUID is: ${fileUUID}`
+            message: `UKVIC CSV generated for ${this.type}, UUID is: ${fileUUID}`
           });
           return notifyClient.sendEmail(csvReportTemplateId, caseworkerEmail, {
             personalisation: {
@@ -234,14 +234,14 @@ module.exports = class Reports {
         }).then(async () => {
           logger.log({
             level: 'info',
-            message: `Email sent to Lamp CSV users successfully for ${this.type}`
+            message: `Email sent to UKVIC CSV users successfully for ${this.type}`
           });
           await this.#deleteFile(filePath, reject);
           return resolve();
         }).catch(error => {
           logger.log({
             level: 'info',
-            message: `Error generated for Lamp for ${this.type} CSV: ${error}`
+            message: `Error generated for UKVIC for ${this.type} CSV: ${error}`
           });
         });
       });
@@ -258,78 +258,62 @@ module.exports = class Reports {
     return url;
   }
 
-  #collectFieldsAndTranslations() {
-    const journeys = ['lamp'];
+  
+  #collectFieldsAndTranslations(complaintCategory) {
+    const referenceFields = [
+      { field: 'unique-ref', translation: 'Unique Reference' },
+      { field: 'created_at', translation: 'Created at' },
+      { field: 'updated_at', translation: 'Updated at' },
+      { field: 'submitted_at', translation: 'Submitted at' }
+    ];
 
-    return _.flatten(_.map(journeys, journey => {
-      const fieldsObject = require(`../../apps/${journey}/fields`);
-      // To create separate columns in csv for each other given name and other family name entry
-      // objects for those fields should be inserted into the main fields object
-      const otherGivenAndFamilyNames = {
-        'other-given-names-1': {},
-        'other-family-name-1': {},
-        'other-given-names-2': {},
-        'other-family-name-2': {},
-        'other-given-names-3': {},
-        'other-family-name-3': {},
-        'other-given-names-4': {},
-        'other-family-name-4': {},
-        'other-given-names-5': {},
-        'other-family-name-5': {},
-        'other-given-names-6': {},
-        'other-family-name-6': {},
-        'other-given-names-7': {},
-        'other-family-name-7': {},
-        'other-given-names-8': {},
-        'other-family-name-8': {},
-        'other-given-names-9': {},
-        'other-family-name-9': {},
-        'other-given-names-10': {},
-        'other-family-name-10': {}
-      };
+    const categoryFields = {
+      'Submitting an application': [
+        { field: 'application-problem', translation: 'What was the problem with the application process?' },
+        { field: 'application-location', translation: 'Where did you make your application?' },
+        { field: 'reference-numbers', translation: 'Which reference numbers do you have?' },
+        { field: 'on-behalf', translation: 'Are you making this complaint on behalf of someone else?' },
+        { field: 'relation-to-applicant', translation: 'What is your relation to the applicant?' },
+        { field: 'applicant-nationality', translation: "What is the applicant's country nationality?" },
+        { field: 'complainant-details', translation: 'What are the details of the complainant?' }
+      ],
+      'Making an appointment': [
+        { field: 'appointment-problem', translation: 'What problem did you have making an appointment?' }
+      ],
+      'Waiting for a decision or documents': [
+        { field: 'waiting-for', translation: 'What are you waiting for?' },
+        { field: 'asked-documents-back', translation: 'Have you asked for the documents back?' }
+      ],
+      'A negative or positive decision': [
+        { field: 'decision-type', translation: 'Was the decision negative or positive?' }
+      ],
+      'Biometric residence permits (BRPs)': [
+        { field: 'brp-problem', translation: 'What is the problem with the BRP?' }
+      ],
+      'Refunds': [
+        { field: 'refund-requested', translation: 'Have you requested a refund?' },
+        { field: 'refund-request-date', translation: 'When did you request a refund?' },
+        { field: 'refund-type', translation: 'What type of refund do you want to request?' }
+      ],
+      'Staff behaviour (e.g. rudeness, discrimination)': [
+        { field: 'staff-behaviour-location', translation: 'Where did you experience poor behaviour?' },
+        { field: 'incident-location', translation: 'Where did this incident take place?' },
+        { field: 'visa-centre-location', translation: 'Where is this visa application centre?' },
+        { field: 'uk-support-centre-location', translation: 'Where in UK is this service support centre?' },
+        { field: 'uk-service-point-location', translation: 'Where in UK service point?' },
+        { field: 'telephone-number-called', translation: 'What telephone number was called?' },
+        { field: 'call-date', translation: 'When was the call made?' },
+        { field: 'call-origin-number', translation: 'What number was the call made from?' }
+      ],
+      'An existing complaint': [
+        { field: 'existing-complaint', translation: 'Do you have reference number for your complaint?' },
+        { field: 'complaint-reference-number', translation: 'What is reference number for your complaint?' },
+        { field: 'original-complaint-topic', translation: 'What was original complaint about?' }
+      ],
+      'Something else': []
+    };
 
-      const insertAfterKey = 'other-family-name';
-      const fieldsArray = Object.entries(fieldsObject);
-      const index = fieldsArray.findIndex(([key]) => key === insertAfterKey);
-      const newFieldEntries = Object.entries(otherGivenAndFamilyNames);
-      fieldsArray.splice(index + 1, 0, ...newFieldEntries);
-
-      const fields = Object.fromEntries(fieldsArray);
-      const fieldsTranslations = require(`../../apps/${journey}/translations/src/en/fields`);
-      const pagesTranslations = require(`../../apps/${journey}/translations/src/en/pages`);
-      const fieldsAndTranslations = [];
-
-      Object.keys(fields).forEach(key => {
-        // File-upload field is empty and confirm-email and initial other names fields not needed so do not push
-        const omitKeys = [
-          'confirm-email',
-          'other-given-names',
-          'other-family-name',
-          'file-upload'
-        ];
-
-        if (!omitKeys.includes(key)) {
-          fieldsAndTranslations.push({
-            field: key,
-            translation: (_.get(pagesTranslations, `[${key}].header`) ||
-              _.get(fieldsTranslations, `[${key}].label`) ||
-              _.get(fieldsTranslations, `[${key}].legend`, key)).trim() || key
-          });
-        }
-      });
-      // add database timestamp fields
-      fieldsAndTranslations.push({
-        field: 'created_at',
-        translation: 'Created at'
-      }, {
-        field: 'updated_at',
-        translation: 'Updated at'
-      }, {
-        field: 'submitted_at',
-        translation: 'Submitted at'
-      });
-      return fieldsAndTranslations;
-    }));
+    return (categoryFields[complaintCategory] || []).concat(referenceFields);
   }
 
   async #deleteFile(file, callback) {

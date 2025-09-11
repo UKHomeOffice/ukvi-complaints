@@ -18,7 +18,7 @@ const ModelMock = {
 
 // Load SaveFormBehaviour with mocked hof
 const SaveFormBehaviour = proxyquire('../../../apps/ukvi-complaints/behaviours/save-form-session', {
-  'hof': ModelMock
+  hof: ModelMock
 });
 
 class MockSuperClass {
@@ -90,7 +90,9 @@ describe('save-form-session', () => {
   });
 
   describe('saveValues', () => {
-    let req, res, next;
+    let req;
+    let res;
+    let next;
 
     beforeEach(() => {
       req = {
@@ -141,7 +143,8 @@ describe('save-form-session', () => {
 
       await instance.saveValues(req, res, next);
       expect(req.sessionModel.unset.calledWith('id')).to.be.true;
-      expect(req.log.calledWithMatch('error', sinon.match((msg) => msg.includes("Id hasn't been received")))).to.be.true;
+      expect(req.log.calledWithMatch('error', sinon.match(
+        msg => msg.includes("Id hasn't been received")))).to.be.true;
     });
 
     it('should call next with error on request failure', async () => {

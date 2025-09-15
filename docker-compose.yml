@@ -1,6 +1,8 @@
 version: "2"
 services:
   app:
+    env_file: 
+    - .env
     build: .
     environment:
       - NODE_ENV=development

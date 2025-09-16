@@ -2,7 +2,10 @@
 
 const { model: Model } = require('hof');
 const config = require('../../../config');
-const applicationsUrl = `${config.saveService.host}:${config.saveService.port}/submitted_applications`;
+
+const host = config?.saveService?.host ?? 'http://localhost';
+const port = config?.saveService?.port ?? 8080;
+const applicationsUrl = `${host}:${port}/submitted_applications`;
 
 module.exports = superclass => class extends superclass {
   requestBody(postObj) {

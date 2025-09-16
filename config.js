@@ -14,7 +14,8 @@ module.exports = {
     notifyTemplate: process.env.NOTIFY_TEMPLATE,
     caseworkerEmail: process.env.CASEWORKER_EMAIL,
     // noEmail sets default inbox where an email is expected by govNotify but not requested in the form
-    noEmail: process.env.NO_EMAIL_GIVEN_INBOX
+    noEmail: process.env.NO_EMAIL_GIVEN_INBOX,
+    csvReportTemplateId: process.env.CSV_REPORT_TEMPLATE_ID,
   },
   hosts: {
     acceptanceTests: process.env.ACCEPTANCE_HOST_NAME || `http://localhost:${process.env.PORT || 8080}`

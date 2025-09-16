@@ -1,5 +1,5 @@
 const Reports = require('./reports');
-const utilities = require('../../lib/utilities');
+const utilities = require('hof/utilities');
 
 module.exports = class WeeklySubmittedReports {
   static async createReport(type, logger) {

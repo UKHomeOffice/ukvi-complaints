@@ -2,8 +2,9 @@ FROM quay.io/ukhomeofficedigital/hof-nodejs:20.19.0-alpine3.21-v2@sha256:ab9686c
 
 USER root
 
-# Update packages as a result of Trivy security vulnerability checks
-RUN apk update && apk upgrade --no-cache
+# Update packages as a result of Anchore security vulnerability checks
+RUN apk update && \
+    apk add --upgrade gnutls binutils nodejs npm apk-tools libjpeg-turbo libcurl libx11 libxml2
 
 # Setup nodejs group & nodejs user
 RUN addgroup --system nodejs --gid 998 && \

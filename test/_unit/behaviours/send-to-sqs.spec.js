@@ -65,7 +65,7 @@ describe('SendToSQS', () => {
     sendToQueueStub.withArgs(badComplaintData, testUuid).rejects(testError);
 
     if (typeof Model.prototype._request === 'function') {
-        sinon.stub(Model.prototype, '_request').resolves({ success: true });
+      sinon.stub(Model.prototype, '_request').resolves({ success: true });
     }
 
     const Behaviour = proxyquire('../../../apps/ukvi-complaints/behaviours/send-to-sqs', {

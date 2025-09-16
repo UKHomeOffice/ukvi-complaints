@@ -5,7 +5,8 @@ module.exports = class ReportsFactory {
     switch(type) {
       case '1-week-report':
         return await WeeklySubmittedReports.createReport(type, logger);
+      default:
+        return null;
     }
-    return null;
   }
 };

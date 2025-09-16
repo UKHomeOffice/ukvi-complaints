@@ -1,28 +1,26 @@
-/* eslint-disable no-console */
-// TO DO, change timings from daily to weekly. Fine for testing, for now
-
 const Reports = require('./reports');
 const utilities = require('../../lib/utilities');
 
-module.exports = class DailySubmittedReports {
+module.exports = class WeeklySubmittedReports {
   static async createReport(type, logger) {
     try {
       const utcMidnight = utilities.getUTCMidnight();
-      const oneDayBefore = utilities.subtractFromDate(utcMidnight, 1, 'day');
+      const sevenDaysBefore = utilities.subtractFromDate(utcMidnight, 7, 'days');
       const oneSecondBefore = utilities.subtractFromDate(utcMidnight, 1, 'second');
+
       const report = new Reports({
         type,
         tableName: 'submitted_applications',
-        from: utilities.postgresDateFormat(oneDayBefore),
+        from: utilities.postgresDateFormat(sevenDaysBefore),
         to: utilities.postgresDateFormat(oneSecondBefore)
       });
 
-      const response = await report.getRecordsWithProps({ timestamp: 'submitted_at'});
+      const response = await report.getRecordsWithProps({ timestamp: 'submitted_at' });
 
       await report.transformToAllQuestionsCsv(type, response.data);
       return await report.sendReport(type);
-    } catch(e) {
-      return logger ? logger.log('error', e) : console.error(e);
+    } catch (e) {
+      return logger.log('error', e);
     }
   }
 };

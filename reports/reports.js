@@ -258,7 +258,6 @@ module.exports = class Reports {
     return url;
   }
 
-  
   #collectFieldsAndTranslations(complaintCategory) {
     const referenceFields = [
       { field: 'unique-ref', translation: 'Unique Reference' },

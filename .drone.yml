@@ -261,7 +261,7 @@ steps:
     <<: *acceptance_tests
     commands:
       - export DRONE_SOURCE_BRANCH=$(echo $DRONE_SOURCE_BRANCH | tr '[:upper:]' '[:lower:]' | tr '/' '-')
-      - export ACCEPTANCE_HOST_NAME=https://ukvic-$${DRONE_SOURCE_BRANCH}.internal.$${BRANCH_ENV}.homeoffice.gov.uk
+      - export ACCEPTANCE_HOST_NAME=https://ukvic-$${DRONE_SOURCE_BRANCH}.branch.internal.sas-notprod.homeoffice.gov.uk
       - export CUCUMBER_PUBLISH_ENABLED=true
       - npx playwright install
       - npm run test:acceptance

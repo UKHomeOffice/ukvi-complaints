@@ -3,9 +3,9 @@
 const fs = require('fs');
 const path = require('path');
 const { model: Model } = require('hof');
-const config = require('../../config');
+const config = require('../config');
 const _ = require('lodash');
-const utilities = require('../../lib/utilities');
+const utilities = require('hof/utilities');
 const NotifyClient = utilities.NotifyClient;
 const notifyKey = config.govukNotify.notifyApiKey;
 const csvReportTemplateId = config.govukNotify.csvReportTemplateId;
@@ -289,7 +289,7 @@ module.exports = class Reports {
       'Biometric residence permits (BRPs)': [
         { field: 'brp-problem', translation: 'What is the problem with the BRP?' }
       ],
-      'Refunds': [
+      Refunds: [
         { field: 'refund-requested', translation: 'Have you requested a refund?' },
         { field: 'refund-request-date', translation: 'When did you request a refund?' },
         { field: 'refund-type', translation: 'What type of refund do you want to request?' }

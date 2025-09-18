@@ -10,7 +10,7 @@ module.exports = {
     password: process.env.REDIS_PASSWORD
   },
   email: {
-    notifyApiKey: process.env.NOTIFY_KEY,
+    notifyApiKey: process.env.NOTIFY_STUB === 'true' ? 'USE_MOCK' : process.env.NOTIFY_KEY,
     notifyTemplate: process.env.NOTIFY_TEMPLATE,
     caseworkerEmail: process.env.CASEWORKER_EMAIL,
     // noEmail sets default inbox where an email is expected by govNotify but not requested in the form
@@ -54,7 +54,8 @@ module.exports = {
   },
   saveService: {
     port: process.env.DATASERVICE_SERVICE_PORT_HTTPS,
-    host: process.env.DATASERVICE_SERVICE_HOST &&
-      `https://${process.env.DATASERVICE_SERVICE_HOST}` || 'http://127.0.0.1'
-  }
+    host: process.env.DATASERVICE_SERVICE_HOST
+      ? 'https://' + process.env.DATASERVICE_SERVICE_HOST
+      : 'http://127.0.0.1'
+  },
 };

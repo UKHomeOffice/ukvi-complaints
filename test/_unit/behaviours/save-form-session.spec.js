@@ -1,7 +1,6 @@
 'use strict';
 
 const { expect } = require('chai');
-const sinon = require('sinon');
 const proxyquire = require('proxyquire');
 
 const config = require('../../../config');
@@ -32,22 +31,14 @@ const instance = new CustomClass();
 
 describe('save-form-session', () => {
   describe('requestBody', () => {
-    it('should return POST request when id is undefined', () => {
-      const result = instance.requestBody(undefined, {}, { foo: 'bar' });
-      expect(result).to.deep.equal({
-        url: `${config.saveService.host}:${config.saveService.port}/submitted_applications`,
-        method: 'POST',
-        data: { foo: 'bar' }
-      });
-    });
+    it('should return POST request with submitted_at timestamp', () => {
+      const postObj = { foo: 'bar' };
+      const result = instance.requestBody(postObj);
 
-    it('should return PATCH request when id is provided', () => {
-      const result = instance.requestBody('123', { patch: true }, {});
-      expect(result).to.deep.equal({
-        url: `${config.saveService.host}:${config.saveService.port}/submitted_applications/123`,
-        method: 'PATCH',
-        data: { patch: true }
-      });
+      expect(result.url).to.equal(`${config.saveService.host}:${config.saveService.port}/submitted_applications`);
+      expect(result.method).to.equal('POST');
+      expect(result.data.foo).to.equal('bar');
+      expect(result.data.submitted_at).to.be.an.instanceof(Date);
     });
   });
 
@@ -59,8 +50,6 @@ describe('save-form-session', () => {
           toJSON: () => ({
             'csrf-secret': 'secret',
             errors: ['error'],
-            'valid-token': true,
-            'user-cases': [],
             steps: []
           })
         }
@@ -69,8 +58,6 @@ describe('save-form-session', () => {
       const session = instance.getSession(req);
       expect(session['csrf-secret']).to.be.undefined;
       expect(session.errors).to.be.undefined;
-      expect(session['valid-token']).to.be.undefined;
-      expect(session['user-cases']).to.be.undefined;
       expect(session.steps).to.include('/step1');
     });
 
@@ -100,7 +87,7 @@ describe('save-form-session', () => {
           get: sinon.stub().callsFake(key => {
             const data = {
               id: 'abc123',
-              'submission-reference': 'ref456'
+              'submission-reference': '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d'
             };
             return data[key];
           }),
@@ -109,8 +96,6 @@ describe('save-form-session', () => {
           toJSON: sinon.stub().returns({
             'csrf-secret': 'value',
             errors: 'value1',
-            'valid-token': 'value2',
-            'user-cases': 'value3',
             steps: ['/step1', '/step2']
           })
         },
@@ -128,23 +113,22 @@ describe('save-form-session', () => {
       expect(next.calledOnce).to.be.true;
     });
 
-    it('should call model._request and set id on success', async () => {
+    it('should call model._request and proceed on success', async () => {
       config.env = 'production';
       mockRequestStub.resolves({ data: [{ id: 'new-id' }] });
 
       await instance.saveValues(req, res, next);
-      expect(req.sessionModel.set.calledWith('id', 'new-id')).to.be.true;
       expect(next.calledOnce).to.be.true;
     });
 
-    it('should unset id and log error if response is invalid', async () => {
+    it('should log error if response is invalid', async () => {
       config.env = 'production';
       mockRequestStub.resolves({ data: [{}] });
 
       await instance.saveValues(req, res, next);
-      expect(req.sessionModel.unset.calledWith('id')).to.be.true;
       expect(req.log.calledWithMatch('error', sinon.match(
         msg => msg.includes("Id hasn't been received")))).to.be.true;
+      expect(next.calledOnce).to.be.true;
     });
 
     it('should call next with error on request failure', async () => {

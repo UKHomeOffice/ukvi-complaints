@@ -5,19 +5,13 @@ const config = require('../../../config');
 const applicationsUrl = `${config.saveService.host}:${config.saveService.port}/submitted_applications`;
 
 module.exports = superclass => class extends superclass {
-  requestBody(id, patchObj, postObj) {
-    if (id === undefined || id.length === 0) {
-      return {
-        url: applicationsUrl,
-        method: 'POST',
-        data: postObj
-      };
-    }
-
+  requestBody(postObj) {
+    // set submitted_at to current time
+    postObj.submitted_at = new Date();
     return {
-      url: applicationsUrl + `/${id}`,
-      method: 'PATCH',
-      data: patchObj
+      url: applicationsUrl,
+      method: 'POST',
+      data: postObj
     };
   }
 
@@ -26,8 +20,6 @@ module.exports = superclass => class extends superclass {
     const session = req.sessionModel.toJSON();
     delete session['csrf-secret'];
     delete session.errors;
-    delete session['valid-token'];
-    delete session['user-cases'];
 
     if (session.steps.indexOf(req.path) === -1) {
       session.steps.push(req.path);
@@ -50,24 +42,19 @@ module.exports = superclass => class extends superclass {
         return next();
       }
 
-      const id = req.sessionModel.get('id');
-      const submission_reference = req.sessionModel.get('submission-reference');
-
-      const params = this.requestBody(id, { session }, { submission_reference, session });
       const submissionReference = req.sessionModel.get('submission-reference');
-      req.log('info', `Submission Reference: ${submissionReference}, Saving Form Session: ${id}`);
+
+      const params = this.requestBody({ submissionReference, session });
+      req.log('info', `Submission Reference: ${submissionReference}, Saving Form Session`);
 
       try {
         const model = new Model();
         const response = await model._request(params);
         const resBody = response.data;
 
-        if (resBody && resBody.length && resBody[0].id) {
-          req.sessionModel.set('id', resBody[0].id);
-        } else {
+        if (!resBody || !resBody.length || !resBody[0].id) {
           const errorMessage = `Id hasn't been received in response ${JSON.stringify(response.data)}`;
           req.log('error', errorMessage);
-          req.sessionModel.unset('id');
         }
         return next();
       } catch (e) {

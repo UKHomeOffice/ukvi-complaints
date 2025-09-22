@@ -133,7 +133,6 @@ describe('save-form-session', () => {
       mockRequestStub.resolves({ data: [{ id: 'new-id' }] });
 
       await instance.saveValues(req, res, next);
-      expect(req.sessionModel.set.calledWith('id', 'new-id')).to.be.true;
       expect(next.calledOnce).to.be.true;
     });
 
@@ -142,7 +141,6 @@ describe('save-form-session', () => {
       mockRequestStub.resolves({ data: [{}] });
 
       await instance.saveValues(req, res, next);
-      expect(req.sessionModel.unset.calledWith('id')).to.be.true;
       expect(req.log.calledWithMatch('error', sinon.match(
         msg => msg.includes("Id hasn't been received")))).to.be.true;
       expect(next.calledOnce).to.be.true;

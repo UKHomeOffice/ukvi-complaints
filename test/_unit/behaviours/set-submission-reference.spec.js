@@ -1,7 +1,6 @@
 'use strict';
 
 const { expect } = require('chai');
-const sinon = require('sinon');
 const { v4: uuidv4 } = require('uuid');
 
 const SetSubmissionReferenceBehaviour = require('../../../apps/ukvi-complaints/behaviours/set-submission-reference');

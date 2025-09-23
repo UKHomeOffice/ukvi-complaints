@@ -42,10 +42,10 @@ module.exports = superclass => class extends superclass {
         return next();
       }
 
-      const submissionReference = req.sessionModel.get('submission-reference');
+      const submission_reference = req.sessionModel.get('submission-reference');
 
-      const params = this.requestBody({ submissionReference, session });
-      req.log('info', `Submission Reference: ${submissionReference}, Saving Form Session`);
+      const params = this.requestBody({ submission_reference, session });
+      req.log('info', `Submission Reference: ${submission_reference}, Saving Form Session`);
 
       try {
         const model = new Model();
@@ -58,7 +58,7 @@ module.exports = superclass => class extends superclass {
         }
         return next();
       } catch (e) {
-        req.log('info', `Submission Reference: ${submissionReference}, Error Saving Session: ${e}`);
+        req.log('info', `Submission Reference: ${submission_reference}, Error Saving Session: ${e}`);
         return next(e);
       }
     });

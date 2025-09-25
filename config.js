@@ -56,5 +56,6 @@ module.exports = {
     protocol: process.env.DATASERVICE_USE_HTTPS === 'false' ? 'http' : 'https',
     port: process.env.DATASERVICE_SERVICE_PORT_HTTPS || '10443',
     host: process.env.DATASERVICE_SERVICE_HOST || '127.0.0.1'
-  }
+  },
+  dataDirectory: './data'
 };

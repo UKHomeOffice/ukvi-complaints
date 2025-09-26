@@ -24,8 +24,8 @@
     "test:snyk": "snyk config set api=SNYK_TOKEN && snyk test",
     "build": "hof-build",
     "postinstall": "yarn run build",
-    "generate:reports": "node ./reports/generate_reports.js",
-    "generate:local:reports": "node -r dotenv/config ./reports/generate_reports.js"
+    "generate:reports": "node ./services/reports/generate_reports.js",
+    "generate:local:reports": "node -r dotenv/config ./services/reports/generate_reports.js"
   },
   "dependencies": {
     "aws4": "^1.11.0",

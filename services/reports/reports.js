@@ -155,7 +155,6 @@ module.exports = class Reports {
             'applicant-dob'
           ];
 
-          // might need to add ways to exclude the PII fields here
           if (dobKeys.includes(key)) {
             session[key] = `'${session[key]}'`;
           }
@@ -256,66 +255,7 @@ module.exports = class Reports {
     return url;
   }
 
-  // #collectFieldsAndTranslations(complaintCategory) {
-  //   const referenceFields = [
-  //     { field: 'unique-ref', translation: 'Unique Reference' },
-  //     { field: 'created_at', translation: 'Created at' },
-  //     { field: 'updated_at', translation: 'Updated at' },
-  //     { field: 'submitted_at', translation: 'Submitted at' }
-  //   ];
-
-  //   const categoryFields = {
-  //     'Submitting an application': [
-  //       { field: 'application-problem', translation: 'What was the problem with the application process?' },
-  //       { field: 'application-location', translation: 'Where did you make your application?' },
-  //       { field: 'reference-numbers', translation: 'Which reference numbers do you have?' },
-  //       { field: 'on-behalf', translation: 'Are you making this complaint on behalf of someone else?' },
-  //       { field: 'relation-to-applicant', translation: 'What is your relation to the applicant?' },
-  //       { field: 'applicant-nationality', translation: "What is the applicant's country nationality?" },
-  //       { field: 'complainant-details', translation: 'What are the details of the complainant?' }
-  //     ],
-  //     'Making an appointment': [
-  //       { field: 'appointment-problem', translation: 'What problem did you have making an appointment?' }
-  //     ],
-  //     'Waiting for a decision or documents': [
-  //       { field: 'waiting-for', translation: 'What are you waiting for?' },
-  //       { field: 'asked-documents-back', translation: 'Have you asked for the documents back?' }
-  //     ],
-  //     'A negative or positive decision': [
-  //       { field: 'decision-type', translation: 'Was the decision negative or positive?' }
-  //     ],
-  //     'Biometric residence permits (BRPs)': [
-  //       { field: 'brp-problem', translation: 'What is the problem with the BRP?' }
-  //     ],
-  //     Refunds: [
-  //       { field: 'refund-requested', translation: 'Have you requested a refund?' },
-  //       { field: 'refund-request-date', translation: 'When did you request a refund?' },
-  //       { field: 'refund-type', translation: 'What type of refund do you want to request?' }
-  //     ],
-  //     'Staff behaviour (e.g. rudeness, discrimination)': [
-  //       { field: 'staff-behaviour-location', translation: 'Where did you experience poor behaviour?' },
-  //       { field: 'incident-location', translation: 'Where did this incident take place?' },
-  //       { field: 'visa-centre-location', translation: 'Where is this visa application centre?' },
-  //       { field: 'uk-support-centre-location', translation: 'Where in UK is this service support centre?' },
-  //       { field: 'uk-service-point-location', translation: 'Where in UK service point?' },
-  //       { field: 'telephone-number-called', translation: 'What telephone number was called?' },
-  //       { field: 'call-date', translation: 'When was the call made?' },
-  //       { field: 'call-origin-number', translation: 'What number was the call made from?' }
-  //     ],
-  //     'An existing complaint': [
-  //       { field: 'existing-complaint', translation: 'Do you have reference number for your complaint?' },
-  //       { field: 'complaint-reference-number', translation: 'What is reference number for your complaint?' },
-  //       { field: 'original-complaint-topic', translation: 'What was original complaint about?' }
-  //     ],
-  //     'Something else': []
-  //   };
-
-  //   return (categoryFields[complaintCategory] || []).concat(referenceFields);
-  // }
-
-  //NOTE, look at ACRS and try that way
-
-
+  //NOTE, look at ACRS and try that way. We would need to include fields again though. 
   #collectFieldsAndTranslations(data) {
     const journeys = ['ukvi-complaints'];
     console.log(data);

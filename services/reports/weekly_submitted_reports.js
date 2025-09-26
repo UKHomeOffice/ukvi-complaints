@@ -1,12 +1,12 @@
 const Reports = require('./reports');
-const utilities = require('hof/utilities');
+const utilities = require('../../lib/utils');
 
 module.exports = class WeeklySubmittedReports {
   static async createReport(type, logger) {
     try {
-      const utcMidnight = utilities.getUTCMidnight();
-      const sevenDaysBefore = utilities.subtractFromDate(utcMidnight, 7, 'days');
-      const oneSecondBefore = utilities.subtractFromDate(utcMidnight, 1, 'second');
+      const utcTime = utilities.getUTCTime(0);
+      const sevenDaysBefore = utilities.subtractFromDate(utcTime, 7, 'days');
+      const oneSecondBefore = utilities.subtractFromDate(utcTime, 1, 'second');
 
       const report = new Reports({
         type,

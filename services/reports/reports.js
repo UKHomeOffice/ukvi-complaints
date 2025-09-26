@@ -3,9 +3,9 @@
 const fs = require('fs');
 const path = require('path');
 const { model: Model } = require('hof');
-const config = require('../config');
+const config = require('../../config');
 const _ = require('lodash');
-const utilities = require('hof/utilities');
+const utilities = require('../../lib/utils');
 const NotifyClient = utilities.NotifyClient;
 const notifyKey = config.email.notifyApiKey;
 const csvReportTemplateId = config.email.csvReportTemplateId;
@@ -97,7 +97,7 @@ module.exports = class Reports {
 
   transformToAllQuestionsCsv(name, data) {
     return new Promise(async (resolve, reject) => {
-      const fieldsAndTranslations = this.#collectFieldsAndTranslations();
+      const fieldsAndTranslations = this.#collectFieldsAndTranslations(data);
       const questionsTranslations = fieldsAndTranslations.map(obj => {
         return `${obj.translation}: {${obj.field}}`.replaceAll(',', '-');
       });
@@ -119,7 +119,6 @@ module.exports = class Reports {
           session = record.session;
         }
         let agg = [];
-        let photo = [];
         let documents = [];
 
         Object.keys(session).forEach(function (key) {
@@ -149,26 +148,25 @@ module.exports = class Reports {
 
           // prevent csv readers from converting the date format by wrapping it in ''
           const dobKeys = [
-            'date-of-birth',
-            'passport-travel-document-issue-date',
-            'passport-travel-document-expiry-date',
-            'ni-issue-date', 'ni-expiry-date'
+            'agent-representative-dob',
+            'called-date',
+            'called-time',
+            'when-applied',
+            'applicant-dob'
           ];
+
+          // might need to add ways to exclude the PII fields here
           if (dobKeys.includes(key)) {
             session[key] = `'${session[key]}'`;
           }
 
           // Set fields that contains the values of uploaded files
-          if (key === 'photo-id') {
-            photo = photo.concat(_.flatten(_.map(session[key], obj => `${obj.name} - ${obj.url}`)));
-            session[key] = photo;
-          }
-
-          if (key === 'id-documents') {
+          if (key === 'file-upload') {
             documents = documents.concat(_.flatten(_.map(session[key], obj => `${obj.name} - ${obj.url}`)));
             session[key] = documents;
           }
 
+          // need to call this submission_reference instead
           if (record.id) {
             session['unique-ref'] = record.id.toString();
           }
@@ -258,61 +256,114 @@ module.exports = class Reports {
     return url;
   }
 
-  #collectFieldsAndTranslations(complaintCategory) {
-    const referenceFields = [
-      { field: 'unique-ref', translation: 'Unique Reference' },
-      { field: 'created_at', translation: 'Created at' },
-      { field: 'updated_at', translation: 'Updated at' },
-      { field: 'submitted_at', translation: 'Submitted at' }
-    ];
+  // #collectFieldsAndTranslations(complaintCategory) {
+  //   const referenceFields = [
+  //     { field: 'unique-ref', translation: 'Unique Reference' },
+  //     { field: 'created_at', translation: 'Created at' },
+  //     { field: 'updated_at', translation: 'Updated at' },
+  //     { field: 'submitted_at', translation: 'Submitted at' }
+  //   ];
 
-    const categoryFields = {
-      'Submitting an application': [
-        { field: 'application-problem', translation: 'What was the problem with the application process?' },
-        { field: 'application-location', translation: 'Where did you make your application?' },
-        { field: 'reference-numbers', translation: 'Which reference numbers do you have?' },
-        { field: 'on-behalf', translation: 'Are you making this complaint on behalf of someone else?' },
-        { field: 'relation-to-applicant', translation: 'What is your relation to the applicant?' },
-        { field: 'applicant-nationality', translation: "What is the applicant's country nationality?" },
-        { field: 'complainant-details', translation: 'What are the details of the complainant?' }
-      ],
-      'Making an appointment': [
-        { field: 'appointment-problem', translation: 'What problem did you have making an appointment?' }
-      ],
-      'Waiting for a decision or documents': [
-        { field: 'waiting-for', translation: 'What are you waiting for?' },
-        { field: 'asked-documents-back', translation: 'Have you asked for the documents back?' }
-      ],
-      'A negative or positive decision': [
-        { field: 'decision-type', translation: 'Was the decision negative or positive?' }
-      ],
-      'Biometric residence permits (BRPs)': [
-        { field: 'brp-problem', translation: 'What is the problem with the BRP?' }
-      ],
-      Refunds: [
-        { field: 'refund-requested', translation: 'Have you requested a refund?' },
-        { field: 'refund-request-date', translation: 'When did you request a refund?' },
-        { field: 'refund-type', translation: 'What type of refund do you want to request?' }
-      ],
-      'Staff behaviour (e.g. rudeness, discrimination)': [
-        { field: 'staff-behaviour-location', translation: 'Where did you experience poor behaviour?' },
-        { field: 'incident-location', translation: 'Where did this incident take place?' },
-        { field: 'visa-centre-location', translation: 'Where is this visa application centre?' },
-        { field: 'uk-support-centre-location', translation: 'Where in UK is this service support centre?' },
-        { field: 'uk-service-point-location', translation: 'Where in UK service point?' },
-        { field: 'telephone-number-called', translation: 'What telephone number was called?' },
-        { field: 'call-date', translation: 'When was the call made?' },
-        { field: 'call-origin-number', translation: 'What number was the call made from?' }
-      ],
-      'An existing complaint': [
-        { field: 'existing-complaint', translation: 'Do you have reference number for your complaint?' },
-        { field: 'complaint-reference-number', translation: 'What is reference number for your complaint?' },
-        { field: 'original-complaint-topic', translation: 'What was original complaint about?' }
-      ],
-      'Something else': []
-    };
+  //   const categoryFields = {
+  //     'Submitting an application': [
+  //       { field: 'application-problem', translation: 'What was the problem with the application process?' },
+  //       { field: 'application-location', translation: 'Where did you make your application?' },
+  //       { field: 'reference-numbers', translation: 'Which reference numbers do you have?' },
+  //       { field: 'on-behalf', translation: 'Are you making this complaint on behalf of someone else?' },
+  //       { field: 'relation-to-applicant', translation: 'What is your relation to the applicant?' },
+  //       { field: 'applicant-nationality', translation: "What is the applicant's country nationality?" },
+  //       { field: 'complainant-details', translation: 'What are the details of the complainant?' }
+  //     ],
+  //     'Making an appointment': [
+  //       { field: 'appointment-problem', translation: 'What problem did you have making an appointment?' }
+  //     ],
+  //     'Waiting for a decision or documents': [
+  //       { field: 'waiting-for', translation: 'What are you waiting for?' },
+  //       { field: 'asked-documents-back', translation: 'Have you asked for the documents back?' }
+  //     ],
+  //     'A negative or positive decision': [
+  //       { field: 'decision-type', translation: 'Was the decision negative or positive?' }
+  //     ],
+  //     'Biometric residence permits (BRPs)': [
+  //       { field: 'brp-problem', translation: 'What is the problem with the BRP?' }
+  //     ],
+  //     Refunds: [
+  //       { field: 'refund-requested', translation: 'Have you requested a refund?' },
+  //       { field: 'refund-request-date', translation: 'When did you request a refund?' },
+  //       { field: 'refund-type', translation: 'What type of refund do you want to request?' }
+  //     ],
+  //     'Staff behaviour (e.g. rudeness, discrimination)': [
+  //       { field: 'staff-behaviour-location', translation: 'Where did you experience poor behaviour?' },
+  //       { field: 'incident-location', translation: 'Where did this incident take place?' },
+  //       { field: 'visa-centre-location', translation: 'Where is this visa application centre?' },
+  //       { field: 'uk-support-centre-location', translation: 'Where in UK is this service support centre?' },
+  //       { field: 'uk-service-point-location', translation: 'Where in UK service point?' },
+  //       { field: 'telephone-number-called', translation: 'What telephone number was called?' },
+  //       { field: 'call-date', translation: 'When was the call made?' },
+  //       { field: 'call-origin-number', translation: 'What number was the call made from?' }
+  //     ],
+  //     'An existing complaint': [
+  //       { field: 'existing-complaint', translation: 'Do you have reference number for your complaint?' },
+  //       { field: 'complaint-reference-number', translation: 'What is reference number for your complaint?' },
+  //       { field: 'original-complaint-topic', translation: 'What was original complaint about?' }
+  //     ],
+  //     'Something else': []
+  //   };
 
-    return (categoryFields[complaintCategory] || []).concat(referenceFields);
+  //   return (categoryFields[complaintCategory] || []).concat(referenceFields);
+  // }
+
+  //NOTE, look at ACRS and try that way
+
+
+  #collectFieldsAndTranslations(data) {
+    const journeys = ['ukvi-complaints'];
+    console.log(data);
+    return _.flatten(_.map(journeys, journey => {
+      const fieldsArray = Object.entries(data);
+
+      const fields = Object.fromEntries(fieldsArray);
+      const fieldsTranslations = require(`../../apps/${journey}/translations/src/en/fields`);
+      const pagesTranslations = require(`../../apps/${journey}/translations/src/en/pages`);
+      const fieldsAndTranslations = [];
+
+      Object.keys(fields).forEach(key => {
+        // File-upload field is empty and confirm-email and initial other names fields not needed so do not push
+        // update these with 
+        const omitKeys = [
+          'agent-name',
+          'agent-representative-name',
+          'agent-representative-dob',
+          'applicant-name',
+          'applicant-dob',
+          'agent-email',
+          'applicant-email'
+          // add applicant and agent telephone numbers potentially?
+        ];
+
+        if (!omitKeys.includes(key)) {
+          fieldsAndTranslations.push({
+            field: key,
+            translation: (_.get(pagesTranslations, `[${key}].header`) ||
+              _.get(fieldsTranslations, `[${key}].label`) || //this is lamp structure, to change probs
+              _.get(fieldsTranslations, `[${key}].legend`, key)).trim() || key
+          });
+        }
+        console.log(fieldsAndTranslations);
+      });
+      // add database timestamp fields
+      fieldsAndTranslations.push({
+        field: 'created_at',
+        translation: 'Created at'
+      }, {
+        field: 'updated_at',
+        translation: 'Updated at'
+      }, {
+        field: 'submitted_at',
+        translation: 'Submitted at'
+      });
+      return fieldsAndTranslations;
+    }));
   }
 
   async #deleteFile(file, callback) {

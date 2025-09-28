@@ -27,7 +27,6 @@ describe('set-submission-reference', () => {
     res = {};
     next = sinon.stub();
 
-    // getValuesStub = sinon.stub(Base.prototype, 'getValues').callsFake((reqArg, resArg, nextArg) => reqArg);
     getValuesStub = sinon.stub(Base.prototype, 'getValues').callsFake(reqArg => reqArg);
 
     const CustomClass = SetSubmissionReferenceBehaviour(Base);

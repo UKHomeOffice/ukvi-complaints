@@ -97,7 +97,7 @@ module.exports = class Reports {
 
   transformToAllQuestionsCsv(name, data) {
     return new Promise(async (resolve, reject) => {
-      const fieldsAndTranslations = this.#collectFieldsAndTranslations(data);
+      const fieldsAndTranslations = this.#collectFieldsAndTranslations();
       const questionsTranslations = fieldsAndTranslations.map(obj => {
         return `${obj.translation}: {${obj.field}}`.replaceAll(',', '-');
       });
@@ -167,7 +167,7 @@ module.exports = class Reports {
 
           // need to call this submission_reference instead
           if (record.id) {
-            session['unique-ref'] = record.id.toString();
+            session['submission_reference'] = record.id.toString();
           }
           session.created_at = record.created_at;
           session.updated_at = record.updated_at;
@@ -255,21 +255,17 @@ module.exports = class Reports {
     return url;
   }
 
-  //NOTE, look at ACRS and try that way. We would need to include fields again though. 
-  #collectFieldsAndTranslations(data) {
+  #collectFieldsAndTranslations() {
     const journeys = ['ukvi-complaints'];
-    console.log(data);
-    return _.flatten(_.map(journeys, journey => {
-      const fieldsArray = Object.entries(data);
 
-      const fields = Object.fromEntries(fieldsArray);
+    return _.flatten(_.map(journeys, journey => {
+      const fields = require(`../../apps/${journey}/fields`);
       const fieldsTranslations = require(`../../apps/${journey}/translations/src/en/fields`);
       const pagesTranslations = require(`../../apps/${journey}/translations/src/en/pages`);
       const fieldsAndTranslations = [];
 
       Object.keys(fields).forEach(key => {
         // File-upload field is empty and confirm-email and initial other names fields not needed so do not push
-        // update these with 
         const omitKeys = [
           'agent-name',
           'agent-representative-name',
@@ -289,7 +285,6 @@ module.exports = class Reports {
               _.get(fieldsTranslations, `[${key}].legend`, key)).trim() || key
           });
         }
-        console.log(fieldsAndTranslations);
       });
       // add database timestamp fields
       fieldsAndTranslations.push({

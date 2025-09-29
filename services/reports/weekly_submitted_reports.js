@@ -4,7 +4,7 @@ const utilities = require('../../lib/utils');
 module.exports = class WeeklySubmittedReports {
   static async createReport(type, logger) {
     try {
-      const utcTime = utilities.getUTCTime(0);
+      const utcTime = utilities.getUTCTime(7);
       const sevenDaysBefore = utilities.subtractFromDate(utcTime, 7, 'days');
       const oneSecondBefore = utilities.subtractFromDate(utcTime, 1, 'second');
 

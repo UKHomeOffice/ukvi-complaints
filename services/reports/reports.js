@@ -167,7 +167,7 @@ module.exports = class Reports {
 
           // need to call this submission_reference instead
           if (record.id) {
-            session['submission_reference'] = record.id.toString();
+            session.submission_reference = record.id.toString();
           }
           session.created_at = record.created_at;
           session.updated_at = record.updated_at;
@@ -281,7 +281,7 @@ module.exports = class Reports {
           fieldsAndTranslations.push({
             field: key,
             translation: (_.get(pagesTranslations, `[${key}].header`) ||
-              _.get(fieldsTranslations, `[${key}].label`) || //this is lamp structure, to change probs
+              _.get(fieldsTranslations, `[${key}].label`) ||
               _.get(fieldsTranslations, `[${key}].legend`, key)).trim() || key
           });
         }

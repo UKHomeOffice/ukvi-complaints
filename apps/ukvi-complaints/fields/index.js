@@ -3,7 +3,7 @@
 const dateComponent = require('hof').components.date;
 
 module.exports = {
-  'unique-ref': {},
+  // 'unique-ref': {},
   'submission-reference': {},
 
   reason: {

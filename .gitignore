@@ -20,3 +20,4 @@ test/_accessibility/tmp/*
 .nyc_output
 .devcontainer/*.env
 .cache
+data/*

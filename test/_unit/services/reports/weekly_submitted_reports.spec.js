@@ -2,42 +2,94 @@
 
 const { expect } = require('chai');
 const sinon = require('sinon');
+const proxyquire = require('proxyquire');
+const mockCsvOutput = require('../../../data/csv-output.json');
+const mockHistoryData = require('../../../data/history-data.json');
+// const utilitiesStub = require('../../../../lib/utils.js');
 
-const generateReports = require('../../../../services/reports/generate_reports.js');
-const path = require('path');
-const fs = require('fs');
-const config = require('../../../../config.js');
 
-const logger = require('../../../../node_modules/hof/lib/logger');
-const reportIndex = require('../../../../services/reports/index.js');
-
-describe('generateReports', () => {
-  let sandbox;
+describe('weekly_submitted_reports', () => {
+  let WeeklySubmittedReports;
+  let ReportsStub;
+  let logger;
+  let utilitiesStub;
 
   beforeEach(() => {
-    sandbox = sinon.createSandbox();
+    logger = {
+      log: sinon.stub()
+    };
 
-    // Stub external dependencies
-    sandbox.stub(fs, 'existsSync');
-    sandbox.stub(fs, 'mkdirSync');
-    sandbox.stub(path, 'join');
-    sandbox.stub(logger, 'info');
-    sandbox.stub(reportIndex, 'createReport').resolves('mocked report');
+    utilitiesStub = {
+      getUTCTime: sinon.stub(),
+      subtractFromDate: sinon.stub(),
+      postgresDateFormat: sinon.stub()
+    };
 
-    config.dataDirectory = '/data';
+    ReportsStub = sinon.stub().returns({
+      getRecordsWithProps: sinon.stub().resolves({ data: mockHistoryData }),
+      transformToAllQuestionsCsv: sinon.stub().resolves(mockCsvOutput),
+      sendReport: sinon.stub().resolves('sent')
+    });
+    WeeklySubmittedReports = proxyquire('../../../../services/reports/weekly_submitted_reports', {
+      '../../../../lib/utilities': utilitiesStub,
+      '../../../../services/reports/reports': ReportsStub
+    });
   });
 
   afterEach(() => {
-    sandbox.restore();
+    sinon.restore();
   });
 
-  it('should create a data directory if it does not exist', async () => {
-    fs.existsSync.returns(false);
-    path.join.returns('/mock/path/to/data');
+  it('should create a report of daily submissions and return response', async () => {
+    const mockUtc = '2025-05-19T00:00:00Z';
+    const mockOneWeekBefore = '2025-05-12T00:00:00Z';
+    const mockOneSecondBefore = '2025-05-18T23:59:59Z';
 
-    await generateReports();
+    utilitiesStub.getUTCTime.returns(mockUtc);
+    utilitiesStub.subtractFromDate.withArgs(mockUtc, 7, 'day').returns(mockOneWeekBefore);
+    utilitiesStub.subtractFromDate.withArgs(mockUtc, 1, 'second').returns(mockOneSecondBefore);
+    utilitiesStub.postgresDateFormat.callsFake(date => date);
 
-    expect(fs.existsSync.calledWith('/mock/path/to/data')).to.be.true;
-    expect(fs.mkdirSync.calledWith('/mock/path/to/data')).to.be.true;
+    const response = await WeeklySubmittedReports.createReport('test', logger);
+
+    expect(utilitiesStub.getUTCTime.calledOnce).to.be.true;
+    expect(utilitiesStub.subtractFromDate.calledWith(mockUtc, 7, 'day')).to.be.true;
+    expect(utilitiesStub.subtractFromDate.calledWith(mockUtc, 1, 'second')).to.be.true;
+    expect(ReportsStub.calledWith({
+      type: 'test',
+      tableName: 'submitted_applications',
+      from: mockOneWeekBefore,
+      to: mockOneSecondBefore
+    })).to.be.true;
+    expect(response).to.equal('sent');
+  });
+
+  it('should log an error if an exception is thrown', async () => {
+    const mockError = new Error('Something went wrong');
+
+    ReportsStub.returns({
+      getRecordsWithProps: sinon.stub().rejects(mockError),
+      transformToAllQuestionsCsv: sinon.stub().rejects(mockError),
+      sendReport: sinon.stub().rejects(mockError)
+    });
+
+    await WeeklySubmittedReports.createReport('test', logger);
+    expect(logger.log.calledWith('error', mockError)).to.be.true;
+  });
+
+  it('should log an error if logger is not passed', async () => {
+    const mockError = new Error('Something went wrong');
+    const consoleErrorStub = sinon.stub(console, 'error');
+
+    ReportsStub.returns({
+      getRecordsWithProps: sinon.stub().rejects(mockError),
+      transformToAllQuestionsCsv: sinon.stub().rejects(mockError),
+      sendReport: sinon.stub().rejects(mockError)
+    });
+
+    await WeeklySubmittedReports.createReport('test');
+    expect(consoleErrorStub.calledWith(mockError)).to.be.true;
+
+    consoleErrorStub.restore();
   });
 });

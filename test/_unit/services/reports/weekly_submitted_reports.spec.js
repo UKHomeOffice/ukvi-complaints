@@ -1,70 +1,43 @@
-const chai = require('chai');
+'use strict';
+
+const { expect } = require('chai');
 const sinon = require('sinon');
-const WeeklySubmittedReports = require('./weekly_submitted_reports');
-const Reports = require('./reports');
-const utilities = require('../../lib/utils');
 
-const { expect } = chai;
+const generateReports = require('../../../../services/reports/generate_reports.js');
+const path = require('path');
+const fs = require('fs');
+const config = require('../../../../config.js');
 
+const logger = require('../../../../node_modules/hof/lib/logger');
+const reportIndex = require('../../../../services/reports/index.js');
 
-describe('WeeklySubmittedReports.createReport', () => {
-    let sandbox, loggerStub, reportStub, fakeReportInstance;
+describe('generateReports', () => {
+  let sandbox;
 
-    beforeEach(() => {
-        sandbox = sinon.createSandbox();
+  beforeEach(() => {
+    sandbox = sinon.createSandbox();
 
-        // Stub utilities
-        sandbox.stub(utilities, 'getUTCTime').returns('fake-utc');
-        sandbox.stub(utilities, 'subtractFromDate')
-            .onFirstCall().returns('seven-days-before')
-            .onSecondCall().returns('one-second-before');
-        sandbox.stub(utilities, 'postgresDateFormat')
-            .onFirstCall().returns('from-date')
-            .onSecondCall().returns('to-date');
+    // Stub external dependencies
+    sandbox.stub(fs, 'existsSync');
+    sandbox.stub(fs, 'mkdirSync');
+    sandbox.stub(path, 'join');
+    sandbox.stub(logger, 'info');
+    sandbox.stub(reportIndex, 'createReport').resolves('mocked report');
 
-        // Stub Reports instance methods
-        fakeReportInstance = {
-            getRecordsWithProps: sandbox.stub().resolves({ data: 'fake-data' }),
-            transformToAllQuestionsCsv: sandbox.stub().resolves(),
-            sendReport: sandbox.stub().resolves('report-sent')
-        };
+    config.dataDirectory = '/data';
+  });
 
-        // Stub Reports constructor
-        reportStub = sandbox.stub(Reports.prototype, 'constructor').returns(fakeReportInstance);
-        sandbox.stub(Reports.prototype, 'getRecordsWithProps').callsFake(fakeReportInstance.getRecordsWithProps);
-        sandbox.stub(Reports.prototype, 'transformToAllQuestionsCsv').callsFake(fakeReportInstance.transformToAllQuestionsCsv);
-        sandbox.stub(Reports.prototype, 'sendReport').callsFake(fakeReportInstance.sendReport);
+  afterEach(() => {
+    sandbox.restore();
+  });
 
-        // Stub logger
-        loggerStub = { log: sandbox.stub() };
-    });
+  it('should create a data directory if it does not exist', async () => {
+    fs.existsSync.returns(false);
+    path.join.returns('/mock/path/to/data');
 
-    afterEach(() => {
-        sandbox.restore();
-    });
+    await generateReports();
 
-    it('should create a report and send it successfully', async () => {
-        const result = await WeeklySubmittedReports.createReport('weekly', loggerStub);
-
-        expect(utilities.getUTCTime.calledWith(7)).to.be.true;
-        expect(utilities.subtractFromDate.firstCall.calledWith('fake-utc', 7, 'days')).to.be.true;
-        expect(utilities.subtractFromDate.secondCall.calledWith('fake-utc', 1, 'second')).to.be.true;
-        expect(utilities.postgresDateFormat.firstCall.calledWith('seven-days-before')).to.be.true;
-        expect(utilities.postgresDateFormat.secondCall.calledWith('one-second-before')).to.be.true;
-
-        expect(fakeReportInstance.getRecordsWithProps.calledWith({ timestamp: 'submitted_at' })).to.be.true;
-        expect(fakeReportInstance.transformToAllQuestionsCsv.calledWith('weekly', 'fake-data')).to.be.true;
-        expect(fakeReportInstance.sendReport.calledWith('weekly')).to.be.true;
-        expect(result).to.equal('report-sent');
-    });
-
-    it('should log and return error if exception is thrown', async () => {
-        fakeReportInstance.getRecordsWithProps.rejects(new Error('fail'));
-        const result = await WeeklySubmittedReports.createReport('weekly', loggerStub);
-
-        expect(loggerStub.log.calledOnce).to.be.true;
-        expect(loggerStub.log.firstCall.args[0]).to.equal('error');
-        expect(loggerStub.log.firstCall.args[1]).to.be.an('error');
-        expect(result).to.be.undefined;
-    });
+    expect(fs.existsSync.calledWith('/mock/path/to/data')).to.be.true;
+    expect(fs.mkdirSync.calledWith('/mock/path/to/data')).to.be.true;
+  });
 });

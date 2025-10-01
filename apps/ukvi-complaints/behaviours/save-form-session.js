@@ -6,6 +6,10 @@ const { generateErrorMsg } = require('../../../lib/utils');
 const { protocol, host, port } = config.saveService;
 const applicationsUrl = `${protocol}://${host}:${port}/submitted_applications`;
 
+const host = config?.saveService?.host ?? 'http://localhost';
+const port = config?.saveService?.port ?? 8080;
+const applicationsUrl = `${host}:${port}/submitted_applications`;
+
 module.exports = superclass => class extends superclass {
   requestBody(id, dataObj) {
     // set submitted_at to current time

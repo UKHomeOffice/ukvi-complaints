@@ -3,7 +3,8 @@ FROM node:20.18.0-alpine3.20@sha256:d504f23acdda979406cf3bdbff0dff7933e5c4ec183d
 USER root
 
 # Update packages as a result of Trivy security vulnerability checks
-RUN apk update && apk upgrade --no-cache
+RUN apk update && \
+    apk add --upgrade gnutls binutils nodejs npm apk-tools libjpeg-turbo libcurl libx11 libxml2 postgresql-client
 
 # Setup nodejs group & nodejs user
 RUN addgroup --system nodejs --gid 998 && \

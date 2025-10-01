@@ -1,7 +1,6 @@
 'use strict';
 const { expect } = require('chai');
 const proxyquire = require('proxyquire');
-const { model: Model } = require('hof');
 
 describe('SendToSQS', () => {
   let res;
@@ -63,10 +62,6 @@ describe('SendToSQS', () => {
     sendToQueueStub = sinon.stub();
     sendToQueueStub.withArgs(complaintData, testUuid).resolves();
     sendToQueueStub.withArgs(badComplaintData, testUuid).rejects(testError);
-
-    if (typeof Model.prototype._request === 'function') {
-      sinon.stub(Model.prototype, '_request').resolves({ success: true });
-    }
 
     const Behaviour = proxyquire('../../../apps/ukvi-complaints/behaviours/send-to-sqs', {
       '../../../config': {

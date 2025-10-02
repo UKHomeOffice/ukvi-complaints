@@ -3,8 +3,8 @@ const { expect } = require('chai');
 const proxyquire = require('proxyquire');
 
 describe('generateReports', () => {
-  const configPath = require.resolve('../../../../config.js');
-  const indexPath = require.resolve('../../../../services/reports/index.js');
+  // const configPath = require.resolve('../../../../config.js');
+  // const indexPath = require.resolve('../../../../services/reports/index.js');
 
   let generateReports;
   let pathStub;
@@ -33,8 +33,10 @@ describe('generateReports', () => {
     generateReports = proxyquire('../../../../services/reports/generate_reports.js', {
       path: pathStub,
       fs: fsStub,
-      [configPath]: configStub,
-      [indexPath]: createReportStub,
+      '/../../config.js': configStub,
+      './index.js': {
+        createReport: createReportStub
+      },
       'hof/lib/logger': sinon.stub().returns(loggerStub)});
     console.log('generateReports proxied');
   });

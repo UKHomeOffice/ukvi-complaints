@@ -48,7 +48,7 @@ spec:
                 {{ end }}
           env:
             - name: SERVICE_NAME
-              value: "csl"
+              value: "ukvic"
             - name: MAX_PAYLOAD_SIZE
               value: "30mb"
             - name: REQUEST_TIMEOUT

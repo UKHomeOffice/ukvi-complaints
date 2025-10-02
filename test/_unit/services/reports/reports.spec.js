@@ -6,6 +6,7 @@ const proxyquire = require('proxyquire');
 const csvToJson = require('csvtojson');
 const csvOutput = require('../../../data/csv-output.json');
 const historyData = require('../../../data/history-data.json');
+const configPath = require.resolve('../../../../config.js');
 
 describe('CSV reports', () => {
   let Reports;
@@ -54,7 +55,7 @@ describe('CSV reports', () => {
       fs: fsStub,
       path: pathStub,
       hof: hofStub,
-      '../../../../config': config
+      [configPath]: config
     });
 
     reports = new Reports({

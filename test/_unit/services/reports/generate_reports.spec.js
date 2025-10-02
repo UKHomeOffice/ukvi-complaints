@@ -33,8 +33,8 @@ describe('generateReports', () => {
     generateReports = proxyquire('../../../../services/reports/generate_reports.js', {
       path: pathStub,
       fs: fsStub,
-      '../../../../config.js': configStub,
-      '../../../../services/reports/index.js': { createReport: createReportStub },
+      [configPath]: configStub,
+      [indexPath]: createReportStub,
       'hof/lib/logger': sinon.stub().returns(loggerStub)});
     console.log('generateReports proxied');
   });

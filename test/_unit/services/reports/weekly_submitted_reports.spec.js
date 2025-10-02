@@ -5,7 +5,8 @@ const sinon = require('sinon');
 const proxyquire = require('proxyquire');
 const mockCsvOutput = require('../../../data/csv-output.json');
 const mockHistoryData = require('../../../data/history-data.json');
-// const utilitiesStub = require('../../../../lib/utils.js');
+const utilitiesPath = require.resolve('../../../../lib/utils.js');
+const reportsPath = require.resolve('../../../../services/reports/reports.js');
 
 
 describe('weekly_submitted_reports', () => {
@@ -31,8 +32,8 @@ describe('weekly_submitted_reports', () => {
       sendReport: sinon.stub().resolves('sent')
     });
     WeeklySubmittedReports = proxyquire('../../../../services/reports/weekly_submitted_reports', {
-      '../../../../lib/utilities': utilitiesStub,
-      '../../../../services/reports/reports': ReportsStub
+      [utilitiesPath]: utilitiesStub,
+      [reportsPath]: ReportsStub
     });
   });
 

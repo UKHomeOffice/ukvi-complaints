@@ -15,11 +15,11 @@ spec:
       {{ if eq .KUBE_NAMESPACE .PROD_ENV }}
         - {{ .APP_NAME }}-data-service.internal.sas.homeoffice.gov.uk
       {{ else if eq .KUBE_NAMESPACE .STG_ENV }}
-        - data-service.stg.internal.{{ .APP_NAME }}.sas.homeoffice.gov.uk
+        - {{ .APP_NAME }}-data-service.internal.stg.sas.homeoffice.gov.uk
       {{ else if eq .KUBE_NAMESPACE .UAT_ENV }}
-        - {{ .APP_NAME }}-data-service.uat.internal.sas-notprod.homeoffice.gov.uk
+        - {{ .APP_NAME }}-data-service.internal.uat.sas-notprod.homeoffice.gov.uk
       {{ else if eq .KUBE_NAMESPACE .BRANCH_ENV }}
-        - data-service-{{ .DRONE_SOURCE_BRANCH }}.internal.ukvi-complaints-branch.homeoffice.gov.uk
+        - data-service-{{ .DRONE_SOURCE_BRANCH }}.branch.internal.sas-notprod.homeoffice.gov.uk
       {{ end }}
       {{ if eq .KUBE_NAMESPACE .BRANCH_ENV }}
       secretName: branch-tls-internal
@@ -30,11 +30,11 @@ spec:
     {{ if eq .KUBE_NAMESPACE .PROD_ENV }}
     - host: {{ .APP_NAME }}-data-service.internal.sas.homeoffice.gov.uk
     {{ else if eq .KUBE_NAMESPACE .STG_ENV }}
-    - host: data-service.stg.internal.{{ .APP_NAME }}.sas.homeoffice.gov.uk
+    - host: {{ .APP_NAME }}-data-service.internal.stg.sas.homeoffice.gov.uk
     {{ else if eq .KUBE_NAMESPACE .UAT_ENV }}
     - host: {{ .APP_NAME }}-data-service.uat.internal.sas-notprod.homeoffice.gov.uk
     {{ else if eq .KUBE_NAMESPACE .BRANCH_ENV }}
-    - host: data-service-{{ .DRONE_SOURCE_BRANCH }}.internal.ukvi-complaints-branch.homeoffice.gov.uk
+    - host: data-service-{{ .DRONE_SOURCE_BRANCH }}.branch.internal.sas-notprod.homeoffice.gov.uk
     {{ end }}
       http:
         paths:

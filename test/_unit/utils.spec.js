@@ -151,6 +151,87 @@ describe('utils', () => {
       expect(result).to.contain('[doc1.pdf](http://doc1-url)');
       expect(result).to.contain('[doc2.pdf](http://doc2-url)');
     });
+
+    describe('formatDateTime', () => {
+      it('should format a date string to "DD/MM/YYYY HH:mm:ss"', () => {
+      // 17 March 2021, 15:04:05
+      const dateStr = '2021-03-17T15:04:05Z';
+      // The time will be local, so we need to construct a Date object
+      const date = new Date(dateStr);
+      const formatted = utils.formatDateTime(dateStr);
+      // Format expected using local time
+      const expectedDate = date.toLocaleDateString('en-GB', undefined);
+      const expectedTime = [
+        String(date.getHours()).padStart(2, '0'),
+        String(date.getMinutes()).padStart(2, '0'),
+        String(date.getSeconds()).padStart(2, '0')
+      ].join(':');
+      expect(formatted).to.equal(`${expectedDate} ${expectedTime}`);
+      });
+
+      it('should format a Date object correctly', () => {
+      const date = new Date(2022, 0, 2, 3, 4, 5); // Jan 2, 2022, 03:04:05 local
+      const formatted = utils.formatDateTime(date);
+      const expectedDate = date.toLocaleDateString('en-GB', undefined);
+      const expectedTime = '03:04:05';
+      expect(formatted).to.equal(`${expectedDate} ${expectedTime}`);
+      });
+    });
+
+    describe('postgresDateFormat', () => {
+      it('should format a date to "YYYY-MM-DD HH:mm:ss" in UTC', () => {
+      const date = new Date(Date.UTC(2023, 4, 6, 12, 34, 56)); // May 6, 2023, 12:34:56 UTC
+      const formatted = utils.postgresDateFormat(date);
+      expect(formatted).to.equal('2023-05-06 12:34:56');
+      });
+
+      it('should pad single digit months, days, hours, minutes, seconds', () => {
+      const date = new Date(Date.UTC(2023, 0, 2, 3, 4, 5)); // Jan 2, 2023, 03:04:05 UTC
+      const formatted = utils.postgresDateFormat(date);
+      expect(formatted).to.equal('2023-01-02 03:04:05');
+      });
+    });
+
+    describe('getUTCTime', () => {
+      it('should return a Date object at the given hour UTC', () => {
+      const baseDate = new Date(Date.UTC(2022, 7, 15, 10, 30, 0)); // Aug 15, 2022, 10:30 UTC
+      const result = utils.getUTCTime(5, baseDate);
+      expect(result.getUTCFullYear()).to.equal(2022);
+      expect(result.getUTCMonth()).to.equal(7);
+      expect(result.getUTCDate()).to.equal(15);
+      expect(result.getUTCHours()).to.equal(5);
+      expect(result.getUTCMinutes()).to.equal(0);
+      expect(result.getUTCSeconds()).to.equal(0);
+      });
+
+      it('should throw if hour is not provided', () => {
+      expect(() => utils.getUTCTime()).to.throw('Invalid date object - an hour is required');
+      });
+    });
+
+    describe('subtractFromDate', () => {
+      it('should subtract seconds from a date', () => {
+      const date = new Date(2023, 0, 1, 0, 0, 10); // Jan 1, 2023, 00:00:10
+      const result = utils.subtractFromDate(date, 5, 'seconds');
+      expect(result.getSeconds()).to.equal(5);
+      });
+
+      it('should subtract days from a date', () => {
+      const date = new Date(2023, 0, 10); // Jan 10, 2023
+      const result = utils.subtractFromDate(date, 3, 'days');
+      expect(result.getDate()).to.equal(7);
+      });
+
+      it('should subtract using singular unit names', () => {
+      const date = new Date(2023, 0, 10, 0, 0, 10);
+      const result = utils.subtractFromDate(date, 10, 'second');
+      expect(result.getSeconds()).to.equal(0);
+
+      const date2 = new Date(2023, 0, 10);
+      const result2 = utils.subtractFromDate(date2, 1, 'day');
+      expect(result2.getDate()).to.equal(9);
+      });
+    });
   });
 
   describe('generateErrorMsg tests', () => {

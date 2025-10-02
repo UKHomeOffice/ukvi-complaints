@@ -5,6 +5,7 @@ const ReportsFactory = require('./index.js');
 const logger = require('hof/lib/logger')({ env: config.env });
 
 const generateReports = async () => {
+  console.log('Starting report generation');
   const dataDirectory = path.join(__dirname, `/../../${config.dataDirectory}`);
 
   if (!fs.existsSync(dataDirectory)) {

@@ -17,7 +17,7 @@ spec:
       {{ else if eq .KUBE_NAMESPACE .STG_ENV }}
         - {{ .APP_NAME }}-data-service.internal.stg.sas.homeoffice.gov.uk
       {{ else if eq .KUBE_NAMESPACE .UAT_ENV }}
-        - {{ .APP_NAME }}-data-service.internal.uat.sas-notprod.homeoffice.gov.uk
+        - {{ .APP_NAME }}-data-service.uat.internal.sas-notprod.homeoffice.gov.uk
       {{ else if eq .KUBE_NAMESPACE .BRANCH_ENV }}
         - data-service-{{ .DRONE_SOURCE_BRANCH }}.branch.internal.sas-notprod.homeoffice.gov.uk
       {{ end }}

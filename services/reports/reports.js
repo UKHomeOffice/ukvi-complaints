@@ -97,11 +97,11 @@ module.exports = class Reports {
 
   transformToAllQuestionsCsv(name, data) {
     return new Promise(async (resolve, reject) => {
-      const fieldsAndTranslations = this.#collectFieldsAndTranslations();
-      const questionsTranslations = fieldsAndTranslations.map(obj => {
+      const translations = this.#collectFieldsAndTranslations();
+      const questionsTranslations = translations[0].pagesAndTranslations.map(obj => {
         return `${obj.translation}: {${obj.field}}`.replaceAll(',', '-');
       });
-      const questionsFields = fieldsAndTranslations.map(obj => obj.field);
+      const questionsFields = translations[0].pagesAndTranslations.map(obj => obj.field);
       const filePath = path.join(__dirname, `/../../data/${name}.csv`);
 
       await this.#deleteFile(filePath, reject);
@@ -175,8 +175,12 @@ module.exports = class Reports {
         });
 
         const fieldStr = questionsFields.map(field => {
-          const sessionField = session[field] || '';
-          return (Array.isArray(sessionField) ? sessionField.join(' | ') : sessionField).replaceAll(',', '-');
+          const sessionValue = session[field];
+          const translationEntry = translations[0].fieldsAndTranslations.find(item => item.field === sessionValue);
+          const translatedValue = translationEntry ? translationEntry.translation : sessionValue;
+          const finalValue = translatedValue || '';
+
+          return (Array.isArray(finalValue) ? finalValue.join(' | ') : finalValue).replaceAll(',', '-');
         }).join(',');
         await writeStream.write('\r\n' + fieldStr);
       });
@@ -263,6 +267,7 @@ module.exports = class Reports {
       const fieldsTranslations = require(`../../apps/${journey}/translations/src/en/fields`);
       const pagesTranslations = require(`../../apps/${journey}/translations/src/en/pages`);
       const fieldsAndTranslations = [];
+      const pagesAndTranslations = [];
 
       Object.keys(fields).forEach(key => {
         // File-upload field is empty and confirm-email and initial other names fields not needed so do not push
@@ -278,16 +283,26 @@ module.exports = class Reports {
         ];
 
         if (!omitKeys.includes(key)) {
-          fieldsAndTranslations.push({
+          const pageTranslation = _.get(pagesTranslations, `${key}.header`, key);
+          pagesAndTranslations.push({
             field: key,
-            translation: (_.get(pagesTranslations, `[${key}].header`) ||
-              _.get(fieldsTranslations, `[${key}].label`) ||
-              _.get(fieldsTranslations, `[${key}].legend`, key)).trim() || key
+            translation: pageTranslation.trim() || key
           });
+
+          const fieldsTranslationOption = _.get(fieldsTranslations, `[${key}].options`, {});
+
+          const fieldsTranslationOptions = Object.entries(fieldsTranslationOption)
+            .map(([optionKey, optionValue]) => ({
+              field: optionKey,
+              translation: optionValue.label.trim() || key
+            }));
+          if (fieldsTranslationOptions.length > 0) {
+            fieldsAndTranslations.push(...fieldsTranslationOptions);
+          }
         }
       });
       // add database timestamp fields
-      fieldsAndTranslations.push({
+      pagesAndTranslations.push({
         field: 'created_at',
         translation: 'Created at'
       }, {
@@ -297,7 +312,7 @@ module.exports = class Reports {
         field: 'submitted_at',
         translation: 'Submitted at'
       });
-      return fieldsAndTranslations;
+      return {pagesAndTranslations, fieldsAndTranslations};
     }));
   }
 

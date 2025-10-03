@@ -624,5 +624,6 @@ module.exports = {
       'premium-service-centre',
       'letter'
     ]
-  }
+  },
+  'upload-complaint-document': {},
 };

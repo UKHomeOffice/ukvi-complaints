@@ -625,5 +625,5 @@ module.exports = {
       'letter'
     ]
   },
-  'upload-complaint-document': {},
+  'upload-complaint-document': {}
 };

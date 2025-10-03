@@ -216,7 +216,7 @@ spec:
               name: public
 
         - name: nginx-proxy
-          # nginx-proxy-govuk:v4
+          # nginx-proxy-govuk:v4 to be changed soon
           image: quay.io/ukhomeofficedigital/nginx-proxy-govuk@sha256:4470064d0b1d20ae08c5fd85551576cb687f342a22d6cb456fda9b2c4ce8c8df
           resources:
             requests:

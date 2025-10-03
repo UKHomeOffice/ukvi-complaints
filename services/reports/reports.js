@@ -159,7 +159,7 @@ module.exports = class Reports {
             session[key] = `'${session[key]}'`;
           }
 
-           // Set fields that contains the values of uploaded files
+          // Set fields that contains the values of uploaded files
           if (key === 'upload-complaint-doc') {
             documents = documents.concat(_.flatten(_.map(session[key], obj => `${obj.name} - ${obj.url}`)));
             session[key] = documents;
@@ -284,11 +284,8 @@ module.exports = class Reports {
 
         if (!omitKeys.includes(key)) {
           const pageTranslation = _.get(pagesTranslations, `${key}.header`, key);
-          if (key === 'upload-complaint-document') {
-            key = 'upload-complaint-doc';
-          }
           pagesAndTranslations.push({
-            field: key,
+            field: (key === 'upload-complaint-document') ? 'upload-complaint-doc' : key,
             translation: pageTranslation.trim() || key
           });
 

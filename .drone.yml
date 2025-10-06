@@ -119,6 +119,7 @@ steps:
       event: [push, pull_request]
     depends_on:
       - setup_deploy
+      - scan_base_image_os
 
   - name: unit_tests_deploy
     <<: *unit_tests

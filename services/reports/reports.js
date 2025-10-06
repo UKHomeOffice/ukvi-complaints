@@ -106,7 +106,7 @@ module.exports = class Reports {
 
       await this.#deleteFile(filePath, reject);
 
-      const writeStream = fs.createWriteStream(filePath, { flag: 'a+' });
+      const writeStream = fs.createWriteStream(filePath, { flag: 'a+', encoding: 'utf8' });
       // there are commas in questions so using ; as an alternative CSV file delimiter
       await writeStream.write(questionsTranslations.join(','));
 
@@ -182,7 +182,10 @@ module.exports = class Reports {
 
           return (Array.isArray(finalValue) ? finalValue.join(' | ') : finalValue).replaceAll(',', '-');
         }).join(',');
-        await writeStream.write('\r\n' + fieldStr);
+        const normalizedFieldStr = fieldStr
+          .replace(/[’‘]/g, "'")
+          .replace(/[\n\r\t]/g, ' ');
+        await writeStream.write('\r\n' + normalizedFieldStr);
       });
 
       writeStream.on('error', reject);
@@ -296,6 +299,14 @@ module.exports = class Reports {
               field: optionKey,
               translation: optionValue.label.trim() || key
             }));
+          // console.log('-------------------');
+          // console.log(fieldsTranslationOptions);
+          // //remove all special characters and paragraph marks from translations
+          // fieldsTranslationOptions.forEach(obj => {
+          //   obj.translation = obj.translation.replace(/[\n\r\t]/g, ' ').replace(/<\/?[^>]+(>|$)/g, '').trim();
+          // });
+          // console.log('....................');
+          // console.log(fieldsTranslationOptions);
           if (fieldsTranslationOptions.length > 0) {
             fieldsAndTranslations.push(...fieldsTranslationOptions);
           }

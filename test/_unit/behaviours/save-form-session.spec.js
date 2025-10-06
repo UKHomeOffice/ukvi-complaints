@@ -4,6 +4,8 @@ const { expect } = require('chai');
 const proxyquire = require('proxyquire');
 
 const config = require('../../../config');
+const { protocol, host, port } = config.saveService;
+const applicationsUrl = `${protocol}://${host}:${port}/submitted_applications`;
 
 // Mock hof and its model
 const mockRequestStub = sinon.stub();
@@ -35,7 +37,7 @@ describe('save-form-session', () => {
       const postObj = { foo: 'bar' };
       const result = instance.requestBody(postObj);
 
-      expect(result.url).to.equal(`${config.saveService.host}:${config.saveService.port}/submitted_applications`);
+      expect(result.url).to.equal(applicationsUrl);
       expect(result.method).to.equal('POST');
       expect(result.data.foo).to.equal('bar');
       expect(result.data.submitted_at).to.be.an.instanceof(Date);

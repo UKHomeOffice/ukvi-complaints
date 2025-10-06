@@ -4,7 +4,7 @@
 
 The UKVI complaints service is a HOF app that users of UKVI can use to send complaints about their experience to the UKVI team. The service sends the complaint by email to the UKVI team and also a confirmation email to the user. The service has been integrated with the DECS case working system, by pushing each form submission to an AWS SQS queue which the DECS system will retrieve.
 
-### Dependencies
+#### Dependencies
 
 - This form is built using the [HOF framework](https://github.com/UKHomeOfficeForms/hof)
 - [Gov.uk Notify](https://www.notifications.service.gov.uk) to send notification emails

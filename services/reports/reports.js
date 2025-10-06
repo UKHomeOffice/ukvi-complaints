@@ -16,8 +16,8 @@ const logger = createLogger({
   format: combine(timestamp(), json()),
   transports: [new transports.Console({ level: 'info', handleExceptions: true })]
 });
-
-const baseUrl = `${config.saveService.host}:${config.saveService.port}`;
+const { protocol, host, port } = config.saveService;
+const baseUrl = `${protocol}://${host}:${port}`;
 
 const notifyClient = new NotifyClient(notifyKey);
 

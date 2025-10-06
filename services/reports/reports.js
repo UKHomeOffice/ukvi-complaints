@@ -9,7 +9,7 @@ const utilities = require('../../lib/utils');
 const NotifyClient = utilities.NotifyClient;
 const notifyKey = config.email.notifyApiKey;
 const csvReportTemplateId = config.email.csvReportTemplateId;
-const caseworkerEmail = config.email.caseworkerEmail;
+const csvReportEmail = config.email.csvReportEmail;
 const { createLogger, format, transports } = require('winston');
 const { combine, timestamp, json } = format;
 const logger = createLogger({
@@ -225,7 +225,7 @@ module.exports = class Reports {
             level: 'info',
             message: `UKVIC CSV generated for ${this.type}, UUID is: ${fileUUID}`
           });
-          return notifyClient.sendEmail(csvReportTemplateId, caseworkerEmail, {
+          return notifyClient.sendEmail(csvReportTemplateId, csvReportEmail, {
             personalisation: {
               report_type: this.type,
               start_day: utilities.formatDate(startDate),

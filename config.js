@@ -13,9 +13,10 @@ module.exports = {
     notifyApiKey: process.env.NOTIFY_STUB === 'true' ? 'USE_MOCK' : process.env.NOTIFY_KEY,
     notifyTemplate: process.env.NOTIFY_TEMPLATE,
     caseworkerEmail: process.env.CASEWORKER_EMAIL,
+    csvReportTemplateId: process.env.CSV_REPORT_TEMPLATE_ID,
+    csvReportEmail: process.env.CSV_REPORT_EMAIL,
     // noEmail sets default inbox where an email is expected by govNotify but not requested in the form
-    noEmail: process.env.NO_EMAIL_GIVEN_INBOX,
-    csvReportTemplateId: process.env.CSV_REPORT_TEMPLATE_ID
+    noEmail: process.env.NO_EMAIL_GIVEN_INBOX
   },
   hosts: {
     acceptanceTests: process.env.ACCEPTANCE_HOST_NAME

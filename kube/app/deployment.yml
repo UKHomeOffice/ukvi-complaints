@@ -122,6 +122,10 @@ spec:
                 secretKeyRef:
                   name: keycloak-user
                   key: password
+            {{ if eq .KUBE_NAMESPACE .BRANCH_ENV }}
+            - name: DATASERVICE_SERVICE_HOST
+              value: dataservice-{{ .DRONE_SOURCE_BRANCH }}
+            {{ end }}
             - name: SESSION_SECRET
               valueFrom:
                 secretKeyRef:

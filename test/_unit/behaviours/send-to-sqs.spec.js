@@ -30,19 +30,22 @@ describe('SendToSQS', () => {
   beforeEach(() => {
     req = {
       sessionModel: {
-        attributes: 'test attributes'
+        attributes: 'test attributes',
+        get: sinon.stub().withArgs('submission-reference').returns(testUuid)
       }
     };
 
     badReq = {
       sessionModel: {
-        attributes: 'bad attributes'
+        attributes: 'bad attributes',
+        get: sinon.stub().withArgs('submission-reference').returns(testUuid)
       }
     };
 
     badDataReq = {
       sessionModel: {
-        attributes: 'bad data'
+        attributes: 'bad data',
+        get: sinon.stub().withArgs('submission-reference').returns(testUuid)
       }
     };
 

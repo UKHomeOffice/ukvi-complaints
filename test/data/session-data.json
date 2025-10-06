@@ -1,0 +1,41 @@
+
+{
+   "session": {
+      "submission-reference": "f84dcd3d-ff52-4e2d-b6cc-c2a8b5384da9",
+      "reason": "immigration-decision",
+      "steps": [
+        "/reason",
+        "/decision-outcome",
+        "/positive-outcome-where",
+        "/positive-outcome-inside",
+        "/application-ref-numbers",
+        "/acting-as-agent",
+        "/who-representing",
+        "/agent-name",
+        "/agent-contact-details",
+        "/agent-representative-name",
+        "/agent-representative-dob",
+        "/agent-representative-nationality",
+        "/complaint-details",
+        "/upload-complaint-document",
+        "/confirm"
+      ],
+      "decision-outcome": "positive",
+      "where-applied-from": "inside-uk",
+      "reference-numbers": "none",
+      "gwf-reference": "",
+      "ho-reference": "",
+      "ihs-reference": "",
+      "uan-reference": "",
+      "acting-as-agent": "yes",
+      "who-representing": "sponsor",
+      "agent-name": "Test Name",
+      "agent-email": "sas-hof-test@digital.homeoffice.gov.uk",
+      "agent-phone": "",
+      "agent-representative-name": "Bob Jones",
+      "agent-representative-dob": "1980-03-31",
+      "agent-representative-nationality": "Argentina",
+      "complaint-details": "TEST TEST TEST",
+      "file-upload": ""
+    }
+}

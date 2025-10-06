@@ -10,11 +10,12 @@ module.exports = {
     password: process.env.REDIS_PASSWORD
   },
   email: {
-    notifyApiKey: process.env.NOTIFY_KEY,
+    notifyApiKey: process.env.NOTIFY_STUB === 'true' ? 'USE_MOCK' : process.env.NOTIFY_KEY,
     notifyTemplate: process.env.NOTIFY_TEMPLATE,
     caseworkerEmail: process.env.CASEWORKER_EMAIL,
     // noEmail sets default inbox where an email is expected by govNotify but not requested in the form
-    noEmail: process.env.NO_EMAIL_GIVEN_INBOX
+    noEmail: process.env.NO_EMAIL_GIVEN_INBOX,
+    csvReportTemplateId: process.env.CSV_REPORT_TEMPLATE_ID
   },
   hosts: {
     acceptanceTests: process.env.ACCEPTANCE_HOST_NAME
@@ -50,5 +51,11 @@ module.exports = {
     password: process.env.KEYCLOAK_PASSWORD,
     clientId: process.env.KEYCLOAK_CLIENT_ID,
     secret: process.env.KEYCLOAK_SECRET
-  }
+  },
+  saveService: {
+    port: process.env.DATASERVICE_SERVICE_PORT_HTTPS,
+    host: process.env.DATASERVICE_SERVICE_HOST &&
+      `https://${process.env.DATASERVICE_SERVICE_HOST}` || 'http://127.0.0.1'
+  },
+  dataDirectory: './data'
 };

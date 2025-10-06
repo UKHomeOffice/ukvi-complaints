@@ -29,7 +29,6 @@ describe('generateReports', () => {
     loggerStub = {
       info: sinon.stub()
     };
-    console.log('logger stubbed');
     generateReports = proxyquire('../../../../services/reports/generate_reports.js', {
       path: pathStub,
       fs: fsStub,
@@ -38,7 +37,6 @@ describe('generateReports', () => {
         createReport: createReportStub
       },
       'hof/lib/logger': sinon.stub().returns(loggerStub)});
-    console.log('generateReports proxied');
   });
 
   afterEach(() => {

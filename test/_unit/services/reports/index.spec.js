@@ -4,34 +4,31 @@ const WeeklySubmittedReports = require.resolve('../../../../services/reports/wee
 const ReportsFactory = require.resolve('../../../../services/reports');
 
 describe('ReportsFactory', () => {
-    let createReportStub;
-    const logger = { info: sinon.stub() };
+  let createReportStub;
+  const logger = { info: sinon.stub() };
 
-    beforeEach(() => {
-        console.log('ReportsFactory path:', ReportsFactory);
-        console.log('WeeklySubmittedReports path:', WeeklySubmittedReports);
-        createReportStub = sinon.stub(WeeklySubmittedReports, 'createReport');
-        console.log('stubbed:', createReportStub);
-    });
+  beforeEach(() => {
+    createReportStub = sinon.stub(WeeklySubmittedReports, 'createReport');
+  });
 
-    afterEach(() => {
-        sinon.restore();
-    });
+  afterEach(() => {
+    sinon.restore();
+  });
 
-    it('should call WeeklySubmittedReports.createReport for "1-week-report" type', async () => {
-        const fakeReport = { report: 'weekly' };
-        createReportStub.resolves(fakeReport);
+  it('should call WeeklySubmittedReports.createReport for "1-week-report" type', async () => {
+    const fakeReport = { report: 'weekly' };
+    createReportStub.resolves(fakeReport);
 
-        const result = await ReportsFactory.createReport('1-week-report', logger);
+    const result = await ReportsFactory.createReport('1-week-report', logger);
 
-        expect(createReportStub.calledOnceWith('1-week-report', logger)).to.be.true;
-        expect(result).to.equal(fakeReport);
-    });
+    expect(createReportStub.calledOnceWith('1-week-report', logger)).to.be.true;
+    expect(result).to.equal(fakeReport);
+  });
 
-    it('should return null for unknown report type', async () => {
-        const result = await ReportsFactory.createReport('unknown-type', logger);
+  it('should return null for unknown report type', async () => {
+    const result = await ReportsFactory.createReport('unknown-type', logger);
 
-        expect(result).to.be.null;
-        expect(createReportStub.notCalled).to.be.true;
-    });
+    expect(result).to.be.null;
+    expect(createReportStub.notCalled).to.be.true;
+  });
 });

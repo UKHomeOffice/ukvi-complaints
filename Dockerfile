@@ -1,4 +1,4 @@
-FROM node:20.18.0-alpine3.20@sha256:d504f23acdda979406cf3bdbff0dff7933e5c4ec183dda404ed24286c6125e60
+FROM quay.io/ukhomeofficedigital/hof-nodejs@sha256:b5363fcb205423820cabe7605de5fb997b78688aad3a2bc5555e7f26bfa22181
 
 USER root
 

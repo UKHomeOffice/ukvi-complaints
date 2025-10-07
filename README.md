@@ -16,9 +16,12 @@ $ yarn install
 
 [Install Docker Compose](https://docs.docker.com/compose/install/)
 
+When running the app in docker, the variables in your ```.env``` file will be overidden by the ```environment``` section in the ```docker-compose.yml``` file.
+
 Run the services locally with Docker Compose
+
 ```bash
-$ docker-compose up
+$ docker compose up
 ```
 
 Getting your hands dirty (You'll need [Redis](http://redis.io/) for this)

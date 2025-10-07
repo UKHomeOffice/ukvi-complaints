@@ -99,7 +99,8 @@ module.exports = class Reports {
     return new Promise(async (resolve, reject) => {
       const translations = this.#collectFieldsAndTranslations();
       const questionsTranslations = translations[0].pagesAndTranslations.map(obj => {
-        return `${obj.translation}: {${obj.field}}`.replaceAll(',', '-');
+        return `${obj.translation}`.replaceAll(',', '-');
+        // return `${obj.translation}: {${obj.field}}`.replaceAll(',', '-');
       });
       const questionsFields = translations[0].pagesAndTranslations.map(obj => obj.field);
       const filePath = path.join(__dirname, `/../../data/${name}.csv`);

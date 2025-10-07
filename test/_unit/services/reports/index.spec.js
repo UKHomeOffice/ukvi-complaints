@@ -1,7 +1,8 @@
 const sinon = require('sinon');
 const { expect } = require('chai');
-const WeeklySubmittedReports = require.resolve('../../../../services/reports/weekly_submitted_reports.js');
-const ReportsFactory = require.resolve('../../../../services/reports');
+
+const WeeklySubmittedReports = require('../../../../services/reports/weekly_submitted_reports.js');
+const ReportsFactory = require('../../../../services/reports');
 
 describe('ReportsFactory', () => {
   let createReportStub;

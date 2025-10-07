@@ -11,7 +11,7 @@ Feature: Waiting for a decision or documents
     Then I should be on the 'delays' page showing 'What are you waiting for?'
     Then I check 'delay-type-application-delay'
     Then I select 'Continue'
-    Then I should be on the 'request-upgrade' page showing 'testWhere did you make your application?'
+    Then I should be on the 'request-upgrade' page showing 'Where did you make your application?'
     Then I check 'where-applied-from-inside-uk'
     Then I select 'Continue'
     Then I should be on the 'upgrade-inside-uk' page showing 'If you are waiting for a decision on an application'

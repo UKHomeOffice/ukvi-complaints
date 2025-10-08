@@ -1,18 +1,28 @@
-/* eslint-disable camelcase */
+'use strict';
 
 const { model: Model } = require('hof');
 const config = require('../../../config');
+const { generateErrorMsg } = require('../../../lib/utils');
 const { protocol, host, port } = config.saveService;
 const applicationsUrl = `${protocol}://${host}:${port}/submitted_applications`;
 
 module.exports = superclass => class extends superclass {
-  requestBody(postObj) {
+  requestBody(id, patchObj, postObj) {
+    if (id === undefined || id.length === 0) {
+      postObj.submitted_at = new Date();
+      return {
+        url: applicationsUrl,
+        method: 'POST',
+        data: postObj
+      };
+    }
+
     // set submitted_at to current time
-    postObj.submitted_at = new Date();
+    patchObj.submitted_at = new Date();
     return {
-      url: applicationsUrl,
-      method: 'POST',
-      data: postObj
+      url: applicationsUrl + `/${id}`,
+      method: 'PATCH',
+      data: patchObj
     };
   }
 
@@ -43,25 +53,27 @@ module.exports = superclass => class extends superclass {
         return next();
       }
 
-      // this param must be same as database field name
-      const submission_reference = req.sessionModel.get('submission-reference');
-      const params = this.requestBody({ submission_reference, session });
-
+      const id = req.sessionModel.get('id');
       const submissionReference = req.sessionModel.get('submission-reference');
-      req.log('info', `Submission Reference: ${submissionReference}, Saving Form Session`);
+      const params = this.requestBody(id, { session }, { submission_reference: submissionReference, session });
+
+      req.log('info', `Submission Reference: ${submissionReference}, Saving Form Session: ${id}`);
 
       try {
         const model = new Model();
         const response = await model._request(params);
         const resBody = response.data;
 
-        if (!resBody || !resBody.length || !resBody[0].id) {
+        if (resBody && resBody.length && resBody[0].id) {
+          req.sessionModel.set('id', resBody[0].id);
+        } else {
           const errorMessage = `Id hasn't been received in response ${JSON.stringify(response.data)}`;
-          req.log('error', errorMessage);
+          req.sessionModel.unset('id');
+          throw new Error(errorMessage);
         }
         return next();
       } catch (e) {
-        req.log('info', `Submission Reference: ${submissionReference}, Error Saving Session: ${e}`);
+        req.log('error', `Submission Reference: ${submissionReference}, Error Saving Session: ${generateErrorMsg(e)}`);
         return next(e);
       }
     });

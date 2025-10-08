@@ -152,4 +152,43 @@ describe('utils', () => {
       expect(result).to.contain('[doc2.pdf](http://doc2-url)');
     });
   });
+
+  describe('generateErrorMsg tests', () => {
+    it('Returns a full message when the error object has all properties', () => {
+      const mockError = {
+        message: 'Some error',
+        response: {
+          status: 401,
+          data: {
+            item1: 'one',
+            item2: 'two'
+          }
+        }
+      };
+
+      const result = utils.generateErrorMsg(mockError);
+      expect(result).to.equal('401 -Some error; Cause: {"item1":"one","item2":"two"}');
+    });
+
+    it('Returns a shorter message when the error object does not contain data', () => {
+      const mockError = {
+        message: 'Some error',
+        response: {
+          status: 401
+        }
+      };
+
+      const result = utils.generateErrorMsg(mockError);
+      expect(result).to.equal('401 -Some error');
+    });
+
+    it('Returns error.message only when no response prop is present in the error object', () => {
+      const mockError = {
+        message: 'Some error'
+      };
+
+      const result = utils.generateErrorMsg(mockError);
+      expect(result).to.equal('Some error');
+    });
+  });
 });

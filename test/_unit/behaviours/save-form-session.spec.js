@@ -33,12 +33,23 @@ const instance = new CustomClass();
 
 describe('save-form-session', () => {
   describe('requestBody', () => {
-    it('should return POST request with submitted_at timestamp', () => {
+    it('should return POST request with submitted_at timestamp when id is undefined', () => {
       const postObj = { foo: 'bar' };
-      const result = instance.requestBody(postObj);
+      const result = instance.requestBody(undefined, {}, postObj);
 
       expect(result.url).to.equal(applicationsUrl);
       expect(result.method).to.equal('POST');
+      expect(result.data.foo).to.equal('bar');
+      expect(result.data.submitted_at).to.be.an.instanceof(Date);
+    });
+
+    it('should return PATCH request with submitted_at timestamp when id is provided', () => {
+      const patchObj = { foo: 'bar' };
+      const id = '123';
+      const result = instance.requestBody(id, patchObj, {});
+
+      expect(result.url).to.equal(`${applicationsUrl}/${id}`);
+      expect(result.method).to.equal('PATCH');
       expect(result.data.foo).to.equal('bar');
       expect(result.data.submitted_at).to.be.an.instanceof(Date);
     });
@@ -120,17 +131,20 @@ describe('save-form-session', () => {
       mockRequestStub.resolves({ data: [{ id: 'new-id' }] });
 
       await instance.saveValues(req, res, next);
+      expect(req.sessionModel.set.calledWith('id', 'new-id')).to.be.true;
       expect(next.calledOnce).to.be.true;
     });
 
-    it('should log error if response is invalid', async () => {
+    it('should log error and unset id if response is invalid', async () => {
       config.env = 'production';
       mockRequestStub.resolves({ data: [{}] });
 
       await instance.saveValues(req, res, next);
+      expect(req.sessionModel.unset.calledWith('id')).to.be.true;
       expect(req.log.calledWithMatch('error', sinon.match(
         msg => msg.includes("Id hasn't been received")))).to.be.true;
       expect(next.calledOnce).to.be.true;
+      expect(next.firstCall.args[0]).to.be.an('error');
     });
 
     it('should call next with error on request failure', async () => {
@@ -139,6 +153,9 @@ describe('save-form-session', () => {
       mockRequestStub.rejects(error);
 
       await instance.saveValues(req, res, next);
+      expect(req.log.calledWithMatch('error', sinon.match(
+        msg => msg.includes('Error Saving Session')
+      ))).to.be.true;
       expect(next.calledWith(error)).to.be.true;
     });
   });

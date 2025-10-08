@@ -10,6 +10,7 @@ const RemoveDocument = require('./behaviours/remove-file');
 const sendToSQS = require('./behaviours/send-to-sqs');
 const ResetOnChange = require('./behaviours/reset-on-change');
 const SaveFormSession = require('./behaviours/save-form-session');
+const Summary = require('hof').components.summary;
 
 module.exports = {
   name: 'ukvi-complaints',
@@ -894,7 +895,7 @@ module.exports = {
         caseworkerEmailer,
         customerEmailer,
         'complete',
-        require('hof').components.summary
+        Summary
       ],
       next: '/complete',
       sections: {

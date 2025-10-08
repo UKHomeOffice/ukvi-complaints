@@ -30,7 +30,7 @@
     "bl": "^6.0.20",
     "busboy": "^1.6.0",
     "busboy-body-parser": "^0.3.2",
-    "form-data": "^4.0.1",
+    "form-data": "^4.0.4",
     "hof": "~22.8.4",
     "hot-shots": "^11.2.0",
     "jimp": "^1.6.0",

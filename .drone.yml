@@ -218,7 +218,7 @@ steps:
     commands:
       - |
           export DRONE_SOURCE_BRANCH=$(echo $DRONE_SOURCE_BRANCH | tr '[:upper:]' '[:lower:]' | tr '/' '-')
-          export ACCEPTANCE_HOST_NAME=https://ukvic-{{ .DRONE_SOURCE_BRANCH }}.branch.internal.sas-notprod.homeoffice.gov.uk
+          export ACCEPTANCE_HOST_NAME=https://ukvic-$${DRONE_SOURCE_BRANCH}.branch.internal.sas-notprod.homeoffice.gov.uk
           echo "ACCEPTANCE_HOST_NAME=$ACCEPTANCE_HOST_NAME"
           export CUCUMBER_PUBLISH_ENABLED=true
           npx playwright install
@@ -249,19 +249,19 @@ steps:
       - clone_repos
       - image_to_quay
 
-  - name: acceptance_tests_UAT
+  - name: acceptance_tests_uat
     failure: ignore
     <<: *acceptance_tests
     commands:
       - |
           export ACCEPTANCE_HOST_NAME=https://ukvic.uat.internal.sas-notprod.homeoffice.gov.uk
+          echo "ACCEPTANCE_HOST_NAME=$ACCEPTANCE_HOST_NAME"
           export CUCUMBER_PUBLISH_ENABLED=true
           npx playwright install
           npm run test:acceptance
     when:
       branch:
-        <<: *include_default_and_feature_branches
-      event:
+        <<: *include_default_branch
       event:
         - push
     depends_on:

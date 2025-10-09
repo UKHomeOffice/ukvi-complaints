@@ -3,9 +3,6 @@
 const dateComponent = require('hof').components.date;
 
 module.exports = {
-  // 'unique-ref': {},
-  'submission-reference': {},
-
   reason: {
     mixin: 'radio-group',
     options: [
@@ -624,6 +621,5 @@ module.exports = {
       'premium-service-centre',
       'letter'
     ]
-  },
-  'upload-complaint-document': {}
+  }
 };

@@ -136,26 +136,6 @@ steps:
         <<: *include_default_and_feature_branches
       event: [push, pull_request]
 
-  - name: acceptance_tests
-    failure: ignore
-    <<: *acceptance_tests
-    commands:
-      - |
-          export DRONE_SOURCE_BRANCH=$(echo $DRONE_SOURCE_BRANCH | tr '[:upper:]' '[:lower:]' | tr '/' '-')
-          if [ "$${DRONE_BUILD_EVENT}" = "pull_request" ]; then
-            export ACCEPTANCE_HOST_NAME=https://ukvic-{{ .DRONE_SOURCE_BRANCH }}.branch.internal.sas-notprod.homeoffice.gov.uk
-          else
-            export ACCEPTANCE_HOST_NAME=https://ukvic.uat.internal.sas-notprod.homeoffice.gov.uk
-          fi
-          echo "ACCEPTANCE_HOST_NAME=$ACCEPTANCE_HOST_NAME"
-          export CUCUMBER_PUBLISH_ENABLED=true
-          npx playwright install
-          npm run test:acceptance
-    when:
-      branch:
-        <<: *include_default_and_feature_branches
-      event: [push, pull_request]
-
   - name: build_image_for_trivy
     pull: if-not-exists
     image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/dind
@@ -232,6 +212,25 @@ steps:
       - clone_repos
       - image_to_quay
 
+  - name: acceptance_tests_branch
+    failure: ignore
+    <<: *acceptance_tests
+    commands:
+      - |
+          export DRONE_SOURCE_BRANCH=$(echo $DRONE_SOURCE_BRANCH | tr '[:upper:]' '[:lower:]' | tr '/' '-')
+          export ACCEPTANCE_HOST_NAME=https://ukvic-{{ .DRONE_SOURCE_BRANCH }}.branch.internal.sas-notprod.homeoffice.gov.uk
+          echo "ACCEPTANCE_HOST_NAME=$ACCEPTANCE_HOST_NAME"
+          export CUCUMBER_PUBLISH_ENABLED=true
+          npx playwright install
+          npm run test:acceptance
+    when:
+      branch:
+        <<: *include_default_and_feature_branches
+      event:
+        - pull_request
+    depends_on:
+      - deploy_to_branch
+
   - name: deploy_to_uat
     pull: if-not-exists
     image: quay.io/ukhomeofficedigital/kd:v1.14.0
@@ -249,6 +248,24 @@ steps:
     depends_on:
       - clone_repos
       - image_to_quay
+
+  - name: acceptance_tests_UAT
+    failure: ignore
+    <<: *acceptance_tests
+    commands:
+      - |
+          export ACCEPTANCE_HOST_NAME=https://ukvic.uat.internal.sas-notprod.homeoffice.gov.uk
+          export CUCUMBER_PUBLISH_ENABLED=true
+          npx playwright install
+          npm run test:acceptance
+    when:
+      branch:
+        <<: *include_default_and_feature_branches
+      event:
+      event:
+        - push
+    depends_on:
+      - deploy_to_uat
 
   - name: get_pr_branch
     pull: if-not-exists

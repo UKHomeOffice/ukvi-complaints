@@ -3,7 +3,7 @@ process.env.AWS_REGION = 'eu-west-2';
 process.env.SQS_URL = 'http://localhost:9324/queue/first-queue';
 process.env.AWS_ACCESS_KEY_ID = 'stub';
 process.env.AWS_SECRET_ACCESS_KEY = 'stub';
-process.env.NOTIFY_KEY='stub';
+process.env.NOTIFY_KEY = 'stub';
 
 global.chai = require('chai');
 global.expect = chai.expect;

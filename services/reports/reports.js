@@ -149,11 +149,9 @@ module.exports = class Reports {
 
           // prevent csv readers from converting the date format by wrapping it in ''
           const dobKeys = [
-            'agent-representative-dob',
             'called-date',
             'called-time',
-            'when-applied',
-            'applicant-dob'
+            'when-applied'
           ];
 
           if (dobKeys.includes(key)) {
@@ -166,10 +164,7 @@ module.exports = class Reports {
             session[key] = documents;
           }
 
-          // need to call this submission_reference instead
-          if (record.id) {
-            session.submission_reference = record.id.toString();
-          }
+          session.submission_reference = record.submission_reference;
           session.created_at = record.created_at;
           session.updated_at = record.updated_at;
           session.submitted_at = record.submitted_at;
@@ -267,52 +262,53 @@ module.exports = class Reports {
     const journeys = ['ukvi-complaints'];
 
     return _.flatten(_.map(journeys, journey => {
-      const fields = require(`../../apps/${journey}/fields`);
       const fieldsTranslations = require(`../../apps/${journey}/translations/src/en/fields`);
       const pagesTranslations = require(`../../apps/${journey}/translations/src/en/pages`);
-      const fieldsAndTranslations = [];
       const pagesAndTranslations = [];
 
-      Object.keys(fields).forEach(key => {
-        // File-upload field is empty and confirm-email and initial other names fields not needed so do not push
-        const omitKeys = [
-          'agent-name',
-          'agent-representative-name',
-          'agent-representative-dob',
-          'applicant-name',
-          'applicant-dob',
-          'agent-email',
-          'applicant-email'
-          // add applicant and agent telephone numbers potentially?
-        ];
+      const omitKeys = [
+        'agent-name',
+        'agent-representative-name',
+        'agent-representative-dob',
+        'agent-phone',
+        'applicant-name',
+        'applicant-dob',
+        'agent-email',
+        'applicant-email',
+        'gwf-reference',
+        'none'
+      ];
 
-        if (!omitKeys.includes(key)) {
-          const pageTranslation = _.get(pagesTranslations, `${key}.header`, key);
-          pagesAndTranslations.push({
-            field: (key === 'upload-complaint-document') ? 'upload-complaint-doc' : key,
-            translation: pageTranslation.trim() || key
-          });
+      const csvHeaderTranslations = Object.entries(pagesTranslations.confirm.fields)
+        .filter(([key]) => !omitKeys.includes(key))
+        .map(([key, value]) => ({
+          field: key,
+          translation: value.label.trim() || key
+        }));
 
-          const fieldsTranslationOption = _.get(fieldsTranslations, `[${key}].options`, {});
+      if (csvHeaderTranslations.length > 0) {
+        pagesAndTranslations.push(
+          {
+            field: 'submission_reference',
+            translation: 'Submission Reference'
+          },
+          ...csvHeaderTranslations
+        );
+      }
 
-          const fieldsTranslationOptions = Object.entries(fieldsTranslationOption)
-            .map(([optionKey, optionValue]) => ({
-              field: optionKey,
-              translation: optionValue.label.trim() || key
-            }));
-          // console.log('-------------------');
-          // console.log(fieldsTranslationOptions);
-          // //remove all special characters and paragraph marks from translations
-          // fieldsTranslationOptions.forEach(obj => {
-          //   obj.translation = obj.translation.replace(/[\n\r\t]/g, ' ').replace(/<\/?[^>]+(>|$)/g, '').trim();
-          // });
-          // console.log('....................');
-          // console.log(fieldsTranslationOptions);
-          if (fieldsTranslationOptions.length > 0) {
-            fieldsAndTranslations.push(...fieldsTranslationOptions);
-          }
-        }
-      });
+      // This has to revisit
+      const fieldsAndTranslations = Object.entries(fieldsTranslations)
+        .flatMap(([, content]) =>
+          content.options && typeof content.options === 'object'
+            ? Object.entries(content.options)
+              .filter(([key]) => !omitKeys.includes(key))
+              .map(([key, value]) => ({
+                field: key,
+                translation: value.label.trim() || key
+              }))
+            : []
+        );
+
       // add database timestamp fields
       pagesAndTranslations.push({
         field: 'created_at',

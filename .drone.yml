@@ -76,6 +76,7 @@ steps:
         <<: *include_default_and_feature_branches
       event: [push, pull_request]
 
+  # Trivy Security Scannner for scanning OS related vulnerabilities in Base image of Dockerfile
   - name: scan_base_image_os
     pull: always
     image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/trivy/client:latest
@@ -135,6 +136,28 @@ steps:
         <<: *include_default_and_feature_branches
       event: [push, pull_request]
 
+  - name: acceptance_tests
+    failure: ignore
+    <<: *acceptance_tests
+    commands:
+      - |
+          export DRONE_SOURCE_BRANCH=$(echo $DRONE_SOURCE_BRANCH | tr '[:upper:]' '[:lower:]' | tr '/' '-')
+          if [ "$${DRONE_BUILD_EVENT}" = "pull_request" ]; then
+            export ACCEPTANCE_HOST_NAME=https://ukvic-$${DRONE_SOURCE_BRANCH}.internal.$${BRANCH_ENV}.homeoffice.gov.uk
+          elif [ "$${DRONE_BUILD_EVENT}" = "promote" ] && [ "$${DRONE_TAG}" = "PROD" ]; then
+            export ACCEPTANCE_HOST_NAME=https://$${PRODUCTION_URL}
+          else
+            export ACCEPTANCE_HOST_NAME=https://ukvic.uat.internal.sas-notprod.homeoffice.gov.uk
+          fi
+          echo "ACCEPTANCE_HOST_NAME=$ACCEPTANCE_HOST_NAME"
+          export CUCUMBER_PUBLISH_ENABLED=true
+          npx playwright install
+          npm run test:acceptance
+    when:
+      branch:
+        <<: *include_default_and_feature_branches
+      event: [push, pull_request]
+
   - name: build_image_for_trivy
     pull: if-not-exists
     image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/dind
@@ -153,7 +176,7 @@ steps:
       - linting
       - unit_tests
 
-  - name: build_image_and_push_to_quay
+  - name: image_to_quay
     pull: if-not-exists
     image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/dind
     environment:
@@ -209,7 +232,7 @@ steps:
       event: pull_request
     depends_on:
       - clone_repos
-      - build_image_and_push_to_quay
+      - image_to_quay
 
   - name: deploy_to_uat
     pull: if-not-exists
@@ -227,7 +250,7 @@ steps:
       event: push
     depends_on:
       - clone_repos
-      - build_image_and_push_to_quay
+      - image_to_quay
 
   - name: get_pr_branch
     pull: if-not-exists
@@ -284,7 +307,7 @@ steps:
       event: push
     depends_on:
       - clone_repos
-      - build_image_and_push_to_quay
+      - image_to_quay
 
   - name: sanity_check_build_prod
     pull: if-not-exists
@@ -333,8 +356,132 @@ steps:
     depends_on:
       - clone_repos_prod
 
-  # CRON jobs and notification steps would follow the same pattern as the example
-  # Please copy and adapt from the CSL pipeline as needed for security scans and slack notifications
+  # CRON job step that tears down our pull request UAT environments
+  - name: cron_tear_down
+    pull: if-not-exists
+    image: quay.io/ukhomeofficedigital/kd:v1.14.0
+    environment:
+      KUBE_SERVER:
+        from_secret: kube_server_dev
+      KUBE_TOKEN:
+        from_secret: kube_token_dev
+    commands:
+      - bin/clean_up.sh $${BRANCH_ENV}
+    when:
+      cron: tear_down_pr_envs
+      event: cron
+
+  # # CRON job steps that runs security scans using Snyk & Trivy
+  - name: cron_clone_repos
+    image: alpine/git
+    environment:
+      DRONE_GIT_USERNAME:
+        from_secret: drone_git_username
+      DRONE_GIT_TOKEN:
+        from_secret: drone_git_token
+    commands:
+      - git clone https://$${DRONE_GIT_USERNAME}:$${DRONE_GIT_TOKEN}@github.com/UKHomeOfficeForms/hof-services-config.git
+      - find hof-services-config/* | grep -v $HOF_CONFIG | grep -v 'infrastructure' | xargs rm -rf
+    when:
+      cron: security_scans
+      event: cron
+
+  - name: cron_build_image
+    image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/dind
+    commands:
+      # wait for docker service to be up before running docker build
+      - /usr/local/bin/wait
+      - docker build --no-cache -t $${IMAGE_REPO}:$${DRONE_COMMIT_SHA} .
+    volumes:
+      - name: dockersock
+        path: /var/run
+    when:
+      cron: security_scans
+      event: cron
+
+  - name: cron_trivy_scan_image_os
+    image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/trivy/client:latest
+    pull: always
+    environment:
+        IMAGE_NAME: quay.io/ukhomeofficedigital/hof-nodejs:20.19.0-alpine3.21-v2@sha256:ab9686c7cf77bab94ab32c1c0e262b2a5242c2cbff61b0bbb3f62610b4f2e706
+        SEVERITY: UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL --dependency-tree
+        FAIL_ON_DETECTION: true
+        IGNORE_UNFIXED: false
+        ALLOW_CVE_LIST_FILE: hof-services-config/infrastructure/trivy/.trivyignore.yaml
+    when:
+      cron: security_scans
+      event: cron
+    depends_on:
+      - cron_clone_repos
+
+  - name: cron_trivy_scan_node_packages
+    image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/trivy/client:latest
+    pull: always
+    environment:
+      IMAGE_NAME: ukvi-complaints:${DRONE_COMMIT_SHA}
+      SEVERITY: UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL --dependency-tree
+      FAIL_ON_DETECTION: true
+      IGNORE_UNFIXED: false
+      ALLOW_CVE_LIST_FILE: hof-services-config/infrastructure/trivy/.trivyignore.yaml
+    when:
+      cron: security_scans
+      event: cron
+      status:
+        - success
+        - failure
+    depends_on:
+      - cron_build_image
+      - cron_clone_repos
+
+  # Slack notification upon a CRON job fail
+  - name: cron_notify_slack_tear_down_pr_envs
+    pull: if-not-exists
+    image: plugins/slack:1.4.1
+    settings:
+      channel: sas-hof-build-notify
+      failure: ignore
+      icon.url: https://readme.drone.io/logo.svg
+      template: >
+            *✘ {{ uppercasefirst build.status }}*: CRON Job `tear_down_pr_envs` for *UKVI Complaints* has failed.
+
+            Branch <https://github.com/{{ repo.owner }}/{{ repo.name }}/commits/{{ build.branch }}|{{build.branch}}> | Commit <https://github.com/{{ repo.owner }}/{{ repo.name }}/commit/{{ build.commit }}|{{ truncate build.commit 8 }}>
+
+            *Build <{{build.link}}|#{{build.number}}>*
+      username: Drone_CI
+      webhook:
+        from_secret: slack_sas_hof_build_notify_webhook
+    when:
+      cron: tear_down_pr_envs
+      event: cron
+      status:
+        - failure
+    depends_on:
+      - cron_tear_down
+
+  - name: cron_notify_slack_security_scans
+    pull: if-not-exists
+    image: plugins/slack:1.4.1
+    settings:
+      channel: sas-hof-security
+      failure: ignore
+      icon.url: https://readme.drone.io/logo.svg
+      template: >
+            *✘ {{ uppercasefirst build.status }}*: CRON Job `security_scans` for *UKVI Complaints* has failed.
+
+            Branch <https://github.com/{{ repo.owner }}/{{ repo.name }}/commits/{{ build.branch }}|{{build.branch}}> | Commit <https://github.com/{{ repo.owner }}/{{ repo.name }}/commit/{{ build.commit }}|{{ truncate build.commit 8 }}>
+
+            *Build <{{build.link}}|#{{build.number}}>*
+      username: Drone_CI
+      webhook:
+        from_secret: slack_sas_hof_security_webhook
+    when:
+      cron: security_scans
+      event: cron
+      status:
+        - failure
+    depends_on:
+      - cron_trivy_scan_image_os
+      - cron_trivy_scan_node_packages
 
 services:
   - name: docker

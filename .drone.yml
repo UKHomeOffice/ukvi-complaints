@@ -143,7 +143,7 @@ steps:
       - |
           export DRONE_SOURCE_BRANCH=$(echo $DRONE_SOURCE_BRANCH | tr '[:upper:]' '[:lower:]' | tr '/' '-')
           if [ "$${DRONE_BUILD_EVENT}" = "pull_request" ]; then
-            export ACCEPTANCE_HOST_NAME=https://ukvic-$${DRONE_SOURCE_BRANCH}.internal.$${BRANCH_ENV}.homeoffice.gov.uk
+            export ACCEPTANCE_HOST_NAME=https://ukvic-{{ .DRONE_SOURCE_BRANCH }}.branch.internal.sas-notprod.homeoffice.gov.uk
           elif [ "$${DRONE_BUILD_EVENT}" = "promote" ] && [ "$${DRONE_TAG}" = "PROD" ]; then
             export ACCEPTANCE_HOST_NAME=https://$${PRODUCTION_URL}
           else

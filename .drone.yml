@@ -217,8 +217,8 @@ steps:
     <<: *acceptance_tests
     commands:
       - |
-          export DRONE_SOURCE_BRANCH=$(echo $DRONE_SOURCE_BRANCH | tr '[:upper:]' '[:lower:]' | tr '/' '-')
-          export ACCEPTANCE_HOST_NAME=https://ukvic-{{ .DRONE_SOURCE_BRANCH }}.branch.internal.sas-notprod.homeoffice.gov.uk
+#          export DRONE_SOURCE_BRANCH=$(echo $DRONE_SOURCE_BRANCH | tr '[:upper:]' '[:lower:]' | tr '/' '-')
+          export ACCEPTANCE_HOST_NAME=https://ukvic-{{ build.branch }}.branch.internal.sas-notprod.homeoffice.gov.uk
           echo "ACCEPTANCE_HOST_NAME=$ACCEPTANCE_HOST_NAME"
           export CUCUMBER_PUBLISH_ENABLED=true
           npx playwright install

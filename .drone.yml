@@ -213,7 +213,6 @@ steps:
       - image_to_quay
 
   - name: acceptance_tests_branch
-    failure: ignore
     <<: *acceptance_tests
     commands:
       - |
@@ -250,7 +249,6 @@ steps:
       - image_to_quay
 
   - name: acceptance_tests_uat
-    failure: ignore
     <<: *acceptance_tests
     commands:
       - |

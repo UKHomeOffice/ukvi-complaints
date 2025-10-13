@@ -290,9 +290,13 @@ module.exports = class Reports {
         pagesAndTranslations.push(
           {
             field: 'submission_reference',
-            translation: 'Submission Reference'
+            translation: 'Submission reference'
           },
-          ...csvHeaderTranslations
+          ...csvHeaderTranslations,
+          {
+            field: 'submitted_at',
+            translation: 'Submitted at'
+          }
         );
       }
 
@@ -308,18 +312,6 @@ module.exports = class Reports {
               }))
             : []
         );
-
-      // add database timestamp fields
-      pagesAndTranslations.push({
-        field: 'created_at',
-        translation: 'Created at'
-      }, {
-        field: 'updated_at',
-        translation: 'Updated at'
-      }, {
-        field: 'submitted_at',
-        translation: 'Submitted at'
-      });
       return {pagesAndTranslations, fieldsAndTranslations};
     }));
   }

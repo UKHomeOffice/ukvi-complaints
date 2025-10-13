@@ -8,7 +8,6 @@ const mockHistoryData = require('../../../data/history-data.json');
 const utilitiesPath = require.resolve('../../../../lib/utils.js');
 const reportsPath = require.resolve('../../../../services/reports/reports.js');
 
-
 describe('weekly_submitted_reports', () => {
   let WeeklySubmittedReports;
   let ReportsStub;
@@ -31,6 +30,7 @@ describe('weekly_submitted_reports', () => {
       transformToAllQuestionsCsv: sinon.stub().resolves(mockCsvOutput),
       sendReport: sinon.stub().resolves('sent')
     });
+
     WeeklySubmittedReports = proxyquire('../../../../services/reports/weekly_submitted_reports', {
       [utilitiesPath]: utilitiesStub,
       [reportsPath]: ReportsStub
@@ -47,14 +47,14 @@ describe('weekly_submitted_reports', () => {
     const mockOneSecondBefore = '2025-05-18T23:59:59Z';
 
     utilitiesStub.getUTCTime.returns(mockUtc);
-    utilitiesStub.subtractFromDate.withArgs(mockUtc, 7, 'day').returns(mockOneWeekBefore);
+    utilitiesStub.subtractFromDate.withArgs(mockUtc, 7, 'days').returns(mockOneWeekBefore);
     utilitiesStub.subtractFromDate.withArgs(mockUtc, 1, 'second').returns(mockOneSecondBefore);
     utilitiesStub.postgresDateFormat.callsFake(date => date);
 
     const response = await WeeklySubmittedReports.createReport('test', logger);
 
     expect(utilitiesStub.getUTCTime.calledOnce).to.be.true;
-    expect(utilitiesStub.subtractFromDate.calledWith(mockUtc, 7, 'day')).to.be.true;
+    expect(utilitiesStub.subtractFromDate.calledWith(mockUtc, 7, 'days')).to.be.true;
     expect(utilitiesStub.subtractFromDate.calledWith(mockUtc, 1, 'second')).to.be.true;
     expect(ReportsStub.calledWith({
       type: 'test',
@@ -88,7 +88,13 @@ describe('weekly_submitted_reports', () => {
       sendReport: sinon.stub().rejects(mockError)
     });
 
-    await WeeklySubmittedReports.createReport('test');
+    // Pass a logger with a log method that calls console.error
+    const fallbackLogger = {
+      log: (level, error) => console.error(error)
+    };
+
+    await WeeklySubmittedReports.createReport('test', fallbackLogger);
+
     expect(consoleErrorStub.calledWith(mockError)).to.be.true;
 
     consoleErrorStub.restore();

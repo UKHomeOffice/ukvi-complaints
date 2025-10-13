@@ -18,5 +18,9 @@ const generateReports = async () => {
   }
 };
 
-generateReports();
+// skip it for test mode, otherwise will fail unit test
+if (config.env !== 'test') {
+  generateReports();
+}
+
 module.exports = generateReports;

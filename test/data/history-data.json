@@ -1,15 +1,15 @@
 [
   {
-    "id": 14,
-    "submission_reference": "f84dcd3d-ff52-4e2d-b6cc-c2a8b5384da9",
+    "id": 30,
+    "submission_reference": "4a7bdad2-90fb-48c7-8ba4-95e2f5990185",
     "session": {
-      "submission-reference": "f84dcd3d-ff52-4e2d-b6cc-c2a8b5384da9",
-      "reason": "immigration-decision",
+      "submission-reference": "4a7bdad2-90fb-48c7-8ba4-95e2f5990185",
+      "reason": "immigration-application",
       "steps": [
         "/reason",
-        "/decision-outcome",
-        "/positive-outcome-where",
-        "/positive-outcome-inside",
+        "/immigration-application",
+        "/application-technical",
+        "/application-technical-outside-uk",
         "/application-ref-numbers",
         "/acting-as-agent",
         "/who-representing",
@@ -22,27 +22,35 @@
         "/upload-complaint-document",
         "/confirm"
       ],
-      "decision-outcome": "positive",
-      "where-applied-from": "inside-uk",
-      "reference-numbers": "none",
+      "immigration-application": "technical-issues",
+      "where-applied-from": "outside-uk",
+      "reference-numbers": "uan",
       "gwf-reference": "",
       "ho-reference": "",
       "ihs-reference": "",
-      "uan-reference": "",
+      "uan-reference": "1234-5678-9123-4567",
       "acting-as-agent": "yes",
-      "who-representing": "sponsor",
-      "agent-name": "Test Name",
-      "agent-email": "sas-hof-test@digital.homeoffice.gov.uk",
-      "agent-phone": "",
-      "agent-representative-name": "Bob Jones",
-      "agent-representative-dob": "1980-03-31",
-      "agent-representative-nationality": "Argentina",
-      "complaint-details": "TEST TEST TEST",
+      "who-representing": "legal-rep",
+      "agent-name": "Benjamin Clemons",
+      "agent-email": "anju.rajan@digital.homeoffice.gov.uk",
+      "agent-phone": "0(4875)(812499)",
+      "agent-representative-name": "Dolan Andrews",
+      "agent-representative-dob": "2009-02-06",
+      "agent-representative-nationality": "Australia",
+      "complaint-details": "Briefly summarise your complaint. Include anything that can help our investigation. For example, if your application was submitted alongside applications for family members.\r\n\r\nPlease do not provide bank details or names of staff members (if relevant). We will ask for them later if necessary.",
+      "upload-complaint-doc": [
+        {
+          "name": "cat.jpeg",
+          "mimetype": "image/jpeg",
+          "id": "54b7d111-a104-45c8-9b79-98d487b26602",
+          "url": "http://localhost:3000/file/generate-link/3701f27ee32b396b41ad424011224cdb"
+        }
+      ],
       "file-upload": ""
     },
-    "created_at": "2025-10-01 14:54:29.535276+01",
-    "updated_at": "2025-10-01 14:54:29.535276+01",
-    "submitted_at": "2025-10-01 14:54:29.415+01",
-    "expires_at": "2027-10-01"
+    "created_at": "2025-10-07 11:25:59.172714+01",
+    "updated_at": "2025-10-07 11:25:59.172714+01",
+    "submitted_at": "2025-10-07 11:25:59.064+01",
+    "expires_at": "2027-10-07"
   }
 ]

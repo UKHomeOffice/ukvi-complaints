@@ -252,7 +252,7 @@ steps:
     <<: *acceptance_tests
     commands:
       - |
-          export ACCEPTANCE_HOST_NAME=https://ukvic.uat.internal.sas-notprod.homeoffice.gov.uk
+          export ACCEPTANCE_HOST_NAME=https://ukvi-complaints.uat.internal.sas-notprod.homeoffice.gov.uk
           echo "ACCEPTANCE_HOST_NAME=$ACCEPTANCE_HOST_NAME"
           export CUCUMBER_PUBLISH_ENABLED=true
           npx playwright install

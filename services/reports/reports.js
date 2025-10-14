@@ -112,14 +112,13 @@ module.exports = class Reports {
 
       data.forEach(async record => {
         let session;
+        let documents = [];
 
         try {
           session = JSON.parse(record.session);
         } catch (e) {
           session = record.session;
         }
-        let agg = [];
-        let documents = [];
 
         Object.keys(session).forEach(function (key) {
           // prevent csv readers from converting the date format by wrapping it in ''

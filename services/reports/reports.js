@@ -100,7 +100,6 @@ module.exports = class Reports {
       const translations = this.#collectFieldsAndTranslations();
       const questionsTranslations = translations[0].pagesAndTranslations.map(obj => {
         return `${obj.translation}`.replaceAll(',', '-');
-        // return `${obj.translation}: {${obj.field}}`.replaceAll(',', '-');
       });
       const questionsFields = translations[0].pagesAndTranslations.map(obj => obj.field);
       const filePath = path.join(__dirname, `/../../data/${name}.csv`);
@@ -123,38 +122,14 @@ module.exports = class Reports {
         let documents = [];
 
         Object.keys(session).forEach(function (key) {
-          if (_.get(session[key], 'aggregatedValues')) {
-            agg = agg.concat(_.flatten(_.map(session[key].aggregatedValues, obj => obj.fields)));
-            // Initialise counter to track the number of each field
-            const fieldCounter = {};
-
-            // Iterate through each field and store with incremented key in session
-            agg.forEach(fieldObj => {
-              const baseField = fieldObj.field;
-
-              // Initialise or increment the counter
-              if (!fieldCounter[baseField]) {
-                fieldCounter[baseField] = 1;
-              } else {
-                fieldCounter[baseField]++;
-              }
-
-              // Set a new field name with a numeric suffix
-              const aggregatedFieldName = `${baseField}-${fieldCounter[baseField]}`;
-
-              // Set the value in the session
-              session[aggregatedFieldName] = fieldObj.value;
-            });
-          }
-
           // prevent csv readers from converting the date format by wrapping it in ''
-          const dobKeys = [
+          const dateKeys = [
             'called-date',
             'called-time',
             'when-applied'
           ];
 
-          if (dobKeys.includes(key)) {
+          if (dateKeys.includes(key)) {
             session[key] = `'${session[key]}'`;
           }
 
@@ -165,8 +140,6 @@ module.exports = class Reports {
           }
 
           session.submission_reference = record.submission_reference;
-          session.created_at = record.created_at;
-          session.updated_at = record.updated_at;
           session.submitted_at = record.submitted_at;
         });
 

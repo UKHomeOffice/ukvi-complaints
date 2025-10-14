@@ -154,6 +154,7 @@ module.exports = class Reports {
         const normalizedFieldStr = fieldStr
           .replace(/[’‘]/g, "'")
           .replace(/[\n\r\t]/g, ' ');
+
         await writeStream.write('\r\n' + normalizedFieldStr);
       });
 
@@ -273,16 +274,19 @@ module.exports = class Reports {
         );
       }
 
-      // This has to revisit
+      const seenKeys = new Set();
       const fieldsAndTranslations = Object.entries(fieldsTranslations)
         .flatMap(([, content]) =>
           content.options && typeof content.options === 'object'
             ? Object.entries(content.options)
-              .filter(([key]) => !omitKeys.includes(key))
-              .map(([key, value]) => ({
-                field: key,
-                translation: value.label.trim() || key
-              }))
+              .filter(([key]) => !omitKeys.includes(key) && !seenKeys.has(key))
+              .map(([key, value]) => {
+                seenKeys.add(key);
+                return {
+                  field: key,
+                  translation: value.label.trim() || key
+                };
+              })
             : []
         );
       return {pagesAndTranslations, fieldsAndTranslations};

@@ -216,6 +216,7 @@ module.exports = class Reports {
             level: 'info',
             message: `Error generated for UKVIC for ${this.type} CSV: ${error}`
           });
+          return reject(error);
         });
       });
     });

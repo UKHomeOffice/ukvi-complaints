@@ -234,6 +234,29 @@ describe('utils', () => {
     });
   });
 
+  describe('NotifyMock', () => {
+    const { NotifyClient } = proxyquire('../../lib/utils', {
+      '../config': {
+        email: {
+          notifyApiKey: 'USE_MOCK'
+        }
+      },
+      'notifications-node-client': {
+        NotifyClient: sinon.stub()
+      }
+    });
+
+    it('should resolve when sendEmail is called', async () => {
+      const client = new NotifyClient();
+      await expect(client.sendEmail()).to.eventually.be.undefined;
+    });
+
+    it('should do nothing when prepareUpload is called', () => {
+      const client = new NotifyClient();
+      expect(client.prepareUpload()).to.be.undefined;
+    });
+  });
+
   describe('generateErrorMsg tests', () => {
     it('Returns a full message when the error object has all properties', () => {
       const mockError = {

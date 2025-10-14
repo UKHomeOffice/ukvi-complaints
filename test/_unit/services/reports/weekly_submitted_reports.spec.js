@@ -1,7 +1,6 @@
 'use strict';
 
 const { expect } = require('chai');
-const sinon = require('sinon');
 const proxyquire = require('proxyquire');
 const mockCsvOutput = require('../../../data/csv-output.json');
 const mockHistoryData = require('../../../data/history-data.json');
@@ -41,7 +40,7 @@ describe('weekly_submitted_reports', () => {
     sinon.restore();
   });
 
-  it('should create a report of daily submissions and return response', async () => {
+  it('should create a report of weekly submissions and return response', async () => {
     const mockUtc = '2025-05-19T00:00:00Z';
     const mockOneWeekBefore = '2025-05-12T00:00:00Z';
     const mockOneSecondBefore = '2025-05-18T23:59:59Z';
@@ -88,15 +87,12 @@ describe('weekly_submitted_reports', () => {
       sendReport: sinon.stub().rejects(mockError)
     });
 
-    // Pass a logger with a log method that calls console.error
     const fallbackLogger = {
-      log: (level, error) => console.error(error)
+      log: consoleErrorStub
     };
 
     await WeeklySubmittedReports.createReport('test', fallbackLogger);
-
-    expect(consoleErrorStub.calledWith(mockError)).to.be.true;
-
+    expect(consoleErrorStub.calledWith('error', mockError)).to.be.true;
     consoleErrorStub.restore();
   });
 });

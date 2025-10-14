@@ -1,4 +1,3 @@
-const sinon = require('sinon');
 const { expect } = require('chai');
 
 const WeeklySubmittedReports = require('../../../../services/reports/weekly_submitted_reports.js');

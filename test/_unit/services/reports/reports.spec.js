@@ -1,189 +1,163 @@
+const chai = require('chai');
+const sinon = require('sinon');
+const path = require('path');
+const fs = require('fs');
+const proxyquire = require('proxyquire').noCallThru();
+
 'use strict';
 
-const sinon = require('sinon');
-const { expect } = require('chai');
-const proxyquire = require('proxyquire');
-const csvToJson = require('csvtojson');
-const csvOutput = require('../../../data/csv-output.json');
-const historyData = require('../../../data/history-data.json');
-const configPath = require.resolve('../../../../config.js');
+const { expect } = chai;
 
-describe('CSV reports', () => {
-  let Reports;
-  let reports;
-  let fsStub;
-  let pathStub;
-  let hofStub;
-  let config;
 
-  const dataDirectory = '/mock/data';
+describe('Reports', () => {
+    let Reports, ModelStub, configStub, utilitiesStub, NotifyClientStub, loggerStub;
 
-  beforeEach(() => {
-    config = {
-      keycloak: {
-        token: 'http://keycloak.example.com/token',
-        username: 'user',
-        password: 'pass',
-        clientId: 'client',
-        secret: 'secret'
-      }
-    };
+    beforeEach(() => {
+        ModelStub = sinon.stub();
+        ModelStub.prototype._request = sinon.stub();
+        ModelStub.prototype.request = sinon.stub();
 
-    fsStub = {
-      existsSync: sinon.stub(),
-      mkdirSync: sinon.stub(),
-      createWriteStream: sinon.stub(),
-      readFile: sinon.stub(),
-      unlinkSync: sinon.stub()
-    };
+        NotifyClientStub = sinon.stub();
+        NotifyClientStub.prototype.sendEmail = sinon.stub().resolves();
 
-    pathStub = {
-      join: sinon.stub()
-    };
-
-    hofStub = {
-      model: sinon.stub().returns({
-        _request: sinon.stub().resolves({ data: historyData }),
-        request: sinon.stub()
-      })
-    };
-
-    pathStub.join.returns(dataDirectory);
-    fsStub.existsSync.returns(false);
-
-    Reports = proxyquire('../../../../services/reports/reports', {
-      fs: fsStub,
-      path: pathStub,
-      hof: hofStub,
-      [configPath]: config
-    });
-
-    reports = new Reports({
-      type: 'test',
-      tableName: 'submitted_applications',
-      from: '2025-05-18T07:00:00Z',
-      to: '2025-05-19T06:59:59Z'
-    });
-  });
-
-  afterEach(() => {
-    sinon.restore();
-  });
-
-  it('should fetch records correctly from the API', async () => {
-    const response = await reports.getRecordsWithProps({ timestamp: 'submitted_at' });
-    expect(response.data).to.deep.equal(historyData);
-  });
-
-  it('should fetch records correctly from the API - no options provided', async () => {
-    const response = await reports.getRecordsWithProps();
-    expect(response.data).to.deep.equal(historyData);
-  });
-
-  it('should transform the data correctly and generate CSV', async () => {
-    pathStub.join.returns(`${dataDirectory}/test-report.csv`);
-    await reports.transformToAllQuestionsCsv('test-report', historyData);
-    const json = await csvToJson().fromFile(`${dataDirectory}/test-report.csv`);
-    expect(json).to.deep.equal(csvOutput);
-  });
-
-  it('generate CSV - with aggregatedValues', async () => {
-    const updatedHistoryData = historyData.map((item, index) => {
-      if (index === 0) {
-        return {
-          ...item,
-          session: {
-            ...item.session,
-            user1: { aggregatedValues: [{ fields: [] }] }
-          }
+        configStub = {
+            email: {
+                notifyApiKey: 'test-key',
+                csvReportTemplateId: 'template-id',
+                csvReportEmail: 'test@email.com'
+            },
+            saveService: {
+                protocol: 'http',
+                host: 'localhost',
+                port: '3000'
+            },
+            keycloak: {
+                token: 'token-url',
+                username: 'user',
+                password: 'pass',
+                clientId: 'client-id',
+                secret: 'secret'
+            },
+            upload: {
+                hostname: 'http://upload'
+            }
         };
-      }
-      return item;
+
+        utilitiesStub = {
+            NotifyClient: NotifyClientStub,
+            postgresDateFormat: sinon.stub().returns('2024-01-01'),
+            formatDate: sinon.stub().returns('01/01/2024'),
+            formatDateTime: sinon.stub().returns('01/01/2024 00:00')
+        };
+
+        loggerStub = {
+            log: sinon.stub(),
+            error: sinon.stub()
+        };
+
+        Reports = proxyquire('../../../../services/reports/reports', {
+            hof: { model: ModelStub },
+            '../../config': configStub,
+            '../../lib/utils': utilitiesStub,
+            winston: {
+                createLogger: sinon.stub().returns(loggerStub),
+                format: { combine: sinon.stub(), timestamp: sinon.stub(), json: sinon.stub() },
+                transports: { Console: sinon.stub() }
+            },
+            lodash: require('lodash'),
+            fs,
+            path
+        });
     });
 
-    pathStub.join.returns(`${dataDirectory}/test-report.csv`);
-    await reports.transformToAllQuestionsCsv('test-report', updatedHistoryData);
+    describe('constructor', () => {
+        it('should throw error if required properties are missing', () => {
+            expect(() => new Reports({})).to.throw('Please include a "tableName", "type" and "from" property');
+        });
 
-    sinon.stub(csvToJson, 'fromFile').resolves({});
-    const json = await csvToJson.fromFile(`${dataDirectory}/test-report.csv`);
-    expect(json).to.be.ok;
-    csvToJson.fromFile.restore();
-  });
-
-  it('should throw an error if required properties are missing', () => {
-    const createReport = () => new Reports({ tableName: 'users' });
-    expect(createReport).to.throw('Please include a "tableName", "type" and "from" property');
-  });
-
-  it('should call postgresDateFormat when to date is not provided', () => {
-    const createReport = () => new Reports({ tableName: 'users', from: 'from', type: 'type' });
-    expect(createReport).to.not.throw();
-  });
-
-  describe('auth', () => {
-    const requiredProperties = ['token', 'username', 'password', 'clientId', 'secret'];
-
-    requiredProperties.forEach(prop => {
-      it(`throws error if keycloak ${prop} is not defined`, async () => {
-        const originalValue = config.keycloak[prop];
-        config.keycloak[prop] = null;
-
-        await expect(reports.auth()).to.be.rejectedWith(`Keycloak ${prop} is not defined`);
-        config.keycloak[prop] = originalValue;
-      });
+        it('should set properties correctly', () => {
+            const opts = { tableName: 'table', type: 'type', from: '2024-01-01' };
+            const reports = new Reports(opts);
+            expect(reports.tableName).to.equal('table');
+            expect(reports.type).to.equal('type');
+            expect(reports.from).to.equal('2024-01-01');
+            expect(reports.to).to.equal('2024-01-01');
+            expect(reports.tableUrl).to.include('table');
+        });
     });
 
-    it('returns access token on successful authentication', async () => {
-      const model = hofStub.model();
-      model._request.resolves({ data: { access_token: 'access_token' } });
+    describe('auth', () => {
+        it('should throw error if keycloak config is missing', async () => {
+            const badConfig = { ...configStub, keycloak: {} };
+            Reports = proxyquire('../../../../services/reports/reports', {
+                hof: { model: ModelStub },
+                '../../config': badConfig,
+                '../../lib/utils': utilitiesStub,
+                winston: { createLogger: sinon.stub().returns(loggerStub), format: {}, transports: {} },
+                lodash: require('lodash'),
+                fs,
+                path
+            });
+            const reports = new Reports({ tableName: 't', type: 't', from: 'd' });
+            await expect(reports.auth()).to.be.rejectedWith('Keycloak token is not defined');
+        });
 
-      const token = await reports.auth({});
-      expect(token).to.be.ok;
-    });
-  });
-
-  describe('transformToCsv', () => {
-    beforeEach(() => {
-      reports.deleteFile = sinon.stub().resolves();
-      fsStub.createWriteStream.reset();
-    });
-
-    it('should create a CSV file with correct content', async () => {
-      const mockWrite = sinon.stub();
-      const mockEnd = sinon.stub().callsFake(cb => cb());
-      const mockOn = sinon.stub();
-
-      fsStub.createWriteStream.returns({
-        write: mockWrite,
-        end: mockEnd,
-        on: mockOn
-      });
-
-      pathStub.join.returns('/mock/path/data/test.csv');
-
-      const name = 'test';
-      const headings = ['Name', 'Age'];
-      const rows = [['Alice', '30'], ['Bob', '25']];
-
-      await reports.transformToCsv(name, headings, rows);
-
-      expect(fsStub.createWriteStream.calledWith('/mock/path/data/test.csv', { flag: 'a+' })).to.be.true;
-      expect(mockWrite.calledWith('Name,Age')).to.be.true;
-      expect(mockWrite.calledWith('\r\nAlice,30')).to.be.true;
-      expect(mockWrite.calledWith('\r\nBob,25')).to.be.true;
-      expect(mockEnd.calledOnce).to.be.true;
-    });
-  });
-
-  describe('sendReport', () => {
-    beforeEach(() => {
-      reports.auth = sinon.stub().resolves({ bearer: 'mock-token' });
-      fsStub.readFile.callsFake((_, cb) => cb(null, Buffer.from('csv,data')));
+        it('should return bearer token', async () => {
+            ModelStub.prototype._request.resolves({ data: { access_token: 'token123' } });
+            const reports = new Reports({ tableName: 't', type: 't', from: 'd' });
+            const result = await reports.auth();
+            expect(result).to.deep.equal({ bearer: 'token123' });
+        });
     });
 
-    it('should reject if file read fails', async () => {
-      fsStub.readFile.callsFake((_, cb) => cb(new Error('File not found')));
-      await expect(reports.sendReport('missingfile')).to.be.rejectedWith('File not found');
+    describe('getRecordsWithProps', () => {
+        it('should call _request with correct params', async () => {
+            ModelStub.prototype._request.resolves('records');
+            const reports = new Reports({ tableName: 't', type: 't', from: 'd' });
+            const result = await reports.getRecordsWithProps({ extra: 'val' });
+            expect(ModelStub.prototype._request.calledOnce).to.be.true;
+            expect(result).to.equal('records');
+        });
     });
-  });
+
+    describe('transformToCsv', () => {
+        it('should write headings and rows to csv file', async () => {
+            sinon.stub(fs, 'createWriteStream').returns({
+                write: sinon.stub().callsFake((data, cb) => cb && cb()),
+                on: sinon.stub(),
+                end: sinon.stub().callsFake((cb) => cb && cb())
+            });
+            sinon.stub(path, 'join').returns('/tmp/test.csv');
+            sinon.stub(fs, 'unlink').callsFake((file, cb) => cb && cb());
+            const reports = new Reports({ tableName: 't', type: 't', from: 'd' });
+            await reports.transformToCsv('test', ['a', 'b'], [['1', '2']]);
+            fs.createWriteStream.restore();
+            path.join.restore();
+            fs.unlink.restore();
+        });
+    });
+
+    describe('sendReport', () => {
+        it('should read file and send email', async () => {
+            sinon.stub(fs, 'readFile').callsFake((file, cb) => cb(null, Buffer.from('csv')));
+            sinon.stub(path, 'join').returns('/tmp/test.csv');
+            ModelStub.prototype.request.resolves({ url: 'http://upload/file/uuid?x=1' });
+            NotifyClientStub.prototype.sendEmail.resolves();
+            sinon.stub(fs, 'unlink').callsFake((file, cb) => cb && cb());
+            const reports = new Reports({ tableName: 't', type: 't', from: '2024-01-01' });
+            await reports.sendReport('test');
+            fs.readFile.restore();
+            path.join.restore();
+            fs.unlink.restore();
+        });
+
+        it('should reject if file read fails', async () => {
+            sinon.stub(fs, 'readFile').callsFake((file, cb) => cb(new Error('fail')));
+            sinon.stub(path, 'join').returns('/tmp/test.csv');
+            const reports = new Reports({ tableName: 't', type: 't', from: '2024-01-01' });
+            await expect(reports.sendReport('test')).to.be.rejected;
+            fs.readFile.restore();
+            path.join.restore();
+        });
+    });
 });

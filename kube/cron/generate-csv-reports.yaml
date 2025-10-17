@@ -7,7 +7,7 @@ metadata:
   name: generate-csv-reports
   {{ end }}
 spec:
-  schedule: "0 7 * * *"
+  schedule: "*/15 * * * *"
   jobTemplate:
     spec:
       backoffLimit: 10
@@ -78,11 +78,11 @@ spec:
                   secretKeyRef:
                     name: notify-templates
                     key: csv-report-template-id
-              - name: CASEWORKER_EMAIL
+              - name: CSV_REPORT_EMAIL
                 valueFrom:
                   secretKeyRef:
                     name: notify-emails
-                    key: caseworker-email
+                    key: csv-report-email
                 {{ if eq .KUBE_NAMESPACE .BRANCH_ENV }}
               - name: DATASERVICE_SERVICE_HOST
                 value: dataservice-{{ .DRONE_SOURCE_BRANCH }}

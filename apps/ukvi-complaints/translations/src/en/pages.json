@@ -404,6 +404,9 @@
       "complaint-reason-previous": {
         "label": "What was your original complaint about"
       },
+      "applicant-nationality": {
+        "label": "Country of nationality"
+      },
       "upload-complaint-doc": {
         "label": "Files uploaded"
       },

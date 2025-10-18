@@ -16,6 +16,13 @@ spec:
           {{ else }}
           name: {{ .APP_NAME }}
           {{ end }}
+    - podSelector:
+        matchLabels:
+          {{ if eq .KUBE_NAMESPACE .BRANCH_ENV }}
+          name: generate-csv-reports-{{ .DRONE_SOURCE_BRANCH }}
+          {{ else }}
+          name: generate-csv-reports
+          {{ end }}
     ports:
     - port: 3443
       protocol: TCP

@@ -407,6 +407,9 @@
       "applicant-nationality": {
         "label": "Country of nationality"
       },
+      "agent-representative-nationality": {
+        "label": "Applicant’s country of nationality"
+      },
       "upload-complaint-doc": {
         "label": "Files uploaded"
       },

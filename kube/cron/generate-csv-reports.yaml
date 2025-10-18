@@ -73,16 +73,6 @@ spec:
                   secretKeyRef:
                     name: keycloak-user
                     key: password
-              - name: CSV_REPORT_TEMPLATE_ID
-                valueFrom:
-                  secretKeyRef:
-                    name: notify-templates
-                    key: csv-report-template-id
-              - name: CSV_REPORT_EMAIL
-                valueFrom:
-                  secretKeyRef:
-                    name: notify-emails
-                    key: csv-report-email
                 {{ if eq .KUBE_NAMESPACE .BRANCH_ENV }}
               - name: DATASERVICE_SERVICE_HOST
                 value: dataservice-{{ .DRONE_SOURCE_BRANCH }}

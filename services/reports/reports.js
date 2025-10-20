@@ -66,7 +66,7 @@ module.exports = class Reports {
     props.from = this.from;
     props.to = this.to;
 
-    url = this.#addQueries(url, props);
+    url = this._addQueries(url, props);
 
     const model = new Model();
     const params = {
@@ -80,7 +80,7 @@ module.exports = class Reports {
   transformToCsv(name, headings, rows) {
     return new Promise(async (resolve, reject) => {
       const filePath = path.join(__dirname, `/../../data/${name}.csv`);
-      await this.#deleteFile(filePath, reject);
+      await this._deleteFile(filePath, reject);
 
       const writeStream = fs.createWriteStream(filePath, { flag: 'a+' });
       // there are commas in questions so using ; as an alternative CSV file delimiter
@@ -97,7 +97,7 @@ module.exports = class Reports {
 
   transformToAllQuestionsCsv(name, data) {
     return new Promise(async (resolve, reject) => {
-      const translations = this.#collectFieldsAndTranslations();
+      const translations = this._collectFieldsAndTranslations();
       const { pagesAndTranslations, fieldsAndTranslations } = translations[0];
 
       const questionsTranslations = pagesAndTranslations.map(obj => {
@@ -106,7 +106,7 @@ module.exports = class Reports {
       const questionsFields = pagesAndTranslations.map(obj => obj.field);
       const filePath = path.join(__dirname, `/../../data/${name}.csv`);
 
-      await this.#deleteFile(filePath, reject);
+      await this._deleteFile(filePath, reject);
 
       const writeStream = fs.createWriteStream(filePath, { flag: 'a+', encoding: 'utf8' });
       await writeStream.write(questionsTranslations.join(','));
@@ -209,7 +209,7 @@ module.exports = class Reports {
             level: 'info',
             message: `Email sent to UKVIC CSV users successfully for ${this.type}`
           });
-          await this.#deleteFile(filePath, reject);
+          await this._deleteFile(filePath, reject);
           return resolve();
         }).catch(error => {
           logger.log({
@@ -222,7 +222,7 @@ module.exports = class Reports {
     });
   }
 
-  #addQueries(domain, opts) {
+  _addQueries(domain, opts) {
     let url = `${domain}?`;
 
     Object.keys(opts).forEach(function (key) {
@@ -232,7 +232,7 @@ module.exports = class Reports {
     return url;
   }
 
-  #collectFieldsAndTranslations() {
+  _collectFieldsAndTranslations() {
     const journeys = ['ukvi-complaints'];
 
     return _.flatten(_.map(journeys, journey => {
@@ -293,7 +293,7 @@ module.exports = class Reports {
     }));
   }
 
-  async #deleteFile(file, callback) {
+  async _deleteFile(file, callback) {
     await fs.unlink(file, err => {
       if (err && err.code !== 'ENOENT') {
         callback(err);

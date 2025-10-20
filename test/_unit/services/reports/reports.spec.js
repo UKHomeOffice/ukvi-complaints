@@ -228,4 +228,40 @@ describe('Reports Service', () => {
       })).to.be.true;
     });
   });
+
+  describe('private methods', () => {
+    it('should add queries to url', () => {
+      const url = reports._addQueries('http://example.com', { a: 1, b: 2 });
+      expect(url).to.include('a=1');
+      expect(url).to.include('b=2');
+    });
+
+    it('should collect fields and translations', () => {
+      utilitiesStub.sanitiseCsvValue.returnsArg(0);
+      // Mock require for translations
+      const fields = { foo: { options: { bar: { label: 'Bar' } } } };
+      const pages = { confirm: { fields: { bar: { label: 'Bar' } } } };
+      const requireStub = sinon.stub();
+      requireStub.withArgs('../../apps/ukvi-complaints/translations/src/en/fields').returns(fields);
+      requireStub.withArgs('../../apps/ukvi-complaints/translations/src/en/pages').returns(pages);
+      const originalRequire = module.constructor.prototype.require;
+      module.constructor.prototype.require = requireStub;
+      const result = reports._collectFieldsAndTranslations();
+      expect(result[0].pagesAndTranslations).to.be.an('array');
+      expect(result[0].fieldsAndTranslations).to.be.an('array');
+      module.constructor.prototype.require = originalRequire;
+    });
+
+    it('should handle deleteFile with ENOENT error gracefully', async () => {
+      fsStub.unlink.callsFake((_, cb) => cb({ code: 'ENOENT' }));
+      await reports._deleteFile('/mock/file.csv', () => { throw new Error('Should not be called'); });
+    });
+
+    it('should call callback on deleteFile error (not ENOENT)', async () => {
+      let called = false;
+      fsStub.unlink.callsFake((_, cb) => cb({ code: 'EACCES' }));
+      await reports._deleteFile('/mock/file.csv', () => { called = true; });
+      expect(called).to.be.true;
+    });
+  });
 });

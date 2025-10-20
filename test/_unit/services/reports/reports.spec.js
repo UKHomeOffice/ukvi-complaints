@@ -3,19 +3,11 @@
 const { expect } = require('chai');
 const proxyquire = require('proxyquire');
 // const path = require('path');
-// const stream = require('stream');
 const historyData = require('../../../data/history-data.json');
 // const csvOutput = require('../../../data/csv-output.json');
 const configPath = require.resolve('../../../../config.js');
 
-const loggerInstanceStub = {
-  log: sinon.stub(),
-  error: sinon.stub()
-};
 
-const winstonStub = {
-  createLogger: sinon.stub().returns(loggerInstanceStub)
-};
 
 describe('Reports Service', () => {
   let Reports;
@@ -28,6 +20,15 @@ describe('Reports Service', () => {
   let notifyClientStub;
 
   const dataDirectory = '/mock/data';
+
+  const loggerInstanceStub = {
+    log: sinon.stub(),
+    error: sinon.stub()
+  };
+
+  const winstonStub = {
+    createLogger: sinon.stub().returns(loggerInstanceStub)
+  };
 
   beforeEach(() => {
     config = {
@@ -61,6 +62,7 @@ describe('Reports Service', () => {
       postgresDateFormat: sinon.stub().returns('2025-05-19T06:59:59Z'),
       formatDate: sinon.stub().returns('13 October'),
       formatDateTime: sinon.stub().returns('13 October 2025 13:45'),
+      sanitiseCsvValue: sinon.stub().callsFake(val => val),
       NotifyClient: sinon.stub().returns(notifyClientStub)
     };
 
@@ -103,12 +105,12 @@ describe('Reports Service', () => {
 
   describe('constructor', () => {
     it('should throw error if required properties are missing', () => {
-      const createReport = () => new Reports({ tableName: 'users' });
+      const createReport = () => new Reports({ tableName: 'submitted_applications' });
       expect(createReport).to.throw('Please include a "tableName", "type" and "from" property');
     });
 
     it('should call postgresDateFormat when to date is not provided', () => {
-      const createReport = () => new Reports({ tableName: 'users', from: 'from', type: 'type' });
+      const createReport = () => new Reports({ tableName: 'submitted_applications', from: 'from', type: 'type' });
       expect(createReport).to.not.throw();
     });
   });

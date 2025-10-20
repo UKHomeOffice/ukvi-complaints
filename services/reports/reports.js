@@ -98,16 +98,17 @@ module.exports = class Reports {
   transformToAllQuestionsCsv(name, data) {
     return new Promise(async (resolve, reject) => {
       const translations = this.#collectFieldsAndTranslations();
-      const questionsTranslations = translations[0].pagesAndTranslations.map(obj => {
-        return `${obj.translation}`.replaceAll(',', '-');
+      const { pagesAndTranslations, fieldsAndTranslations } = translations[0];
+
+      const questionsTranslations = pagesAndTranslations.map(obj => {
+        return utilities.sanitiseCsvValue(`${obj.translation}`);
       });
-      const questionsFields = translations[0].pagesAndTranslations.map(obj => obj.field);
+      const questionsFields = pagesAndTranslations.map(obj => obj.field);
       const filePath = path.join(__dirname, `/../../data/${name}.csv`);
 
       await this.#deleteFile(filePath, reject);
 
       const writeStream = fs.createWriteStream(filePath, { flag: 'a+', encoding: 'utf8' });
-      // there are commas in questions so using ; as an alternative CSV file delimiter
       await writeStream.write(questionsTranslations.join(','));
 
       data.forEach(async record => {
@@ -144,17 +145,16 @@ module.exports = class Reports {
 
         const fieldStr = questionsFields.map(field => {
           const sessionValue = session[field];
-          const translationEntry = translations[0].fieldsAndTranslations.find(item => item.field === sessionValue);
+          const translationEntry = fieldsAndTranslations.find(item => item.field === sessionValue);
           const translatedValue = translationEntry ? translationEntry.translation : sessionValue;
           const finalValue = translatedValue || '';
 
-          return (Array.isArray(finalValue) ? finalValue.join(' | ') : finalValue).replaceAll(',', '-');
+          return utilities.sanitiseCsvValue(Array.isArray(finalValue)
+            ? finalValue.join(' | ')
+            : finalValue);
         }).join(',');
-        const normalizedFieldStr = fieldStr
-          .replace(/[’‘]/g, "'")
-          .replace(/[\n\r\t]/g, ' ');
 
-        await writeStream.write('\r\n' + normalizedFieldStr);
+        await writeStream.write('\r\n' + fieldStr);
       });
 
       writeStream.on('error', reject);

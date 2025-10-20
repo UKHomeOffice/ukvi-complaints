@@ -295,4 +295,34 @@ describe('utils', () => {
       expect(result).to.equal('Some error');
     });
   });
+
+  describe('sanitiseCsvValue', () => {
+    it('should replace commas with hyphens', () => {
+      const result = utils.sanitiseCsvValue('apple, banana');
+      expect(result).to.equal('apple- banana');
+    });
+
+    it('should replace curly quotes with straight quotes', () => {
+      const result = utils.sanitiseCsvValue('It’s ‘fine’');
+      expect(result).to.equal("It's 'fine'");
+    });
+
+    it('should replace newlines, carriage returns, and tabs with spaces', () => {
+      const result = utils.sanitiseCsvValue('line1\nline2\rline3\tline4');
+      expect(result).to.equal('line1 line2 line3 line4');
+    });
+
+    it('should return non-string values unchanged', () => {
+      expect(utils.sanitiseCsvValue(123)).to.equal(123);
+      expect(utils.sanitiseCsvValue(null)).to.equal(null);
+      expect(utils.sanitiseCsvValue(undefined)).to.equal(undefined);
+      expect(utils.sanitiseCsvValue(['a', 'b'])).to.deep.equal(['a', 'b']);
+    });
+
+    it('should handle combined cases correctly', () => {
+      const input = '‘Hello’,\nworld\tIt’s fine';
+      const expected = "'Hello'- world It's fine";
+      expect(utils.sanitiseCsvValue(input)).to.equal(expected);
+    });
+  });
 });

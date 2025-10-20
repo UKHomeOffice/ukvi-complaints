@@ -7,8 +7,6 @@ const historyData = require('../../../data/history-data.json');
 // const csvOutput = require('../../../data/csv-output.json');
 const configPath = require.resolve('../../../../config.js');
 
-
-
 describe('Reports Service', () => {
   let Reports;
   let reports;

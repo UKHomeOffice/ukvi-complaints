@@ -944,7 +944,6 @@ module.exports = {
       template: 'confirmation'
     },
     '/accessibility': {},
-    '/session-timeout': {},
     '/exit': {}
   }
 };

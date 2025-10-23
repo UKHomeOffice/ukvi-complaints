@@ -17,7 +17,7 @@ module.exports = {
     noEmail: process.env.NO_EMAIL_GIVEN_INBOX
   },
   hosts: {
-    acceptanceTests: process.env.ACCEPTANCE_HOST_NAME
+    acceptanceTests: process.env.ACCEPTANCE_HOST_NAME || `http://localhost:${process.env.PORT || 8080}`
   },
   awsSqs: {
     region: process.env.AWS_REGION,

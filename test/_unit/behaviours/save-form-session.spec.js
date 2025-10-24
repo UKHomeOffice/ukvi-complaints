@@ -55,30 +55,6 @@ describe('save-form-session', () => {
       expect(result.data.submitted_at).to.be.a('string');
       expect(new Date(result.data.submitted_at).toString()).to.not.equal('Invalid Date');
     });
-
-    it('should return PATCH request with submitted_at timestamp when id is provided', () => {
-      const patchObj = { foo: 'bar' };
-      const id = '123';
-      const result = instance.requestBody(id, patchObj, {});
-
-      expect(result.url).to.equal(`${applicationsUrl}/${id}`);
-      expect(result.method).to.equal('PATCH');
-      expect(result.data.foo).to.equal('bar');
-      expect(result.data.submitted_at).to.be.a('string');
-      expect(new Date(result.data.submitted_at).toString()).to.not.equal('Invalid Date');
-    });
-
-    it('should return PATCH request with submitted_at timestamp when id is provided', () => {
-      const patchObj = { foo: 'bar' };
-      const id = '123';
-      const result = instance.requestBody(id, patchObj);
-
-      expect(result.url).to.equal(`${applicationsUrl}/${id}`);
-      expect(result.method).to.equal('PATCH');
-      expect(result.data.foo).to.equal('bar');
-      expect(result.data.submitted_at).to.be.a('string');
-      expect(new Date(result.data.submitted_at).toString()).to.not.equal('Invalid Date');
-    });
   });
 
   describe('getSession', () => {

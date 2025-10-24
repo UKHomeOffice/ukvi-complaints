@@ -26,7 +26,7 @@ include_default_and_feature_branches: &include_default_and_feature_branches
   include:
     - master
     - feature/*
-
+    
 trigger:
   branch:
     <<: *include_default_and_feature_branches
@@ -40,6 +40,7 @@ linting: &linting
   environment:
     NOTIFY_KEY: USE_MOCK
   commands:
+    - yarn install --frozen-lockfile
     - yarn run test:lint
 
 unit_tests: &unit_tests

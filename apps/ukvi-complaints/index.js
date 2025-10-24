@@ -1,6 +1,7 @@
 'use strict';
 
 const config = require('../../config');
+const SetSubmissionReference = require('./behaviours/set-submission-reference');
 const conditionalContent = require('./behaviours/conditional-content');
 const customerEmailer = require('./behaviours/customer-email')(config.email);
 const caseworkerEmailer = require('./behaviours/caseworker-email')(config.email);
@@ -8,6 +9,8 @@ const SaveDocument = require('./behaviours/save-file');
 const RemoveDocument = require('./behaviours/remove-file');
 const sendToSQS = require('./behaviours/send-to-sqs');
 const ResetOnChange = require('./behaviours/reset-on-change');
+const SaveFormSession = require('./behaviours/save-form-session');
+const Summary = require('hof').components.summary;
 
 module.exports = {
   name: 'ukvi-complaints',
@@ -19,7 +22,7 @@ module.exports = {
   steps: {
     '/reason': {
       fields: ['reason'],
-      behaviours: [ResetOnChange({ field: 'reason' })],
+      behaviours: [ResetOnChange({ field: 'reason' }), SetSubmissionReference],
       next: '/immigration-application',
       forks: [{
         target: '/immigration-application',
@@ -886,7 +889,14 @@ module.exports = {
       next: '/confirm'
     },
     '/confirm': {
-      behaviours: [sendToSQS, caseworkerEmailer, customerEmailer, 'complete', require('hof').components.summary],
+      behaviours: [
+        sendToSQS,
+        SaveFormSession,
+        caseworkerEmailer,
+        customerEmailer,
+        'complete',
+        Summary
+      ],
       next: '/complete',
       sections: {
         'complaint-details': [

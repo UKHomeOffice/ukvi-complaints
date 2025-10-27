@@ -1,7 +1,7 @@
 'use strict';
 
-const fs = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
 const { model: Model } = require('hof');
 const config = require('../../config');
 const _ = require('lodash');
@@ -95,7 +95,7 @@ module.exports = class Reports {
     });
   }
 
-  transformToAllQuestionsCsv(name, data) {
+  transformToAllQuestionsCsv(fileName, data) {
     return new Promise(async (resolve, reject) => {
       const translations = this._collectFieldsAndTranslations();
       const { pagesAndTranslations, fieldsAndTranslations } = translations[0];
@@ -104,7 +104,7 @@ module.exports = class Reports {
         return utilities.sanitiseCsvValue(`${obj.translation}`);
       });
       const questionsFields = pagesAndTranslations.map(obj => obj.field);
-      const filePath = path.join(__dirname, `/../../data/${name}.csv`);
+      const filePath = path.join(__dirname, '..', '..', config.dataDirectory, `${fileName}.csv`);
 
       await this._deleteFile(filePath, reject);
 
@@ -163,7 +163,7 @@ module.exports = class Reports {
   }
 
   sendReport(fileName) {
-    const filePath = path.join(__dirname, `/../../data/${fileName}.csv`);
+    const filePath = path.join(__dirname, '..', '..', config.dataDirectory, `${fileName}.csv`);
 
     return new Promise((resolve, reject) => {
       return fs.readFile(filePath, (err, csvFile) => {

@@ -82,8 +82,8 @@ describe('Reports Service', () => {
     };
 
     Reports = proxyquire('../../../../services/reports/reports', {
-      fs: fsStub,
-      path: pathStub,
+      'node:fs': fsStub,
+      'node:path': pathStub,
       hof: hofStub,
       [configPath]: config,
       '../../lib/utils': utilitiesStub,

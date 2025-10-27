@@ -6,6 +6,17 @@ module.exports = {
   env: 'development',
   dateFormat: 'DD-MM-YYYY',
   dateTimeFormat: 'DD-MM-YYYY, hh:mma',
+  reportDateFormat: {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric'
+  },
+  reportTimeFormat: {
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false
+  },
   redis: {
     password: process.env.REDIS_PASSWORD
   },
@@ -58,5 +69,5 @@ module.exports = {
     port: process.env.DATASERVICE_SERVICE_PORT_HTTPS || '10443',
     host: process.env.DATASERVICE_SERVICE_HOST || '127.0.0.1'
   },
-  dataDirectory: './data'
+  dataDirectory: 'data'
 };

@@ -39,8 +39,8 @@ describe('generateReports', () => {
 
     // Load the module with proxyquire
     generateReports = proxyquire('../../../../services/reports/generate_reports.js', {
-      path: pathStub,
-      fs: fsStub,
+      'node:path': pathStub,
+      'node:fs': fsStub,
       '../../config.js': configStub,
       './index.js': {
         createReport: createReportStub

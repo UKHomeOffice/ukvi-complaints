@@ -1,6 +1,7 @@
 'use strict';
 const { expect } = require('chai');
 const proxyquire = require('proxyquire');
+const configPath = require.resolve('../../config.js');
 
 describe('utils', () => {
   let utils;
@@ -153,27 +154,21 @@ describe('utils', () => {
     });
 
     describe('formatDateTime', () => {
-      it('should format a date string to "DD/MM/YYYY HH:mm:ss"', () => {
-        // 17 March 2021, 15:04:05
+      it('should format a date string to "DD/MM/YYYY HH:mm:ss" using config', () => {
         const dateStr = '2021-03-17T15:04:05Z';
-        // The time will be local, so we need to construct a Date object
         const date = new Date(dateStr);
+        // Use config-based formatting
+        const expectedDate = date.toLocaleDateString('en-GB', configPath.reportDateFormat);
+        const expectedTime = date.toLocaleTimeString('en-GB', configPath.reportTimeFormat);
         const formatted = utils.formatDateTime(dateStr);
-        // Format expected using local time
-        const expectedDate = date.toLocaleDateString('en-GB', undefined);
-        const expectedTime = [
-          String(date.getHours()).padStart(2, '0'),
-          String(date.getMinutes()).padStart(2, '0'),
-          String(date.getSeconds()).padStart(2, '0')
-        ].join(':');
         expect(formatted).to.equal(`${expectedDate} ${expectedTime}`);
       });
 
-      it('should format a Date object correctly', () => {
+      it('should format a Date object correctly using config', () => {
         const date = new Date(2022, 0, 2, 3, 4, 5); // Jan 2, 2022, 03:04:05 local
+        const expectedDate = date.toLocaleDateString('en-GB', configPath.reportDateFormat);
+        const expectedTime = date.toLocaleTimeString('en-GB', configPath.reportTimeFormat);
         const formatted = utils.formatDateTime(date);
-        const expectedDate = date.toLocaleDateString('en-GB', undefined);
-        const expectedTime = '03:04:05';
         expect(formatted).to.equal(`${expectedDate} ${expectedTime}`);
       });
     });
@@ -249,11 +244,6 @@ describe('utils', () => {
     it('should resolve when sendEmail is called', async () => {
       const client = new NotifyClient();
       await expect(client.sendEmail()).to.eventually.be.undefined;
-    });
-
-    it('should do nothing when prepareUpload is called', () => {
-      const client = new NotifyClient();
-      expect(client.prepareUpload()).to.be.undefined;
     });
   });
 

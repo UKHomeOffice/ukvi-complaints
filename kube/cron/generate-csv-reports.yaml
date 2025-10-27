@@ -1,4 +1,4 @@
-apiVersion: batch/v1beta1
+apiVersion: batch/v1
 kind: CronJob
 metadata:
   {{ if eq .KUBE_NAMESPACE .BRANCH_ENV }}
@@ -76,8 +76,6 @@ spec:
                 {{ if eq .KUBE_NAMESPACE .BRANCH_ENV }}
               - name: DATASERVICE_SERVICE_HOST
                 value: dataservice-{{ .DRONE_SOURCE_BRANCH }}
-              - name: DATASERVICE_SERVICE_PORT_HTTPS
-                value: "10443"
                 {{ end }}
             command: ["npm", "run", "generate:reports"]
             resources:

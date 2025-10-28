@@ -56,7 +56,7 @@ module.exports = class Reports {
     };
     const model = new Model();
     const response = await model._request(tokenReq);
-    if (!response || !response.data || !response.data.access_token) {
+    if (!response?.data?.access_token) {
       logger.error('Keycloak response missing access_token', { response });
       throw new Error('Keycloak authentication failed: missing access_token');
     }

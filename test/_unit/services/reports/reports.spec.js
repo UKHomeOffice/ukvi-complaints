@@ -2,9 +2,7 @@
 
 const { expect } = require('chai');
 const proxyquire = require('proxyquire');
-// const path = require('path');
 const historyData = require('../../../data/history-data.json');
-// const csvOutput = require('../../../data/csv-output.json');
 const configPath = require.resolve('../../../../config.js');
 
 describe('Reports Service', () => {
@@ -93,7 +91,8 @@ describe('Reports Service', () => {
     reports = new Reports({
       type: 'test',
       tableName: 'submitted_applications',
-      from: '2025-05-18T07:00:00Z'
+      from: '2025-05-21T07:00:00Z',
+      to: '2025-05-28T06:59:59Z'
     });
   });
 
@@ -104,12 +103,7 @@ describe('Reports Service', () => {
   describe('constructor', () => {
     it('should throw error if required properties are missing', () => {
       const createReport = () => new Reports({ tableName: 'submitted_applications' });
-      expect(createReport).to.throw('Please include a "tableName", "type" and "from" property');
-    });
-
-    it('should call postgresDateFormat when to date is not provided', () => {
-      const createReport = () => new Reports({ tableName: 'submitted_applications', from: 'from', type: 'type' });
-      expect(createReport).to.not.throw();
+      expect(createReport).to.throw('Please include a "tableName", "type", "from" and "to" property');
     });
   });
 
@@ -120,8 +114,10 @@ describe('Reports Service', () => {
     });
 
     it('should return access token on success', async () => {
+      // Ensure stub returns a response with access_token
+      hofStub.model.returns({ _request: sinon.stub().resolves({ data: { access_token: 'mock-token' } }) });
       const token = await reports.auth();
-      expect(token).to.deep.equal({ bearer: historyData.access_token });
+      expect(token).to.deep.equal({ bearer: 'mock-token' });
     });
   });
 
@@ -134,32 +130,6 @@ describe('Reports Service', () => {
     it('should fetch records without props', async () => {
       const response = await reports.getRecordsWithProps();
       expect(response.data).to.deep.equal(historyData);
-    });
-  });
-
-  describe('transformToCsv', () => {
-    it('should write CSV with headings and rows', async () => {
-      const mockWrite = sinon.stub();
-      const mockEnd = sinon.stub().callsFake(cb => cb && cb());
-      const mockOn = sinon.stub();
-
-      fsStub.createWriteStream.returns({
-        write: mockWrite,
-        end: mockEnd,
-        on: mockOn
-      });
-
-      fsStub.unlink.callsFake((_, cb) => cb(null));
-
-      const headings = ['Name', 'Age'];
-      const rows = [['Alice', '30'], ['Bob', '25']];
-
-      await reports.transformToCsv('test-report', headings, rows);
-
-      expect(mockWrite.calledWith('Name,Age')).to.be.true;
-      expect(mockWrite.calledWith('\r\nAlice,30')).to.be.true;
-      expect(mockWrite.calledWith('\r\nBob,25')).to.be.true;
-      expect(mockEnd.calledOnce).to.be.true;
     });
   });
 

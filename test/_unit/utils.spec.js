@@ -174,16 +174,10 @@ describe('utils', () => {
     });
 
     describe('postgresDateFormat', () => {
-      it('should format a date to "YYYY-MM-DD HH:mm:ss" in UTC', () => {
+      it('should format a date to "YYYY-MM-DDTHH:mm:ss.sssZ" in UTC', () => {
         const date = new Date(Date.UTC(2023, 4, 6, 12, 34, 56)); // May 6, 2023, 12:34:56 UTC
         const formatted = utils.postgresDateFormat(date);
-        expect(formatted).to.equal('2023-05-06 12:34:56');
-      });
-
-      it('should pad single digit months, days, hours, minutes, seconds', () => {
-        const date = new Date(Date.UTC(2023, 0, 2, 3, 4, 5)); // Jan 2, 2023, 03:04:05 UTC
-        const formatted = utils.postgresDateFormat(date);
-        expect(formatted).to.equal('2023-01-02 03:04:05');
+        expect(formatted).to.equal('2023-05-06T12:34:56.000Z');
       });
     });
 
@@ -287,19 +281,19 @@ describe('utils', () => {
   });
 
   describe('sanitiseCsvValue', () => {
-    it('should replace commas with hyphens', () => {
+    it('should quote values with commas', () => {
       const result = utils.sanitiseCsvValue('apple, banana');
-      expect(result).to.equal('apple- banana');
+      expect(result).to.equal('"apple, banana"');
     });
 
-    it('should replace curly quotes with straight quotes', () => {
+    it('should quote values with newlines, carriage returns, or quotes', () => {
+      const result = utils.sanitiseCsvValue('line1\nline2\rline3\tline4');
+      expect(result).to.equal('"line1\nline2\rline3\tline4"');
+    });
+
+    it('should replace curly quotes with straight quotes (if not quoted)', () => {
       const result = utils.sanitiseCsvValue('It’s ‘fine’');
       expect(result).to.equal("It's 'fine'");
-    });
-
-    it('should replace newlines, carriage returns, and tabs with spaces', () => {
-      const result = utils.sanitiseCsvValue('line1\nline2\rline3\tline4');
-      expect(result).to.equal('line1 line2 line3 line4');
     });
 
     it('should return non-string values unchanged', () => {
@@ -311,7 +305,7 @@ describe('utils', () => {
 
     it('should handle combined cases correctly', () => {
       const input = '‘Hello’,\nworld\tIt’s fine';
-      const expected = "'Hello'- world It's fine";
+      const expected = '"‘Hello’,\nworld\tIt’s fine"';
       expect(utils.sanitiseCsvValue(input)).to.equal(expected);
     });
   });

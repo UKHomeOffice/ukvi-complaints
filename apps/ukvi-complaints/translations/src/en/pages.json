@@ -308,12 +308,6 @@
       }
     },
     "fields": {
-      "complaint-details": {
-        "label": "Complaint details"
-      },
-      "upload-complaint-doc": {
-        "label": "Files uploaded"
-      },
       "reason": {
         "label": "The reason for the complaint"
       },
@@ -409,6 +403,18 @@
       },
       "complaint-reason-previous": {
         "label": "What was your original complaint about"
+      },
+      "applicant-nationality": {
+        "label": "Country of nationality"
+      },
+      "agent-representative-nationality": {
+        "label": "Applicant’s country of nationality"
+      },
+      "upload-complaint-doc": {
+        "label": "Files uploaded"
+      },
+      "complaint-details": {
+        "label": "Complaint details"
       }
     }
   },

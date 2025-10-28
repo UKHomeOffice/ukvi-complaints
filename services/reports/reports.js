@@ -23,14 +23,14 @@ const notifyClient = new NotifyClient(notifyKey);
 
 module.exports = class Reports {
   constructor(opts) {
-    if (!opts.tableName || !opts.from || !opts.type) {
-      throw new Error('Please include a "tableName", "type" and "from" property');
+    if (!opts.tableName || !opts.from || !opts.to || !opts.type) {
+      throw new Error('Please include a "tableName", "type", "from" and "to" property');
     }
     this.type = opts.type;
     this.tableName = opts.tableName;
     this.tableUrl = `${baseUrl}/${opts.tableName}`;
     this.from = opts.from;
-    this.to = opts.to || utilities.postgresDateFormat();
+    this.to = opts.to;
   }
 
   async auth() {
@@ -56,6 +56,10 @@ module.exports = class Reports {
     };
     const model = new Model();
     const response = await model._request(tokenReq);
+    if (!response || !response.data || !response.data.access_token) {
+      logger.error('Keycloak response missing access_token', { response });
+      throw new Error('Keycloak authentication failed: missing access_token');
+    }
     return { bearer: response.data.access_token };
   }
 
@@ -75,24 +79,6 @@ module.exports = class Reports {
     };
 
     return await model._request(params);
-  }
-
-  transformToCsv(name, headings, rows) {
-    return new Promise(async (resolve, reject) => {
-      const filePath = path.join(__dirname, `/../../data/${name}.csv`);
-      await this._deleteFile(filePath, reject);
-
-      const writeStream = fs.createWriteStream(filePath, { flag: 'a+' });
-      // there are commas in questions so using ; as an alternative CSV file delimiter
-      await writeStream.write(headings.join(','));
-
-      rows.forEach(async record => {
-        await writeStream.write('\r\n' + record.join(','));
-      });
-
-      writeStream.on('error', reject);
-      writeStream.end(resolve);
-    });
   }
 
   transformToAllQuestionsCsv(fileName, data) {

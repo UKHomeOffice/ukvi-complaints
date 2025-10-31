@@ -4,6 +4,7 @@
   "behaviours": [
     "hof/components/session-timeout-warning"
   ],
+  "translations": "./apps/ukvi-complaints/translations",
   "routes": [
     "./apps/ukvi-complaints"
   ],

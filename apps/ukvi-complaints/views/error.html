@@ -1,4 +1,9 @@
 {{<layout}}
+  {{$propositionHeader}}
+     <div class="govuk-header__content">
+        <a href="{{startLink}}" class="govuk-header__link govuk-header__link--service-name" id="proposition-name">{{#t}}journey.serviceName{{/t}}</a>
+    </div>
+  {{/propositionHeader}}
   {{$header}}
     {{#error.formNotSubmitted}}
       {{#t}}pages.error.header{{/t}}

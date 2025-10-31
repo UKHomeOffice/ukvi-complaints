@@ -11,8 +11,7 @@
   "views": ["./apps/ukvi-complaints/views"],
   "session": {
     "name": "ukvi-complaints.hof.sid",
-    "ttl": 30
+    "ttl": 3600
   },
-  "sessionTimeOutWarning": 10,
   "getAccessibility": false
 }

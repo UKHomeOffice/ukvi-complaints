@@ -174,10 +174,10 @@ describe('utils', () => {
     });
 
     describe('postgresDateFormat', () => {
-      it('should format a date to "YYYY-MM-DDTHH:mm:ss.sssZ" in UTC', () => {
+      it('should format a date to "YYYY-MM-DD HH:mm:ss" in UTC', () => {
         const date = new Date(Date.UTC(2023, 4, 6, 12, 34, 56)); // May 6, 2023, 12:34:56 UTC
         const formatted = utils.postgresDateFormat(date);
-        expect(formatted).to.equal('2023-05-06T12:34:56.000Z');
+        expect(formatted).to.equal('2023-05-06 12:34:56');
       });
     });
 

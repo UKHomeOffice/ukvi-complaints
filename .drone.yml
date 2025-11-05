@@ -4,7 +4,7 @@ name: default
 type: kubernetes
 
 environment:
-  APP_NAME: ukvic
+  APP_NAME: ukvi-complaints
   PROD_ENV: ukvi-complaints
   STG_ENV: ukvi-complaints-stg
   UAT_ENV: ukvi-complaints-uat

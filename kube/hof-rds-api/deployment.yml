@@ -62,7 +62,7 @@ spec:
                   {{ if or (eq .KUBE_NAMESPACE .BRANCH_ENV) (eq .KUBE_NAMESPACE .UAT_ENV) }}
                   name: ukvicnotprod-rds
                   {{ else if eq .KUBE_NAMESPACE .STG_ENV }}
-                  name: {{ .APP_NAME }}-rds-stg
+                  name: ukvicomplaintsstg-rds
                   {{ else }}
                   name: ukvicomplaintsprod-rds
                   {{ end }}
@@ -73,20 +73,20 @@ spec:
                   {{ if or (eq .KUBE_NAMESPACE .BRANCH_ENV) (eq .KUBE_NAMESPACE .UAT_ENV) }}
                   name: ukvicnotprod-rds
                   {{ else if eq .KUBE_NAMESPACE .STG_ENV }}
-                  name: {{ .APP_NAME }}-rds-stg
+                  name: ukvicomplaintsstg-rds
                   {{ else }}
                   name: ukvicomplaintsprod-rds
                   {{ end }}
             - name: DB_USER
               valueFrom:
                 secretKeyRef:
-                  key: user
+                  key: username
                   {{ if or (eq .KUBE_NAMESPACE .BRANCH_ENV) (eq .KUBE_NAMESPACE .UAT_ENV) }}
                   name: ukvicnotprod-rds
                   {{ else if eq .KUBE_NAMESPACE .STG_ENV }}
-                  name: {{ .APP_NAME }}-rds-stg
+                  name: ukvicomplaintsstg-rds
                   {{ else }}
-                  name: ukvicomplaintsprod-rds
+                  name: ukvicomplaintsprod
                   {{ end }}
             - name: DB_PASS
               valueFrom:

@@ -6,13 +6,26 @@ module.exports = {
   env: 'development',
   dateFormat: 'DD-MM-YYYY',
   dateTimeFormat: 'DD-MM-YYYY, hh:mma',
+  reportDateFormat: {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric'
+  },
+  reportTimeFormat: {
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false
+  },
   redis: {
     password: process.env.REDIS_PASSWORD
   },
   email: {
-    notifyApiKey: process.env.NOTIFY_KEY,
+    notifyApiKey: process.env.NOTIFY_STUB === 'true' ? 'USE_MOCK' : process.env.NOTIFY_KEY,
     notifyTemplate: process.env.NOTIFY_TEMPLATE,
     caseworkerEmail: process.env.CASEWORKER_EMAIL,
+    csvReportTemplateId: process.env.CSV_REPORT_TEMPLATE_ID,
+    csvReportEmail: process.env.CSV_REPORT_EMAIL,
     // noEmail sets default inbox where an email is expected by govNotify but not requested in the form
     noEmail: process.env.NO_EMAIL_GIVEN_INBOX
   },
@@ -50,5 +63,11 @@ module.exports = {
     password: process.env.KEYCLOAK_PASSWORD,
     clientId: process.env.KEYCLOAK_CLIENT_ID,
     secret: process.env.KEYCLOAK_SECRET
-  }
+  },
+  saveService: {
+    protocol: process.env.DATASERVICE_USE_HTTPS === 'false' ? 'http' : 'https',
+    port: process.env.DATASERVICE_SERVICE_PORT_HTTPS || '10443',
+    host: process.env.DATASERVICE_SERVICE_HOST || '127.0.0.1'
+  },
+  dataDirectory: 'data'
 };

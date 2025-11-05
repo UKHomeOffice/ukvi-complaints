@@ -1,0 +1,88 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  {{ if eq .KUBE_NAMESPACE .BRANCH_ENV }}
+  name: generate-csv-reports-{{ .DRONE_SOURCE_BRANCH }}
+  {{ else }}
+  name: generate-csv-reports
+  {{ end }}
+spec:
+  schedule: "0 * * * *"
+  jobTemplate:
+    spec:
+      backoffLimit: 10
+      template:
+        metadata:
+          labels:
+            {{ if eq .KUBE_NAMESPACE .BRANCH_ENV }}
+            name: generate-csv-reports-{{ .DRONE_SOURCE_BRANCH }}
+            {{ else }}
+            name: generate-csv-reports
+            {{ end }}
+        spec:
+          containers:
+          - name: generate-csv-reports
+            image: {{ .IMAGE_URL }}/{{ .IMAGE_REPO }}:{{.DRONE_COMMIT_SHA}}
+            imagePullPolicy: Always
+            securityContext:
+              runAsNonRoot: true
+            envFrom:
+              - configMapRef:
+                  {{ if eq .KUBE_NAMESPACE .BRANCH_ENV }}
+                  name: {{ .APP_NAME }}-configmap-{{ .DRONE_SOURCE_BRANCH }}
+                  {{ else }}
+                  name: {{ .APP_NAME }}-configmap
+                  {{ end }}
+            env:
+              - name: NOTIFY_KEY
+                valueFrom:
+                  secretKeyRef:
+                    name: notify-key
+                    key: notify-key
+              - name: TZ
+                value: Europe/London
+              - name: NODE_TLS_REJECT_UNAUTHORIZED
+                value: "0"
+              - name: FILE_VAULT_URL
+                {{ if eq .KUBE_NAMESPACE .PROD_ENV }}
+                value: https://fv-{{ .APP_NAME }}.sas.homeoffice.gov.uk/file
+                {{ else if eq .KUBE_NAMESPACE .STG_ENV }}
+                value: https://fv-{{ .APP_NAME }}.stg.sas.homeoffice.gov.uk/file
+                {{ else if eq .KUBE_NAMESPACE .UAT_ENV }}
+                value: https://fv-{{ .APP_NAME }}.uat.sas-notprod.homeoffice.gov.uk/file
+                {{ else if eq .KUBE_NAMESPACE .BRANCH_ENV }}
+                value: https://fv-{{ .DRONE_SOURCE_BRANCH }}.branch.sas-notprod.homeoffice.gov.uk/file
+                {{ end }}
+              - name: KEYCLOAK_SECRET
+                valueFrom:
+                  secretKeyRef:
+                    name: keycloak-client
+                    key: secret
+              - name: KEYCLOAK_CLIENT_ID
+                valueFrom:
+                  secretKeyRef:
+                    name: keycloak-client
+                    key: id
+              - name: KEYCLOAK_USERNAME
+                valueFrom:
+                  secretKeyRef:
+                    name: keycloak-user
+                    key: username
+              - name: KEYCLOAK_PASSWORD
+                valueFrom:
+                  secretKeyRef:
+                    name: keycloak-user
+                    key: password
+                {{ if eq .KUBE_NAMESPACE .BRANCH_ENV }}
+              - name: DATASERVICE_SERVICE_HOST
+                value: dataservice-{{ .DRONE_SOURCE_BRANCH }}
+                {{ end }}
+            command: ["npm", "run", "generate:reports"]
+            resources:
+              requests:
+                memory: 4Gi
+                cpu: 200m
+              limits:
+                memory: 8Gi
+                cpu: 400m
+          restartPolicy: OnFailure

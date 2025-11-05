@@ -1,7 +1,6 @@
 'use strict';
 
 const Validator = require('jsonschema').Validator;
-const { v4: uuidv4 } = require('uuid');
 const config = require('../../../config');
 const { validAgainstSchema, sendToQueue } = require('../../../lib/utils');
 const formatComplaintData = require('../../../lib/format-complaint-data');
@@ -19,7 +18,7 @@ module.exports = superclass => class SendToSQS extends superclass {
         return next();
       }
 
-      complaintId = uuidv4();
+      complaintId = req.sessionModel.get('submission-reference');
       complaintData = formatComplaintData(req.sessionModel.attributes);
 
       if (validAgainstSchema(complaintData, new Validator())) {

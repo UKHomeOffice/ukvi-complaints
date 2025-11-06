@@ -80,7 +80,7 @@ spec:
             - name: DB_USER
               valueFrom:
                 secretKeyRef:
-                  key: username
+                  key: user
                   {{ if or (eq .KUBE_NAMESPACE .BRANCH_ENV) (eq .KUBE_NAMESPACE .UAT_ENV) }}
                   name: ukvicnotprod-rds
                   {{ else if eq .KUBE_NAMESPACE .STG_ENV }}

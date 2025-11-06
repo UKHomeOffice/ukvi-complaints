@@ -94,6 +94,10 @@ spec:
                   key: password
                   {{ if or (eq .KUBE_NAMESPACE .BRANCH_ENV) (eq .KUBE_NAMESPACE .UAT_ENV) }}
                   name: ukvicnotprod-rds
+                  {{ else if eq .KUBE_NAMESPACE .STG_ENV }}
+                  name: ukvicomplaintsstg-rds
+                  {{ else }}
+                  name: ukvicomplaintsprod
                   {{ end }}
           resources:
             requests:

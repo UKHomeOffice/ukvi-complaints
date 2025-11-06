@@ -86,7 +86,7 @@ spec:
                   {{ else if eq .KUBE_NAMESPACE .STG_ENV }}
                   name: ukvicomplaintsstg-rds
                   {{ else }}
-                  name: ukvicomplaintsprod
+                  name: ukvicomplaintsprod-rds
                   {{ end }}
             - name: DB_PASS
               valueFrom:
@@ -97,7 +97,7 @@ spec:
                   {{ else if eq .KUBE_NAMESPACE .STG_ENV }}
                   name: ukvicomplaintsstg-rds
                   {{ else }}
-                  name: ukvicomplaintsprod
+                  name: ukvicomplaintsprod-rds
                   {{ end }}
           resources:
             requests:

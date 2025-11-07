@@ -30,7 +30,7 @@ spec:
     {{ if eq .KUBE_NAMESPACE .PROD_ENV }}
     - host: ukvic-data-service.internal.sas.homeoffice.gov.uk
     {{ else if eq .KUBE_NAMESPACE .STG_ENV }}
-    - host: ukvic-data-service.internal.stg.sas.homeoffice.gov.uk
+    - host: data-service.stg.internal.ukvi-complaints.sas.homeoffice.gov.uk
     {{ else if eq .KUBE_NAMESPACE .UAT_ENV }}
     - host: ukvic-data-service.uat.internal.sas-notprod.homeoffice.gov.uk
     {{ else if eq .KUBE_NAMESPACE .BRANCH_ENV }}

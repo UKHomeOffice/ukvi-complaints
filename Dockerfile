@@ -3,9 +3,11 @@ FROM quay.io/ukhomeofficedigital/hof-nodejs:20.19.0-alpine3.21-v2@sha256:ab9686c
 USER root
 
 # Switch to UK Alpine mirrors, update package index and upgrade all installed packages
+# Rollback postgresql install later after investigation in staging environment
 RUN echo "http://uk.alpinelinux.org/alpine/v3.21/main" > /etc/apk/repositories ; \
     echo "http://uk.alpinelinux.org/alpine/v3.21/community" >> /etc/apk/repositories ; \
-    apk update && apk upgrade --no-cache
+    apk update && apk upgrade --no-cache && \
+    apk add postgresql
 
 # Setup nodejs group & nodejs user
 RUN addgroup --system nodejs --gid 998 && \

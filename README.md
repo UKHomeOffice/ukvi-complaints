@@ -24,9 +24,8 @@ The UKVI complaints service is a HOF app that users of UKVI can use to send comp
 
 1. Get the project from Github `git clone git@github.com:UKHomeOffice/ukvi-complaints.git && cd ukvi-complaints`.
 2. Create a `.env` file in the root directory and populate it with all the required environment variables for the project.
-3. Install redis and start the redis server.
-4. Install dependencies using the command `yarn`.
-5. Start the service in development mode using `yarn start:dev`.
+3. Install dependencies using the command `yarn`.
+4. Start the service in development mode using `yarn start:dev`.
 
 ## Install & Run the Application locally with Docker Compose
 

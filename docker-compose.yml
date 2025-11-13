@@ -19,7 +19,7 @@ services:
     image: redis
 
   nginx-proxy:
-    image: quay.io/ukhomeofficedigital/nginx-proxy-govuk@sha256:4470064d0b1d20ae08c5fd85551576cb687f342a22d6cb456fda9b2c4ce8c8df
+    image: quay.io/ukhomeofficedigital/nginx-proxy:v4.4.4
     environment:
       - PROXY_SERVICE_HOST=app
       - PROXY_SERVICE_PORT=8080

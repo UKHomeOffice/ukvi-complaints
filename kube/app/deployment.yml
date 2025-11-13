@@ -217,7 +217,7 @@ spec:
 
         - name: nginx-proxy
           # nginx-proxy-govuk:v4 to be changed soon
-          image: quay.io/ukhomeofficedigital/hof-docker-nginx-proxy:0.0.9
+          image: quay.io/ukhomeofficedigital/nginx-proxy:v4.4.3
           resources:
             requests:
               memory: 10Mi

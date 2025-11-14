@@ -65,3 +65,11 @@ yarn test:unit
 ```bash
 yarn generate:local:reports
 ```
+
+To download CSV reports generated via the Docker development container, the sample file URL will look like:
+
+`http://file-vault:3000/file/generate-link/file/<id>`
+
+Replace the base URL with:
+
+`http://localhost:3000/file/generate-link/<id>` 

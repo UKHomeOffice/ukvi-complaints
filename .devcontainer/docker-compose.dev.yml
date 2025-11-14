@@ -1,14 +1,5 @@
 version: '3.8'
 services:
-  sqs-mock:
-    build:
-      context: ../test/_integration/sqs-mock
-    container_name: sqs-mock
-    networks:
-      - ukvic-shared-network
-    ports:
-      - "9324:9324"
-  # Update this to the name of the service you want to work with in your docker-compose.yml file
   hof-ukvic-app:
     env_file: devcontainer.env
     # Uncomment if you want to override the service's Dockerfile to one in the .devcontainer 
@@ -96,6 +87,15 @@ services:
       interval: 1s
       timeout: 5s
       retries: 10
+
+  sqs-mock:
+    build:
+      context: ../test/_integration/sqs-mock
+    container_name: sqs-mock
+    networks:
+      - ukvic-shared-network
+    ports:
+      - "9324:9324"
 
 networks:
   ukvic-shared-network:

@@ -97,6 +97,21 @@ services:
     ports:
       - "9324:9324"
 
+  playwright-run:
+    image: mcr.microsoft.com/playwright:v1.48.2-focal-amd64
+    container_name: playwright-run
+    environment:
+      - ACCEPTANCE_HOST_NAME=http://hof-ukvic-app:8080
+      - CUCUMBER_PUBLISH_ENABLED=false
+    networks:
+      - ukvic-shared-network
+    ports:
+      - "9325:9325"
+    volumes:
+      - ..:/workspace
+    working_dir: /workspace
+    command: ["bash", "-c", "yarn playwright install && tail -f /dev/null"]
+
 networks:
   ukvic-shared-network:
     driver: bridge

@@ -51,6 +51,8 @@ By following these steps, you should be able to install and run your application
 
 5. Run the necessary commands to install dependencies `yarn` and `yarn start:dev` to start your application.
 
+6. To run acceptance tests manually inside the Playwright container, after completing the above 5 steps, connect to the running container using: `docker exec -it playwright-run bash`. Then run the test: `yarn test:acceptance`
+
 ## Install & Run the Application locally with VS Code Dev Containers
 
 Alternatively, if you are using [Visual Studio Code](https://code.visualstudio.com/) (VS Code), you can run the application with a [VS Code Dev Containers](https://code.visualstudio.com/docs/devcontainers/containers).

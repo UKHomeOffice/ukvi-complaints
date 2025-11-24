@@ -13,8 +13,8 @@ The UKVI Complaints Service is a Home Office Forms (HOF) application that allows
 - This form is built using the [HOF framework](https://github.com/UKHomeOfficeForms/hof)
 - [Gov.uk Notify](https://www.notifications.service.gov.uk) to send notification emails
 - [File Vault](https://github.com/UKHomeOffice/file-vault) to store and retrieve uploaded files
-- [HOf RDS API](https://github.com/UKHomeOffice/hof-rds-api) to store and retrieve data
-
+- [HOF RDS API](https://github.com/UKHomeOffice/hof-rds-api) to store and retrieve data
+- 
 ## Install & Run the Application locally
 
 - [Node.js](https://nodejs.org/en/) - v.20 LTS

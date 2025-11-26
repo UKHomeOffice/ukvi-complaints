@@ -1,0 +1,117 @@
+version: '3.8'
+services:
+  hof-ukvic-app:
+    env_file: devcontainer.env
+    build:
+      context: .
+      dockerfile: Dockerfile
+    
+    networks:
+      - ukvic-shared-network
+    ports:
+      - "8080:8080"
+    hostname: hof-app
+    depends_on:
+      - redis
+      - file-vault
+      - rds-api
+      - sqs-mock
+
+    volumes:
+      # Update this to wherever you want VS Code to mount the folder of your project
+      - ..:/app:cached
+
+    # Overrides default command so things don't shut down after the process ends.
+    # command: /bin/sh -c "while sleep 1000; do :; done"
+    command: sleep infinity
+
+  redis:
+    image: "redis:alpine"
+    networks:
+      - ukvic-shared-network
+    hostname: hof-redis
+    ports:
+      - "6379:6379"
+
+  file-vault:
+    env_file: devcontainer.env
+    image: quay.io/ukhomeofficedigital/file-vault:f4cd1ece1caddc3bfbc8f5db761c593fda79ef12
+    networks:
+      - ukvic-shared-network
+    hostname: hof-file-vault
+    environment:
+      - DEBUG=*
+    ports:
+      - "3000:3000"
+
+  rds-api:
+    image: quay.io/ukhomeofficedigital/hof-rds-api:3.2.0@sha256:1c6bc4ce06660d0e061d49bffffdcaf71c3abefe935d85f6dadc8ff87dd52323
+    networks:
+      - ukvic-shared-network
+    hostname: hof-rds-api
+    environment:
+      - SERVICE_NAME=ukvic
+      - PORT=5000
+      - NODE_ENV=development
+      - DB_HOST=hof-postgres
+      - DB_USER=postgres
+      - DB_PASS=postgres
+      - DB_NAME=ukvic
+    ports:
+      - "5000:5000"
+    healthcheck:
+      disable: true
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  postgres:
+    image: postgres:14@sha256:8396ed98bfbeb08ff9c83a4de368957af98085f55d2c93e7e83828595d6f6663
+    networks:
+      - ukvic-shared-network
+    hostname: hof-postgres
+    environment:
+      PGUSER: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: ukvic
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 1s
+      timeout: 5s
+      retries: 10
+
+  sqs-mock:
+    build:
+      context: ../test/_integration/sqs-mock
+    container_name: sqs-mock
+    networks:
+      - ukvic-shared-network
+    ports:
+      - "9324:9324"
+
+  playwright-run:
+    image: mcr.microsoft.com/playwright:v1.48.2-focal-amd64
+    container_name: playwright-run
+    environment:
+      - ACCEPTANCE_HOST_NAME=http://hof-ukvic-app:8080
+      - CUCUMBER_PUBLISH_ENABLED=false
+    networks:
+      - ukvic-shared-network
+    ports:
+      - "9325:9325"
+    volumes:
+      - ..:/workspace
+    working_dir: /workspace
+    command: ["bash", "-c", "yarn playwright install && tail -f /dev/null"]
+
+networks:
+  ukvic-shared-network:
+    driver: bridge
+
+volumes:
+  pgdata:

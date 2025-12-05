@@ -309,4 +309,50 @@ describe('utils', () => {
       expect(utils.sanitiseCsvValue(input)).to.equal(expected);
     });
   });
+
+  describe('getWeeklyWindowUTC', () => {
+    it('computes default window (Sat 00:00 to Fri 23:59:59) ending on most recent Friday', () => {
+      const anchor = new Date('2025-12-01T07:00:00Z'); // Monday
+      const { start, end } = utils.getWeeklyWindowUTC(anchor); // targetWeekday defaults to 5 (Friday)
+
+      // Start should be Saturday 2025-11-22 00:00:00 UTC
+      expect(start.getUTCFullYear()).to.equal(2025);
+      expect(start.getUTCMonth()).to.equal(10); // November
+      expect(start.getUTCDate()).to.equal(22);
+      expect(start.getUTCHours()).to.equal(0);
+      expect(start.getUTCMinutes()).to.equal(0);
+      expect(start.getUTCSeconds()).to.equal(0);
+
+      // End should be Friday 2025-11-28 23:59:59 UTC
+      expect(end.getUTCFullYear()).to.equal(2025);
+      expect(end.getUTCMonth()).to.equal(10); // November
+      expect(end.getUTCDate()).to.equal(28);
+      expect(end.getUTCHours()).to.equal(23);
+      expect(end.getUTCMinutes()).to.equal(59);
+      expect(end.getUTCSeconds()).to.equal(59);
+    });
+
+    it('supports configurable targetWeekday (e.g., Tuesday)', () => {
+      const anchor = new Date('2025-12-04T10:00:00Z'); // Thursday
+      const targetWeekday = 2; // Tuesday
+      const { start, end } = utils.getWeeklyWindowUTC(anchor, targetWeekday);
+
+      // Most recent Tuesday before Dec 4, 2025 is Dec 2, 2025
+      // Start is 6 days before: Nov 26, 2025 00:00:00 UTC
+      expect(start.getUTCFullYear()).to.equal(2025);
+      expect(start.getUTCMonth()).to.equal(10); // November
+      expect(start.getUTCDate()).to.equal(26);
+      expect(start.getUTCHours()).to.equal(0);
+      expect(start.getUTCMinutes()).to.equal(0);
+      expect(start.getUTCSeconds()).to.equal(0);
+
+      // End is Dec 2, 2025 23:59:59 UTC
+      expect(end.getUTCFullYear()).to.equal(2025);
+      expect(end.getUTCMonth()).to.equal(11); // December
+      expect(end.getUTCDate()).to.equal(2);
+      expect(end.getUTCHours()).to.equal(23);
+      expect(end.getUTCMinutes()).to.equal(59);
+      expect(end.getUTCSeconds()).to.equal(59);
+    });
+  });
 });

@@ -1,6 +1,6 @@
 ### UKVI-Complaints [![Docker Repository on Quay](https://quay.io/repository/ukhomeofficedigital/ukvi-complaints/status "Docker Repository on Quay")](https://quay.io/repository/ukhomeofficedigital/ukvi-complaints)
 
-The UKVI Complaints Service is a Home Office Forms (HOF) application that allows UKVI users to submit complaints about their experience. Each complaint is emailed to the UKVI team, and a confirmation email is sent to the user. The service is integrated with the DECS caseworking system by pushing each form submission to an AWS SQS queue for DECS to retrieve. Additionally, the service generates and sends a CSV export of all complaints to the UKVI team every Monday at 07:00 AM.
+The UKVI Complaints Service is a Home Office Forms (HOF) application that allows UKVI users to submit complaints about their experience. Each complaint is emailed to the UKVI team, and a confirmation email is sent to the user. The service is integrated with the DECS caseworking system by pushing each form submission to an AWS SQS queue for DECS to retrieve Additionally, the service generates a CSV export of all complaints received between Saturday 00:00:00 and Friday 23:59:59, and sends it to the UKVI team every Monday at 07:00 AM.
 
 ## Getting started
 

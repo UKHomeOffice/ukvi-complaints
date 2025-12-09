@@ -19,8 +19,7 @@ describe('weekly_submitted_reports', () => {
     };
 
     utilitiesStub = {
-      getUTCTime: sinon.stub(),
-      subtractFromDate: sinon.stub(),
+      getWeeklyWindowUTC: sinon.stub(),
       postgresDateFormat: sinon.stub()
     };
 
@@ -41,25 +40,20 @@ describe('weekly_submitted_reports', () => {
   });
 
   it('should create a report of weekly submissions and return response', async () => {
-    const mockUtc = '2025-05-19T00:00:00Z';
-    const mockOneWeekBefore = '2025-05-12T00:00:00Z';
-    const mockOneSecondBefore = '2025-05-18T23:59:59Z';
+    const mockStart = new Date('2025-05-12T00:00:00Z');
+    const mockEnd = new Date('2025-05-18T23:59:59Z');
 
-    utilitiesStub.getUTCTime.returns(mockUtc);
-    utilitiesStub.subtractFromDate.withArgs(mockUtc, 7, 'days').returns(mockOneWeekBefore);
-    utilitiesStub.subtractFromDate.withArgs(mockUtc, 1, 'second').returns(mockOneSecondBefore);
+    utilitiesStub.getWeeklyWindowUTC.returns({ start: mockStart, end: mockEnd });
     utilitiesStub.postgresDateFormat.callsFake(date => date);
 
     const response = await WeeklySubmittedReports.createReport('test', logger);
 
-    expect(utilitiesStub.getUTCTime.calledOnce).to.be.true;
-    expect(utilitiesStub.subtractFromDate.calledWith(mockUtc, 7, 'days')).to.be.true;
-    expect(utilitiesStub.subtractFromDate.calledWith(mockUtc, 1, 'second')).to.be.true;
+    expect(utilitiesStub.getWeeklyWindowUTC.calledOnce).to.be.true;
     expect(ReportsStub.calledWith({
       type: 'test',
       tableName: 'submitted_applications',
-      from: mockOneWeekBefore,
-      to: mockOneSecondBefore
+      from: utilitiesStub.postgresDateFormat(mockStart),
+      to: utilitiesStub.postgresDateFormat(mockEnd)
     })).to.be.true;
     expect(response).to.equal('sent');
   });
@@ -72,6 +66,11 @@ describe('weekly_submitted_reports', () => {
       transformToAllQuestionsCsv: sinon.stub().rejects(mockError),
       sendReport: sinon.stub().rejects(mockError)
     });
+
+    // Provide a valid window so the error originates from Reports methods
+    const mockStart = new Date('2025-05-12T00:00:00Z');
+    const mockEnd = new Date('2025-05-18T23:59:59Z');
+    utilitiesStub.getWeeklyWindowUTC.returns({ start: mockStart, end: mockEnd });
 
     await WeeklySubmittedReports.createReport('test', logger);
     expect(logger.log.calledWith('error', mockError)).to.be.true;
@@ -86,6 +85,11 @@ describe('weekly_submitted_reports', () => {
       transformToAllQuestionsCsv: sinon.stub().rejects(mockError),
       sendReport: sinon.stub().rejects(mockError)
     });
+
+    // Provide a valid window so the error originates from Reports methods
+    const mockStart = new Date('2025-05-12T00:00:00Z');
+    const mockEnd = new Date('2025-05-18T23:59:59Z');
+    utilitiesStub.getWeeklyWindowUTC.returns({ start: mockStart, end: mockEnd });
 
     const fallbackLogger = {
       log: consoleErrorStub

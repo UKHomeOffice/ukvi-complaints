@@ -193,8 +193,25 @@ describe('utils', () => {
         expect(result.getUTCSeconds()).to.equal(0);
       });
 
+      it('should allow hour=0 to produce 00:00:00 UTC', () => {
+        const baseDate = new Date(Date.UTC(2022, 7, 15, 10, 30, 0));
+        const result = utils.getUTCTime(0, baseDate);
+        expect(result.getUTCHours()).to.equal(0);
+        expect(result.getUTCMinutes()).to.equal(0);
+        expect(result.getUTCSeconds()).to.equal(0);
+      });
+
       it('should throw if hour is not provided', () => {
-        expect(() => utils.getUTCTime()).to.throw('Invalid date object - an hour is required');
+        const msg = 'Invalid hour - must be a number between 0 and 23';
+        expect(() => utils.getUTCTime()).to.throw(msg);
+        expect(() => utils.getUTCTime(undefined, new Date())).to.throw(msg);
+        expect(() => utils.getUTCTime(null, new Date())).to.throw(msg);
+      });
+
+      it('should throw if date is not a valid Date object', () => {
+        // Invalid Date instance
+        const invalidDate = new Date('foo');
+        expect(() => utils.getUTCTime(0, invalidDate)).to.throw('Invalid date object - a valid Date is required');
       });
     });
 
@@ -307,6 +324,113 @@ describe('utils', () => {
       const input = '‘Hello’,\nworld\tIt’s fine';
       const expected = '"‘Hello’,\nworld\tIt’s fine"';
       expect(utils.sanitiseCsvValue(input)).to.equal(expected);
+    });
+  });
+
+  describe('getWeeklyWindowUTC', () => {
+    it('computes default window (Sat 00:00 to Fri 23:59:59) ending on most recent Friday', () => {
+      const anchor = new Date('2025-12-01T07:00:00Z'); // Monday
+      const { start, end } = utils.getWeeklyWindowUTC(anchor); // targetWeekday defaults to 5 (Friday)
+
+      // Start should be Saturday 2025-11-22 00:00:00 UTC
+      expect(start.getUTCFullYear()).to.equal(2025);
+      expect(start.getUTCMonth()).to.equal(10); // November
+      expect(start.getUTCDate()).to.equal(22);
+      expect(start.getUTCHours()).to.equal(0);
+      expect(start.getUTCMinutes()).to.equal(0);
+      expect(start.getUTCSeconds()).to.equal(0);
+
+      // End should be Friday 2025-11-28 23:59:59 UTC
+      expect(end.getUTCFullYear()).to.equal(2025);
+      expect(end.getUTCMonth()).to.equal(10); // November
+      expect(end.getUTCDate()).to.equal(28);
+      expect(end.getUTCHours()).to.equal(23);
+      expect(end.getUTCMinutes()).to.equal(59);
+      expect(end.getUTCSeconds()).to.equal(59);
+    });
+
+    it('supports configurable targetWeekday (e.g., Tuesday)', () => {
+      const anchor = new Date('2025-12-04T10:00:00Z'); // Thursday
+      const targetWeekday = 2; // Tuesday
+      const { start, end } = utils.getWeeklyWindowUTC(anchor, targetWeekday);
+
+      // Most recent Tuesday before Dec 4, 2025 is Dec 2, 2025
+      // Start is 6 days before: Nov 26, 2025 00:00:00 UTC
+      expect(start.getUTCFullYear()).to.equal(2025);
+      expect(start.getUTCMonth()).to.equal(10); // November
+      expect(start.getUTCDate()).to.equal(26);
+      expect(start.getUTCHours()).to.equal(0);
+      expect(start.getUTCMinutes()).to.equal(0);
+      expect(start.getUTCSeconds()).to.equal(0);
+
+      // End is Dec 2, 2025 23:59:59 UTC
+      expect(end.getUTCFullYear()).to.equal(2025);
+      expect(end.getUTCMonth()).to.equal(11); // December
+      expect(end.getUTCDate()).to.equal(2);
+      expect(end.getUTCHours()).to.equal(23);
+      expect(end.getUTCMinutes()).to.equal(59);
+      expect(end.getUTCSeconds()).to.equal(59);
+    });
+
+    it('throws if anchorDate is not a valid Date', () => {
+      const invalidAnchors = [
+        new Date(NaN),
+        new Date('foo'),
+        '2025-01-01',
+        123,
+        null,
+        {},
+        []
+      ];
+
+      invalidAnchors.forEach(val => {
+        let threw = false;
+        let message = '';
+        try {
+          utils.getWeeklyWindowUTC(val);
+        } catch (e) {
+          threw = true;
+          message = e && e.message ? e.message : '';
+        }
+        expect(threw).to.be.true;
+        expect(message).to.equal('Invalid anchorDate - must be a valid Date object');
+      });
+
+      // Undefined uses default new Date() and should NOT throw
+      let threwUndefined = false;
+      try {
+        utils.getWeeklyWindowUTC(undefined);
+      } catch (e) {
+        threwUndefined = true;
+      }
+      expect(threwUndefined).to.be.false;
+    });
+
+    it('throws if targetWeekday is out of range or not a number', () => {
+      const anchor = new Date('2025-12-01T07:00:00Z');
+      // Values that MUST throw
+      const invalidValues = [-1, 7, NaN, '5', null];
+      invalidValues.forEach(val => {
+        let threw = false;
+        let message = '';
+        try {
+          utils.getWeeklyWindowUTC(anchor, val);
+        } catch (e) {
+          threw = true;
+          message = e && e.message ? e.message : '';
+        }
+        expect(threw).to.be.true;
+        expect(message).to.equal('Invalid targetWeekday - must be a number between 0 (Sunday) and 6 (Saturday)');
+      });
+
+      // Passing undefined uses the default (5) and should NOT throw
+      let threwUndefined = false;
+      try {
+        utils.getWeeklyWindowUTC(anchor, undefined);
+      } catch (e) {
+        threwUndefined = true;
+      }
+      expect(threwUndefined).to.be.false;
     });
   });
 });

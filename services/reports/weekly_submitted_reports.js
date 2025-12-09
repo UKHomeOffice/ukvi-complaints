@@ -4,15 +4,14 @@ const utilities = require('../../lib/utils');
 module.exports = class WeeklySubmittedReports {
   static async createReport(type, logger) {
     try {
-      const utcTime = utilities.getUTCTime(7);
-      const sevenDaysBefore = utilities.subtractFromDate(utcTime, 7, 'days');
-      const oneSecondBefore = utilities.subtractFromDate(utcTime, 1, 'second');
+      // Calculate window using shared helper: 00:00 Saturday -> 23:59:59 Friday (last week)
+      const { start: windowStart, end: windowEnd } = utilities.getWeeklyWindowUTC();
 
       const report = new Reports({
         type,
         tableName: 'submitted_applications',
-        from: utilities.postgresDateFormat(sevenDaysBefore),
-        to: utilities.postgresDateFormat(oneSecondBefore)
+        from: utilities.postgresDateFormat(windowStart),
+        to: utilities.postgresDateFormat(windowEnd)
       });
 
       const response = await report.getRecordsWithProps({ timestamp: 'submitted_at' });

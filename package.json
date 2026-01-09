@@ -40,7 +40,7 @@
     "jsonschema": "^1.4.0",
     "moment": "^2.29.4",
     "path-parse": "^1.0.7",
-    "sqs-producer": "^8.0.0",
+    "sqs-producer": "^8.0.1",
     "ssh2": "^1.16.0",
     "typeahead-aria": "^1.0.4",
     "uuid": "^11.1.0"

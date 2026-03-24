@@ -51,7 +51,7 @@ unit_tests: &unit_tests
 
 sonar_scanner: &sonar_scanner
   pull: if-not-exists
-  image: quay.io/ukhomeofficedigital/hof-nodejs:20.20.0-alpine3.23@sha256:55fe012b09506d6b70ecef4c425f149bd7f738839fee3dd05085bc45deceb4c3
+  image: quay.io/ukhomeofficedigital/sonar-scanner-nodejs:latest
   commands:
     - sonar-scanner -Dproject.settings=./sonar-project.properties
 
@@ -431,7 +431,7 @@ steps:
     image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/trivy/client:latest
     pull: always
     environment:
-      IMAGE_NAME: quay.io/ukhomeofficedigital/hof-nodejs:20.20.0-alpine3.23@sha256:55fe012b09506d6b70ecef4c425f149bd7f738839fee3dd05085bc45deceb4c3
+      IMAGE_NAME: ukvi-complaints:${DRONE_COMMIT_SHA}
       SEVERITY: UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL --dependency-tree
       FAIL_ON_DETECTION: true
       IGNORE_UNFIXED: false

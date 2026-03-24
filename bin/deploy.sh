@@ -44,4 +44,14 @@ sleep $READY_FOR_TEST_DELAY
 
 if [[ ${KUBE_NAMESPACE} == ${BRANCH_ENV} ]]; then
   echo "Branch - ukvic-$DRONE_SOURCE_BRANCH.branch.internal.sas-notprod.homeoffice.gov.uk"
+elif [[ ${KUBE_NAMESPACE} == ${UAT_ENV} ]]; then
+  echo "UAT internal 1 - ukvic.uat.internal.sas-notprod.homeoffice.gov.uk"
+  echo "UAT internal 2 - $APP_NAME.uat.internal.sas-notprod.homeoffice.gov.uk"
+  echo "UAT external - $APP_NAME.uat.sas-notprod.homeoffice.gov.uk"
+elif [[ ${KUBE_NAMESPACE} == ${STG_ENV} ]]; then
+  echo "STG internal 1 - stg.internal.ukvic.sas.homeoffice.gov.uk"
+  echo "STG internal 2 - stg.internal.$APP_NAME.sas.homeoffice.gov.uk"
+  echo "STG external - www.preprod.notprod.$APP_NAME.homeoffice.gov.uk"
+elif [[ ${KUBE_NAMESPACE} == ${PROD_ENV} ]]; then
+  echo "PROD external - $PRODUCTION_URL"
 fi

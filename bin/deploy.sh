@@ -43,7 +43,8 @@ fi
 sleep $READY_FOR_TEST_DELAY
 
 if [[ ${KUBE_NAMESPACE} == ${BRANCH_ENV} ]]; then
-  echo "Branch - ukvic-$DRONE_SOURCE_BRANCH.branch.internal.sas-notprod.homeoffice.gov.uk"
+  echo "Branch internal - ukvic-$DRONE_SOURCE_BRANCH.branch.internal.sas-notprod.homeoffice.gov.uk"
+  echo "ukvic-$DRONE_SOURCE_BRANCH.branch.sas-notprod.homeoffice.gov.uk"
 elif [[ ${KUBE_NAMESPACE} == ${UAT_ENV} ]]; then
   echo "UAT internal 1 - ukvic.uat.internal.sas-notprod.homeoffice.gov.uk"
   echo "UAT internal 2 - $APP_NAME.uat.internal.sas-notprod.homeoffice.gov.uk"

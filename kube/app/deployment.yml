@@ -78,11 +78,6 @@ spec:
                 secretKeyRef:
                   name: ses
                   key: smtp_password
-            - name: SESSION_SECRET
-              valueFrom:
-                secretKeyRef:
-                  name: session-secret
-                  key: token
             - name: NOTIFY_KEY
               valueFrom:
                 secretKeyRef:

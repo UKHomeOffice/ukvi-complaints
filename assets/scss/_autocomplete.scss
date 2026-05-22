@@ -141,3 +141,7 @@
     line-height: 1.31579;
   }
 }
+
+.govuk-form-group--error .autocomplete__input {
+  @extend .invalid-input
+}

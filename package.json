@@ -6,7 +6,7 @@
   "author": "",
   "description": "",
   "engines": {
-    "node": ">=24.15.0 <25.0.0"
+    "node": ">=24.16.0 <25.0.0"
   },
   "license": "MIT",
   "scripts": {
@@ -64,5 +64,8 @@
     "require": "test/setup.js",
     "recursive": "true",
     "timeout": "6000"
+  },
+  "resolutions": {
+    "nodemailer": "^8.0.7"
   }
 }

@@ -6,7 +6,6 @@
 }
 
 ul {
-  @extend .text;
   @extend .list;
   @extend .list-bullet;
   @extend .govuk-list;

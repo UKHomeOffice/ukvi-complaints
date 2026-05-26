@@ -17,7 +17,7 @@ The UKVI Complaints Service is a Home Office Forms (HOF) application that allows
 
 ## Install & Run the Application locally
 
-- [Node.js](https://nodejs.org/en/) - v.20 LTS
+- [Node.js](https://nodejs.org/en/) - for supported versions see `engines.node` in [package.json](package.json)
 - [Redis server](http://redis.io/download) running on default port 6379
 - [File Vault](https://github.com/UKHomeOffice/file-vault) Service - running port 3000
 - [hof-rds-api](https://github.com/UKHomeOffice/hof-rds-api) Service - running port 5000 for service 'ukvic'

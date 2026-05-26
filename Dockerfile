@@ -1,4 +1,4 @@
-FROM quay.io/ukhomeofficedigital/hof-nodejs:20.20.0-alpine3.23@sha256:55fe012b09506d6b70ecef4c425f149bd7f738839fee3dd05085bc45deceb4c3
+FROM node:24.16.0-alpine3.23@sha256:9a2c6269f83d74af45665c0b738b78c7b5f07bf2374c72a4c540065a975b9693
 
 USER root
 
@@ -18,7 +18,7 @@ WORKDIR /app
 
 COPY --chown=999:998 . /app
 
-RUN yarn install --frozen-lockfile --production --ignore-optional && \
+RUN yarn install --frozen-lockfile --production && \
     yarn run postinstall
 
 HEALTHCHECK --interval=5m --timeout=3s \

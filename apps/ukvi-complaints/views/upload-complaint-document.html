@@ -15,7 +15,7 @@
         <span id="validation-error" class="govuk-visually-hidden">{{#t}}journey.error{{/t}}:</span> {{#t}}pages.upload-complaint-document.fileType{{/t}}
     </p>
 
-    <input class="govuk-file-upload" id="file-upload" name="file-upload" type="file" value="upload-complaint-doc">
+    <input class="govuk-file-upload" id="file-upload" name="file-upload" type="file" document-category="upload-complaint-doc">
 
     <div id="upload-page-loading-spinner" class="spinner-container">
         <div class="spinner-loader"></div>
@@ -47,8 +47,7 @@
 
 {{/values.upload-complaint-doc.length}}
 
-
-<button class="govuk-button" name="optionalFileUpload" value="upload-complaint-doc">
+<button class="govuk-button" name="continueWithoutUpload" value="upload-complaint-doc">
     {{#t}}buttons.continue{{/t}}
 </button>
 

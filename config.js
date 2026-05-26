@@ -1,9 +1,11 @@
 'use strict';
 
 /* eslint no-process-env: 0 */
+const env = process.env.NODE_ENV || 'production';
+const fileUploadConfig = require('./assets/js/file-upload-config');
 
 module.exports = {
-  env: 'development',
+  env: env,
   dateFormat: 'DD-MM-YYYY',
   dateTimeFormat: 'DD-MM-YYYY, hh:mma',
   reportDateFormat: {
@@ -41,21 +43,8 @@ module.exports = {
   sendToQueue: process.env.SEND_TO_DECS_QUEUE === 'online',
   feedbackUrl: process.env.FEEDBACK_URL,
   upload: {
-    maxFileSizeInBytes: 21 * 1000 * 1000, // 21MB in bytes
-    hostname: process.env.FILE_VAULT_URL,
-    allowedMimeTypes: [
-      'application/pdf',
-      'image/jpeg',
-      'image/jpg',
-      'image/png'
-    ],
-    documentCategories: {
-      'upload-complaint-doc': {
-        allowMultipleUploads: true,
-        limit: 3,
-        limitValidationError: 'maxComplaintUpload'
-      }
-    }
+    ...fileUploadConfig,
+    hostname: process.env.FILE_VAULT_URL
   },
   keycloak: {
     token: process.env.KEYCLOAK_TOKEN_URL,

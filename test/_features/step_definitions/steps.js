@@ -23,7 +23,15 @@ Then('I select change link {string}', async function (name) {
 }.bind(World));
 
 Then('I fill {string} with {string} option', async function (field, value) {
-  await this.page.selectOption(`select[id="${field}"]`, value);
+  const autocompleteInput = this.page.locator(`input#${field}`).first();
+
+  if (await autocompleteInput.count()) {
+    await autocompleteInput.fill(value);
+    await autocompleteInput.press('Tab');
+    return;
+  }
+
+  throw new Error(`Unable to find an input for field "${field}"`);
 }.bind(World));
 
 Then('I select option {string}', async function (name) {

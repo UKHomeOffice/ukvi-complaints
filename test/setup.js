@@ -11,8 +11,11 @@ global.reqres = require('hof').utils.reqres;
 global.sinon = require('sinon');
 global.proxyquire = require('proxyquire');
 
-chai.use(require('chai-as-promised'));
-chai.use(require('sinon-chai'));
+const chaiAsPromised = require('chai-as-promised');
+const sinonChai = require('sinon-chai');
+
+chai.use(chaiAsPromised.default || chaiAsPromised);
+chai.use(sinonChai.default || sinonChai);
 
 process.setMaxListeners(0);
 process.stdout.setMaxListeners(0);

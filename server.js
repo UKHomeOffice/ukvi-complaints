@@ -4,7 +4,6 @@
 const hof = require('hof');
 const settings = require('./hof.settings');
 const config = require('./config');
-const mockAPIs = require('./mock-apis');
 const _ = require('lodash');
 const busboy = require('busboy');
 const bl = require('bl');
@@ -32,9 +31,6 @@ if (process.env.REDIS_URL) {
 
 const app = hof(settings);
 
-if (config.useMocks) {
-  app.use(mockAPIs);
-}
 if (config.env === 'development' || config.env === 'test') {
   app.use('/test/bootstrap-session', (req, res) => {
     const appName = req.body.appName;

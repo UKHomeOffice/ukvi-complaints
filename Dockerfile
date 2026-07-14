@@ -5,6 +5,9 @@ USER root
 # Update Alpine packages with latest security and bug fixes
 RUN apk upgrade --no-cache
 
+# Upgrade bundled npm deps so Trivy does not report vulnerable undici from base image toolchain
+RUN npm install -g npm@12.0.0 && npm --version
+
 # Setup nodejs group & nodejs user
 RUN addgroup --system nodejs --gid 998 && \
     adduser --system nodejs --uid 999 --home /app/ && \

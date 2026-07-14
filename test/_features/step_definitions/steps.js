@@ -1,7 +1,12 @@
-const { Given, Then } = require('@cucumber/cucumber');
-const expect = require('chai').expect;
+const { BeforeAll, Given, Then } = require('@cucumber/cucumber');
 const World = require('../test.setup.js');
 const config = require('../../../config');
+
+let expect;
+
+BeforeAll(async function () {
+  ({ expect } = await import('chai'));
+});
 
 const domain = config.hosts.acceptanceTests;
 

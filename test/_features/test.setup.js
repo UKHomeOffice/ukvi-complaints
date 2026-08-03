@@ -11,7 +11,10 @@ BeforeAll(async () => {
 });
 
 AfterAll(async function () {
-  await global.browser.close();
+  // Browser launch can fail before assignment, so only close it when it exists.
+  if (global.browser) {
+    await global.browser.close();
+  }
 });
 
 Before(async function () {

@@ -202,7 +202,7 @@ steps:
         from_secret: kube_server_dev
       KUBE_TOKEN:
         from_secret: kube_token_sas_dev
-      REDIS_PERSISTENCE_ENABLED: "false"
+      REDIS_PERSISTENCE_ENABLED: "true"
     commands:
       - bin/deploy.sh $${BRANCH_ENV}
     when:

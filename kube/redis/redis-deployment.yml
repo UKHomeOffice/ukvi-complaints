@@ -41,6 +41,8 @@ spec:
             - redis-server
             - --appendonly
             - "yes"
+            - --appendfsync
+            - always
             - --dir
             - /data
             - --protected-mode

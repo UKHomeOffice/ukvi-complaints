@@ -68,16 +68,6 @@ spec:
               {{ else }}
               value: redis
               {{ end }}
-            - name: AWS_USER
-              valueFrom:
-                secretKeyRef:
-                  name: ses
-                  key: smtp_username
-            - name: AWS_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: ses
-                  key: smtp_password
             - name: SESSION_SECRET
               valueFrom:
                 secretKeyRef:

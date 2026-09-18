@@ -19,7 +19,7 @@ The UKVI Complaints Service is a Home Office Forms (HOF) application that allows
 
 The local setup is config-driven. This service uses [.local-service.env.example](.local-service.env.example) to declare which secrets file, sidecars, env checks, and local overrides are needed. The reusable runner is [bin/start_local.sh](bin/start_local.sh). Copy the example to `.local-service.env` only when you need machine-specific overrides.
 
-Security is the first priority for local development. Never commit secrets, tokens, generated `.env` files, `.local-service.env`, `.devcontainer/*.env`, `.npmrc`, private key files, `hof-services-secrets`, or `instructions.md`. The local bootstrap and startup scripts automatically add those local-only files to `.gitignore` before they copy secrets from Keybase, but every developer must still check their PR diff before publishing. Run `yarn security:check` before opening a PR.
+Security is the first priority for local development. Never commit secrets, tokens, generated `.env` files, `.local-service.env`, `.devcontainer/*.env`, `.npmrc`, private key files, `hof-services-secrets`, or `instructions.md`. The local bootstrap and startup scripts automatically add those local-only files to `.gitignore` before they copy secrets from Keybase, and Drone runs the security check automatically on pushes and pull requests.
 
 For `ukvi-complaints`, the runner starts these sidecar services:
 
@@ -107,11 +107,7 @@ When the app is running, open:
 http://localhost:8080
 ```
 
-Before opening a PR, run:
-
-```bash
-yarn security:check
-```
+Drone runs the security check automatically on pushes and pull requests.
 
 If the sidecar services are already running, you can still start only the application in development mode using `yarn start:dev`.
 

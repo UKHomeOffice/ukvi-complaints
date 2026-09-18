@@ -16,7 +16,6 @@
     "local:check-env": "sh ./bin/start_local.sh --check-env",
     "local:bootstrap": "sh ./bin/bootstrap_colleague_local.sh",
     "local:bootstrap-check": "sh ./bin/bootstrap_colleague_local.sh --check",
-    "security:check": "sh ./bin/check_no_local_secrets.sh",
     "test": "yarn run test:lint && yarn run test:unit",
     "test:lint": "eslint . --config ./node_modules/eslint-config-hof/default.js",
     "test:unit": "nyc _mocha \"test/_unit/**/*.spec.js\"",

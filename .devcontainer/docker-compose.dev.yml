@@ -67,7 +67,7 @@ services:
         condition: service_healthy
 
   postgres:
-    image: postgres:14@sha256:8396ed98bfbeb08ff9c83a4de368957af98085f55d2c93e7e83828595d6f6663
+    image: postgres:14
     networks:
       - ukvic-shared-network
     hostname: hof-postgres
@@ -87,6 +87,7 @@ services:
       retries: 10
 
   sqs-mock:
+    platform: linux/amd64
     build:
       context: ../test/_integration/sqs-mock
     container_name: sqs-mock

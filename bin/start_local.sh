@@ -274,6 +274,32 @@ check_env() {
   fi
 }
 
+check_compose_services() {
+  if [ -z "$DEPENDENCY_SERVICES" ]; then
+    return
+  fi
+
+  if [ ! -f "$COMPOSE_FILE" ]; then
+    printf 'Compose file not found: %s\n' "$COMPOSE_FILE" >&2
+    exit 1
+  fi
+
+  available_services=$(docker compose -f "$COMPOSE_FILE" config --services)
+  missing_services=""
+
+  for service in $DEPENDENCY_SERVICES; do
+    if ! printf '%s\n' "$available_services" | grep -Fxq "$service"; then
+      missing_services="$missing_services $service"
+    fi
+  done
+
+  if [ -n "$missing_services" ]; then
+    printf 'Configured dependency services are missing from %s:%s\n' "$COMPOSE_FILE" "$missing_services" >&2
+    printf 'Update DEPENDENCY_SERVICES in %s so it matches this service and its Compose file.\n' "$CONFIG_FILE" >&2
+    exit 1
+  fi
+}
+
 if [ "${1:-}" = "--help" ]; then
   usage
   exit 0
@@ -307,6 +333,8 @@ if ! command -v docker >/dev/null 2>&1; then
   printf 'Docker is required to start local sidecar services. Install Docker and try again.\n' >&2
   exit 1
 fi
+
+check_compose_services
 
 if ! docker info >/dev/null 2>&1; then
   printf 'Docker is installed, but the Docker daemon is not running. Start Docker Desktop and try again.\n' >&2

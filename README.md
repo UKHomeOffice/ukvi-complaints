@@ -99,7 +99,7 @@ You do not need to manually start Redis, File Vault, HOF RDS API, Postgres, or t
 2. Install dependencies with `yarn`.
 3. Start everything with `yarn local:up`.
 
-`yarn local:up` clones or updates `hof-services-secrets` from Keybase, creates or refreshes `.env`, creates or refreshes `.devcontainer/devcontainer.env`, starts Redis, File Vault, HOF RDS API, Postgres and the SQS mock, then starts the application in development mode.
+`yarn local:up` clones or updates `hof-services-secrets` from Keybase, creates or refreshes `.env`, creates or refreshes `.devcontainer/devcontainer.env`, checks that the configured services match the Docker Compose file, starts Redis, File Vault, HOF RDS API, Postgres and the SQS mock, then starts the application in development mode.
 
 When the app is running, open:
 

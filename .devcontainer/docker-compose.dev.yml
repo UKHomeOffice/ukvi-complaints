@@ -1,4 +1,3 @@
-version: '3.8'
 services:
   hof-ukvic-app:
     env_file: devcontainer.env
@@ -36,6 +35,7 @@ services:
   file-vault:
     env_file: devcontainer.env
     image: quay.io/ukhomeofficedigital/file-vault:f4cd1ece1caddc3bfbc8f5db761c593fda79ef12
+    platform: linux/amd64
     networks:
       - ukvic-shared-network
     hostname: hof-file-vault
@@ -46,6 +46,7 @@ services:
 
   rds-api:
     image: quay.io/ukhomeofficedigital/hof-rds-api:3.5.0@sha256:a2db461460894530de77def109e6c4e42df724126091f16c5ae7127d5856a115
+    platform: linux/amd64
     networks:
       - ukvic-shared-network
     hostname: hof-rds-api

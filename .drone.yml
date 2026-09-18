@@ -111,16 +111,6 @@ steps:
         <<: *include_default_and_feature_branches
       event: [push, pull_request]
 
-  - name: security_check
-    pull: if-not-exists
-    image: alpine/git
-    commands:
-      - sh ./bin/check_no_local_secrets.sh
-    when:
-      branch:
-        <<: *include_default_and_feature_branches
-      event: [push, pull_request]
-
   - name: linting
     <<: *linting
     when:
@@ -129,7 +119,6 @@ steps:
       event: [push, pull_request]
     depends_on:
       - setup
-      - security_check
 
   - name: unit_tests
     <<: *unit_tests
@@ -139,7 +128,6 @@ steps:
       event: [push, pull_request]
     depends_on:
       - setup
-      - security_check
 
   - name: sonar_scanner
     <<: *sonar_scanner

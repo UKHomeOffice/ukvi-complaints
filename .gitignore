@@ -5,6 +5,14 @@ public
 npm-debug.log
 .idea
 .env
+.env.*
+!.env.sample
+.local-service.env
+.npmrc
+*.pem
+*.key
+id_rsa*
+hof-services-secrets/
 .emails
 test/executions
 test/coverage
@@ -21,3 +29,4 @@ test/_accessibility/tmp/*
 .devcontainer/*.env
 .cache
 data/*
+instructions.md

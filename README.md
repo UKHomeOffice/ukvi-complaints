@@ -15,19 +15,101 @@ The UKVI Complaints Service is a Home Office Forms (HOF) application that allows
 - [File Vault](https://github.com/UKHomeOffice/file-vault) to store and retrieve uploaded files
 - [HOF RDS API](https://github.com/UKHomeOffice/hof-rds-api) to store and retrieve data
 
+### Local environment focus
+
+The local setup is config-driven. This service uses [.local-service.env.example](.local-service.env.example) to declare which secrets file, sidecars, env checks, and local overrides are needed. The reusable runner is [bin/start_local.sh](bin/start_local.sh). Copy the example to `.local-service.env` only when you need machine-specific overrides.
+
+Security is the first priority for local development. Never commit secrets, tokens, generated `.env` files, `.local-service.env`, `.devcontainer/*.env`, `.npmrc`, private key files, `hof-services-secrets`, or `instructions.md`. The local bootstrap and startup scripts automatically add those local-only files to `.gitignore` before they copy secrets from Keybase, and Drone runs the security check automatically on pushes and pull requests.
+
+For `ukvi-complaints`, the runner starts these sidecar services:
+
+- Redis on port 6379
+- File Vault on port 3000
+- HOF RDS API on port 5000, backed by Postgres on port 5432
+- An SQS mock on port 9324 for the DECS queue integration
+
+The application itself still runs with `yarn start:dev`, so code changes are handled by the existing HOF watcher.
+
+To apply the same pattern to another HOF service, copy [bin/start_local.sh](bin/start_local.sh), [bin/bootstrap_colleague_local.sh](bin/bootstrap_colleague_local.sh), and [.local-service.env.example](.local-service.env.example), then update the config values:
+
+- `APP_SECRETS_FILE_NAME` for that service's file in `hof-services-secrets`
+- `DEPENDENCY_SERVICES` for the Compose services required by the app
+- `REQUIRED_ENV_KEYS` for the env vars the app must have before startup
+- `LOCAL_ENV_OVERRIDES` for host-machine URLs and ports that differ from Docker/Kubernetes names
+- `SIDECAR_SECRETS_FILE_NAME` if a sidecar needs its own env file
+- `SECRETS_SYNC_TIMEOUT_SECONDS` if the Keybase-backed secrets repository needs a longer sync window
+
+### Local secrets from Keybase
+
+The root `.env` file is ignored by git and should be treated as the local source of runtime secrets. The local startup command refreshes secrets from the cloned `hof-services-secrets` repository before it starts anything. The secrets repository, app env file, sidecar env file, and required variables are configured in [.local-service.env.example](.local-service.env.example), or `.local-service.env` when you need local overrides. For this service, it reads from `../hof-services-secrets/UKVIC-env`, copies that into `.env`, copies `../hof-services-secrets/file-vault-env` into `.devcontainer/devcontainer.env` for the File Vault sidecar, and checks that the expected variable names are present without printing any secret values.
+
+Developers must have Keybase installed and signed in locally before running `yarn local:up`. They must also have access to the `hoforms/hof-services-secrets` team and keep the `hof-services-secrets` repository outside this application's git repository, usually as a sibling directory. The local scripts refuse to use a secrets repository or explicit Keybase env source from inside this repository.
+
+After installing dependencies, start the full local environment with:
+
+```bash
+yarn local:up
+```
+
+That command clones or updates `keybase://team/hoforms/hof-services-secrets` next to this service, refreshes `.env`, refreshes `.devcontainer/devcontainer.env`, starts the required micro services, and starts the app.
+
+For a brand-new machine where dependencies may not be installed yet, `yarn local:bootstrap` is available as a helper. It installs dependencies when `node_modules` is missing, then runs the same local startup flow.
+
+To check the local env file without starting the micro services or app, run:
+
+```bash
+yarn local:check-env
+```
+
+If your secrets repository is somewhere else, set `HOF_SERVICES_SECRETS_DIR`:
+
+```bash
+HOF_SERVICES_SECRETS_DIR="/path/to/hof-services-secrets" yarn local:up
+```
+
+To copy from a single explicit env file instead, set `KEYBASE_ENV_SOURCE`:
+
+```bash
+KEYBASE_ENV_SOURCE="/path/to/env-file" yarn local:up
+```
+
+To run the full first-time bootstrap check, including required local tools and Keybase access, run:
+
+```bash
+yarn local:bootstrap-check
+```
+
+Local dependency wiring is normalised for host-machine startup after secrets are copied: `NODE_ENV`, `REDIS_HOST`, `REDIS_PORT`, `FILE_VAULT_URL`, `DATASERVICE_USE_HTTPS`, `DATASERVICE_SERVICE_HOST`, `DATASERVICE_SERVICE_PORT_HTTPS`, `SEND_TO_DECS_QUEUE`, `SQS_URL`, and `AWS_REGION`. If `SESSION_SECRET` is missing, the command generates and persists a local 32-byte value in `.env`.
+
 ## Install & Run the Application locally
 
-- [Node.js](https://nodejs.org/en/) - for supported versions see `engines.node` in [package.json](package.json)
-- [Redis server](http://redis.io/download) running on default port 6379
-- [File Vault](https://github.com/UKHomeOffice/file-vault) Service - running port 3000
-- [hof-rds-api](https://github.com/UKHomeOffice/hof-rds-api) Service - running port 5000 for service 'ukvic'
+### What you need before starting
+
+- [Node.js](https://nodejs.org/en/) - use the version supported by `engines.node` in [package.json](package.json)
+- [Yarn](https://yarnpkg.com/) for installing dependencies and running scripts
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed and running
+- [Keybase](https://keybase.io/) installed and signed in locally
+- Access to the Keybase team `hoforms/hof-services-secrets`
+
+You do not need to manually start Redis, File Vault, HOF RDS API, Postgres, or the SQS mock. `yarn local:up` starts those required micro services for you through Docker Compose.
 
 ### Setup
 
 1. Get the project from Github `git clone git@github.com:UKHomeOffice/ukvi-complaints.git && cd ukvi-complaints`.
-2. Create a `.env` file in the root directory and populate it with all the required environment variables for the project.
-3. Install dependencies using the command `yarn`.
-4. Start the service in development mode using `yarn start:dev`.
+2. Install dependencies with `yarn`.
+3. Start everything with `yarn local:up`.
+
+`yarn local:up` clones or updates `hof-services-secrets` from Keybase, creates or refreshes `.env`, creates or refreshes `.devcontainer/devcontainer.env`, checks that the configured services match the Docker Compose file, starts Redis, File Vault, HOF RDS API, Postgres and the SQS mock, then starts the application in development mode.
+
+When the app is running, open:
+
+```text
+http://localhost:8080
+```
+
+Drone runs the security check automatically on pushes and pull requests.
+
+If the sidecar services are already running, you can still start only the application in development mode using `yarn start:dev`.
 
 ## Install & Run the Application locally with Docker Compose
 

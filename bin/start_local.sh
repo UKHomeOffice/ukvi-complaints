@@ -25,6 +25,8 @@ ROOT_ENV=${ROOT_ENV:-.env}
 COMPOSE_ENV=${COMPOSE_ENV:-.devcontainer/devcontainer.env}
 COMPOSE_FILE=${COMPOSE_FILE:-.devcontainer/docker-compose.dev.yml}
 DEPENDENCY_SERVICES=${DEPENDENCY_SERVICES:-}
+FIRST_DEPENDENCY_SERVICE=${FIRST_DEPENDENCY_SERVICE:-}
+DEPENDENCY_STARTUP_TIMEOUT_SECONDS=${DEPENDENCY_STARTUP_TIMEOUT_SECONDS:-60}
 SECRETS_REPO_NAME=${SECRETS_REPO_NAME:-hof-services-secrets}
 SECRETS_REPO_URL=${SECRETS_REPO_URL:-keybase://team/hoforms/hof-services-secrets}
 SECRETS_SYNC_TIMEOUT_SECONDS=${SECRETS_SYNC_TIMEOUT_SECONDS:-20}
@@ -298,6 +300,16 @@ check_compose_services() {
     printf 'Update DEPENDENCY_SERVICES in %s so it matches this service and its Compose file.\n' "$CONFIG_FILE" >&2
     exit 1
   fi
+
+  if [ -n "$FIRST_DEPENDENCY_SERVICE" ]; then
+    case " $DEPENDENCY_SERVICES " in
+      *" $FIRST_DEPENDENCY_SERVICE "*) ;;
+      *)
+        printf 'FIRST_DEPENDENCY_SERVICE is not listed in DEPENDENCY_SERVICES: %s\n' "$FIRST_DEPENDENCY_SERVICE" >&2
+        exit 1
+        ;;
+    esac
+  fi
 }
 
 if [ "${1:-}" = "--help" ]; then
@@ -348,6 +360,27 @@ if [ "$RECREATE_DEPENDENCIES" = "true" ]; then
   compose_args="--force-recreate"
 fi
 
-docker compose -f "$COMPOSE_FILE" up -d $compose_args $DEPENDENCY_SERVICES
+remaining_services=""
+if [ -n "$FIRST_DEPENDENCY_SERVICE" ]; then
+  printf 'Starting local service: %s\n' "$FIRST_DEPENDENCY_SERVICE"
+  docker compose -f "$COMPOSE_FILE" up -d --wait --wait-timeout "$DEPENDENCY_STARTUP_TIMEOUT_SECONDS" $compose_args "$FIRST_DEPENDENCY_SERVICE"
+
+  for service in $DEPENDENCY_SERVICES; do
+    if [ "$service" != "$FIRST_DEPENDENCY_SERVICE" ]; then
+      remaining_services="$remaining_services $service"
+    fi
+  done
+else
+  remaining_services=$DEPENDENCY_SERVICES
+fi
+
+for service in $remaining_services; do
+  printf 'Starting local service: %s\n' "$service"
+  if [ -n "$FIRST_DEPENDENCY_SERVICE" ]; then
+    docker compose -f "$COMPOSE_FILE" up -d --wait --wait-timeout "$DEPENDENCY_STARTUP_TIMEOUT_SECONDS" --no-deps $compose_args "$service"
+  else
+    docker compose -f "$COMPOSE_FILE" up -d --wait --wait-timeout "$DEPENDENCY_STARTUP_TIMEOUT_SECONDS" $compose_args "$service"
+  fi
+done
 
 sh -c "$START_COMMAND"

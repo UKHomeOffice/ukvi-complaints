@@ -23,10 +23,13 @@ Security is the first priority for local development. Never commit secrets, toke
 
 For `ukvi-complaints`, the runner starts these sidecar services:
 
+- File Vault on port 3000, which automatically starts its local ClamAV mock and local S3 storage
 - Redis on port 6379
-- File Vault on port 3000
-- HOF RDS API on port 5000, backed by Postgres on port 5432
+- Postgres on port 5432
+- HOF RDS API on port 5000
 - An SQS mock on port 9324 for the DECS queue integration
+
+Docker Desktop groups these containers under one Compose application. They remain separate containers with their own processes, health state, and logs.
 
 The application itself still runs with `yarn start:dev`, so code changes are handled by the existing HOF watcher.
 
@@ -34,6 +37,8 @@ To apply the same pattern to another HOF service, copy [bin/start_local.sh](bin/
 
 - `APP_SECRETS_FILE_NAME` for that service's file in `hof-services-secrets`
 - `DEPENDENCY_SERVICES` for the Compose services required by the app
+- `FIRST_DEPENDENCY_SERVICE` when one Compose service must be started before the others
+- `DEPENDENCY_STARTUP_TIMEOUT_SECONDS` for the maximum readiness wait for each Compose service
 - `REQUIRED_ENV_KEYS` for the env vars the app must have before startup
 - `LOCAL_ENV_OVERRIDES` for host-machine URLs and ports that differ from Docker/Kubernetes names
 - `SIDECAR_SECRETS_FILE_NAME` if a sidecar needs its own env file
@@ -51,7 +56,7 @@ After installing dependencies, start the full local environment with:
 yarn local:up
 ```
 
-That command clones or updates `keybase://team/hoforms/hof-services-secrets` next to this service, refreshes `.env`, refreshes `.devcontainer/devcontainer.env`, starts the required micro services, and starts the app.
+That command clones or updates `keybase://team/hoforms/hof-services-secrets` next to this service, refreshes `.env`, refreshes `.devcontainer/devcontainer.env`, then starts File Vault, Redis, Postgres, HOF RDS API, and the SQS mock sequentially. It waits for each service container to start before continuing and starts the app last.
 
 For a brand-new machine where dependencies may not be installed yet, `yarn local:bootstrap` is available as a helper. It installs dependencies when `node_modules` is missing, then runs the same local startup flow.
 
@@ -91,7 +96,7 @@ Local dependency wiring is normalised for host-machine startup after secrets are
 - [Keybase](https://keybase.io/) installed and signed in locally
 - Access to the Keybase team `hoforms/hof-services-secrets`
 
-You do not need to manually start Redis, File Vault, HOF RDS API, Postgres, or the SQS mock. `yarn local:up` starts those required micro services for you through Docker Compose.
+You do not need to manually start File Vault, its local ClamAV mock and S3 storage, Redis, Postgres, HOF RDS API, or the SQS mock. `yarn local:up` starts those required micro services for you through Docker Compose.
 
 ### Setup
 
@@ -99,7 +104,7 @@ You do not need to manually start Redis, File Vault, HOF RDS API, Postgres, or t
 2. Install dependencies with `yarn`.
 3. Start everything with `yarn local:up`.
 
-`yarn local:up` clones or updates `hof-services-secrets` from Keybase, creates or refreshes `.env`, creates or refreshes `.devcontainer/devcontainer.env`, checks that the configured services match the Docker Compose file, starts Redis, File Vault, HOF RDS API, Postgres and the SQS mock, then starts the application in development mode.
+`yarn local:up` clones or updates `hof-services-secrets` from Keybase, creates or refreshes `.env`, creates or refreshes `.devcontainer/devcontainer.env`, checks that the configured services match the Docker Compose file, starts File Vault and its local ClamAV mock first, then starts Redis, Postgres, HOF RDS API, and the SQS mock one at a time before running `yarn start:dev` last. Compose waits for each service container to start before continuing.
 
 When the app is running, open:
 

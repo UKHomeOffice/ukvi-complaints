@@ -57,7 +57,16 @@
     "timeout": "6000"
   },
   "resolutions": {
-    "serialize-javascript": "^7.0.5",
+    "brace-expansion": "^5.0.9",
+    "browserslist": "^4.28.7",
+    "ip-address": "^10.3.1",
+    "js-yaml": "^4.3.2",
+    "morgan": "^1.12.0",
+    "nanoid": "^5.1.16",
+    "qs": "^6.16.0",
+    "serialize-javascript": "^7.0.7",
+    "tar": "^7.5.21",
+    "undici": "^8.9.0",
     "diff": "^8.0.3"
   }
 }

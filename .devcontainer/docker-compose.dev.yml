@@ -114,7 +114,10 @@ services:
     ports:
       - "5000:5000"
     healthcheck:
-      disable: true
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:5000/', response => process.exit(0)).on('error', () => process.exit(1))"]
+      interval: 1s
+      timeout: 2s
+      retries: 30
     depends_on:
       postgres:
         condition: service_healthy

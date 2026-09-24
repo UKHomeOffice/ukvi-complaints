@@ -1,4 +1,3 @@
-version: '3.8'
 services:
   hof-ukvic-app:
     env_file: devcontainer.env
@@ -35,17 +34,77 @@ services:
 
   file-vault:
     env_file: devcontainer.env
-    image: quay.io/ukhomeofficedigital/file-vault:f4cd1ece1caddc3bfbc8f5db761c593fda79ef12
+    image: quay.io/ukhomeofficedigital/file-vault:3.2.0
+    platform: linux/amd64
     networks:
       - ukvic-shared-network
     hostname: hof-file-vault
     environment:
       - DEBUG=*
+      - CLAMAV_REST_URL=http://clamav:3999/scan
+      - AWS_ACCESS_KEY_ID=aws-access-key-id
+      - AWS_SECRET_ACCESS_KEY=aws-secret-access-key
+      - AWS_REGION=eu-west-1
+      - AWS_SIGNATURE_VERSION=v4
+      - AWS_BUCKET=aws-bucket
+      - AWS_ENDPOINT=http://local-s3:80
+      - AWS_EXPIRY_TIME=600
+      - AWS_PASSWORD=aws-password
+      - FILE_EXTENSION_WHITELIST=pdf,jpg,jpeg,png
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('net').createConnection(3000, '127.0.0.1').on('connect', () => process.exit(0)).on('error', () => process.exit(1))"]
+      interval: 1s
+      timeout: 2s
+      retries: 30
     ports:
       - "3000:3000"
+    restart: unless-stopped
+    depends_on:
+      clamav:
+        condition: service_started
+      local-s3-init:
+        condition: service_completed_successfully
+
+  clamav:
+    image: node:24.18.0-alpine3.24
+    networks:
+      - ukvic-shared-network
+    hostname: clamav
+    command: ["node", "-e", "require('http').createServer((req, res) => res.end('true')).listen(3999)"]
+    restart: unless-stopped
+
+  local-s3:
+    image: luofuxiang/local-s3:latest
+    networks:
+      - ukvic-shared-network
+    volumes:
+      - local-s3-data:/data
+
+  local-s3-init:
+    image: amazon/aws-cli:2.17.43
+    networks:
+      - ukvic-shared-network
+    depends_on:
+      - local-s3
+    environment:
+      - AWS_ACCESS_KEY_ID=aws-access-key-id
+      - AWS_SECRET_ACCESS_KEY=aws-secret-access-key
+      - AWS_DEFAULT_REGION=eu-west-1
+    entrypoint:
+      - /bin/sh
+      - -c
+      - |
+        until aws --endpoint-url http://local-s3:80 s3api list-buckets >/dev/null 2>&1; do
+          sleep 1
+        done
+
+        if ! aws --endpoint-url http://local-s3:80 s3api head-bucket --bucket aws-bucket >/dev/null 2>&1; then
+          aws --endpoint-url http://local-s3:80 s3api create-bucket --bucket aws-bucket >/dev/null
+        fi
 
   rds-api:
     image: quay.io/ukhomeofficedigital/hof-rds-api:3.5.0@sha256:a2db461460894530de77def109e6c4e42df724126091f16c5ae7127d5856a115
+    platform: linux/amd64
     networks:
       - ukvic-shared-network
     hostname: hof-rds-api
@@ -60,13 +119,16 @@ services:
     ports:
       - "5000:5000"
     healthcheck:
-      disable: true
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:5000/', response => process.exit(0)).on('error', () => process.exit(1))"]
+      interval: 1s
+      timeout: 2s
+      retries: 30
     depends_on:
       postgres:
         condition: service_healthy
 
   postgres:
-    image: postgres:14@sha256:8396ed98bfbeb08ff9c83a4de368957af98085f55d2c93e7e83828595d6f6663
+    image: postgres:14
     networks:
       - ukvic-shared-network
     hostname: hof-postgres
@@ -84,8 +146,8 @@ services:
       interval: 1s
       timeout: 5s
       retries: 10
-
   sqs-mock:
+    platform: linux/amd64
     build:
       context: ../test/_integration/sqs-mock
     container_name: sqs-mock
@@ -115,3 +177,4 @@ networks:
 
 volumes:
   pgdata:
+  local-s3-data:

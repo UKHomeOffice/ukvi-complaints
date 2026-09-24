@@ -51,6 +51,11 @@ services:
       - AWS_EXPIRY_TIME=600
       - AWS_PASSWORD=aws-password
       - FILE_EXTENSION_WHITELIST=pdf,jpg,jpeg,png
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('net').createConnection(3000, '127.0.0.1').on('connect', () => process.exit(0)).on('error', () => process.exit(1))"]
+      interval: 1s
+      timeout: 2s
+      retries: 30
     ports:
       - "3000:3000"
     restart: unless-stopped

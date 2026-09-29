@@ -95,7 +95,7 @@ services:
       - "9324:9324"
 
   playwright-run:
-    image: mcr.microsoft.com/playwright:v1.48.2-focal-amd64
+    image: mcr.microsoft.com/playwright:v1.63.0-noble
     container_name: playwright-run
     environment:
       - ACCEPTANCE_HOST_NAME=http://hof-ukvic-app:8080

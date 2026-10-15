@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "accessible-autocomplete": "^3.0.1",
-    "bl": "^6.1.6",
+    "bl": "^7.0.12",
     "busboy": "^1.6.0",
     "form-data": "^4.0.6",
     "hof": "~24.5.0",

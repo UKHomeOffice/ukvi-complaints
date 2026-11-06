@@ -1,5 +1,5 @@
 # Page Ownership Validation
-31/35 individual cases passed; 0 failed.
+33/35 individual cases passed; 0 failed.
 | Case | Journey | Description | Result | Seconds |
 | --- | --- | --- | --- | --- |
 | 1 | UKVI Complaints1 | S1-Submitting an application - Tech Issues - In Uk - GWF number -Complaint on Behalf - Yes - Legal rep | PASS | 17.5 |
@@ -33,8 +33,8 @@
 | 29 | UKVIC - Page field validation check - Waiting for a decision | Waiting for a decision - Decision on application - In Uk -GWF number -Complaint on Behalf - Yes - expert support | PASS | 14.9 |
 | 30 | UKVIC - Page field validation check - A negative or positive decision | A negative or positive decision - Negative -Unique number -Complaint on Behalf - Yes - expert support | PASS | 15.8 |
 | 31 | UKVIC - Page field validation check - Biometric residence permits (BRPs) | BRP - Not arrived - IHS number -Complaint on Behalf - Yes -friend | PASS | 15.3 |
-| 32 | UKVIC - Page field validation check - Refunds | Refunds - Yes- More than 6wks - HO number -Complaint on Behalf - Yes - legal rep | NOT_RUN |  |
-| 33 | UKVIC - Page field validation check - Staff Behaviour (e.g. rudeness, discrimination) | Staff Behaviour - In person - Outside Uk - IHS number -Complaint on Behalf - Yes - expert support | NOT_RUN |  |
+| 32 | UKVIC - Page field validation check - Refunds | Refunds - Yes- More than 6wks - HO number -Complaint on Behalf - Yes - legal rep | PASS | 18.3 |
+| 33 | UKVIC - Page field validation check - Staff Behaviour (e.g. rudeness, discrimination) | Staff Behaviour - In person - Outside Uk - IHS number -Complaint on Behalf - Yes - expert support | PASS | 18.0 |
 | 34 | UKVIC - Page field validation check - An existing complaint | Existing complaint -No ref Numb - Submit application - complaint on Behalf - Yes - legal rep | NOT_RUN |  |
 | 35 | UKVIC - Page field validation check - Something else | Something else -IHS number -Complaint on Behalf - Yes - legal rep | NOT_RUN |  |
 

@@ -410,8 +410,12 @@
       "scenario": "UKVIC - Page field validation check - Refunds",
       "description": "Refunds - Yes- More than 6wks - HO number -Complaint on Behalf - Yes - legal rep",
       "selector": ".features-gen/e2e-tests/features/ukvicValidations.feature.spec.js:295",
-      "command": "npx playwright test \".features-gen/e2e-tests/features/ukvicValidations.feature.spec.js:295\" --project=chromium --workers=1 --retries=0",
-      "result": "NOT_RUN"
+      "command": "npx playwright test \".features-gen/e2e-tests/features/ukvicValidations.feature.spec.js:295\" --project=chromium --workers=1 --retries=0 --reporter=json --output=.playwright-runs/1793991167622-13000/case-32",
+      "result": "PASS",
+      "duration": "18.3",
+      "retryUsed": false,
+      "error": "",
+      "output": ".playwright-runs/1793991167622-13000/case-32"
     },
     {
       "index": 33,
@@ -419,8 +423,12 @@
       "scenario": "UKVIC - Page field validation check - Staff Behaviour (e.g. rudeness, discrimination)",
       "description": "Staff Behaviour - In person - Outside Uk - IHS number -Complaint on Behalf - Yes - expert support",
       "selector": ".features-gen/e2e-tests/features/ukvicValidations.feature.spec.js:360",
-      "command": "npx playwright test \".features-gen/e2e-tests/features/ukvicValidations.feature.spec.js:360\" --project=chromium --workers=1 --retries=0",
-      "result": "NOT_RUN"
+      "command": "npx playwright test \".features-gen/e2e-tests/features/ukvicValidations.feature.spec.js:360\" --project=chromium --workers=1 --retries=0 --reporter=json --output=.playwright-runs/1793991167622-13000/case-33",
+      "result": "PASS",
+      "duration": "18.0",
+      "retryUsed": false,
+      "error": "",
+      "output": ".playwright-runs/1793991167622-13000/case-33"
     },
     {
       "index": 34,

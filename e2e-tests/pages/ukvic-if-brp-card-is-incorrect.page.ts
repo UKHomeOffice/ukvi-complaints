@@ -21,4 +21,10 @@ export class ukvicIfBRPCardIsIncorrectPage extends ukviCommonPage {
         await this.checkExternalLink("Report that your BRP is incorrect", this.brpNotReceived);
         return true;
     }
+
+    async answerIfBRPIsIncorrect(): Promise<void> {
+        await this.assertPageTitle(this.page, await this.expectedPageTitle());
+        await this.checkExternalLinkWorksOnPage();
+        await this.selectContinueMakingComplaint();
+    }
 }

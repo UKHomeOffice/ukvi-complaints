@@ -16,4 +16,9 @@ export class ukvicWhatAreYourContactDetailsPage extends ukviCommonPage {
     async enterYourContacts(emailAdd: string, phoneNo: string): Promise<void> {
         await this.enterYourContactDetails(emailAdd, phoneNo);
     }
+
+    async answerWhatAreYourContactDetails(contactEmailAddress: string, contactTelephone: string): Promise<void> {
+        await this.assertPageTitle(this.page, await this.expectedPageTitle());
+        await this.enterYourContacts(contactEmailAddress, contactTelephone);
+    }
 }

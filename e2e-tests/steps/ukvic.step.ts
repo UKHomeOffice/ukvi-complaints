@@ -27,11 +27,6 @@ export class ukVicStepLib {
         expect(this.applicant).toEqual(getApplicantForDescription(description));
     }
 
-    async openUkviComplaintHomePage(): Promise<void> {
-        await this.pages.ukvicHomePageWhatIsTheComplaintAbtPage.openUkvicHomePage();
-        await this.pages.ukvicHomePageWhatIsTheComplaintAbtPage.acceptCookies();
-    }
-
     async selectYourComplaintTypeAndCompleteForm(): Promise<void> {
         await this.pages.ukvicHomePageWhatIsTheComplaintAbtPage.assertPageTitle(this.page, await this.pages.ukvicHomePageWhatIsTheComplaintAbtPage.expectedPageTitle());
         const complaintType = this.applicant.whatIsTheComplaintAbt;
@@ -120,9 +115,9 @@ export class ukVicStepLib {
             } else if (same(this.applicant.whatAreYouWaitingFor, c.Application_Decision)) {
                 await this.answerIfYouAreWaitingForDecision();
             } else if (same(this.applicant.wasDecisionNegativeOrPositive, c.POSITIVE)) {
-                await this.answerIfYouHaveQuestionsAbtPositiveDecision();
+                await this.pages.ukvicIfYouHaveQuestAbtPositiveDecisionPage.answerIfYouHaveQuestionsAbtPositiveDecision();
             } else if (same(this.applicant.wasDecisionNegativeOrPositive, c.NEGATIVE)) {
-                await this.answerIfYouHaveQuestionsAbtNegDecision();
+                await this.pages.ukvicIfYouHaveQuestionsAbtNegDecisionPage.answerIfYouHaveQuestionsAbtNegDecision();
             } else if (same(this.applicant.whichTypeOfRefundDoYouRequest, c.PRIORITY_SERVICE_FEE)) {
                 await this.answerIfYouWantToRequestPrioritySerRefund();
             } else if (same(this.applicant.whichTypeOfRefundDoYouRequest, c.SUPER_PRIORITY_SERVICE_FEE)) {
@@ -149,9 +144,9 @@ export class ukVicStepLib {
             } else if (same(this.applicant.whatAreYouWaitingFor, c.Application_Decision)) {
                 await this.answerIfYouAreWaitingForDecision();
             } else if (same(this.applicant.wasDecisionNegativeOrPositive, c.NEGATIVE)) {
-                await this.answerIfYouHaveQuestionsAbtNegDecision();
+                await this.pages.ukvicIfYouHaveQuestionsAbtNegDecisionPage.answerIfYouHaveQuestionsAbtNegDecision();
             } else if (same(this.applicant.wasDecisionNegativeOrPositive, c.POSITIVE)) {
-                await this.answerIfYouHaveQuestionsAbtPositiveDecision();
+                await this.pages.ukvicIfYouHaveQuestAbtPositiveDecisionPage.answerIfYouHaveQuestionsAbtPositiveDecision();
             } else if (same(this.applicant.whichTypeOfRefundDoYouRequest, c.PRIORITY_SERVICE_FEE)) {
                 await this.answerIfYouWantToRequestPrioritySerRefund();
             } else if (same(this.applicant.whichTypeOfRefundDoYouRequest, c.SUPER_PRIORITY_SERVICE_FEE)) {
@@ -281,12 +276,12 @@ export class ukVicStepLib {
             await this.answerYourRelationToApplicant();
         } else {
             await this.pages.ukvicMakingComplaintBehalfOfSomeonePage.answerSelectYourComplaint(c.RESPONSE_NO);
-            await this.answerWhatIsYourFullName();
-            await this.answerWhatIsYourDob();
-            await this.answerWhatIsYourCountryOfNationality();
-            await this.answerWhatAreYourContactDetails();
-            await this.answerWhatAreTheDetailsOfYourComplaint();
-            await this.answerUploadDocuments();
+            await this.pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
+            await this.pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
+            await this.pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
+            await this.pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await this.pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
+            await this.pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
         }
     }
 
@@ -309,48 +304,13 @@ export class ukVicStepLib {
             default:
                 throw new Error("Selected option not found");
         }
-        await this.answerWhatIsYourName();
-        await this.answerWhereShouldWeSendResponse();
-        await this.answerApplicantFullName();
-        await this.answerApplicantDob();
-        await this.answerApplicantCountryOfNationality();
-        await this.answerWhatAreTheDetailsOfYourComplaint();
-        await this.answerUploadDocuments();
-    }
-
-    async answerWhatIsYourName(): Promise<void> {
-        await this.pages.ukvicWhatIsYourNamePage.assertPageTitle(this.page, await this.pages.ukvicWhatIsYourNamePage.expectedPageTitle());
-        await this.pages.ukvicWhatIsYourNamePage.answerEnterYourName(c.NAME);
-    }
-
-    async answerWhatIsYourFullName(): Promise<void> {
-        await this.pages.ukvicWhatIsYourFullNamePage.assertPageTitle(this.page, await this.pages.ukvicWhatIsYourFullNamePage.expectedPageTitle());
-        await this.pages.ukvicWhatIsYourFullNamePage.answerEnterYourFullName(c.NAME);
-    }
-
-    async answerWhereShouldWeSendResponse(): Promise<void> {
-        await this.pages.ukvicWhereShldWeSendOurResponsePage.assertPageTitle(this.page, await this.pages.ukvicWhereShldWeSendOurResponsePage.expectedPageTitle());
-        await this.pages.ukvicWhereShldWeSendOurResponsePage.enterWhereToSendResponse(c.SAS_HOF_EMAIL, c.TELEPHONE);
-    }
-
-    async answerApplicantFullName(): Promise<void> {
-        await this.pages.ukvicWhatIsApplicantFullnamePage.assertPageTitle(this.page, await this.pages.ukvicWhatIsApplicantFullnamePage.expectedPageTitle());
-        await this.pages.ukvicWhatIsApplicantFullnamePage.answerEnterYourFullName(c.APPLICANT_FULL_NAME);
-    }
-
-    async answerApplicantDob(): Promise<void> {
-        await this.pages.ukvicWhatIsApplicantDobPage.assertPageTitle(this.page, await this.pages.ukvicWhatIsApplicantDobPage.expectedPageTitle());
-        await this.pages.ukvicWhatIsApplicantDobPage.enterApplicantDob(c.APPLICANT_DOB_11_11_1985);
-    }
-
-    async answerWhatIsYourDob(): Promise<void> {
-        await this.pages.ukvicWhatIsYourDobPage.assertPageTitle(this.page, await this.pages.ukvicWhatIsYourDobPage.expectedPageTitle());
-        await this.pages.ukvicWhatIsYourDobPage.enterYourDob(c.DOB_11_11_1988);
-    }
-
-    async answerApplicantCountryOfNationality(): Promise<void> {
-        await this.pages.ukvicApplicantCountryOfNationalityPage.assertPageTitle(this.page, await this.pages.ukvicApplicantCountryOfNationalityPage.expectedPageTitle());
-        await this.pages.ukvicApplicantCountryOfNationalityPage.selectApplicantCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
+        await this.pages.ukvicWhatIsYourNamePage.answerWhatIsYourName(c.NAME);
+        await this.pages.ukvicWhereShldWeSendOurResponsePage.answerWhereShouldWeSendResponse(c.SAS_HOF_EMAIL, c.TELEPHONE);
+        await this.pages.ukvicWhatIsApplicantFullnamePage.answerApplicantFullName(c.APPLICANT_FULL_NAME);
+        await this.pages.ukvicWhatIsApplicantDobPage.answerApplicantDob(c.APPLICANT_DOB_11_11_1985);
+        await this.pages.ukvicApplicantCountryOfNationalityPage.answerApplicantCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
+        await this.pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
+        await this.pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
     }
 
     async answerWhatProbMakingAppointment(): Promise<void> {
@@ -400,15 +360,15 @@ export class ukVicStepLib {
         switch (this.applicant.haveYouAskedForDocsBack) {
             case c.YES_USING_ONLINE_FORM:
                 await this.pages.ukvicHaveYouAskedForDocsBackPage.answerSelectResponse(c.YES_USING_ONLINE_FORM);
-                await this.answerIfYouWaitingForDocsToBeReturned();
+                await this.pages.ukvicIfYouAreWaitingForDocToBeReturnedPage.answerIfYouWaitingForDocsToBeReturned();
                 break;
             case c.YES_BY_PHONE_EMAIL_ETC:
                 await this.pages.ukvicHaveYouAskedForDocsBackPage.answerSelectResponse(c.YES_BY_PHONE_EMAIL_ETC);
-                await this.answerIfYouHaveNotUsedOnlineServiceRequest();
+                await this.pages.ukvicIfYouHaveNotUsedOnlineServiceRequestPage.answerIfYouHaveNotUsedOnlineServiceRequest();
                 break;
             case c.RESPONSE_NO:
                 await this.pages.ukvicHaveYouAskedForDocsBackPage.answerSelectResponse(c.RESPONSE_NO);
-                await this.answerIfYouHaveNotUsedOnlineServiceRequest();
+                await this.pages.ukvicIfYouHaveNotUsedOnlineServiceRequestPage.answerIfYouHaveNotUsedOnlineServiceRequest();
                 break;
             default:
                 throw new Error("Selected option not found");
@@ -416,22 +376,11 @@ export class ukVicStepLib {
         await this.answerWhichRefNumbDoYouHave();
     }
 
-    async answerIfYouHaveNotUsedOnlineServiceRequest(): Promise<void> {
-        await this.pages.ukvicIfYouHaveNotUsedOnlineServiceRequestPage.assertPageTitle(this.page, await this.pages.ukvicIfYouHaveNotUsedOnlineServiceRequestPage.expectedPageTitle());
-        await this.pages.ukvicIfYouHaveNotUsedOnlineServiceRequestPage.checkExternalLinkWorksOnPage();
-        await this.pages.ukvicIfYouHaveNotUsedOnlineServiceRequestPage.selectContinueMakingComplaint();
-    }
-
-    async answerIfYouWaitingForDocsToBeReturned(): Promise<void> {
-        await this.pages.ukvicIfYouAreWaitingForDocToBeReturnedPage.assertPageTitle(this.page, await this.pages.ukvicIfYouAreWaitingForDocToBeReturnedPage.expectedPageTitle());
-        await this.pages.ukvicIfYouAreWaitingForDocToBeReturnedPage.selectContinueMakingComplaint();
-    }
-
     async answerWasDecisionNegOrPositive(): Promise<void> {
         await this.pages.ukvicWasDecisionNegOrPositivePage.assertPageTitle(this.page, await this.pages.ukvicWasDecisionNegOrPositivePage.expectedPageTitle());
         if (same(this.applicant.wasDecisionNegativeOrPositive, c.NEGATIVE)) {
             await this.pages.ukvicWasDecisionNegOrPositivePage.answerSelectDecision(c.NEGATIVE);
-            await this.answerIfYouHaveQuestionsAbtNegDecision();
+            await this.pages.ukvicIfYouHaveQuestionsAbtNegDecisionPage.answerIfYouHaveQuestionsAbtNegDecision();
         } else {
             await this.pages.ukvicWasDecisionNegOrPositivePage.answerSelectDecision(c.POSITIVE);
             await this.answerWhereDidYouMakeYourApplication();
@@ -439,28 +388,16 @@ export class ukVicStepLib {
         await this.answerWhichRefNumbDoYouHave();
     }
 
-    async answerIfYouHaveQuestionsAbtNegDecision(): Promise<void> {
-        await this.pages.ukvicIfYouHaveQuestionsAbtNegDecisionPage.assertPageTitle(this.page, await this.pages.ukvicIfYouHaveQuestionsAbtNegDecisionPage.expectedPageTitle());
-        await this.pages.ukvicIfYouHaveQuestionsAbtNegDecisionPage.checkExternalLinksAreWorkingOnPage();
-        await this.pages.ukvicIfYouHaveQuestionsAbtNegDecisionPage.selectContinueMakingComplaint();
-    }
-
-    async answerIfYouHaveQuestionsAbtPositiveDecision(): Promise<void> {
-        await this.pages.ukvicIfYouHaveQuestAbtPositiveDecisionPage.assertPageTitle(this.page, await this.pages.ukvicIfYouHaveQuestAbtPositiveDecisionPage.expectedPageTitle());
-        await this.pages.ukvicIfYouHaveQuestAbtPositiveDecisionPage.checkExternalLinkWorksOnPage();
-        await this.pages.ukvicIfYouHaveQuestAbtPositiveDecisionPage.selectContinueMakingComplaint();
-    }
-
     async answerWhatIsTheProbWithTheBRP(): Promise<void> {
         await this.pages.ukvicWhatIsTheProblemWithTheBrpPage.assertPageTitle(this.page, await this.pages.ukvicWhatIsTheProblemWithTheBrpPage.expectedPageTitle());
         switch (this.applicant.whatIsTheProbWithTheBrp) {
             case c.HAS_NOT_ARRIVED:
                 await this.pages.ukvicWhatIsTheProblemWithTheBrpPage.answerSelectTheProblem(c.HAS_NOT_ARRIVED);
-                await this.answerIfBRPHasNotArrived();
+                await this.pages.ukvicIfBRPCardHasNotArrivedPage.answerIfBRPHasNotArrived();
                 break;
             case c.IS_INCORRECT:
                 await this.pages.ukvicWhatIsTheProblemWithTheBrpPage.answerSelectTheProblem(c.IS_INCORRECT);
-                await this.answerIfBRPIsIncorrect();
+                await this.pages.ukvicIfBRPCardIsIncorrectPage.answerIfBRPIsIncorrect();
                 break;
             case c.SOMETHING_ELSE:
                 await this.pages.ukvicWhatIsTheProblemWithTheBrpPage.answerSelectTheProblem(c.SOMETHING_ELSE);
@@ -469,18 +406,6 @@ export class ukVicStepLib {
                 throw new Error("Selected option not found");
         }
         await this.answerWhichRefNumbDoYouHave();
-    }
-
-    async answerIfBRPHasNotArrived(): Promise<void> {
-        await this.pages.ukvicIfBRPCardHasNotArrivedPage.assertPageTitle(this.page, await this.pages.ukvicIfBRPCardHasNotArrivedPage.expectedPageTitle());
-        await this.pages.ukvicIfBRPCardHasNotArrivedPage.checkExternalLinkWorksOnPage();
-        await this.pages.ukvicIfBRPCardHasNotArrivedPage.selectContinueMakingComplaint();
-    }
-
-    async answerIfBRPIsIncorrect(): Promise<void> {
-        await this.pages.ukvicIfBRPCardIsIncorrectPage.assertPageTitle(this.page, await this.pages.ukvicIfBRPCardIsIncorrectPage.expectedPageTitle());
-        await this.pages.ukvicIfBRPCardIsIncorrectPage.checkExternalLinkWorksOnPage();
-        await this.pages.ukvicIfBRPCardIsIncorrectPage.selectContinueMakingComplaint();
     }
 
     async answerHaveYouRequestedRefund(): Promise<void> {
@@ -511,12 +436,6 @@ export class ukVicStepLib {
             await this.pages.ukvicWhenDidYouRequestRefundPage.answerSelectResponse(c.More_Than_6Wks);
             await this.answerWhichRefNumbDoYouHave();
         }
-    }
-
-    async pleaseWaitToReceiveYourRefund(waitForRefund: string): Promise<void> {
-        await this.pages.ukvicIfYouRequestedRefundLess6WksAgoPage.assertPageTitle(this.page, await this.pages.ukvicIfYouRequestedRefundLess6WksAgoPage.expectedPageTitle());
-        expect(await this.pages.ukvicIfYouRequestedRefundLess6WksAgoPage.getWaitForRefundMessage()).toBe(waitForRefund);
-        await this.pages.ukvicIfYouRequestedRefundLess6WksAgoPage.exitApplication();
     }
 
     async answerWhichTypeOfRefundYouRequest(): Promise<void> {
@@ -583,9 +502,9 @@ export class ukVicStepLib {
                 break;
             case c.ON_THE_PHONE:
                 await this.pages.ukvicWhereDidYouExpPoorBehaviourPage.answerSelectWhereBehaviourHappen(c.ON_THE_PHONE);
-                await this.answerWhatTelephoneNumWasCalled();
-                await this.answerWhenWasTheCallMade();
-                await this.answerWhatNumbWasCallMadeFrom();
+                await this.pages.ukvicWhatTelephoneNumWasCalledPage.answerWhatTelephoneNumWasCalled(c.TELEPHONE);
+                await this.pages.ukvicWhenWasTheCallPage.answerWhenWasTheCallMade(c.CALL_DATE, c.CALL_TIME);
+                await this.pages.ukvicWhatNumbWasTheCallMadeFromPage.answerWhatNumbWasCallMadeFrom(c.TELEPHONE);
                 await this.answerWhichRefNumbDoYouHave();
                 break;
             case c.IN_A_LETTER_OR_EMAIL:
@@ -602,15 +521,15 @@ export class ukVicStepLib {
         switch (this.applicant.whereDidTheIncidentTakePlace) {
             case c.OUTSIDE_UK_VISA_CENTRE:
                 await this.pages.ukvicWhereDidTheIncidentHappenPage.answerSelectWhereIncidentTakePlace(c.OUTSIDE_UK_VISA_CENTRE);
-                await this.answerWhereIsTheVisaApplyCentre();
+                await this.pages.ukvicWhereIsTheVisaApplyCentrePage.answerWhereIsTheVisaApplyCentre(c.OVERSEAS_COUNTRY, c.CITY);
                 break;
             case c.IN_UK_VISA_SERVICE_SUPPORT_CENTRE:
                 await this.pages.ukvicWhereDidTheIncidentHappenPage.answerSelectWhereIncidentTakePlace(c.IN_UK_VISA_SERVICE_SUPPORT_CENTRE);
-                await this.answerWhereInUkIsTheServiceSupportCentre();
+                await this.pages.ukvicWhereInUkIsServiceSupportCentrePage.answerWhereInUkIsTheServiceSupportCentre(c.CITY);
                 break;
             case c.IN_UK_VISA_CITIZEN_SERVICE_POINT:
                 await this.pages.ukvicWhereDidTheIncidentHappenPage.answerSelectWhereIncidentTakePlace(c.IN_UK_VISA_CITIZEN_SERVICE_POINT);
-                await this.answerWhereInUkIsTheServicePoint();
+                await this.pages.ukvicWhereInUkIsServicePointPage.answerWhereInUkIsTheServicePoint(c.CITY);
                 break;
             default:
                 throw new Error("Selected option not found");
@@ -618,62 +537,16 @@ export class ukVicStepLib {
         await this.answerWhichRefNumbDoYouHave();
     }
 
-    async answerWhereIsTheVisaApplyCentre(): Promise<void> {
-        await this.pages.ukvicWhereIsTheVisaApplyCentrePage.assertPageTitle(this.page, await this.pages.ukvicWhereIsTheVisaApplyCentrePage.expectedPageTitle());
-        await this.pages.ukvicWhereIsTheVisaApplyCentrePage.answerEnterYourCApplicationCenter(c.OVERSEAS_COUNTRY, c.CITY);
-    }
-
-    async answerWhereInUkIsTheServiceSupportCentre(): Promise<void> {
-        await this.pages.ukvicWhereInUkIsServiceSupportCentrePage.assertPageTitle(this.page, await this.pages.ukvicWhereInUkIsServiceSupportCentrePage.expectedPageTitle());
-        await this.pages.ukvicWhereInUkIsServiceSupportCentrePage.answerEnterServiceSupportCentre(c.CITY);
-    }
-
-    async answerWhereInUkIsTheServicePoint(): Promise<void> {
-        await this.pages.ukvicWhereInUkIsServicePointPage.assertPageTitle(this.page, await this.pages.ukvicWhereInUkIsServicePointPage.expectedPageTitle());
-        await this.pages.ukvicWhereInUkIsServicePointPage.answerEnterServiceSupportCentre(c.CITY);
-    }
-
-    async answerWhatTelephoneNumWasCalled(): Promise<void> {
-        await this.pages.ukvicWhatTelephoneNumWasCalledPage.assertPageTitle(this.page, await this.pages.ukvicWhatTelephoneNumWasCalledPage.expectedPageTitle());
-        await this.pages.ukvicWhatTelephoneNumWasCalledPage.answerEnterCalledNumber(c.TELEPHONE);
-    }
-
-    async answerWhenWasTheCallMade(): Promise<void> {
-        await this.pages.ukvicWhenWasTheCallPage.assertPageTitle(this.page, await this.pages.ukvicWhenWasTheCallPage.expectedPageTitle());
-        await this.pages.ukvicWhenWasTheCallPage.answerEnterCalledDate(c.CALL_DATE);
-        await this.pages.ukvicWhenWasTheCallPage.answerEnterCalledTime(c.CALL_TIME);
-    }
-
-    async answerWhatNumbWasCallMadeFrom(): Promise<void> {
-        await this.pages.ukvicWhatNumbWasTheCallMadeFromPage.assertPageTitle(this.page, await this.pages.ukvicWhatNumbWasTheCallMadeFromPage.expectedPageTitle());
-        await this.pages.ukvicWhatNumbWasTheCallMadeFromPage.answerEnterTheTelPhone(c.TELEPHONE);
-    }
-
     async answerDoYouHaveRefNumbForTheComplaint(): Promise<void> {
         await this.pages.ukvicDoYouHaveRefNoForComplaintPage.assertPageTitle(this.page, await this.pages.ukvicDoYouHaveRefNoForComplaintPage.expectedPageTitle());
         if (same(this.applicant.doYouHaveARefNumbForTheComplaint, c.RESPONSE_YES)) {
             await this.pages.ukvicDoYouHaveRefNoForComplaintPage.answerHaveRefNo(c.RESPONSE_YES);
-            await this.answerWhatIsTheRefNumForYourComplaint();
+            await this.pages.ukvicWhatIsYourComplaintRefNoPage.answerWhatIsTheRefNumForYourComplaint(c.REF_NUMBER);
             await this.answerWhatWasYourOriginalApplyAbt();
         } else {
             await this.pages.ukvicDoYouHaveRefNoForComplaintPage.answerHaveRefNo(c.RESPONSE_NO);
             await this.answerWhatWasYourOriginalApplyAbt();
         }
-    }
-
-    async answerWhatIsTheRefNumForYourComplaint(): Promise<void> {
-        await this.pages.ukvicWhatIsYourComplaintRefNoPage.assertPageTitle(this.page, await this.pages.ukvicWhatIsYourComplaintRefNoPage.expectedPageTitle());
-        await this.pages.ukvicWhatIsYourComplaintRefNoPage.answerEnterComplaintRefNo(c.REF_NUMBER);
-    }
-
-    async answerWhatAreTheDetailsOfYourComplaint(): Promise<void> {
-        await this.pages.ukvicWhatAreDetailsOfYourComplainPage.assertPageTitle(this.page, await this.pages.ukvicWhatAreDetailsOfYourComplainPage.expectedPageTitle());
-        await this.pages.ukvicWhatAreDetailsOfYourComplainPage.answerEnterComplaintDetails(c.COMPLAINT_DETAILS);
-    }
-
-    async answerUploadDocuments(): Promise<void> {
-        await this.pages.ukvicUploadDocumentsPage.assertPageTitle(this.page, await this.pages.ukvicUploadDocumentsPage.expectedPageTitle());
-        await this.pages.ukvicUploadDocumentsPage.answerFileToUpload(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
     }
 
     async answerWhatWasYourOriginalApplyAbt(): Promise<void> {
@@ -711,132 +584,12 @@ export class ukVicStepLib {
         }
         await this.answerAreYouMakingComplaintOnBehalfOfSomeoneElse();
     }
-
-    async answerWhatIsYourCountryOfNationality(): Promise<void> {
-        await this.pages.ukvicWhatIsYourCountryOfNationalityPage.assertPageTitle(this.page, await this.pages.ukvicWhatIsYourCountryOfNationalityPage.expectedPageTitle());
-        await this.pages.ukvicWhatIsYourCountryOfNationalityPage.answerEnterYourNationality(c.COUNTRY_OF_NATIONALITY);
-    }
-
-    async answerWhatAreYourContactDetails(): Promise<void> {
-        await this.pages.ukvicWhatAreYourContactDetailsPage.assertPageTitle(this.page, await this.pages.ukvicWhatAreYourContactDetailsPage.expectedPageTitle());
-        await this.pages.ukvicWhatAreYourContactDetailsPage.enterYourContacts(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
-    }
-
-    async answerCheckYourAnswers(): Promise<void> {
-        await this.pages.ukvicCheckYourAnswersPage.assertPageTitle(this.page, await this.pages.ukvicCheckYourAnswersPage.expectedPageTitle());
-        await this.pages.ukvicCheckYourAnswersPage.isCheckYourAnsHeaderTextDisplayed();
-        await this.pages.ukvicCheckYourAnswersPage.answerSendComplaint();
-    }
-
-    async verifySubmission(): Promise<void> {
-        expect(await this.pages.ukvicCheckYourAnswersPage.verifyComplaintIsSubmittedSuccessfully()).toBe(true);
-    }
-
-    async navigateBackward(): Promise<void> {
-        await this.pages.basePage.navigateBackLink.click();
-    }
-
-    async ansSelectAJourney(journey: string): Promise<void> {
-        await this.pages.ukvicHomePageWhatIsTheComplaintAbtPage.answerSelectYourComplaint(journey);
-    }
-
-    async ansProbWithApplyProcess(theProb: string): Promise<void> {
-        await this.pages.ukvicWhatWasTheProbWithApplyProcessPage.answerSelectTheProbWithTheApplyProcess(theProb);
-    }
-
-    async ansWhereDidYouApply(location: string): Promise<void> {
-        await this.pages.ukvicWhereDidYouApplyPage.answerSelectWhereYouApplied(location);
-    }
-
-    async ansContinueMakingComplaint(): Promise<void> {
-        await this.pages.ukvicIfHardToGetAppointmentPage.selectContinueMakingComplaint();
-    }
-
-    async ansProvideRefNumYouHave(option: string): Promise<void> {
-        await this.pages.ukvicWhichRefNumDoYouHavePage.answerProvideNumbIfAny(option, c.REF_NUMBER);
-    }
-
-    async ansMakingComplaintBehalfOfSomeone(option: string): Promise<void> {
-        await this.pages.ukvicMakingComplaintBehalfOfSomeonePage.answerSelectYourComplaint(option);
-    }
-
-    async ansYourRelationToApplicant(relationToApplicant: string): Promise<void> {
-        await this.pages.ukvicWhatIsYourRelationToApplicantPage.answerSelectYourRelationToApplicant(relationToApplicant);
-    }
-
-    async ansWhatIsYourName(): Promise<void> {
-        await this.pages.ukvicWhatIsYourNamePage.answerEnterYourName(c.NAME);
-    }
-
-    async ansWhereToSendOurResponse(email: string): Promise<void> {
-        await this.pages.ukvicWhereShldWeSendOurResponsePage.enterWhereToSendResponse(email, c.TELEPHONE);
-    }
-
-    async ansWhatIsApplicantFullName(): Promise<void> {
-        await this.pages.ukvicWhatIsApplicantFullnamePage.answerEnterYourFullName(c.APPLICANT_FULL_NAME);
-    }
-
-    async ansWhatIsYourDob(dob: string): Promise<void> {
-        await this.pages.ukvicWhatIsYourDobPage.enterYourDob(dob);
-    }
-
-    async ansApplicantCountryOfNationality(): Promise<void> {
-        await this.pages.ukvicApplicantCountryOfNationalityPage.selectApplicantCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-    }
-
-    async ansEnterNationalityAndCity(): Promise<void> {
-        await this.pages.ukvicWhereIsTheVisaApplyCentrePage.answerEnterYourCApplicationCenter(c.OVERSEAS_COUNTRY, c.CITY);
-    }
-
-    async ansWhatAreDetailsOfYourComplaint(): Promise<void> {
-        await this.pages.ukvicWhatAreDetailsOfYourComplainPage.answerEnterComplaintDetails(c.COMPLAINT_DETAILS);
-    }
-
-    async ansWhatAreYouWaitingFor(option: string): Promise<void> {
-        await this.pages.ukvicWhatAreYouWaitingForPage.selectWhatYouAreWaitingFor(option);
-    }
-
-    async ansWhenDidYouSubmitApplication(month: string): Promise<void> {
-        await this.pages.ukvicWhenDidYouSubmitYourApplicationPage.enterDateOrMonth(month);
-    }
-
-    async ansWasDecisionNegOrPositive(decision: string): Promise<void> {
-        await this.pages.ukvicWasDecisionNegOrPositivePage.answerSelectDecision(decision);
-    }
-
-    async ansWhatIsTheProblemWithTheBrp(brpProb: string): Promise<void> {
-        await this.pages.ukvicWhatIsTheProblemWithTheBrpPage.answerSelectTheProblem(brpProb);
-    }
-
-    async ansHaveYouRequestedRefund(requestedRefund: string): Promise<void> {
-        await this.pages.ukvicHaveYouRequestedRefundPage.answerSelectResponse(requestedRefund);
-    }
-
-    async ansWhenDidYouRequestRefund(requestedRefundWhen: string): Promise<void> {
-        await this.pages.ukvicWhenDidYouRequestRefundPage.answerSelectResponse(requestedRefundWhen);
-    }
-
-    async ansWhereDidYouExpPoorBehaviour(where: string): Promise<void> {
-        await this.pages.ukvicWhereDidYouExpPoorBehaviourPage.answerSelectWhereBehaviourHappen(where);
-    }
-
-    async ansWhereDidTheIncidentHappen(incidentPlace: string): Promise<void> {
-        await this.pages.ukvicWhereDidTheIncidentHappenPage.answerSelectWhereIncidentTakePlace(incidentPlace);
-    }
-
-    async ansDoYouHaveRefNoForComplaint(option: string): Promise<void> {
-        await this.pages.ukvicDoYouHaveRefNoForComplaintPage.answerHaveRefNo(option);
-    }
-
-    async ansWhatIsYourComplaintRefNo(): Promise<void> {
-        await this.pages.ukvicWhatIsYourComplaintRefNoPage.answerEnterComplaintRefNo(c.REF_NUMBER);
-    }
 }
 
 export const { Given, When, Then } = createBdd(test);
 
-Given("I visit the Ukvic page", async ({ ukvic }) => {
-    await ukvic.openUkviComplaintHomePage();
+Given("I visit the Ukvic page", async ({ pages }) => {
+    await pages.ukvicHomePageWhatIsTheComplaintAbtPage.openUkviComplaintHomePage();
 });
 
 When('I fill out my answers for the Ukvic form pertaining to {string}', async ({ ukvic }, description: string) => {
@@ -844,126 +597,126 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
     await ukvic.selectYourComplaintTypeAndCompleteForm();
 });
 
-Then("I am able to submit the Ukvic form", async ({ ukvic }) => {
+Then("I am able to submit the Ukvic form", async ({ ukvic, pages }) => {
     ukvic.assertSelectedDescription();
-    await ukvic.verifySubmission();
+    await pages.ukvicCheckYourAnswersPage.verifySubmission();
 });
 
-When("I select 'Continue making your complaint' link for ukvic", async ({ ukvic }) => {
-    await ukvic.ansContinueMakingComplaint();
+When("I select 'Continue making your complaint' link for ukvic", async ({ pages }) => {
+    await pages.ukvicIfHardToGetAppointmentPage.selectContinueMakingComplaint();
 });
 
-When("I enter applicant's full name and click continue", async ({ ukvic }) => {
-    await ukvic.ansWhatIsApplicantFullName();
+When("I enter applicant's full name and click continue", async ({ pages }) => {
+    await pages.ukvicWhatIsApplicantFullnamePage.answerEnterYourFullName(c.APPLICANT_FULL_NAME);
 });
 
-When("I select applicant's country of nationality and click continue", async ({ ukvic }) => {
-    await ukvic.ansApplicantCountryOfNationality();
+When("I select applicant's country of nationality and click continue", async ({ pages }) => {
+    await pages.ukvicApplicantCountryOfNationalityPage.selectApplicantCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
 });
 
-When("I enter country of nationality and city and click continue", async ({ ukvic }) => {
-    await ukvic.ansEnterNationalityAndCity();
+When("I enter country of nationality and city and click continue", async ({ pages }) => {
+    await pages.ukvicWhereIsTheVisaApplyCentrePage.answerEnterYourCApplicationCenter(c.OVERSEAS_COUNTRY, c.CITY);
 });
 
-When("I enter details of complaint and click continue", async ({ ukvic }) => {
-    await ukvic.ansWhatAreDetailsOfYourComplaint();
+When("I enter details of complaint and click continue", async ({ pages }) => {
+    await pages.ukvicWhatAreDetailsOfYourComplainPage.answerEnterComplaintDetails(c.COMPLAINT_DETAILS);
 });
 
-When("I upload a document and click continue", async ({ ukvic }) => {
-    await ukvic.answerUploadDocuments();
+When("I upload a document and click continue", async ({ pages }) => {
+    await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
 });
 
-When("I enter my name and click continue", async ({ ukvic }) => {
-    await ukvic.ansWhatIsYourName();
+When("I enter my name and click continue", async ({ pages }) => {
+    await pages.ukvicWhatIsYourNamePage.answerEnterYourName(c.NAME);
 });
 
-When("I select the 'Back' button", async ({ ukvic }) => {
-    await ukvic.navigateBackward();
+When("I select the 'Back' button", async ({ pages }) => {
+    await pages.basePage.navigateBackward();
 });
 
-When("I enter complaint reference number and click continue", async ({ ukvic }) => {
-    await ukvic.ansWhatIsYourComplaintRefNo();
+When("I enter complaint reference number and click continue", async ({ pages }) => {
+    await pages.ukvicWhatIsYourComplaintRefNoPage.answerEnterComplaintRefNo(c.REF_NUMBER);
 });
 
-Then('I see wait to receive fund {string} message', async ({ ukvic }, message: string) => {
+Then('I see wait to receive fund {string} message', async ({ ukvic, pages }, message: string) => {
     ukvic.assertSelectedDescription();
-    await ukvic.pleaseWaitToReceiveYourRefund(message);
+    await pages.ukvicIfYouRequestedRefundLess6WksAgoPage.pleaseWaitToReceiveYourRefund(message);
 });
 
 
-Then("I should see check my answers page", async ({ ukvic }) => {
+Then("I should see check my answers page", async ({ ukvic, pages }) => {
     ukvic.assertSelectedDescription();
-    await ukvic.answerCheckYourAnswers();
+    await pages.ukvicCheckYourAnswersPage.answerCheckYourAnswers();
 });
     
-When('I select original complaint {string} and click continue', async ({ ukvic }, journey: string) => {
-    await ukvic.ansSelectAJourney(journey);
+When('I select original complaint {string} and click continue', async ({ pages }, journey: string) => {
+    await pages.ukvicHomePageWhatIsTheComplaintAbtPage.answerSelectYourComplaint(journey);
 });
 
-When('I select {string} to start my application and click continue', async ({ ukvic }, journey: string) => {
-    await ukvic.ansSelectAJourney(journey);
+When('I select {string} to start my application and click continue', async ({ pages }, journey: string) => {
+    await pages.ukvicHomePageWhatIsTheComplaintAbtPage.answerSelectYourComplaint(journey);
 });
 
-When('I select the problem {string} and click continue', async ({ ukvic }, problem: string) => {
-    await ukvic.ansProbWithApplyProcess(problem);
+When('I select the problem {string} and click continue', async ({ pages }, problem: string) => {
+    await pages.ukvicWhatWasTheProbWithApplyProcessPage.answerSelectTheProbWithTheApplyProcess(problem);
 });
 
-When('I select {string} with a reference number and click continue', async ({ ukvic }, reference: string) => {
-    await ukvic.ansProvideRefNumYouHave(reference);
+When('I select {string} with a reference number and click continue', async ({ pages }, reference: string) => {
+    await pages.ukvicWhichRefNumDoYouHavePage.answerProvideNumbIfAny(reference, c.REF_NUMBER);
 });
 
-When('I enter email address {string} and click continue for ukvic', async ({ ukvic }, email: string) => {
-    await ukvic.ansWhereToSendOurResponse(email);
+When('I enter email address {string} and click continue for ukvic', async ({ pages }, email: string) => {
+    await pages.ukvicWhereShldWeSendOurResponsePage.enterWhereToSendResponse(email, c.TELEPHONE);
 });
 
-When("I enter applicant's date of birth {string} and click continue", async ({ ukvic }, dob: string) => {
-    await ukvic.ansWhatIsYourDob(dob);
+When("I enter applicant's date of birth {string} and click continue", async ({ pages }, dob: string) => {
+    await pages.ukvicWhatIsYourDobPage.enterYourDob(dob);
 });
 
-When('I select where applicant applied {string} and click continue', async ({ ukvic }, location: string) => {
-    await ukvic.ansWhereDidYouApply(location);
+When('I select where applicant applied {string} and click continue', async ({ pages }, location: string) => {
+    await pages.ukvicWhereDidYouApplyPage.answerSelectWhereYouApplied(location);
 });
 
-When('I select complaint on behalf {string} and click continue', async ({ ukvic }, option: string) => {
-    await ukvic.ansMakingComplaintBehalfOfSomeone(option);
+When('I select complaint on behalf {string} and click continue', async ({ pages }, option: string) => {
+    await pages.ukvicMakingComplaintBehalfOfSomeonePage.answerSelectYourComplaint(option);
 });
 
-When('I select relation to applicant {string} and click continue', async ({ ukvic }, relation: string) => {
-    await ukvic.ansYourRelationToApplicant(relation);
+When('I select relation to applicant {string} and click continue', async ({ pages }, relation: string) => {
+    await pages.ukvicWhatIsYourRelationToApplicantPage.answerSelectYourRelationToApplicant(relation);
 });
 
-When('I select what I am waiting for {string} and click continue', async ({ ukvic }, waitingFor: string) => {
-    await ukvic.ansWhatAreYouWaitingFor(waitingFor);
+When('I select what I am waiting for {string} and click continue', async ({ pages }, waitingFor: string) => {
+    await pages.ukvicWhatAreYouWaitingForPage.selectWhatYouAreWaitingFor(waitingFor);
 });
 
-When('I enter date {string} application was submitted and click continue', async ({ ukvic }, month: string) => {
-    await ukvic.ansWhenDidYouSubmitApplication(month);
+When('I enter date {string} application was submitted and click continue', async ({ pages }, month: string) => {
+    await pages.ukvicWhenDidYouSubmitYourApplicationPage.enterDateOrMonth(month);
 });
 
-When('I select type of decision {string} and click continue', async ({ ukvic }, decision: string) => {
-    await ukvic.ansWasDecisionNegOrPositive(decision);
+When('I select type of decision {string} and click continue', async ({ pages }, decision: string) => {
+    await pages.ukvicWasDecisionNegOrPositivePage.answerSelectDecision(decision);
 });
 
-When('I select the BRP problem {string} and click continue', async ({ ukvic }, problem: string) => {
-    await ukvic.ansWhatIsTheProblemWithTheBrp(problem);
+When('I select the BRP problem {string} and click continue', async ({ pages }, problem: string) => {
+    await pages.ukvicWhatIsTheProblemWithTheBrpPage.answerSelectTheProblem(problem);
 });
 
-When('I answer have you requested a refund {string} and click continue', async ({ ukvic }, requested: string) => {
-    await ukvic.ansHaveYouRequestedRefund(requested);
+When('I answer have you requested a refund {string} and click continue', async ({ pages }, requested: string) => {
+    await pages.ukvicHaveYouRequestedRefundPage.answerSelectResponse(requested);
 });
 
-When('I answer when did you request a refund {string} and click continue', async ({ ukvic }, when: string) => {
-    await ukvic.ansWhenDidYouRequestRefund(when);
+When('I answer when did you request a refund {string} and click continue', async ({ pages }, when: string) => {
+    await pages.ukvicWhenDidYouRequestRefundPage.answerSelectResponse(when);
 });
 
-When('I answer where did you experience poor behaviour {string} and click continue', async ({ ukvic }, where: string) => {
-    await ukvic.ansWhereDidYouExpPoorBehaviour(where);
+When('I answer where did you experience poor behaviour {string} and click continue', async ({ pages }, where: string) => {
+    await pages.ukvicWhereDidYouExpPoorBehaviourPage.answerSelectWhereBehaviourHappen(where);
 });
 
-When('I select where incident took place {string} and click continue', async ({ ukvic }, location: string) => {
-    await ukvic.ansWhereDidTheIncidentHappen(location);
+When('I select where incident took place {string} and click continue', async ({ pages }, location: string) => {
+    await pages.ukvicWhereDidTheIncidentHappenPage.answerSelectWhereIncidentTakePlace(location);
 });
 
-When('I answer do you have ref number for the complaint {string} and click continue', async ({ ukvic }, option: string) => {
-    await ukvic.ansDoYouHaveRefNoForComplaint(option);
+When('I answer do you have ref number for the complaint {string} and click continue', async ({ pages }, option: string) => {
+    await pages.ukvicDoYouHaveRefNoForComplaintPage.answerHaveRefNo(option);
 });

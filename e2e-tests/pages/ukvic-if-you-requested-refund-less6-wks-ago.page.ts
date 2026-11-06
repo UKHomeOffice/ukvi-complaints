@@ -20,4 +20,10 @@ export class ukvicIfYouRequestedRefundLess6WksAgoPage extends basePage {
     async exitApplication(): Promise<void> {
         await this.page.close();
     }
+
+    async pleaseWaitToReceiveYourRefund(waitForRefund: string): Promise<void> {
+        await this.assertPageTitle(this.page, await this.expectedPageTitle());
+        expect(await this.getWaitForRefundMessage()).toBe(waitForRefund);
+        await this.exitApplication();
+    }
 }

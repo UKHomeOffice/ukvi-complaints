@@ -1,4 +1,3 @@
-import { expect } from '@playwright/test';
 import { createBdd } from 'playwright-bdd';
 import { test } from '../fixture/fixtures';
 
@@ -14,21 +13,20 @@ When('I select continue', async ({ pages }) => {
 
 Then('I see {string} error header message displayed for ukvi', async ({ pages, ukvic }, message: string) => {
     ukvic.assertSelectedDescription();
-    await expect(pages.basePage.thereIsAProblemText).toHaveText(message);
+    await pages.basePage.assertErrorHeader(message);
 });
 
 Then('I see {string} error message displayed for ukvi', async ({ pages, ukvic }, message: string) => {
     ukvic.assertSelectedDescription();
-    await expect(pages.basePage.errorSummaryList.locator('li')).toHaveText([message]);
+    await pages.basePage.assertErrorSummary([message]);
 });
 
 Then('I see error message displayed for ukvi', async ({ pages, ukvic }, message: string) => {
     ukvic.assertSelectedDescription();
-    await expect(pages.basePage.errorSummaryList.locator('li')).toHaveText(message.trim().split(/\r?\n/).map(line => line.trim()));
+    await pages.basePage.assertErrorSummary(message.trim().split(/\r?\n/).map(line => line.trim()));
 });
 
-Then('I am on the Check your answers page', async ({ pages, page, ukvic }) => {
+Then('I am on the Check your answers page', async ({ pages, ukvic }) => {
     ukvic.assertSelectedDescription();
-    await pages.ukvicCheckYourAnswersPage.assertPageTitle(page, await pages.ukvicCheckYourAnswersPage.expectedPageTitle());
-    await pages.ukvicCheckYourAnswersPage.isCheckYourAnsHeaderTextDisplayed();
+    await pages.ukvicCheckYourAnswersPage.assertCheckYourAnswersPage();
 });

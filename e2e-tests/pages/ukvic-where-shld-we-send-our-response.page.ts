@@ -16,4 +16,9 @@ export class ukvicWhereShldWeSendOurResponsePage extends ukviCommonPage {
     async enterWhereToSendResponse(emailAdd: string, phoneNo: string): Promise<void> {
         await this.enterYourContactDetails(emailAdd, phoneNo);
     }
+
+    async answerWhereShouldWeSendResponse(sasHofEmail: string, telephone: string): Promise<void> {
+        await this.assertPageTitle(this.page, await this.expectedPageTitle());
+        await this.enterWhereToSendResponse(sasHofEmail, telephone);
+    }
 }

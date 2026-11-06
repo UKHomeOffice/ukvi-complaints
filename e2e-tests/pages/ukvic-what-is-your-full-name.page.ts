@@ -17,4 +17,9 @@ export class ukvicWhatIsYourFullNamePage extends basePage {
         await this.type(this.name, fullName);
         await this.clickContinueButton();
     }
+
+    async answerWhatIsYourFullName(name: string): Promise<void> {
+        await this.assertPageTitle(this.page, await this.expectedPageTitle());
+        await this.answerEnterYourFullName(name);
+    }
 }

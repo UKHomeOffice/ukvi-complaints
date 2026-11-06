@@ -21,4 +21,9 @@ export class ukvicIfYouAreWaitingForDocToBeReturnedPage extends ukviCommonPage {
         await this.checkExternalLink("Report that your documents have not been received", this.reportDocNotReceived);
         return true;
     }
+
+    async answerIfYouWaitingForDocsToBeReturned(): Promise<void> {
+        await this.assertPageTitle(this.page, await this.expectedPageTitle());
+        await this.selectContinueMakingComplaint();
+    }
 }

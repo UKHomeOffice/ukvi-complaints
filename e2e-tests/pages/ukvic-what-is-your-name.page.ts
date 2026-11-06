@@ -17,4 +17,9 @@ export class ukvicWhatIsYourNamePage extends basePage {
         await this.type(this.name, yourName);
         await this.clickContinueButton();
     }
+
+    async answerWhatIsYourName(name: string): Promise<void> {
+        await this.assertPageTitle(this.page, await this.expectedPageTitle());
+        await this.answerEnterYourName(name);
+    }
 }

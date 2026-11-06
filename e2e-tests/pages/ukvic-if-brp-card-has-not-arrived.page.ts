@@ -21,4 +21,10 @@ export class ukvicIfBRPCardHasNotArrivedPage extends ukviCommonPage {
         await this.checkExternalLink("Report that your BRP has not been delivered", this.brpNotReceived);
         return true;
     }
+
+    async answerIfBRPHasNotArrived(): Promise<void> {
+        await this.assertPageTitle(this.page, await this.expectedPageTitle());
+        await this.checkExternalLinkWorksOnPage();
+        await this.selectContinueMakingComplaint();
+    }
 }

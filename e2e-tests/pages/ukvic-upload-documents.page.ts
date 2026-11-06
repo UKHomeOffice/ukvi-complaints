@@ -19,4 +19,9 @@ export class ukvicUploadDocumentsPage extends basePage {
         await this.fileUpload.setInputFiles(fileName);
         await this.continueUpload.click();
     }
+
+    async answerUploadDocuments(uploadFilePath: string): Promise<void> {
+        await this.assertPageTitle(this.page, await this.expectedPageTitle());
+        await this.answerFileToUpload(uploadFilePath);
+    }
 }

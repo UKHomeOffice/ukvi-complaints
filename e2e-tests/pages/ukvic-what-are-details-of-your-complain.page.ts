@@ -18,4 +18,9 @@ export class ukvicWhatAreDetailsOfYourComplainPage extends basePage {
         await this.complaintDetails.pressSequentially(complaintDetails);
         await this.clickContinueButton();
     }
+
+    async answerWhatAreTheDetailsOfYourComplaint(complaintDetails: string): Promise<void> {
+        await this.assertPageTitle(this.page, await this.expectedPageTitle());
+        await this.answerEnterComplaintDetails(complaintDetails);
+    }
 }

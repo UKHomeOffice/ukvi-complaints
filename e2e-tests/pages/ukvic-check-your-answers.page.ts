@@ -30,4 +30,18 @@ export class ukvicCheckYourAnswersPage extends basePage {
         await expect(this.checkYourAnswers).toBeVisible();
         return true;
     }
+
+    async answerCheckYourAnswers(): Promise<void> {
+        await this.assertCheckYourAnswersPage();
+        await this.answerSendComplaint();
+    }
+
+    async verifySubmission(): Promise<void> {
+        expect(await this.verifyComplaintIsSubmittedSuccessfully()).toBe(true);
+    }
+
+    async assertCheckYourAnswersPage(): Promise<void> {
+        await this.assertPageTitle(this.page, await this.expectedPageTitle());
+        await this.isCheckYourAnsHeaderTextDisplayed();
+    }
 }

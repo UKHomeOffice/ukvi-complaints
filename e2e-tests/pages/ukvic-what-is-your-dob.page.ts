@@ -17,4 +17,9 @@ export class ukvicWhatIsYourDobPage extends basePage {
         await this.enterDateOrDob(dob);
         await this.clickContinueButton();
     }
+
+    async answerWhatIsYourDob(dob_11_11_1988: string): Promise<void> {
+        await this.assertPageTitle(this.page, await this.expectedPageTitle());
+        await this.enterYourDob(dob_11_11_1988);
+    }
 }

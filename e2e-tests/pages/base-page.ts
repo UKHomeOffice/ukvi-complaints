@@ -91,4 +91,16 @@ export class basePage {
     async getErrorSummaryListText(): Promise<string | null> {
         return this.errorSummaryList.textContent();
     }
+
+    async navigateBackward(): Promise<void> {
+        await this.navigateBackLink.click();
+    }
+
+    async assertErrorHeader(message: string): Promise<void> {
+        await expect(this.thereIsAProblemText).toHaveText(message);
+    }
+
+    async assertErrorSummary(messages: string[]): Promise<void> {
+        await expect(this.errorSummaryList.locator('li')).toHaveText(messages);
+    }
 }

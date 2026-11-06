@@ -5,7 +5,7 @@ The Java UKVIC tests are migrated from `hof-e2e-auto-tests/Function/src/main`, u
 ## Scope
 
 - All 61 UKVIC source page classes and the shared UKVI page are registered in `fixture/fixtures.ts`.
-- Journey branches and validation helpers are implemented in `steps/ukvic.step.ts` as `ukVicStepLib`.
+- Cross-page journey branches and scenario-state checks remain in `steps/ukvic.step.ts` as `ukVicStepLib`. Single-page helpers and UI assertions belong to their page classes; simple delegates reuse existing page methods.
 - All active step phrases are bound. Shared field-validation assertions are in `steps/ukvic-validation.step.ts`.
 - All 291 feature description variants select their existing applicant objects directly through the switch in `test-data/ukvic-applicant.ts`. Runtime tests do not read CSV or look up numeric IDs.
 - Page objects keep test data out of the page layer. Values are centralised in `utility-helper/constants-lib.ts`.
@@ -27,7 +27,7 @@ yarn test:e2e:isolated
 yarn test:e2e:isolated --resume --full
 ```
 
-`test:e2e:parity` checks all feature descriptions against the original applicant-data hashes, including validation aliases and commented examples. It creates `parity-audit.json`, `migration-report.md`, and `validation-manifest.json`; the latter contains each active case's exact isolated command. Feature contents are also compared with the local pre-conversion snapshot when available.
+`test:e2e:parity` checks the page-method ownership mapping, updated callers, fixture registrations, title-method ordering and page data-dependency boundaries. It verifies that features, applicant data and fixtures retain their pre-refactor hashes and checks description support for active and commented examples. It creates `parity-audit.json`, `migration-report.md`, and `validation-manifest.json`.
 
 `test:e2e:isolated` launches a separate single-worker process for each active scenario. `--resume` skips matching previously passed cases only when the test-input fingerprint is unchanged; `--full` permits full-suite execution only after all active individual cases have passed. The runner sets CI mode for headless browser execution, without modifying the configured service or secrets.
 
@@ -45,7 +45,7 @@ Journeys start with `Given I visit the Ukvic page`, followed by `When I fill out
 
 `getApplicantForDescription(description)` uses exact string cases to return the original applicant objects directly, including validation aliases and commented examples. No IDs are extracted and no branching is inferred from description wording. Blank and unknown descriptions are rejected; conflicting duplicate mappings were checked before conversion. Existing `applicantId` fields are retained only as unchanged data metadata.
 
-`test-data/legacy-description-mapping.json` preserves the original features, descriptions, tags, journey steps and applicant-data hashes for verification. Do not overwrite this baseline. Description checks accompany the existing journey and field-validation assertions.
+`page-method-mapping.json` records every relocated method, its owner, the reused or moved page method, and each retained method's orchestration/state responsibility. It also records pre-refactor feature, data and fixture hashes. Description checks still accompany the existing journey and field-validation assertions.
 
 ## Reports
 

@@ -24,4 +24,10 @@ export class ukvicWhenWasTheCallPage extends basePage {
         await this.type(this.calledTime, timeOfCall);
         await this.clickContinueButton();
     }
+
+    async answerWhenWasTheCallMade(callDate: string, callTime: string): Promise<void> {
+        await this.assertPageTitle(this.page, await this.expectedPageTitle());
+        await this.answerEnterCalledDate(callDate);
+        await this.answerEnterCalledTime(callTime);
+    }
 }

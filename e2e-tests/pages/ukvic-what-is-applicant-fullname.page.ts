@@ -17,4 +17,9 @@ export class ukvicWhatIsApplicantFullnamePage extends basePage {
         await this.type(this.name, fullName);
         await this.clickContinueButton();
     }
+
+    async answerApplicantFullName(applicantFullName: string): Promise<void> {
+        await this.assertPageTitle(this.page, await this.expectedPageTitle());
+        await this.answerEnterYourFullName(applicantFullName);
+    }
 }

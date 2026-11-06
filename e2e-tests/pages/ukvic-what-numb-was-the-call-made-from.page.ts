@@ -17,4 +17,9 @@ export class ukvicWhatNumbWasTheCallMadeFromPage extends basePage {
         await this.type(this.calledFrom, telPhoneNo);
         await this.clickContinueButton();
     }
+
+    async answerWhatNumbWasCallMadeFrom(telephone: string): Promise<void> {
+        await this.assertPageTitle(this.page, await this.expectedPageTitle());
+        await this.answerEnterTheTelPhone(telephone);
+    }
 }

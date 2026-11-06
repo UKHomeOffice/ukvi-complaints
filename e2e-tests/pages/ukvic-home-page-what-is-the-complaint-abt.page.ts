@@ -21,4 +21,9 @@ export class ukvicHomePageWhatIsTheComplaintAbtPage extends basePage {
         await this.selectOption(complaint);
         await this.clickContinueButton();
     }
+
+    async openUkviComplaintHomePage(): Promise<void> {
+        await this.openUkvicHomePage();
+        await this.acceptCookies();
+    }
 }

@@ -17,4 +17,9 @@ export class ukvicApplicantCountryOfNationalityPage extends basePage {
         await this.selectAutocomplete(this.countryOfNationality, country);
         await this.clickContinueButton();
     }
+
+    async answerApplicantCountryOfNationality(countryOfNationality: string): Promise<void> {
+        await this.assertPageTitle(this.page, await this.expectedPageTitle());
+        await this.selectApplicantCountryOfNationality(countryOfNationality);
+    }
 }

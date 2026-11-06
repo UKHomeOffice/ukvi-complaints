@@ -21,4 +21,10 @@ export class ukvicIfYouHaveNotUsedOnlineServiceRequestPage extends ukviCommonPag
         await this.checkExternalLink("use the online service", this.useOnlineService);
         return true;
     }
+
+    async answerIfYouHaveNotUsedOnlineServiceRequest(): Promise<void> {
+        await this.assertPageTitle(this.page, await this.expectedPageTitle());
+        await this.checkExternalLinkWorksOnPage();
+        await this.selectContinueMakingComplaint();
+    }
 }

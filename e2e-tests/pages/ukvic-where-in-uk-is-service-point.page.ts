@@ -16,4 +16,9 @@ export class ukvicWhereInUkIsServicePointPage extends ukviCommonPage {
     async answerEnterServiceSupportCentre(city: string): Promise<void> {
         await this.enterServiceCity(city);
     }
+
+    async answerWhereInUkIsTheServicePoint(city: string): Promise<void> {
+        await this.assertPageTitle(this.page, await this.expectedPageTitle());
+        await this.answerEnterServiceSupportCentre(city);
+    }
 }

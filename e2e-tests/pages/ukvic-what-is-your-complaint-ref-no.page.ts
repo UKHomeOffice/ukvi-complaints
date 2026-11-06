@@ -17,4 +17,9 @@ export class ukvicWhatIsYourComplaintRefNoPage extends basePage {
         await this.type(this.complaintRefNo, complaintRefNumb);
         await this.clickContinueButton();
     }
+
+    async answerWhatIsTheRefNumForYourComplaint(refNumber: string): Promise<void> {
+        await this.assertPageTitle(this.page, await this.expectedPageTitle());
+        await this.answerEnterComplaintRefNo(refNumber);
+    }
 }

@@ -17,4 +17,9 @@ export class ukvicWhatIsYourCountryOfNationalityPage extends basePage {
         await this.selectAutocomplete(this.countryOFNationality, nationality);
         await this.clickContinueButton();
     }
+
+    async answerWhatIsYourCountryOfNationality(countryOfNationality: string): Promise<void> {
+        await this.assertPageTitle(this.page, await this.expectedPageTitle());
+        await this.answerEnterYourNationality(countryOfNationality);
+    }
 }

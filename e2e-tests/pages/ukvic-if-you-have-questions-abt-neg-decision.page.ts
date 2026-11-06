@@ -29,4 +29,10 @@ export class ukvicIfYouHaveQuestionsAbtNegDecisionPage extends ukviCommonPage {
         await this.checkExternalLink("Ask for a reconsideration", this.visaReconsiderationRequest);
         return true;
     }
+
+    async answerIfYouHaveQuestionsAbtNegDecision(): Promise<void> {
+        await this.assertPageTitle(this.page, await this.expectedPageTitle());
+        await this.checkExternalLinksAreWorkingOnPage();
+        await this.selectContinueMakingComplaint();
+    }
 }

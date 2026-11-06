@@ -20,4 +20,10 @@ export class ukvicIfYouHaveQuestAbtPositiveDecisionPage extends ukviCommonPage {
     async checkExternalLinkWorksOnPage(): Promise<boolean> {
         return this.contactUkVisasForHelpLink();
     }
+
+    async answerIfYouHaveQuestionsAbtPositiveDecision(): Promise<void> {
+        await this.assertPageTitle(this.page, await this.expectedPageTitle());
+        await this.checkExternalLinkWorksOnPage();
+        await this.selectContinueMakingComplaint();
+    }
 }

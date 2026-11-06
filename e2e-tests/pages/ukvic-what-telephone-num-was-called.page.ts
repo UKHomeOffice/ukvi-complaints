@@ -17,4 +17,9 @@ export class ukvicWhatTelephoneNumWasCalledPage extends basePage {
         await this.type(this.calledNumb, phoneNo);
         await this.clickContinueButton();
     }
+
+    async answerWhatTelephoneNumWasCalled(telephone: string): Promise<void> {
+        await this.assertPageTitle(this.page, await this.expectedPageTitle());
+        await this.answerEnterCalledNumber(telephone);
+    }
 }

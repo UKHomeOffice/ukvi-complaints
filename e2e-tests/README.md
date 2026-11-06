@@ -27,7 +27,7 @@ yarn test:e2e:isolated
 yarn test:e2e:isolated --resume --full
 ```
 
-`test:e2e:parity` checks the page-method ownership mapping, updated callers, fixture registrations, title-method ordering and page data-dependency boundaries. It verifies that features, applicant data and fixtures retain their pre-refactor hashes and checks description support for active and commented examples. It creates `parity-audit.json`, `migration-report.md`, and `validation-manifest.json`.
+`test:e2e:parity` replays the original and refactored step implementations for all 291 descriptions, 2,880 application-guidance combinations and 15 boundary checks. It compares ordered page calls and errors and verifies 70 protected feature, page, fixture, data, constant and configuration files against their captured hashes. It creates `parity-audit.json` and fresh isolated selectors in `validation-manifest.json`. The original implementation is retained only as verification evidence in `test-data/step-refactor-baseline.json`, not as runtime journey data.
 
 `test:e2e:isolated` launches a separate single-worker process for each active scenario. `--resume` skips matching previously passed cases only when the test-input fingerprint is unchanged; `--full` permits full-suite execution only after all active individual cases have passed. The runner sets CI mode for headless browser execution, without modifying the configured service or secrets.
 
@@ -44,6 +44,16 @@ The root Playwright configuration loads `.env` quietly and uses `PLAYWRIGHT_BASE
 Journeys start with `Given I visit the Ukvic page`, followed by `When I fill out my answers for the Ukvic form pertaining to "<Description>"`. Field-validation journeys navigate first and then use `And I use the Ukvic scenario "..."` without completing the form automatically.
 
 `getApplicantForDescription(description)` uses exact string cases to return the original applicant objects directly, including validation aliases and commented examples. No IDs are extracted and no branching is inferred from description wording. Blank and unknown descriptions are rejected; conflicting duplicate mappings were checked before conversion. Existing `applicantId` fields are retained only as unchanged data metadata.
+
+## Compact Journey Dispatch
+
+The UKVIC `When` callback validates and selects the exact description first, then displays the nine journey branches as awaited page-fixture and shared journey calls. The user approved dispatching on the selected applicant's complaint type instead of listing all 291 descriptions in the callback. Description lookup remains exact and case-sensitive.
+
+The duplicated inside/outside-UK application flow now uses one location switch and one shared guidance helper. An explicit priority list retains the original inside-UK booking-issue precedence, with a flat switch dispatching the matched decision. Decision comparisons retain their original case-insensitive behavior.
+
+Equivalent branches are grouped in the reference-number, representative-relationship, appointment-problem and original-complaint helpers. The old wrapper around the top-level complaint dispatch is removed. The existing unclear-guidance continuation is explicit rather than relying on switch fall-through. Page-specific actions remain in their page classes.
+
+Strict TypeScript checking, BDD generation and the replay audit passed. The first three active scenarios passed individually; the remaining 32 individual cases and full-suite run were not executed because the user skipped the validation task. Run the isolated validation command with `--resume --from 4 --to 35 --full` to complete the remaining gates against unchanged inputs.
 
 `page-method-mapping.json` records every relocated method, its owner, the reused or moved page method, and each retained method's orchestration/state responsibility. It also records pre-refactor feature, data and fixture hashes. Description checks still accompany the existing journey and field-validation assertions.
 

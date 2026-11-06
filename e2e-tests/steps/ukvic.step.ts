@@ -27,50 +27,6 @@ export class ukVicStepLib {
         expect(this.applicant).toEqual(getApplicantForDescription(description));
     }
 
-    async selectYourComplaintTypeAndCompleteForm(): Promise<void> {
-        await this.pages.ukvicHomePageWhatIsTheComplaintAbtPage.assertPageTitle(this.page, await this.pages.ukvicHomePageWhatIsTheComplaintAbtPage.expectedPageTitle());
-        const complaintType = this.applicant.whatIsTheComplaintAbt;
-        switch (complaintType) {
-            case c.SUBMIT_APPLICATION:
-                await this.pages.ukvicHomePageWhatIsTheComplaintAbtPage.answerSelectYourComplaint(c.Submit_Application);
-                await this.selectProblemWithTheApplication();
-                break;
-            case c.MAKE_APPOINTMENT:
-                await this.pages.ukvicHomePageWhatIsTheComplaintAbtPage.answerSelectYourComplaint(c.Make_Appointment);
-                await this.answerWhatProbMakingAppointment();
-                break;
-            case c.WAIT_FOR_DECISION:
-                await this.pages.ukvicHomePageWhatIsTheComplaintAbtPage.answerSelectYourComplaint(c.Wait_For_Decision);
-                await this.answerWhatAreYouWaitingFor();
-                break;
-            case c.NEG_OR_POSITIVE_DECISION:
-                await this.pages.ukvicHomePageWhatIsTheComplaintAbtPage.answerSelectYourComplaint(c.Decision);
-                await this.answerWasDecisionNegOrPositive();
-                break;
-            case c.BRP_PERMITS:
-                await this.pages.ukvicHomePageWhatIsTheComplaintAbtPage.answerSelectYourComplaint(c.Brp_Permits);
-                await this.answerWhatIsTheProbWithTheBRP();
-                break;
-            case c.REFUNDS:
-                await this.pages.ukvicHomePageWhatIsTheComplaintAbtPage.answerSelectYourComplaint(c.Refunds);
-                await this.answerHaveYouRequestedRefund();
-                break;
-            case c.STAFF_BEHAVIOUR:
-                await this.pages.ukvicHomePageWhatIsTheComplaintAbtPage.answerSelectYourComplaint(c.Staff_Behaviour);
-                await this.answerWhereDidYouExpPoorBehaviour();
-                break;
-            case c.EXISTING_COMPLAINT:
-                await this.pages.ukvicHomePageWhatIsTheComplaintAbtPage.answerSelectYourComplaint(c.Existing_Complaint);
-                await this.answerDoYouHaveRefNumbForTheComplaint();
-                break;
-            case c.SOMETHING_ELSE:
-                await this.pages.ukvicHomePageWhatIsTheComplaintAbtPage.answerSelectYourComplaint(c.Something_Else);
-                await this.answerWhichRefNumbDoYouHave();
-                break;
-            default:
-        }
-    }
-
     async selectProblemWithTheApplication(): Promise<void> {
         await this.pages.ukvicWhatWasTheProbWithApplyProcessPage.assertPageTitle(this.page, await this.pages.ukvicWhatWasTheProbWithApplyProcessPage.expectedPageTitle());
         const applicationProb = this.applicant.whatWasTheProbWithTheApplyProcess;
@@ -82,6 +38,9 @@ export class ukVicStepLib {
             case c.UNCLEAR_GUIDANCE:
                 await this.pages.ukvicWhatWasTheProbWithApplyProcessPage.answerSelectTheProbWithTheApplyProcess(c.Unclear_Guidance);
                 await this.answerWhereDidYouMakeYourApplication();
+                await this.pages.ukvicWhatWasTheProbWithApplyProcessPage.answerSelectTheProbWithTheApplyProcess(c.Something_Else);
+                await this.answerWhichRefNumbDoYouHave();
+                break;
             case c.SOMETHING_ELSE:
                 await this.pages.ukvicWhatWasTheProbWithApplyProcessPage.answerSelectTheProbWithTheApplyProcess(c.Something_Else);
                 await this.answerWhichRefNumbDoYouHave();
@@ -92,72 +51,75 @@ export class ukVicStepLib {
     }
 
     async answerWhereDidYouMakeYourApplication(): Promise<void> {
-        if (same(this.applicant.whatIsTheComplaintAbt, c.NEG_OR_POSITIVE_DECISION)) {
-            await this.pages.ukvicWhereDidYouMakeTheApplicationPage.assertPageTitle(this.page, await this.pages.ukvicWhereDidYouMakeTheApplicationPage.expectedPageTitle());
-        } else {
-            await this.pages.ukvicWhereDidYouApplyPage.assertPageTitle(this.page, await this.pages.ukvicWhereDidYouApplyPage.expectedPageTitle());
+        switch (this.applicant.whatIsTheComplaintAbt.toLowerCase()) {
+            case c.NEG_OR_POSITIVE_DECISION.toLowerCase():
+                await this.pages.ukvicWhereDidYouMakeTheApplicationPage.assertPageTitle(this.page, await this.pages.ukvicWhereDidYouMakeTheApplicationPage.expectedPageTitle());
+                break;
+            default:
+                await this.pages.ukvicWhereDidYouApplyPage.assertPageTitle(this.page, await this.pages.ukvicWhereDidYouApplyPage.expectedPageTitle());
+                break;
         }
         const applicationLoc = this.applicant.whereDidYouMakeYourApplication;
-        if (same(applicationLoc, c.IN_THE_UK)) {
-            await this.pages.ukvicWhereDidYouApplyPage.answerSelectWhereYouApplied(c.IN_THE_UK);
-            if (same(this.applicant.whatProbDidYouHaveMakingAppointment, c.DIFFICULTY_GETTING_APPOINTMENT)) {
-                await this.answerDifficultyGettingAppmt();
-            } else if (same(this.applicant.whatProbDidYouHaveMakingAppointment, c.DIFFICULTY_CHANGING_APPOINTMENT)) {
-                await this.answerDifficultyChangingAppmt();
-            } else if (same(this.applicant.whatProbDidYouHaveMakingAppointment, c.TECHNICAL_ISSUES_WITH_BOOKING_APPOINTMENT)) {
-                await this.answerTechnicalIssuesWithBkingAppmt();
-            } else if (same(this.applicant.whatWasTheProbWithTheApplyProcess, c.TECHNICAL_ISSUES)) {
-                await this.answerTechnicalIssuesWithPayments();
-            } else if (same(this.applicant.whatWasTheProbWithTheApplyProcess, c.UNCLEAR_GUIDANCE)) {
-                await this.answerGuidanceUnclearOrMisleading();
-            } else if (same(this.applicant.whatProbDidYouHaveMakingAppointment, c.HAVE_QUESTION_ABT_MY_APPOINTMENT)) {
-                await this.answerHaveQuestionsAbtYourAppmt();
-            } else if (same(this.applicant.whatAreYouWaitingFor, c.Application_Decision)) {
-                await this.answerIfYouAreWaitingForDecision();
-            } else if (same(this.applicant.wasDecisionNegativeOrPositive, c.POSITIVE)) {
-                await this.pages.ukvicIfYouHaveQuestAbtPositiveDecisionPage.answerIfYouHaveQuestionsAbtPositiveDecision();
-            } else if (same(this.applicant.wasDecisionNegativeOrPositive, c.NEGATIVE)) {
-                await this.pages.ukvicIfYouHaveQuestionsAbtNegDecisionPage.answerIfYouHaveQuestionsAbtNegDecision();
-            } else if (same(this.applicant.whichTypeOfRefundDoYouRequest, c.PRIORITY_SERVICE_FEE)) {
-                await this.answerIfYouWantToRequestPrioritySerRefund();
-            } else if (same(this.applicant.whichTypeOfRefundDoYouRequest, c.SUPER_PRIORITY_SERVICE_FEE)) {
-                await this.answerIfYouWantToRequestSuperPrioritySerRefund();
-            } else if (same(this.applicant.whichTypeOfRefundDoYouRequest, c.IHS_SERVICE_FEE)) {
-                await this.answerIfWaitingToBeRefundedForIHS();
-            } else if (same(this.applicant.whatAreYouWaitingToBeRefunded, c.IHS_SERVICE_FEE)) {
-                await this.answerIfWaitingToBeRefundedForIHS();
-            }
-        } else if (same(applicationLoc, c.OUTSIDE_OF_THE_UK)) {
-            await this.pages.ukvicWhereDidYouApplyPage.answerSelectWhereYouApplied(c.OUTSIDE_OF_THE_UK);
-            if (same(this.applicant.whatProbDidYouHaveMakingAppointment, c.DIFFICULTY_GETTING_APPOINTMENT)) {
-                await this.answerDifficultyGettingAppmt();
-            } else if (same(this.applicant.whatProbDidYouHaveMakingAppointment, c.DIFFICULTY_CHANGING_APPOINTMENT)) {
-                await this.answerDifficultyChangingAppmt();
-            } else if (same(this.applicant.whatWasTheProbWithTheApplyProcess, c.TECHNICAL_ISSUES)) {
-                await this.answerTechnicalIssuesWithPayments();
-            } else if (same(this.applicant.whatWasTheProbWithTheApplyProcess, c.UNCLEAR_GUIDANCE)) {
-                await this.answerGuidanceUnclearOrMisleading();
-            } else if (same(this.applicant.whatProbDidYouHaveMakingAppointment, c.TECHNICAL_ISSUES_WITH_BOOKING_APPOINTMENT)) {
-                await this.answerTechnicalIssuesWithBkingAppmt();
-            } else if (same(this.applicant.whatProbDidYouHaveMakingAppointment, c.HAVE_QUESTION_ABT_MY_APPOINTMENT)) {
-                await this.answerHaveQuestionsAbtYourAppmt();
-            } else if (same(this.applicant.whatAreYouWaitingFor, c.Application_Decision)) {
-                await this.answerIfYouAreWaitingForDecision();
-            } else if (same(this.applicant.wasDecisionNegativeOrPositive, c.NEGATIVE)) {
-                await this.pages.ukvicIfYouHaveQuestionsAbtNegDecisionPage.answerIfYouHaveQuestionsAbtNegDecision();
-            } else if (same(this.applicant.wasDecisionNegativeOrPositive, c.POSITIVE)) {
-                await this.pages.ukvicIfYouHaveQuestAbtPositiveDecisionPage.answerIfYouHaveQuestionsAbtPositiveDecision();
-            } else if (same(this.applicant.whichTypeOfRefundDoYouRequest, c.PRIORITY_SERVICE_FEE)) {
-                await this.answerIfYouWantToRequestPrioritySerRefund();
-            } else if (same(this.applicant.whichTypeOfRefundDoYouRequest, c.SUPER_PRIORITY_SERVICE_FEE)) {
-                await this.answerIfYouWantToRequestSuperPrioritySerRefund();
-            } else if (same(this.applicant.whichTypeOfRefundDoYouRequest, c.IHS_SERVICE_FEE)) {
-                await this.answerIfWaitingToBeRefundedForIHS();
-            } else if (same(this.applicant.whatAreYouWaitingToBeRefunded, c.IHS_SERVICE_FEE)) {
-                await this.answerIfWaitingToBeRefundedForIHS();
-            }
-        } else {
-            throw new Error("Selected option: " + applicationLoc + " not found");
+        switch (applicationLoc.toLowerCase()) {
+            case c.IN_THE_UK.toLowerCase():
+                await this.pages.ukvicWhereDidYouApplyPage.answerSelectWhereYouApplied(c.IN_THE_UK);
+                await this.answerApplicationGuidance(c.IN_THE_UK);
+                break;
+            case c.OUTSIDE_OF_THE_UK.toLowerCase():
+                await this.pages.ukvicWhereDidYouApplyPage.answerSelectWhereYouApplied(c.OUTSIDE_OF_THE_UK);
+                await this.answerApplicationGuidance(c.OUTSIDE_OF_THE_UK);
+                break;
+            default:
+                throw new Error("Selected option: " + applicationLoc + " not found");
+        }
+    }
+
+    private async answerApplicationGuidance(location: string): Promise<void> {
+        const appointmentProblem = this.applicant.whatProbDidYouHaveMakingAppointment;
+        const priorities = [
+            [appointmentProblem, c.DIFFICULTY_GETTING_APPOINTMENT],
+            [appointmentProblem, c.DIFFICULTY_CHANGING_APPOINTMENT],
+            [location === c.IN_THE_UK ? appointmentProblem : '', c.TECHNICAL_ISSUES_WITH_BOOKING_APPOINTMENT],
+            [this.applicant.whatWasTheProbWithTheApplyProcess, c.TECHNICAL_ISSUES],
+            [this.applicant.whatWasTheProbWithTheApplyProcess, c.UNCLEAR_GUIDANCE],
+            [appointmentProblem, c.TECHNICAL_ISSUES_WITH_BOOKING_APPOINTMENT],
+            [appointmentProblem, c.HAVE_QUESTION_ABT_MY_APPOINTMENT],
+            [this.applicant.whatAreYouWaitingFor, c.Application_Decision],
+            [this.applicant.wasDecisionNegativeOrPositive, c.POSITIVE],
+            [this.applicant.wasDecisionNegativeOrPositive, c.NEGATIVE],
+            [this.applicant.whichTypeOfRefundDoYouRequest, c.PRIORITY_SERVICE_FEE],
+            [this.applicant.whichTypeOfRefundDoYouRequest, c.SUPER_PRIORITY_SERVICE_FEE],
+            [this.applicant.whichTypeOfRefundDoYouRequest, c.IHS_SERVICE_FEE],
+            [this.applicant.whatAreYouWaitingToBeRefunded, c.IHS_SERVICE_FEE],
+        ];
+        const decision = priorities.find(([answer, option]) => same(answer, option))?.[1];
+        switch (decision) {
+            case c.DIFFICULTY_GETTING_APPOINTMENT:
+                return this.answerDifficultyGettingAppmt();
+            case c.DIFFICULTY_CHANGING_APPOINTMENT:
+                return this.answerDifficultyChangingAppmt();
+            case c.TECHNICAL_ISSUES_WITH_BOOKING_APPOINTMENT:
+                return this.answerTechnicalIssuesWithBkingAppmt();
+            case c.TECHNICAL_ISSUES:
+                return this.answerTechnicalIssuesWithPayments();
+            case c.UNCLEAR_GUIDANCE:
+                return this.answerGuidanceUnclearOrMisleading();
+            case c.HAVE_QUESTION_ABT_MY_APPOINTMENT:
+                return this.answerHaveQuestionsAbtYourAppmt();
+            case c.Application_Decision:
+                return this.answerIfYouAreWaitingForDecision();
+            case c.POSITIVE:
+                return this.pages.ukvicIfYouHaveQuestAbtPositiveDecisionPage.answerIfYouHaveQuestionsAbtPositiveDecision();
+            case c.NEGATIVE:
+                return this.pages.ukvicIfYouHaveQuestionsAbtNegDecisionPage.answerIfYouHaveQuestionsAbtNegDecision();
+            case c.PRIORITY_SERVICE_FEE:
+                return this.answerIfYouWantToRequestPrioritySerRefund();
+            case c.SUPER_PRIORITY_SERVICE_FEE:
+                return this.answerIfYouWantToRequestSuperPrioritySerRefund();
+            case c.IHS_SERVICE_FEE:
+                return this.answerIfWaitingToBeRefundedForIHS();
+            default:
+                return;
         }
     }
 
@@ -184,10 +146,13 @@ export class ukVicStepLib {
 
     async answerIfYouAreWaitingForDecision(): Promise<void> {
         await this.pages.ukvicIfYouAreWaitingForDecisionPage.assertPageTitle(this.page, await this.pages.ukvicIfYouAreWaitingForDecisionPage.expectedPageTitle());
-        if (same(this.applicant.whereDidYouMakeYourApplication, c.IN_THE_UK)) {
-            await this.pages.ukvicIfYouAreWaitingForDecisionPage.checkWaitingTimesLinkWork_InUk();
-        } else {
-            await this.pages.ukvicIfYouAreWaitingForDecisionPage.checkWaitingTimesLinkWork_OutsideUk();
+        switch (this.applicant.whereDidYouMakeYourApplication.toLowerCase()) {
+            case c.IN_THE_UK.toLowerCase():
+                await this.pages.ukvicIfYouAreWaitingForDecisionPage.checkWaitingTimesLinkWork_InUk();
+                break;
+            default:
+                await this.pages.ukvicIfYouAreWaitingForDecisionPage.checkWaitingTimesLinkWork_OutsideUk();
+                break;
         }
         await this.pages.ukvicIfYouAreWaitingForDecisionPage.selectContinueMakingComplaint();
         await this.pages.ukvicWhenDidYouSubmitYourApplicationPage.assertPageTitle(this.page, await this.pages.ukvicWhenDidYouSubmitYourApplicationPage.expectedPageTitle());
@@ -586,15 +551,63 @@ export class ukVicStepLib {
     }
 }
 
+
+
+
+
+//******************************************************************************************************************************************** */
+//                                                        BDD Step Definitions for Ukvic Form
+//******************************************************************************************************************************************** */
+
 export const { Given, When, Then } = createBdd(test);
 
 Given("I visit the Ukvic page", async ({ pages }) => {
     await pages.ukvicHomePageWhatIsTheComplaintAbtPage.openUkviComplaintHomePage();
 });
 
-When('I fill out my answers for the Ukvic form pertaining to {string}', async ({ ukvic }, description: string) => {
-    ukvic.selectScenario(description);
-    await ukvic.selectYourComplaintTypeAndCompleteForm();
+When('I fill out my answers for the Ukvic form pertaining to {string}', async ({ pages, page, ukvic }, scenario: string) => {
+    ukvic.selectScenario(scenario);
+    await pages.ukvicHomePageWhatIsTheComplaintAbtPage.assertPageTitle(page, await pages.ukvicHomePageWhatIsTheComplaintAbtPage.expectedPageTitle());
+    switch (ukvic.applicant.whatIsTheComplaintAbt) {
+        case c.SUBMIT_APPLICATION:
+            await pages.ukvicHomePageWhatIsTheComplaintAbtPage.answerSelectYourComplaint(c.Submit_Application);
+            await ukvic.selectProblemWithTheApplication();
+            break;
+        case c.MAKE_APPOINTMENT:
+            await pages.ukvicHomePageWhatIsTheComplaintAbtPage.answerSelectYourComplaint(c.Make_Appointment);
+            await ukvic.answerWhatProbMakingAppointment();
+            break;
+        case c.WAIT_FOR_DECISION:
+            await pages.ukvicHomePageWhatIsTheComplaintAbtPage.answerSelectYourComplaint(c.Wait_For_Decision);
+            await ukvic.answerWhatAreYouWaitingFor();
+            break;
+        case c.NEG_OR_POSITIVE_DECISION:
+            await pages.ukvicHomePageWhatIsTheComplaintAbtPage.answerSelectYourComplaint(c.Decision);
+            await ukvic.answerWasDecisionNegOrPositive();
+            break;
+        case c.BRP_PERMITS:
+            await pages.ukvicHomePageWhatIsTheComplaintAbtPage.answerSelectYourComplaint(c.Brp_Permits);
+            await ukvic.answerWhatIsTheProbWithTheBRP();
+            break;
+        case c.REFUNDS:
+            await pages.ukvicHomePageWhatIsTheComplaintAbtPage.answerSelectYourComplaint(c.Refunds);
+            await ukvic.answerHaveYouRequestedRefund();
+            break;
+        case c.STAFF_BEHAVIOUR:
+            await pages.ukvicHomePageWhatIsTheComplaintAbtPage.answerSelectYourComplaint(c.Staff_Behaviour);
+            await ukvic.answerWhereDidYouExpPoorBehaviour();
+            break;
+        case c.EXISTING_COMPLAINT:
+            await pages.ukvicHomePageWhatIsTheComplaintAbtPage.answerSelectYourComplaint(c.Existing_Complaint);
+            await ukvic.answerDoYouHaveRefNumbForTheComplaint();
+            break;
+        case c.SOMETHING_ELSE:
+            await pages.ukvicHomePageWhatIsTheComplaintAbtPage.answerSelectYourComplaint(c.Something_Else);
+            await ukvic.answerWhichRefNumbDoYouHave();
+            break;
+        default:
+            throw new Error(`Unknown UKVIC scenario: ${scenario}`);
+    }
 });
 
 Then("I am able to submit the Ukvic form", async ({ ukvic, pages }) => {

@@ -11,6 +11,12 @@
   "license": "MIT",
   "scripts": {
     "start": "node server.js",
+    "test:e2e": "bddgen && playwright test",
+    "test:e2e:generate": "bddgen",
+    "test:e2e:typecheck": "tsc --noEmit --strict --esModuleInterop --skipLibCheck --target ES2022 --module commonjs --moduleResolution node",
+    "test:e2e:parity": "node e2e-tests/utility-helper/source-parity.cjs",
+    "test:e2e:isolated": "node e2e-tests/utility-helper/validate-scenarios.cjs",
+    "test:e2e:report": "playwright show-report",
     "start:dev": "[ -f .env ] && hof-build watch --env || hof-build watch",
     "local:up": "sh ./bin/start_local.sh",
     "local:check-env": "sh ./bin/start_local.sh --check-env",
@@ -42,17 +48,23 @@
     "sqs-producer": "^9.0.5"
   },
   "devDependencies": {
+    "@playwright/test": "1.65.0",
+    "@types/node": "^24.0.0",
     "@cucumber/cucumber": "^12.9.0",
     "chai": "^6.2.2",
     "chai-as-promised": "^8.0.2",
+    "csv-parse": "^6.1.0",
+    "dotenv": "^17.4.2",
     "eslint": "^8.57.0",
     "eslint-config-hof": "^1.3.4",
     "mocha": "^11.8.0",
     "nyc": "^18.0.0",
-    "playwright": "^1.63.0",
+    "playwright": "1.65.0",
+    "playwright-bdd": "^9.2.0",
     "proxyquire": "^2.1.3",
     "sinon": "^22.1.0",
-    "sinon-chai": "^4.0.1"
+    "sinon-chai": "^4.0.1",
+    "typescript": "^5.9.3"
   },
   "mocha": {
     "reporter": "spec",

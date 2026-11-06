@@ -3,7 +3,6 @@ import { createBdd } from 'playwright-bdd';
 import { test, Pages } from '../fixture/fixtures';
 import { ConstantsLib as c } from '../utility-helper/constants-lib';
 import { getApplicantForDescription, UkvicApplicant } from '../test-data/ukvic-applicant';
-import { descriptionMappings } from '../test-data/ukvic-descriptions';
 import { resolve } from 'node:path';
 
 const same = (left: string, right: string): boolean => left.toLowerCase() === right.toLowerCase();
@@ -17,7 +16,7 @@ export class ukVicStepLib {
 
     selectScenario(description: string): void {
         if (this.page.url() === 'about:blank') throw new Error('Visit the Ukvic page before selecting scenario data');
-        this.applicant = getApplicantForDescription(description, descriptionMappings);
+        this.applicant = getApplicantForDescription(description);
         this.selectedDescription = description;
         this.assertSelectedDescription(description);
     }
@@ -25,7 +24,7 @@ export class ukVicStepLib {
     assertSelectedDescription(description: string = this.selectedDescription ?? ''): void {
         expect(description.trim()).not.toBe('');
         expect(description).toBe(this.selectedDescription);
-        expect(this.applicant).toEqual(getApplicantForDescription(description, descriptionMappings));
+        expect(this.applicant).toEqual(getApplicantForDescription(description));
     }
 
     async openUkviComplaintHomePage(): Promise<void> {

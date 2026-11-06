@@ -21,22 +21,11 @@ export type UkvicApplicant = {
   whatWasYourOriginalComplaintAbt: string;
 };
 
-export type DescriptionMapping = {
-  description: string;
-  scenarioId: string;
-};
-
-export function getApplicantForDescription(description: string, mappings: readonly DescriptionMapping[]): UkvicApplicant {
-  if (!description.trim()) throw new Error('UKVIC description must not be blank');
-  const scenarioIds = new Set(mappings.filter(mapping => mapping.description === description).map(mapping => mapping.scenarioId));
-  if (scenarioIds.size === 0) throw new Error(`Unknown UKVIC description: ${description}`);
-  if (scenarioIds.size > 1) throw new Error(`Ambiguous UKVIC description: ${description}`);
-  return getApplicant([...scenarioIds][0]);
-}
-
-export function getApplicant(scenarioId: string): UkvicApplicant {
-  switch (scenarioId) {
-    case "1":
+export function getApplicantForDescription(description: string): UkvicApplicant {
+  if (!description.trim()) throw new Error("UKVIC description must not be blank");
+  switch (description) {
+    case "S1-Submitting an application - Tech Issues - In Uk - GWF number -Complaint on Behalf - Yes - Legal rep":
+    case "Submitting an application - Tech Issues - In Uk - GWF number -Complaint on Behalf - Yes - Legal rep":
       return {
         "applicantId": "1",
         "whatIsTheComplaintAbt": "Submitting an application",
@@ -59,7 +48,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "2":
+    case "S2-Submitting an application - Tech Issues - Outside Uk - GWF number -Complaint on Behalf - No":
       return {
         "applicantId": "2",
         "whatIsTheComplaintAbt": "Submitting an application",
@@ -82,7 +71,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "3":
+    case "S3-Submitting an application - Tech Issues - In Uk - GWF number -Complaint on Behalf - No":
       return {
         "applicantId": "3",
         "whatIsTheComplaintAbt": "Submitting an application",
@@ -105,7 +94,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "4":
+    case "S4-Submitting an application - Tech Issues - Outside Uk - GWF number -Complaint on Behalf - Yes - friend":
       return {
         "applicantId": "4",
         "whatIsTheComplaintAbt": "Submitting an application",
@@ -128,7 +117,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "5":
+    case "S5-Submitting an application - Tech Issues - In Uk - HO number -Complaint on Behalf - Yes - sponsor":
       return {
         "applicantId": "5",
         "whatIsTheComplaintAbt": "Submitting an application",
@@ -151,7 +140,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "6":
+    case "S6-Submitting an application - Tech Issues - Outside Uk -HO number -Complaint on Behalf - No":
       return {
         "applicantId": "6",
         "whatIsTheComplaintAbt": "Submitting an application",
@@ -174,7 +163,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "7":
+    case "S7-Submitting an application - Tech Issues - In Uk HO number -Complaint on Behalf - No":
       return {
         "applicantId": "7",
         "whatIsTheComplaintAbt": "Submitting an application",
@@ -197,7 +186,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "8":
+    case "S8-Submitting an application - Tech Issues - Outside Uk - HO number -Complaint on Behalf - Yes - expert support":
       return {
         "applicantId": "8",
         "whatIsTheComplaintAbt": "Submitting an application",
@@ -220,7 +209,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "9":
+    case "S9-Submitting an application - Tech Issues - In Uk - IHS number -Complaint on Behalf - Yes- expert support":
       return {
         "applicantId": "9",
         "whatIsTheComplaintAbt": "Submitting an application",
@@ -243,7 +232,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "10":
+    case "S10-Submitting an application - Tech Issues - Outside Uk -IHS number -Complaint on Behalf - No":
       return {
         "applicantId": "10",
         "whatIsTheComplaintAbt": "Submitting an application",
@@ -266,7 +255,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "11":
+    case "S11-Submitting an application - Tech Issues - In Uk - IHS number - Complaint on Behalf - No":
       return {
         "applicantId": "11",
         "whatIsTheComplaintAbt": "Submitting an application",
@@ -289,7 +278,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "12":
+    case "S12-Submitting an application - Tech Issues - Outside Uk- IHS number - Complaint on Behalf - Yes - sponsor":
       return {
         "applicantId": "12",
         "whatIsTheComplaintAbt": "Submitting an application",
@@ -312,7 +301,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "13":
+    case "S13-Submitting an application - Tech Issues - In Uk - Unique number -Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "13",
         "whatIsTheComplaintAbt": "Submitting an application",
@@ -335,7 +324,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "14":
+    case "S14-Submitting an application - Tech Issues - Outside Uk - Unique number -Complaint on Behalf - No":
       return {
         "applicantId": "14",
         "whatIsTheComplaintAbt": "Submitting an application",
@@ -358,7 +347,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "15":
+    case "S15-Submitting an application - Tech Issues - In Uk - Unique number -Complaint on Behalf - No":
       return {
         "applicantId": "15",
         "whatIsTheComplaintAbt": "Submitting an application",
@@ -381,7 +370,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "16":
+    case "S16-Submitting an application - Tech Issues - Outside Uk - Unique number -Complaint on Behalf - Yes - friend":
       return {
         "applicantId": "16",
         "whatIsTheComplaintAbt": "Submitting an application",
@@ -404,7 +393,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "17":
+    case "S17-Submitting an application - Tech Issues - In Uk - Don't have -Complaint on Behalf - Yes - sponsor":
       return {
         "applicantId": "17",
         "whatIsTheComplaintAbt": "Submitting an application",
@@ -427,7 +416,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "18":
+    case "S18-Submitting an application - Tech Issues - Outside Uk - Don't have -Complaint on Behalf - No":
       return {
         "applicantId": "18",
         "whatIsTheComplaintAbt": "Submitting an application",
@@ -450,7 +439,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "19":
+    case "S19-Submitting an application - Tech Issues - In Uk - Don't have -Complaint on Behalf - No":
       return {
         "applicantId": "19",
         "whatIsTheComplaintAbt": "Submitting an application",
@@ -473,7 +462,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "20":
+    case "S20-Submitting an application - Tech Issues - Outside Uk - Don't have -Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "20",
         "whatIsTheComplaintAbt": "Submitting an application",
@@ -496,7 +485,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "21":
+    case "S21-Submitting an application - Something else - HO number - Complaint on Behalf - Yes":
       return {
         "applicantId": "21",
         "whatIsTheComplaintAbt": "Submitting an application",
@@ -519,30 +508,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "22":
-      return {
-        "applicantId": "22",
-        "whatIsTheComplaintAbt": "Submitting an application",
-        "whatWasTheProbWithTheApplyProcess": "Something else",
-        "whereDidYouMakeYourApplication": "NA",
-        "haveYouRequestedARefund": "",
-        "whichTypeOfRefundDoYouRequest": "",
-        "whatAreYouWaitingToBeRefunded": "",
-        "whenDidYouRequestRefund": "",
-        "whatAreYouWaitingFor": "",
-        "whereDidYouExpPoorBehaviour": "",
-        "haveYouAskedForDocsBack": "",
-        "whereDidTheIncidentTakePlace": "",
-        "whatIsTheProbWithTheBrp": "",
-        "doYouHaveARefNumbForTheComplaint": "",
-        "whichOfTheseRefNumbDoYouHave": "Home Office reference number",
-        "areYouMakingThisComplaintForSomeoneElse": "No",
-        "whatIsYourRelationToApplicant": "NA",
-        "wasDecisionNegativeOrPositive": "",
-        "whatProbDidYouHaveMakingAppointment": "",
-        "whatWasYourOriginalComplaintAbt": ""
-      };
-    case "23":
+    case "S23-Submitting an application - Something else - IHS number -Complaint on Behalf - Yes":
       return {
         "applicantId": "23",
         "whatIsTheComplaintAbt": "Submitting an application",
@@ -565,7 +531,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "24":
+    case "S24-Submitting an application - Something else - GWF number -Complaint on Behalf - No":
       return {
         "applicantId": "24",
         "whatIsTheComplaintAbt": "Submitting an application",
@@ -588,7 +554,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "25":
+    case "S25-Submitting an application - Something else - Unique number -Complaint on Behalf - Yes - sponsor":
       return {
         "applicantId": "25",
         "whatIsTheComplaintAbt": "Submitting an application",
@@ -611,7 +577,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "26":
+    case "S26-Submitting an application - Something else - Unique number -Complaint on Behalf - No":
       return {
         "applicantId": "26",
         "whatIsTheComplaintAbt": "Submitting an application",
@@ -634,7 +600,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "27":
+    case "S27-Submitting an application - Something else - Don't have -Complaint on Behalf - Yes - expert support":
       return {
         "applicantId": "27",
         "whatIsTheComplaintAbt": "Submitting an application",
@@ -657,7 +623,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "28":
+    case "S28-Submitting an application - Something else - Don't have -Complaint on Behalf - No":
       return {
         "applicantId": "28",
         "whatIsTheComplaintAbt": "Submitting an application",
@@ -680,7 +646,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "29":
+    case "S29-Submitting an application - Something else - GWF -Complaint on Behalf - Yes - expert support":
       return {
         "applicantId": "29",
         "whatIsTheComplaintAbt": "Submitting an application",
@@ -703,7 +669,8 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "30":
+    case "S30-Making an appointment - Difficult Getting Appointment - In Uk -GWF number -Complaint on Behalf - Yes - legal rep":
+    case "Making an appointment - Difficult Getting Appointment - In Uk -GWF number -Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "30",
         "whatIsTheComplaintAbt": "Making an appointment",
@@ -726,7 +693,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "Difficulty getting an appointment",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "31":
+    case "S31-Making an appointment - Difficult Getting Appointment - Outside Uk -GWF number -Complaint on Behalf - No":
       return {
         "applicantId": "31",
         "whatIsTheComplaintAbt": "Making an appointment",
@@ -749,7 +716,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "Difficulty getting an appointment",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "32":
+    case "S32-Making an appointment - Difficult Getting Appointment - In Uk -GWF number - Complaint on Behalf - No":
       return {
         "applicantId": "32",
         "whatIsTheComplaintAbt": "Making an appointment",
@@ -772,7 +739,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "Difficulty getting an appointment",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "33":
+    case "S33-Making an appointment - Difficult Getting Appointment - Outside Uk -GWF number - Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "33",
         "whatIsTheComplaintAbt": "Making an appointment",
@@ -795,7 +762,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "Difficulty getting an appointment",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "34":
+    case "S34-Making an appointment - Difficult changing Appointment - In Uk - Unique number - Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "34",
         "whatIsTheComplaintAbt": "Making an appointment",
@@ -818,7 +785,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "Difficulty changing an appointment",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "35":
+    case "S35-Making an appointment - Difficult changing Appointment - Outside -Unique number - Complaint on Behalf - No":
       return {
         "applicantId": "35",
         "whatIsTheComplaintAbt": "Making an appointment",
@@ -841,7 +808,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "Difficulty changing an appointment",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "36":
+    case "S36-Making an appointment - Difficult changing Appointment - In Uk -Unique number - Complaint on Behalf - No":
       return {
         "applicantId": "36",
         "whatIsTheComplaintAbt": "Making an appointment",
@@ -864,7 +831,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "Difficulty changing an appointment",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "37":
+    case "S37-Making an appointment - Difficult changing Appointment - Outside Uk -Unique number -Complaint on Behalf - Yes - friend":
       return {
         "applicantId": "37",
         "whatIsTheComplaintAbt": "Making an appointment",
@@ -887,7 +854,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "Difficulty changing an appointment",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "38":
+    case "S38-Making an appointment - Difficult Getting Appointment - In Uk -HO number - Complaint on Behalf - Yes - sponsor":
       return {
         "applicantId": "38",
         "whatIsTheComplaintAbt": "Making an appointment",
@@ -910,7 +877,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "Technical issues with booking an appointment",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "39":
+    case "S39-Making an appointment - Difficult Getting Appointment - Outside Uk -HO number - Complaint on Behalf - No":
       return {
         "applicantId": "39",
         "whatIsTheComplaintAbt": "Making an appointment",
@@ -933,7 +900,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "Technical issues with booking an appointment",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "40":
+    case "S40-Making an appointment - Difficult Getting Appointment - In Uk -HO number - Complaint on Behalf - No":
       return {
         "applicantId": "40",
         "whatIsTheComplaintAbt": "Making an appointment",
@@ -956,7 +923,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "Technical issues with booking an appointment",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "41":
+    case "S41-Making an appointment - Difficult Getting Appointment - Outside Uk -HO number - Complaint on Behalf - Yes - expert support":
       return {
         "applicantId": "41",
         "whatIsTheComplaintAbt": "Making an appointment",
@@ -979,7 +946,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "Technical issues with booking an appointment",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "42":
+    case "S42-Making an appointment - Difficult Getting Appointment - In Uk -IHS number - Complaint on Behalf - Yes - expert support":
       return {
         "applicantId": "42",
         "whatIsTheComplaintAbt": "Making an appointment",
@@ -1002,7 +969,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "I have a question about my appointment",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "43":
+    case "S43-Making an appointment - Difficult Getting Appointment - Outside Uk -IHS number - Complaint on Behalf - No":
       return {
         "applicantId": "43",
         "whatIsTheComplaintAbt": "Making an appointment",
@@ -1025,7 +992,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "I have a question about my appointment",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "44":
+    case "S44-Making an appointment - Difficult Getting Appointment - In Uk -IHS number - Complaint on Behalf - No":
       return {
         "applicantId": "44",
         "whatIsTheComplaintAbt": "Making an appointment",
@@ -1048,7 +1015,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "I have a question about my appointment",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "45":
+    case "S45-Making an appointment - Difficult Getting Appointment - Outside Uk -IHS number - Complaint on Behalf - Yes - friend":
       return {
         "applicantId": "45",
         "whatIsTheComplaintAbt": "Making an appointment",
@@ -1071,7 +1038,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "I have a question about my appointment",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "46":
+    case "S46-Making an appointment - Difficult Getting Appointment - In Uk -Don't have number - Complaint on Behalf - Yes - sponsor":
       return {
         "applicantId": "46",
         "whatIsTheComplaintAbt": "Making an appointment",
@@ -1094,7 +1061,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "Difficulty getting an appointment",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "47":
+    case "S47-Making an appointment - Difficult changing Appointment - Outside Uk -Don't have number - Complaint on Behalf - No":
       return {
         "applicantId": "47",
         "whatIsTheComplaintAbt": "Making an appointment",
@@ -1117,7 +1084,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "Difficulty changing an appointment",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "48":
+    case "S48-Making an appointment - Difficult Getting Appointment - In Uk -Don't have number - Complaint on Behalf - No":
       return {
         "applicantId": "48",
         "whatIsTheComplaintAbt": "Making an appointment",
@@ -1140,7 +1107,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "Technical issues with booking an appointment",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "49":
+    case "S49-Making an appointment - Difficult Getting Appointment - Outside Uk -Don't have number - Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "49",
         "whatIsTheComplaintAbt": "Making an appointment",
@@ -1163,7 +1130,8 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "I have a question about my appointment",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "50":
+    case "S50-Waiting for a decision - Decision on application - In Uk -GWF number -Complaint on Behalf - Yes - expert support":
+    case "Waiting for a decision - Decision on application - In Uk -GWF number -Complaint on Behalf - Yes - expert support":
       return {
         "applicantId": "50",
         "whatIsTheComplaintAbt": "Waiting for a decision",
@@ -1186,7 +1154,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "51":
+    case "S51-Waiting for a decision - Decision on application - Outside Uk -GWF number -Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "51",
         "whatIsTheComplaintAbt": "Waiting for a decision",
@@ -1209,7 +1177,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "52":
+    case "S52-Waiting for a decision - Decision on application - In Uk -GWF number - Complaint on Behalf - No":
       return {
         "applicantId": "52",
         "whatIsTheComplaintAbt": "Waiting for a decision",
@@ -1232,7 +1200,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "53":
+    case "S53-Waiting for a decision - Decision on application - Outside Uk -GWF number - Complaint on Behalf - No":
       return {
         "applicantId": "53",
         "whatIsTheComplaintAbt": "Waiting for a decision",
@@ -1255,7 +1223,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "54":
+    case "S54-Waiting for a decision - Decision on application - In Uk -GWF number - Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "54",
         "whatIsTheComplaintAbt": "Waiting for a decision",
@@ -1278,7 +1246,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "55":
+    case "S55-Waiting for a decision - Decision on application - Outside Uk -Unique number - Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "55",
         "whatIsTheComplaintAbt": "Waiting for a decision",
@@ -1301,7 +1269,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "56":
+    case "S56-Waiting for a decision - Decision on application - In Uk -Unique number - Complaint on Behalf - No":
       return {
         "applicantId": "56",
         "whatIsTheComplaintAbt": "Waiting for a decision",
@@ -1324,7 +1292,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "57":
+    case "S57-Waiting for a decision - Decision on application - Outside Uk -Unique number - Complaint on Behalf -No":
       return {
         "applicantId": "57",
         "whatIsTheComplaintAbt": "Waiting for a decision",
@@ -1347,7 +1315,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "58":
+    case "S58-Waiting for a decision - Decision on application - In Uk -Unique number - Complaint on Behalf - Yes - friend":
       return {
         "applicantId": "58",
         "whatIsTheComplaintAbt": "Waiting for a decision",
@@ -1370,7 +1338,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "59":
+    case "S59-Waiting for a decision - Decision on application - Outside Uk -HO number - Complaint on Behalf - Yes - sponsor":
       return {
         "applicantId": "59",
         "whatIsTheComplaintAbt": "Waiting for a decision",
@@ -1393,7 +1361,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "60":
+    case "S60-Waiting for a decision - Decision on application - In Uk -HO number - Complaint on Behalf - No":
       return {
         "applicantId": "60",
         "whatIsTheComplaintAbt": "Waiting for a decision",
@@ -1416,7 +1384,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "61":
+    case "S61-Waiting for a decision - Decision on application - Outside Uk -HO number - Complaint on Behalf - No":
       return {
         "applicantId": "61",
         "whatIsTheComplaintAbt": "Waiting for a decision",
@@ -1439,7 +1407,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "62":
+    case "S62-Waiting for a decision - Decision on application - In Uk -HO number - Complaint on Behalf - Yes - expert support":
       return {
         "applicantId": "62",
         "whatIsTheComplaintAbt": "Waiting for a decision",
@@ -1462,7 +1430,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "63":
+    case "S63-Waiting for a decision - Decision on application - Outside Uk -IHS number - Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "63",
         "whatIsTheComplaintAbt": "Waiting for a decision",
@@ -1485,7 +1453,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "64":
+    case "S64-Waiting for a decision - Decision on application - In Uk -IHS number - Complaint on Behalf -No":
       return {
         "applicantId": "64",
         "whatIsTheComplaintAbt": "Waiting for a decision",
@@ -1508,7 +1476,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "65":
+    case "S65-Waiting for a decision - Decision on application - Outside Uk -IHS number - Complaint on Behalf -No":
       return {
         "applicantId": "65",
         "whatIsTheComplaintAbt": "Waiting for a decision",
@@ -1531,7 +1499,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "66":
+    case "S66-Waiting for a decision - Decision on application - In Uk -IHS number - Complaint on Behalf - Yes - friend":
       return {
         "applicantId": "66",
         "whatIsTheComplaintAbt": "Waiting for a decision",
@@ -1554,7 +1522,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "67":
+    case "S67-Waiting for a decision - Decision on application - Outside Uk -Don't have number - Complaint on Behalf - Yes - Sponsor":
       return {
         "applicantId": "67",
         "whatIsTheComplaintAbt": "Waiting for a decision",
@@ -1577,7 +1545,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "68":
+    case "S68-Waiting for a decision - Decision on application - In Uk -Don't have number - Complaint on Behalf - No":
       return {
         "applicantId": "68",
         "whatIsTheComplaintAbt": "Waiting for a decision",
@@ -1600,7 +1568,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "69":
+    case "S69-Waiting for a decision - Decision on application - Outside Uk -Don't have number - Complaint on Behalf - No":
       return {
         "applicantId": "69",
         "whatIsTheComplaintAbt": "Waiting for a decision",
@@ -1623,7 +1591,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "70":
+    case "S70-Waiting for a decision - Decision on application - In Uk -Don't have number - Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "70",
         "whatIsTheComplaintAbt": "Waiting for a decision",
@@ -1646,7 +1614,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "71":
+    case "S71-Waiting for a decision - Return some docs - Online form -GWF number - Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "71",
         "whatIsTheComplaintAbt": "Waiting for a decision",
@@ -1669,7 +1637,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "72":
+    case "S72-Waiting for a decision - Return some docs - Online form -GWF number - Complaint on Behalf - No":
       return {
         "applicantId": "72",
         "whatIsTheComplaintAbt": "Waiting for a decision",
@@ -1692,7 +1660,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "73":
+    case "S73-Waiting for a decision - Return some docs - Online form -Unique number - Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "73",
         "whatIsTheComplaintAbt": "Waiting for a decision",
@@ -1715,7 +1683,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "74":
+    case "S74-Waiting for a decision - Return some docs - Online form -Unique number - Complaint on Behalf - No":
       return {
         "applicantId": "74",
         "whatIsTheComplaintAbt": "Waiting for a decision",
@@ -1738,7 +1706,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "75":
+    case "S75-Waiting for a decision - Return some docs - Online form -Unique number - Complaint on Behalf - Yes - friend":
       return {
         "applicantId": "75",
         "whatIsTheComplaintAbt": "Waiting for a decision",
@@ -1761,7 +1729,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "76":
+    case "S76-Waiting for a decision - Return some docs - Online form -HO number - Complaint on Behalf - Yes - sponsor":
       return {
         "applicantId": "76",
         "whatIsTheComplaintAbt": "Waiting for a decision",
@@ -1784,7 +1752,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "77":
+    case "S77-Waiting for a decision - Return some docs - Online form -HO number - Complaint on Behalf - No":
       return {
         "applicantId": "77",
         "whatIsTheComplaintAbt": "Waiting for a decision",
@@ -1807,7 +1775,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "78":
+    case "S78-Waiting for a decision - Return some docs - Online form -HO number - Complaint on Behalf - Yes - expert support":
       return {
         "applicantId": "78",
         "whatIsTheComplaintAbt": "Waiting for a decision",
@@ -1830,7 +1798,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "79":
+    case "S79-Waiting for a decision - Return some docs - Online form -IHS number - Complaint on Behalf - Yes - expert support":
       return {
         "applicantId": "79",
         "whatIsTheComplaintAbt": "Waiting for a decision",
@@ -1853,7 +1821,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "80":
+    case "S80-Waiting for a decision - Return some docs - Online form -IHS number -Complaint on Behalf - No":
       return {
         "applicantId": "80",
         "whatIsTheComplaintAbt": "Waiting for a decision",
@@ -1876,7 +1844,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "81":
+    case "S81-Waiting for a decision - Return some docs - Online form -IHS number - Complaint on Behalf - Yes -friend":
       return {
         "applicantId": "81",
         "whatIsTheComplaintAbt": "Waiting for a decision",
@@ -1899,7 +1867,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "82":
+    case "S82-Waiting for a decision - Return some docs - Online form -Don't have number - Complaint on Behalf - Yes - sponsor":
       return {
         "applicantId": "82",
         "whatIsTheComplaintAbt": "Waiting for a decision",
@@ -1922,7 +1890,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "83":
+    case "S83-Waiting for a decision - Return some docs - Online form -Don't have number - Complaint on Behalf - No":
       return {
         "applicantId": "83",
         "whatIsTheComplaintAbt": "Waiting for a decision",
@@ -1945,7 +1913,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "84":
+    case "S84-Waiting for a decision - Return some docs - Online form -Don't have number - Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "84",
         "whatIsTheComplaintAbt": "Waiting for a decision",
@@ -1968,7 +1936,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "85":
+    case "S85-Waiting for a decision - Return some docs - another way -GWF number - Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "85",
         "whatIsTheComplaintAbt": "Waiting for a decision",
@@ -1991,7 +1959,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "86":
+    case "S86-Waiting for a decision - Return some docs - another way -GWF number - Complaint on Behalf - No":
       return {
         "applicantId": "86",
         "whatIsTheComplaintAbt": "Waiting for a decision",
@@ -2014,7 +1982,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "87":
+    case "S87-Waiting for a decision - Return some docs - another way -HO number - Complaint on Behalf - No":
       return {
         "applicantId": "87",
         "whatIsTheComplaintAbt": "Waiting for a decision",
@@ -2037,7 +2005,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "88":
+    case "S88-Waiting for a decision - Return some docs - another way -HO number - Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "88",
         "whatIsTheComplaintAbt": "Waiting for a decision",
@@ -2060,7 +2028,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "89":
+    case "S89-Waiting for a decision - Return some docs - No -IHS number - Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "89",
         "whatIsTheComplaintAbt": "Waiting for a decision",
@@ -2083,7 +2051,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "90":
+    case "S90-Waiting for a decision - Return some docs - No -IHS number - Complaint on Behalf - No":
       return {
         "applicantId": "90",
         "whatIsTheComplaintAbt": "Waiting for a decision",
@@ -2106,7 +2074,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "91":
+    case "S91-Waiting for a decision - Return some docs - No -GWF number - Complaint on Behalf -No":
       return {
         "applicantId": "91",
         "whatIsTheComplaintAbt": "Waiting for a decision",
@@ -2129,7 +2097,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "92":
+    case "S92-Waiting for a decision - Return some docs - No -GWF number - Complaint on Behalf - Yes - friend":
       return {
         "applicantId": "92",
         "whatIsTheComplaintAbt": "Waiting for a decision",
@@ -2152,7 +2120,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "93":
+    case "S93-A negative or positive decision - Negative - GWF number - Complaint on Behalf - No":
       return {
         "applicantId": "93",
         "whatIsTheComplaintAbt": "A negative or positive decision",
@@ -2175,7 +2143,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "94":
+    case "S94-A negative or positive decision - Negative -GWF number - Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "94",
         "whatIsTheComplaintAbt": "A negative or positive decision",
@@ -2198,7 +2166,8 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "95":
+    case "S95-A negative or positive decision - Negative -Unique number -Complaint on Behalf - Yes - expert support":
+    case "A negative or positive decision - Negative -Unique number -Complaint on Behalf - Yes - expert support":
       return {
         "applicantId": "95",
         "whatIsTheComplaintAbt": "A negative or positive decision",
@@ -2221,7 +2190,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "96":
+    case "S96-A negative or positive decision - Negative -Unique number -Complaint on Behalf - No":
       return {
         "applicantId": "96",
         "whatIsTheComplaintAbt": "A negative or positive decision",
@@ -2244,7 +2213,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "97":
+    case "S97-A negative or positive decision - Negative - HO number - Complaint on Behalf - Yes - sponsor":
       return {
         "applicantId": "97",
         "whatIsTheComplaintAbt": "A negative or positive decision",
@@ -2267,7 +2236,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "98":
+    case "S98-A negative or positive decision - Negative -HO number - Complaint on Behalf - No":
       return {
         "applicantId": "98",
         "whatIsTheComplaintAbt": "A negative or positive decision",
@@ -2290,7 +2259,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "99":
+    case "S99-A negative or positive decision - Negative - IHS number - Complaint on Behalf - Yes - expert support":
       return {
         "applicantId": "99",
         "whatIsTheComplaintAbt": "A negative or positive decision",
@@ -2313,7 +2282,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "100":
+    case "S100-A negative or positive decision - Negative -IHS number - Complaint on Behalf - No":
       return {
         "applicantId": "100",
         "whatIsTheComplaintAbt": "A negative or positive decision",
@@ -2336,7 +2305,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "101":
+    case "S101-A negative or positive decision - Negative - Don't have number - Complaint on Behalf - Yes - expert support":
       return {
         "applicantId": "101",
         "whatIsTheComplaintAbt": "A negative or positive decision",
@@ -2359,7 +2328,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "102":
+    case "S102-A negative or positive decision - Negative - Don't have number - Complaint on Behalf - No":
       return {
         "applicantId": "102",
         "whatIsTheComplaintAbt": "A negative or positive decision",
@@ -2382,7 +2351,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "103":
+    case "S103-A negative or positive decision - Positive - In Uk - GWF number -Complaint on Behalf - Yes - expert support":
       return {
         "applicantId": "103",
         "whatIsTheComplaintAbt": "A negative or positive decision",
@@ -2405,7 +2374,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "104":
+    case "S104-A negative or positive decision - Positive - Outside Uk - GWF number -Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "104",
         "whatIsTheComplaintAbt": "A negative or positive decision",
@@ -2428,7 +2397,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "105":
+    case "S105-A negative or positive decision - Positive - In Uk - GWF number - Complaint on Behalf - No":
       return {
         "applicantId": "105",
         "whatIsTheComplaintAbt": "A negative or positive decision",
@@ -2451,7 +2420,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "106":
+    case "S106-A negative or positive decision - Positive - Outside Uk - GWF number - Complaint on Behalf - No":
       return {
         "applicantId": "106",
         "whatIsTheComplaintAbt": "A negative or positive decision",
@@ -2474,7 +2443,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "107":
+    case "S107-A negative or positive decision - Positive - In Uk - GWF number - Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "107",
         "whatIsTheComplaintAbt": "A negative or positive decision",
@@ -2497,7 +2466,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "108":
+    case "S108-A negative or positive decision - Positive - Outside Uk - Unique number - Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "108",
         "whatIsTheComplaintAbt": "A negative or positive decision",
@@ -2520,7 +2489,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "109":
+    case "S109-A negative or positive decision - Positive - In Uk - Unique number - Complaint on Behalf - No":
       return {
         "applicantId": "109",
         "whatIsTheComplaintAbt": "A negative or positive decision",
@@ -2543,7 +2512,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "110":
+    case "S110-A negative or positive decision - Positive - Outside Uk - Unique number - Complaint on Behalf - No":
       return {
         "applicantId": "110",
         "whatIsTheComplaintAbt": "A negative or positive decision",
@@ -2566,7 +2535,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "111":
+    case "S111-A negative or positive decision - Positive - In Uk - Unique number - Complaint on Behalf - Yes - friend":
       return {
         "applicantId": "111",
         "whatIsTheComplaintAbt": "A negative or positive decision",
@@ -2589,7 +2558,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "112":
+    case "S112-A negative or positive decision - Positive - Outside Uk - HO number - Complaint on Behalf - Yes - sponsor":
       return {
         "applicantId": "112",
         "whatIsTheComplaintAbt": "A negative or positive decision",
@@ -2612,7 +2581,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "113":
+    case "S113-A negative or positive decision - Positive - In Uk - HO number - Complaint on Behalf - No":
       return {
         "applicantId": "113",
         "whatIsTheComplaintAbt": "A negative or positive decision",
@@ -2635,7 +2604,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "114":
+    case "S114-A negative or positive decision - Positive - Outside Uk - HO number - Complaint on Behalf - No":
       return {
         "applicantId": "114",
         "whatIsTheComplaintAbt": "A negative or positive decision",
@@ -2658,7 +2627,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "115":
+    case "S115-A negative or positive decision - Positive - In Uk - HO number - Complaint on Behalf - Yes - expert support":
       return {
         "applicantId": "115",
         "whatIsTheComplaintAbt": "A negative or positive decision",
@@ -2681,7 +2650,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "116":
+    case "S116-A negative or positive decision - Positive - Outside Uk - IHS number - Complaint on Behalf - Yes - expert support":
       return {
         "applicantId": "116",
         "whatIsTheComplaintAbt": "A negative or positive decision",
@@ -2704,7 +2673,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "117":
+    case "S117-A negative or positive decision - Positive - In Uk - IHS number - Complaint on Behalf - No":
       return {
         "applicantId": "117",
         "whatIsTheComplaintAbt": "A negative or positive decision",
@@ -2727,7 +2696,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "118":
+    case "S118-A negative or positive decision - Positive - Outside Uk - IHS number - Complaint on Behalf - No":
       return {
         "applicantId": "118",
         "whatIsTheComplaintAbt": "A negative or positive decision",
@@ -2750,7 +2719,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "119":
+    case "S119-A negative or positive decision - Positive - In Uk - IHS number - Complaint on Behalf - Yes - friend":
       return {
         "applicantId": "119",
         "whatIsTheComplaintAbt": "A negative or positive decision",
@@ -2773,7 +2742,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "120":
+    case "S120-A negative or positive decision - Positive - Outside Uk - Don't have number - Complaint on Behalf - Yes - sponsor":
       return {
         "applicantId": "120",
         "whatIsTheComplaintAbt": "A negative or positive decision",
@@ -2796,7 +2765,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "121":
+    case "S121-A negative or positive decision - Positive - In Uk - Don't have number - Complaint on Behalf - No":
       return {
         "applicantId": "121",
         "whatIsTheComplaintAbt": "A negative or positive decision",
@@ -2819,7 +2788,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "122":
+    case "S122-A negative or positive decision - Positive - Outside Uk - GWF number - Complaint on Behalf - No":
       return {
         "applicantId": "122",
         "whatIsTheComplaintAbt": "A negative or positive decision",
@@ -2842,7 +2811,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "123":
+    case "S123-A negative or positive decision - Positive - In Uk - Don't have number - Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "123",
         "whatIsTheComplaintAbt": "A negative or positive decision",
@@ -2865,7 +2834,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "124":
+    case "S124-BRP - Not arrived - GWF number - Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "124",
         "whatIsTheComplaintAbt": "Biometric residence permits (BRPs)",
@@ -2888,7 +2857,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "125":
+    case "S125-BRP - Not arrived - GWF number - Complaint on Behalf - No":
       return {
         "applicantId": "125",
         "whatIsTheComplaintAbt": "Biometric residence permits (BRPs)",
@@ -2911,7 +2880,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "126":
+    case "S126-BRP - Not arrived - Unique number - Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "126",
         "whatIsTheComplaintAbt": "Biometric residence permits (BRPs)",
@@ -2934,7 +2903,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "127":
+    case "S127-BRP - Not arrived - Unique number - Complaint on Behalf - No":
       return {
         "applicantId": "127",
         "whatIsTheComplaintAbt": "Biometric residence permits (BRPs)",
@@ -2957,7 +2926,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "128":
+    case "S128-BRP - Not arrived - HO number - Complaint on Behalf - Yes - sponsor":
       return {
         "applicantId": "128",
         "whatIsTheComplaintAbt": "Biometric residence permits (BRPs)",
@@ -2980,7 +2949,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "129":
+    case "S129-BRP - Not arrived - HO number - Complaint on Behalf - No":
       return {
         "applicantId": "129",
         "whatIsTheComplaintAbt": "Biometric residence permits (BRPs)",
@@ -3003,7 +2972,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "130":
+    case "S130-BRP - Not arrived - IHS number - Complaint on Behalf - Yes - expert support":
       return {
         "applicantId": "130",
         "whatIsTheComplaintAbt": "Biometric residence permits (BRPs)",
@@ -3026,7 +2995,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "131":
+    case "S131-BRP - Not arrived - IHS number - Complaint on Behalf - No":
       return {
         "applicantId": "131",
         "whatIsTheComplaintAbt": "Biometric residence permits (BRPs)",
@@ -3049,7 +3018,9 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "132":
+    case "S132-BRP - Not arrived - IHS number -Complaint on Behalf - Yes -friend":
+    case "S132-BRP - Not arrived - IHS number - Complaint on Behalf - Yes -friend":
+    case "BRP - Not arrived - IHS number -Complaint on Behalf - Yes -friend":
       return {
         "applicantId": "132",
         "whatIsTheComplaintAbt": "Biometric residence permits (BRPs)",
@@ -3072,7 +3043,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "133":
+    case "S133-BRP - Incorrect - GWF number -Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "133",
         "whatIsTheComplaintAbt": "Biometric residence permits (BRPs)",
@@ -3095,30 +3066,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "134":
-      return {
-        "applicantId": "134",
-        "whatIsTheComplaintAbt": "Biometric residence permits (BRPs)",
-        "whatWasTheProbWithTheApplyProcess": "",
-        "whereDidYouMakeYourApplication": "",
-        "haveYouRequestedARefund": "",
-        "whichTypeOfRefundDoYouRequest": "",
-        "whatAreYouWaitingToBeRefunded": "",
-        "whenDidYouRequestRefund": "",
-        "whatAreYouWaitingFor": "",
-        "whereDidYouExpPoorBehaviour": "",
-        "haveYouAskedForDocsBack": "",
-        "whereDidTheIncidentTakePlace": "",
-        "whatIsTheProbWithTheBrp": "It is incorrect",
-        "doYouHaveARefNumbForTheComplaint": "",
-        "whichOfTheseRefNumbDoYouHave": "GWF number",
-        "areYouMakingThisComplaintForSomeoneElse": "No",
-        "whatIsYourRelationToApplicant": "",
-        "wasDecisionNegativeOrPositive": "",
-        "whatProbDidYouHaveMakingAppointment": "",
-        "whatWasYourOriginalComplaintAbt": ""
-      };
-    case "135":
+    case "S135-BRP - Incorrect - Unique number - Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "135",
         "whatIsTheComplaintAbt": "Biometric residence permits (BRPs)",
@@ -3141,7 +3089,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "136":
+    case "S136-BRP - Incorrect - Unique number - Complaint on Behalf - No":
       return {
         "applicantId": "136",
         "whatIsTheComplaintAbt": "Biometric residence permits (BRPs)",
@@ -3164,7 +3112,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "137":
+    case "S137-BRP - Incorrect - HO number - Complaint on Behalf - Yes - sponsor":
       return {
         "applicantId": "137",
         "whatIsTheComplaintAbt": "Biometric residence permits (BRPs)",
@@ -3187,7 +3135,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "138":
+    case "S138-BRP - Incorrect - HO number - Complaint on Behalf - No":
       return {
         "applicantId": "138",
         "whatIsTheComplaintAbt": "Biometric residence permits (BRPs)",
@@ -3210,7 +3158,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "139":
+    case "S139-BRP - Incorrect - IHS number - Complaint on Behalf - Yes - expert support":
       return {
         "applicantId": "139",
         "whatIsTheComplaintAbt": "Biometric residence permits (BRPs)",
@@ -3233,7 +3181,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "140":
+    case "S140-BRP - Incorrect - IHS number - Complaint on Behalf - No":
       return {
         "applicantId": "140",
         "whatIsTheComplaintAbt": "Biometric residence permits (BRPs)",
@@ -3256,7 +3204,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "141":
+    case "S141-BRP - Incorrect - IHS number - Complaint on Behalf - Yes - friend":
       return {
         "applicantId": "141",
         "whatIsTheComplaintAbt": "Biometric residence permits (BRPs)",
@@ -3279,7 +3227,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "142":
+    case "S142-BRP - Something else - GWF number - Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "142",
         "whatIsTheComplaintAbt": "Biometric residence permits (BRPs)",
@@ -3302,7 +3250,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "143":
+    case "S143-BRP - Something else - GWF number - Complaint on Behalf - No":
       return {
         "applicantId": "143",
         "whatIsTheComplaintAbt": "Biometric residence permits (BRPs)",
@@ -3325,7 +3273,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "144":
+    case "S144-BRP - Something else - Unique number -Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "144",
         "whatIsTheComplaintAbt": "Biometric residence permits (BRPs)",
@@ -3348,7 +3296,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "145":
+    case "S145-BRP - Something else - Unique number - Complaint on Behalf - No":
       return {
         "applicantId": "145",
         "whatIsTheComplaintAbt": "Biometric residence permits (BRPs)",
@@ -3371,7 +3319,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "146":
+    case "S146-BRP - Something else - HO number - Complaint on Behalf - Yes - sponsor":
       return {
         "applicantId": "146",
         "whatIsTheComplaintAbt": "Biometric residence permits (BRPs)",
@@ -3394,7 +3342,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "147":
+    case "S147-BRP - Something else - HO number - Complaint on Behalf - No":
       return {
         "applicantId": "147",
         "whatIsTheComplaintAbt": "Biometric residence permits (BRPs)",
@@ -3417,7 +3365,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "148":
+    case "S148-BRP - Something else - IHS number - Complaint on Behalf - Yes - expert support":
       return {
         "applicantId": "148",
         "whatIsTheComplaintAbt": "Biometric residence permits (BRPs)",
@@ -3440,7 +3388,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "149":
+    case "S149-BRP - Something else - IHS number - Complaint on Behalf - No":
       return {
         "applicantId": "149",
         "whatIsTheComplaintAbt": "Biometric residence permits (BRPs)",
@@ -3463,7 +3411,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "150":
+    case "S150-BRP - Something else - IHS number - Complaint on Behalf - Yes - friend":
       return {
         "applicantId": "150",
         "whatIsTheComplaintAbt": "Biometric residence permits (BRPs)",
@@ -3486,7 +3434,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "151":
+    case "Refunds - Yes- Less than 6wks":
       return {
         "applicantId": "151",
         "whatIsTheComplaintAbt": "Refunds",
@@ -3509,7 +3457,8 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "152":
+    case "S152-Refunds - Yes- More than 6wks - HO number -Complaint on Behalf - Yes - legal rep":
+    case "Refunds - Yes- More than 6wks - HO number -Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "152",
         "whatIsTheComplaintAbt": "Refunds",
@@ -3532,7 +3481,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "153":
+    case "S153-Requested Refunds - Yes- More than 6wks - HO number - Complaint on Behalf - No":
       return {
         "applicantId": "153",
         "whatIsTheComplaintAbt": "Refunds",
@@ -3555,7 +3504,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "154":
+    case "S154-Requested Refunds - Yes- More than 6wks - IHS number - Complaint on Behalf - Yes - friend":
       return {
         "applicantId": "154",
         "whatIsTheComplaintAbt": "Refunds",
@@ -3578,7 +3527,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "155":
+    case "S155-Requested Refunds - Yes- More than 6wks - IHS number - Complaint on Behalf - No":
       return {
         "applicantId": "155",
         "whatIsTheComplaintAbt": "Refunds",
@@ -3601,7 +3550,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "156":
+    case "S156-Requested Refunds - Yes- More than 6wks - GWF number - Complaint on Behalf - Yes - sponsor":
       return {
         "applicantId": "156",
         "whatIsTheComplaintAbt": "Refunds",
@@ -3624,7 +3573,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "157":
+    case "S157-Requested Refunds - Yes- More than 6wks - Unique number - Complaint on Behalf - No":
       return {
         "applicantId": "157",
         "whatIsTheComplaintAbt": "Refunds",
@@ -3647,7 +3596,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "158":
+    case "S158-Requested Refunds - Yes- More than 6wks - Don't have number - Complaint on Behalf - Yes -expert support":
       return {
         "applicantId": "158",
         "whatIsTheComplaintAbt": "Refunds",
@@ -3670,7 +3619,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "159":
+    case "S159-Requested Refunds - Yes- More than 6wks - Don't have number - Complaint on Behalf - No":
       return {
         "applicantId": "159",
         "whatIsTheComplaintAbt": "Refunds",
@@ -3693,7 +3642,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "160":
+    case "S160-Refunds - No- Standard fee":
       return {
         "applicantId": "160",
         "whatIsTheComplaintAbt": "Refunds",
@@ -3716,7 +3665,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "161":
+    case "S161-Refunds - No- Priority service - In the Uk - GWF number -Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "161",
         "whatIsTheComplaintAbt": "Refunds",
@@ -3739,7 +3688,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "162":
+    case "S162-Refunds - No- Priority service - Outside the Uk - GWF number -Complaint on Behalf - No":
       return {
         "applicantId": "162",
         "whatIsTheComplaintAbt": "Refunds",
@@ -3762,7 +3711,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "163":
+    case "S163-Requested Refunds - No- Priority service - In the Uk - Unique number - Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "163",
         "whatIsTheComplaintAbt": "Refunds",
@@ -3785,7 +3734,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "164":
+    case "S164-Requested Refunds - No- Priority service - Outside the Uk - Unique number - Complaint on Behalf - No":
       return {
         "applicantId": "164",
         "whatIsTheComplaintAbt": "Refunds",
@@ -3808,7 +3757,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "165":
+    case "S165-Requested Refunds - No- Priority service - In the Uk - HO number - Complaint on Behalf - Yes - sponsor":
       return {
         "applicantId": "165",
         "whatIsTheComplaintAbt": "Refunds",
@@ -3831,7 +3780,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "166":
+    case "S166-Requested Refunds - No- Priority service - Outside the Uk - HO number - Complaint on Behalf - No":
       return {
         "applicantId": "166",
         "whatIsTheComplaintAbt": "Refunds",
@@ -3854,7 +3803,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "167":
+    case "S167-Requested Refunds - No- Priority service - In the Uk - Don't have number - Complaint on Behalf - Yes - expert support":
       return {
         "applicantId": "167",
         "whatIsTheComplaintAbt": "Refunds",
@@ -3877,7 +3826,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "168":
+    case "S168-Requested Refunds - No- Priority service - Outside the Uk - IHS number - Complaint on Behalf - No":
       return {
         "applicantId": "168",
         "whatIsTheComplaintAbt": "Refunds",
@@ -3900,7 +3849,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "169":
+    case "S169-Requested Refunds - No- Super Priority service - In the Uk - Don't have number - Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "169",
         "whatIsTheComplaintAbt": "Refunds",
@@ -3923,7 +3872,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "170":
+    case "S170-Requested Refunds - No- Super Priority service - Outside the Uk - Don't have number - Complaint on Behalf - No":
       return {
         "applicantId": "170",
         "whatIsTheComplaintAbt": "Refunds",
@@ -3946,7 +3895,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "171":
+    case "S171-Requested Refunds - No- Super Priority service - In the Uk - Unique number - Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "171",
         "whatIsTheComplaintAbt": "Refunds",
@@ -3969,7 +3918,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "172":
+    case "S172-Requested Refunds - No- Super Priority service - Outside the Uk - Unique number - Complaint on Behalf - No":
       return {
         "applicantId": "172",
         "whatIsTheComplaintAbt": "Refunds",
@@ -3992,7 +3941,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "173":
+    case "S173-Requested Refunds - No- Super Priority service - In the Uk - HO number - Complaint on Behalf - Yes - sponsor":
       return {
         "applicantId": "173",
         "whatIsTheComplaintAbt": "Refunds",
@@ -4015,7 +3964,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "174":
+    case "S174-Requested Refunds - No- Super Priority service - Outside the Uk - HO number - Complaint on Behalf - No":
       return {
         "applicantId": "174",
         "whatIsTheComplaintAbt": "Refunds",
@@ -4038,7 +3987,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "175":
+    case "S175-Requested Refunds - No- Super Priority service - In the Uk - IHS number - Complaint on Behalf - Yes - expert support":
       return {
         "applicantId": "175",
         "whatIsTheComplaintAbt": "Refunds",
@@ -4061,7 +4010,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "176":
+    case "S176-Requested Refunds - No- Super Priority service - Outside the Uk - IHS number - Complaint on Behalf - No":
       return {
         "applicantId": "176",
         "whatIsTheComplaintAbt": "Refunds",
@@ -4084,7 +4033,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "177":
+    case "S177-Requested Refunds - No- Super Priority service - In the Uk - GWF number - Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "177",
         "whatIsTheComplaintAbt": "Refunds",
@@ -4107,7 +4056,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "178":
+    case "S178-Requested Refunds - No- Super Priority service - Outside the Uk - GWF number - Complaint on Behalf - No":
       return {
         "applicantId": "178",
         "whatIsTheComplaintAbt": "Refunds",
@@ -4130,7 +4079,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "179":
+    case "S179-Requested Refunds - No- Added value service - GWF number - Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "179",
         "whatIsTheComplaintAbt": "Refunds",
@@ -4153,7 +4102,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "180":
+    case "S180-Requested Refunds - No- Added value service - Don't have number - Complaint on Behalf - No":
       return {
         "applicantId": "180",
         "whatIsTheComplaintAbt": "Refunds",
@@ -4176,7 +4125,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "181":
+    case "S181-Requested Refunds - No- Added value service - Unique number - Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "181",
         "whatIsTheComplaintAbt": "Refunds",
@@ -4199,7 +4148,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "182":
+    case "S182-Requested Refunds - No- Added value service - Unique number - Complaint on Behalf - No":
       return {
         "applicantId": "182",
         "whatIsTheComplaintAbt": "Refunds",
@@ -4222,7 +4171,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "183":
+    case "S183-Requested Refunds - No- Added value service - HO number - Complaint on Behalf - Yes - sponsor":
       return {
         "applicantId": "183",
         "whatIsTheComplaintAbt": "Refunds",
@@ -4245,7 +4194,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "184":
+    case "S184-Requested Refunds - No- Added value service - HO number - Complaint on Behalf - No":
       return {
         "applicantId": "184",
         "whatIsTheComplaintAbt": "Refunds",
@@ -4268,7 +4217,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "185":
+    case "S185-Requested Refunds - No- Added value service - IHS number - Complaint on Behalf - Yes - expert support":
       return {
         "applicantId": "185",
         "whatIsTheComplaintAbt": "Refunds",
@@ -4291,7 +4240,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "186":
+    case "S186-Requested Refunds - No- Added value service - IHS number - Complaint on Behalf - No":
       return {
         "applicantId": "186",
         "whatIsTheComplaintAbt": "Refunds",
@@ -4314,7 +4263,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "187":
+    case "S187-Requested Refunds - No- Added value service - GWF number - Complaint on Behalf - Yes - friend":
       return {
         "applicantId": "187",
         "whatIsTheComplaintAbt": "Refunds",
@@ -4337,7 +4286,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "188":
+    case "S188-Requested Refunds - No- Added value service - GWF number - Complaint on Behalf - No":
       return {
         "applicantId": "188",
         "whatIsTheComplaintAbt": "Refunds",
@@ -4360,7 +4309,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "189":
+    case "S189-Requested Refunds - No -IHS service - In the Uk - GWF number - Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "189",
         "whatIsTheComplaintAbt": "Refunds",
@@ -4383,7 +4332,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "190":
+    case "S190-Requested Refunds - No - IHS service - Outside the Uk - Don't have number - Complaint on Behalf - No":
       return {
         "applicantId": "190",
         "whatIsTheComplaintAbt": "Refunds",
@@ -4406,7 +4355,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "191":
+    case "S191-Refunds - No - IHS service - In the Uk - Unique number -Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "191",
         "whatIsTheComplaintAbt": "Refunds",
@@ -4429,7 +4378,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "192":
+    case "S192-Refunds - No-  IHS service - Outside the Uk - Unique number -Complaint on Behalf - No":
       return {
         "applicantId": "192",
         "whatIsTheComplaintAbt": "Refunds",
@@ -4452,7 +4401,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "193":
+    case "S193-Requested Refunds - No - IHS service - In the Uk - HO number - Complaint on Behalf - Yes - sponsor":
       return {
         "applicantId": "193",
         "whatIsTheComplaintAbt": "Refunds",
@@ -4475,7 +4424,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "194":
+    case "S194-Requested Refunds - No - IHS service - Outside the Uk - HO number - Complaint on Behalf - No":
       return {
         "applicantId": "194",
         "whatIsTheComplaintAbt": "Refunds",
@@ -4498,7 +4447,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "195":
+    case "S195-Requested Refunds - No - IHS service - In the Uk - IHS number - Complaint on Behalf - Yes - expert support":
       return {
         "applicantId": "195",
         "whatIsTheComplaintAbt": "Refunds",
@@ -4521,7 +4470,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "196":
+    case "S196-Requested Refunds - No - IHS service - Outside the Uk - IHS number - Complaint on Behalf - No":
       return {
         "applicantId": "196",
         "whatIsTheComplaintAbt": "Refunds",
@@ -4544,7 +4493,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "197":
+    case "S197-Requested Refunds - No - IHS service - In the Uk - GWF number - Complaint on Behalf - Yes - friend":
       return {
         "applicantId": "197",
         "whatIsTheComplaintAbt": "Refunds",
@@ -4567,7 +4516,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "198":
+    case "S198-Requested Refunds - No - IHS service - Outside the Uk - GWF number - Complaint on Behalf - No":
       return {
         "applicantId": "198",
         "whatIsTheComplaintAbt": "Refunds",
@@ -4590,7 +4539,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "199":
+    case "S199-Requested Refunds - No - EU Scheme service - GWF number - Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "199",
         "whatIsTheComplaintAbt": "Refunds",
@@ -4613,7 +4562,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "200":
+    case "S200-Requested Refunds - No -  EU Scheme service - Don't have number - Complaint on Behalf - No":
       return {
         "applicantId": "200",
         "whatIsTheComplaintAbt": "Refunds",
@@ -4636,7 +4585,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "201":
+    case "S201-Requested Refunds - No - EU Scheme service - Unique number - Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "201",
         "whatIsTheComplaintAbt": "Refunds",
@@ -4659,7 +4608,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "202":
+    case "S202-Requested Refunds - No - EU Scheme service - Unique number - Complaint on Behalf - No":
       return {
         "applicantId": "202",
         "whatIsTheComplaintAbt": "Refunds",
@@ -4682,7 +4631,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "203":
+    case "S203-Requested Refunds - No - EU Scheme service - HO number - Complaint on Behalf - Yes - sponsor":
       return {
         "applicantId": "203",
         "whatIsTheComplaintAbt": "Refunds",
@@ -4705,7 +4654,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "204":
+    case "S204-Requested Refunds - No - EU Scheme service - HO number - Complaint on Behalf - No":
       return {
         "applicantId": "204",
         "whatIsTheComplaintAbt": "Refunds",
@@ -4728,7 +4677,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "205":
+    case "S205-Requested Refunds - No - EU Scheme service - IHS number - Complaint on Behalf - Yes - expert support":
       return {
         "applicantId": "205",
         "whatIsTheComplaintAbt": "Refunds",
@@ -4751,7 +4700,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "206":
+    case "S206-Requested Refunds - No - EU Scheme service - IHS number - Complaint on Behalf - No":
       return {
         "applicantId": "206",
         "whatIsTheComplaintAbt": "Refunds",
@@ -4774,7 +4723,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "207":
+    case "S207-Requested Refunds - No - EU Scheme service - GWF number - Complaint on Behalf - Yes - friend":
       return {
         "applicantId": "207",
         "whatIsTheComplaintAbt": "Refunds",
@@ -4797,7 +4746,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "208":
+    case "S208-Requested Refunds - No - EU Scheme service - GWF number - Complaint on Behalf - No":
       return {
         "applicantId": "208",
         "whatIsTheComplaintAbt": "Refunds",
@@ -4820,7 +4769,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "209":
+    case "S209-Requested Refunds - Not yet - HIS service - In the Uk - GWF number - Complaint on Behalf - Yes -legal rep":
       return {
         "applicantId": "209",
         "whatIsTheComplaintAbt": "Refunds",
@@ -4843,7 +4792,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "210":
+    case "S210-Requested Refunds - Not yet - HIS service - Outside Uk - Don't have number - Complaint on Behalf -No":
       return {
         "applicantId": "210",
         "whatIsTheComplaintAbt": "Refunds",
@@ -4866,7 +4815,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "211":
+    case "S211-Requested Refunds - Not yet - HIS service - In the Uk - Unique number - Complaint on Behalf - Yes -legal rep":
       return {
         "applicantId": "211",
         "whatIsTheComplaintAbt": "Refunds",
@@ -4889,7 +4838,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "212":
+    case "S212-Requested Refunds - Not yet - HIS service - Outside Uk - Unique number - Complaint on Behalf -No":
       return {
         "applicantId": "212",
         "whatIsTheComplaintAbt": "Refunds",
@@ -4912,7 +4861,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "213":
+    case "S213-Requested Refunds - Not yet - HIS service - In the Uk - HO number - Complaint on Behalf - Yes -sponsor":
       return {
         "applicantId": "213",
         "whatIsTheComplaintAbt": "Refunds",
@@ -4935,7 +4884,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "214":
+    case "S214-Requested Refunds - Not yet - HIS service - Outside Uk - HO number - Complaint on Behalf -No":
       return {
         "applicantId": "214",
         "whatIsTheComplaintAbt": "Refunds",
@@ -4958,7 +4907,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "215":
+    case "S215-Requested Refunds - Not yet - HIS service - In the Uk - IHS number - Complaint on Behalf - Yes -expert support":
       return {
         "applicantId": "215",
         "whatIsTheComplaintAbt": "Refunds",
@@ -4981,7 +4930,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "216":
+    case "S216-Requested Refunds - Not yet - HIS service - Outside Uk - IHS number - Complaint on Behalf -No":
       return {
         "applicantId": "216",
         "whatIsTheComplaintAbt": "Refunds",
@@ -5004,7 +4953,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "217":
+    case "S217-Requested Refunds - Not yet - HIS service - In the Uk - GWF number - Complaint on Behalf - Yes  friend":
       return {
         "applicantId": "217",
         "whatIsTheComplaintAbt": "Refunds",
@@ -5027,7 +4976,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "218":
+    case "S218-Requested Refunds - Not yet - HIS service - Outside Uk - GWF number - Complaint on Behalf -No":
       return {
         "applicantId": "218",
         "whatIsTheComplaintAbt": "Refunds",
@@ -5050,7 +4999,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "219":
+    case "S219-Requested Refunds - Not yet - EU scheme - GWF number - Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "219",
         "whatIsTheComplaintAbt": "Refunds",
@@ -5073,7 +5022,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "220":
+    case "S220-Requested Refunds - Not yet - EU scheme - Don't have number - Complaint on Behalf - No":
       return {
         "applicantId": "220",
         "whatIsTheComplaintAbt": "Refunds",
@@ -5096,7 +5045,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "221":
+    case "S221-Requested Refunds - Not yet - EU scheme - Unique number - Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "221",
         "whatIsTheComplaintAbt": "Refunds",
@@ -5119,7 +5068,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "222":
+    case "S222-Requested Refunds - Not yet - EU scheme - Unique number - Complaint on Behalf - No":
       return {
         "applicantId": "222",
         "whatIsTheComplaintAbt": "Refunds",
@@ -5142,7 +5091,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "223":
+    case "S223-Requested Refunds - Not yet - EU scheme - HO number - Complaint on Behalf - Yes - sponsor":
       return {
         "applicantId": "223",
         "whatIsTheComplaintAbt": "Refunds",
@@ -5165,7 +5114,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "224":
+    case "S224-Requested Refunds - Not yet - EU scheme - HO number - Complaint on Behalf - No":
       return {
         "applicantId": "224",
         "whatIsTheComplaintAbt": "Refunds",
@@ -5188,7 +5137,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "225":
+    case "S225-Refunds - Not yet - EU scheme - IHS number -Complaint on Behalf - Yes - expert support":
       return {
         "applicantId": "225",
         "whatIsTheComplaintAbt": "Refunds",
@@ -5211,7 +5160,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "226":
+    case "S226-Refunds - Not yet - EU scheme - IHS number -Complaint on Behalf - No":
       return {
         "applicantId": "226",
         "whatIsTheComplaintAbt": "Refunds",
@@ -5234,7 +5183,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "227":
+    case "S227-Staff Behaviour - In person - Outside Uk - GWF number - Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "227",
         "whatIsTheComplaintAbt": "Staff Behaviour (e.g. rudeness, discrimination)",
@@ -5257,7 +5206,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "228":
+    case "S228-Staff Behaviour - In person - Outside Uk - Don't have number - Complaint on Behalf - No":
       return {
         "applicantId": "228",
         "whatIsTheComplaintAbt": "Staff Behaviour (e.g. rudeness, discrimination)",
@@ -5280,7 +5229,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "229":
+    case "S229-Staff Behaviour - In person - Outside Uk - Unique number - Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "229",
         "whatIsTheComplaintAbt": "Staff Behaviour (e.g. rudeness, discrimination)",
@@ -5303,7 +5252,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "230":
+    case "S230-Staff Behaviour - In person - Outside Uk - Unique number - Complaint on Behalf - No":
       return {
         "applicantId": "230",
         "whatIsTheComplaintAbt": "Staff Behaviour (e.g. rudeness, discrimination)",
@@ -5326,7 +5275,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "231":
+    case "S231-Staff Behaviour - In person - Outside Uk - HO number - Complaint on Behalf - Yes - sponsor":
       return {
         "applicantId": "231",
         "whatIsTheComplaintAbt": "Staff Behaviour (e.g. rudeness, discrimination)",
@@ -5349,7 +5298,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "232":
+    case "S232-Staff Behaviour - In person - Outside Uk - HO number - Complaint on Behalf - No":
       return {
         "applicantId": "232",
         "whatIsTheComplaintAbt": "Staff Behaviour (e.g. rudeness, discrimination)",
@@ -5372,7 +5321,8 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "233":
+    case "S233-Staff Behaviour - In person - Outside Uk - IHS number -Complaint on Behalf - Yes - expert support":
+    case "Staff Behaviour - In person - Outside Uk - IHS number -Complaint on Behalf - Yes - expert support":
       return {
         "applicantId": "233",
         "whatIsTheComplaintAbt": "Staff Behaviour (e.g. rudeness, discrimination)",
@@ -5395,7 +5345,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "234":
+    case "S234-Staff Behaviour - In person - Outside Uk - IHS number -Complaint on Behalf - No":
       return {
         "applicantId": "234",
         "whatIsTheComplaintAbt": "Staff Behaviour (e.g. rudeness, discrimination)",
@@ -5418,7 +5368,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "235":
+    case "S235-Staff Behaviour - In person - In the Uk - GWF number - Complaint on Behalf - Yes - friend":
       return {
         "applicantId": "235",
         "whatIsTheComplaintAbt": "Staff Behaviour (e.g. rudeness, discrimination)",
@@ -5441,7 +5391,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "236":
+    case "S236-Staff Behaviour - In person - In the Uk - GWF number - Complaint on Behalf - No":
       return {
         "applicantId": "236",
         "whatIsTheComplaintAbt": "Staff Behaviour (e.g. rudeness, discrimination)",
@@ -5464,7 +5414,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "237":
+    case "S237-Staff Behaviour - In person - In the Uk - GWF number - Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "237",
         "whatIsTheComplaintAbt": "Staff Behaviour (e.g. rudeness, discrimination)",
@@ -5487,7 +5437,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "238":
+    case "S238-Staff Behaviour - In person - In the Uk - Don't have number - Complaint on Behalf - No":
       return {
         "applicantId": "238",
         "whatIsTheComplaintAbt": "Staff Behaviour (e.g. rudeness, discrimination)",
@@ -5510,7 +5460,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "239":
+    case "S239-Staff Behaviour - In person - In the Uk - Unique number - Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "239",
         "whatIsTheComplaintAbt": "Staff Behaviour (e.g. rudeness, discrimination)",
@@ -5533,7 +5483,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "240":
+    case "S240-Staff Behaviour - In person - In the Uk - Unique number - Complaint on Behalf - No":
       return {
         "applicantId": "240",
         "whatIsTheComplaintAbt": "Staff Behaviour (e.g. rudeness, discrimination)",
@@ -5556,7 +5506,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "241":
+    case "S241-Staff Behaviour - In person - In the Uk - HO number - Complaint on Behalf - Yes - sponsor":
       return {
         "applicantId": "241",
         "whatIsTheComplaintAbt": "Staff Behaviour (e.g. rudeness, discrimination)",
@@ -5579,7 +5529,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "242":
+    case "S242-Staff Behaviour - In person - In the Uk - HO number - Complaint on Behalf - No":
       return {
         "applicantId": "242",
         "whatIsTheComplaintAbt": "Staff Behaviour (e.g. rudeness, discrimination)",
@@ -5602,7 +5552,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "243":
+    case "S243-Staff Behaviour - In person - In the Uk - IHS number - Complaint on Behalf - Yes -expert support":
       return {
         "applicantId": "243",
         "whatIsTheComplaintAbt": "Staff Behaviour (e.g. rudeness, discrimination)",
@@ -5625,7 +5575,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "244":
+    case "S244-Staff Behaviour - In person - In the Uk - GWF number - Complaint on Behalf - No":
       return {
         "applicantId": "244",
         "whatIsTheComplaintAbt": "Staff Behaviour (e.g. rudeness, discrimination)",
@@ -5648,7 +5598,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "245":
+    case "S245-Staff Behaviour -On the phone - GWF number - Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "245",
         "whatIsTheComplaintAbt": "Staff Behaviour (e.g. rudeness, discrimination)",
@@ -5671,7 +5621,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "246":
+    case "S246-Staff Behaviour - On the phone - Don't have number - Complaint on Behalf - No":
       return {
         "applicantId": "246",
         "whatIsTheComplaintAbt": "Staff Behaviour (e.g. rudeness, discrimination)",
@@ -5694,7 +5644,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "247":
+    case "S247-Staff Behaviour -On the phone -Unique number - Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "247",
         "whatIsTheComplaintAbt": "Staff Behaviour (e.g. rudeness, discrimination)",
@@ -5717,7 +5667,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "248":
+    case "S248-Staff Behaviour - On the phone - Unique number - Complaint on Behalf - No":
       return {
         "applicantId": "248",
         "whatIsTheComplaintAbt": "Staff Behaviour (e.g. rudeness, discrimination)",
@@ -5740,7 +5690,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "249":
+    case "S249-Staff Behaviour -On the phone - HO number - Complaint on Behalf - Yes - sponsor":
       return {
         "applicantId": "249",
         "whatIsTheComplaintAbt": "Staff Behaviour (e.g. rudeness, discrimination)",
@@ -5763,7 +5713,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "250":
+    case "S250-Staff Behaviour - On the phone - HO number - Complaint on Behalf - No":
       return {
         "applicantId": "250",
         "whatIsTheComplaintAbt": "Staff Behaviour (e.g. rudeness, discrimination)",
@@ -5786,7 +5736,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "251":
+    case "S251-Staff Behaviour - In a letter or email - Unique number - Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "251",
         "whatIsTheComplaintAbt": "Staff Behaviour (e.g. rudeness, discrimination)",
@@ -5809,7 +5759,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "252":
+    case "S252-Staff Behaviour - In a letter or email - Unique number - Complaint on Behalf - No":
       return {
         "applicantId": "252",
         "whatIsTheComplaintAbt": "Staff Behaviour (e.g. rudeness, discrimination)",
@@ -5832,7 +5782,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "253":
+    case "S253-Staff Behaviour - In a letter or email - HO number -Complaint on Behalf - Yes - sponsor":
       return {
         "applicantId": "253",
         "whatIsTheComplaintAbt": "Staff Behaviour (e.g. rudeness, discrimination)",
@@ -5855,7 +5805,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "254":
+    case "S254-Staff Behaviour - In a letter or email - HO number - Complaint on Behalf - No":
       return {
         "applicantId": "254",
         "whatIsTheComplaintAbt": "Staff Behaviour (e.g. rudeness, discrimination)",
@@ -5878,7 +5828,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "255":
+    case "S255-Staff Behaviour - In a letter or email - IHS number - Complaint on Behalf - Yes - expert support":
       return {
         "applicantId": "255",
         "whatIsTheComplaintAbt": "Staff Behaviour (e.g. rudeness, discrimination)",
@@ -5901,7 +5851,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "256":
+    case "S256-Staff Behaviour - In a letter or email - IHS number - Complaint on Behalf - No":
       return {
         "applicantId": "256",
         "whatIsTheComplaintAbt": "Staff Behaviour (e.g. rudeness, discrimination)",
@@ -5924,7 +5874,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "257":
+    case "S257-Existing complaint -Have ref numb -Complaint on Behalf -No":
       return {
         "applicantId": "257",
         "whatIsTheComplaintAbt": "An existing complaint",
@@ -5947,7 +5897,8 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": "Submitting an application"
       };
-    case "258":
+    case "S258-Existing complaint -No ref Numb - Submit application - complaint on Behalf - Yes - legal rep":
+    case "Existing complaint -No ref Numb - Submit application - complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "258",
         "whatIsTheComplaintAbt": "An existing complaint",
@@ -5970,7 +5921,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": "Submitting an application"
       };
-    case "259":
+    case "S259-Existing complaint -No ref Numb - Submit application- complaint on Behalf - No":
       return {
         "applicantId": "259",
         "whatIsTheComplaintAbt": "An existing complaint",
@@ -5993,7 +5944,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": "Submitting an application"
       };
-    case "260":
+    case "S260-Existing complaint -No ref Numb - making apptmt - Complaint on Behalf - Yes - friend":
       return {
         "applicantId": "260",
         "whatIsTheComplaintAbt": "An existing complaint",
@@ -6016,7 +5967,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": "Making an appointment"
       };
-    case "261":
+    case "S261-Existing complaint -No ref Numb - making appmt - complaint on Behalf - No":
       return {
         "applicantId": "261",
         "whatIsTheComplaintAbt": "An existing complaint",
@@ -6039,7 +5990,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": "Making an appointment"
       };
-    case "262":
+    case "S262-Existing complaint -No ref Numb - waiting for decision- Complaint on Behalf - Yes -sponsor":
       return {
         "applicantId": "262",
         "whatIsTheComplaintAbt": "An existing complaint",
@@ -6062,7 +6013,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": "Waiting for a decision or documents"
       };
-    case "263":
+    case "S263-Existing complaint -No ref Numb - waiting for decision- complaint on Behalf - No":
       return {
         "applicantId": "263",
         "whatIsTheComplaintAbt": "An existing complaint",
@@ -6085,7 +6036,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": "Waiting for a decision or documents"
       };
-    case "264":
+    case "S264-Existing complaint -No ref Numb - negative or positive decision- complaint on Behalf - Yes - expert support":
       return {
         "applicantId": "264",
         "whatIsTheComplaintAbt": "An existing complaint",
@@ -6108,7 +6059,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": "A negative or positive decision"
       };
-    case "265":
+    case "S265-Existing complaint -No ref Numb - negative or positive decision- complaint on Behalf - No":
       return {
         "applicantId": "265",
         "whatIsTheComplaintAbt": "An existing complaint",
@@ -6131,7 +6082,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": "A negative or positive decision"
       };
-    case "266":
+    case "S266-Existing complaint -No ref Numb - Immigration status change- complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "266",
         "whatIsTheComplaintAbt": "An existing complaint",
@@ -6154,7 +6105,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": "Immigration status change"
       };
-    case "267":
+    case "S267-Existing complaint -No ref Numb - Immigration status change- complaint on Behalf - No":
       return {
         "applicantId": "267",
         "whatIsTheComplaintAbt": "An existing complaint",
@@ -6177,7 +6128,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": "Immigration status change"
       };
-    case "268":
+    case "S268-Existing complaint -No ref Numb - BRP - Complaint on Behalf - Yes - friend":
       return {
         "applicantId": "268",
         "whatIsTheComplaintAbt": "An existing complaint",
@@ -6200,7 +6151,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": "Biometric residence permits (BRPs)"
       };
-    case "269":
+    case "S269-Existing complaint -No ref Numb - BRP - Complaint on Behalf -No":
       return {
         "applicantId": "269",
         "whatIsTheComplaintAbt": "An existing complaint",
@@ -6223,7 +6174,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": "Biometric residence permits (BRPs)"
       };
-    case "270":
+    case "S270-Existing complaint -No ref Numb -refunds - Complaint on Behalf - Yes - sponsor":
       return {
         "applicantId": "270",
         "whatIsTheComplaintAbt": "An existing complaint",
@@ -6246,7 +6197,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": "Refunds"
       };
-    case "271":
+    case "S271-Existing complaint -No ref Numb -refunds - Complaint on Behalf - No":
       return {
         "applicantId": "271",
         "whatIsTheComplaintAbt": "An existing complaint",
@@ -6269,7 +6220,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": "Refunds"
       };
-    case "272":
+    case "S272-Existing complaint -No ref Numb - Staff behaviour- Complaint on Behalf - Yes - expert support":
       return {
         "applicantId": "272",
         "whatIsTheComplaintAbt": "An existing complaint",
@@ -6292,7 +6243,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": "Staff behaviour"
       };
-    case "273":
+    case "S273-Existing complaint -No ref Numb - Staff behaviour- Complaint on Behalf - No":
       return {
         "applicantId": "273",
         "whatIsTheComplaintAbt": "An existing complaint",
@@ -6315,7 +6266,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": "Staff behaviour"
       };
-    case "274":
+    case "S274-Existing complaint -No ref Numb - something else - Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "274",
         "whatIsTheComplaintAbt": "An existing complaint",
@@ -6338,7 +6289,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": "Something else"
       };
-    case "275":
+    case "S275-Existing complaint -No ref Numb - something else - Complaint on Behalf - No":
       return {
         "applicantId": "275",
         "whatIsTheComplaintAbt": "An existing complaint",
@@ -6361,7 +6312,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": "Something else"
       };
-    case "276":
+    case "S276-Something else -GWF number -Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "276",
         "whatIsTheComplaintAbt": "Something else",
@@ -6384,7 +6335,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "277":
+    case "S277-Something else -HO number -Complaint on Behalf - No":
       return {
         "applicantId": "277",
         "whatIsTheComplaintAbt": "Something else",
@@ -6407,7 +6358,8 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "278":
+    case "S278-Something else -IHS number -Complaint on Behalf - Yes - legal rep":
+    case "Something else -IHS number -Complaint on Behalf - Yes - legal rep":
       return {
         "applicantId": "278",
         "whatIsTheComplaintAbt": "Something else",
@@ -6430,7 +6382,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "279":
+    case "S279-Something else -IHS number -Complaint on Behalf - No":
       return {
         "applicantId": "279",
         "whatIsTheComplaintAbt": "Something else",
@@ -6453,7 +6405,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "280":
+    case "S280-Something else -GWF number -Complaint on Behalf - Yes - sponsor":
       return {
         "applicantId": "280",
         "whatIsTheComplaintAbt": "Something else",
@@ -6476,7 +6428,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "281":
+    case "S281-Something else -Unique number -Complaint on Behalf - No":
       return {
         "applicantId": "281",
         "whatIsTheComplaintAbt": "Something else",
@@ -6499,7 +6451,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "282":
+    case "S282-Something else -Don't have number -Complaint on Behalf - Yes - expert support":
       return {
         "applicantId": "282",
         "whatIsTheComplaintAbt": "Something else",
@@ -6522,7 +6474,7 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatProbDidYouHaveMakingAppointment": "",
         "whatWasYourOriginalComplaintAbt": ""
       };
-    case "283":
+    case "S283-Something else -Don't have number -Complaint on Behalf - No":
       return {
         "applicantId": "283",
         "whatIsTheComplaintAbt": "Something else",
@@ -6546,6 +6498,6 @@ export function getApplicant(scenarioId: string): UkvicApplicant {
         "whatWasYourOriginalComplaintAbt": ""
       };
     default:
-      throw new Error(`Unknown UKVIC scenario ID: ${scenarioId}`);
+      throw new Error(`Unknown UKVIC description: ${description}`);
   }
 }

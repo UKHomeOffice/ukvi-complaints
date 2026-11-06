@@ -5,13 +5,13 @@ The Java UKVIC tests are migrated from `hof-e2e-auto-tests/Function/src/main`, u
 ## Scope
 
 - All 61 UKVIC source page classes and the shared UKVI page are registered in `fixture/fixtures.ts`.
-- All 84 `UkvicStepLib` methods are implemented in `steps/ukvic.step.ts` as `ukVicStepLib`, including source switch branches and validation helpers.
+- Journey branches and validation helpers are implemented in `steps/ukvic.step.ts` as `ukVicStepLib`.
 - All active step phrases are bound. Shared field-validation assertions are in `steps/ukvic-validation.step.ts`.
-- All 283 CSV data variants are preserved as TypeScript switch cases in `test-data/ukvic-applicant.ts`. Runtime tests do not read CSV.
+- All 291 feature description variants select their existing applicant objects directly through the switch in `test-data/ukvic-applicant.ts`. Runtime tests do not read CSV or look up numeric IDs.
 - Page objects keep test data out of the page layer. Values are centralised in `utility-helper/constants-lib.ts`.
 - Screenshots and videos follow the existing Playwright configuration. Validation artifacts use unique directories under `.playwright-runs/`.
 
-The user explicitly chose to keep `UKVI Complaints2` commented out. There are **30 active cases** and **261 deferred source cases**. Strict feature parity is therefore **FAIL**, while page, method, phrase and data mappings are complete. Do not re-enable the deferred outline without approval.
+Feature files and their current enabled/commented coverage are preserved. The audit reports the current active and commented-case counts; validation does not enable deferred examples.
 
 ## Commands
 
@@ -27,7 +27,7 @@ yarn test:e2e:isolated
 yarn test:e2e:isolated --resume --full
 ```
 
-`test:e2e:parity` checks description, applicant-data, journey-step, title and tag parity against the captured pre-refactor baseline. It passes when only the explicitly deferred outline is disabled. It creates `parity-audit.json`, `migration-report.md`, and `validation-manifest.json`; the latter contains each active case's exact isolated command. Complete original-source coverage remains deferred.
+`test:e2e:parity` checks all feature descriptions against the original applicant-data hashes, including validation aliases and commented examples. It creates `parity-audit.json`, `migration-report.md`, and `validation-manifest.json`; the latter contains each active case's exact isolated command. Feature contents are also compared with the local pre-conversion snapshot when available.
 
 `test:e2e:isolated` launches a separate single-worker process for each active scenario. `--resume` skips matching previously passed cases only when the test-input fingerprint is unchanged; `--full` permits full-suite execution only after all active individual cases have passed. The runner sets CI mode for headless browser execution, without modifying the configured service or secrets.
 
@@ -41,9 +41,9 @@ The root Playwright configuration loads `.env` quietly and uses `PLAYWRIGHT_BASE
 
 ## Description Selection
 
-Journeys start with `Given I visit the Ukvic page`, followed by `When I fill out my answers for the Ukvic questionnaire pertaining to "<Description>"`. Field-validation journeys navigate first and then use `And I use the Ukvic scenario "..."` without completing the form automatically.
+Journeys start with `Given I visit the Ukvic page`, followed by `When I fill out my answers for the Ukvic form pertaining to "<Description>"`. Field-validation journeys navigate first and then use `And I use the Ukvic scenario "..."` without completing the form automatically.
 
-`test-data/ukvic-descriptions.ts` explicitly maps all 291 legacy case descriptions, including validation aliases and deferred examples, to their original internal IDs. No branching is inferred from description wording. `getApplicantForDescription` rejects blank, unknown and ambiguous descriptions. Existing applicant data remains unchanged.
+`getApplicantForDescription(description)` uses exact string cases to return the original applicant objects directly, including validation aliases and commented examples. No IDs are extracted and no branching is inferred from description wording. Blank and unknown descriptions are rejected; conflicting duplicate mappings were checked before conversion. Existing `applicantId` fields are retained only as unchanged data metadata.
 
 `test-data/legacy-description-mapping.json` preserves the original features, descriptions, tags, journey steps and applicant-data hashes for verification. Do not overwrite this baseline. Description checks accompany the existing journey and field-validation assertions.
 

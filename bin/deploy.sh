@@ -133,4 +133,8 @@ deploy_namespace
 
 sleep $READY_FOR_TEST_DELAY
 
+if [[ ${KUBE_NAMESPACE} == ${BRANCH_ENV} && -d /root/.dockersock ]]; then
+  printf '%s\n' "ukvic-${DRONE_SOURCE_BRANCH}.branch.internal.sas-notprod.homeoffice.gov.uk" > /root/.dockersock/branch_url.txt
+fi
+
 print_environment_urls

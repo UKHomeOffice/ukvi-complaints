@@ -1,7 +1,7 @@
 import { expect, Locator, Page } from '@playwright/test';
-import { ukviCommonPage } from './ukvi-common.page';
+import { basePage } from './base-page';
 
-export class ukvicWhereShldWeSendOurResponsePage extends ukviCommonPage {
+export class ukvicWhereShldWeSendOurResponsePage extends basePage {
 
 
     constructor(page: Page) {
@@ -14,7 +14,9 @@ export class ukvicWhereShldWeSendOurResponsePage extends ukviCommonPage {
     }
 
     async enterWhereToSendResponse(emailAdd: string, phoneNo: string): Promise<void> {
-        await this.enterYourContactDetails(emailAdd, phoneNo);
+        await this.type(this.emailAddress, emailAdd);
+        await this.type(this.phoneNumb, phoneNo);
+        await this.clickContinueButton();
     }
 
     async answerWhereShouldWeSendResponse(sasHofEmail: string, telephone: string): Promise<void> {

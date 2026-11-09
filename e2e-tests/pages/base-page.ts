@@ -6,6 +6,11 @@ export class basePage {
     readonly thereIsAProblemText: Locator;
     readonly errorSummaryList: Locator;
     readonly navigateBackLink: Locator;
+    readonly continueMakingComplaint: Locator;
+    readonly getFasterServLink: Locator;
+    readonly emailAddress: Locator;
+    readonly phoneNumb: Locator;
+    readonly selectCity: Locator;
 
     constructor(readonly page: Page) {
         this.headerText = page.locator('h1');
@@ -13,6 +18,11 @@ export class basePage {
         this.thereIsAProblemText = page.locator('#error-summary-title');
         this.errorSummaryList = page.locator('.govuk-error-summary__list');
         this.navigateBackLink = page.getByRole('link', { name: 'Back', exact: true });
+        this.continueMakingComplaint = page.getByRole('button', { name: 'Continue making your complaint', exact: true });
+        this.getFasterServLink = page.getByRole('heading', { name: 'Get a faster decision on your visa, settlement or citizenship application', exact: true });
+        this.emailAddress = page.locator('input[id$=-email-address], input[id$=-email]');
+        this.phoneNumb = page.locator('input[id$=-phone-number], input[id$=-phone]');
+        this.selectCity = page.locator('input[id$=-city]');
     }
 
     async assertPageTitle(page: Page, title: string): Promise<void> {
@@ -30,6 +40,18 @@ export class basePage {
 
     async clickContinueButton(): Promise<void> {
         await this.continueButton.click();
+    }
+
+    async selectContinueMakingComplaintAndProceed(): Promise<void> {
+        await this.continueMakingComplaint.click();
+    }
+
+    async contactUkVisasForHelpLink(): Promise<boolean> {
+        return this.checkExternalLink('Contact UK Visas and Immigration');
+    }
+
+    async isGetFasterDecisionMessageDisplayed(): Promise<boolean> {
+        return this.checkExternalLink('how soon to expect a decision', this.getFasterServLink);
     }
 
     async selectOption(option: string): Promise<void> {

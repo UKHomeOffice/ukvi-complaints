@@ -1,7 +1,7 @@
 import { expect, Locator, Page } from '@playwright/test';
-import { ukviCommonPage } from './ukvi-common.page';
+import { basePage } from './base-page';
 
-export class ukvicWhereInUkIsServicePointPage extends ukviCommonPage {
+export class ukvicWhereInUkIsServicePointPage extends basePage {
     readonly selectCountry: Locator;
 
     constructor(page: Page) {
@@ -14,7 +14,8 @@ export class ukvicWhereInUkIsServicePointPage extends ukviCommonPage {
     }
 
     async answerEnterServiceSupportCentre(city: string): Promise<void> {
-        await this.enterServiceCity(city);
+        await this.type(this.selectCity, city);
+        await this.clickContinueButton();
     }
 
     async answerWhereInUkIsTheServicePoint(city: string): Promise<void> {

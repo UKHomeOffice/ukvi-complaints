@@ -1,7 +1,7 @@
 import { expect, Locator, Page } from '@playwright/test';
-import { ukviCommonPage } from './ukvi-common.page';
+import { basePage } from './base-page';
 
-export class ukvicWhereIsTheVisaApplyCentrePage extends ukviCommonPage {
+export class ukvicWhereIsTheVisaApplyCentrePage extends basePage {
     readonly selectCountry: Locator;
 
     constructor(page: Page) {
@@ -15,7 +15,8 @@ export class ukvicWhereIsTheVisaApplyCentrePage extends ukviCommonPage {
 
     async answerEnterYourCApplicationCenter(country: string, city: string): Promise<void> {
         await this.selectAutocomplete(this.selectCountry, country);
-        await this.enterServiceCity(city);
+        await this.type(this.selectCity, city);
+        await this.clickContinueButton();
     }
 
     async answerWhereIsTheVisaApplyCentre(overseasCountry: string, city: string): Promise<void> {

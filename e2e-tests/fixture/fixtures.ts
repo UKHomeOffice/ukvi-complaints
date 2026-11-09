@@ -1,7 +1,5 @@
 import { test as base } from 'playwright-bdd';
 import { basePage } from '../pages/base-page';
-import { ukviCommonPage } from '../pages/ukvi-common.page';
-import type { ukVicStepLib } from '../steps/ukvic.step';
 import { ukvicApplicantCountryOfNationalityPage } from '../pages/ukvic-applicant-country-of-nationality.page';
 import { ukvicCheckYourAnswersPage } from '../pages/ukvic-check-your-answers.page';
 import { ukvicDoYouHaveRefNoForComplaintPage } from '../pages/ukvic-do-you-have-ref-no-for-complaint.page';
@@ -66,7 +64,6 @@ import { ukvicWhichTypeOfRefundIsRequestedPage } from '../pages/ukvic-which-type
 
 export type Pages = {
     basePage: basePage;
-    ukviCommonPage: ukviCommonPage;
     ukvicApplicantCountryOfNationalityPage: ukvicApplicantCountryOfNationalityPage;
     ukvicCheckYourAnswersPage: ukvicCheckYourAnswersPage;
     ukvicDoYouHaveRefNoForComplaintPage: ukvicDoYouHaveRefNoForComplaintPage;
@@ -130,11 +127,10 @@ export type Pages = {
     ukvicWhichTypeOfRefundIsRequestedPage: ukvicWhichTypeOfRefundIsRequestedPage;
 };
 
-export const test = base.extend<{ pages: Pages; ukvic: ukVicStepLib }>({
+export const test = base.extend<{ pages: Pages }>({
     pages: async ({ page }, use) => {
         await use({
             basePage: new basePage(page),
-            ukviCommonPage: new ukviCommonPage(page),
             ukvicApplicantCountryOfNationalityPage: new ukvicApplicantCountryOfNationalityPage(page),
             ukvicCheckYourAnswersPage: new ukvicCheckYourAnswersPage(page),
             ukvicDoYouHaveRefNoForComplaintPage: new ukvicDoYouHaveRefNoForComplaintPage(page),
@@ -197,10 +193,6 @@ export const test = base.extend<{ pages: Pages; ukvic: ukVicStepLib }>({
             ukvicWhichRefNumDoYouHavePage: new ukvicWhichRefNumDoYouHavePage(page),
             ukvicWhichTypeOfRefundIsRequestedPage: new ukvicWhichTypeOfRefundIsRequestedPage(page),
         });
-    },
-    ukvic: async ({ page, pages }, use) => {
-        const { ukVicStepLib } = await import('../steps/ukvic.step');
-        await use(new ukVicStepLib(pages, page));
     },
 });
 

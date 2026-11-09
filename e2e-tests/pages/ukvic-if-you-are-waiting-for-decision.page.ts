@@ -1,7 +1,7 @@
 import { expect, Locator, Page } from '@playwright/test';
-import { ukviCommonPage } from './ukvi-common.page';
+import { basePage } from './base-page';
 
-export class ukvicIfYouAreWaitingForDecisionPage extends ukviCommonPage {
+export class ukvicIfYouAreWaitingForDecisionPage extends basePage {
     readonly abtOurService: Locator;
     readonly applicationOutsideUk: Locator;
 

@@ -1,12 +1,11 @@
 import { expect, Locator, Page } from '@playwright/test';
-import { ukviCommonPage } from './ukvi-common.page';
+import { basePage } from './base-page';
 
-export class ukvicIfYouHaveQuestionsAbtYourApmtPage extends ukviCommonPage {
+export class ukvicIfYouHaveQuestionsAbtYourApmtPage extends basePage {
 
 
     constructor(page: Page) {
         super(page);
-
     }
 
     async expectedPageTitle(): Promise<string> {

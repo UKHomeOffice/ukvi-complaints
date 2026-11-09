@@ -1,7 +1,7 @@
 import { expect, Locator, Page } from '@playwright/test';
-import { ukviCommonPage } from './ukvi-common.page';
+import { basePage } from './base-page';
 
-export class ukvicIfCannotGetAppointmentOutsideUkPage extends ukviCommonPage {
+export class ukvicIfCannotGetAppointmentOutsideUkPage extends basePage {
 
 
     constructor(page: Page) {

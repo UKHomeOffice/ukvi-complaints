@@ -4,7 +4,6 @@ Feature: UKVIC - Uk Visas and Immigration Complaints
 
   Scenario: UKVIC - Page field validation check - Submit an application
     Given I visit the Ukvic page
-    And I use the Ukvic scenario "Submitting an application - Tech Issues - In Uk - GWF number -Complaint on Behalf - Yes - Legal rep"
     When I select continue
     Then I see "There is a problem" error header message displayed for ukvi
     And I see "Select the reason for your complaint" error message displayed for ukvi
@@ -67,7 +66,6 @@ Feature: UKVIC - Uk Visas and Immigration Complaints
 
   Scenario: UKVIC - Page field validation check - Making an appointment
     Given I visit the Ukvic page
-    And I use the Ukvic scenario "Making an appointment - Difficult Getting Appointment - In Uk -GWF number -Complaint on Behalf - Yes - legal rep"
     When I select continue
     Then I see "There is a problem" error header message displayed for ukvi
     And I see "Select the reason for your complaint" error message displayed for ukvi
@@ -122,7 +120,6 @@ Feature: UKVIC - Uk Visas and Immigration Complaints
 
   Scenario: UKVIC - Page field validation check - Waiting for a decision
     Given I visit the Ukvic page
-    And I use the Ukvic scenario "Waiting for a decision - Decision on application - In Uk -GWF number -Complaint on Behalf - Yes - expert support"
     When I select continue
     Then I see "There is a problem" error header message displayed for ukvi
     And I see "Select the reason for your complaint" error message displayed for ukvi
@@ -181,7 +178,6 @@ Feature: UKVIC - Uk Visas and Immigration Complaints
 
   Scenario: UKVIC - Page field validation check - A negative or positive decision
     Given I visit the Ukvic page
-    And I use the Ukvic scenario "A negative or positive decision - Negative -Unique number -Complaint on Behalf - Yes - expert support"
     When I select continue
     Then I see "There is a problem" error header message displayed for ukvi
     And I see "Select the reason for your complaint" error message displayed for ukvi
@@ -238,7 +234,6 @@ Feature: UKVIC - Uk Visas and Immigration Complaints
 
   Scenario: UKVIC - Page field validation check - Biometric residence permits (BRPs)
     Given I visit the Ukvic page
-    And I use the Ukvic scenario "BRP - Not arrived - IHS number -Complaint on Behalf - Yes -friend"
     When I select continue
     Then I see "There is a problem" error header message displayed for ukvi
     And I see "Select the reason for your complaint" error message displayed for ukvi
@@ -289,7 +284,6 @@ Feature: UKVIC - Uk Visas and Immigration Complaints
 
   Scenario: UKVIC - Page field validation check - Refunds
     Given I visit the Ukvic page
-    And I use the Ukvic scenario "Refunds - Yes- More than 6wks - HO number -Complaint on Behalf - Yes - legal rep"
     When I select continue
     Then I see "There is a problem" error header message displayed for ukvi
     And I see "Select the reason for your complaint" error message displayed for ukvi
@@ -353,7 +347,6 @@ Feature: UKVIC - Uk Visas and Immigration Complaints
 
   Scenario: UKVIC - Page field validation check - Staff Behaviour (e.g. rudeness, discrimination)
     Given I visit the Ukvic page
-    And I use the Ukvic scenario "Staff Behaviour - In person - Outside Uk - IHS number -Complaint on Behalf - Yes - expert support"
     When I select continue
     Then I see "There is a problem" error header message displayed for ukvi
     And I see "Select the reason for your complaint" error message displayed for ukvi
@@ -425,7 +418,6 @@ Feature: UKVIC - Uk Visas and Immigration Complaints
 
   Scenario: UKVIC - Page field validation check - An existing complaint
     Given I visit the Ukvic page
-    And I use the Ukvic scenario "Existing complaint -No ref Numb - Submit application - complaint on Behalf - Yes - legal rep"
     When I select continue
     Then I see "There is a problem" error header message displayed for ukvi
     And I see "Select the reason for your complaint" error message displayed for ukvi
@@ -479,7 +471,6 @@ Feature: UKVIC - Uk Visas and Immigration Complaints
 
   Scenario: UKVIC - Page field validation check - Something else
     Given I visit the Ukvic page
-    And I use the Ukvic scenario "Something else -IHS number -Complaint on Behalf - Yes - legal rep"
     When I select continue
     Then I see "There is a problem" error header message displayed for ukvi
     And I see "Select the reason for your complaint" error message displayed for ukvi

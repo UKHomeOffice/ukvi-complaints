@@ -1,7 +1,7 @@
 import { expect, Locator, Page } from '@playwright/test';
-import { ukviCommonPage } from './ukvi-common.page';
+import { basePage } from './base-page';
 
-export class ukvicIfYouWantReqPriorityServRefundPage extends ukviCommonPage {
+export class ukvicIfYouWantReqPriorityServRefundPage extends basePage {
 
 
     constructor(page: Page) {

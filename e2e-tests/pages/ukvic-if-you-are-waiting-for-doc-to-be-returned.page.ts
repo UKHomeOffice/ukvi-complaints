@@ -1,7 +1,7 @@
 import { expect, Locator, Page } from '@playwright/test';
-import { ukviCommonPage } from './ukvi-common.page';
+import { basePage } from './base-page';
 
-export class ukvicIfYouAreWaitingForDocToBeReturnedPage extends ukviCommonPage {
+export class ukvicIfYouAreWaitingForDocToBeReturnedPage extends basePage {
     readonly reportDocNotReceived: Locator;
 
     constructor(page: Page) {

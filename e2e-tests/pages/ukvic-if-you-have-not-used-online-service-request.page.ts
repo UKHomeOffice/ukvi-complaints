@@ -1,7 +1,7 @@
 import { expect, Locator, Page } from '@playwright/test';
-import { ukviCommonPage } from './ukvi-common.page';
+import { basePage } from './base-page';
 
-export class ukvicIfYouHaveNotUsedOnlineServiceRequestPage extends ukviCommonPage {
+export class ukvicIfYouHaveNotUsedOnlineServiceRequestPage extends basePage {
     readonly useOnlineService: Locator;
 
     constructor(page: Page) {

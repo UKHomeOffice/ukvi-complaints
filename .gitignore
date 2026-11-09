@@ -30,7 +30,7 @@ test/_accessibility/tmp/*
 .cache
 data/*
 instructions.md
-.features-gen/
-playwright-report/
-test-results/
+.features-gen
+playwright-report
+test-results
 .playwright-runs/

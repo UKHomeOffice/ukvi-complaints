@@ -84,3 +84,17 @@ yarn test:e2e:report
 Any non-empty `CI` environment variable enables headless mode, two workers
 and two retries; otherwise the configuration uses one worker and one retry.
 Playwright's HTML report is written to `playwright-report/`.
+
+## Drone CI
+
+Pull-request builds run the suite against the internally deployed branch
+environment. The deploy step writes its internal host to the shared
+`/root/.dockersock/branch_url.txt` artifact consumed by the e2e step. After
+the run, Drone publishes the HTML report to the pull request using a
+GitHub App installation token.
+
+The `nightly_e2e_playwright` cron runs against the approved environment
+configured by the Drone `NIGHTLY_E2E_BASE_URL` secret and posts a test summary
+to the configured Slack webhook. Both CI paths require the `SAS_HOF_EMAIL`
+Drone secret. Keep all secret values in Drone's secret store; do not add them
+to this repository.

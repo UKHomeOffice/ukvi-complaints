@@ -42,7 +42,7 @@
     "sqs-producer": "^9.0.5"
   },
   "devDependencies": {
-    "@cucumber/cucumber": "^12.9.0",
+    "@cucumber/cucumber": "^13.3.0",
     "chai": "^6.2.2",
     "chai-as-promised": "^8.0.2",
     "eslint": "^8.57.0",

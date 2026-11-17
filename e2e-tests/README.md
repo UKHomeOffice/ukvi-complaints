@@ -1,100 +1,89 @@
 # UKVI complaints end-to-end tests
 
-The suite uses Playwright and Playwright BDD. Run the tests from your machine
-against an **approved, already-running UAT environment**.
+The end-to-end suite uses Playwright and Playwright BDD to exercise the
+complaints journeys in an approved UAT environment.
 
-> **Warning:** The tests submit complaints and upload documents. Run them only
-> against an authorised test environment with approved test data, email
-> addresses and integrations. Some journeys also check external guidance links.
+> **Warning:** These tests submit complaints and upload documents. Run them
+> only against an authorised test environment, using approved test data, email
+> addresses and integrations. Some scenarios also check external guidance
+> links.
 
 ## Test structure
 
-| Location                          | Contents                                                                             |
-| --------------------------------- | ------------------------------------------------------------------------------------ |
-| `features/`                       | Gherkin complaint journeys and field-validation scenarios.                           |
-| `steps/`                          | TypeScript definitions that connect Gherkin steps to browser actions and assertions. |
-| `fixture/fixtures.ts`             | Playwright fixtures, including the registered page objects.                           |
-| `pages/`                          | Page objects, shared browser actions and page-specific assertions.                   |
-| `test-data/user-upload-files/`    | Files used by document-upload steps.                                                 |
-| `utility-helper/constants-lib.ts` | Shared test values and the required test email configuration.                        |
-
-The root `playwright.config.ts` reads the feature and step files and generates
-BDD tests in `.features-gen/`. The configured browser project is Chromium.
-
-## Prerequisites
-
-- Node.js `>=24.22.1 <25.0.0`, as specified in `package.json`.
-- Yarn and access to the approved UAT environment from your machine.
-- Project dependencies and the Chromium browser:
-
-  ```sh
-  yarn install
-  npx playwright install chromium
-  ```
-
-Run these commands from the repository root.
-
-## Configure the root `.env`
-
-Playwright loads `.env` from the repository root. Set the following values
-using an approved UAT host and test inbox:
-
-```dotenv
-PLAYWRIGHT_BASE_URL=https://<approved-uat-host>
-SAS_HOF_EMAIL=test@example.test
+```text
+e2e-tests/
+  features/                 Gherkin complaint journeys and validation scenarios
+  steps/                    Step definitions that perform actions and assertions
+  fixture/                  Playwright fixtures and registered page objects
+  pages/                    Page objects for the complaint form
+  test-data/
+    user-upload-files/      Documents used by upload scenarios
+  utility-helper/           Shared test values and environment configuration
+playwright.config.ts        BDD discovery, browser and UAT configuration
 ```
 
-These are placeholders, not actual UAT values. Replace the URL with the
-authorised UAT base URL and use an approved test email address. Never commit
-the `.env` file or share its contents.
+The Playwright configuration reads feature files from `e2e-tests/features/`
+and step definitions from `e2e-tests/steps/` and `e2e-tests/fixture/`. BDD
+generates the Playwright tests into `.features-gen/` when the test command
+runs. Page objects in `pages/` are provided to steps through the shared
+fixture. The configured browser is Chromium.
 
-| Variable              | Purpose                                                                                                              |
-|-----------------------|----------------------------------------------------------------------------------------------------------------------|
-| `PLAYWRIGHT_BASE_URL` | Points the suite to UAT. When set, Playwright uses the existing environment and does not start the local web server. |
-| `SAS_HOF_EMAIL`       | Required test email used for applicant/contact details. The constants module throws if it is missing or empty.       |
+## Run locally against UAT
 
-`PLAYWRIGHT_PORT` is optional and defaults to `8080`; it controls the
-automatic local server's port and default URL when `PLAYWRIGHT_BASE_URL` is
-unset. In that case, Playwright starts `yarn start:dev` and uses
-`http://localhost:8080` by default. Local application dependencies and
-configuration are described in the [root README](../README.md).
+You need Node.js, Yarn, access to the approved UAT environment, and the
+project dependencies and Chromium browser installed.
 
-## Run the suite and view the report
+1. From the repository root (the directory containing `package.json` and
+   `playwright.config.ts`), install the project dependencies and browser:
 
-From the repository root:
+   ```sh
+   yarn install
+   npx playwright install chromium
+   ```
 
-```sh
-yarn test:e2e
-```
+2. Create or edit the `.env` file in that same repository root. Add the
+   approved UAT base URL and a test email address:
 
-The `test:e2e` script runs `bddgen && playwright test`. When `CI` is unset,
-the configuration runs Chromium headed locally. You can also explicitly
-request headed mode:
+   ```dotenv
+   PLAYWRIGHT_BASE_URL=https://<approved-uat-host>
+   SAS_HOF_EMAIL=<approved-test-email>
+   ```
+
+   Replace both placeholders with values approved for your test environment.
+   `PLAYWRIGHT_BASE_URL` must be the UAT application's base URL. The tests
+   require `SAS_HOF_EMAIL` for complaint contact details; the test setup
+   reports an error if it is missing. Do not commit `.env` or share its
+   contents.
+
+3. Run the tests from the repository root:
+
+   ```sh
+   yarn test:e2e
+   ```
+
+When `PLAYWRIGHT_BASE_URL` is set, Playwright uses that existing UAT site and
+does not start the local application. If it is unset, the configuration
+instead starts the local app with `yarn start:dev`; set it to the approved UAT
+URL to run against UAT.
+
+The local run opens Chromium in headed mode. To request headed mode explicitly:
 
 ```sh
 yarn test:e2e --headed
 ```
 
-Open the HTML report after the run:
+An HTML report is created in `playwright-report/`. Open it after the run with:
 
 ```sh
 yarn test:e2e:report
 ```
 
-Any non-empty `CI` environment variable enables headless mode, two workers
-and two retries; otherwise the configuration uses one worker and one retry.
-Playwright's HTML report is written to `playwright-report/`.
+For local application setup and configuration, see the
+[repository README](../README.md).
 
-## Drone CI
+## CI
 
-Pull-request builds run the suite against the internally deployed branch
-environment. The deploy step writes its internal host to the shared
-`/root/.dockersock/branch_url.txt` artifact consumed by the e2e step. After
-the run, Drone publishes the HTML report to the pull request using a
-GitHub App installation token.
-
-The `nightly_e2e_playwright` cron runs against the approved environment
-configured by the Drone `NIGHTLY_E2E_BASE_URL` secret and posts a test summary
-to the configured Slack webhook. Both CI paths require the `SAS_HOF_EMAIL`
-Drone secret. Keep all secret values in Drone's secret store; do not add them
-to this repository.
+Pull-request builds run against the deployed branch environment. The nightly
+Drone run uses the UAT URL configured in its `NIGHTLY_E2E_BASE_URL` secret.
+Both CI paths use the `SAS_HOF_EMAIL` secret. Keep these values in the
+approved secret store rather than adding them to the repository.

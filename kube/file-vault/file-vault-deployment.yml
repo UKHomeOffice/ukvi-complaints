@@ -64,7 +64,7 @@ spec:
             {{ else if eq .KUBE_NAMESPACE .UAT_ENV }}
               value: https://fv-{{ .APP_NAME }}.uat.sas-notprod.homeoffice.gov.uk
             {{ else if eq .KUBE_NAMESPACE .BRANCH_ENV }}
-              value: https://fv-{{ .DRONE_SOURCE_BRANCH }}.branch.sas-notprod.homeoffice.gov.uk
+              value: https://fv-ukvic-{{ .DRONE_SOURCE_BRANCH }}.branch.sas-notprod.homeoffice.gov.uk
             - name: DEBUG
               value: "*"
             {{ end }}
@@ -177,7 +177,7 @@ spec:
             {{ else if eq .KUBE_NAMESPACE .UAT_ENV }}
               value: https://fv-{{ .APP_NAME }}.uat.sas-notprod.homeoffice.gov.uk
             {{ else if eq .KUBE_NAMESPACE .BRANCH_ENV }}
-              value: https://fv-{{ .DRONE_SOURCE_BRANCH }}.branch.sas-notprod.homeoffice.gov.uk
+              value: https://fv-ukvic-{{ .DRONE_SOURCE_BRANCH }}.branch.sas-notprod.homeoffice.gov.uk
             {{ end }}
           args:
             # URls that you wish to protect.

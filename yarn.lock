@@ -2298,9 +2298,9 @@ ee-first@1.1.1:
   integrity sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==
 
 electron-to-chromium@^1.5.486:
-  version "1.5.487"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.5.487.tgz#9a1e2861c50b08b0d2a4f3b6e3a37f9d72b00700"
-  integrity sha512-qWotOhQYeYEj+DK4+Y+cfPj44qiC6ETIiWtJLfmDJydED2BJJ7loPA4SfBbbrMI6X/X3tryJgxnY9nxsO545Zw==
+  version "1.5.488"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.5.488.tgz#f546709fbb03521f1efccef536ad5a8a7c00c916"
+  integrity sha512-Uox8y5IeRGB/uXNMNSPfWaiI5/8d/2XG125oc+f2C5JniHcoMxsbCXcVFRZnIsdrgPwZQ6/k5SbSxhBirqQPuA==
 
 emoji-regex@^8.0.0:
   version "8.0.0"
@@ -3398,7 +3398,7 @@ hide-powered-by@1.1.0:
   resolved "https://registry.yarnpkg.com/hide-powered-by/-/hide-powered-by-1.1.0.tgz#be3ea9cab4bdb16f8744be873755ca663383fa7a"
   integrity sha512-Io1zA2yOA1YJslkr+AJlWSf2yWFkKjvkcL9Ni1XSUqnGLr/qRQe2UI3Cn/J9MsJht7yEVCe0SscY1HgVMujbgg==
 
-hof@~24.7.1:
+hof@~24.7.2:
   version "24.7.2"
   resolved "https://registry.yarnpkg.com/hof/-/hof-24.7.2.tgz#3a5bc16ee7ef977f81ff528a743ea5a51950538c"
   integrity sha512-aQTMxjizvc/RmhZJH6AJ8c4wJ3UrRjkSSq1niYiMlbbOBt3ZrcIs0CS5MeaAHwmcN5kHJDlH1IwXiFslsNTsmQ==

@@ -33,19 +33,20 @@ trigger:
   branch:
     <<: *include_default_and_feature_branches
 
-node_image: &node_image
-  pull: if-not-exists
-  image: quay.io/ukhomeofficedigital/hof-nodejs:24.22.2_3-alpine@sha256:ebf742568d6fa9505e5b8740dbb6bf7f4d38ea3a22fc2a940ee57cfa3a95a41e
+node_image_name: &node_image_name quay.io/ukhomeofficedigital/hof-nodejs:24.22.3_1-alpine@sha256:8533bcedc2dc86aceadaa8bab422931e8a33a81504c67247392eeffec6603cd5
+
 
 linting: &linting
-  <<: *node_image
+  pull: if-not-exists
+  image: *node_image_name
   environment:
     NOTIFY_KEY: USE_MOCK
   commands:
     - yarn run test:lint
 
 unit_tests: &unit_tests
-  <<: *node_image
+  pull: if-not-exists
+  image: *node_image_name
   environment:
     NOTIFY_KEY: USE_MOCK
   commands:
@@ -87,7 +88,7 @@ steps:
         cpu: 1000
         memory: 1024Mi
     environment:
-      IMAGE_NAME: quay.io/ukhomeofficedigital/hof-nodejs:24.22.2_3-alpine@sha256:ebf742568d6fa9505e5b8740dbb6bf7f4d38ea3a22fc2a940ee57cfa3a95a41e
+      IMAGE_NAME: *node_image_name
       SERVICE_URL: https://acp-trivy-helm.acp-trivy.svc.cluster.local:443
       SEVERITY: MEDIUM,HIGH,CRITICAL --dependency-tree
       FAIL_ON_DETECTION: true
@@ -102,7 +103,8 @@ steps:
       - clone_repos
 
   - name: setup
-    <<: *node_image
+    pull: if-not-exists
+    image: *node_image_name
     environment:
       NOTIFY_KEY: USE_MOCK
     commands:
@@ -423,7 +425,7 @@ steps:
     image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/trivy/client:latest
     pull: always
     environment:
-        IMAGE_NAME: quay.io/ukhomeofficedigital/hof-nodejs:24.22.2_3-alpine@sha256:ebf742568d6fa9505e5b8740dbb6bf7f4d38ea3a22fc2a940ee57cfa3a95a41e
+        IMAGE_NAME: *node_image_name
         SEVERITY: UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL --dependency-tree
         FAIL_ON_DETECTION: true
         IGNORE_UNFIXED: false

@@ -1,2 +1,6 @@
 /test/coverage
 /test/executions
+bin
+e2e-tests
+playwright-report
+test-results

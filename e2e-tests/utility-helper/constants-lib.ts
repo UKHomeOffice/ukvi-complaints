@@ -5,11 +5,9 @@ export class ConstantsLib {
     static readonly RESPONSE_NO = "No";
     static readonly NOT_YET = "Not yet";
     static readonly DOB_11_11_1988 = "11/11/1988";
-    static readonly TELEPHONE = "01616699548";
     static readonly SAS_HOF_EMAIL = requiredEnv('SAS_HOF_EMAIL');
-    static readonly CONTACT_EMAIL_ADDRESS = requiredEnv('SAS_HOF_EMAIL');
     static readonly REF_NUMBER = "ZW9005196";
-    static readonly CONTACT_TELEPHONE = "01616699548";
+    static readonly TELEPHONE = "01616699548";
     static readonly SUBMIT_APPLICATION = "Submitting an application";
     static readonly MAKE_APPOINTMENT = "Making an appointment";
     static readonly WAIT_FOR_DECISION = "Waiting for a decision";
@@ -62,7 +60,7 @@ export class ConstantsLib {
     static readonly WAITING_FOR_A_DECISION = "Waiting for a decision or documents";
     static readonly IMMIGRATION_STATUS_CHANGE = "Immigration status change";
     static readonly STAFF_BEHAVIOR = "Staff behaviour";
-    static readonly APPLICANT_DOB_11_11_1985 = "20/01/1985";
+    static readonly APPLICANT_DOB_11_11_1985 = "11/11/1985";
     static readonly UPLOAD_FILE_NAME = 'ukVic.png';
     static readonly COMPLAINT_DETAILS = 'Missing documents';
     static readonly APPLICATION_MONTH = 'July';

@@ -61,7 +61,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -83,7 +83,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -155,7 +155,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -177,7 +177,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -249,7 +249,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -271,7 +271,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -343,7 +343,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -365,7 +365,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -437,7 +437,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -459,7 +459,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -541,7 +541,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -578,7 +578,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -615,7 +615,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -681,7 +681,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -703,7 +703,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -773,7 +773,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -795,7 +795,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -866,7 +866,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -888,7 +888,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -960,7 +960,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -982,7 +982,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -1053,7 +1053,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -1075,7 +1075,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -1178,7 +1178,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -1202,7 +1202,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -1280,7 +1280,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -1304,7 +1304,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -1382,7 +1382,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -1406,7 +1406,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -1484,7 +1484,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -1508,7 +1508,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -1586,7 +1586,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -1610,7 +1610,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -1680,7 +1680,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -1723,7 +1723,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -1789,7 +1789,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -1855,7 +1855,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -1921,7 +1921,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -1987,7 +1987,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -2007,7 +2007,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -2073,7 +2073,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -2093,7 +2093,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -2134,7 +2134,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -2194,7 +2194,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -2233,7 +2233,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -2272,7 +2272,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -2311,7 +2311,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -2377,7 +2377,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -2397,7 +2397,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -2463,7 +2463,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -2483,7 +2483,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -2549,7 +2549,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -2569,7 +2569,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -2635,7 +2635,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -2655,7 +2655,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -2721,7 +2721,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -2741,7 +2741,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -2803,7 +2803,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -2842,7 +2842,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -2881,7 +2881,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -2920,7 +2920,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -3002,7 +3002,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -3041,7 +3041,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -3080,7 +3080,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -3138,7 +3138,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -3175,7 +3175,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -3212,7 +3212,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -3249,7 +3249,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -3319,7 +3319,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -3360,7 +3360,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -3401,7 +3401,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -3442,7 +3442,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -3463,7 +3463,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -3514,7 +3514,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -3565,7 +3565,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -3616,7 +3616,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -3667,7 +3667,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -3718,7 +3718,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -3769,7 +3769,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -3820,7 +3820,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -3871,7 +3871,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -3922,7 +3922,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -3969,7 +3969,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -4016,7 +4016,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -4063,7 +4063,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -4110,7 +4110,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -4157,7 +4157,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -4208,7 +4208,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -4259,7 +4259,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -4310,7 +4310,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -4361,7 +4361,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -4412,7 +4412,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -4459,7 +4459,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -4506,7 +4506,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -4553,7 +4553,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -4600,7 +4600,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -4647,7 +4647,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -4698,7 +4698,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -4749,7 +4749,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -4800,7 +4800,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -4851,7 +4851,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -4902,7 +4902,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -4949,7 +4949,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -4996,7 +4996,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -5043,7 +5043,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -5090,7 +5090,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -5133,7 +5133,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -5176,7 +5176,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -5219,7 +5219,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -5262,7 +5262,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -5305,7 +5305,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -5348,7 +5348,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -5391,7 +5391,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -5434,7 +5434,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -5477,7 +5477,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -5520,7 +5520,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -5563,7 +5563,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -5606,7 +5606,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -5643,7 +5643,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -5680,7 +5680,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -5717,7 +5717,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -5735,7 +5735,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -5772,7 +5772,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -5809,7 +5809,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -5846,7 +5846,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -5883,7 +5883,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -5920,7 +5920,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -5957,7 +5957,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -5994,7 +5994,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -6031,7 +6031,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -6068,7 +6068,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -6101,7 +6101,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -6134,7 +6134,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -6167,7 +6167,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;
@@ -6200,7 +6200,7 @@ When('I fill out my answers for the Ukvic form pertaining to {string}', async ({
             await pages.ukvicWhatIsYourFullNamePage.answerWhatIsYourFullName(c.NAME);
             await pages.ukvicWhatIsYourDobPage.answerWhatIsYourDob(c.DOB_11_11_1988);
             await pages.ukvicWhatIsYourCountryOfNationalityPage.answerWhatIsYourCountryOfNationality(c.COUNTRY_OF_NATIONALITY);
-            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.CONTACT_EMAIL_ADDRESS, c.CONTACT_TELEPHONE);
+            await pages.ukvicWhatAreYourContactDetailsPage.answerWhatAreYourContactDetails(c.SAS_HOF_EMAIL, c.TELEPHONE);
             await pages.ukvicWhatAreDetailsOfYourComplainPage.answerWhatAreTheDetailsOfYourComplaint(c.COMPLAINT_DETAILS);
             await pages.ukvicUploadDocumentsPage.answerUploadDocuments(resolve(__dirname, '../test-data/user-upload-files', c.UPLOAD_FILE_NAME));
             break;

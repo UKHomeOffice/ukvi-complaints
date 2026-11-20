@@ -14,6 +14,8 @@ export class ConstantsLib {
     static readonly NAME = "AUTO TESTER";
     static readonly NEGATIVE = "Negative";
     static readonly POSITIVE = "Positive";
+    static readonly IHS_SERVICE_FEE = "Immigration Health Surcharge (IHS) fee";
+    static readonly EU_SETTLEMENT_SCHEME_FEE = "EU Settlement Scheme fee";
     static readonly APPLICANT_DOB_11_11_1985 = "11/11/1985";
     static readonly UPLOAD_FILE_NAME = 'ukVic.png';
     static readonly COMPLAINT_DETAILS = 'Missing documents';
@@ -30,6 +32,7 @@ export class ConstantsLib {
     static readonly Existing_Complaint = "An existing complaint";
     static readonly Something_Else = "Something else";
     static readonly Technical_Issues = "Technical issues with the website or payments";
+    static readonly Unclear_Guidance = "Unclear or misleading guidance";
     static readonly Application_Decision = "A decision on an application";
     static readonly Return_Some_Doc = "The return of some documents";
     static readonly Less_Than_6Wks = "Less than 6 weeks ago";

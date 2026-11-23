@@ -1,2 +1,5 @@
 /test/coverage
 /test/executions
+bin
+playwright-report
+test-results

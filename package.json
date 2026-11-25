@@ -11,6 +11,9 @@
   "license": "MIT",
   "scripts": {
     "start": "node server.js",
+    "test:e2e": "bddgen && playwright test",
+    "test:e2e:generate": "bddgen",
+    "test:e2e:report": "playwright show-report",
     "start:dev": "[ -f .env ] && hof-build watch --env || hof-build watch",
     "local:up": "sh ./bin/start_local.sh",
     "local:check-env": "sh ./bin/start_local.sh --check-env",
@@ -41,17 +44,23 @@
     "sqs-producer": "^9.0.6"
   },
   "devDependencies": {
+    "@playwright/test": "1.65.1",
+    "@types/node": "^26.6.10",
     "@cucumber/cucumber": "^13.3.0",
     "chai": "^6.3.0",
     "chai-as-promised": "^8.0.2",
+    "csv-parse": "^7.0.3",
+    "dotenv": "^18.0.10",
     "eslint": "^8.57.1",
     "eslint-config-hof": "^1.3.4",
     "mocha": "^12.0.3",
     "nyc": "^18.0.0",
-    "playwright": "^1.65.1",
+    "playwright": "1.65.1",
+    "playwright-bdd": "^9.2.1",
     "proxyquire": "^2.1.3",
     "sinon": "^22.1.0",
-    "sinon-chai": "^4.0.1"
+    "sinon-chai": "^4.0.1",
+    "typescript": "^7.0.2"
   },
   "mocha": {
     "reporter": "spec",

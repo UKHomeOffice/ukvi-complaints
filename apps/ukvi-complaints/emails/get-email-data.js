@@ -1,5 +1,5 @@
 const { parseDocumentList } = require('../../../lib/utils');
-const moment = require('moment');
+const { formatDate } = require('hof/utilities/date');
 
 const getEmailData = (model, translate) => {
   return [
@@ -158,7 +158,7 @@ const getEmailData = (model, translate) => {
         },
         {
           label: 'Applicant’s date of birth',
-          value: moment(model['agent-representative-dob']).format('D MMMM YYYY')
+          value: formatDate(model['agent-representative-dob'])
         }
       ]
     },
@@ -175,7 +175,7 @@ const getEmailData = (model, translate) => {
         },
         {
           label: 'Date of birth',
-          value: moment(model['applicant-dob']).format('D MMMM YYYY')
+          value: formatDate(model['applicant-dob'])
         }
       ]
     },

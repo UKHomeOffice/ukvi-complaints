@@ -256,12 +256,10 @@ describe('complaint', () => {
     beforeEach(() => {
       complaintValues = Object.assign({}, applicantTestValues);
 
-      const momentStub = sinon.stub().returns({
-        format: () => (creationDate)
-      });
+      const formatDateStub = sinon.stub().returns(creationDate);
 
       getComplaint = proxyquire('../../../lib/json-converters/complaint', {
-        moment: momentStub
+        'hof/utilities/date': { formatDate: formatDateStub }
       }).getComplaint;
     });
 
